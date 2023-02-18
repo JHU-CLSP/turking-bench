@@ -1,0 +1,839 @@
+Title,Description,Keywords,Input.conference,Input.link,Answer.affiliation_0,Answer.affiliation_1,Answer.affiliation_10,Answer.affiliation_11,Answer.affiliation_12,Answer.affiliation_13,Answer.affiliation_14,Answer.affiliation_15,Answer.affiliation_16,Answer.affiliation_17,Answer.affiliation_18,Answer.affiliation_19,Answer.affiliation_2,Answer.affiliation_20,Answer.affiliation_21,Answer.affiliation_22,Answer.affiliation_23,Answer.affiliation_24,Answer.affiliation_25,Answer.affiliation_26,Answer.affiliation_27,Answer.affiliation_28,Answer.affiliation_29,Answer.affiliation_3,Answer.affiliation_30,Answer.affiliation_31,Answer.affiliation_32,Answer.affiliation_33,Answer.affiliation_34,Answer.affiliation_35,Answer.affiliation_36,Answer.affiliation_37,Answer.affiliation_38,Answer.affiliation_39,Answer.affiliation_4,Answer.affiliation_5,Answer.affiliation_6,Answer.affiliation_7,Answer.affiliation_8,Answer.affiliation_9,Answer.affiliation_general_chair,Answer.affiliation_program_chair_1,Answer.affiliation_program_chair_2,Answer.area_0,Answer.area_1,Answer.area_10,Answer.area_11,Answer.area_12,Answer.area_13,Answer.area_14,Answer.area_15,Answer.area_16,Answer.area_17,Answer.area_18,Answer.area_19,Answer.area_2,Answer.area_20,Answer.area_21,Answer.area_22,Answer.area_23,Answer.area_24,Answer.area_25,Answer.area_26,Answer.area_27,Answer.area_28,Answer.area_29,Answer.area_3,Answer.area_30,Answer.area_31,Answer.area_32,Answer.area_33,Answer.area_34,Answer.area_35,Answer.area_36,Answer.area_37,Answer.area_38,Answer.area_39,Answer.area_4,Answer.area_5,Answer.area_6,Answer.area_7,Answer.area_8,Answer.area_9,Answer.comments,Answer.general_chair,Answer.name_0,Answer.name_1,Answer.name_10,Answer.name_11,Answer.name_12,Answer.name_13,Answer.name_14,Answer.name_15,Answer.name_16,Answer.name_17,Answer.name_18,Answer.name_19,Answer.name_2,Answer.name_20,Answer.name_21,Answer.name_22,Answer.name_23,Answer.name_24,Answer.name_25,Answer.name_26,Answer.name_27,Answer.name_28,Answer.name_29,Answer.name_3,Answer.name_30,Answer.name_31,Answer.name_32,Answer.name_33,Answer.name_34,Answer.name_35,Answer.name_36,Answer.name_37,Answer.name_38,Answer.name_39,Answer.name_4,Answer.name_5,Answer.name_6,Answer.name_7,Answer.name_8,Answer.name_9,Answer.program_chair_1,Answer.program_chair_2,Answer.scratch_pad,Approve,Reject
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",ACL 2016,http://aclweb.org/anthology/P/P16/P16-1000.pdf,{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},Radboud University Nijmegen,University of Texas at Austin,University of Washington,{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},Antal van den Bosch,{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},Katrin Erk,Noah A. Smith,"The 38 area chairs who recruited reviewers, led the discussion about each paper, carefully assessed
+each submission, and authored meta-reviews to guide final decisions: Miguel Ballesteros, David Bam-
+man, Steven Bethard, Jonathan Berant, Gemma Boleda, Ming-Wei Chang, Wanxiang Che, Chris Dyer,
+Ed Grefenstette,  Hannaneh Hajishirzi,  Minlie Huang,  Mans Hulden,  Heng Ji,  Jing Jiang,  Zornitsa
+Kozareva, Marco Kuhlmann, Yang Liu, Annie Louis, Wei Lu, Marie-Catherine de Marneffe, Gerard
+de Melo, David Mimno, Meg Mitchell, Daichi Mochihashi, Graham Neubig, Naoaki Okazaki, Simone
+Ponzetto, Matthew Purver, David Reitter, Nathan Schneider, Hinrich Schuetze, Thamar Solorio, Lucia
+Specia, Partha Talukdar, Ivan Titov, Lu Wang, Nianwen Xue, and Grace Yang.",,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",ACL 2016,http://aclweb.org/anthology/P/P16/P16-1000.pdf,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,program co-chairs,Professor of Cognitive Science at the University of Edinburgh,"Associate Professor of Political Science at the University of California, Davis",{},General Chair,General Chair,General Chair,General Chair,General Chair,General Chair,Business Manager,University of Edinburgh,"University of California, Davis",{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},University of Texas,{},{},{},{},{},{},{},{},{},{},Priscilla Rasmussen,Antal van den Bosch,Miguel Ballesteros,Hannaneh Hajishirzi,Minlie Huang,Mans Hulden,Heng Ji,Jing Jiang,Zornitsa Kozareva,Marco Kuhlmann,Yang Liu,Annie Louis,Marie-Catherine de Marneffe,David Bamman,Meg Mitchell,Daichi Mochihashi,Graham Neubig,Naoaki Okazaki,Simone Ponzetto,Matthew Purver,David Reitter,Nathan Schneider,Hinrich Schuetze,Thamar Solorio,Steven Bethard,Lucia Specia,Partha Talukdar,Ivan Titov,"Lu Wang,",Nianwen Xue,Grace Yang,Katrin Erk,Mark Steedman,Amber Boydstun,{},Jonathan Berant,Gemma Boleda,Ming-Wei Chang,Wanxiang Che,Chris Dyer,Ed Grefenstette,Mark Steedman,Amber Boydstun,"Priscilla Rasmussen, the ACL Business Manager, and the 2015 ACL Executive Committee (Chris Manning, Pushpak Bhattacharyya, Joakim Nivre, Graeme Hirst, Dragomir Radev, Gertjan van Nood,Min-Yen Kan, Herman Ney, and Yejin Choi) have been instrumental in setting ACL-2016 in motion and in guiding the ACL-2016 team along the path from concept to execution.",,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",ACL 2015,http://aclweb.org/anthology/P/P15/P15-1000.pdf,Interactions,MIT,Facebook,IIT Delhi,Singapore Management University,Dublin Institute of Technology,Research Organization of Information and Systems,University of Alberta,Yahoo! Labs,Academia Sinica,Google Research,University of Edinburgh,University of Alabama at Birmingham,National Taiwan University,The Hong Kong Polytechnic University,National Institute of Informatics,The Institute of Statistical Mathematics,Université de Montréal,KAIST,University of Wisconsin-Milwaukee,Google Research,University of Bielefeld,University of Copenhagen,TU Darmstadt,University of Toronto,Yahoo! Labs,Peking University,Google,Carnegie Mellon University,Soochow University,,{},{},{},Ohio University,INRIA Lille,Macquarie University,University of Amsterdam,Microsoft Research,Columbia University,Nara Institute of Science and Technology,Chinese Academy of Sciences,Heidelberg Institute for Theoretical Studies,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,{},{},{},,,,,,,{},Yuji Matsumoto,Srinivas Bangalore,Regina Barzilay,Fei Huang,Mausam,Jing Jiang,John Kelleher,Jin-Dong Kim,Greg Kondrak,Zornitsa Kozareva,Lun-Wei Ku,Tom Kwiatkowski,Mirella Lapata,Steven Bethard,Shou-De Lin,Qin Lu,Yusuke Miyao,Daichi Mochihashi,Jian-Yun Nie,Alice Oh,Rashmi Prasad,Marta Recasens,David Schlangen,Anders Søgaard,Chris Biemann,Suzanne Stevenson,Joel Tetreault,Xiaojun Wan,Taro Watanabe,Eric Xing,Min Zhang,James Fan,{},{},{},Razvan Bunescu,Pascal Denis,Mark Dras,Raquel Fernandez,Jianfeng Gao,Julia Hirschberg,Chengqing Zong,Michael Strube,"Srinivas Bangalore, Interactions
+Regina Barzilay, MIT
+Steven Bethard, University of Alabama at Birmingham
+Chris Biemann, TU Darmstadt
+Razvan Bunescu, Ohio University
+Pascal Denis, INRIA Lille
+Mark Dras, Macquarie University
+James Fan
+Raquel Fernandez, University of Amsterdam
+Jianfeng Gao, Microsoft Research
+Julia Hirschberg, Columbia University
+Fei Huang, Facebook
+Mausam, IIT Dehli
+Jing Jiang, Singapore Management University
+John Kelleher, Dublin Institute of Technology
+Jin-Dong Kim, Research Organization of Information and Systems
+Greg Kondrak, University of Alberta
+Zornitsa Kozareva, Yahoo! Labs
+Lun-Wei Ku, Academia Sinica
+Tom Kwiatkowski, Google Research
+Mirella Lapata, University of Edinburgh
+Shou-De Lin, National Taiwan University
+Qin Lu, The Hong Kong Polytechnic University
+Yusuke Miyao, National Institute of Informatics
+Daichi Mochihashi, The Institute of Statistical Mathematics
+Jian-Yun Nie, Université de Montréal
+Alice Oh, KAIST
+Rashmi Prasad, University of Wisconsin-Milwaukee
+Marta Recasens, Google Research
+David Schlangen, University of Bielefeld
+Anders Søgaard, University of Copenhagen
+Suzanne Stevenson, University of Toronto
+Joel Tetreault, Yahoo! Labs
+Xiaojun Wan, Peking University
+Taro Watanabe, Google
+Eric Xing, Carnegie Mellon University
+Min Zhang, Soochow University",,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",ACL 2015,http://aclweb.org/anthology/P/P15/P15-1000.pdf,Interactions,MIT,Columbia University,Facebook,IIT Dehli,Singapore Management University,Dublin Institute of Technology,Research Organization of Information and System,University of Alberta,Yahoo! Labs,Academia Sinica,Google Research,University of Alabama at Birmingham,University of Edinburgh,National Taiwan University,The Hong Kong Polytechnic University,National Institute of Informatics,The Institute of Statistical Mathematics,Université de Montréal,KAIST,University of Wisconsin-Milwaukee,Google Research,University of Bielefeld,TU Darmstadt,University of Copenhagen,University of Toronto,Yahoo! Labs,Peking University,Google,Carnegie Mellon University,Soochow University,{},{},{},Ohio University,INRIA Lille,Macquarie University,,University of Amsterdam,Microsoft Research,Nara Institute of Science and Technology,"Institute of Automation, Chinese Academy of Sciences",Heidelberg Institute for Theoretical Studies,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,{},{},{},,,,,,,{},Yuji Matsumoto,Srinivas Bangalore,Regina Barzilay,Julia Hirschberg,Fei Huang,Mausam,Jing Jiang,John Kelleher,Jin-Dong Kim,Greg Kondrak,Zornitsa Kozareva,Lun-Wei Ku,Tom Kwiatkowski,Steven Bethard,Mirella Lapata,Shou-De Lin,Qin Lu,Yusuke Miyao,Daichi Mochihashi,Jian-Yun Nie,Alice Oh,Rashmi PrasadUniversity of Wisconsin-,Marta Recasens,David Schlangen,Chris Biemann,Anders Søgaard,Suzanne Stevenson,Joel Tetreault,Xiaojun Wan,Taro Watanabe,Eric Xing,Min Zhang,{},{},{},Razvan Bunescu,Pascal Denis,Mark Dras,James Fan,Raquel Fernandez,Jianfeng Gao,Chengqing Zong,Michael Strube,"Finally, I would like to thank two keynote speakers, the area chairs of the main conference, the workshop
+organizers, the tutorial presenters, the authors of main conference and demo papers, the reviewers for
+their contribution, and all the attendees for participation.  I hope everyone have a great time and enjoy
+this conference.
+There are many individuals to thank for their contributions to ACL-IJCNLP 2015.  We would like to
+thank the 37 area chairs for their hard work on recruiting reviewers, leading the discussion process, and
+carefully ranking the submissions.  We would also like to thank the 749 primary and the 137 secondary
+reviewers on whose efforts we depended to select high-quality and timely scientific work. This year we
+specifically acknowledge around 18.2% of the reviewers who went the extra mile and provided extremely
+helpful reviews (their names are marked with a * in the organization section of the proceedings).  The
+ACL coordinating committee members, including Dragomir Radev, Graeme Hirst, Jian Su, and Gertjan
+van Noord were invaluable on various issues relating to the organization.  We would like to thank the
+prior conference chairs Kristina Toutanova and Hua Wu and their predecessors for their advice.  We are
+very grateful for the guidance and support of the general chair Yuji Matsumoto, to the ACL Business
+Manager Priscilla Rasmussen who knew practically everything, to the local chairs Le Sun and Yang Liu,
+the publication chairs Wanxiang Che and Guodong Zhou, and webmaster Zhiyuan Liu.  We would also
+like to thank Jiajun Zhang who helped with reviewer assignment and numerous other tasks. Rich Gerber
+and Paolo Gai from Softconf were extremely responsive to all of our requests, and we are grateful for
+that.",,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",ACL 2014,http://aclweb.org/anthology/P/P14/P14-1000.pdf,Northwestern University,Microsoft Research,Institute of Computational Linguistics of the National Research Council,Brandeis University,University of the Basque Country,Nara Institute of Science and Technology,Johns Hopkins University,"National Research Council, Canada",IBM Research,University of New York,Baidu,Microsoft Research,Ohio State University,Google Research,Tokyo Metropolitan University,Johns Hopkins University,Carnegie Mellon University,Technische Universität Darmstadt,Stanford University,Baidu,University of Texas at Dallas,Microsoft Research,Google Research,HITS gGmbH,Universitat Politecnica de Catalunya,Google Research,University of Alberta,{},{},{},{},{},{},{},Georgia Institute of Technology,Chinese Academy of Sciences,University of Illinois at Chicago,Harbin Institute of Technology,Google Research,University of Arizona,"Information Sciences Institute, USC",Microsoft Research,Baidu,Nonparametric Learning of Phonological Constraints in Optimality Theory,,,Joint POS Tagging and Transition-based Constituent Parsing in Chinese with Non-local Features,,,Robust Entity Clustering via Phylogenetic Inference,Lattice Desegmentation for Statistical Machine Translation,,,,,Bootstrapping into Filler-Gap: An Acquisition Story,,,,Weakly Supervised User Profile Extraction from Twitter,,"Zero-shot Entity Extraction from Web Pages, Semantic Parsing via Paraphrasing",,,,,,,,Lattice Desegmentation for Statistical Machine Translation,{},{},{},{},{},{},{},Representation Learning for Text-level Discourse Parsing,"Extracting Opinion Targets and Opinion Words from Online Reviews with Graph Co-ranking, Product Feature Mining: Semantic Clues versus Syntactic Constituents",,"Learning Semantic Hierarchies via Word Embeddings, Character-Level Chinese Dependency Parsing Learning Sentiment-Specific Word Embedding for Twitter Sentiment Classification",,Discourse Complements Lexical Semantics for Non-factoid Answer Reranking,{},Daniel Marcu,Klinton Bicknell,Asli Celikyilmaz,Nicoletta Calzolari,Nianwen Xue,Eneko Agirre,Kevin Duh,Jason Eisner,Colin Cherry,Niyu Ge,Liang Huang,Yanjun Ma,Michel Galley,Micha Elsner,Brian Roark,Mamoru Komachi,Miles Osborne,Alan Ritter,Iryna Gurevych,Percy Liang,Shiqi Zhao,Yang Liu,Scott Wen-tau Yih,Ciprian Chelba,Michael Strube,Xavier Carreras,Slav Petrov,Grzegorz Kondrak,{},{},{},{},{},{},{},Jacob Eisenstein,Jun Zhao,Barbara Di Eugenio,Ting Liu,Marius Pasca,Mihai Surdeanu,Kristina Toutanova,Hua Wu,"Klinton Bicknell, Northwestern University
+Asli Celikyilmaz, Microsoft Research
+Micha Elsner, Ohio State University
+Michael Strube, HITS gGmbH
+Jacob Eisenstein, Georgia Institute of Technology
+Jun Zhao, Chinese Academy of Sciences
+Barbara Di Eugenio, University of Illinois at Chicago
+Ting Liu, Harbin Institute of Technology
+Marius Pasca, Google Research
+Mihai Surdeanu, University of Arizona
+Nicoletta Calzolari, Institute of Computational Linguistics of the National Research Council
+Nianwen Xue, Brandeis University
+Eneko Agirre, University of the Basque Country
+Kevin Duh, Nara Institute of Science and Technology
+Jason Eisner, Johns Hopkins University
+Colin Cherry, National Research Council, Canada
+Niyu Ge, IBM Research
+Liang Huang, City University of New York
+Yanjun Ma, Baidu
+Michel Galley, Microsoft Research
+Brian Roark, Google Research
+Mamoru Komachi, Tokyo Metropolitan University
+Miles Osborne, Johns Hopkins University
+Alan Ritter, Carnegie Mellon University
+Iryna Gurevych, Technische Universität Darmstadt
+Percy Liang, Stanford University
+Shiqi Zhao, Baidu
+Yang Liu, University of Texas at Dallas
+Scott Wen-tau Yih, Microsoft Research
+Ciprian Chelba, Google Research
+Xavier Carreras, Universitat Politecnica de Catalunya
+Slav Petrov, Google Research
+Grzegorz Kondrak, University of Alberta",,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",ACL 2014,http://aclweb.org/anthology/P/P14/P14-1000.pdf,Northwestern Universeity,Microsoft Research,Institute of Computational Linguistics of the National Research Council,Brandeis University,University of the Basque Country,Nara Institute of Science and Technology,John Hopkins University,"National Research Council, Canada",IBM Research,City University of New York,Baidu,Microsoft Research,Ohio State University,Google Research,Tokyo Metropolitan University,Johns Hopkins University,Caregie Mellon University,Technische Universitat Darmstadt,Stanford University,Baidu,University of Texas at Dallas,Microsoft Research,Google Research,HITS gGmbH,Uiversitat Politecnica de Cataluny,Google Research,University of Alberta,{},{},{},{},{},{},{},Georgia Institute of Technology,Chinese Academy of Sciences,University of Illinois at Chicago,Harbin Institute of Technology,Google Research,University of Arizona,"Information Sciences Institute, USC",Microsoft Research,Baidu,Nonparametric Learning of Phonological Constraints in Optimality Theory,,,Joint POS Tagging and Transition-based Constituent Parsing in Chinese with Non-local,,,Robust Entity Clustering via Phylogenetic Inference,Lattice Desegmentation for Statistical Machine Translation,,,,,Bootstrapping into Filler-Gap: An Acquisition Story,,,,Weakly Supervised User Profile Extraction from Twitter,,Zero-shot Entity Extraction from Web Pages,,,,,,,,Lattice Desegmentation for Statistical Machine Translation,{},{},{},{},{},{},{},Representation Learning for Text-level Discourse Parsing,Extracting Opinion Targets and Opinion Words from Online Reviews with Graph Coranking,,Learning Semantic Hierarchies via Word Embeddings,,Discourse Complements Lexical Semantics for Non-factoid Answer Reranking,No,Daniel Marcu,Klinton Bicknell,Asli Celikyilmaz,Nicoletta Calzolari,Nianwen Xue,Eneko Agirre,Kevin Duh,Jason Eisner,Colin Cherry,Niyu Ge,Liang Huang,Yanjun Ma,Michel Galley,Micha Elsner,Brian Roark,Mamoru Komachi,Miles Osborne,Alan Ritter,Iryna Gurevych,Percy Liang,Shiqi Zhao,Yang Liu,Scott Wen-tau,Ciprian Chelba,Michael Strube,Xavier Carreras,Slav Petrov,Grzegorz Kondrak,{},{},{},{},{},{},{},Jacob Eisenstein,Jun Zhao,Barbara Di Eugenio,Ting Liu,Marius Pasca,Mihai Surdeanu,Kristina Toutanova,Hua Wu,"Alan Ritter, Carnegie Mellon University
+Iryna Gurevych, Technische Universität Darmstadt
+Percy Liang, Stanford University
+Shiqi Zhao, Baidu
+Yang Liu, University of Texas at Dallas
+Scott Wen-tau Yih, Microsoft Research
+Ciprian Chelba, Google Research
+Xavier Carreras, Universitat Politecnica de Catalunya
+Slav Petrov, Google Research
+Grzegorz Kondrak, University of Alberta",,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",ACL 2013,http://aclweb.org/anthology/P/P13/P13-1000.pdf,University of Edinburgh,UC San Diego,University of Stuttgart,Google,"NICT, Japan",Behavior Design Corporation,NRC,HKUST,University of Wisconsin-Madison,University of Texas-Dallas,University of Aberdeen,Google,AT&T,IBM,FBK,Jožef Stefan Institute,Polish Academy of Sciences,Microsoft,Columbia,CMU,Johns Hopkins,IBM,FBK,"DHBW, Stuttgart",Universitat Politecnica de Catalunya,University of Trento,Cornell,University of North Texas,Microsoft,University of Antwerp,University of Illinois Urbana Champaign,University of Potsdam,University of Pennsylvania,XRCE,UC San Diego,Columbia,Huawei Technologies,Vassar,Freie Universitat Amsterdam,University of Bielefeld,University of Munich,Hong-Kong University of Science and Technology,University of Essex,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,{},Hinrich Schuetze,Frank Keller,Roger Levy,Sabine Schulte im Walde,Dekang Lin,Chiori Hori,Keh-Yih Su,Roland Kuhn,Dekai Wu,Benjamin Snyder,Thamar Solorio,Ehud Reiter,Massimiliano Ciaramita,Amanda Stent,Ken Church,Carlo Strapparava,Tomaz Erjavec,Adam Prziepiorkowski,Patrick Pantel,Owen Rambow,Chris Dyer,Jason Eisner,Jennifer Chu-Carroll,Bernardo Magnini,David Suendermann,Lluis Marquez,Alessandro Moschitti,Claire Cardie,Rada Mihalcea,Dilek Hakkani-Tur,Walter Daelemans,Dan Roth,Alex Koller,Ani Nenkova,Jamie Henderson,Andrew Kehler,Becky Passonneau,Hang Li,Nancy Ide,Piek Vossen,Philipp Cimiano,Pascale Fung,Massimo Poesio,"Alessandro Moschitti, University of Trento
+Claire Cardie, Cornell
+Rada Mihalcea, University of North Texas
+Dilek Hakkani-Tur, Microsoft
+Walter Daelemans, University of Antwerp
+Dan Roth, University of Illinois Urbana Champaign
+Alex Koller, University of Potsdam
+Ani Nenkova, University of Pennsylvania
+Jamie Henderson, XRCE
+Sadao Kurohashi, University of Kyoto
+Yuji Matsumoto, Nara Institute of S&T
+Heng Ji, CUNY
+Marie-Francine Moens, KU Leuven
+Hwee Tou Ng, NU Singapore
+Frank Keller, University of Edinburgh
+Roger Levy, UC San Diego
+Amanda Stent, AT&T
+David Suendermann, DHBW, Stuttgart, Germany
+Andrew Kehler, UC San Diego
+Becky Passonneau, Columbia
+Hang Li, Huawei Technologies
+Nancy Ide, Vassar
+Piek Vossen, Freie Universitat Amsterdam
+Philipp Cimiano, University of Bielefeld
+Sabine Schulte im Walde, University of Stuttgart
+Dekang Lin, Google
+Chiori Hori, NICT, Japan
+Keh-Yih Su, Behavior Design Corporation
+Roland Kuhn, NRC
+Dekai Wu, HKUST
+Benjamin Snyder, University of Wisconsin-Madison
+Thamar Solorio, University of Texas-Dallas
+Ehud Reiter, University of Aberdeen
+Massimiliano Ciaramita, Google
+Ken Church, IBM
+Carlo Strapparava, FBK
+Tomaz Erjavec, Jožef Stefan Institute
+Adam Prziepiorkowski, Polish Academy of Sciences
+Patrick Pantel, Microsoft
+Owen Rambow, Columbia
+Chris Dyer, CMU
+Jason Eisner, Johns Hopkins
+Jennifer Chu-Carroll, IBM
+Bernardo Magnini, FBK
+Lluis Marquez, Universitat Politecnica de Catalunya",,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",ACL 2013,http://aclweb.org/anthology/P/P13/P13-1000.pdf,University of Edinburgh,UC San Diego,University of Stuttgart,Google,"NICT, Japan",Behavior Design Corporation,NRC,HKUST,University of Wisconsin-Madison,University of Texas-Dallas,University of Aberdeen,Google,AT&T,IBM,FBK,Jožef Stefan Institute,Polish Academy of Sciences,Microsoft,Columbia,CMU,Johns Hopkins,IBM,FBK,"DHBW, Stuttgart, Germany",Universitat Politecnica de Catalunya,University of Trento,Cornell,University of North Texas,Microsoft,University of Antwerp,University of Illinois Urbana Champaign,University of Potsdam,University of Pennsylvania,XRCE,UC San Diego,Columbia,Huawei Technologies,Vassar,Freie Universitat Amsterdam,University of Bielefeld,University of Munich,The Hong Kong University of Science and Technology,University of Essex,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,too much work for $1,Hinrich Schuetze,Frank Keller,Roger Levy,Sabine Schulte im Walde,Dekang Lin,Chiori Hori,Keh-Yih Su,Roland Kuhn,Dekai Wu,Benjamin Snyder,Thamar Solorio,Ehud Reiter,Massimiliano Ciaramita,Amanda Stent,Ken Church,Carlo Strapparava,Tomaz Erjavec,Adam Prziepiorkowski,Patrick Pantel,Owen Rambow,Chris Dyer,Jason Eisner,Jennifer Chu-Carroll,Bernardo Magnini,David Suendermann,Lluis Marquez,Alessandro Moschitti,Claire Cardie,Rada Mihalcea,Dilek Hakkani-Tur,Walter Daelemans,Dan Roth,Alex Koller,Ani Nenkova,Jamie Henderson,Andrew Kehler,Becky Passonneau,Hang Li,Nancy Ide,Piek Vossen,Philipp Cimiano,Pascale Fung,Massimo Poesio,{},,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",ACL 2016,https://www.aclweb.org/anthology/P/P16/P16-1000.pdf,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,{},{},,,,,,,Radboud University Nijmegen,University of Texas,University of Washington,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,{},{},,,,,,,No info on research areas or affiliations,Antal van den Bosch,Miguel Ballesteros,David Bamman,Minlie Huang,Mans Hulden,Heng Ji,Jing Jiang,Zornitsa Kozareva,Marco Kuhlmann,Yang Liu,Annie Louis,Wei Lu,Marie-Catherine de Marneffe,Steven Bethard,Gerard de Melo,David Mimno,Meg Mitchell,Daichi Mochihashi,Graham Neubig,Naoaki Okazaki,Simone Ponzetto,Matthew Purver,David Reitter,Nathan Schneider,Jonathan Berant,Hinrich Schuetze,Thamar Solorio,Lucia Specia,Partha Talukdar,Ivan Titov,Lu Wang,Nianwen Xue,Grace Yang,{},{},Gemma Boleda,Ming-Wei Chang,Wanxiang Che,Chris Dyer,Ed Grefenstette,Hannaneh Hajishirzi,Katrin Erk,Noah A. Smith,", ,
+, , , , , ,
+, , , , , , , , , , , , , , , , , , , , , , , , , , , , , and .",,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",ACL 2016,https://www.aclweb.org/anthology/P/P16/P16-1000.pdf,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,{},{},,,,,,,Radboud University Nijmegen,University of Texas at Austin,University of Washington,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,{},{},,,,,,,{},Antal van den Bosch,Miguel Ballesteros,David Bam-man,Minlie Huang,Mans Hulden,Heng Ji,Jing Jiang,Zornitsa Kozareva,Marco Kuhlmann,Yang Liu,Annie Louis,Wei Lu,Marie-Catherine de Marneffe,Steven Bethard,Gerard de Melo,David Mimno,Meg Mitchell,Daichi Mochihashi,Graham Neubig,Naoaki Okazaki,Simone Ponzetto,Matthew Purver,David Reitter,Nathan Schneider,Jonathan Berant,Hinrich Schuetze,Thamar Solorio,Lucia Specia,Partha Talukdar,Ivan Titov,Lu Wang,Nianwen Xue,Grace Yang,{},{},Gemma Boleda,Ming-Wei Chang,Wanxiang Che,Chris Dyer,Ed Grefenstette,Hannaneh Hajishirzi,Katrin Erk,Noah A. Smith,{},,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",EACL 2014,http://aclweb.org/anthology/E/E14/E14-1000.pdf,,,,,,,,,,,,,,,,,{},{},{},{},{},{},{},,{},{},{},{},{},{},{},{},{},{},,,,,,,University of Haifa,University of Edinburgh (UK,Heidelberg University (Germany),,,Semantics and Discourse,,,,,,,,Summarization and Generation,,,,,,{},{},{},{},{},{},{},Lexicon and Lexical Representation,{},{},{},{},{},{},{},{},{},{},,Semantics and Discourse,Language Resources,,,Morphology,This is the first time I have worked on a HIT like this and I hope I inputted the information correctly for you.,Shuly Wintner,Enrique Alfonseca,John Blitzer,Iryna Gurevych,Chin-Yew Lin,David McClosky,Yusuke Miyao,Hwee Tou Ng,Slav Petrov,Simone Paolo Ponzetto,Sebastian Riedel,Verena Rieser,Helmut Schmid,Vera Demberg,Izhak Shafran,Hiroya Takamura,Lucy Vanderwende,{},{},{},{},{},{},{},Chris Dyer,{},{},{},{},{},{},{},{},{},{},Jacob Eisenstein,Micha Elsner,Katrin Erk,Afsaneh Fazly,Katja Filippova,Alexander Fraser,Sharon Goldwater,Stefan Riezler,"Area Chairs:
+Enrique Alfonseca, John Blitzer, Aoife Cahill, Vera Demberg, Chris Dyer, Jacob Eisenstein, Micha
+Elsner, Katrin Erk, Afsaneh Fazly, Katja Filippova, Alexander Fraser, Iryna Gurevych, Chin-Yew
+Lin, David McClosky, Yusuke Miyao, Hwee Tou Ng, Slav Petrov, Simone Paolo Ponzetto, Sebastian
+Riedel, Verena Rieser, Helmut Schmid, Izhak Shafran, Hiroya Takamura, Lucy Vanderwende",,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",EACL 2014,http://aclweb.org/anthology/E/E14/E14-1000.pdf,,,,,,,,,,,,,,,,,,{},{},{},{},{},{},,{},{},{},{},{},{},{},{},{},{},,,,,,,University of Haifa,University of Edinburgh (UK),Heidelberg University (Germany),,,,,,,,,,,,,,,,,,{},{},{},{},{},{},,{},{},{},{},{},{},{},{},{},{},,,,,,,{},Shuly Wintner,Enrique Alfonseca,John Blitzer,Alexander Fraser,Iryna Gurevych,Chin-Yew Lin,David McClosky,Yusuke Miyao,Hwee Tou Ng,Slav Petrov,Simone Paolo Ponzetto,Sebastian Riedel,Verena Rieser,Aoife Cahill,Helmut Schmid,Izhak Shafran,Hiroya Takamura,Lucy Vanderwende,{},{},{},{},{},{},Vera Demberg,{},{},{},{},{},{},{},{},{},{},Chris Dyer,Jacob Eisenstein,Micha Elsner,Katrin Erk,Afsaneh Fazly,Katja Filippova,Sharon Goldwater,Stefan Riezler,"Enrique Alfonseca, John Blitzer, Aoife Cahill, Vera Demberg, Chris Dyer, Jacob Eisenstein, Micha
+Elsner, Katrin Erk, Afsaneh Fazly, Katja Filippova, Alexander Fraser, Iryna Gurevych, Chin-Yew
+Lin, David McClosky, Yusuke Miyao, Hwee Tou Ng, Slav Petrov, Simone Paolo Ponzetto, Sebastian
+Riedel, Verena Rieser, Helmut Schmid, Izhak Shafran, Hiroya Takamura, Lucy Vanderwende",,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",NAACL 2016,http://aclweb.org/anthology/N/N16/N16-1000.pdf,TTI-Chicago,MIT,University of Munich,Microsoft Research,Toyota Technological Institute at Chicago,Microsoft Research,Heriot-Watt University,Aston University,University of Copenhagen,Rensselaer Polytechnic Institute,Singapore Management University,University of Essex,University of North Texas,Microsoft Research,"Information Sciences Institute, University of Southern California",Microsoft Research,"Qatar Computing Research Institute, HBKU",National University of Singapore,Facebook,University of Washington,Google,Google,University of Illinois,Microsoft,Harvard University,KITT.AI,University of Padua,LMU Munich,the Ohio State University,University of Arizona,Microsoft Research,University of Texas at Austin,Peking University,Microsoft Research,Cornell University,Amazon,Carnegie Mellon University,Georgia Institute of Technology,The Ohio State University,The Ohio State University,USC Information Sciences Institute,University of Pennsylvania,Columbia University,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"There were two more area chairs: Dekai Wu, Hong Kong University of Science and Technology
+Fei Xia, University of Washington",Kevin Knight,Mohit Bansal,Regina Barzilay,Alexander Fraser,Michel Galley,Kevin Gimpel,Dilek Hakkani-Tür,Helen Hastie,Yulan He,Dirk Hovy,Heng Ji,Jing Jiang,Annie Louis,Eduardo Blanco,Chin-Yew Lin,Daniel Marcu,Margaret Mitchell,Alessandro Moschitti,Hwee Tou Ng,Viet-An Nguyen,Mari Ostendorf,Marius Pasca,Slav Petrov,Dan Roth,Asli Celikyilmaz,Alexander Rush,Kenji Sagae,Giorgio Satta,Hinrich Schuetze,William Schuler,Mihai Surdeanu,Kristina Toutanova,Byron Wallace,Xiaojun Wan,Furu Wei,Cristian Danescu-Niculescu-Mizil,Markus Dreyer,Chris Dyer,Jacob Eisenstein,Micha Elsner,Eric Fosler-Lussier,Ani Nenkova,Owen Rambow,"Kenji Sagae, KITT.AI
+Giorgio Satta, University of Padua
+Hinrich Schuetze, LMU Munich
+William Schuler, the Ohio State University
+Mihai Surdeanu, University of Arizona
+Kristina Toutanova, Microsoft Research
+Byron Wallace, University of Texas at Austin
+Xiaojun Wan, Peking University
+Furu Wei, Microsoft Research
+Dekai Wu, Hong Kong University of Science and Technology
+Fei Xia, University of Washington",,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",NAACL 2016,http://aclweb.org/anthology/N/N16/N16-1000.pdf,University of Washington,Hong Kong University of Science and Technology,KITT.AI,Harvard University,University of Illinois,Carnegie Mellon University,Amazon,Georgia Institute of Technology,The Ohio State University,Google,Google,University of Washington,Microsoft Research,Facebook,National University of Singapore,"Qatar Computing Research Institute, HBKU",Microsoft Research,"Information Sciences Institute, University of Southern California",Microsoft Research,University of Essex,Singapore Management University,Rensselaer Polytechnic Institute,University of Copenhagen,Peking University,Aston University,Heriot-Watt University,Microsoft Research,Toyota Technological Institute at Chicago,Microsoft Research,University of Munich,The Ohio State University,Cornell University,Microsoft,University of North Texas,University of Texas at Austin,Microsoft Research,University of Arizona,the Ohio State University,LMU Munich,University of Padua,USC Information Sciences Institute,University of Pennsylvania,Columbia University,{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},I hope im doing this hit right! any feedback?,"Kevin Knight,",Fei Xia,Dekai Wu,Kenji Sagae,Alexander Rush,Dan Roth,Chris Dyer,Markus Dreyer,Jacob Eisenstein,Micha Elsner,Slav Petrov,Marius Pasca,Mari Ostendorf,Furu Wei,Viet-An Nguyen,Hwee Tou Ng,Alessandro Moschitti,Margaret Mitchell,Daniel Marcu,Chin-Yew Lin,Annie Louis,Jing Jiang,Heng Ji,Dirk Hovy,Xiaojun Wan,Yulan He,Helen Hastie,Dilek Hakkani-Tür,Kevin Gimpel,Michel Galley,Alexander Fraser,Eric Fosler-Lussier,Cristian Danescu-Niculescu-Mizil,Asli Celikyilmaz,Eduardo Blanco,Byron Wallace,Kristina Toutanova,Mihai Surdeanu,William Schuler,Hinrich Schuetze,Giorgio Satta,Ani Nenkova,Owen Rambow,"Working with the reviewers were the 42 area chairs. We asked the area chairs to work in pairs, so they
+can have a back-up in case other obligations need their attention during the review period and to ensure
+that all decisions about reviewer assignment and paper recommendation are discussed in detail.  All
+area chairs and reviewers submitted a list of keywords that describe their area of expertise (the full list
+appears in the conference call for papers). The area chairs were paired based on the keyword overlap.
+To match reviewers to area chairs, we used a bidding system.  For bidding, each area received a list of
+the 140 reviewers with best matching keyword profiles.  If the area chairs did not know the work of a
+potential reviewer on their bidding list, they looked him or her up on DBLP or Google Scholar before
+making their final bid.  Areas were assigned only reviewers for which the area chairs bid positively.
+Area chairs were free as usual to recruit additional reviewers they wished to work with.
+Submissions were assigned to areas by taking into account the match between the paper keywords and
+the area chair keywords.  Areas were capped at 40 submissions maximum (long and short combined).
+As in the past, reviewers bid on papers they wanted to review.  69% of the reviews were written by
+reviewers who had bid indicating that they want to review the paper; 29% of the reviews were written
+by reviewers who had bid indicating they are ok with reviewing the paper. The remaining 2% of reviews
+v
+were written by reviewers who did not bid on the paper but were asked by an area chair to review it.
+Three reviewers were assigned a paper that they did not want to review according to their bid.  The
+average reviewer load was 3 papers, which included a mix of long and short submissions.  Only 43
+reviewers had more than four papers to review.
+Area  chairs  wrote  meta-reviews,  for  use  only  by  us,  justifying  their  accept/reject  recommendation.
+In making difficult decisions, we drew on these meta-reviews, the reviews themselves, the discussion
+among the reviewers, and the author response to the initial reviews.
+We are happy with our changes to the review process:  area chairs had control over the reviewers they
+worked with, reviewers were assigned papers they wanted to review and the overall reviewing load was
+low.  Needless to say, there is room for further improvements.  The reviewing process is crucial to the
+quality of this conference; only if the community has confidence in the quality of the reviewing process
+will this conference continue to be a leading conference in our field.  Our goal has been to make sure
+that every single submission receives a complete and fair review and decision, and to make sure that
+the authors of every single submission understand why their paper was accepted or declined for the
+conference.  We would like to thank our 685 reviewers, and we would especially like to thank our 42
+area chairs, who were patient in allowing us to pursue some of the innovative aspects of this year’s
+reviewing cycle",,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",NAACL 2015,http://aclweb.org/anthology/N/N15/N15-1000.pdf,Microsoft Research,University of Pennsylvania,Harvard University,The Ohio State University,Google Research,Baidu Inc. and Rutgers University,Cambridge University,Microsoft Research,", Information Sciences Institute, University of Southern California",IBM Research,University of Massachusetts,University of Maryland,University of Texas at Dallas,Stanford University,Lingsoft and Aalto University,Google,Microsoft Research,University of Washington,National Research Council Canada,University of Wisconsin-Madison,Microsoft Research,Carnegie Mellon University,Singapore University of Technology and Design,University of Pennsylvania,University of Colorado at Boulder,Cornell University,{},{},{},{},{},{},{},{},Carnegie Mellon University,The Ohio State University,IBM Research,Northeastern University,University of Illinois at Urbana-Champaign,Microsoft Research,University of Michigan,Michigan State University,Simon Fraser University,Dialogue and Interactive Systems,Discourse and Pragmatics,Language Resources and Evaluation,Linguistic and Psycholinguistic Aspects of CL,Machine Learning for NLP,Machine Learning for NLP,Machine Translation,Machine Translation,Machine Translation,Machine Translation,"NLP for Web, Social Media and Social Sciences","NLP for Web, Social Media and Social Sciences",Discourse and Pragmatics,NLP-enabled Technology,"Phonology, Morphology, and Word Segmentation",Semantics,Semantics,Semantics,Sentiment Analysis and Opinion Mining,Sentiment Analysis and Opinion Mining,Spoken Language Processing,"Tagging, Chunking, Syntax, and Parsing","Tagging, Chunking, Syntax, and Parsing",Generation and Summarization,Text Categorization and Topic Models,Text Categorization and Topic Models,{},{},{},{},{},{},{},{},Generation and Summarization,Information Extraction and Question Answering,Information Extraction and Question Answering,Information Retrieval,Language and Vision,Language Resources and Evaluation,{},Rada Mihalcea,Jason D. Williams,Ani Nenkova,Sameer Pradhan,William Schuler,Amarnag Subramanya,Tong Zhang,Bill Byrne,Hany Hassan,Kevin Knight,Haitao Mi,Brendan O’Connor,Philip Resnik,Vincent Ng,Richard Socher,Sami Virpioja,Dipanjan Das,William Dolan,Luke Zettlemoyer,Saif M. Mohammad,Jerry Zhu,Xiaodong He,Noah Smith,Yue Zhang,Chris Callison-Burch,Jordan Boyd-Graber,David Mimno,{},{},{},{},{},{},{},{},Fei Liu,Alan Ritter,Bowen Zhou,David Smith,Julia Hockenmaier,Will Lewis,Joyce Chai,Anoop Sarkar,"Area Chairs
+Dialogue and Interactive Systems
+Jason D. Williams, Microsoft Research
+Discourse and Pragmatics
+Ani Nenkova, University of Pennsylvania
+Vincent Ng, University of Texas at Dallas
+Generation and Summarization
+Chris Callison-Burch, University of Pennsylvania
+Fei Liu, Carnegie Mellon University
+Information Extraction and Question Answering
+Alan Ritter, The Ohio State University
+Bowen Zhou, IBM Research
+Information Retrieval
+David Smith, Northeastern University
+Language and Vision
+Julia Hockenmaier, University of Illinois at Urbana-Champaign
+Language Resources and Evaluation
+Will Lewis, Microsoft Research
+Sameer Pradhan, Harvard University
+Linguistic and Psycholinguistic Aspects of CL
+William Schuler, The Ohio State University
+Machine Learning for NLP
+Amarnag Subramanya, Google Research
+Tong Zhang, Baidu Inc. and Rutgers University
+Machine Translation
+Bill Byrne, Cambridge University
+Hany Hassan, Microsoft Research
+Kevin Knight, Information Sciences Institute, University of Southern California
+Haitao Mi, IBM Research
+NLP for Web, Social Media and Social Sciences
+Brendan O’Connor, University of Massachusetts
+Philip Resnik, University of Maryland
+xi
+NLP-enabled Technology
+Richard Socher, Stanford University
+Phonology, Morphology, and Word Segmentation
+Sami Virpioja, Lingsoft and Aalto University
+Semantics
+Dipanjan Das, Google
+William Dolan, Microsoft Research
+Luke Zettlemoyer, University of Washington
+Sentiment Analysis and Opinion Mining
+Saif M. Mohammad, National Research Council Canada
+Jerry Zhu, University of Wisconsin-Madison
+Spoken Language Processing
+Xiaodong He, Microsoft Research
+Tagging, Chunking, Syntax, and Parsing
+Noah Smith, Carnegie Mellon University
+Yue Zhang, Singapore University of Technology and Design
+Text Categorization and Topic Models
+Jordan Boyd-Graber, University of Colorado at Boulder
+David Mimno, Cornell University",,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",NAACL 2015,http://aclweb.org/anthology/N/N15/N15-1000.pdf,Microsoft Research,University of Pennsylvania,Harvard University,The Ohio State University,Google Research,Baidu Inc. and Rutgers University,Cambridge University,Microsoft Research,"Information Sciences Institute, University of Southern California",IBM Research,University of Massachusetts,University of Maryland,University of Texas at Dallas,Stanford University,Lingsoft and Aalto University,Google,Microsoft Research,University of Washington,National Research Council Canada,University of Wisconsin-Madison,Microsoft Research,Carnegie Mellon University,Singapore University of Technology and Design,University of Pennsylvania,University of Colorado at Boulder,Cornell University,{},{},{},{},{},{},{},{},Carnegie Mellon University,The Ohio State University,IBM Research,Northeastern University,University of Illinois at Urbana-Champaign,Microsoft Research,University of Michigan,Michigan State University,Simon Fraser University,Dialogue and Interactive Systems,Discourse and Pragmatics,Language Resources and Evaluation,Linguistic and Psycholinguistic Aspects of CL,Machine Learning for NLP,Machine Learning for NLP,Machine Translation,Machine Translation,Machine Translation,Machine Translation,"NLP for Web, Social Media and Social Sciences","NLP for Web, Social Media and Social Sciences",Discourse and Pragmatics,NLP-enabled Technology,"Phonology, Morphology, and Word Segmentation",Semantics,Semantics,Semantics,Sentiment Analysis and Opinion Mining,Sentiment Analysis and Opinion Mining,Spoken Language Processing,"Tagging, Chunking, Syntax, and Parsing","Tagging, Chunking, Syntax, and Parsing",Generation and Summarization,Text Categorization and Topic Models,Text Categorization and Topic Models,{},{},{},{},{},{},{},{},Generation and Summarization,Information Extraction and Question Answering,Information Extraction and Question Answering,Information Retrieval,Language and Vision,Language Resources and Evaluation,"This was pretty straight-forward, I appreciate the specific instructions and examples.",Rada Mihalcea,Jason D. Williams,Ani Nenkova,Sameer Pradhan,William Schuler,Amarnag Subramanya,Tong Zhang,Bill Byrne,Hany Hassan,Kevin Knight,Haitao Mi,Brendan O’Connor,Philip Resnik,Vincent Ng,Richard Socher,Sami Virpioja,Dipanjan Das,William Dolan,Luke Zettlemoyer,Saif M. Mohammad,Jerry Zhu,Xiaodong He,Noah Smith,Yue Zhang,Chris Callison-Burch,Jordan Boyd-Graber,David Mimno,{},{},{},{},{},{},{},{},Fei Liu,Alan Ritter,Bowen Zhou,David Smith,Julia Hockenmaier,Will Lewis,Joyce Chai,Anoop Sarkar,"Area Chairs
+Dialogue and Interactive Systems
+Jason D. Williams, Microsoft Research
+Discourse and Pragmatics
+Ani Nenkova, University of Pennsylvania
+Vincent Ng, University of Texas at Dallas
+Generation and Summarization
+Chris Callison-Burch, University of Pennsylvania
+Fei Liu, Carnegie Mellon University
+Information Extraction and Question Answering
+Alan Ritter, The Ohio State University
+Bowen Zhou, IBM Research
+Information Retrieval
+David Smith, Northeastern University
+Language and Vision
+Julia Hockenmaier, University of Illinois at Urbana-Champaign
+Language Resources and Evaluation
+Will Lewis, Microsoft Research
+Sameer Pradhan, Harvard University
+Linguistic and Psycholinguistic Aspects of CL
+William Schuler, The Ohio State University
+Machine Learning for NLP
+Amarnag Subramanya, Google Research
+Tong Zhang, Baidu Inc. and Rutgers University
+Machine Translation
+Bill Byrne, Cambridge University
+Hany Hassan, Microsoft Research
+Kevin Knight, Information Sciences Institute, University of Southern California
+Haitao Mi, IBM Research
+NLP for Web, Social Media and Social Sciences
+Brendan O’Connor, University of Massachusetts
+Philip Resnik, University of Maryland
+NLP-enabled Technology
+Richard Socher, Stanford University
+Phonology, Morphology, and Word Segmentation
+Sami Virpioja, Lingsoft and Aalto University
+Semantics
+Dipanjan Das, Google
+William Dolan, Microsoft Research
+Luke Zettlemoyer, University of Washington
+Sentiment Analysis and Opinion Mining
+Saif M. Mohammad, National Research Council Canada
+Jerry Zhu, University of Wisconsin-Madison
+Spoken Language Processing
+Xiaodong He, Microsoft Research
+Tagging, Chunking, Syntax, and Parsing
+Noah Smith, Carnegie Mellon University
+Yue Zhang, Singapore University of Technology and Design
+Text Categorization and Topic Models
+Jordan Boyd-Graber, University of Colorado at Boulder
+David Mimno, Cornell University",,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",EMNLP 2015,http://aclweb.org/anthology/D/D15/D15-1000.pdf,Saarland University,Tohoku University,University of Sheffield,University of Maryland,KAIST,University of Massachusetts Amherst,University of Alberta,Peking University,University of Trento,Baidu,Stanford University,"Institute of Information Science, Academia Sinica",Heriot Watt University,Aston University,University of Washington,University of Melbourne,University of Colorado,Microsoft Research,Microsoft Research Asia,University of Edinburgh,Singapore University of Technology and Design,"National Institute of Informatics, Japan",University of Manchester,Rensselaer Polytechnic Institute,{},{},{},{},{},{},{},{},{},{},University College London,Singapore Management University,Tsinghua University,Harbin Institute of Technology,University of Illinois Urbana Champaign,SooChow University,Qatar Computing Research Institute,University of Pennsylvania,Institute for Infocomm Research (I2R),Computational Psycholinguistics,"Discourse, Dialogue, and Pragmatics",Machine Translation and Multilinguality,Machine Translation and Multilinguality,"NLP for the Web and Social Media, including Computational Social Science","NLP for the Web and Social Media, including Computational Social Science","Phonology, Morphology, and Word Segmentation","Phonology, Morphology, and Word Segmentation",Semantics,Semantics,Semantics,Sentiment Analysis and Opinion Mining,"Discourse, Dialogue, and Pragmatics",Sentiment Analysis and Opinion Mining,Spoken Language Processing,Statistical Models and Machine Learning Methods,Statistical Models and Machine Learning Methods,Summarization and Generation,Summarization and Generation,"Tagging, Chunking, Syntax and Parsing","Tagging, Chunking, Syntax and Parsing","Tagging, Chunking, Syntax and Parsing",Text Mining and NLP applications,Information Extraction,{},{},{},{},{},{},{},{},{},{},Information Extraction,Information Extraction,Information Retrieval and Question Answering,Information Retrieval and Question Answering,Language and Vision,Machine Translation and Multilinguality,{},Lluís Màrquez,Vera Demberg,Kentaro Inui,Lucia Specia,Marine Carpuat,Alice Oh,Brendan O’Connor,Greg Kondrak,Xu Sun,Marco Baroni,Shiqi Zhao,Percy Liang,Ku Lun-Wei,Oliver Lemon,He Yulan,Mari Ostendorf,Trevor Cohn,Jordan Boyd-Graber,Meg Mitchell,Furu Wei,Shay Cohen,Yue Zhang,Yusuke Miyao,Sophia Ananiadou,Heng Ji,{},{},{},{},{},{},{},{},{},{},Sebastian Riedel,Jing Jiang,Zhu Xiaoyan,Liu Ting,Julia Hockenmaier,Zhang Min,Chris Callison-Burch,Jian Su,"Computational Psycholinguistics
+Vera Demberg, Saarland University
+
+Kentaro Inui, 
+Oliver Lemon, Heriot Watt University
+Information Extraction
+ Rensselaer Polytechnic Institute
+University College London
+, Singapore Management University
+Information Retrieval and Question Answering
+Zhu Xiaoyan, Tsinghua University
+Liu Ting, Harbin Institute of Technology
+Language and Vision
+Julia Hockenmaier, University of Illinois Urbana Champaign
+Machine Translation and Multilinguality
+Zhang Min, SooChow University
+Lucia Specia, University of Sheffield
+Marine Carpuat, University of Maryland
+NLP for the Web and Social Media, including Computational Social Science
+Alice Oh, KAIST
+Brendan O’Connor, University of Massachusetts Amherst
+Phonology, Morphology, and Word Segmentation
+Greg Kondrak, University of Alberta
+Xu Sun, Peking University
+xiii
+Semantics
+Marco Baroni, University of Trento
+Shiqi Zhao, Baidu
+Percy Liang, Stanford University
+Sentiment Analysis and Opinion Mining
+Ku Lun-Wei, Institute of Information Science, Academia Sinica
+He Yulan, Aston University
+Spoken Language Processing
+Mari Ostendorf, University of Washington
+Statistical Models and Machine Learning Methods
+ University of Melbourne
+Jordan Boyd-Graber, University of Colorado
+Summarization and Generation
+Meg Mitchell, Microsoft Research
+Furu Wei, Microsoft Research Asia
+Tagging, Chunking, Syntax and Parsing
+Shay Cohen, University of Edinburgh
+Yue Zhang, Singapore University of Technology and Design
+Yusuke Miyao, National Institute of Informatics, Japan
+Text Mining and NLP applicationsUniversity of Manchester
+Sophia Ananiadou,",,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",EMNLP 2015,http://aclweb.org/anthology/D/D15/D15-1000.pdf,Saarland University,Tohoku University,University of Sheffield,University of Maryland,KAIST,University of Massachusetts Amherst,University of Alberta,Peking University,University of Trento,Baidu,Stanford University,"Institute of Information Science, Academia Sinica",Heriot Watt University,Aston University,University of Washington,University of Melbourne,University of Colorado,Microsoft Research,Microsoft Research Asia,University of Edinburgh,Singapore University of Technology and Design,"National Institute of Informatics, Japan",University of Manchester,Rensselaer Polytechnic Institute,{},{},{},{},{},{},{},{},{},{},University College London,Singapore Management University,Tsinghua University,Harbin Institute of Technology,University of Illinois Urbana Champaign,SooChow University,Qatar Computing Research Institute,University of Pennsylvania,Institute for Infocomm Research (I2R),Computational Psycholinguistics,"Discourse, Dialogue, and Pragmatics",Machine Translation and Multilinguality,Machine Translation and Multilinguality,"NLP for the Web and Social Media, including Computational Social Science","NLP for the Web and Social Media, including Computational Social Science","Phonology, Morphology, and Word Segmentation","Phonology, Morphology, and Word Segmentation",Semantics,Semantics,Semantics,Sentiment Analysis and Opinion Mining,"Discourse, Dialogue, and Pragmatics",Sentiment Analysis and Opinion Mining,Spoken Language Processing,Statistical Models and Machine Learning Methods,Statistical Models and Machine Learning Methods,Summarization and Generation,Summarization and Generation,"Tagging, Chunking, Syntax and Parsing","Tagging, Chunking, Syntax and Parsing","Tagging, Chunking, Syntax and Parsing",Text Mining and NLP applications,Information Extraction,{},{},{},{},{},{},{},{},{},{},Information Extraction,Information Extraction,Information Retrieval and Question Answering,Information Retrieval and Question Answering,Language and Vision,Machine Translation and Multilinguality,{},Lluís Màrquez,Vera Demberg,Kentaro Inui,Lucia Specia,Marine Carpuat,Alice Oh,Brendan O’Connor,Greg Kondrak,Xu Sun,Marco Baroni,Shiqi Zhao,Percy Liang,Ku Lun-Wei,Oliver Lemon,He Yulan,Mari Ostendorf,Trevor Cohn,Jordan Boyd-Graber,Meg Mitchell,Furu Wei,Shay Cohen,Yue Zhang,Yusuke Miyao,Sophia Ananiadou,Heng Ji,{},{},{},{},{},{},{},{},{},{},Sebastian Riedel,Jing Jiang,Zhu Xiaoyan,Liu Ting,Julia Hockenmaier,Zhang Min,Chris Callison-Burch,Jian Su,{},,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",CoNLL 2016,http://aclweb.org/anthology/K/K16/K16-1000.pdf,The Hebrew University of Jerusalem,University of Copenhagen,ISI/USC,University of Maryland,IBM Research Ireland,University of Copenhagen,Univ. Paris Diderot - INRIA - Alpage,Universidade Aberta,Universitat Politècnica de València,University of Illinois,Microsoft Research,Stanford University,CMU,NRC,University of Illinois at Urbana Champaign,Tilburg University,Carnegie Mellon University,King’s College London,University of Cambridge,University of Melbourne,University of New Brunswick,University Paris Diderot,"University of Antwerp, CLiPS",Cornell University,Google,IBM Watson,Technion,Johns Hopkins University,UC Berkeley,Georgia Institute of Technology,The University of Melbourne v,Carnegie Mellon University,University of Illinois at Chicago,Google,University of Rochester,The University of Melbourne,Pompeu Fabra University,IBM Research,MIT CSAIL,Stanford University,{},Bar Ilan University,Heidelberg University,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,{},{},Omri Abend,Željko Agic,Yonatan Bisk,Michael Bloodgood,Francesca Bonin,Chloé Braud,Marie Candito,Gracinda Carvalho,Francisco Casacuberta,Kai-Wei Chang,Ming-Wei Chang,Danqi Chen,Waleed Ammar,Colin Cherry,Christos Christodoulopoulos,Grzegorz Chrupała,Volkan Cirik,Alexander Clark,Stephen Clark,Trevor Cohn,Paul Cook,Benoit Crabbé,Walter Daelemans,Yoav Artzi,Dipanjan Das,Georgiana Dinu,Rotem Dror,Kevin Duh,Greg Durrett,Jacob Eisenstein,Meng Fang,Manaal Faruqui,Geli Fei,Katja Filippova,Omid Bakhshandeh,Timothy Baldwin,Miguel Ballesteros,Roy Bar-Haim,Yonatan Belinkov,Jonathan Berant,Yoav Goldberg,Stefan Riezler,"Omri Abend, The Hebrew University of Jerusalem
+Željko Agic, University of Copenhagen ´
+Waleed Ammar, CMU
+Yoav Artzi, Cornell University
+Omid Bakhshandeh, University of Rochester
+Timothy Baldwin, The University of Melbourne
+Miguel Ballesteros, Pompeu Fabra University
+Roy Bar-Haim, IBM Research
+Yonatan Belinkov, MIT CSAIL
+Jonathan Berant, Stanford University
+Yonatan Bisk, ISI/USC
+Michael Bloodgood, University of Maryland
+Francesca Bonin, IBM Research Ireland
+Chloé Braud, University of Copenhagen
+Marie Candito, Univ. Paris Diderot - INRIA - Alpage
+Gracinda Carvalho, Universidade Aberta
+Francisco Casacuberta, Universitat Politècnica de València
+Kai-Wei Chang, University of Illinois
+Ming-Wei Chang, Microsoft Research
+Danqi Chen, Stanford University
+Colin Cherry, NRC
+Christos Christodoulopoulos, University of Illinois at Urbana Champaign
+Grzegorz Chrupała, Tilburg University
+Volkan Cirik, Carnegie Mellon University
+Alexander Clark, King’s College London
+Stephen Clark, University of Cambridge
+Trevor Cohn, University of Melbourne
+Paul Cook, University of New Brunswick
+Benoit Crabbé, University Paris Diderot
+Walter Daelemans, University of Antwerp, CLiPS
+Dipanjan Das, Google
+Georgiana Dinu, IBM Watson
+Rotem Dror, Technion
+Kevin Duh, Johns Hopkins University
+Greg Durrett, UC Berkeley
+Jacob Eisenstein, Georgia Institute of Technology
+Meng Fang, The University of Melbourne
+v
+Manaal Faruqui, Carnegie Mellon University
+Geli Fei, University of Illinois at Chicago
+Katja Filippova, Google
+George Foster, NRC
+Annemarie Friedrich, Saarland University
+Daniel Gildea, University of Rochester
+Kevin Gimpel, Toyota Technological Institute at Chicago
+Dan Goldwasser, Purdue University
+Stephan Gouws, Stellenbosch University
+Edward Grefenstette, Google DeepMind
+Carolin Haas, Heidelberg University
+Kenneth Heafield, University of Edinburgh
+Felix Hieber, Amazon Research
+Julian Hitschler, Heidelberg University
+Julia Hockenmaier, University of Illinois Urbana-Champaign
+Matthew Honnibal, Macquarie University
+Andrea Horbach, Saarland University
+Yufang Hou, Heidelberg University
+Dirk Hovy, Center for Language Technology, University of Copenhagen
+Laura Jehl, Heidelberg University
+Charles Jochim, IBM Research – Dublin
+Sariya Karimova, Heidelberg University
+Fabio Kepler, L2F/INESC-ID and UNIPAMPA
+Daniel Khashabi, University of Illinois, Urbana-Champaign
+Eliyahu Kiperwasser, Bar-Ilan University
+Philipp Koehn, Johns Hopkins University
+Alexander Koller University of Potsdam
+Mikhail Kozhevnikov, University of Saarland, Google
+Julia Kreutzer, Heidelberg University
+Germán Kruszewski, University of Trento
+Marco Kuhlmann, Linköping University
+Jonathan K. Kummerfeld, UC Berkeley
+Angeliki Lazaridou, University of Trento
+Richard Leibbrandt, Flinders University
+Omer Levy, Bar-Ilan University
+Mike Lewis, University of Washington
+Wang Ling, Google DeepMind
+Tal Linzen, ENS, PSL Research University
+Daniel Marcu, ISI/USC
+Héctor Martínez Alonso, University of Paris 7 - INRIA
+Luis Marujo, Feedzai Research
+Yuji Matsumoto, Nara Institute of Science and Technology
+David McClosky, Google
+Oren Melamud, Bar Ilan University
+Marissa Milne, Flinders University of South Australia
+Alessandro Moschitti, Qatar Computing Research Institute / University of Trento
+Nasrin Mostafazadeh, University of Rochester
+Preslav Nakov, Qatar Computing Research Institute, HBKU
+Graham Neubig, Nara Institute of Science and Technology
+Joakim Nivre, Uppsala University
+Daniel Ortiz-Martínez, Technical University of Valencia
+vi
+Miles Osborne, Bloomberg
+Alexis Palmer, Heidelberg University
+Denis Paperno, University of Trento
+Xiaochang Peng, University of Rochester
+Nghia The Pham, University of Trento
+Yuval Pinter, Yahoo Labs
+Barbara Plank, University of Groningen
+David Powers, Flinders University
+Chris Quirk, Microsoft Research
+Roi Reichart, Technion - Israel Institute of Technology
+Corentin Ribeyre, Univ. Paris Diderot - INRIA - ALPAGE
+Brian Roark, Google
+Michael Roth, University of Edinburgh
+Alla Rozovskaya, Virginia Tech
+Kenji Sagae, KITT.AI
+Benôit Sagot, INRIA
+Mark Sammons, University of Illinois at Urbana-Champaign
+Shigehiko Schamoni, Heidelberg University
+William Schuler, The Ohio State University
+Roy Schwartz, The Hebrew University of Jerusalem
+Djamé Seddah, Université Paris Sorbonne (Paris IV)
+Wolfgang Seeker, spaCy GmbH
+Vered Shwartz, Bar-Ilan University
+Khalil Sima’an, ILLC, University of Amsterdam
+Patrick Simianer, Heidelberg University
+Artem Sokolov, Heidelberg University
+Radu Soricut, Google
+Vivek Srikumar, University of Utah
+Simon Suster, University of Groningen
+Anders Søgaard, University of Copenhagen
+Partha Talukdar, Indian Institute of Science
+Reut Tsarfaty, Open University of Israel
+Oren Tsur, Harvard University
+Ashish Vaswani, USC/ISI
+Andreas Vlachos, University of Sheffield
+Ivan Vulic, University of Cambridge ´
+Ekaterina Vylomova, University of Melbourne
+Taro Watanabe, Google
+Sander Wubben, Tilburg University
+Luke Zettlemoyer, University of Washington",,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",CoNLL 2016,http://aclweb.org/anthology/K/K16/K16-1000.pdf,SIGNLL,University of Illinois Urbana-Champaign,{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},,Bar Ilan University,Heidelberg University,SIGNLL,SIGNLL,{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},,Xavier Carreras,Julia Hockenmaier,{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},Yoav Goldberg,Stefan Riezler,{},,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",CoNLL 2015,http://aclweb.org/anthology/K/K15/K15-1000.pdf,University of Michigan,University of the Basque Country (UPV/EHU),Microsoft,Google,University of Illinois,NRC,Tilburg University,King’s College London,University of Edinburgh,University of New Brunswick,Technical University of Darmstadt,"University of Roma, Tor Vergata",University of Edinburgh,Illinois Institute of Technology,Massachusetts Institute of Technology,Qatar Computing Research Institute,"University of Antwerp, CLiPS",Bar-Ilan University,Google Inc,Northwestern University,Macquarie University,Georgia Institute of Technology,IBM Research,University of Washington,"ILLC, University of Amsterdam","University of Roma ""Tor Vergata""",VU Amsterdam,Yale University,Radboud University Nijmegen,SRI International,Microsoft Research,Qatar Computing Research Institute,Google Inc,Toyota Technological Institute at Chicago,University of Trento,Qatar Computing Research Institute,"University of Roma, Tor Vergata",TU Darmstadt,Cornell University,Xerox Research Centre Europe,{},Tilburg University,Qatar Computing Research Institute,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,{},{},Steven Abney,Eneko Agirre,Asli Celikyilmaz,Daniel Cer,Kai-Wei Chang,Colin Cherry,Grzegorz Chrupała,Alexander Clark,Shay B. Cohen,Paul Cook,Bonaventura Coppola,Danilo Croce,Bharat Ram Ambati,Aron Culotta,Scott Cyphers,Giovanni Da San Martino,Walter Daelemans,Ido Dagan,Dipanjan Das,Doug Downey,Mark Dras,Jacob Eisenstein,James Fan,Yoav Artzi,Raquel Fernandez,Simone Filice,Antske Fokkens,Bob Frank,Stefan L. Frank,Dayne Freitag,Michael Gamon,Wei Gao,Andrea Gesmundo,Kevin Gimpel,Marco Baroni,Alberto Barrón-Cedeño,Roberto Basili,Ulf Brefeld,Claire Cardie,Xavier Carreras,Afra Alishahi,Alessandro Moschitti,"Steven Abney, University of Michigan
+Eneko Agirre, University of the Basque Country (UPV/EHU)
+Bharat Ram Ambati, University of Edinburgh
+Yoav Artzi, University of Washington
+Marco Baroni, University of Trento
+Alberto Barrón-Cedeño, Qatar Computing Research Institute
+Roberto Basili, University of Roma, Tor Vergata
+Ulf Brefeld, TU Darmstadt
+Claire Cardie, Cornell University
+Xavier Carreras, Xerox Research Centre Europe
+Asli Celikyilmaz, Microsoft
+Daniel Cer, Google
+Kai-Wei Chang, University of Illinois
+Colin Cherry, NRC
+Grzegorz Chrupała, Tilburg University
+Alexander Clark, King’s College London
+Shay B. Cohen, University of Edinburgh
+Paul Cook, University of New Brunswick
+Bonaventura Coppola, Technical University of Darmstadt
+Danilo Croce, University of Roma, Tor Vergata
+Aron Culotta, Illinois Institute of Technology
+Scott Cyphers, Massachusetts Institute of Technology
+Giovanni Da San Martino, Qatar Computing Research Institute
+Walter Daelemans, University of Antwerp, CLiPS
+Ido Dagan, Bar-Ilan University
+Dipanjan Das, Google Inc.
+Doug Downey, Northwestern University
+Mark Dras, Macquarie University
+Jacob Eisenstein, Georgia Institute of Technology
+James Fan, IBM Research
+Raquel Fernandez, ILLC, University of Amsterdam
+Simone Filice, University of Roma ""Tor Vergata""
+Antske Fokkens, VU Amsterdam
+Bob Frank, Yale University
+Stefan L. Frank, Radboud University Nijmegen
+Dayne Freitag, SRI International
+Michael Gamon, Microsoft Research
+Wei Gao, Qatar Computing Research Institute
+Andrea Gesmundo, Google Inc.
+Kevin Gimpel, Toyota Technological Institute at Chicago
+Francisco Guzmán, Qatar Computing Research Institute
+Thomas Gärtner, University of Bonn and Fraunhofer IAIS
+Iryna Haponchyk, University of Trento
+James Henderson, Xerox Research Centre Europe
+Julia Hockenmaier, University of Illinois Urbana-Champaign
+Dirk Hovy, Center for Language Technology, University of Copenhagen
+Rebecca Hwa, University of Pittsburgh
+Richard Johansson, University of Gothenburg
+Shafiq Joty, Qatar Computing Research Institute
+Lukasz Kaiser, CNRS & Google
+Mike Kestemont, University of Antwerp
+Philipp Koehn, Johns Hopkins University
+Anna Korhonen, University of Cambridge
+Annie Louis, University of Edinburgh
+André F. T. Martins, Priberam, Instituto de Telecomunicacoes
+Yuji Matsumoto, Nara Institute of Science and Technology
+Stewart McCauley, Cornell University
+David McClosky, IBM Research
+Ryan McDonald, Google
+Margaret Mitchell, Microsoft Research
+Roser Morante, Vrije Universiteit Amsterdam
+Lluís Màrquez, Qatar Computing Research Institute
+Preslav Nakov, Qatar Computing Research Institute
+Aida Nematzadeh, University of Toronto
+Ani Nenkova, University of Pennsylvania
+Vincent Ng, University of Texas at Dallas
+Joakim Nivre, Uppsala University
+Naoaki Okazaki, Tohoku University
+Miles Osborne, Bloomberg
+Alexis Palmer, Heidelberg University
+Andrea Passerini, University of Trento
+Daniele Pighin, Google Inc.
+Barbara Plank, University of Copenhagen
+Thierry Poibeau, LATTICE-CNRS
+Sameer Pradhan, cemantix.org
+Verónica Pérez-Rosas, University of Michigan
+Jonathon Read, School of Computing, Teesside University
+Sebastian Riedel, UCL
+Alan Ritter, The Ohio State University
+Brian Roark, Google Inc.
+Dan Roth, University of Illinois
+Josef Ruppenhofer, Hildesheim University
+Rajhans Samdani, Google Research
+Hinrich Schütze, University of Munich
+Djamé Seddah, Université Paris Sorbonne
+Aliaksei Severyn, University of Trento
+Avirup Sil, IBM T.J. Watson Research Center
+Khalil Sima’an, ILLC, University of Amsterdam
+Kevin Small, Amazon
+Vivek Srikumar, University of Utah
+Mark Steedman, University of Edinburgh
+Anders Søgaard, University of Copenhagen
+Christoph Teichmann, University of Potsdam
+Kristina Toutanova, Microsoft Research
+Ioannis Tsochantaridis, Google Inc.
+Jun’ichi Tsujii, Aritificial Intelligence Research Centre at AIST
+Kateryna Tymoshenko, University of Trento
+Olga Uryupina, University of Trento
+Antonio Uva, University of Trento
+Antal van den Bosch, Radboud University Nijmegen
+Menno van Zaanen, Tilburg University
+Aline Villavicencio, Institute of Informatics, Federal University of Rio Grande do Sul
+Michael Wiegand, Saarland University
+Sander Wubben, Tilburg University
+Fabio Massimo Zanzotto, University of Rome ""Tor Vergata""
+Luke Zettlemoyer, University of Washington
+Feifei Zhai, The City University of New York
+Min Zhang, SooChow University",,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",CoNLL 2015,http://aclweb.org/anthology/K/K15/K15-1000.pdf,University of Michigan,University of the Basque Country (UPV/EHU),Microsoft,Google,University of Illinois,NRC,Tilburg University,King’s College London,University of Edinburgh,University of New Brunswick,Technical University of Darmstadt,"University of Roma, Tor Vergata",University of Edinburgh,Illinois Institute of Technology,Massachusetts Institute of Technology,Qatar Computing Research Institute,University of Antwerp,Bar-Ilan University,Google Inc.,Northwestern University,Macquarie University,Georgia Institute of Technology,IBM Research,University of Washington,"ILLC, University of Amsterdam","University of Roma ""Tor Vergata""",VU Amsterdam,Yale University,Radboud University Nijmegen,SRI International,Microsoft Research,Qatar Computing Research Institute,Google Inc.,Toyota Technological Institute at Chicago,University of Trento,Qatar Computing Research Institute,University of Roma Tor Vergata,TU Darmstadt,Cornell University,Xerox Research Centre Europe,{},Tilburg University,Qatar Computing Research Institute,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NEED 68 COLUMN MORE.,{},Steven Abney,Eneko Agirre,Asli Celikyilmaz,Daniel Cer,Kai-Wei Chang,Colin Cherry,Grzegorz Chrupała,Alexander Clark,Shay B. Cohen,Paul Cook,Bonaventura Coppola,Danilo Croce,Bharat Ram Ambati,Aron Culotta,Scott Cyphers,Giovanni Da San Martino,Walter Daelemans,Ido Dagan,Dipanjan Das,Doug Downey,Mark Dras,Jacob Eisenstein,James Fan,Yoav Artzi,Raquel Fernandez,Simone Filice,Antske Fokkens,Bob Frank,Stefan L. Frank,Dayne Freitag,Michael Gamon,Wei Gao,Andrea Gesmundo,Kevin Gimpel,Marco Baroni,Alberto Barrón-Cedeño,Roberto Basili,Ulf Brefeld,Claire Cardie,Xavier Carreras,Afra Alishahi,Alessandro Moschitti,", 
+Francisco Guzmán, Qatar Computing Research Institute
+Thomas Gärtner, University of Bonn and Fraunhofer IAIS
+Iryna Haponchyk, University of Trento
+James Henderson, Xerox Research Centre Europe
+Julia Hockenmaier, University of Illinois Urbana-Champaign
+Dirk Hovy, Center for Language Technology, University of Copenhagen
+Rebecca Hwa, University of Pittsburgh
+Richard Johansson, University of Gothenburg
+Shafiq Joty, Qatar Computing Research Institute
+Lukasz Kaiser, CNRS & Google
+Mike Kestemont, University of Antwerp
+Philipp Koehn, Johns Hopkins University
+Anna Korhonen, University of Cambridge
+Annie Louis, University of Edinburgh
+André F. T. Martins, Priberam, Instituto de Telecomunicacoes
+Yuji Matsumoto, Nara Institute of Science and Technology
+Stewart McCauley, Cornell University
+David McClosky, IBM Research
+Ryan McDonald, Google
+Margaret Mitchell, Microsoft Research
+Roser Morante, Vrije Universiteit Amsterdam
+Lluís Màrquez, Qatar Computing Research Institute
+Preslav Nakov, Qatar Computing Research Institute
+Aida Nematzadeh, University of Toronto
+Ani Nenkova, University of Pennsylvania
+Vincent Ng, University of Texas at Dallas
+Joakim Nivre, Uppsala University
+Naoaki Okazaki, Tohoku University
+Miles Osborne, Bloomberg
+Alexis Palmer, Heidelberg University
+Andrea Passerini, University of Trento
+Daniele Pighin, Google Inc.
+Barbara Plank, University of Copenhagen
+Thierry Poibeau, LATTICE-CNRS
+Sameer Pradhan, cemantix.org
+Verónica Pérez-Rosas, University of Michigan
+Jonathon Read, School of Computing, Teesside University
+Sebastian Riedel, UCL
+Alan Ritter, The Ohio State University
+Brian Roark, Google Inc.
+Dan Roth, University of Illinois
+Josef Ruppenhofer, Hildesheim University
+Rajhans Samdani, Google Research
+Hinrich Schütze, University of Munich
+Djamé Seddah, Université Paris Sorbonne
+Aliaksei Severyn, University of Trento
+Avirup Sil, IBM T.J. Watson Research Center
+Khalil Sima’an, ILLC, University of Amsterdam
+vi
+Kevin Small, Amazon
+Vivek Srikumar, University of Utah
+Mark Steedman, University of Edinburgh
+Anders Søgaard, University of Copenhagen
+Christoph Teichmann, University of Potsdam
+Kristina Toutanova, Microsoft Research
+Ioannis Tsochantaridis, Google Inc.
+Jun’ichi Tsujii, Aritificial Intelligence Research Centre at AIST
+Kateryna Tymoshenko, University of Trento
+Olga Uryupina, University of Trento
+Antonio Uva, University of Trento
+Antal van den Bosch, Radboud University Nijmegen
+Menno van Zaanen, Tilburg University
+Aline Villavicencio, Institute of Informatics, Federal University of Rio Grande do Sul
+Michael Wiegand, Saarland University
+Sander Wubben, Tilburg University
+Fabio Massimo Zanzotto, University of Rome ""Tor Vergata""
+Luke Zettlemoyer, University of Washington
+Feifei Zhai, The City University of New York
+Min Zhang, SooChow University",,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",CoNLL 2014,http://www.aclweb.org/anthology/W/W14/W14-1600.pdf,"Univ of Michigan, United States","University of the Basque Country, Spain","Microsoft Research, United States","University of Illinois, United States","NRC, Canada","King’s College London, United Kingdom","University of Edinburgh, United Kingdom","University of Melbourne, Australia","University of Wisconsin, United States","Illinois Institute of Technology, United States","University of Antwerp, CLiPS, Belgium","Google Inc., United States","Tilburg University, Netherlands","Northwestern University, United States","Macquarie University, Australia","Johns Hopkins University, United States","Nara Institute of Science and Technology, Japan","Carnegie Mellon University, United States","Georgia Institute of Technology, United States","Yale University, United States","SRI International, United States","Microsoft Research, United States","Microsoft Research, United States","University of Washington, United States","Toyota Technological Institute at Chicago, United States","Inesc-Id, Portugal","University of Washington, United States","Educational Testing Service, United States","Xerox Research Centre Europe, France","Center for Language Studies, Radboud University Nijmegen, Netherlands","University of Illinois UrbanaChampaign, United States","University of Pittsburgh, United States","University of Gothenburg, Sweden","University of Antwerp, Belgium","University of Trento, Italy","Nuance Communications, United States","SynapseWork Ltd, United Kingdom","Universitat Politecnica de Catalunya, Spain","Microsoft, United States","Google, United States",,"University of Antwerp, Belgium","Microsoft Research, United States",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,{},,Steven Abney,Eneko Agirre,Ming-Wei Chang,Kai-Wei Chang,Colin Cherry,Alexander Clark,Shay B. Cohen,Trevor Cohn,Mark Craven,Aron Culotta,Walter Daelemans,Dipanjan Das,Afra Alishahi,Doug Downey,Mark Dras,Mark Dredze,Kevin Duh,Chris Dyer,Jacob Eisenstein,Bob Frank,Dayne Freitag,Michel Galley,Michael Gamon,Yoav Artzi,Kevin Gimpel,Joao Graca,Hannaneh Hajishirzi,Michael Heilman,James Henderson,Iris Hendrickx,Julia Hockenmaier,Rebecca Hwa,Richard Johansson,Mike Kestemont,Marco Baroni,Chris Brew,Sabine Buchholz,Xavier Carreras,Asli Celikyilmaz,Daniel Cer,Roser Morante,Scott Wen-tau Yih,"Steven Abney (Univ of Michigan, United States), Eneko Agirre (University of the Basque Country,
+Spain), Afra Alishahi (Tilburg University, Netherlands), Yoav Artzi (University of Washington,
+United States), Marco Baroni (University of Trento, Italy), Chris Brew (Nuance Communications,
+United States), Sabine Buchholz (SynapseWork Ltd, United Kingdom), Xavier Carreras (Universitat
+Politecnica de Catalunya, Spain), Asli Celikyilmaz (Microsoft, United States), Daniel Cer
+(Google, United States), Ming-Wei Chang (Microsoft Research, United States), Kai-Wei Chang
+(University of Illinois, United States), Colin Cherry (NRC, Canada), Alexander Clark (King’s
+College London, United Kingdom), Shay B. Cohen (University of Edinburgh, United Kingdom),
+Trevor Cohn (University of Melbourne, Australia), Mark Craven (University of Wisconsin, United
+States), Aron Culotta (Illinois Institute of Technology, United States), Walter Daelemans (University
+of Antwerp, CLiPS, Belgium), Dipanjan Das (Google Inc., United States), Doug Downey
+(Northwestern University, United States), Mark Dras (Macquarie University, Australia), Mark
+Dredze (Johns Hopkins University, United States), Kevin Duh (Nara Institute of Science and Technology,
+Japan), Chris Dyer (Carnegie Mellon University, United States), Jacob Eisenstein (Georgia
+Institute of Technology, United States), Bob Frank (Yale University, United States), Dayne Freitag
+(SRI International, United States), Michel Galley (Microsoft Research, United States), Michael
+Gamon (Microsoft Research, United States), Kevin Gimpel (Toyota Technological Institute at
+Chicago, United States), Joao Graca (Inesc-Id, Portugal), Hannaneh Hajishirzi (University of
+Washington, United States), Michael Heilman (Educational Testing Service, United States), James
+Henderson (Xerox Research Centre Europe, France), Iris Hendrickx (Center for Language Studies,
+Radboud University Nijmegen, Netherlands), Julia Hockenmaier (University of Illinois UrbanaChampaign,
+United States), Rebecca Hwa (University of Pittsburgh, United States), Richard Johansson
+(University of Gothenburg, Sweden), Mike Kestemont (University of Antwerp, Belgium),
+Alexandre Klementiev (Saarland University, Germany), Philipp Koehn (University of Edinburgh,
+United Kingdom), Alexander Koller (University of Potsdam, Germany), Mirella Lapata (School of
+Informatics, University of Edinburgh, United Kingdom), Adam Lopez (Johns Hopkins University,
+United States), Annie Louis (University of Edinburgh, United Kingdom), Erwin Marsi (Norwegian
+University of Science and Technology (NTNU), Norway), David Martinez (NICTA, Australia),
+André F. T. Martins (Priberam, Instituto de Telecomunicacoes, Portugal), Yuji Matsumoto (Nara
+Institute of Science and Technology, Japan), David McClosky (IBM Research, United States),
+Ryan McDonald (Google, United States), Margaret Mitchell (Microsoft Research, United States),
+Yusuke Miyao (National Instutite of Informatics, Japan), Robert Moore (Google, United States),
+Alessandro Moschitti (Qatar Computing Research Institute, Qatar), Lluís Màrquez (Qatar Computing
+Research Institute, Qatar), Ani Nenkova (University of Pennsylvania, United States), Vincent
+Ng (University of Texas at Dallas, United States), Joakim Nivre (Uppsala University, Sweden),
+Naoaki Okazaki (Tohoku University, Japan), Miles Osborne (Edinburgh, United Kingdom), Sebastian
+Padó (Heidelberg University, Germany), Hoifung Poon (Microsoft Research, United States),
+Jonathon Read (School of Computing, Teesside University, United Kingdom), Sebastian Riedel
+(UCL, United Kingdom), Alan Ritter (Carnegie Mellon University, United States), Dan Roth (University
+of Illinois, United States), Josef Ruppenhofer (Hildesheim University, Germany), Rajhans
+Samdani (Google Research, United States), Anoop Sarkar (Simon Fraser University, Canada),
+Nathan Schneider (Carnegie Mellon University, United States), Sabine Schulte im Walde (Univ
+versity of Stuttgart, Germany), Avirup Sil (Temple University, United States), Khalil Sima’an
+(ILLC, University of Amsterdam, Netherlands), Kevin Small (Amazon, United States), Valentin
+Spitkovsky (Stanford University and Google Inc., United States), Caroline Sporleder (Trier University,
+Germany), Vivek Srikumar (Stanford University, United States), Mark Steedman (University
+of Edinburgh, United Kingdom), Ivan Titov (University of Amsterdam, Netherlands), Peter
+Turney (National Research Council Canada, Canada), Antal van den Bosch (Radboud University
+Nijmegen, Netherlands), Erik Velldal (University of Oslo, Norway), Mathias Verbeke (KU Leuven,
+Belgium), Mengqiu Wang (Stanford University, United States), Michael Wiegand (Saarland
+University, Germany), Luke Zettlemoyer (University of Washington, United States)",,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",CoNLL 2014,http://www.aclweb.org/anthology/W/W14/W14-1600.pdf,{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},,"University of Antwerp, Belgium","Microsoft Research, United States",{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},Very few listed for this conference.,,{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},Roser Morante,Scott Wen-tau Yih,{},,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",COLING 2014,http://aclweb.org/anthology/C/C14/C14-1000.pdf,"University of Washington, USA","Charles University, Czech Republic","Google, USA","Hong Kong Polytechnic University, Hong Kong","Carnegie Mellon University, USA","University of Cambridge, UK","University of Pisa, Italy","CNRS & Université Paul Sabatier, France","University of California Santa Cruz, USA","University of Malta, Malta","University of Aberdeen, UK","Bar Ilan University, Israel","Universidad Politecnica de Madrid, Spain","ohoku University, Japan","University of Michigan, USA","University of Illinois at Chicago, USA","CNGL, Dublin City University, Ireland","IBM Research, USA","University of Liverpool, UK","Postec, Korea","AT&T Labs-Research, USA","Beijing Institute of Technology, China","Joint Research Centre, Italy","Johns Hopkins University, USA","University of Helsinki, Finland","University of Southern California, USA","Trinity College Dublin, Ireland","National Technical University Crete, Greece","University of Edinburgh, UK / Johns Hopkins University, USA","Microsoft Research, USA","Harbin Institute of Technology, China","IIT Bombay, India","ILC-CNR, Italy","University of Colorado, USA","University of Tokyo, Japan","CNRS & Université d’Aix-Marseille, France","MIT, USA","Weizmann Institute of Science, Israel","Singapore University of Technology and Design, Singapore","Heinrich-Heine-Universität, Germany","Universität des Saarlandes, Germany  AND CNGL, DCU, Ireland","(Charles University, Czech Republic","Microsoft Research, China",Linguistic Issues in CL and NLP,Linguistic Issues in CL and NLP,"Syntax, Grammar Induction, Syntactic and Semantic Parsing",Lexical Semantics and Ontologies,Lexical Semantics and Ontologies,"Semantic Processing, Distributional Semantics and Compositional Semantics","Semantic Processing, Distributional Semantics and Compositional Semantics",Modeling of Discourse and Dialogue,Modeling of Discourse and Dialogue,Natural Language Generation and Summarisation,Natural Language Generation and Summarisation,Paraphrasing and Textual Entailment,Linguistic Issues in CL and NLP,Paraphrasing and Textual Entailment,"Sentiment Analysis, Opinion Mining and Social Media","Sentiment Analysis, Opinion Mining and Social Media",Information Retrieval and Question Answering,Information Retrieval and Question Answering,Information Extraction and Database Linking,Information Extraction and Database Linking,Applications,Applications,Applications,Machine Learning for CL and NLP,Multimodal and Natural Language Interfaces and Dialog Systems,Multimodal and Natural Language Interfaces and Dialog Systems,"Speech Recognition, Text-To-Speech, Spoken Language Understanding","Speech Recognition, Text-To-Speech, Spoken Language Understanding",Machine Translation,Machine Translation,Machine Translation,Resources,Resources,Resources,Machine Learning for CL and NLP,Cognitive Issues in CL and NLP,Cognitive Issues in CL and NLP,"Morphology, Word Segmentation, Tagging and Chunking","Morphology, Word Segmentation, Tagging and Chunking","Syntax, Grammar Induction, Syntactic and Semantic Parsing","- TWO General Chairs
+- TWO additional content areas of ""Languages with less resources"" and ""Software and Tools"" that did not fit in table
+-  HIT is underpaid",Josef van Genabith AND Andy Way,Emily M. Bender,Eva Hajicova,Ryan McDonald,Chu-Ren Huang,Alessandro Oltramari,Stephen Clark,Alessandro Lenci,Nicolas Asher,Marilyn Walker,Albert Gatt,Advaith Siddharthan,Ido Dagan,Igor Boguslavsky,Kentaro Inui,Rada Mihalcea,Bing Liu,Gareth Jones,Siddharth Patwardhan,Danushka Bollegala,Seung-won Hwang,Srinivas Bangalore,Heyan Huang,Guillaume Jacquet,Jason Eisner,Kristiina Jokinen,David Traum,Nick Campbell,Alex Potamianos,Phillip Koehn,Chris Quirk,Tiejun Zhao,Pushpak Bhattacharyya,Nicoletta Calzolari,Martha Palmer,Yoshimasa Tsuruoka,Philippe Blache,Ted Gibson,Reut Tsarfaty,Yue Zhang,Laura Kallmeyer,Jan Hajic,Junichi Tsujii,"Linguistic Issues in CL and NLP
+Emily M. Bender, University of Washington, USA
+Eva Hajicova, Charles University, Czech Republic
+Igor Boguslavsky, Universidad Politecnica de Madrid, Spain
+Machine Learning for CL and NLP
+Jason Eisner, Johns Hopkins University, USA
+Yoshimasa Tsuruoka, University of Tokyo, Japan
+Cognitive Issues in CL and NLP
+Philippe Blache, CNRS & Université d’Aix-Marseille, France
+Ted Gibson, MIT, USA
+Morphology, Word Segmentation, Tagging and Chunking
+Reut Tsarfaty, Weizmann Institute of Science, Israel
+Yue Zhang, Singapore University of Technology and Design, Singapore
+Syntax, Grammar Induction, Syntactic and Semantic Parsing
+Laura Kallmeyer, Heinrich-Heine-Universität, Germany
+Ryan McDonald, Google, USA
+Lexical Semantics and Ontologies
+Chu-Ren Huang, Hong Kong Polytechnic University, Hong Kong
+Alessandro Oltramari, Carnegie Mellon University, USA
+Semantic Processing, Distributional Semantics and Compositional Semantics
+Stephen Clark, University of Cambridge, UK
+Alessandro Lenci, University of Pisa, Italy
+Modeling of Discourse and Dialogue
+Nicolas Asher, CNRS & Université Paul Sabatier, France
+Marilyn Walker, University of California Santa Cruz, USA
+Natural Language Generation and Summarisation
+Albert Gatt, University of Malta, Malta
+Advaith Siddharthan, University of Aberdeen, UK
+Paraphrasing and Textual Entailment
+Ido Dagan, Bar Ilan University, Israel
+Kentaro Inui, Tohoku University, Japan
+Sentiment Analysis, Opinion Mining and Social Media
+Rada Mihalcea, University of Michigan, USA
+Bing Liu, University of Illinois at Chicago, USA
+Information Retrieval and Question Answering
+Gareth Jones, CNGL, Dublin City University, Ireland
+Siddharth Patwardhan, IBM Research, USA
+vi
+Information Extraction and Database Linking
+Danushka Bollegala, University of Liverpool, UK
+Seung-won Hwang, Postec, Korea
+Applications
+Srinivas Bangalore, AT&T Labs-Research, USA
+Heyan Huang, Beijing Institute of Technology, China
+Guillaume Jacquet, Joint Research Centre, Italy
+Multimodal and Natural Language Interfaces and Dialog Systems
+Kristiina Jokinen, University of Helsinki, Finland
+David Traum, University of Southern California, USA
+Speech Recognition, Text-To-Speech, Spoken Language Understanding
+Nick Campbell, Trinity College Dublin, Ireland
+Alex Potamianos, National Technical University Crete, Greece
+Machine Translation
+Phillip Koehn, University of Edinburgh, UK / Johns Hopkins University, USA
+Chris Quirk, Microsoft Research, USA
+Tiejun Zhao, Harbin Institute of Technology, China
+Resources
+Pushpak Bhattacharyya, IIT Bombay, India
+Nicoletta Calzolari, ILC-CNR, Italy
+Martha Palmer, University of Colorado, USA
+Languages with less resources
+Steven Bird, University of Melbourne, Australia
+Mark Liberman, University of Pennsylvania, USA
+Rajeev Sangal, IIT Banaras Hindu University, India
+Koenraad De Smedt, University of Bergen, Norway
+Software and Tools
+Jesús Cardeñosa, Universidad Politecnica de Madrid, Spain
+Jing-Shin Chang, National Chi Nan University, Taiwan",,
+Compile a list of organizers for a conference,"Please read through this short PDF document describing the organizers for a conference and extract the names and affiliations of researchers who served as ""area chairs""","writing, reading, information extraction, conferences, researchers, area chairs",COLING 2014,http://aclweb.org/anthology/C/C14/C14-1000.pdf,"University of Washington, USA","Charles University, Czech Republic","Google, USA","Hong Kong Polytechnic University, Hong Kong","Carnegie Mellon University, USA","University of Cambridge, UK","University of Pisa, Italy","CNRS & Université Paul Sabatier, France","University of California Santa Cruz, USA","University of Malta, Malta","University of Aberdeen, UK","Bar Ilan University, Israel","Universidad Politecnica de Madrid, Spain","Tohoku University, Japan","University of Michigan, USA","University of Illinois at Chicago, USA","CNGL, Dublin City University, Ireland","IBM Research, USA","University of Liverpool, UK","Postec, Korea","AT&T Labs-Research, USA","Beijing Institute of Technology, China","Joint Research Centre, Italy","Johns Hopkins University, USA","University of Helsinki, Finland","University of Southern California, USA","Trinity College Dublin, Ireland","National Technical University Crete, Greece","University of Edinburgh, UK / Johns Hopkins University, USA","Microsoft Research, USA","Harbin Institute of Technology, China","IIT Bombay, India","ILC-CNR, Italy","University of Colorado, USA","University of Tokyo, Japan","CNRS & Université d’Aix-Marseille, France","MIT, USA","Weizmann Institute of Science, Israel","Singapore University of Technology and Design, Singapore","Heinrich-Heine-Universität, Germany","Dublin City University, Ireland","Universität des Saarlandes/DFKI, Germany","Microsoft Research, China",Linguistic Issues in CL and NLP,Linguistic Issues in CL and NLP,"Syntax, Grammar Induction, Syntactic and Semantic Parsing",Lexical Semantics and Ontologies,Lexical Semantics and Ontologies,"Semantic Processing, Distributional Semantics and Compositional Semantics","Semantic Processing, Distributional Semantics and Compositional Semantics",Modeling of Discourse and Dialogue,Modeling of Discourse and Dialogue,Natural Language Generation and Summarisation,Natural Language Generation and Summarisation,Paraphrasing and Textual Entailment,Linguistic Issues in CL and NLP,Paraphrasing and Textual Entailment,"Sentiment Analysis, Opinion Mining and Social Media","Sentiment Analysis, Opinion Mining and Social Media",Information Retrieval and Question Answering,Information Retrieval and Question Answering,Information Extraction and Database Linking,Information Extraction and Database Linking,Applications,Applications,Applications,Machine Learning for CL and NLP,Multimodal and Natural Language Interfaces and Dialog Systems,Multimodal and Natural Language Interfaces and Dialog Systems,"Speech Recognition, Text-To-Speech, Spoken Language Understanding","Speech Recognition, Text-To-Speech, Spoken Language Understanding",Machine Translation,Machine Translation,Machine Translation,Resources,Resources,Resources,Machine Learning for CL and NLP,Cognitive Issues in CL and NLP,Cognitive Issues in CL and NLP,"Morphology, Word Segmentation, Tagging and Chunking","Morphology, Word Segmentation, Tagging and Chunking","Syntax, Grammar Induction, Syntactic and Semantic Parsing","above rows are insufficient. Balance program details are as follows..
+Languages with less resources
+      Steven Bird, University of Melbourne, Australia
+      Mark Liberman, University of Pennsylvania, USA
+      Rajeev Sangal, IIT Banaras Hindu University, India
+      Koenraad De Smedt, University of Bergen, Norway
+Software and Tools
+     Jesús Cardeñosa, Universidad Politecnica de Madrid, Spain
+     Jing-Shin Chang, National Chi Nan University, Taiwan",Prof. Andy Way CNGL,Emily M. Bender,Eva Hajicova,Ryan McDonald,Chu-Ren Huang,Alessandro Oltramari,Stephen Clark,Alessandro Lenci,Nicolas Asher,Marilyn Walker,Albert Gatt,Advaith Siddharthan,Ido Dagan,Igor Boguslavsky,Kentaro Inui,Rada Mihalcea,Bing Liu,Gareth Jones,Siddharth Patwardhan,Danushka Bollegala,Seung-won Hwang,Srinivas Bangalore,Heyan Huang,Guillaume Jacquet,Jason Eisner,Kristiina Jokinen,David Traum,Nick Campbell,Alex Potamianos,Phillip Koehn,Chris Quirk,Tiejun Zhao,Pushpak Bhattacharyya,Nicoletta Calzolari,Martha Palmer,Yoshimasa Tsuruoka,Philippe Blache,Ted Gibson,Reut Tsarfaty,Yue Zhang,Laura Kallmeyer,Prof. Josef van Genabith,Prof. Junichi Tsujii,"General Chairs
+Prof. Andy Way, CNGL, Dublin City University, Ireland
+Prof. Josef van Genabith, Universität des Saarlandes/DFKI, Germany
+Programme Chairs
+Prof. Junichi Tsujii, Microsoft Research, China
+Prof. Jan Hajic, Charles University, Czech Republic
+Workshops Chairs
+Dr. Jennifer Foster, CNGL, Dublin City University, Ireland
+Prof. Dan Gildea, University of Rochester, USA
+Prof. Tim Baldwin, University of Melbourne, Australia
+Publication Chairs
+Dr. Joachim Wagner, CNGL, Dublin City University, Ireland
+Dr. Liadh Kelly, CNGL, Dublin City University, Ireland
+Dr. Lorraine Goeuriot, CNGL, Dublin City University, Ireland
+Publicity Chairs
+Dr. Dorothy Kenny, SALIS, Dublin City University, Ireland
+Prof. Seong-Bae Park, Kyungpook National University, Korea
+Local Chairs
+Dr. Cara Greene, CNGL, Dublin City University, Ireland
+Dr. John Judge, CNGL / NCLT, Dublin City University, Ireland
+Scientific Advisory Board
+Prof. Joakim Nivre, Uppsala Univ., Sweden
+Prof. Yuji Matsumoto, NAIST, Japan
+Dr. Michael Picheny, IBM TJ Watson Research Center, USA
+Prof. Donia Scott, Univ. of Sussex, UK
+Prof. Chengqing Zong, CAS, China
+Prof. Ralph Grishman, New York University, USA
+Tutorial Chairs
+Prof. Qun Liu, CNGL, Dublin City University, Ireland
+Prof. Fei Xia, University of Washington, USA
+Demo Chairs
+Dr. Lamia Tounsi, CNGL, Dublin City University, Ireland
+Dr. Rafal Rak, NaCTeM, University of Manchester, UK
+Sponsorship Chairs
+Dr. Páraic Sheridan, CNGL, Dublin City University, Ireland
+Prof. Hans Uszkoreit, DFKI, Germany
+Dr. Huaping Zhang, Beijing Institute of Technology, China
+Dr. Hiromi Nakaiwa, NTT, Japan",,

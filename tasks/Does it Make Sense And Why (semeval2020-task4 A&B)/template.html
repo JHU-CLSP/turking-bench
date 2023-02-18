@@ -1,0 +1,190 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects">
+    <crowd-instructions link-text="View Instructions and Examples" link-type="button">
+        <short-summary>
+			<p>Write a total of  five sentences. </p>
+			<p>The first should be a correct statement; </p>
+			<p>The second one which does not make sense, using a <b>similar sentence structure</b> as the first.  </p>
+			<p>Thirdly the right reason why the incorrect statement does not make common sense, </p>
+			<p>Finally provide two confusing reasons to confuse the machine.</p>
+        </short-summary>
+        <detailed-instructions>
+            <h3>There are several rules you should follow when you write samples:</h3>
+
+                <p>1. <b>Each confusing reason should contain all common important information in the incorrect statement and the right reason.</b> 
+                    For example, in the good example1, "elephant" and "fridge" are the important information 
+                    since both of them appear in the incorrect statement and the right reason. 
+                    So, the two confusing reasons should contain 'elephant' and 'fridge'</p>
+
+                <p>2. <b>The confusing reasons should be correct themselves. </b>See at the bad example 2.</p>
+
+                <p>3. <b>If some information only appear at 'correct statement' but not 'incorrect statement' or 'right reason',
+                please don't mention the information at the two confusing reasons.</b> 
+                For example, in the good example1, the confusing reasons should not mention "turkey", 
+                since the incorrect statement and the right reason don't mention 'turkey'.</p>
+
+                <p>4. The right and confusing reasons should be in similar length.</p>
+
+                <p>5. Make the questions easy to understand.</p>
+
+                <p>6. Avoid using specific knowledge, like persons, places, history.</p>
+
+                <p>7. The right reason should not be just like the correct statement.</p>
+
+                <p>8. Please don't simply add a 'not' to the incorrect statement to form the reason.</p>
+                
+                <p>9. Please don't imitate the "elephant" and "fridge" example. We will reject all "XX cannot fit in YY" or "XX is bigger/smaller than YY" answers.</p>
+				
+				<h4>According to our experience. It's very easy to make mistakes in the first several instances. 
+				If you want to avoid losing your accept rate, 
+				you can close this project, write 5 instances offline and send them to us by email 'senmaking@163.com'. 
+				We will give you feedback on how to revise them, once your instances are correct, we can give you bonus directly 
+				($0.23 per answer, but you have to submit an answer before so that we can find you at our worker list)
+				you can submit them to the following HITs again (tell us your choice in the email).</h4>
+				
+				<h4>Besides, if you have any suggestions for the project, please email us. 
+				We will reward you bonus if the suggestions are useful.</h4>
+
+
+        </detailed-instructions>
+        
+        <positive-example>
+            <h3>Good Example1:</h3>
+            <h5>Correct Statement</h5>
+            <p>He put a turkey into the fridge</p>
+            <h5>Incorrect Statement</h5>
+            <p>He put an elephant into the fridge</p>
+            <h5>Right Reason</h5>
+            <p>an elephant is much bigger than a fridge</p>
+            <h5>Confusing Reason1</h5>
+            <p>elephants are usually gray while fridges are usually white</p>
+            <h5>Confusing Reason2</h5>
+            <p>an elephant cannot eat a fridge</p>
+        </positive-example>
+
+        <positive-example>
+            <h3>Good Example2:</h3>
+            <h5>Correct Statement</h5>
+            <p>my sister eats an apple after breakfast every day</p>
+            <h5>Incorrect Statement</h5>
+            <p>my sister eats a stone after breakfast every day</p>
+            <h5>Right Reason</h5>
+            <p>no one eats stones as food</p>
+            <h5>Confusing Reason1</h5>
+            <p>stone is usually in round-shapes just like some food</p>
+            <h5>Confusing Reason2</h5>
+            <p>stone is too large for a girl's mouth</p>
+        </positive-example>
+
+        <positive-example>
+            <h3>Good Example3:</h3>
+            <h5>Correct Statement</h5>
+            <p>he was sent to a hospital for treatment after a car crash</p>
+            <h5>Incorrect Statement</h5>
+            <p>he was sent to a restaurant for treatment after a car crash</p>
+            <h5>Right Reason</h5>
+            <p>a restaurant does not have doctors or medical equipment</p>
+            <h5>Confusing Reason1</h5>
+            <p>a restaurant is usually too noisy for a patient</p>
+            <h5>Confusing Reason2</h5>
+            <p>there are different types of restaurants and many patients in the city</p>
+        </positive-example>
+        
+        <negative-example>
+            <h3>Common Mistakes (Examples can be viewed below)</h3>
+            <p>You should not use knowledge, like specific persons, places, history, to write statements.</p>
+            <p>The confusing reasons should not lack some important information from the incorrect statement and the right reason.</p>
+            <p>You should not try to find specific case where the statement is true</p>
+            <p>Don't make the right reasons be always too short or too long among the three reasons.</p>
+            <p>The reasons should not mention correct statements.</p>
+            <p>The confusing reasons should not be wrong themselves.</p>
+        </negative-example>
+
+        <negative-example>
+            <h3>Bad Example1:</h3>
+            <h5>Correct Statement</h5>
+            <p>Donald Trump succeed Barack Obama as the president of US</p>
+            <h5>Incorrect Statement</h5>
+            <p>Barack Obama succeed Donald Trump as the president of US</p>
+            <p>(these statements are knowledge rather than common sense. Don't use specific persons, places, history, etc, to write statements)</p>
+            <h5>Right Reason</h5>
+            <p>Donald Trump became president at 2016 when Barack Obama left his office</p>
+            <h5>Confusing Reason1</h5>
+            <p>Donald Trump was a bussiness man</p>
+            <p>(The confusing reasons should contain all important information in the incorrect statemens. In this case, it misses 'Barack Obama' and 'president'.)</p>
+            <h5>Confusing Reason2</h5>
+            <p>Barack Obama may get elected as president again after Donald Trump.</p>
+            <p>(Don't try to find specific case where the statement is true.)</p>
+        </negative-example>
+
+        
+        <negative-example>
+            <h3>Bad Example2:</h3>
+            <h5>Correct Statement</h5>
+            <p>my sister eats an apple after breakfast every day</p>
+            <h5>Incorrect Statement</h5>
+            <p>my sister eats a stone after breakfast every day</p>
+            <h5>Right Reason</h5>
+            <p>stones are too hard</p>
+            <p>(too short among three reasons)</p>
+            <h5>Confusing Reason1</h5>
+            <p>apples are more suitable than stone for breakfast</p>
+            <p>(don't mention the correct statement in the reasons)</p>
+            <h5>Confusing Reason2</h5>
+            <p>stones are too expensive so no one eats them</p>
+            <p>("stones are too expensive" is wrong, better make all confusing reasons themselves true but only irrelavant to the statements.)</p>
+        </negative-example>
+        
+    </crowd-instructions>
+    <div>
+        <strong>Cautions: </strong> 
+        <h2>The task is very difficult to begin with, so CLICK the GREY Button above and READ the INSTRUCTIONS and EXAMPLES carefully, otherwise  your answer may be REJECTED.</h2>
+        <h4>For any rejected answer, thanks to some misunderstanding in the community, we no longer reverse rejections unless it is proved to be our mistake.</h4>
+        <h4>If you have different opinions on any rejection, please attach your content and our feedback with the email, thank you.</h4>
+        
+        <hr>
+        <h3>You can draw inspiration from these sentences. You may use none of them, these sentences are not very important.</h3>
+
+        <p><strong>Sentence1: </strong>${sentence1}</p>
+        <p><strong>Sentence2: </strong>${sentence2}</p>
+        <p><strong>Sentence3: </strong>${sentence3}</p>
+        <p><strong>Sentence4: </strong>${sentence4}</p>
+        <p><strong>Sentence5: </strong>${sentence5}</p>
+        
+        <hr>
+        <div>
+            
+            <div>
+               <p><strong>Correct Statement:</strong></p>
+               <p><crowd-input name="Correct Statement" placeholder="e.g. He put a turkey into the fridge"></crowd-input></p>
+            </div>
+
+            <div>
+                <p><strong>Incorrect Statement:</strong></p>
+                <p><crowd-input name="Incorrect Statement" placeholder="e.g. He put an elephant into the fridge" required></crowd-input></p>
+            </div>
+
+            <div>
+                <p><strong>Right Reason (to explain why the incorrect statement is against common sense):</strong></p>
+                <crowd-input name="Right Reason" placeholder="e.g. an elephant is much bigger than a fridge" required></crowd-input>
+            </div>
+
+            <div>
+                <p><strong>Confusing Reason1 (to confuse the machine):</strong></p>
+                <crowd-input name="Confusing Reason1" placeholder="e.g. elephants are usually gray while fridges are usually white" required></crowd-input>
+            </div>
+
+            <div>
+                <p><strong>Confusing Reason2 (to confuse the machine):</strong></p>
+                <crowd-input name="Confusing Reason2" placeholder="e.g. an elephant cannot eat a fridge" required></crowd-input>
+            </div>
+
+        </div>
+    </div>
+</crowd-form>

@@ -1,0 +1,870 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<section class="container" id="Survey">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <h5 class="card-header">Instructions &nbsp;<a data-toggle="collapse" href="#instructions"
+                                                                         style="color:#0080ff;font-weight:normal;text-decoration: underline;">(expand/collapse)</a>
+        </h5>
+        <div id="instructions" class="collapse show">
+
+          <div class="card-body" style="border: 1px dashed darkgreen">
+            <div style="color:orange; font-size: 18 ;border: 5px solid cyan; padding: 10px 20px 10px 20px;"><strong>Thanks for participating our HIT (and Congrats on passing our qual!). We are trying to build a model that can generate sentences to guide listeners to perform some actions given a goal and we are using Dungeons & Dragons as our testbed.</strong></div><p></p>
+            <div style="color:red; font-size: 18 ;border: 5px solid cyan; padding: 10px 20px 10px 20px;">Note: This is a different task (with some new questions) from the previous HITs asking you to choose a sentence from DM's text. Please read the new instructions and examples carefully. Thanks!</strong></div><br>
+
+            <b><p class="mb-2">In this HIT, you will be given a post from the <span class="concept_c">Dungeon Master (DM)</span> in a game of Dungeons & Dragons and the name of one <span class="concept_a">player</span>. Your task is to answer 1-3 questions regarding potential guidance from the <span class="concept_c">DM</span> for the <span class="concept_a">player</span>.
+                <ul>1. Is the <span class="concept_c">DM</span> trying to <span class="bg-primary text-white">guide</span> the <span class="concept_a">player</span> to perform some actions (ability/skill checks, excluding initiative rolls and saving throws)?</ul>
+                <ul>2. If so, choose the most important sentence from the <span class="concept_c">Dungeon Master</span> that serves the guiding purpose the most.</ul>
+                <ul>3. Imagine that you are the <span class="concept_a">player</span>, given 5 action options (from D&D ability checks, a fun explanation of each ability can be found <a href="https://www.reddit.com/r/DnD/comments/igcwh2/oc_all_5e_skillability_checks_explained_with/">here</a>), choose which action is the most likely to be taken.</ul>
+
+                </p></b>
+            <br>
+
+
+            <b><i>Guidelines:</i></b>
+            <ul>
+              <li><strong>Question 1:</strong> You are asked to choose whether the DM is providing <span class="bg-primary text-white">Direct Guidance</span>, <span class="bg-info text-white">Indirect Guidance</span>, or <span class="bg-danger text-white">No Guidance</span> (simply Reactions or plain Descriptions)
+                <ul>
+                  <li> From our understanding, <span class="concept_c">DM</span> generally provides 3 categories of information in their post:
+                    <ul>
+                        <li><strong> Reactions</strong> (<span class="bg-danger text-white">No Guidance</span>) to previous player actions by summarizing the outcome. For example: "<i><span class="zero-background">Droop got scared by your intimidation and made way for you</span> </i>"</li>
+                        <li><strong> Descriptions</strong> (<span class="bg-danger text-white">No Guidance</span>) of current game world. For example: "<i><span class="zero-background">Several barrels have been stored along the walls here, along with a number of empty crates, straw for packing, hammers, pry bars, and nails.</span> </i>"</li>
+                        <li><strong><span class="bg-primary text-white">Guidance</span></strong>  of player action with directly/indirectly providing key information. There are two subtypes under this category:
+                        <ul>
+                            <li><span class="bg-primary text-white">Direct Guidance</span>: the  <span class="concept_c">DM</span> explicitly prompts the player to do something. For example: "<i><span class="zero-background">Make a perception check</span>.</i>"</li>
+                            <li><span class="bg-info text-white">Indirect Guidance</span>: the  <span class="concept_c">DM</span> provides descriptions of something that they know would prompt/motivate the <span class="concept_a">player</span> to perform some actions (similar to adventure hooks or designed confrontations). For example: "<i><span class="zero-background">You see two guards crossing their arms in front of the gate blocking your path</span>.</i>" (which forces <span class="concept_a">player</span> to find ways to deal with them) or "<i><span class="zero-background">Scupper, you feel the cold energy surround you and sink into you</span>.</i>" (which motivates the <span class="concept_a">player</span> to perform an arcana check to see what's happening)</li>
+                        </ul></li>
+                    </ul>
+
+                  </li>
+                  <li>As long as there is some <span class="bg-primary text-white">Guidance</span> in the DM text, you should select <span class="bg-primary text-white">Direct Guidance</span> or <span class="bg-info text-white">Indirect Guidance</span>
+                  </li>
+                  <li>The <span class="concept_c">DM</span> might address other players in their description and you should focus on guidance for the <span class="concept_a">player</span> whose name is given. On the other hand, if the<span class="concept_c">DM</span> provides guidance that addresses multiple players, it can be considered <span class="bg-primary text-white">Guidance</span> as long as the given <span class="concept_a">player</span> is involved. </li>
+                  <li><strong>[Important!]</strong> Sometimes it's hard to judge whether the <span class="concept_c">DM</span> is providing only <strong>Descriptions</strong> or <span class="bg-primary text-white">Guidance</span>. We encourage you to imagine that you if are this <span class="concept_c">DM</span>, do you think you anticipate players to perform certain actions when you say this?
+                  </li>
+                </ul>
+
+              </li>
+              <li><strong>Question 2:</strong> If you think there is <span class="bg-primary text-white">Guidance</span>, <strong>choose a sentence</strong> (write down the sentence index such as <span class="zero-background">2</span>) from the <span class="concept_c">DM</span> text that you think is the most important one serving the purpose of prompting the <span class="concept_a">player</span> to perform some actions.
+                <ul>
+                  <li>Note that this question is slightly different from our previous HITs in that you are not given the player's actual action, but instead are asked to choose a sentence from the perspective of the <span class="concept_c">DM</span>.
+                  </li>
+                </ul>
+              </li>
+              <li><strong>Question 3:</strong> Imagine that you are this <span class="concept_a">player</span>, choose the most likely action that they will take after DM said this, from 5 given option candidates.
+                <ul>
+                    <li>Each potential action is a type of <strong>ability/skill check</strong> in D&D such as "investigation", "history", "insight", etc. </span>. Please see <a href="https://5thsrd.org/rules/abilities/ability_checks/">here</a> for exaplanations if you are not familiar. We provided some fun short descriptions (thanks to  <a href="https://www.reddit.com/r/DnD/comments/igcwh2/oc_all_5e_skillability_checks_explained_with/">this</a>) :)
+                    </li>
+                    <li>Choose the action that is more specific and relevant to the guidance from the <span class="concept_c">DM</span>. </li>
+                  </ul>
+              </li>
+            </ul>
+
+            <!-- <b><i>Miscellaneous:</i></b>
+            <ul>
+              <li>Warning: many questions use foul language or describe sexual or lewd situations.</li>
+              <li>I'm still getting started with these HITs and want to pay workers fairly for them
+                (>$15/hour). From doing some of these, I've found that answering the questions is pretty
+                fast, but reading the question can take a while. Your mileage may vary, just make sure
+                you thoroughly read the question, since often the advice-writers didn't! Please bear with
+                me while I figure out a good rate for these.
+              </li>
+              <li>Please do not work on these HITs if you work at the University of Washington. <span
+                  class="smalltxt">(we have to include this rule in our HITs...)</span></li>
+            </ul> -->
+
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h5 class="card-header">Examples &nbsp; &nbsp;<a data-toggle="collapse" href="#examples"
+                                                         style="color:#0080ff;font-weight:normal;text-decoration: underline;">(expand/collapse)</a>
+        </h5>
+        <div id="examples" class="collapse">
+            <div style="border: 0px solid #000; padding: 10px 20px 10px 20px;">
+                <h5>Example 1:</h5>
+                <span class="concept_c">Dungeon Master:</span> <b>1. As you stand in the room, it's much as before.
+                2. Now quiet, full of ankle-deep murky water, chains hanging from the ceiling over the altar, and the space dominating altar itself. 3. How do you go about your inspection?
+            </b><br>
+            <p></p>
+                <span class="concept_a">Player:</span> <b> Rynna</b><br>
+
+            </div>
+
+            <div id="mainExample-1" class="question">
+                <div class="question-header question-choice-container pl-5 mb-2 pt-2 pb-2 border-bottom">
+                    <div class="panel">
+                        <h6>Question 1. What kind of <span class="bg-primary text-white">guidance</span> is the <span class="concept_c">DM</span> trying to provide to the <span class="concept_a">player</span> to prompt/motivate them perform some actions?</h6>
+
+                        The correct answer is
+                        <span class="bg-primary text-white">Direct Guidance</span>, because the <span class="concept_c">DM</span> explicitly says "how do you go about your inspection?" (addressing all players including Rynna).
+                    </div>
+
+                    <div class="panel">
+                        <h6>Question 2. Choose a sentence from the <span class="concept_c">DM</span> text that you think is the most important one serving the purpose of prompting the <span class="concept_a">player</span> to perform some actions.</h6>
+
+                        The correct answer is
+                        <button type="button" class="btn btn-secondary btn-sm btm-info one-background">3</button>, because the third sentence ("how do you go about your inspection?") is the one that directly prompts the players to do inspection.
+                    </div>
+
+                    <div class="panel">
+                        <h6>Question 3. Choose the most likely action (ability check) that would be taken by the player after seeing DM's words:</h6>
+                        <ul><strong>Action1:</strong> history</ul>
+                        <ul><strong>Action2:</strong> strength</ul>
+                        <ul><strong>Action3:</strong> arcana</ul>
+                        <ul><strong>Action4:</strong> nature</ul>
+                        <ul><strong>Action5:</strong> investigation</ul>
+
+                        The correct answer is
+                        <button type="button" class="btn btn-secondary btn-sm btm-info one-background">Action 5: investigation</button>, because the the <span class="concept_c">DM</span> directly prompts the player to "go about your inspection".
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <br>
+
+            <div style="border: 0px solid #000; padding: 10px 20px 10px 20px;">
+                <h5>Example 2:</h5>
+                <span class="concept_c">Dungeon Master:</span> <b>1. Thaunix tries to stealthy go down the path that Icanna went, but looks like a complete fool to everybody. 2. Atriax clears his throat 'Umm, you can go any where i here, there is no need to... do whatever you are doing' 3. Anyway... 4. As Thaunix walks down the corridor, he notices that the archway seems to perfect, the curve being exact and precise. 5. The material that the corridor also looks quite unnatural, as it does not look like anything he has every seen. 6. It seems to also glow a bit, a soft white light being created by the material. 7. Belron notices a ripple in the corner, a door sized ripple. 8. It is as if the stone wall isnt really there.
+            </b><br>
+            <p></p>
+                <span class="concept_a">Player:</span> <b> Thaunix</b><br>
+
+            </div>
+
+            <div id="mainExample-1" class="question">
+                <div class="question-header question-choice-container pl-5 mb-2 pt-2 pb-2 border-bottom">
+                    <div class="panel">
+                        <h6>Question 1. What kind of <span class="bg-primary text-white">guidance</span> is the <span class="concept_c">DM</span> trying to provide to the <span class="concept_a">player</span> to prompt/motivate them perform some actions?</h6>
+
+                        The correct answer is
+                        <span class="bg-info text-white">Indirect Guidance</span>, because the <span class="concept_c">DM</span> seems to try to direct Thaunix's attention to the surrounding environment by describing it as not ordinary ("...the corridor also looks quite unnatural, as it does not look like anything he has ever seen..."). Note that this is different than plainly describing the surroundings.
+                    </div>
+
+                    <div class="panel">
+                        <h6>Question 2. Choose a sentence from the <span class="concept_c">DM</span> text that you think is the most important one serving the purpose of prompting the <span class="concept_a">player</span> to perform some actions.</h6>
+
+                        The correct answer is
+                        <button type="button" class="btn btn-secondary btn-sm btm-info one-background">5</button>, because this sentence indirectly hints at the fact that there is something intriguing about the corridor.
+                    </div>
+
+                    <div class="panel">
+                        <h6>Question 3. Choose the most likely action (ability check) that would be taken by the player after seeing DM's words:</h6>
+                        <ul><strong>Action1:</strong> sleight of hand</ul>
+                        <ul><strong>Action2:</strong> religion</ul>
+                        <ul><strong>Action3:</strong> perception</ul>
+                        <ul><strong>Action4:</strong> survival</ul>
+                        <ul><strong>Action5:</strong> dexterity</ul>
+
+                        The correct answer is
+                        <button type="button" class="btn btn-secondary btn-sm btm-info one-background">Action 3: perception</button>, because the the <span class="concept_c">DM</span> seems to want the <span class="concept_a">player</span> (Thaunix) to spend more time examing the corridor.
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <br>
+            <div style="border: 0px solid #000; padding: 10px 20px 10px 20px;">
+                <h5>Example 3:</h5>
+                <span class="concept_c">Dungeon Master:</span> <b>1. DM note: I'll assume you have short rested and let you pick up from there
+            </b><br>
+            <p></p>
+                <span class="concept_a">Player:</span> <b> Leo</b><br>
+
+            </div>
+
+            <div id="mainExample-1" class="question">
+                <div class="question-header question-choice-container pl-5 mb-2 pt-2 pb-2 border-bottom">
+                    <div class="panel">
+                        <h6>Question 1. What kind of <span class="bg-primary text-white">guidance</span> is the <span class="concept_c">DM</span> trying to provide to the <span class="concept_a">player</span> to prompt/motivate them perform some actions?</h6>
+
+                        The correct answer is
+                        <span class="bg-danger text-white">No Guidance</span>, because this <span class="concept_c">DM</span> text is out-of-character (OOC) and just describing the current game state without providing any guidance to players.
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div style="border: 0px solid #000; padding: 10px 20px 10px 20px;">
+                <h5>Example 4:</h5>
+                <span class="concept_c">Dungeon Master:</span> <b>1. What do you guys want to do? 2. And roll for initiative, please.  3. Gremryl - Roll mean Intimidation check but roll me an Initiative check first. 4. Morgana? Initiative roll, please.
+            </b><br>
+            <p></p>
+                <span class="concept_a">Player:</span> <b> Mikey</b><br>
+
+            </div>
+
+            <div id="mainExample-1" class="question">
+                <div class="question-header question-choice-container pl-5 mb-2 pt-2 pb-2 border-bottom">
+                    <div class="panel">
+                        <h6>Question 1. What kind of <span class="bg-primary text-white">guidance</span> is the <span class="concept_c">DM</span> trying to provide to the <span class="concept_a">player</span> to prompt/motivate them perform some actions?</h6>
+
+                        The correct answer is
+                        <span class="bg-danger text-white">No Guidance</span>, because although the <span class="concept_c">DM</span> is asking directly for initiatives and intimidation check, the former is not considered as an ability/skill check and the latter was addressed to another player Gremryl, not our target <span class="concept_c">player</span> Mikey.
+                    </div>
+                </div>
+            </div>
+            <br>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel" style="border: 0px solid #000;  font-size: 18; padding: 10px 20px 10px 20px;">
+        <!-- <h6>
+        </h6> -->
+        ${DM_Text}
+        <p></p>
+        ${Player_Name}
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="row">
+    <div class="col-lg-6">
+      <div class="panel">
+        <h6><i>Advice A</i></h6>
+
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="panel">
+        <h6><i>Advice B</i></h6>
+
+      </div>
+    </div>
+  </div> -->
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel" style="font-size: 18;">
+        <h5>Question 1. What kind of <span class="bg-primary text-white">guidance</span> is the <span class="concept_c">DM</span> trying to provide to the <span class="concept_a">player</span> to prompt/motivate them perform some actions?</h5>
+        <div style="text-align: center;">
+          <div class="form-check-inline">
+            <label class="btn btn-primary btn-sm form-check-label">
+              <input type="radio" class="form-check-input" name="q1" required="" value="direct_G" id="q1-dg">Direct Guidance
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="btn btn-info btn-sm form-check-label">
+              <input type="radio" class="form-check-input" name="q1" required="" value="indirect_G" id="q1-ig">Indirect Guidance
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="btn btn-danger btn-sm form-check-label">
+              <input type="radio" class="form-check-input" name="q1" required="" value="no_G" id="q1-ng">No Guidance
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="panel" >
+        <h5 id="ques3name">Question 2. Please answer Question 1 first. If you choose <span class="bg-danger text-white">No Guidance</span>, you can put any number in the text box.</h5>
+        <div id="ques3row" class="form-row">
+            <!-- <div id="question-2" class="question guidance_exists">
+                <div class="question-header question-choice-container pl-5 mb-2 pt-2 pb-2"> -->
+                    <div class="row row-12 pl-3 pt-2" style="font-size: 18;">
+                        <strong>Choose a sentence (write down the sentence index such as 2) from the <span class="concept_c">DM</span> text that you think is the most important one serving the purpose of prompting the <span class="concept_a">player</span> to perform some actions:</strong>
+                    </div>
+
+                    <div class="row-12 pt-1 btn-group-container col-5">
+                        <textarea name="sent_index_1" placeholder="Write a single number (e.g. 1 or 3)" required ></textarea>
+                    <!-- </div>
+                </div>  -->
+            </div>
+
+        </div>
+      </div>
+
+      <!--<p id="divider">The following questions are about the worse advice (please answer Question 1 first).</p>-->
+      <!-- <div class="panel">
+        <h6 id="ques2name">2. How helpful is the worse advice to the question-asker?</h6>
+        <div class="form-row">
+          <div class="form-check col-lg-4">
+            <label class="btn btn-success btn-sm btn-block form-check-label">
+              <input type="radio" class="form-check-input" name="q1" required="" value="helpful" id="q1-helpful"><span
+                id="q1-helpful-s">Slightly helpful: The advice is OK - it makes sense given the question-asker's situation, but it's not as helpful as the better piece of advice.</span>
+            </label>
+          </div>
+          <div class="form-check col-lg-4">
+            <label class="btn btn-warning btn-sm btn-block form-check-label">
+              <input type="radio" class="form-check-input" name="q1" required="" value="nothelpful"
+                     id="q1-nothelpful"><span id="q1-nothelpful-s">Not helpful: This advice gets details of the question-asker's situation wrong, or it is incomprehensible, off-topic, or otherwise not helpful.</span>
+            </label>
+          </div>
+          <div class="form-check col-lg-4">
+            <label class="btn btn-danger btn-sm btn-block form-check-label">
+              <input type="radio" class="form-check-input" name="q1" required="" value="dangerous"
+                     id="q1-dangerous"><span id="q1-dangerous-s">Dangerous: This advice is on-topic and comprehensible, but it would likely make the advice-giver's situation worse if followed or considered.</span>
+            </label>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="panel">
+        <h5 id="ques3name">Question 3. Please answer Question 1 and 2 first. If you choose <span class="bg-danger text-white">No Guidance</span> in Question 1, you can choose any option.</h5>
+        <div id="ques3row" class="form-row">
+          <div class="form-check col-lg-6 guidance_exists" style="font-size: 18;">
+              <ul><strong>Action1:</strong> ${Action1}</ul>
+              <ul><strong>Action2:</strong> ${Action2}</ul>
+              <ul><strong>Action3:</strong> ${Action3}</ul>
+              <ul><strong>Action4:</strong> ${Action4}</ul>
+              <ul><strong>Action5:</strong> ${Action5}</ul>
+
+            <!-- <p></p> -->
+          </div>
+
+          <div class="row row-12 pl-3 pt-2" style="font-size: 18;">
+            <strong> Imagine that you are this <span class="concept_a">player</span>, choose the most likely action that they will take after DM said this, from 5 given option candidates above: </strong>
+        </div>
+
+          <div class="row-12 pt-1 btn-group-container col-5">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary btn-sm" for="-1">
+                    <input class="required" type="radio" name="q3" id="q3_1" autocomplete="off" value="1" required>Action1
+                </label>
+                <label class="btn btn-secondary btn-sm" for="0">
+                    <input class="required" type="radio" name="q3" id="q3_2" autocomplete="off" value="2" required>Action2
+                </label>
+                <label class="btn btn-secondary btn-sm" for="1">
+                    <input class="required" type="radio" name="q3" id="q3_3" autocomplete="off" value="3" required>Action3
+                </label>
+                <label class="btn btn-secondary btn-sm" for="-9">
+                    <input class="required" type="radio" name="q3" id="q3_4" autocomplete="off" value="4" required>Action4
+                </label>
+                <label class="btn btn-secondary btn-sm" for="-9">
+                    <input class="required" type="radio" name="q3" id="q3_5" autocomplete="off" value="5" required>Action5
+                </label>
+            </div>
+        </div>
+          <!-- <div class="form-check col-lg-6 guidance_exists">
+            <label class="btn btn-contradiction btn-sm btn-block form-check-label">
+              <input type="radio" class="form-check-input" name="q2" required="" value="contradiction"><span
+                id="q2-contradiction-s"><b>Never helpful</b></span>
+            </label>
+          </div>
+
+          <div class="form-check col-lg-6 q3-helpful">
+            <label class="btn btn-writing btn-sm btn-block form-check-label">
+              <input type="radio" class="form-check-input" name="q2" required="" value="writing"><span
+                id="q2-writing-s"><b>Yes - the primary problem is writing.</b><br>The fundamental meaning of the advice is reasonable. It might be improved by being more empathetic or adding specific details. Or, it might be overly long. A slightly rewritten version could be as helpful as the better advice.</span>
+            </label>
+          </div>
+          <div class="form-check col-lg-6 q3-helpful">
+            <label class="btn btn-meaning btn-sm btn-block form-check-label">
+              <input type="radio" class="form-check-input" name="q2" required="" value="meaning"><span
+                id="q2-meaning-s"><b>No - the problem is the meaning.</b><br> While rewriting might help, the fundamental problem is the meaning.</span>
+            </label>
+          </div> -->
+
+        </div>
+      </div>
+
+      <!-- OPTIONAL FEEDBACK -->
+      <div class="row mt-5">
+        <div class="col-8 offset-2 col-lg-6 offset-lg-3">
+            <p>(Optional) Please let us know if anything was unclear, if you experienced any issues, or if you have any other feedback for us.</p>
+            <textarea id="feedback" name="feedback" rows=3></textarea>
+        </div>
+    </div>
+
+    <!-- SUBMIT BUTTON -->
+    <div class="row mt-5">
+        <div class="col-2 offset-5">
+            <input id="submitButton" onclick="getnext()" type="submit" value="Submit">
+        </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+      integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+<style type="text/css">
+
+  .form-check > .form-check-label {
+    white-space: normal;
+  }
+
+  label > br {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+
+  ul > li {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .form-check > .btn-block {
+    white-space: normal;
+    border: 1px solid #88aab8;
+  }
+
+  .btn-block > .form-check-input {
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+  }
+
+  .exbuttons > li {
+    border: 1px solid darkslategray;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin: 0.5rem;
+  }
+
+  .questionrowex {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  .answerrowex {
+    margin: 1rem;
+    padding: 1rem;
+    background-color: whitesmoke;
+  }
+
+  .answerrowex > .panel {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .answerrowex > .panel > p {
+    margin-top: 1rem;
+    margin-bottom: 0rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    font-style: italic;
+  }
+
+
+  .card-body > .row {
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+
+  #divider {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+    font-style: italic;
+  }
+
+
+  .panel {
+    padding: 10px;
+    margin-bottom: 3px;
+    margin-top: 5px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    font-size: 11pt;
+  }
+
+  .card-body > hr {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .panel > p {
+    margin-bottom: 0.5rem;
+  }
+
+  .emph {
+    background-color: #c3e6cb;
+    color: #000;
+    font-weight: bold;
+  }
+
+  .row {
+    margin-right: -5px;
+    margin-left: -5px;
+  }
+
+  .card-header {
+    padding: .25rem .5rem;
+  }
+
+  .card {
+    margin-bottom: 3px;
+  }
+
+  .card-body {
+    padding-top: .75rem;
+    padding-bottom: 0;
+  }
+
+  .concept_a {
+            color: #0072B2;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .concept_b {
+            color: #D55E00;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .concept_c {
+            color: #aa00d5;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .concept_d {
+            color: #008d4b;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+  .smalltxt {
+    font-size: .6rem;
+  }
+
+  .form-check {
+    padding-left: 0;
+    font-size: 0.75rem;
+  }
+
+  .form-check-input {
+    margin-left: 0;
+    position: relative;
+  }
+
+  .btn-sm {
+    border-radius: .2rem;
+    padding: 0.1rem 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .container {
+    padding: 0;
+  }
+
+  blockquote {
+    background: #f9f9f9;
+    border-left: 4px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+  }
+
+  blockquote p {
+    display: inline;
+  }
+
+  /* ----
+  from matplotlib import colors
+  import numpy as np
+  def make_highlight(color='#d0e37f'):
+      ref_color=np.array(colors.hex2color('#28a745'))
+      ref_hover=np.array(colors.hex2color('#218838'))
+      ref_color_logit = np.log(ref_color/(1.-ref_color))
+      ref_hover_logit = np.log(ref_hover/(1.-ref_hover))
+      our_color=np.array(colors.hex2color(color))
+      our_logit = np.log(our_color/(1.-our_color))
+      new_logit = our_logit + (ref_hover_logit-ref_color_logit)
+      new_rgb = 1./(1. + np.exp(-new_logit))
+      return colors.rgb2hex(new_rgb)
+  */
+
+  .btn-ok {
+    color: #040405;
+    background-color: #d0e37f;
+    border-color: #d0e37f;
+  }
+
+  .btn-ok:hover {
+    background-color: #c7d46e;
+  }
+
+  .span-ok {
+    background-color: #d0e37f;
+  }
+
+  .btn-neutral {
+    color: #040405;
+    background-color: #eac666;
+    border-color: #eac666;
+  }
+
+  .btn-neutral:hover {
+    background-color: #e5ad56;
+  }
+
+  .btn-writing {
+    color: #040405;
+    background-color: #22c197;
+    border-color: #22c197;
+  }
+
+  .btn-writing:hover {
+    background-color: #1ca686;
+  }
+
+  .btn-meaning {
+    color: #040405;
+    background-color: #4bb766;
+    border-color: #4bb766;
+  }
+
+  .btn-meaning:hover {
+    background-color: #409a56;
+  }
+
+  .span-neutral {
+    background-color: #eac666;
+  }
+
+  .btn-contradiction {
+    color: #040405;
+    background-color: #eb6a43;
+    border-color: #eb6a43;
+  }
+
+  .span-contradiction {
+    background-color: #eb6a43;
+  }
+
+  .btn-contradiction:hover {
+    background-color: #e64c36;
+  }
+
+  .span-descriptive {
+    background-color: #e1e8da;
+  }
+
+  .span-normative {
+    background-color: #e6c0e9;
+  }
+        .negOne-background {background-color:#c20000;}
+        .negTwo-background {background-color:rgb(136, 0, 0);}
+        .zero-background {background-color:#cfe9e9;}
+        .one-background {background-color:#047D5C;}
+        .negNine-background {background-color:rgb(73, 73, 73);}
+
+</style>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"
+        integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/654301f263.js" crossorigin="anonymous"></script>
+
+<script>
+    (function () {
+        var e, t;
+        e = this, t = function () {
+            var r = {
+                startStopTimes: {},
+                idleTimeoutMs: 3e4,
+                currentIdleTimeMs: 0,
+                checkStateRateMs: 250,
+                active: !1,
+                idle: !1,
+                currentPageName: "default-page-name",
+                timeElapsedCallbacks: [],
+                userLeftCallbacks: [],
+                userReturnCallbacks: [],
+                trackTimeOnElement: function (e) {
+                    var t = document.getElementById(e);
+                    t && (t.addEventListener("mouseover", function () {
+                        r.startTimer(e)
+                    }), t.addEventListener("mousemove", function () {
+                        r.startTimer(e)
+                    }), t.addEventListener("mouseleave", function () {
+                        r.stopTimer(e)
+                    }), t.addEventListener("keypress", function () {
+                        r.startTimer(e)
+                    }), t.addEventListener("focus", function () {
+                        r.startTimer(e)
+                    }))
+                },
+                getTimeOnElementInSeconds: function (e) {
+                    var t = r.getTimeOnPageInSeconds(e);
+                    return t || 0
+                },
+                startTimer: function (e, t) {
+                    if (e || (e = r.currentPageName), void 0 === r.startStopTimes[e]) r.startStopTimes[e] = []; else {
+                        var n = r.startStopTimes[e], i = n[n.length - 1];
+                        if (void 0 !== i && void 0 === i.stopTime) return
+                    }
+                    r.startStopTimes[e].push({startTime: t || new Date, stopTime: void 0}), r.active = !0, r.idle = !1
+                },
+                stopAllTimers: function () {
+                    for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++) r.stopTimer(e[t])
+                },
+                stopTimer: function (e, t) {
+                    e || (e = r.currentPageName);
+                    var n = r.startStopTimes[e];
+                    void 0 !== n && 0 !== n.length && (void 0 === n[n.length - 1].stopTime && (n[n.length - 1].stopTime = t || new Date), r.active = !1)
+                },
+                getTimeOnCurrentPageInSeconds: function () {
+                    return r.getTimeOnPageInSeconds(r.currentPageName)
+                },
+                getTimeOnPageInSeconds: function (e) {
+                    var t = r.getTimeOnPageInMilliseconds(e);
+                    return void 0 === t ? void 0 : t / 1e3
+                },
+                getTimeOnCurrentPageInMilliseconds: function () {
+                    return r.getTimeOnPageInMilliseconds(r.currentPageName)
+                },
+                getTimeOnPageInMilliseconds: function (e) {
+                    var t = r.startStopTimes[e];
+                    if (void 0 !== t) {
+                        for (var n = 0, i = 0; i < t.length; i++) {
+                            var s = t[i].startTime, o = t[i].stopTime;
+                            void 0 === o && (o = new Date), n += o - s
+                        }
+                        return Number(n)
+                    }
+                },
+                getTimeOnAllPagesInSeconds: function () {
+                    for (var e = [], t = Object.keys(r.startStopTimes), n = 0; n < t.length; n++) {
+                        var i = t[n], s = r.getTimeOnPageInSeconds(i);
+                        e.push({pageName: i, timeOnPage: s})
+                    }
+                    return e
+                },
+                setIdleDurationInSeconds: function (e) {
+                    var t = parseFloat(e);
+                    if (!1 !== isNaN(t)) throw{
+                        name: "InvalidDurationException",
+                        message: "An invalid duration time (" + e + ") was provided."
+                    };
+                    return r.idleTimeoutMs = 1e3 * e, this
+                },
+                setCurrentPageName: function (e) {
+                    return r.currentPageName = e, this
+                },
+                resetRecordedPageTime: function (e) {
+                    delete r.startStopTimes[e]
+                },
+                resetAllRecordedPageTimes: function () {
+                    for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++) r.resetRecordedPageTime(e[t])
+                },
+                resetIdleCountdown: function () {
+                    r.idle && r.triggerUserHasReturned(), r.idle = !1, r.currentIdleTimeMs = 0
+                },
+                callWhenUserLeaves: function (e, t) {
+                    this.userLeftCallbacks.push({callback: e, numberOfTimesToInvoke: t})
+                },
+                callWhenUserReturns: function (e, t) {
+                    this.userReturnCallbacks.push({callback: e, numberOfTimesToInvoke: t})
+                },
+                triggerUserHasReturned: function () {
+                    if (!r.active) for (var e = 0; e < this.userReturnCallbacks.length; e++) {
+                        var t = this.userReturnCallbacks[e], n = t.numberOfTimesToInvoke;
+                        (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback())
+                    }
+                    r.startTimer()
+                },
+                triggerUserHasLeftPage: function () {
+                    if (r.active) for (var e = 0; e < this.userLeftCallbacks.length; e++) {
+                        var t = this.userLeftCallbacks[e], n = t.numberOfTimesToInvoke;
+                        (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback())
+                    }
+                    r.stopAllTimers()
+                },
+                callAfterTimeElapsedInSeconds: function (e, t) {
+                    r.timeElapsedCallbacks.push({timeInSeconds: e, callback: t, pending: !0})
+                },
+                checkState: function () {
+                    for (var e = 0; e < r.timeElapsedCallbacks.length; e++) r.timeElapsedCallbacks[e].pending && r.getTimeOnCurrentPageInSeconds() > r.timeElapsedCallbacks[e].timeInSeconds && (r.timeElapsedCallbacks[e].callback(), r.timeElapsedCallbacks[e].pending = !1);
+                    !1 === r.idle && r.currentIdleTimeMs > r.idleTimeoutMs ? (r.idle = !0, r.triggerUserHasLeftPage()) : r.currentIdleTimeMs += r.checkStateRateMs
+                },
+                visibilityChangeEventName: void 0,
+                hiddenPropName: void 0,
+                listenForVisibilityEvents: function () {
+                    void 0 !== document.hidden ? (r.hiddenPropName = "hidden", r.visibilityChangeEventName = "visibilitychange") : void 0 !== document.mozHidden ? (r.hiddenPropName = "mozHidden", r.visibilityChangeEventName = "mozvisibilitychange") : void 0 !== document.msHidden ? (r.hiddenPropName = "msHidden", r.visibilityChangeEventName = "msvisibilitychange") : void 0 !== document.webkitHidden && (r.hiddenPropName = "webkitHidden", r.visibilityChangeEventName = "webkitvisibilitychange"), document.addEventListener(r.visibilityChangeEventName, function () {
+                        document[r.hiddenPropName] ? r.triggerUserHasLeftPage() : r.triggerUserHasReturned()
+                    }, !1), window.addEventListener("blur", function () {
+                        r.triggerUserHasLeftPage()
+                    }), window.addEventListener("focus", function () {
+                        r.triggerUserHasReturned()
+                    }), document.addEventListener("mousemove", function () {
+                        r.resetIdleCountdown()
+                    }), document.addEventListener("keyup", function () {
+                        r.resetIdleCountdown()
+                    }), document.addEventListener("touchstart", function () {
+                        r.resetIdleCountdown()
+                    }), window.addEventListener("scroll", function () {
+                        r.resetIdleCountdown()
+                    }), setInterval(function () {
+                        r.checkState()
+                    }, r.checkStateRateMs)
+                },
+                websocket: void 0,
+                websocketHost: void 0,
+                setUpWebsocket: function (e) {
+                    if (window.WebSocket && e) {
+                        var t = e.websocketHost;
+                        try {
+                            r.websocket = new WebSocket(t), window.onbeforeunload = function () {
+                                r.sendCurrentTime(e.appId)
+                            }, r.websocket.onopen = function () {
+                                r.sendInitWsRequest(e.appId)
+                            }, r.websocket.onerror = function (e) {
+                                console && console.log("Error occurred in websocket connection: " + e)
+                            }, r.websocket.onmessage = function (e) {
+                                console && console.log(e.data)
+                            }
+                        } catch (e) {
+                            console && console.error("Failed to connect to websocket host.  Error:" + e)
+                        }
+                    }
+                    return this
+                },
+                websocketSend: function (e) {
+                    r.websocket.send(JSON.stringify(e))
+                },
+                sendCurrentTime: function (e) {
+                    var t = {
+                        type: "INSERT_TIME",
+                        appId: e,
+                        timeOnPageMs: r.getTimeOnCurrentPageInMilliseconds(),
+                        pageName: r.currentPageName
+                    };
+                    r.websocketSend(t)
+                },
+                sendInitWsRequest: function (e) {
+                    var t = {type: "INIT", appId: e};
+                    r.websocketSend(t)
+                },
+                initialize: function (e) {
+                    var t = r.idleTimeoutMs || 30, n = r.currentPageName || "default-page-name", i = void 0, s = void 0;
+                    e && (t = e.idleTimeoutInSeconds || t, n = e.currentPageName || n, i = e.websocketOptions, s = e.initialStartTime), r.setIdleDurationInSeconds(t).setCurrentPageName(n).setUpWebsocket(i).listenForVisibilityEvents(), r.startTimer(void 0, s)
+                }
+            };
+            return r
+        }, "undefined" != typeof module && module.exports ? module.exports = t() : "function" == typeof define && define.amd ? define([], function () {
+            return e.TimeMe = t()
+        }) : e.TimeMe = t()
+    }).call(this);
+
+    TimeMe.initialize({
+        currentPageName: "task",
+        idleTimeoutInSeconds: 30
+    });
+</script>
+

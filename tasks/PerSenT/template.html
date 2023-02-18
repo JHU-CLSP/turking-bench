@@ -1,0 +1,207 @@
+<!-- HIT template: Sentiment-v3.0 --><!-- The following snippet enables the 'responsive' behavior on smaller screens -->
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<section class="container" id="Sentiment"><!-- Instructions (collapsible) -->
+<div class="row">
+<div class="col-xs-12 col-md-12">
+<div class="panel panel-primary"><!-- WARNING: the ids "collapseTrigger" and "instructionBody" are being used to enable expand/collapse feature --><a class="panel-heading" href="javascript:void(0);" id="collapseTrigger"><strong>Sentiment Analysis Instructions</strong> <span class="collapse-text">(Click to expand)</span></a>
+<div class="panel-body" id="instructionBody">
+
+
+<p><strong>Task Definition:</strong></p>
+
+<p>Please determine the sentiment towards <span style="font-family:arial,helvetica,sans-serif;"><span style="font-weight: 700;"><span style="color: rgb(255, 0, 0);">${entity}</span></span></span> in the following document. There are three levels of input you should submit. The paragraph level sentiment in which you determine each paragraph's view towards <span style="font-family:arial,helvetica,sans-serif;"><span style="font-weight: 700;"><span style="color: rgb(255, 0, 0);">${entity}</span></span></span>, the document level sentiment where you determine the whole document's view towards <span style="font-family:arial,helvetica,sans-serif;"><span style="font-weight: 700;"><span style="color: rgb(255, 0, 0);">${entity}</span></span></span>, and entity relevance where you determine whether <span style="font-family:arial,helvetica,sans-serif;"><span style="font-weight: 700;"><span style="color: rgb(255, 0, 0);">${entity}</span></span></span> is the dominate entity in the document based on the paragraphs provided here. Three different levels of input are as follow:</p>
+
+<ul>
+	<li>Paragraph level sentiment: for each paragraph, specify the sentiment towards <span style=""><span style="color: rgb(255, 0, 0);">${entity}</span></span>. You may submit 10-15&nbsp;paragraphs in this level. Please select the best sentiment for each paragraph based on the paragraph alone.</li>
+	<li>Document level sentiment: After choosing the paragraph level sentiments, you see the document level sentiment question. Here choose the best sentiment towards <span style=""><span style="color: rgb(255, 0, 0);">${entity}</span></span> based on the provided paragraphs.</li>
+	<li>Entity relevance: The last question is asking about the main entity of the document. Based on the paragraphs provided, determine whether <span style=""><span style="color: rgb(255, 0, 0);">${entity}</span></span> is the main entity which author is writing about or not.</li>
+</ul>
+<strong>Pick the best sentiment based on the following criteria:</strong>
+
+<table class="table table-condensed table-striped table-responsive">
+	<tbody>
+	</tbody>
+	<colgroup>
+		<col class="col-xs-2 col-md-2" />
+		<col class="col-xs-10 col-md-10" />
+	</colgroup>
+	<!-- By explaining the sentiment scale, the accuracy of the answers may increase. -->
+	<tbody>
+		<tr>
+			<th>Sentiment</th>
+			<th>Guidance</th>
+		</tr>
+		<tr>
+			<td>Positive</td>
+			<td>
+			<p>Select this if the article expresses a positive view towards <span style="font-family:arial,helvetica,sans-serif;"><span style="font-weight: 700;"><span style="color: rgb(255, 0, 0);">${entity}</span></span></span>.</p>
+
+			<p>An example of a positive statement about Bill Clinton is: <em>Bill Clinton knows how to win friends and influence people. The former president is a master of reinvention &mdash; and the same talents that guided him into office have propelled him, more recently, into the stratosphere of Internet stardom.</em></p>
+			</td>
+		</tr>
+		<tr>
+			<td>Slightly Positive</td>
+			<td>
+			<p>Select this if the article expresses a slightly positive view towards <span style="font-family:arial,helvetica,sans-serif;"><span style="font-weight: 700;"><span style="color: rgb(255, 0, 0);">${entity}</span></span></span></p>
+
+			<p>An example of a slightly positive statement about Bill Clinton is: <em>Sure, Bill Clinton is by no means a perfect man, he&rsquo;d be the first to admit that. But he stands as among the most influential politicians.</em></p>
+			</td>
+		</tr>
+		<tr>
+			<td>Neutral</td>
+			<td>
+			<p>Select this if the article expresses no clear view towards <span style="font-family:arial,helvetica,sans-serif;"><span style="font-weight: 700;"><span style="color: rgb(255, 0, 0);">${entity}</span></span></span> OR has equal amounts of positive and negative statements.</p>
+
+			<p>An example of a neutral statement about Bill Clinton is: <em>Former president Bill Clinton is scheduled to visit Sollers Point Library in Dundalk on Monday during a trip to Baltimore.&nbsp;</em></p>
+			</td>
+		</tr>
+		<tr>
+			<td>Slightly Negative</td>
+			<td>
+			<p>Select this if the article expresses a slightly negative view towards <span style="font-family:arial,helvetica,sans-serif;"><span style="font-weight: 700;"><span style="color: rgb(255, 0, 0);">${entity}</span></span></span>.</p>
+
+			<p>An example of a slightly negative statement about Bill Clinton is:<em>Although Bill Clinton is popular among Democrats who view him as a gifted speech maker and crowd pleaser, he has veered from the carefully calibrated message put out by Hillary&rsquo;s campaign, causing problems for her representatives.</em></p>
+			</td>
+		</tr>
+		<tr>
+			<td>Negative</td>
+			<td>
+			<p>Select this if the article expresses a negative view towards <span style="font-family:arial,helvetica,sans-serif;"><span style="font-weight: 700;"><span style="color: rgb(255, 0, 0);">${entity}</span></span></span> .</p>
+
+			<p>An example of a negative statement about Bill Clinton is: <em>But the bill that President Clinton signed is not welfare reform. It does not promote work effectively, and it will hurt millions of poor children by the time it is fully implemented. What&rsquo;s more, it bars hundreds of thousands of legal immigrants&mdash;including many who have worked in the United States for decades and paid a considerable amount in Social Security and income taxes&mdash;from receiving disability and old-age assistance and food stamps, and reduces food-stamp assistance for millions of children in working families.</em></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><strong>Considerations:</strong></p>
+
+<p>When determining the lables for the paragraphs, be careful about the difference between&nbsp;<em>facts&nbsp;</em>and&nbsp;<em>sentiments</em>. If someone just stating the negative/positive facts about the entity the paragraph might not be negative/positive. If someone is using the facts to express an opinion towards the entity, probably that paragraph is negative/positive. Followings are two examples of such situations:</p>
+
+<ul>
+	<li>
+	<p>An example of a negative fact towards Bill Clinton which is not supported by the author so the paragraph will be neutral:&nbsp;<em>Journalist Jen Moore died under suspicious circumstances after contacting both the DHS and the FBI with allegations that former President Bill Clinton committed sexual assault.</em></p>
+	</li>
+	<li>
+	<p>An example of a negative fact about Bill Clinton which is used by the author to express negative opinion hence&nbsp;makes the paragraph negative: <em> In the movie Ocean&rsquo;s Eleven, there&rsquo;s a great scene where Julia Roberts&rsquo; character accuses her ex-husband, played by George Clooney, of being a thief and a liar. He retorts, &ldquo;I only lied about being a thief.&rdquo; Even if Bill Clinton only lied about sex, it was the lie (more than the sex) that did him in.</em></p>
+	</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p><strong>Tips about Quotes</strong></p>
+Be careful when dealing with quotes. If an article simply quotes someone talking negative about <span style="font-weight: 700;"><span style="color: rgb(255, 0, 0);">${entity}</span></span>, that does not mean the article is negative towards <span style="color: rgb(255, 0, 0); font-weight: bold;">${entity}</span>, in this case it would be neutral.&nbsp;If however the article cherry-picks quotes or uses quotes strategically&nbsp;to support its view then this would not be neutral. Here are some examples about different quotes:
+
+<ul>
+	<li>An example of a negative quote which is used by the author to support the negative view towards Obama: <em>Congress must act because President Obama has been completely feckless in his entire approach to Cuba. He received nothing in exchange for many substantial concessions made to the Communist regime. After five years of &ldquo;negotiations&rdquo; President Obama ended exactly where Raul Castro&rsquo;s demands began five years ago. As Senator Marco Rubio said, President &ldquo;Obama is the worst negotiator since Carter.&rdquo;</em></li>
+	<li>An example of a negative quote which is not supported by the author hence makes the paragraph neutral towards Obama: <em>Republican critics say Obama is making too many concessions to Cuba for too little in return, especially on human rights issues. &ldquo;After two years of President Obama&rsquo;s Cuba policy, the Castro regime has made out like bandits,&rdquo; said U.S. Senator Marco Rubio, a Cuban-American lawmaker from Florida.</em></li>
+</ul>
+
+<p><strong>Other Tips</strong></p>
+
+<ul>
+	<li>If it is difficult to determine whether the article is positive/negative towards the person then it is probably neutral.</li>
+	<li>Remember you are only looking at the article's view towards&nbsp;<span style="color: rgb(255, 0, 0); font-weight: bold;">${entity}</span>, so you should ignore the article's view towards other people.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- End instructions --><!-- Categorization Layout -->
+
+<p><span style="font-weight: 700;">Read the article below and determine each paragraph's view and the whole article's view towards <span style="color: rgb(255, 0, 0);">${entity}&nbsp;</span>. At the end, determine whether the article is about <span style="color: rgb(255, 0, 0);">${entity}&nbsp;</span> or not.</span></p>
+
+<h2>${title}</h2>
+${content}
+
+<h4>Is this article about <span style="color:red;">${entity} </span> ?</h4>
+
+<div class="btn-group btn-group-justified" data-toggle="buttons">
+<p><label class="btn btn-default"><input name="entity_decision" type="radio" value="Yes" />Yes</label></p>
+
+<p><label class="btn btn-default"><input name="entity_decision" type="radio" value="No" />No</label></p>
+</div>
+</section>
+<!-- End Categorization Layout --><!-- Please note that Bootstrap CSS/JS and JQuery are 3rd party libraries that may update their url/code at any time. Amazon Mechanical Turk (MTurk) is including these libraries as a default option for you, but is not responsible for any changes to the external libraries --><!-- External CSS references -->
+<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet" /><!-- Open internal style sheet -->
+<style type="text/css">.button {
+color: white}
+#collapseTrigger{
+    color:#fff;
+    display: block;
+    text-decoration: none;
+  }
+  #submitButton{
+    white-space: normal;
+  }
+  #instructionBody table{
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  #instructionBody table caption{
+    text-align: left;
+    padding: 0 0 5px 0;
+  }
+  #Inputs{
+    display: block;
+    margin-top: 10px;
+  }
+#entity_question{
+text-indent: 10%;
+
+}
+
+  .content{
+    margin-bottom: 15px;
+  }
+  .radio:first-of-type{
+    margin-top: -5px;
+  }
+#article, .row_article {
+border: 1px solid black; 
+border-collapse: collapse; 
+}
+#article td {
+padding: 5px;
+}
+</style>
+<!-- Close internal style sheet --><!-- External JS references --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Open internal javascript --><script>
+    $(document).ready(function() {
+      // Instructions expand/collapse
+      var content = $('#instructionBody');
+      var trigger = $('#collapseTrigger');
+      content.hide();
+      $('.collapse-text').text('(Click to expand)');
+      trigger.click(function(){
+        content.toggle();
+        var isVisible = content.is(':visible');
+        if(isVisible){
+          $('.collapse-text').text('(Click to collapse)');
+        }else{
+          $('.collapse-text').text('(Click to expand)');
+        }
+      });
+      // end expand/collapse
+
+      // highlight selected category
+ var inputs = $("input[type='radio']");
+ 
+
+ inputs.change(function(){
+ if($(this).is(":checked")){
+ 
+$('input[type="radio"]:not(:checked)').parent().removeClass("btn-success");
+$('input[type="radio"]:not(:checked)').parent().addClass("btn-default");
+
+$('input[type="radio"]:checked').parent().removeClass("btn-default");
+$('input[type="radio"]:checked').parent().addClass("btn-success");
+ }
+
+ });
+      // end highlight
+      
+   
+ 
+
+    });
+  </script><!-- Close internal javascript -->

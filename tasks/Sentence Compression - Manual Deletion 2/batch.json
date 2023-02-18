@@ -1,0 +1,33 @@
+[
+    {
+        "Input.sentence_1":"This is an example sentence .",
+        "Input.sentence_2":"This is an example sentence .",
+        "Input.sentence_3":"This is an example sentence .",
+        "Input.sentence_4":"This is an example sentence .",
+        "Input.sentence_5":"This is an example sentence .",
+        "Input.sentence_6":"This is an example sentence .",
+        "Input.sentence_7":"This is an example sentence .",
+        "Input.sentence_8":"This is an example sentence .",
+        "Input.sentence_9":"This is an example sentence .",
+        "Input.sentence_10":"This is an example sentence .",
+        "Answer.browserInfo":"{}",
+        "Answer.city":"{}",
+        "Answer.comment":"no comments",
+        "Answer.country":"{}",
+        "Answer.deletion_mask_1":10000,
+        "Answer.deletion_mask_10":100010,
+        "Answer.deletion_mask_2":1000,
+        "Answer.deletion_mask_3":100,
+        "Answer.deletion_mask_4":10,
+        "Answer.deletion_mask_5":100000,
+        "Answer.deletion_mask_6":110000,
+        "Answer.deletion_mask_7":11000,
+        "Answer.deletion_mask_8":1100,
+        "Answer.deletion_mask_9":110,
+        "Answer.ipAddress":"{}",
+        "Answer.region":"{}",
+        "Answer.userDisplayLanguage":"{}",
+        "Approve":null,
+        "Reject":null
+    }
+]

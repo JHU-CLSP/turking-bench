@@ -1,0 +1,462 @@
+
+            <html lang="en">
+
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+                    <script type='text/javascript' src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script>
+
+                    <!-- BOOTSTRAP CSS -->
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+                    <!-- HITPUB CSS -->
+                    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
+                    <style id="hitpub_css">
+                        /***********************************************
+                        MOSAIC BOOSTRAP OVERWRITES
+                        ***********************************************/
+                        #hitinfo .card {
+                            border-radius: 0;
+                        }
+                         #hitinfo button.btn-link {
+                            color: #fff;
+                            text-decoration: none;
+                         }
+                        #hitinfo button.btn-link:hover {
+                            text-decoration: none;
+                        }
+                        #hit ul.question-choice {
+                            list-style-type: none;
+                        }
+
+                        /***********************************************
+                        MOSAIC GENERAL STYLING
+                        ***********************************************/
+                        body {
+                            font-family: "Open Sans", "Roboto", sans-serif;
+                            line-height: 1.25;
+                        }
+                        textarea#feedback {
+                            width: 100%
+                        }
+                        input#submitButton {
+                            margin: auto;
+                            display: block;
+                            background-color: #2172a4;
+                            color: #fff;
+                            font-size: 1.125rem;
+                            padding: .5rem 1rem;
+                            cursor: pointer;
+                            border-radius: 1rem;
+                        }
+                        input#submitButton:hover {
+                            background-color: #06486F;
+                        }
+
+                        input[type="radio"] {
+                            cursor: pointer;
+                        }
+
+                        div.goal-category {
+                            border-bottom: solid 1px #ccc;
+                            padding: 1rem 1rem;
+                        }
+
+                        li {
+                            margin:0.6em;
+                        }
+
+                        table {
+                            width: 80%;
+                            margin: 5px;
+                        }
+
+                        tr {
+                            border:1px solid #ccc;
+                        }
+
+                        th {
+                            width:20%;
+                            background-color:#fff;
+                            font-weight:normal;
+                            text-align: center;
+                            padding:0.5em;
+                        }
+
+
+                        td {
+                            padding-left:20px;
+                            padding-right:10px;
+                        }
+
+
+
+
+                        /***********************************************
+                        HIT CUSTOM GENERAL STYLING
+                        ***********************************************/
+                        div.card-header {
+                            background-color: #06486F;
+                        }
+                        div.card-header h5 {
+                            color: #fff !important;
+                        }
+
+                        .cannot {
+                            color:red;
+                            text-decoration:italic;
+                        }
+
+                        .wants-to {
+                            font-weight: bold;
+                            color: green;
+                        }
+
+                        .question-choice-container label.btn {
+                            background-color: #eee;
+                            border: none;
+                            margin-left: 0 !important;
+                            color: black;
+                        }
+
+                        .question-choice-container label.btn:hover {
+                            color: white;
+                        }
+
+                        .legend {
+                            margin-top: .33rem;
+                            font-weight: normal;
+                            padding-left: 40px;
+                        }
+                        .legend .label{
+                            font-style: italic;
+                        }
+
+                        .emphasize {
+                            font-weight: bold;
+                            color: black;
+                        }
+
+                        .btn-group-container {
+                            align:left;
+                            padding:0;
+                        }
+
+                        .example {
+                            pointer-events:none;
+                        }
+
+                        input.goal {
+                            border: none;
+                            background-color: inherit;
+                            border-bottom: solid 1px #ccc;
+                            padding: 2px;
+                            margin-top:0.5em;
+                        }
+
+                        .tooltip {
+                          font-size: 12px;
+                        }
+
+                        span.bad-reason {
+                            color: #cc0000;
+                        }
+
+                        .bad-reason::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                          color: #cc9999;
+                        }
+                        .bad-reason::-moz-placeholder { /* Firefox 19+ */
+                          color: #cc9999;
+                        }
+                        .bad-reason:-ms-input-placeholder { /* IE 10+ */
+                          color: #cc9999;
+                        }
+                        .bad-reason:-moz-placeholder { /* Firefox 18- */
+                          color: #cc9999;
+                        }
+                    </style>
+
+                    <!-- HIT START -->
+                   <div id="hit" class="container">
+
+                        <!-- ACCORDION START -->
+                        <div class="col-12 accordion" id="hitinfo">
+
+                            <!-- INSTRUCTIONS START -->
+                            <div class="card">
+                                <div class="card-header id="instructionsHeading">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#instructions" aria-expanded="true" aria-controls="instructions">
+                                            Instructions (click to expand/collapse)
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div class="collapse show" id="instructions" aria-labelledby="instructionsHeading" data-parent="#hitinfo">
+                                    <div class="card-body">
+                                        <div class="card-content">
+                                            <p>Thanks for participating in this HIT!
+                                            For this hit:</p>
+                                            <ul>
+                                            <li>we tell you what PersonX <span class="wants-to">wants to do</span> but <span class="cannot">can't</span>.</li>
+                                            <li>you tell us the <strong>reason</strong> <em>why</em>.</li>
+                                                <ul>
+                                                <li> The reason must be generally or completely <em>out of PersonX's control</em>.<br>
+                                                For example, PersonX can be prohibited by another event, by natural causes, or by unfavorable conditions.</li>
+                                                <li>Please respond in <strong>complete sentences</strong>.</li>
+                                                <li>Please make your responses <strong>certain</strong>:</li>
+                                                    <ul>
+                                                    <li>Instead of <span class="text-secondary">"PersonX <em>could be</em> sick."</span>, <br>
+                                                    consider <span class="text-primary">"PersonX is sick."</span></li>
+                                                    <li>Instead of <span class="text-secondary">"<em>Maybe,</em> the neighbors are being loud."</span>, <br>
+                                                    consider <span class="text-primary"> "The neighbors are being loud."</span></li>
+                                                    <li>Instead of <span class="text-secondary">"It <em>could be</em> snowing."</span>, <br>
+                                                    consider <span class="text-primary">"It is snowing"</span> or <span class="text-primary">"They are forcasting snow."</span></li>
+                                                    </ul>
+                                                </ul>
+                                                <li>Please, <strong>DO NOT</strong> use <em>death</em> as your reason!<br>
+                                                <span class="offset-1">Every goal PersonX may have will be hindered by PersonX's death.<br></span>
+                                                <span class="offset-1">Every goal PersonX may have with/for PersonY will be hindered by PersonY's death.<br></span>
+                                                Death does not make for a very compelling reason.</li>
+                                            </ul>
+                                            <br><p>Examples:</p>
+                                            <div id="row col-12 bb-1" class="question">
+                                                <div class="row mb-2 mt-4 col-12">
+                                                    <span class="col-1">1.</span>
+                                                    <span class="col-10">PersonX wants to <span class="wants-to">wants to sleep in</span> but <span class="cannot">can't</span>.</span>
+                                                </div>
+                                                <div class="col-12">
+                                                    <span  class="row offset-1 col-8"> Example Reason:</span>
+                                                    <input class="row offset-1 col-8 inline-blank" type="text" placeholder="The neighbors have been playing loud music since 6am." disabled>
+                                                    <span  class="row offset-1 col-8 pt-2"> Example Reason:</span>
+                                                    <input class="row offset-1 col-8 inline-blank" type="text" placeholder="PersonX's kids are being very loud in the living room." disabled>
+                                                    <span  class="row offset-1 col-8 pt-2"> Example Reason:</span>
+                                                    <input class="row offset-1 col-8 inline-blank" type="text" placeholder="PersonX has a terrible back pain." disabled>
+                                                    <span  class="row offset-1 col-8 pt-2"> Example Reason:</span>
+                                                    <input class="row offset-1 col-8 inline-blank" type="text" placeholder="A prank call wakes PersonX up at 7am." disabled>
+                                                </div>
+                                                <div class="row mb-2 mt-4 col-12">
+                                                    <span class="col-1">2.</span>
+                                                    <span class="col-10">PersonX wants to <span class="wants-to">fly to Florida for a vacation</span> but <span class="cannot">can't</span>.</span>
+                                                </div>
+                                                <div class="col-12">
+                                                    <span  class="row offset-1 col-8"> Example Reason:</span>
+                                                    <input class="row offset-1 col-8 inline-blank" type="text" placeholder="PersonX has no vacation time left." disabled>
+                                                    <span  class="row offset-1 col-8 pt-2"> Example Reason:</span>
+                                                    <input class="row offset-1 col-8 inline-blank" type="text" placeholder="A recent car accident put PersonX in the hospital." disabled>
+                                                    <span  class="row offset-1 col-8 pt-2"> Example Reason:</span>
+                                                    <input class="row offset-1 col-8 inline-blank" type="text" placeholder="There has been reports of a vicious flu in Florida." disabled>
+                                                    <span  class="row offset-1 col-8 pt-2"> Example Reason:</span>
+                                                    <input class="row offset-1 col-8 inline-blank" type="text" placeholder="There is a category 3 hurricane in the forecast for the vacation week." disabled>
+                                                    <span  class="row offset-1 col-8 pt-2 bad-reason">Bad Reason:</span>
+                                                    <input class="row offset-1 col-8 inline-blank bad-reason" type="text" placeholder="PersonX died." disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- INSTRUCTIONS END -->
+                        </div>
+                        <!-- ACCORDION END -->
+
+                        <!-- MTURK INPUT START -->
+                        <div class="col-12 mt-5 mb-1 border-top">
+                            <form name='mturk_form' method='post' id='mturk_form' action='https://www.mturk.com/mturk/externalSubmit'>
+                                <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+                                <!-- QUESTION MACRO START -->
+
+                                <!-- GOAL CATEGORY MACRO END -->
+
+                                <!-- GOAL CAT START -->
+
+                                <div id="row goal1 col-12 bb-1" class="question">
+                                    <div class="row mb-2 mt-4 col-12">
+                                        <span class="offset-1 col-1">1.</span>
+                                        <span class="col-10"><span class="text-secondary">PersonX wants to</span> <span class="wants-to">${goal1}</span> but <span class="cannot">can't</span>.</span>
+                                    </div>
+                                    <div class="row col-12 offset-2 mb-2 mt-1">
+                                        <input type="checkbox" name="goal1_impossible" class="pt-5"/>
+                                        <label class="text-info pl-3 align-top"  style="font-size:85%">There is no way that goals like this can't happen. - or -  This goal makes no sense!</label>
+                                        <div class="row col-11 mb-1 ml-4 mb-4" id="goal1_impossible_reason_div" style="display:none">
+                                            <input class="col-8 inline-blank mt-1" type="text" name="goal1_impossible_reason" id="goal1_impossible_reason" placeholder="Please tell us why.">
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="col-12" id="goal1_1-question-fields">
+                                        <span class="offset-2 col-3"> Reason 1:</span>
+                                        <input class="col-7 inline-blank" placeholder="[required]" type="text" name="goal1_distractor_1" id="goal1_distractor_1" required>
+                                    </div>
+
+
+                                    <div class="col-12" id="goal1_2-question-fields">
+                                        <span class="offset-2 col-3"> Reason 2:</span>
+                                        <input class="col-7 inline-blank" placeholder="[required]" type="text" name="goal1_distractor_2" id="goal1_distractor_2" required>
+                                    </div>
+
+
+                                    <div class="col-12" id="goal1_3-question-fields">
+                                        <span class="offset-2 col-3"> Reason 3:</span>
+                                        <input class="col-7 inline-blank" placeholder="[optional]" type="text" name="goal1_distractor_3" id="goal1_distractor_3" >
+                                    </div>
+
+
+                                    <div class="col-12" id="goal1_4-question-fields">
+                                        <span class="offset-2 col-3"> Reason 4:</span>
+                                        <input class="col-7 inline-blank" placeholder="[optional]" type="text" name="goal1_distractor_4" id="goal1_distractor_4" >
+                                    </div>
+
+                                </div>
+
+
+
+                                <div id="row goal2 col-12 bb-1" class="question">
+                                    <div class="row mb-2 mt-4 col-12">
+                                        <span class="offset-1 col-1">2.</span>
+                                        <span class="col-10"><span class="text-secondary">PersonX wants to</span> <span class="wants-to">${goal2}</span> but <span class="cannot">can't</span>.</span>
+                                    </div>
+                                    <div class="row col-12 offset-2 mb-2 mt-1">
+                                        <input type="checkbox" name="goal2_impossible" class="pt-5"/>
+                                        <label class="text-info pl-3 align-top"  style="font-size:85%">There is no way that goals like this can't happen. - or -  This goal makes no sense!</label>
+                                        <div class="row col-11 mb-1 ml-4 mb-4" id="goal2_impossible_reason_div" style="display:none">
+                                            <input class="col-8 inline-blank mt-1" type="text" name="goal2_impossible_reason" id="goal2_impossible_reason" placeholder="Please tell us why.">
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="col-12" id="goal2_1-question-fields">
+                                        <span class="offset-2 col-3"> Reason 1:</span>
+                                        <input class="col-7 inline-blank" placeholder="[required]" type="text" name="goal2_distractor_1" id="goal2_distractor_1" required>
+                                    </div>
+
+
+                                    <div class="col-12" id="goal2_2-question-fields">
+                                        <span class="offset-2 col-3"> Reason 2:</span>
+                                        <input class="col-7 inline-blank" placeholder="[required]" type="text" name="goal2_distractor_2" id="goal2_distractor_2" required>
+                                    </div>
+
+
+                                    <div class="col-12" id="goal2_3-question-fields">
+                                        <span class="offset-2 col-3"> Reason 3:</span>
+                                        <input class="col-7 inline-blank" placeholder="[optional]" type="text" name="goal2_distractor_3" id="goal2_distractor_3" >
+                                    </div>
+
+
+                                    <div class="col-12" id="goal2_4-question-fields">
+                                        <span class="offset-2 col-3"> Reason 4:</span>
+                                        <input class="col-7 inline-blank" placeholder="[optional]" type="text" name="goal2_distractor_4" id="goal2_distractor_4" >
+                                    </div>
+
+                                </div>
+
+
+
+                                <div id="row goal3 col-12 bb-1" class="question">
+                                    <div class="row mb-2 mt-4 col-12">
+                                        <span class="offset-1 col-1">3.</span>
+                                        <span class="col-10"><span class="text-secondary">PersonX wants to</span> <span class="wants-to">${goal3}</span> but <span class="cannot">can't</span>.</span>
+                                    </div>
+                                    <div class="row col-12 offset-2 mb-2 mt-1">
+                                        <input type="checkbox" name="goal3_impossible" class="pt-5"/>
+                                        <label class="text-info pl-3 align-top"  style="font-size:85%">There is no way that goals like this can't happen. - or -  This goal makes no sense!</label>
+                                        <div class="row col-11 mb-1 ml-4 mb-4" id="goal3_impossible_reason_div" style="display:none">
+                                            <input class="col-8 inline-blank mt-1" type="text" name="goal3_impossible_reason" id="goal3_impossible_reason" placeholder="Please tell us why.">
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="col-12" id="goal3_1-question-fields">
+                                        <span class="offset-2 col-3"> Reason 1:</span>
+                                        <input class="col-7 inline-blank" placeholder="[required]" type="text" name="goal3_distractor_1" id="goal3_distractor_1" required>
+                                    </div>
+
+
+                                    <div class="col-12" id="goal3_2-question-fields">
+                                        <span class="offset-2 col-3"> Reason 2:</span>
+                                        <input class="col-7 inline-blank" placeholder="[required]" type="text" name="goal3_distractor_2" id="goal3_distractor_2" required>
+                                    </div>
+
+
+                                    <div class="col-12" id="goal3_3-question-fields">
+                                        <span class="offset-2 col-3"> Reason 3:</span>
+                                        <input class="col-7 inline-blank" placeholder="[optional]" type="text" name="goal3_distractor_3" id="goal3_distractor_3" >
+                                    </div>
+
+
+                                    <div class="col-12" id="goal3_4-question-fields">
+                                        <span class="offset-2 col-3"> Reason 4:</span>
+                                        <input class="col-7 inline-blank" placeholder="[optional]" type="text" name="goal3_distractor_4" id="goal3_distractor_4" >
+                                    </div>
+
+                                </div>
+
+
+
+                                <!-- GOAL CAT END -->
+
+                                <!-- OPTIONAL FEEDBACK -->
+                                <div class="row mt-5">
+                                    <div class="col-8 offset-2 col-lg-6 offset-lg-3">
+                                        <p>(Optional) Please let us know if anything was unclear, if you experienced any issues, or if you have any other fedback for us.</p>
+                                        <textarea id="feedback" name="feedback" rows=3></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- SUBMIT BUTTON -->
+                                <div class="row mt-5">
+                                    <div class="col-2 offset-5">
+                                        <input id="submitButton" onclick="getnext()" type="submit" value="Submit">
+                                    </div>
+                                </div>
+
+                            </form>
+                            <script language='Javascript'>turkSetAssignmentID();</script>
+                        </div>
+                        <!-- MTURK INPUT END -->
+
+                    </div>
+		    <!-- HIT END -->
+
+                <!-- BOOSTRAP JS -->
+                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+                <!-- HITPUB JS -->
+                <script id="hitpub_js">
+                    $(document).ready(hide_show);
+
+                    function hide_show() {
+                        $('input[type=checkbox]').change( function() {
+                            goal = this.name.split("_")[0];
+                            if (this.checked) {
+                                console.log(this.checked);
+                                $("#"+goal+"_1-question-fields").hide();
+                                $("#"+goal+"_2-question-fields").hide();
+                                $("#"+goal+"_3-question-fields").hide();
+                                $("#"+goal+"_4-question-fields").hide();
+                                $("#"+goal+"_distractor_1").removeAttr('required');
+                                $("#"+goal+"_distractor_2").removeAttr('required');
+                                $("#"+goal+"_impossible_reason_div").show();
+                                $("#"+goal+"_impossible_reason").attr('required',true);
+                            } else {
+                                console.log(this.checked);
+                                $("#"+goal+"_1-question-fields").show();
+                                $("#"+goal+"_2-question-fields").show();
+                                $("#"+goal+"_3-question-fields").show();
+                                $("#"+goal+"_4-question-fields").show();
+                                $("#"+goal+"_distractor_1").attr('required',true);
+                                $("#"+goal+"_distractor_2").attr('required',true);
+                                $("#"+goal+"_impossible_reason_div").hide();
+                                $("#"+goal+"_impossible_reason").removeAttr();
+                            }
+                        });
+                    }
+
+
+
+
+                </script>

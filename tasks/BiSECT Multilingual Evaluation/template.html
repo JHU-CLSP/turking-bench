@@ -1,0 +1,280 @@
+<link href="https://code.jquery.com/ui/1.11.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css" /><script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src = "https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script><script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+<style type="text/css">.alert-info {
+    background-color: #dcecf4;
+    border-radius: 10px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    color: #28697a;
+    font-family: Helvetica;
+  }
+  .btn {
+    width: 60px;
+    height: 30px;
+    border-color: transparent;
+    border-radius: 7px;
+    border-style: solid;
+  }
+  .btn-example {
+    width: 150px;
+    height: 35px;
+    border-color: transparent;
+    border-radius: 7px;
+    border-style: solid;
+  }
+  .btn-primary {
+    background-color: #0777b8;
+    color: white;
+  }
+  .col-sm-12 {
+    border-left: 4px solid;
+    border-color: #cccccc;
+    font-family: Helvetica;
+    font-size: small;
+  }
+  .col-sm-11 {
+      border-left: 4px solid;
+      border-color: #cccccc;
+      color: #28697a;
+      font-family: Helvetica;
+      font-size: small;
+  }
+  .description {
+    color: gray;
+  }
+  .description-example {
+    border-left: 4px solid;
+    border-color: #ffffff;
+    color: #28697a;
+    font-family: Helvetica;
+  }
+  .tooltip {
+      position: relative;
+      display: inline-block;
+  }
+  .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 120px;
+      bottom: 100%;
+      left: 50%;
+      margin-left: -60px;
+      background-color: #d9e7fc;
+      color: black;
+      text-align: center;
+      padding: 5px 0;
+      border-radius: 6px;
+      position: absolute;
+      z-index: 1;
+  }
+  .tooltip:hover .tooltiptext {
+      visibility: visible;
+  }
+</style>
+<script>
+
+$(document).ready(function() {
+    $('input[name="start_timestamp"]').val(Date.now()/1000.0);
+    $('input[name="fluency-1"]').val(-1);
+    $('input[name="fluency-2"]').val(-1);
+    $('input[name="fluency-3"]').val(-1);
+    $('input[name="fluency-4"]').val(-1);
+	$('input[name="fluency-5"]').val(-1);
+});
+
+function add_end_timestamp()
+{
+    $('input[name="end_timestamp"]').val(Date.now()/1000.0);
+}
+
+function reset_form()
+{
+    $('input[name="start_timestamp"]').val(Date.now()/1000.0);
+    $('input[name="fluency-1"]').val(-1);
+    $('input[name="fluency-2"]').val(-1);
+    $('input[name="fluency-3"]').val(-1);
+    $('input[name="fluency-4"]').val(-1);
+	$('input[name="fluency-5"]').val(-1);
+}
+
+
+function validate_form()
+{
+    var score = 1;
+    score += $('input[name="fluency-1"]').val();
+    score += $('input[name="fluency-2"]').val();
+    score += $('input[name="fluency-3"]').val();
+    score += $('input[name="fluency-4"]').val();
+	score += $('input[name="fluency-5"]').val();
+    if (score.includes("-"))
+    {
+        alert('Please make sure to choose an option for all sentences. Thanks!');
+        return false;
+    }
+
+    return true;
+}
+
+function update_score_1()
+{
+    var new_score = $('input[name="S1"]:checked').val();
+    $('input[name="fluency-1"]').val(new_score);
+}
+
+function update_score_2()
+{
+    var new_score = $('input[name="S2"]:checked').val();
+    $('input[name="fluency-2"]').val(new_score);
+}
+
+function update_score_3()
+{
+    var new_score = $('input[name="S3"]:checked').val();
+    $('input[name="fluency-3"]').val(new_score);
+}
+
+function update_score_4()
+{
+    var new_score = $('input[name="S4"]:checked').val();
+    $('input[name="fluency-4"]').val(new_score);
+}
+
+function update_score_5()
+{
+    var new_score = $('input[name="S5"]:checked').val();
+    $('input[name="fluency-5"]').val(new_score);
+}
+
+</script><crowd-form answer-format="flatten-objects"> <input name="end_timestamp" type="hidden" value="" /> <input name="start_timestamp" type="hidden" value="" /> <input name="fluency-1" type="hidden" value="-1" /> <input name="fluency-2" type="hidden" value="-1" /> <input name="fluency-3" type="hidden" value="-1" /> <input name="fluency-4" type="hidden" value="-1" /> <input name="fluency-5" type="hidden" value="-1" />
+<div class="alert alert-info">
+<table style="width:100%">
+	<tbody>
+		<tr>
+			<td style="width:33%;text-align:left;"><strong>Splits</strong></td>
+			<td style="width:33%;text-align:center;"><strong>Choose fluent text</strong></td>
+			<td style="width:33%;text-align:right;"><strong>English</strong></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<div class="row">
+<p>Read the following text and choose the <strong><u>most fluent</u></strong> text. If they are similar in terms of fluency, choose &quot;No significant difference&quot;. Please refer to the scoring example before starting the first task.</p>
+</div>
+<button accesskey="2" class="btn-example" onclick="javascript:if(document.getElementById('example').style.display == 'none'){ document.getElementById('example').style.display = 'block'; }else{ document.getElementById('example').style.display = 'none'; }" type="button">Hide/Show Examples</button>
+
+<div id="example" style="display:block;">
+<p>&nbsp;</p>
+
+<hr size="1" />
+<h3 style="color: #28697a;">Scoring Example</h3>
+
+<div class="row">
+<div class="col-sm-11">
+<blockquote>
+<p><strong>It grows to about a meter tall and grows best in the sun. It is appreciated for its beautiful pink or white flowers that bloom in late summer and its interesting conical seed holder.</strong></p>
+<small>Answer: <span style="color: #18be18">Fluent</span></small></blockquote>
+</div>
+</div>
+
+<div class="row">
+<div class="description-example">
+<blockquote><small>The sentence is grammatical and natural according to English language. </small></blockquote>
+</div>
+</div>
+
+<hr style="height:1px; visibility:hidden;" />
+<div class="row">
+<div class="col-sm-11">
+<blockquote>
+<p><strong>It grows to a height of around 1 meter in the sun, and is taken for its beautiful pink or white late summer flowers and buds. <u style="color:red; border-style:solid; border-color:red;">of interesting conical seeds.</u></strong></p>
+<small>Answer: <span style="color:#fa7d7d;">Not Fluent</span></small></blockquote>
+</div>
+</div>
+
+<div class="row">
+<div class="description-example">
+<blockquote><small>This sentence is not fluent as the latter part of the sentence <i>of interesting conical seeds</i> is not a complete sentence. </small></blockquote>
+</div>
+</div>
+
+<hr style="height:1px; visibility:hidden;" />
+<div class="row">
+<div class="col-sm-11">
+<blockquote>
+<p><strong>It grows to a height of around 1 meter in the <u style="color:red; border-style:solid; border-color:red;">sun, is taken its</u> beautiful pink or white late summer flowers and buds along with conical seeds.</strong></p>
+<small>Answer: <span style="color:#fa7d7d;">Not Fluent</span></small></blockquote>
+</div>
+</div>
+
+<div class="row">
+<div class="description-example">
+<blockquote><small>This sentence is not fluent as the underlined phrase <i>sun, is taken its</i> is not a grammatical phrase. </small></blockquote>
+</div>
+</div>
+</div>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<hr style="height:1px;" />
+<div><input id="S1_Split_1" name="S1" onclick="update_score_1()" type="radio" value="0" /> <label for="S1_Split_1">${sent1-1}</label></div>
+
+<div><input id="S1_Split_2" name="S1" onclick="update_score_1()" type="radio" value="1" /> <label for="S1_Split_2">${sent1-2}</label></div>
+
+<div><input id="S1_Split_3" name="S1" onclick="update_score_1()" type="radio" value="2" /> <label for="S1_Split_3">${sent1-3}</label></div>
+
+<div><input id="S1_Split_4" name="S1" onclick="update_score_1()" type="radio" value="3" /> <label for="S1_Split_4">No significant difference</label></div>
+
+<hr style="height:1px; visibility:hidden;" />
+<hr style="height:1px;" />
+<div><input id="S2_Split_1" name="S2" onclick="update_score_2()" type="radio" value="0" /> <label for="S2_Split_1">${sent2-1}</label></div>
+
+<div><input id="S2_Split_2" name="S2" onclick="update_score_2()" type="radio" value="1" /> <label for="S2_Split_2">${sent2-2}</label></div>
+
+<div><input id="S2_Split_3" name="S2" onclick="update_score_2()" type="radio" value="2" /> <label for="S2_Split_3">${sent2-3}</label></div>
+
+<div><input id="S2_Split_4" name="S2" onclick="update_score_2()" type="radio" value="3" /> <label for="S2_Split_4">No significant difference</label></div>
+
+<hr style="height:1px; visibility:hidden;" />
+<hr style="height:1px;" />
+<div><input id="S3_Split_1" name="S3" onclick="update_score_3()" type="radio" value="0" /> <label for="S3_Split_1">${sent3-1}</label></div>
+
+<div><input id="S3_Split_2" name="S3" onclick="update_score_3()" type="radio" value="1" /> <label for="S3_Split_2">${sent3-2}</label></div>
+
+<div><input id="S3_Split_3" name="S3" onclick="update_score_3()" type="radio" value="2" /> <label for="S3_Split_3">${sent3-3}</label></div>
+
+<div><input id="S3_Split_4" name="S3" onclick="update_score_3()" type="radio" value="3" /> <label for="S3_Split_4">No significant difference</label></div>
+
+<hr style="height:1px; visibility:hidden;" />
+<hr style="height:1px;" />
+<div><input id="S4_Split_1" name="S4" onclick="update_score_4()" type="radio" value="0" /> <label for="S4_Split_1">${sent4-1}</label></div>
+
+<div><input id="S4_Split_2" name="S4" onclick="update_score_4()" type="radio" value="1" /> <label for="S4_Split_2">${sent4-2}</label></div>
+
+<div><input id="S4_Split_3" name="S4" onclick="update_score_4()" type="radio" value="2" /> <label for="S4_Split_3">${sent4-3}</label></div>
+
+<div><input id="S4_Split_4" name="S4" onclick="update_score_4()" type="radio" value="3" /> <label for="S4_Split_4">No significant difference</label></div>
+
+<hr style="height:1px; visibility:hidden;" />
+<hr style="height:1px;" />
+<div><input id="S5_Split_1" name="S5" onclick="update_score_5()" type="radio" value="0" /> <label for="S5_Split_1">${sent5-1}</label></div>
+
+<div><input id="S5_Split_2" name="S5" onclick="update_score_5()" type="radio" value="1" /> <label for="S5_Split_2">${sent5-2}</label></div>
+
+<div><input id="S5_Split_3" name="S5" onclick="update_score_5()" type="radio" value="2" /> <label for="S5_Split_3">${sent5-3}</label></div>
+
+<div><input id="S5_Split_4" name="S5" onclick="update_score_5()" type="radio" value="3" /> <label for="S5_Split_4">No significant difference</label></div>
+
+<hr style="height:1px; visibility:hidden;" />
+<div class="actions">
+<table style="width:100%">
+	<tbody>
+		<tr>
+			<td style="width:50%;text-align:left;"><button accesskey="2" class="btn" onclick="javascript:reset_form();" type="reset">Reset</button></td>
+			<td style="width:50%;text-align:right;"><button accesskey="1" class="btn btn-primary" name="submit_button" onclick="javascript:add_end_timestamp(); return validate_form();" type="submit" value="SUBMIT">Submit</button></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+</crowd-form>

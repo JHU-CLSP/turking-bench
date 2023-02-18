@@ -1,0 +1,465 @@
+<script type='text/javascript'
+        src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="https://s3.amazonaws.com/mturk-public/bs30/css/bootstrap.min.css" rel="stylesheet"/>
+
+<style>
+    body {
+        font-family: 'Helvetica', 'Arial', sans-serif;
+        color: #444444;
+        font-size: 12pt;
+        background-color: #FAFAFA;
+    }
+
+    mark {
+        /*background-color: #cafad5;*/
+        background-color: transparent;
+        color: black;
+        padding-left: 3px;
+        padding-right: 3px;
+
+    }
+
+    ul {
+        text-align: left;
+        list-style-position: inside;
+    }
+
+    textarea {
+        font-size: 18px;
+        margin: 0 auto;
+        display: block;
+        resize: none;
+    }
+
+
+    #submitButton {
+        margin: auto;
+        display: block;
+        width: auto;
+        background-color: #2172a4;
+        color: #fff;
+        font-size: 20pt;
+        padding: .5rem;
+        cursor: pointer;
+        border-radius: .75rem;
+    }
+
+    #submitButton:hover {
+        background-color: #06486F;
+    }
+
+    table {
+        border-spacing: 5px;
+    }
+
+    td.min {
+        width: 1%;
+        white-space: nowrap;
+    }
+
+    .examples {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+    }
+
+
+    .accordion {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: 0.4s;
+    }
+
+    .active, .accordion:hover {
+        background-color: #ccc;
+    }
+
+    .accordion:after {
+        content: '\002B';
+        color: #777;
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
+    }
+
+    .active:after {
+        content: "\2212";
+    }
+
+    .panel {
+        padding: 0 18px;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+    }
+
+    /************************************
+    SLIDER STYLING
+    Taken from: https://www.w3schools.com/howto/howto_js_rangeslider.asp
+    ************************************/
+    .slidecontainer {
+        width: 50%; /* Width of the outside container */
+        display: block;
+        margin: auto;
+        position: relative;
+    }
+    .slidecontainer:before {
+        content: "\2796";
+        position: absolute;
+        left: -2rem;
+        top: 0;
+    }
+    .slidecontainer:after {
+        content: '\02795';
+        position: absolute;
+        right: -2rem;
+        top: 0;
+    }
+
+    /* The slider itself */
+    .slider {
+        -webkit-appearance: none;  /* Override default CSS styles */
+        appearance: none;
+        background-size: 95%;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 100%; /* Full-width */
+        height: 1rem;
+        outline: none; /* Remove outline */
+        opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+        -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+        transition: opacity .2s;
+    }
+
+    /* Mouse-over effects */
+    .slider:hover {
+        opacity: 1; /* Fully shown on mouse-over */
+    }
+
+    /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Override default look */
+        appearance: none;
+        width: 2.1rem; /* Set a specific slider handle width */
+        height: 2.1rem;
+        border-radius: 50%;
+        background: #06486F;
+        cursor: pointer; /* Cursor on hover */
+    }
+
+    .slider::-moz-range-thumb {
+        width: 2.1rem; /* Set a specific slider handle width */
+        height: 2.1rem;
+        border-radius: 50%;
+        background: #06486F;
+        cursor: pointer; /* Cursor on hover */
+    }
+
+    .sliderticks {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 10px;
+    }
+
+    .sliderticks p {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: 1px;
+        background: #D3D3D3;
+        height: 10px;
+        line-height: 40px;
+        margin: 0 0 20px 0;
+    }
+
+
+
+</style>
+
+<script>
+    function init() {
+        // initialize
+        var output = document.getElementById("sliderValue");
+        output.innerHTML = '0';
+    }
+
+    function verification() {
+        console.log("verification");
+
+        var answer_value = parseInt(document.getElementsByName("answer_value")[0].value);
+        console.log(answer_value);
+
+        var obj = document.getElementById("objects").value;
+
+        if (obj.length < 1){
+            alert("Question 2 isn't answered.");
+            return false;
+        }
+
+        if (parseInt(obj)){
+            alert("Question 2 should be word(s).");
+            return false;
+        }
+
+        if (answer_value == 0){
+
+            if (obj.toLowerCase() != "n/a"){
+                alert("If the first answer is 0, the second answer must be N/A. Please read the instructions.");
+                return false;
+            }
+        }
+        else {
+            if (obj.toLowerCase() == "n/a") {
+                alert("If the first answer is NOT 0, the second answer should NOT be N/A. Please read the instructions.");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function update(){
+        var slider = document.getElementById("mySlider");
+        var output = document.getElementById("sliderValue");
+        output.innerHTML = slider.value;
+    }
+
+</script>
+
+</head>
+
+<body onload="init()">
+<form name='mturk_form' method='post' id='mturk_form' action='/mturk/externalSubmit' onsubmit="return verification()">
+    <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+
+    <div class="container">
+        <!-- Title -->
+        <h1 align="center">How are two physical attributes associated?<br/></h1>
+        <h4 align="center">Thanks for your participation! Please read the instructions carefully.</h4>
+
+
+        <button type="button" class="accordion"><span style="font-size: x-large ">Instructions</span></button>
+        <div class="panel">
+            <h3>Task Overview:</h3>
+            <section class="intro">
+                <p>In this HIT, you will be asked to do the following questions:</p>
+                <ol>
+                    <li>Given two physical attributes (e.g., <em>weight & speed</em>), rate how the attributes are positively or negatively associated.</li>
+                    <li>Describe concrete object(s) that you came up with in the first question. (<b>N/A</b> if there's no association.)</li>
+                </ol>
+            </section>
+
+            <h3>A pair of attribute and the association:</h3>
+            <section class="attributes">
+                <p>Each attribute is a property that an object might have. For example:</p>
+                <ul>
+                    <li><em>weight</em></li>
+                    <li><em>temperature</em></li>
+                    <li><em>altitude</em></li>
+                </ul>
+
+                <p>Each attribute/property also has a scale that ranges from a <b>negative (-) to positive(+)</b>. For example:</p>
+                <ul>
+                    <li><em>weight</em>: Ranges from <b>light (-) ~ heavy (+)</b></li>
+                    <li><em>temperature</em>: Ranges from <b>cold (-) ~ hot (+)</b></li>
+                    <li><em>altitude</em>: Ranges from <b>low (-) ~ high (+)</b></li>
+                </ul>
+                <p>A pair of attributes may have either a <b>positive, negative, or neutral/nonexistent association</b>. For example, <em>temperature</em> (<b>cold ~ hot</b>) & <em>altitude</em> (<b>low ~ high</b>) has <b>negative</b> association in general, because "high altitude" generally have "low temperature" (e.g. The air on top of Mt. Everest).</p>
+            </section>
+
+
+            <h3>Rules and tips:</h3>
+            <section class="associations">
+                <ul>
+                    <li>When you think that there's no association between the pair of attributes, please write "N/A" in the second question.</li>
+                    <li>If you come up with abstract objects, that's totally fine! Please describe as it is.</li>
+                    <li>Use your intuition when rating associations. - we're interested in exploring intuition about physical relationships. (see <a href="https://en.wikipedia.org/wiki/Bouba/kiki_effect" target="_blank">this interesting example which shows the association between shape and sound pitch in our mind!</a>)</li>
+                    <li>Some HITs are used for quality control.</li>
+                </ul>
+            </section>
+        </div>
+
+        <button type="button" class="accordion"><span style="font-size: x-large ">Examples</span></button>
+        <div class="panel">
+            <section class="positive">
+                <h3>Positive associations</h3>
+                <p>Attributes are positively associated if their scales are positively associated. For example:</p>
+                <ul>
+                    <li><em>size</em> <b>(small ~ large)</b> & <em>volume</em> <b>(low ~ high)</b></li>
+                    <li><em>age</em> <b>(young ~ old)</b> & <em>cleanliness</em> <b>(dirty ~ clean)</b></li>
+                    <li><em>mass</em> <b>(small ~ large)</b> & <em>weight</em> <b>(light ~ heavy)</b></li>
+                </ul>
+                <p>Consider <b>size</b> & <b>volume</b>. Objects with “small size” generally have “low volume”, and objects with “large size” generally have “large volume.” This positive association is very strong, so we might rate it as below:</p>
+
+                <div style="text-align: center">
+                <img style="width: 90%" class="example" src="http://i64.tinypic.com/2a7abmb.png">
+                </div>
+
+            </section>
+
+            <section class="negative">
+                <h3>Negative associations</h3>
+                <p>Attributes are negatively associated if their scales are negatively associated. For example:</p>
+                <ul>
+                    <li><b>temperature</b> <em>(cold ~ hot)</em> & <b>altitude</b> <em>(low ~ high)</em></li>
+                    <li><b>flexibility</b> <em>(rigid ~ flexible)</em> & <b>resistance</b> <em>(low ~ high)</em></li>
+                    <li><b>temperature</b> <em>(cold ~ hot)</em> & <b>altitude</b> <em>(low ~ high)</em></li>
+                </ul>
+                <p>Consider <b>temperature</b> & <b>altitude</b>. This is because objects with “high altitude” generally have “low temperature” (e.g. A rock on top of Mt. Everest). This association is fairly strong, so we might rate it as below:</p>
+
+                <div style="text-align: center">
+                <img style="width: 90%" class="example" src="http://i64.tinypic.com/2qvbkmh.png">
+                </div>
+
+            </section>
+
+            <section class="neutral">
+                <h3>Neutral/Nonexistent associations</h3>
+                <p>Attributes have a neutral/nonexistent association if they are generally unrelated. For example:</p>
+                <ul>
+                    <li><b>odor</b> <em>(weak ~ strong)</em> & <b>sound pitch</b> (low ~ high)</li>
+                    <li><b>cost</b> <em>(cheap ~ expensive)</em> & <b>temperature</b> (low ~ high)</li>
+                    <li><b>width</b> <em>(narrow ~ wide)</em> & <b>texture</b> (smooth ~ rough)</li>
+                </ul>
+                <p>Consider <b>odor</b> and <b>sound pitch</b>. They're generally unrelated, and objects with “strong odor” may have either “low pitch” or “high sound pitch.” Thus, we'd rate it as below:</p>
+
+                <div style="text-align: center">
+                <img style="width: 90%" class="example" src="http://i68.tinypic.com/2eat2fa.png">
+                </div>
+
+
+            </section>
+        </div>
+
+        <button type="button" class="accordion"><span style="font-size: x-large ">List of attributes (Reference)</span></button>
+        <div class="panel">
+            Here is the list of attributes we are interested in!
+
+            <table class="table table-striped">
+                <thead><tr><th>attribute </th><th>negative</th><th>positive</th></tr></thead><tbody>
+            <tr><td>age</td><td>old</td><td>new</td></tr>
+            <tr><td>altitude</td><td>low</td><td>high</td></tr>
+            <tr><td>area</td><td>small</td><td>vast</td></tr>
+            <tr><td>brightness</td><td>dark</td><td>light</td></tr>
+            <tr><td>clarity</td><td>obscure</td><td>clear</td></tr>
+            <tr><td>cleanness</td><td>dirty</td><td>clean</td></tr>
+            <tr><td>complexity</td><td>simple</td><td>complex</td></tr>
+            <tr><td>cost</td><td>cheap</td><td>expensive</td></tr>
+            <tr><td>density</td><td>sparse</td><td>dense</td></tr>
+            <tr><td>depth</td><td>shallow</td><td>deep</td></tr>
+            <tr><td>distance</td><td>near</td><td>far</td></tr>
+            <tr><td>electric conductivity</td><td>low</td><td>high</td></tr>
+            <tr><td>flexibility</td><td>rigid</td><td>flexible</td></tr>
+            <tr><td>granularity</td><td>fine</td><td>coarse</td></tr>
+            <tr><td>hardness</td><td>soft</td><td>hard</td></tr>
+            <tr><td>length</td><td>short</td><td>long</td></tr>
+            <tr><td>magnitude</td><td>small</td><td>large</td></tr>
+            <tr><td>mass</td><td>small</td><td>large</td></tr>
+            <tr><td>odor</td><td>weak</td><td>strong</td></tr>
+            <tr><td>pressure</td><td>low</td><td>high</td></tr>
+            <tr><td>resistance</td><td>low</td><td>high</td></tr>
+            <tr><td>shape</td><td>round, flat</td><td>sharp, spiky</td></tr>
+            <tr><td>size</td><td>small</td><td>large</td></tr>
+            <tr><td>sound</td><td>quiet</td><td>loud</td></tr>
+            <tr><td>sound pitch</td><td>low</td><td>high</td></tr>
+            <tr><td>speed</td><td>slow</td><td>fast</td></tr>
+            <tr><td>stability</td><td>unstable</td><td>stable</td></tr>
+            <tr><td>strength</td><td>weak</td><td>strong</td></tr>
+            <tr><td>temperature</td><td>low</td><td>high</td></tr>
+            <tr><td>texture</td><td>smooth</td><td>rough</td></tr>
+            <tr><td>thermal conductivity</td><td>low</td><td>high</td></tr>
+            <tr><td>thickness</td><td>thin</td><td>thick</td></tr>
+            <tr><td>volume</td><td>small</td><td>large</td></tr>
+            <tr><td>weight</td><td>light</td><td>heavy</td></tr>
+            <tr><td>width</td><td>narrow</td><td>wide</td></tr>
+            </tbody></table>
+
+        </div>
+        <hr/>
+
+        <h3 align="left">Question</h3>
+
+        <!-- put hidden variables such as -->
+        <input type='hidden' value="${qID}" name='qID' id='qID'/>
+
+        <div style="width:1024px; margin:0 auto;">
+            <h4>Rules and tips:</h4>
+            <section class="associations">
+                <ul>
+                    <li>When you think that there's no association between the pair of attributes, please write "N/A" in the second question.</li>
+                    <li>If you come up with abstract objects, that's totally fine! Please describe as it is.</li>
+                    <li>Use your intuition when rating associations - we're interested in exploring intuition about physical relationships.</li>
+                    <li>Some HITs are used for quality control.</li>
+                </ul>
+            </section>
+
+            <p><b>Question 1:</b> How positively or negatively are the following pair of attributes associated?</p>
+            <p style="text-align: center;"> <em>${attr1}</em> <b>(${attr1_neg} ~ ${attr1_pos})</b></p>
+            <p style="text-align: center;"> <em>${attr2}</em> <b>(${attr2_neg} ~ ${attr2_pos})</b></p>
+
+            <div class="slidecontainer">
+                <input type="range" min="-3" max="3" value="0" class="slider" id="mySlider" name="answer_value" style="background-color: darkgrey;" oninput=update()>
+                <div class="sliderticks">
+                    <p>-3</p>
+                    <p>-2</p>
+                    <p>-1</p>
+                    <p>0</p>
+                    <p>1</p>
+                    <p>2</p>
+                    <p>3</p>
+                </div>
+                <p style="color: deeppink; text-align:center";>Your choice: <span id="sliderValue" style="font-weight: bolder"></span></p>
+            </div>
+
+            <p><b>Question 2:</b> What object(s) did you come up with when you answer Question 1?</p>
+                <textarea id="objects" class="form-control" cols="25" name="objects" rows="1"></textarea>
+
+            <br><hr>
+
+            <p>Comments and feedback
+                (Please leave a comment if you have any questions, suggestions, etc.)</p>
+            <span><textarea class="form-control" cols="120" name="Comments" rows="5"></textarea></span>
+            <br/>
+
+        </div>
+    </div>
+
+    <p align="center">
+        <input type='submit' id='submitButton' value='Submit'/>
+    </p>
+
+</form>
+
+<script language='Javascript'>turkSetAssignmentID();</script>
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight){
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+
+
+
+</script>
+
+</body>

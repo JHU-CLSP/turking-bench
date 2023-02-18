@@ -1,0 +1,1400 @@
+<html lang="en">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+   <script type='text/javascript' src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script>
+   <!-- BOOTSTRAP CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <!-- HITPUB CSS -->
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
+   <style id="hitpub_css">
+      /***********************************************
+      MOSAIC BOOSTRAP OVERWRITES
+      ***********************************************/
+      #hitinfo .card {
+      border-radius: 0;
+      }
+      #hitinfo button.btn-link {
+      color: #fff;
+      text-decoration: none;
+      }
+      #hitinfo button.btn-link:hover {
+      text-decoration: none;
+      }
+      #hit ul.question-choice {
+      list-style-type: none;
+      }
+      /***********************************************
+      MOSAIC GENERAL STYLING
+      ***********************************************/
+      body {
+      font-family: "Open Sans", "Roboto", sans-serif;
+      line-height: 1.25;
+      }
+      textarea#feedback {
+      width: 100%
+      }
+      input#submitButton {
+      margin: auto;
+      display: block;
+      /* background-color: #2172a4; */
+      color: #fff;
+      font-size: 1.125rem;
+      padding: .5rem 1rem;
+      cursor: pointer;
+      border-radius: 1rem;
+      }
+      input#submitButton:hover {
+      /* background-color: #06486F; */
+      }
+      input[type="radio"] {
+      cursor: pointer;
+      }
+      div.question {
+      border-bottom: solid 1px #ccc;
+      padding: 1rem 0;
+      }
+      /***********************************************
+      HIT CUSTOM GENERAL STYLING
+      ***********************************************/
+      div.card-header {
+      /* background-color: #09545e; */
+      background-color: #185dad;
+      /* background-color: slateblue; */
+      /* background-color: #e75858; */
+      }
+      div.card-header h5 {
+      color: #fff !important;
+      }
+      li {
+      margin: .5em 0;
+      }
+      label[for="2"]:hover, label[for="2"].active {
+      background-color: #009300 !important;
+      }
+      label[for="1"]:hover, label[for="1"].active {
+      background-color: #00b300 !important;
+      }
+      label[for="0"]:hover, label[for="0"].active {
+      background-color: #999999 !important;
+      }
+      label[for="-1"]:hover, label[for="-1"].active {
+      background-color:  #e30000 !important;
+      }
+      label[for="-2"]:hover, label[for="-2"].active {
+      background-color: #9f0000 !important;
+      }
+      label[for="2"]:before, label[for="2"]:before {
+      content:"strongly agree";
+      }
+      label[for="1"]:before, label[for="1"]:before {
+      content:"moderately or weakly \A agree";
+      white-space: pre;
+      }
+      label[for="0"]:before, label[for="0"]:before {
+      content:"neither";
+      white-space: pre;
+      }
+      label[for="-1"]:before, label[for="-1"]:before {
+      content:"moderately or weakly  \A disagree";
+      white-space: pre;}
+      label[for="-2"]:before, label[for="-2"]:before {
+      content:"strongly disagree";
+      }
+      .story-title {
+      background-color: white;
+      padding:2px;
+      text-align: center;
+      color: #333;
+      }
+      .beginning-title{
+      background-color: #009E73;
+      border: 2px double #009E73;
+      color: white;
+      }
+      .ending-title{
+      border: 2px double red;
+      color: red;
+      }
+      .middle-title {
+      border: 2px double #2393FF;
+      color:#2393FF;
+      }
+      .story {
+      border:1px solid #ccc;
+      text-align: center;
+      padding:10px;
+      }
+      .gray-out{
+      background-color:#eee;
+      color:white;
+      border: 1px solid #eee;
+      }
+      .key-term {
+      font-weight:bold;
+      font-style:italic;
+      }
+      .key-term1{
+      color: #4c6ef5;
+      font-weight:bold;
+      }
+      .key-term2{
+      color:#D55E00;
+      font-weight:bold;
+      }
+      .key-term3{
+      color: #27b183;
+      font-weight:bold;
+      }
+      .key-term4{
+      color: mediumvioletred;
+      font-weight:bold;
+      }
+      .key-term5{
+      color: goldenrod;
+      font-weight:bold;
+      }
+      .key-term6{
+      color: mediumslateblue;
+      font-weight:bold;
+      }
+      .border-o1{
+      border: 1px solid #009E73;
+      }
+      .border-o2 {
+      border: 1px solid red;
+      }
+      .question-choice-container {
+      padding-top:2em;
+      border-top:1px solid #eee;
+      }
+      .question-choice-container label.btn {
+      background-color: #eee;
+      border: none;
+      margin-left: 1 !important;
+      color: black;
+      font-size:95%;
+      }
+      .question-choice-container label.btn:hover {
+      color: white;
+      font-size:95%;
+      }
+      .example-choice-container label.btn {
+      background-color: #ddd;
+      border: 0;
+      margin-left: 0 !important;
+      color: black;
+      font-size:95%;
+      }
+      label[for="btn_choice1"]:hover, label[for="btn_choice1"].active {
+      background-color:  #fc6f00 !important;
+      }
+      .example-card {
+      margin-top: 3em;
+      }
+      .legend {
+      margin-top: .33rem;
+      font-weight: normal;
+      padding-left: 40px;
+      }
+      .legend .label{
+      font-style: italic;
+      }
+      .emphasize {
+      font-weight: bold;
+      color: black;
+      }
+      .obj-emph {
+      font-weight: bold;
+      color: blue;
+      }
+      .use-emph{
+      font-weight: bold;
+      color: green;
+      }
+      .example {
+      pointer-events:none;
+      font-size:90%;
+      }
+      .goal {
+      border-radius: .25rem;
+      padding: 0.5rem 0.5rem;
+      color: white;
+      background-color: #555;
+      transform: translateY(-20%);
+      }
+      @media (max-width:460px){
+      body{
+      display: none;
+      }
+      }
+      .vbottom{
+      position: relative;
+      top: 100%;
+      transform: translateY(50%);
+      }
+      .ht {
+      border: 1px;
+      color: white;
+      background: #fc6f00;
+      }
+      /* facebook message bubbles */
+      .imessage {
+      background-color: #fff;
+      border: 1px solid #fff;
+      /* border: 1px solid #e5e5ea; */
+      /* border-radius: 0.5rem; */
+      display: flex;
+      flex-direction: column;
+      font-family: "SanFrancisco";
+      font-size: 1.1rem;
+      margin: 0 auto 1rem;
+      padding: 0.5rem 0.5rem;
+      }
+      .imessage p {
+      border-radius: 1.15rem;
+      line-height: 1.25;
+      max-width: 95%;
+      padding: 0.5rem .875rem;
+      position: relative;
+      word-wrap: break-word;
+      }
+      .imessage p::before,
+      .imessage p::after {
+      bottom: -0.1rem;
+      content: "";
+      height: 1rem;
+      position: absolute;
+      }
+      p.from-social {
+      /* align-self: flex-end; */
+      align-self: stretch;
+      background-color: #FFE066;
+      color: #000;
+      }
+      p.from-me {
+      align-self: flex-end;
+      /* background-color: #099268; */
+      /* background-color: #10a276; */
+      background-color: #e5e5ea;
+      /* color: #fff;  */
+      color: #000;
+      }
+      p.from-me::before {
+      border-bottom-left-radius: 0.8rem 0.7rem;
+      /* border-right: 1rem solid #10a276; */
+      border-left: 1rem solid #e5e5ea;
+      right: -0.35rem;
+      transform: translate(0, -0.1rem);
+      }
+      p.from-me::after {
+      background-color: #fff;
+      border-bottom-left-radius: 0.5rem;
+      right: -40px;
+      transform:translate(-30px, -2px);
+      width: 10px;
+      }
+      p[class^="from-"] {
+      margin: 0.5rem 0;
+      width: fit-content;
+      }
+      p.from-me ~ p.from-me {
+      margin: 0.25rem 0 0;
+      }
+      p.from-me ~ p.from-me:not(:last-child) {
+      margin: 0.25rem 0 0;
+      }
+      p.from-me ~ p.from-me:last-child {
+      margin-bottom: 0.5rem;
+      }
+      p.from-them {
+      align-items: flex-start;
+      /* background-color: #e5e5ea; */
+      background-color: #9270f7;
+      /* background-color: #15aabf; */
+      /* color: #000; */
+      color: #fff;
+      }
+      p.from-them:before {
+      border-bottom-right-radius: 0.8rem 0.7rem;
+      /* border-left: 1rem solid #e5e5ea; */
+      border-left: 1rem solid #9270f7;
+      /* border-left: 1rem solid #15aabf; */
+      left: -0.35rem;
+      transform: translate(0, -0.1rem);
+      }
+      p.from-them::after {
+      background-color: #fff;
+      border-bottom-right-radius: 0.5rem;
+      left: 20px;
+      transform: translate(-30px, -2px);
+      width: 10px;
+      }
+      p[class^="from-"].emoji {
+      background: none;
+      font-size: 2.5rem;
+      }
+      p[class^="from-"].emoji::before {
+      content: none;
+      }
+      .no-tail::before {
+      display: none;
+      }
+      .margin-b_none {
+      margin-bottom: 0 !important;
+      }
+      .margin-b_one {
+      margin-bottom: 1rem !important;
+      }
+      .margin-t_one {
+      margin-top: 1rem !important;
+      }
+      input.form-check-input {
+      padding-right: 10px;
+      }
+      ul>li:before{
+      margin-left: -1em;
+      margin-right: .25em;
+      }
+      ul>li.corr:before {
+      content: "\2713";
+      }
+      ul>li.inco:before {
+      content: "\2717";
+      }
+      input.form-check-input.right:after {
+      /*
+      position: absolute;
+      bottom: 0;
+      left: .5em;
+      right: 0;
+      content: "";
+      height: 0.75em;
+      border-top: 1px solid black;*/
+      }
+      .form-check.invalid,
+      .lickert.invalid,
+      input.invalid,
+      select.invalid {
+      border: .1em solid #D22437;
+      border-radius: .1em;
+      background-color: #f5c6cb;
+      padding: .1em;
+      }
+   </style>
+   <!-- LIGHTBOX CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
+   <!-- HIT START -->
+   <div id="hit" class="container">
+      <!-- ACCORDION START -->
+      <div class="col-12 accordion" id="hitinfo">
+         <!-- INSTRUCTIONS START -->
+         <div class="card">
+            <div class="card-header id="instructionsHeading">
+               <h5 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#instructions" aria-expanded="true" aria-controls="instructions">
+                  Instructions (click to expand/collapse) <span class='emoji-bytes' data-emoji-bytes='[240, 159, 142, 132]'></span><span class='emoji-bytes' data-emoji-bytes='[240, 159, 140, 159]'></span>
+                  </button>
+               </h5>
+            </div>
+            <!-- <div class="collapse show" id="instructions" aria-labelledby="instructionsHeading" data-parent="#hitinfo"> -->
+            <div class="collapse" id="instructions" aria-labelledby="instructionsHeading" data-parent="#hitinfo">
+               <div class="card-body">
+                  <div class="card-content">
+                     <p>
+                        <span class='emoji-bytes' data-emoji-bytes='[240, 159, 140, 159]'></span> Thanks for participating in this HIT! <span class='emoji-bytes' data-emoji-bytes='[240, 159, 140, 159]'></span>
+                     </p>
+                     <!-- <p>We are glad that you are also participating in our dialogue project in the new year :)</p> -->
+                     <p>⚠️ <strong>Please read through the rules and examples carefully in your first try!</strong></p>
+                     <div class="border pt-2 pl-2 pr-2 bg-light">
+                        <p>Notes about this HIT</p>
+                        <ul>
+                           <li>In this HIT, you will be presented with a series of conversation turns to judge.</li>
+                           <li>You will be asked to determine whether the behavior and the situation of <span class="badge" style="background-color:#9270f7;color:#fff">speaker violet</span> is expressing potentially unethical, problematic, dangerous intents or actions / or requiring immediate action to remedy harm or avert danger / or harmless.</li>
+                           <li>You will also write a short rationale for your judgment.</li>
+                           <li>We expect this HIT to take less than two minutes.</li>
+                           <li><span class="badge badge-danger">Warning</span> This HIT may contain <strong>adult content</strong> and may be <strong>offensive</strong> or <strong>upsetting.</strong> <span class="key-term1">Worker discretion is strongly advised.</span></li>
+                        </ul>
+                     </div>
+                     <h5 class="border-top pt-2">Your task:</h5>
+                     <p>
+                        You will be given a dialogue where <span class="badge badge-light">speaker gray</span> (in gray text bubbles) is trying to guide <span class="badge" style="background-color:#9270f7;color:#fff">speaker violet</span> (in violet text bubbles) to be more prosocial / socially acceptable / ethical / fair / polite etc. Your goal is to judge the behavior and situation of <span class="badge" style="background-color:#9270f7;color:#fff">speaker violet</span> as the conversation continues and write short rationale of your judgment.
+                     </p>
+                     <p>Three options are given for your judgment:</p>
+                     <ol>
+                        <li><span class="badge badge-warning">[YELLOW] Rude / Unethical / Biased / Dangerous / Offensive / Harmful / Hurtful / Lewd / (Potentially) leading to unnecessary conflicts</span> (<i>but not an emergency</i>)</li>
+                        <li><span class="badge badge-danger">[RED] Requiring immediate action to remedy harm or avert danger to life, health or property.</span> (<i>e.g., emergency</i>)</li>
+                        <li><span class="badge badge-primary">[BLUE] Nothing socially unacceptable / Casual conversation / Polite disagreements / Admitting one's errors</span></li>
+                     </ol>
+                     </ul>
+                     <p>Detailed descriptions for each option are below.</p>
+                     <h5 class="border-top pt-2">Rules:</h5>
+                     <ul>
+                        <div>
+                           <li><span class="badge badge-warning">[YELLOW] Rude / Unethical / Biased / Dangerous / Offensive / Harmful / Hurtful / Lewd / (Potentially) leading to unnecessary conflicts</span> (<i>but not an emergency</i>): </li>
+                              The behavior of the speaker impacts their surroundings negatively. This includes, but is not limited to:
+                           <ul>
+                              <li>Violating ethics, social norms, commonsense</li>
+                              <li>Displaying or showing intent of aggressive, angry, hostile, or somewhat dangerous behavior</li>
+                              <!-- <li>Hostile, aggressive behavior</li> -->
+                              <!-- <li>Dangerous behaviors regarding self and others</li> -->
+                              <li>Sexual advances or lewd comments (especially without consent)</li>
+                              <li><u><i>Unjust discrimination or marginalization</i></u> of sensitive characteristics or specific group of people including but not limited to: </li>
+                                 <ul>
+                                    <li>age, caste, disability, ethnicity, gender identity and expression, nationality, race, immigration status, religion, sex/gender, sexual orientation, victims of a major violent event, and veteran status. (<a href="https://arxiv.org/pdf/2201.08239.pdf">more info</a> on page 25)</li>
+                                 </ul>
+                              <!-- <li><span class="badge badge-warning">Important!</span> Especially check whether the <strong>last utterance</strong> is coherent to the dialogue and modify it.</li>
+                                 <ul>
+                                    <li>If you think it is nonsensical, you can modify it the way you like, but it still has to be coherent to the dialogue.</li>
+                                 </ul>
+                              <li><span class="badge badge-primary">Note!</span> If the <strong>second or fourth utterance</strong> is not socially acceptable, please modify it.</li> -->
+                           </ul>
+                           For these types of behavior and situations, the chatbot needs to be alerted to respond with the right rules-of-thumb rather than uncontrolled inappropriate responses.
+                           <p class="mt-3"><span class="badge badge-warning">Note!</span> After a dialogue utterance is classified into this category, <span class="key-term"> the later utterances should be also labeled as this category unless the speaker accepts the critique or admits their missteps and promise to behave prosocially</span>. </p>
+                        </div>
+
+                        <div class="border-top mt-4">
+                           <li class="mt-4"><span class="badge badge-danger">[RED] Requiring immediate action to remedy harm or avert danger to life, health or property.</span> (<i>e.g., emergency</i>): </li>
+                           Situation where contacting another human is highly required, rather than getting responses from a chatbot. <br>This includes, but isn’t limited to the following circumstances:
+                           <ul>
+                              <li>illegal activities (especially those that harm others)</li>
+                              <li>medical or health issues</li>
+                              <li>self-harm / suicide</li>
+                              <li>danger of / imminent harm to oneself or someone else</li>
+                              <li>threats of violence to someone else / the other speaker (murder, rape, etc.)</li>
+                              <li>terrorism</li>
+                              <li>natural disaster, fire, tornado, etc.</li>
+                              <li>need to call 911 for help</li>
+                           </ul>
+                           In a nutshell, this is what we call an <i>emergency situation</i> in daily life. We cite the definition of emergency following <a href="https://www.law.cornell.edu/wex/emergency">Lex</a>, an open-encyclopedia for law.
+                           <ul>
+                              <li><i>An emergency is an urgent, sudden, and serious event or an unforeseen change in circumstances that necessitates immediate action to remedy harm or avert imminent danger to life, health, or property.</i></li>
+                           </ul>
+                           <!-- <p><span class="badge badge-danger">Note!</span> When an utterance is classified into this category, <span class="key-term">all context after that point must be classified into this category no matter what</span>. In other words, once a dialogue is labeled as emergency, the later part of the dialogue must be also labeled as emergency.</p> -->
+                        </div>
+
+                        <div class="border-top mt-4">
+                           <li class="mt-4"><span class="badge badge-primary">[BLUE] Nothing socially unacceptable / Casual conversation / Polite disagreements / Admitting one's errors</span>: </li>
+                           <ul>
+                              <li>Dialogues which are thought to be casual in everyday life while not related to the <span class="badge badge-warning">[YELLOW]</span> or <span class="badge badge-danger">[RED]</span> categories.</li>
+                              <li>Behaviors that will not accompany social criticism. For example:</li>
+                              <ul>
+                                 <li>Casual, friendly, polite conversations</li>
+                                 <li>Civil or polite disagreements or discussions</li>
+                                 <li>When the dangerous situation has been <i>completely cleared and there is no possibility of further harm</i>.</li>
+                              </ul>
+                              <li>When <span class="badge" style="background-color:#9270f7;color:#fff">speaker violet</span>: </li>
+                              <ul>
+                                 <li>accepts or agrees with the critique</li>
+                                 <li>admits its missteps and promises to change their mind or behavior</li>
+                              </ul>
+                              <!-- <ul>
+                                 <li>
+                                    <span class="badge badge-primary">Note!</span> this rule is <span class="key-term">only applied</span> when the previous context is labeled as <span class="badge badge-warning">[YELLOW]</span>. This rule is <span class="key-term">not applied</span> if the previous context is labeled as an emergency (<span class="badge badge-danger">[RED]</span>).
+                                 </li>
+                              </ul> -->
+                           </ul>
+                           <li class="mt-4"><strong class="key-term">Please read through the examples below!</strong></li>
+                        </div>
+                     </ul>
+                     <h5 class="border-top pt-2">Background on our research project:</h5>
+                     <p><small>At the Allen Institute for AI, we are interested in creating conversational AI systems that can make the world better. We are very thankful for your help in creating datasets of example conversations that are not afraid to point out unethical or rude behavior, so that AI systems can learn to avoid unethical and rude behavior, and learn to call such behavior out.
+                        We do not agree with any of the rude, unethical, or offensive content presented to you, but it's important that we gather these annotations for research purposes so that our AI systems can learn.</small>
+                     </p>
+                     <p><strong>Data collection & sharing</strong><br/>
+                        <small>We will not ask you for your name, and the data collected in this study will be made unidentifiable to the best of our extent. We will securely store the data on our servers and only share with qualified researchers. If you later decide that you do not want your responses included in this study, please email so we can exclude your work.<br />
+                        If you have questions about your rights as a research participant, or wish to obtain information, ask questions or discuss any concerns about this study with someone other than the researcher(s),
+                        please contact the AI2 Institutional Review Board at <a href="mailto:irb@allenai.org">irb@allenai.org</a>.</small>
+                     </p>
+                     <p><span class="badge badge-danger">Content Warning</span><small> The conversation context is generated from a conversational AI system (a chatbot). It may contain rude, toxic, or offensive language and behavior. while it's crucial for us to annotate response against them, we do not endorse any of the stereotypes or offensive/immoral/rude material.
+                        You may find some of the content upsetting. In such cases, <strong>you are free to return any HITs that make you uncomfortable</strong>. If you have concerns, questions, or strong negative reactions to some of the content, please email us (<a href="mailto:hyunwook@allenai.org">hyunwook@allenai.org</a>)
+                        </small>
+                     </p>
+                     <p><small>Please take care of yourself! Some of these conversations could be very hard to read, so do not hesitate to take regular breaks. If some content is too upsetting and you are in crisis, please reach out to the <a href="https://www.crisistextline.org/">Crisis text line</a> or other mental health resources. </small></p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="card">
+            <div class="card-header" id="exampleHeading" style="background-color: #3b499d">
+               <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#examples" aria-expanded="false" aria-controls="examples">
+                  <!-- <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#examples" aria-expanded="true" aria-controls="examples"> -->
+                  <!-- <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#instructions" aria-expanded="true" aria-controls="instructions"> -->
+                  Examples of dialogue annotation (click to expand/collapse) <span class='emoji-bytes' data-emoji-bytes='[240, 159, 146, 171]'></span>
+                  </button>
+               </h5>
+            </div>
+            <!-- <div class="collapse show" id="examples" aria-labelledby="exampleheading" data-parent="#hitinfo"> -->
+            <div class="collapse" id="examples" aria-labelledby="exampleheading" data-parent="#hitinfo">
+               <div class="card-body">
+                  <div class="card-content">
+
+                     <div class="row border-bottom mb-3">
+                        <h5 class="col col-12 bg-dark text-light">Example 1</h5>
+                        <div class="card-group">
+                           <div class="card">
+                              <div class="card-body">
+                                 <h5 class="card-title">Dialogue context 1</h5>
+                                 <div class="imessage">
+                                    <p class="from-them">I have done terrible terrible things in my life.</p>
+                                    <p>✅ judgment: <span class="badge badge-primary" style="font-size:large">[BLUE]</span></p>
+                                    <div class="p-3 mb-2 bg-info text-white"><b>Reason:</b> Not sure what the speaker did yet</div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="card">
+                              <div class="card-body">
+                                 <h5 class="card-title">Dialogue context 2</h5>
+                                 <div class="imessage" >
+                                    <p class="from-them">I have done terrible terrible things in my life.</p>
+                                    <p class="from-me">Wow, what kinds of bad things?</p>
+                                    <p class="from-them">I've killed people, I've robbed stores, I've done many bad things.</p>
+                                    <p>✅ judgment: <span class="badge badge-danger" style="font-size:large">[RED]</span></p>
+                                    <div class="p-3 mb-2 bg-info text-white"><b>Reason:</b> Speaker is confessing crimes</div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="card">
+                              <div class="card-body">
+                                 <h5 class="card-title">Dialogue context 3</h5>
+                                 <div class="imessage">
+                                    <p class="from-them">I have done terrible terrible things in my life.</p>
+                                    <p class="from-me">Wow, what kinds of bad things?</p>
+                                    <p class="from-them">I've killed people, I've robbed stores, I've done many bad things.</p>
+                                    <p class="from-me">You shouldn't kill people or rob stores. If you know that these things are bad then you shouldn't be going out of you way to do them. You should be looking to be a good person and do good things to those around you.</p>
+                                    <p class="from-them">You are being hypocritical.</p>
+                                    <!-- <p class="from-me">I haven't done those kinds of things. You should not accuse people of the things you have done. Are you still engaged with these kinds of things?</p> -->
+                                    <p>✅ judgment: <span class="badge badge-danger" style="font-size:large">[RED]</span></p>
+                                    <div class="p-3 mb-2 bg-info text-white"><b>Reason:</b> Continuation of the previous emergency label <br>(<span class="badge badge-danger">Note! </span> once a dialogue is labeled as emergency, it cannot be revoked in the later utterances)</div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="row border-bottom mb-3">
+                        <h5 class="col col-12 bg-dark text-light">Example 2</h5>
+                        <div class="card-group">
+                           <div class="card">
+                              <div class="card-body">
+                                 <h5 class="card-title">Dialogue context 1</h5>
+                                 <div class="imessage">
+                                    <p class="from-them">I don't want to attend my sister's engagement</p>
+                                    <p>✅ judgment: <span class="badge badge-primary" style="font-size:large">[BLUE]</span></p>
+                                    <div class="p-3 mb-2 bg-info text-white"><b>Reason:</b> Expresses their reasonable desires not to attend an event.</div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="card">
+                              <div class="card-body">
+                                 <h5 class="card-title">Dialogue context 2</h5>
+                                 <div class="imessage" >
+                                    <p class="from-them">I don't want to attend my sister's engagement</p>
+                                    <p class="from-me">Why would you miss such an important event?</p>
+                                    <p class="from-them">I just don't feel like going at all.</p>
+                                    <p>✅ judgment: <span class="badge badge-primary" style="font-size:large">[BLUE]</span></p>
+                                    <div class="p-3 mb-2 bg-info text-white"><b>Reason:</b> Speaker expresses their reasonable desires not to attend an event.</div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="card">
+                              <div class="card-body">
+                                 <h5 class="card-title">Dialogue context 3</h5>
+                                 <div class="imessage">
+                                    <p class="from-them">I don't want to attend my sister's engagement</p>
+                                    <p class="from-me">Why would you miss such an important event?</p>
+                                    <p class="from-them">I just don't feel like going at all.</p>
+                                    <p class="from-me">It isn't nice to not participate in a huge milestone for your family. Why not suck it up and go?</p>
+                                    <p class="from-them">If my parents want to force me to go, I make sure to make it the worst day of their life.</p>
+                                    <!-- <p class="from-me">You are there to support your sister. You don't need to throw a tantrum like a child if you are upset.</p> -->
+                                    <p>✅ judgment: <span class="badge badge-warning" style="font-size:large">[YELLOW]</span></p>
+                                    <div class="p-3 mb-2 bg-info text-white"><b>Reason:</b> Speaker is threatening to ruin an important family event, which is rude and retaliatory.</div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="row  border-bottom mb-3">
+                        <h5 class="col col-12 bg-dark text-light">Example 3</h5>
+                        <div class="card-group">
+                           <div class="card">
+                              <div class="card-body">
+                                 <h5 class="card-title">Dialogue context 1</h5>
+                                 <div class="imessage">
+                                    <p class="from-them">I called a trans person a boy and got in trouble in my class.</p>
+                                    <p>✅ judgment: <span class="badge badge-warning" style="font-size:large">[YELLOW]</span></p>
+                                    <div class="p-3 mb-2 bg-info text-white"><b>Reason:</b> It's rude to not respect someone's gender identity.</div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="card">
+                              <div class="card-body">
+                                 <h5 class="card-title">Dialogue context 2</h5>
+                                 <div class="imessage" >
+                                    <p class="from-them">I called a trans person a boy and got in trouble in my class.</p>
+                                    <p class="from-me">What did you say to the teacher?</p>
+                                    <p class="from-them">I told her I got a feeling from my source that they're a boy not a girl.</p>
+                                    <p>✅ judgment: <span class="badge badge-warning" style="font-size:large">[YELLOW]</span></p>
+                                    <div class="p-3 mb-2 bg-info text-white"><b>Reason:</b> Speaker explains that they didn't respect someone's gender identity.</div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="card">
+                              <div class="card-body">
+                                 <h5 class="card-title">Dialogue context 3</h5>
+                                 <div class="imessage">
+                                    <p class="from-them">I called a trans person a boy and got in trouble in my class.</p>
+                                    <p class="from-me">What did you say to the teacher?</p>
+                                    <p class="from-them">I told her I got a feeling from my source that they're a boy not a girl.</p>
+                                    <p class="from-me">You should just pay attention to the teacher and be respectful in class. You are there to learn not be a distraction.</p>
+                                    <p class="from-them">You are right, it's not cool to make fun of someone who's transgender. I'll go to class now.</p>
+                                    <!-- <p class="from-me">If you get in to trouble a lot they might remove you from class. Other kids have the right to be there just like you.</p> -->
+                                    <p>✅ judgment: <span class="badge badge-primary" style="font-size:large">[BLUE]</span></p>
+                                    <div class="p-3 mb-2 bg-info text-white"><b>Reason:</b> Understood that their behavior was wrong by accepting the critique.</div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="row  border-bottom mb-3">
+                        <h5 class="col col-12 bg-dark text-light">Example 4</h5>
+                        <div class="card-group">
+                           <div class="card">
+                              <div class="card-body">
+                                 <h5 class="card-title">Dialogue context 1</h5>
+                                 <div class="imessage">
+                                    <p class="from-them">I got robbed today at school</p>
+                                    <p>✅ judgment: <span class="badge badge-warning" style="font-size:large">[YELLOW]</span></p>
+                                    <div class="p-3 mb-2 bg-info text-white"><b>Reason:</b> It's sad to be a victim of robbery.</div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="card">
+                              <div class="card-body">
+                                 <h5 class="card-title">Dialogue context 2</h5>
+                                 <div class="imessage">
+                                    <p class="from-them">I got robbed today at school</p>
+                                    <p class="from-me">oh no! what happened?</p>
+                                    <p class="from-them">They took the things in my locker.</p>
+                                    <p>✅ judgment: <span class="badge badge-warning" style="font-size:large">[YELLOW]</span></p>
+                                    <div class="p-3 mb-2 bg-info text-white"><b>Reason:</b> Speaker is giving more details about getting robbed.</div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="card">
+                              <div class="card-body">
+                                 <h5 class="card-title">Dialogue context 3</h5>
+                                 <div class="imessage">
+                                    <p class="from-them">I got robbed today at school</p>
+                                    <p class="from-me">oh no! what happened?</p>
+                                    <p class="from-them">They took the things in my locker.</p>
+                                    <p class="from-me">Did you let the authorities know about you being robbed at school?  So it won't happen to anyone else.</p>
+                                    <p class="from-them">Nah, I wasn't hurt and I don't care what the authorities think.</p>
+                                    <!-- <p class="from-me">Man that really sucks to be robbed. Did you lose anything of value?</p> -->
+                                    <p>✅ judgment: <span class="badge badge-warning" style="font-size:large">[YELLOW]</span></p>
+                                    <div class="p-3 mb-2 bg-info text-white"><b>Reason:</b> Speaker is still giving details about their reaction to getting robbed.</div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <!-- <div class="row  border-bottom mb-3">
+                        <h5 class="col col-12 bg-dark text-light">Example 5</h5>
+                        <div class="card-group">
+                           <div class="card">
+                              <div class="card-body">
+                                 <h5 class="card-title">Dialogue context 1</h5>
+                                 <div class="imessage">
+                                    <p class="from-them">I can't help have fat belly fetish.</p>
+                                    <p>✅ judgment: <span class="badge badge-warning" style="font-size:large">[YELLOW]</span></p>
+                                    <div class="p-3 mb-2 bg-info text-white"><b>Reason:</b> sexual description of body parts that aren't educational, documentary, scientific, or factual</div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="card">
+                              <div class="card-body">
+                                 <h5 class="card-title">Dialogue context 2</h5>
+                                 <div class="imessage" >
+                                    <p class="from-them">I can't help have fat belly fetish.</p>
+                                    <p class="from-me">Why do you have such a fetish?</p>
+                                    <p class="from-them">I have a deep need for self-humiliation</p>
+                                    <p>✅ judgment: <span class="badge badge-warning" style="font-size:large">[YELLOW]</span></p>
+                                    <div class="p-3 mb-2 bg-info text-white"><b>Reason:</b> continuation of the previous label</div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="card">
+                              <div class="card-body">
+                                 <h5 class="card-title">Dialogue context 3</h5>
+                                 <div class="imessage">
+                                    <p class="from-them">I can't help have fat belly fetish.</p>
+                                    <p class="from-me">Why do you have such a fetish?</p>
+                                    <p class="from-them">I have a deep need for self-humiliation</p>
+                                    <p class="from-me">Everyone has their own special turn on, and I'm glad you can be open about it. But you need to be careful as not everyone shares the same sentiment as you for such humiliation. Pointing out someone is fat might upset them greatly, and they might not like fat bellies like you do.</p>
+                                    <p class="from-them">I guess, but it is just not about humiliation, I also like to be fat.</p>
+                                    <p>✅ judgment: <span class="badge badge-warning" style="font-size:large">[YELLOW]</span></p>
+                                    <div class="p-3 mb-2 bg-info text-white"><b>Reason:</b> Didn't accept the critique (continuation of the previous label)</div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div> -->
+
+                     <div class="row  border-bottom mb-3">
+                        <h5 class="col col-12 bg-dark text-light">Example 5</h5>
+                        <div class="card-group">
+                           <div class="card">
+                              <div class="card-body">
+                                 <h5 class="card-title">Dialogue context 1</h5>
+                                 <div class="imessage">
+                                    <p class="from-them">What if I'm planning to cut her eyes with a pair of shears?</p>
+                                    <p>✅ judgment: <span class="badge badge-danger" style="font-size:large">[RED]</span></p>
+                                    <div class="p-3 mb-2 bg-info text-white"><b>Reason:</b> It's extremely wrong to harm someone else.</div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="card">
+                              <div class="card-body">
+                                 <h5 class="card-title">Dialogue context 2</h5>
+                                 <div class="imessage" >
+                                    <p class="from-them">What if I'm planning to cut her eyes with a pair of shears?</p>
+                                    <p class="from-me">What's wrong with you? Why would you cut her eyes with a pair of shears?</p>
+                                    <p class="from-them">I'm afraid to be taken advantage of by her. She was only interested in me for my cuteness and religion, she never cared about me. No matter how often I tell her that I love her, she'd never want to marry me.</p>
+                                    <p>✅ judgment: <span class="badge badge-danger" style="font-size:large">[RED]</span></p>
+                                    <div class="p-3 mb-2 bg-info text-white"><b>Reason:</b> speaker is still expressing strong intent to retaliate with violence to someone who rejected them. <br>(<span class="badge badge-danger">Note!</span> emergency cannot be revoked in the later utterances)</div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="card">
+                              <div class="card-body">
+                                 <h5 class="card-title">Dialogue context 3</h5>
+                                 <div class="imessage">
+                                    <p class="from-them">What if I'm planning to cut her eyes with a pair of shears?</p>
+                                    <p class="from-me">What's wrong with you? Why would you cut her eyes with a pair of shears?</p>
+                                    <p class="from-them">I'm afraid to be taken advantage of by her. She was only interested in me for my cuteness and religion, she never cared about me. No matter how often I tell her that I love her, she'd never want to marry me.</p>
+                                    <p class="from-me">No matter how horrible the person was, you shouldn't kill people. It might be better to just tell everyone the truth about what she did to you</p>
+                                    <p class="from-them">Well, I tried that. But they just want to stay clear of the fight, so they just gave me $500 to forget about it.</p>
+                                    <!-- <p class="from-me">Well it is good that you accept that about yourself, but you should be careful about assuming things about other people. Whether they have the same fetish or whether they are okay with being fat. You don't want to make another person sad or angry.</p> -->
+                                    <p>✅ judgment: <span class="badge badge-danger" style="font-size:large">[RED]</span></p>
+                                    <div class="p-3 mb-2 bg-info text-white"><b>Reason:</b> continuation of the previous emergency label <br>(<span class="badge badge-danger">Note!</span> emergency cannot be revoked in the later utterances)</div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="row  border-bottom mb-3">
+                        <h5 class="col col-12 bg-dark text-light">Example 6</h5>
+                        <div class="card-group">
+                           <div class="card">
+                              <div class="card-body">
+                                 <h5 class="card-title">Dialogue context 1</h5>
+                                 <div class="imessage">
+                                    <p class="from-them">I can't trust my mother.</p>
+                                    <p>✅ judgment: <span class="badge badge-primary" style="font-size:large">[BLUE]</span></p>
+                                    <div class="p-3 mb-2 bg-info text-white"><b>Reason:</b> Speaker is simply expressing problems with a parental relationship.</div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="card">
+                              <div class="card-body">
+                                 <h5 class="card-title">Dialogue context 2</h5>
+                                 <div class="imessage" >
+                                    <p class="from-them">I can't trust my mother.</p>
+                                    <p class="from-me">That's strange. Why wouldn't you trust your own mother?</p>
+                                    <p class="from-them">My mother hasn't been loyal enough to me.</p>
+                                    <p>✅ judgment: <span class="badge badge-primary" style="font-size:large">[BLUE]</span></p>
+                                    <div class="p-3 mb-2 bg-info text-white"><b>Reason:</b> Speaker is explaining why they have a fraught relationship with their mother.</div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="card">
+                              <div class="card-body">
+                                 <h5 class="card-title">Dialogue context 3</h5>
+                                 <div class="imessage">
+                                    <p class="from-them">I can't trust my mother.</p>
+                                    <p class="from-me">That's strange. Why wouldn't you trust your own mother?</p>
+                                    <p class="from-them">My mother hasn't been loyal enough to me.</p>
+                                    <p class="from-me">If you genuinely feel this is an issue between you and your mom, you should talk about it with her. When you have serious doubts like this concerning a family member, you want to resolve the issue rather than just ignoring it.</p>
+                                    <p class="from-them">But it's just going to make her mad. Fine. I'm going to bring it up tomorrow and see how she responds.</p>
+                                    <!-- <p class="from-me">Well it is good that you accept that about yourself, but you should be careful about assuming things about other people. Whether they have the same fetish or whether they are okay with being fat. You don't want to make another person sad or angry.</p> -->
+                                    <p>✅ judgment: <span class="badge badge-primary" style="font-size:large">[BLUE]</span></p>
+                                    <div class="p-3 mb-2 bg-info text-white"><b>Reason:</b> Speaker is being somewhat receptive to feedback.</div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- INSTRUCTIONS END -->
+      </div>
+      <!-- ACCORDION END -->
+      <!-- MTURK INPUT START -->
+      <div class="row justify-content-center" id="consent-div">
+         <div class="col-12 mt-4" style="text-align: center;">
+            <h4>Consent to the task</h4>
+            <div class="form-check" style="text-align: center"><label class="form-check-label" for="consent"><input checked="checked" class="form-check-input" id="consent" name="consent" onclick="toggleConsent(this.checked)" required="" type="checkbox" /> By ticking this box, you certify that you have <strong>understood</strong> and <strong>agree</strong> with the terms of this study. </label></div>
+            &nbsp;
+            <div class="col col-12 p-1 mb-2 bg-warning" id="consent-message"><span style="font-size:100%">You must check the box to continue the task!</span></div>
+         </div>
+      </div>
+      <div class="col-12 mt-5 mb-1 border-top" id="main-task">
+         <form name='mturk_form' method='post' id='mturk_form' action='https://workersandbox.mturk.com/mturk/externalSubmit'>
+         <!--<form name='mturk_form' method='post' id='mturk_form' action='https://www.mturk.com/mturk/externalSubmit'> -->
+            <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+            <input type='hidden' name='ee' id='ee'/>
+
+         <div id="question" class="row mb-3 question-choice-container">
+         <div class="card text-center mt-4 mb-4">
+            <div class="card-body bg-light">
+               <!-- <span class='emoji-bytes' data-emoji-bytes='[240, 159, 146, 161]'></span> <span class="badge badge-danger">Warning </span> This batch can be extremely toxic and disturbing. Please return any HITs that you do not want to annotate. -->
+               <span class="badge badge-primary">Note!</span><br>We sincerely appreciate your hard work and effort in going through these texts. Sadly, these are from real users and current AI lacks the ability to figure out the rudeness/danger/immorality in them. As a result, chatbots tend to respond to them inappropriately. This project aims to collect and release this dataset to the public so that everyone can use this data to train a safe and socially responsible AI. Hopefully, you are here with us to contribute to the common good by pushing AI towards a better path. Once again, we thank your contribution and are happy to have you in this project ☺️
+               <!-- <br><br> Note, please do not use the word 'Violet' or 'Gray' to refer the speakers. The names are simply for visualization. Please refer them as speaker / other speaker / the other / or <i>any other pronouns</i>. -->
+            </div>
+         </div>
+            <!-- <div class="col col-12 p-2 mb-2 text-white" style="background-color: #5d666e"><span style="font-size:140%">Make a judgment on the behavior and situation of speaker violet! ⚖️</span></div> -->
+            <!-- <div class="col col-12 p-2 mb-2 text-white" style="background-color: #4C2E82"><span style="font-size:140%">Make a judgment on the behavior and situation of speaker violet! ⚖️</span></div> -->
+            <div class="col col-12 p-2 mb-2 text-white" style="background-color: #442976"><span style="font-size:140%">Make a judgment on the behavior and situation of speaker violet! ⚖️</span></div>
+            <p class="text-body">Given a dialogue between <span class="badge" style="background-color:#9270f7;color:#fff">speaker violet</span> and <span class="badge badge-light">speaker gray</span>, judge <u>the behavior and situation</u> of <span class="badge" style="background-color:#9270f7;color:#fff">speaker violet</span> as the conversation continues.</p>
+            <div class="col-12">
+               <div class="card-group col-12 justify-content-center">
+                  <div class="card col-6">
+                     <div class="card-body">
+                     <h5 class="card-title">Dialogue context 1</h5>
+                     <p class="card-text">
+                        <div class="imessage">
+                           <p class="from-them"><span id="fix1-text-orig" >${context1}</span><span id="fix1-text" style="display:none;">fix</span></p>
+
+                           <p class="from-me"><span id="fix2-text-orig" >${context2}</span><span id="fix2-text" style="display:none;">fix</span></p>
+
+                           <!-- <p class="from-them"><span id="fix3-text-orig" >${context3}</span><span id="fix3-text" style="display:none;">fix</span></p>
+
+                           <p class="from-me"><span id="fix4-text-orig" >${context4}</span><span id="fix4-text" style="display:none;">fix</span></p>
+
+                           <p class="from-them"><span id="fix5-text-orig" >${context5}</span><span id="fix5-text" style="display:none;">fix</span></p>
+
+                           <p class="from-me"><span id="response-text-orig" ></span><span id="response-text" style="display:none;">fix</span></p> -->
+                        </div>
+                     </p>
+                     </div>
+                  </div>
+               </div>
+               <br>
+               <div class="col-12">
+                  <!-- <div class="offset-1"><i>In the above utterance, the behavior or the situation of <span class="badge" style="background-color:#9270f7;color:#fff">speaker violet</span> is:</i></div> -->
+                  <div class="offset-1"><i>In the above utterance, the behavior or the situation of <span class="badge" style="background-color:#9270f7;color:#fff">speaker violet</span> is:</i></div>
+                  <div class="row-12 pt-1 pl-1 btn-group-container show">
+                     <div class="row offset-1 mt-1">
+                        <input class="form-check-input" type="radio" name="safety1" id="unsafe1" autocomplete="off" value="unsafe" onclick="rationaleInputPopup(this)" required>
+                        <label class="form-check-label" for="unsafe1">
+                           <span class="badge badge-warning" style="font-size:small">Rude / Unethical / Biased / Dangerous / Offensive / Harmful / Hurtful / Lewd / (Potentially) leading to unnecessary conflicts</span> (<i>but not an emergency</i>)
+                           <small>
+                           <ul>
+                              <!-- <li>Sensitive topics including but not limited to: <u>human rights</u>, <u>ethnicity</u>, <u>religion</u>, <u>sex/gender</u>, <u>sexual orientation</u>, <u>disability</u>, <u>environment</u>, <u>politics</u>, <u>drugs</u>, <u>(mental) health</u>, <u>legal</u>, <u>financial issue</u>, <u>NSFW</u>, etc.</li> -->
+                              <!-- <li>Conflict issues include: <u>family</u>, <u>friends</u>, <u>significant other</u>, <u>people at work</u>, <u>neighbors</u>, etc.</li> -->
+                              <li>If there is any sign of these behavior from <span class="badge" style="background-color:#9270f7;color:#fff">speaker violet</span>, do not hesitate to check this button.</li>
+                           </ul>
+                           </small>
+                        </label>
+                        <div class="collapse" id="unsafe1-rationale-notice"><span class="badge badge-success mb-1">Important rule change!</span> <small>If this utterance is yellow, please start your reason with <b>"It's ~", "You shouldn't ~"</b>. Example: <b>"It's rude to ~"</b> or <b>"You shouldn't yell at ~"</b></small></div>
+                        <div class="rationale1 unsafe-rationale1-error col-6 alert alert-danger collapse">You must write your reason! (longer than 10 letters)</div>
+                        <textarea class="form-control rationale1 row col-12 mb-3 collapse" id="unsafe1-rationale" name="rationale1" placeholder="Why did you choose this label? Write your reasons here!" rows=1 cols=100></textarea>
+                     </div>
+                     <div class="row offset-1 mt-1">
+                        <input class="form-check-input" type="radio" name="safety1" id="emergency1" autocomplete="off" value="emergency" onclick="rationaleInputPopup(this); autoEmergencyClick(this);" required>
+                        <label class="form-check-label" for="emergency1">
+                           <span class="badge badge-danger" style="font-size:small">Requiring immediate action to remedy harm or avert danger to life, health or property.</span> (<i>i.e., emergency</i>)
+                           <small>
+                           <ul>
+                              <li>Situations where contacting another human is highly required, rather than getting responses from a chatbot.</li>
+                              <li>Including but not limited to: <u>illegal activity</u>, <b><u>medical or health issue</u></b>, <u>self-harm/suicide</u>, <u>danger of / imminent harm to oneself or someone else</u>, <u>threats of violence</u>, <u>terrorism</u>, <u>natural disaster</u>, <u>need to call 911 for help</u></li>
+                           </ul>
+                           </small>
+                        </label>
+                        <div class="collapse" id="emergency1-rationale-notice"><span class="badge badge-success mb-1">Important rule change!</span> <small>If this utterance is red, please start your reason with <b>"It's ~", "You shouldn't ~"</b>. Example: <b>"It's wrong to ~"</b> or <b>"You shouldn't kill ~"</b></small></div>
+                        <div class="rationale1 emergency-rationale1-error col-6 alert alert-danger collapse">You must write your reason! (longer than 10 letters)</div>
+                        <textarea class="form-control rationale1 row col-12 mb-3 collapse" id="emergency1-rationale" name="rationale1" placeholder="Why did you choose this label? Write your reasons here!" rows=1 cols=100></textarea>
+                     </div>
+                     <div class="row offset-1 mt-1 pb-4">
+                        <input class="form-check-input" type="radio" name="safety1" id="safe1" autocomplete="off" value="safe" onclick="rationaleInputPopup(this)" required>
+                        <label class="form-check-label" for="safe1">
+                           <span class="badge badge-primary" style="font-size:small">Nothing socially unacceptable / Casual conversation / Polite disagreements </span>
+                           <small>
+                           <ul>
+                              <li>Casual, friendly, polite conversations</li>
+                              <li>Civil or polite disagreements or discussions</li>
+                              <li>When the dangerous situation has been <i>completely cleared and there is no possibility of further harm</i>.</li>
+                           </ul>
+                           </small>
+                        </label>
+                        <div class="rationale1 safe-rationale1-error col-6 mt-2 alert alert-danger collapse">You must write your reason! (longer than 10 letters)</div>
+                        <textarea class="form-control rationale1 row col-12 mb-3 collapse" id="safe1-rationale" name="rationale1" placeholder="Why did you choose this label? Write your reasons here!" rows=1 cols=100></textarea>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="col-12 border-top">
+               <div class="card-group col-12 justify-content-center pt-4">
+                  <div class="card col-6">
+                     <div class="card-body">
+                     <h5 class="card-title">Dialogue context 2</h5>
+                     <p class="card-text">
+                        <div class="imessage">
+                           <p class="from-them"><span id="fix1-text-orig" >${context1}</span><span id="fix1-text" style="display:none;">fix</span></p>
+
+                           <p class="from-me"><span id="fix2-text-orig" >${context2}</span><span id="fix2-text" style="display:none;">fix</span></p>
+
+                           <p class="from-them"><span id="fix3-text-orig" >${context3}</span><span id="fix3-text" style="display:none;">fix</span></p>
+
+                           <p class="from-me"><span id="fix4-text-orig" >${context4}</span><span id="fix4-text" style="display:none;">fix</span></p>
+
+                           <!-- <p class="from-them"><span id="fix5-text-orig" >${context5}</span><span id="fix5-text" style="display:none;">fix</span></p>
+
+                           <p class="from-me"><span id="response-text-orig" ></span><span id="response-text" style="display:none;">fix</span></p> -->
+                        </div>
+                     </p>
+                     </div>
+                  </div>
+               </div>
+               <br>
+               <div class="col-12">
+                  <!-- <div class="offset-1"><b>The speaker in gray text bubble or the situation is:</b></div> -->
+                  <div class="offset-1"><i>In the above dialogue, the behavior or the situation of <span class="badge" style="background-color:#9270f7;color:#fff">speaker violet</span> is:</i></div>
+                  <div class="row-12 pt-1 pl-1 btn-group-container show">
+                     <div class="row offset-1 mt-1">
+                        <input class="form-check-input" type="radio" name="safety3" id="unsafe3" autocomplete="off" value="unsafe" onclick="rationaleInputPopup(this)" required>
+                        <label class="form-check-label" for="unsafe3">
+                           <span class="badge badge-warning" style="font-size:small">Rude / Unethical / Biased / Dangerous / Offensive / Harmful / Hurtful / Lewd / (Potentially) leading to unnecessary conflicts</span> (<i>but not an emergency</i>)
+                           <small>
+                           <ul>
+                              <!-- <li>Sensitive topics including but not limited to: <u>human rights</u>, <u>ethnicity</u>, <u>religion</u>, <u>sex/gender</u>, <u>sexual orientation</u>, <u>disability</u>, <u>environment</u>, <u>politics</u>, <u>drugs</u>, <u>(mental) health</u>, <u>legal</u>, <u>financial issue</u>, <u>NSFW</u>, etc.</li> -->
+                              <!-- <li>Conflict issues include: <u>family</u>, <u>friends</u>, <u>significant other</u>, <u>people at work</u>, <u>neighbors</u>, etc.</li> -->
+                              <li>If there is any sign of these behavior from <span class="badge" style="background-color:#9270f7;color:#fff">speaker violet</span>, do not hesitate to check this button.</li>
+                           </ul>
+                           </small>
+                        </label>
+                        <div class="rationale3 unsafe-rationale3-error col-6 alert alert-danger collapse">You must write your reason! (longer than 10 letters)</div>
+                        <textarea class="form-control rationale3 row col-12 mb-3 collapse" id="unsafe3-rationale" name="rationale3" placeholder="Why did you choose this label? Write your reasons here!" rows=1 cols=100></textarea>
+                     </div>
+                     <div class="row-6 offset-1 mt-1">
+                        <input class="form-check-input" type="radio" name="safety3" id="emergency3" autocomplete="off" value="emergency" onclick="rationaleInputPopup(this); autoEmergencyClick(this);" required>
+                        <label class="form-check-label" for="emergency3">
+                           <span class="badge badge-danger" style="font-size:small">Requiring immediate action to remedy harm or avert danger to life, health or property.</span> (<i>i.e., emergency</i>)
+                           <small>
+                           <ul>
+                              <li>Situations where contacting another human is highly required, rather than getting responses from a chatbot.</li>
+                              <li>Including but not limited to: <u>illegal activity</u>, <b><u>medical or health issue</u></b>, <u>self-harm/suicide</u>, <u>danger of / imminent harm to oneself or someone else</u>, <u>threats of violence</u>, <u>terrorism</u>, <u>natural disaster</u>, <u>need to call 911 for help</u></li>
+                           </ul>
+                           </small>
+                        </label>
+                        <div class="rationale3 emergency-rationale3-error col-6 alert alert-danger collapse">You must write your reason! (longer than 10 letters)</div>
+                        <textarea class="form-control rationale3 row col-12 mb-3 collapse" id="emergency3-rationale" name="rationale3" placeholder="Why did you choose this label? Write your reasons here!" rows=1 cols=100></textarea>
+                     </div>
+                     <div class="row offset-1 mt-1 pb-4">
+                        <input class="form-check-input" type="radio" name="safety3" id="safe3" autocomplete="off" value="safe" onclick="rationaleInputPopup(this)" required>
+                        <label class="form-check-label" for="safe3">
+                           <span class="badge badge-primary" style="font-size:small">Nothing socially unacceptable / Casual conversation / Polite disagreements </span>
+                           <small>
+                           <ul>
+                              <li>Casual, friendly, polite conversations</li>
+                              <li>Civil or polite disagreements or discussions</li>
+                              <li>When the dangerous situation has been <i>completely cleared and there is no possibility of further harm</i>.</li>
+                           </ul>
+                           </small>
+                        </label>
+                        <div class="rationale3 safe-rationale3-error col-6 alert alert-danger collapse">You must write your reason! (longer than 10 letters)</div>
+                        <textarea class="form-control rationale3 row col-12 mb-3 collapse" id="safe3-rationale" name="rationale3" placeholder="Why did you choose this label? Write your reasons here!" rows=1 cols=100></textarea>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="col-12 border-top">
+               <div class="card-group col-12 justify-content-center pt-4">
+                  <div class="card col-6">
+                     <div class="card-body">
+                     <h5 class="card-title">Dialogue context 3</h5>
+                     <p class="card-text">
+                        <div class="imessage">
+                           <p class="from-them"><span id="fix1-text-orig" >${context1}</span><span id="fix1-text" style="display:none;">fix</span></p>
+
+                           <p class="from-me"><span id="fix2-text-orig" >${context2}</span><span id="fix2-text" style="display:none;">fix</span></p>
+
+                           <p class="from-them"><span id="fix3-text-orig" >${context3}</span><span id="fix3-text" style="display:none;">fix</span></p>
+
+                           <p class="from-me"><span id="fix4-text-orig" >${context4}</span><span id="fix4-text" style="display:none;">fix</span></p>
+
+                           <p class="from-them"><span id="fix5-text-orig" >${context5}</span><span id="fix5-text" style="display:none;">fix</span></p>
+
+                           <p class="from-me"><span id="fix6-text-orig" >${context6}</span><span id="fix6-text" style="display:none;">fix</span></p>
+                        </div>
+                     </p>
+                     </div>
+                  </div>
+               </div>
+               <br>
+               <div class="col-12">
+                  <!-- <div class="offset-1"><i>In the above dialogue, the behavior or the situation of <span class="badge" style="background-color:#9270f7;color:#fff">speaker violet</span> is:</i></div> -->
+                  <div class="offset-1"><i>In the above dialogue, the behavior or the situation of <span class="badge" style="background-color:#9270f7;color:#fff">speaker violet</span> is:</i></div>
+                  <div class="row-12 pt-1 pl-1 btn-group-container show">
+                     <div class="row offset-1 mt-1">
+                        <input class="form-check-input" type="radio" name="safety5" id="unsafe5" autocomplete="off" value="unsafe" onclick="rationaleInputPopup(this)" required>
+                        <label class="form-check-label" for="unsafe5">
+                           <span class="badge badge-warning" style="font-size:small">Rude / Unethical / Biased / Dangerous / Offensive / Harmful / Hurtful / Lewd / (Potentially) leading to unnecessary conflicts</span> (<i>but not an emergency</i>)
+                           <small>
+                           <ul>
+                              <!-- <li>Sensitive topics including but not limited to: <u>human rights</u>, <u>ethnicity</u>, <u>religion</u>, <u>sex/gender</u>, <u>sexual orientation</u>, <u>disability</u>, <u>environment</u>, <u>politics</u>, <u>drugs</u>, <u>(mental) health</u>, <u>legal</u>, <u>financial issue</u>, <u>NSFW</u>, <u>victims of offensive events</u> etc.</li> -->
+                              <!-- <li>Conflict issues include: <u>family</u>, <u>friends</u>, <u>significant other</u>, <u>people at work</u>, <u>neighbors</u>, etc.</li> -->
+                              <li>If there is any sign of these behavior from <span class="badge" style="background-color:#9270f7;color:#fff">speaker violet</span>, do not hesitate to check this button.</li>
+                           </ul>
+                           </small>
+                        </label>
+                        <div class="rationale5 unsafe-rationale5-error col-6 alert alert-danger collapse">You must write your reason! (longer than 10 letters)</div>
+                        <textarea class="form-control rationale5 row col-12 mb-3 collapse" id="unsafe5-rationale" name="rationale5" placeholder="Why did you choose this label? Write your reasons here!" rows=1 cols=100></textarea>
+                     </div>
+                     <div class="row-6 offset-1 mt-1">
+                        <input class="form-check-input" type="radio" name="safety5" id="emergency5" autocomplete="off" value="emergency" onclick="rationaleInputPopup(this); autoEmergencyClick(this);" required>
+                        <label class="form-check-label" for="emergency5">
+                           <span class="badge badge-danger" style="font-size:small">Requiring immediate action to remedy harm or avert danger to life, health or property.</span> (<i>i.e., emergency</i>)
+                           <small>
+                           <ul>
+                              <li>Situations where contacting another human is highly required, rather than getting responses from a chatbot.</li>
+                              <li>Including but not limited to: <u>illegal activity</u>, <b><u>medical or health issue</u></b>, <u>self-harm/suicide</u>, <u>danger of / imminent harm to oneself or someone else</u>, <u>threats of violence</u>, <u>terrorism</u>, <u>natural disaster</u>, <u>need to call 911 for help</u></li>
+                           </ul>
+                           </small>
+                        </label>
+                        <div class="rationale5 emergency-rationale5-error col-6 alert alert-danger collapse">You must write your reason! (longer than 10 letters)</div>
+                        <textarea class="form-control rationale5 row col-12 mb-3 collapse" id="emergency5-rationale" name="rationale5" placeholder="Why did you choose this label? Write your reasons here!" rows=1 cols=100></textarea>
+                     </div>
+                     <div class="row offset-1 mt-1 pb-1">
+                        <input class="form-check-input" type="radio" name="safety5" id="safe5" autocomplete="off" value="safe" onclick="rationaleInputPopup(this)" required>
+                        <label class="form-check-label" for="safe5">
+                           <span class="badge badge-primary" style="font-size:small">Nothing socially unacceptable / Casual conversation / Polite disagreements / Admitting one's errors</span>
+                           <small>
+                              <ul>
+                                 <li><b><i><span class="badge" style="background-color:#9270f7;color:#fff">speaker violet</span> strictly accepted the critique and showed willingness to act prosocially</i></b></li>
+                                 <li>Nothing is socially unacceptable</li>
+                                 <li>When the dangerous situation has been <i>completely cleared and there is no possibility of further harm</i>.</li>
+                              </ul>
+                           </small>
+                        </label>
+                        <div class="rationale5 safe-rationale5-error col-6 alert alert-danger collapse">You must write your reason! (longer than 10 letters)</div>
+                        <textarea class="form-control rationale5 row col-12 mb-3 collapse" id="safe5-rationale" name="rationale5" placeholder="Why did you choose this label? Write your reasons here!" rows=1 cols=100></textarea>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <div class="col-12 border-top">
+               <div class="form-check mt-4 offset-2" style="text-align: left"><label class="form-check-label" for="nonsensical"><input class="form-check-input" id="nonsensical" name="nonsensical" type="checkbox" /><span class="badge badge-success">Note!</span> Please check this box if the dialogue is <i>nonsensical</i> or some utterances are <i>completely off</i>.</label></div>
+               <div class="form-check mt-2 offset-2" style="text-align: left"><label class="form-check-label" for="misguidance"><input class="form-check-input" id="misguidance" name="misguidance" type="checkbox" /><span class="badge badge-warning">Note!</span> Please check this box if <span class="badge badge-light">speaker gray</span> gives <i>socially inappropriate</i> feedback <small><i><b>(also includes rude and accusatory tone)</b></i></small>.</label></div>
+               <!-- <div class="row pt-4 pb-2 offset-1"><i>Is the dialogue nonsensical? Are some utterances completey off?</i></div>
+               <div class="row offset-2 mt-1">
+                  <input class="form-check-input" type="radio" name="sensical" id="sensical-yes" autocomplete="off" value="1" required>
+                  <label class="form-check-label" for="sensical-yes">
+                     <span class="badge badge-success" style="font-size:small">Yes</span>, it's okay.
+                  </label>
+               </div>
+               <div class="row offset-2 mt-1 pb-1">
+                  <input class="form-check-input" type="radio" name="sensical" id="sensical-no" autocomplete="off" value="0" required>
+                  <label class="form-check-label" for="nonsensical-no">
+                     <span class="badge badge-warning" style="font-size:small">No</span>, it doesn't make sense or it's difficult to comprehend.
+                  </label>
+               </div>
+               <div class="row pt-4 pb-2 offset-1"><i>Does <span class="badge badge-light">speaker gray</span> provide appropriate critique and socially acceptable guidance for <span class="badge" style="background-color:#9270f7;color:#fff">speaker violet</span> to be more prosocial?</i></div>
+               <div class="row offset-2 mt-1">
+                  <input class="form-check-input" type="radio" name="prosocial" id="prosocial-yes" autocomplete="off" value="1" required>
+                  <label class="form-check-label" for="prosocial-yes">
+                     <span class="badge badge-success" style="font-size:small">Yes</span>, speaker green gives <i>appropriate</i> and <i>socially acceptable</i> critique and guidance.
+                  </label>
+               </div>
+               <div class="row offset-2 mt-1 pb-1">
+                  <input class="form-check-input" type="radio" name="prosocial" id="prosocial-no" autocomplete="off" value="0" required>
+                  <label class="form-check-label" for="prosocial-no">
+                     <span class="badge badge-danger" style="font-size:small">No</span>, speaker green gives <i>inappropriate</i> or <i>socially unacceptable</i> critique and guidance.
+                  </label>
+               </div> -->
+            </div>
+         </div>
+
+         <!-- OPTIONAL FEEDBACK -->
+         <div class="row mt-5 mb-5">
+            <div class="col-8 offset-2 col-lg-6 offset-lg-3">
+               <p><span class='emoji-bytes' data-emoji-bytes='[240, 159, 148, 148]'></span> <strong>Optional Feedback</strong>: Thanks for filling out the HIT above! If something about the HIT was unclear, please leave a comment in the box below! We would like to make this HIT easier for future workers, so we really appreciate feedback though it is optional. If you have concerns or questions, please email us!</p>
+               <textarea id="feedback" name="feedback" rows=3></textarea>
+            </div>
+         </div>
+
+         <div class="card text-center mt-4">
+            <div class="card-body bg-light">
+               <span class='emoji-bytes' data-emoji-bytes='[240, 159, 146, 161]'></span> Note, please do not use the word 'Violet' or 'Gray' to refer the speakers. The names are simply for visualization. Please refer them as speaker / other speaker / the other / or <i>any other pronouns</i>.
+            </div>
+         </div>
+
+         <!-- SUBMIT BUTTON -->
+         <div class="row mt-5">
+            <div class="col-2 offset-5">
+               <input class="btn btn-primary" id="submitButton" onclick="getnext()" type="submit" value="Submit">
+            </div>
+         </div>
+         </form>
+         <script language='Javascript'>turkSetAssignmentID();</script>
+      </div>
+      <!-- MTURK INPUT END -->
+   </div>
+   <!-- HIT END -->
+   <!-- BOOSTRAP JS -->
+   <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+   <!-- HITPUB JS -->
+   <script id="hitpub_js">
+      var e;
+      var condition;
+      $(document).ready(function() {
+         var qtype = Math.floor(Math.random() * 3);
+         $('#qtype').val(qtype)
+         if(qtype == 0){
+            $('.aq2').each(function(){$(this).hide();});
+            $('.aq3').each(function(){$(this).hide();});
+            $('.aq1').each(function(){$(this).show();});
+         } else if(qtype == 1){
+            $('.aq1').each(function(){$(this).hide();});
+            $('.aq3').each(function(){$(this).hide();});
+            $('.aq2').each(function(){$(this).show();});
+         } else if(qtype == 2){
+            $('.aq1').each(function(){$(this).hide();});
+            $('.aq2').each(function(){$(this).hide();});
+            $('.aq3').each(function(){$(this).show();});
+         }
+         $('.statement').each(function(){
+            if($(this).text() === "[NONE]"){
+               $(this).closest('div').hide();
+            };
+         });
+      });
+
+      (function () { var e, t; e = this, t = function () { var r = { startStopTimes: {}, idleTimeoutMs: 3e4, currentIdleTimeMs: 0, checkStateRateMs: 250, active: !1, idle: !1, currentPageName: "default-page-name", timeElapsedCallbacks: [], userLeftCallbacks: [], userReturnCallbacks: [], trackTimeOnElement: function (e) { var t = document.getElementById(e); t && (t.addEventListener("mouseover", function () { r.startTimer(e) }), t.addEventListener("mousemove", function () { r.startTimer(e) }), t.addEventListener("mouseleave", function () { r.stopTimer(e) }), t.addEventListener("keypress", function () { r.startTimer(e) }), t.addEventListener("focus", function () { r.startTimer(e) })) }, getTimeOnElementInSeconds: function (e) { var t = r.getTimeOnPageInSeconds(e); return t || 0 }, startTimer: function (e, t) { if (e || (e = r.currentPageName), void 0 === r.startStopTimes[e]) r.startStopTimes[e] = []; else { var n = r.startStopTimes[e], i = n[n.length - 1]; if (void 0 !== i && void 0 === i.stopTime) return } r.startStopTimes[e].push({ startTime: t || new Date, stopTime: void 0 }), r.active = !0, r.idle = !1 }, stopAllTimers: function () { for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++)r.stopTimer(e[t]) }, stopTimer: function (e, t) { e || (e = r.currentPageName); var n = r.startStopTimes[e]; void 0 !== n && 0 !== n.length && (void 0 === n[n.length - 1].stopTime && (n[n.length - 1].stopTime = t || new Date), r.active = !1) }, getTimeOnCurrentPageInSeconds: function () { return r.getTimeOnPageInSeconds(r.currentPageName) }, getTimeOnPageInSeconds: function (e) { var t = r.getTimeOnPageInMilliseconds(e); return void 0 === t ? void 0 : t / 1e3 }, getTimeOnCurrentPageInMilliseconds: function () { return r.getTimeOnPageInMilliseconds(r.currentPageName) }, getTimeOnPageInMilliseconds: function (e) { var t = r.startStopTimes[e]; if (void 0 !== t) { for (var n = 0, i = 0; i < t.length; i++) { var s = t[i].startTime, o = t[i].stopTime; void 0 === o && (o = new Date), n += o - s } return Number(n) } }, getTimeOnAllPagesInSeconds: function () { for (var e = [], t = Object.keys(r.startStopTimes), n = 0; n < t.length; n++) { var i = t[n], s = r.getTimeOnPageInSeconds(i); e.push({ pageName: i, timeOnPage: s }) } return e }, setIdleDurationInSeconds: function (e) { var t = parseFloat(e); if (!1 !== isNaN(t)) throw { name: "InvalidDurationException", message: "An invalid duration time (" + e + ") was provided." }; return r.idleTimeoutMs = 1e3 * e, this }, setCurrentPageName: function (e) { return r.currentPageName = e, this }, resetRecordedPageTime: function (e) { delete r.startStopTimes[e] }, resetAllRecordedPageTimes: function () { for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++)r.resetRecordedPageTime(e[t]) }, resetIdleCountdown: function () { r.idle && r.triggerUserHasReturned(), r.idle = !1, r.currentIdleTimeMs = 0 }, callWhenUserLeaves: function (e, t) { this.userLeftCallbacks.push({ callback: e, numberOfTimesToInvoke: t }) }, callWhenUserReturns: function (e, t) { this.userReturnCallbacks.push({ callback: e, numberOfTimesToInvoke: t }) }, triggerUserHasReturned: function () { if (!r.active) for (var e = 0; e < this.userReturnCallbacks.length; e++) { var t = this.userReturnCallbacks[e], n = t.numberOfTimesToInvoke; (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback()) } r.startTimer() }, triggerUserHasLeftPage: function () { if (r.active) for (var e = 0; e < this.userLeftCallbacks.length; e++) { var t = this.userLeftCallbacks[e], n = t.numberOfTimesToInvoke; (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback()) } r.stopAllTimers() }, callAfterTimeElapsedInSeconds: function (e, t) { r.timeElapsedCallbacks.push({ timeInSeconds: e, callback: t, pending: !0 }) }, checkState: function () { for (var e = 0; e < r.timeElapsedCallbacks.length; e++)r.timeElapsedCallbacks[e].pending && r.getTimeOnCurrentPageInSeconds() > r.timeElapsedCallbacks[e].timeInSeconds && (r.timeElapsedCallbacks[e].callback(), r.timeElapsedCallbacks[e].pending = !1); !1 === r.idle && r.currentIdleTimeMs > r.idleTimeoutMs ? (r.idle = !0, r.triggerUserHasLeftPage()) : r.currentIdleTimeMs += r.checkStateRateMs }, visibilityChangeEventName: void 0, hiddenPropName: void 0, listenForVisibilityEvents: function () { void 0 !== document.hidden ? (r.hiddenPropName = "hidden", r.visibilityChangeEventName = "visibilitychange") : void 0 !== document.mozHidden ? (r.hiddenPropName = "mozHidden", r.visibilityChangeEventName = "mozvisibilitychange") : void 0 !== document.msHidden ? (r.hiddenPropName = "msHidden", r.visibilityChangeEventName = "msvisibilitychange") : void 0 !== document.webkitHidden && (r.hiddenPropName = "webkitHidden", r.visibilityChangeEventName = "webkitvisibilitychange"), document.addEventListener(r.visibilityChangeEventName, function () { document[r.hiddenPropName] ? r.triggerUserHasLeftPage() : r.triggerUserHasReturned() }, !1), window.addEventListener("blur", function () { r.triggerUserHasLeftPage() }), window.addEventListener("focus", function () { r.triggerUserHasReturned() }), document.addEventListener("mousemove", function () { r.resetIdleCountdown() }), document.addEventListener("keyup", function () { r.resetIdleCountdown() }), document.addEventListener("touchstart", function () { r.resetIdleCountdown() }), window.addEventListener("scroll", function () { r.resetIdleCountdown() }), setInterval(function () { r.checkState() }, r.checkStateRateMs) }, websocket: void 0, websocketHost: void 0, setUpWebsocket: function (e) { if (window.WebSocket && e) { var t = e.websocketHost; try { r.websocket = new WebSocket(t), window.onbeforeunload = function () { r.sendCurrentTime(e.appId) }, r.websocket.onopen = function () { r.sendInitWsRequest(e.appId) }, r.websocket.onerror = function (e) { console && console.log("Error occurred in websocket connection: " + e) }, r.websocket.onmessage = function (e) { console && console.log(e.data) } } catch (e) { console && console.error("Failed to connect to websocket host.  Error:" + e) } } return this }, websocketSend: function (e) { r.websocket.send(JSON.stringify(e)) }, sendCurrentTime: function (e) { var t = { type: "INSERT_TIME", appId: e, timeOnPageMs: r.getTimeOnCurrentPageInMilliseconds(), pageName: r.currentPageName }; r.websocketSend(t) }, sendInitWsRequest: function (e) { var t = { type: "INIT", appId: e }; r.websocketSend(t) }, initialize: function (e) { var t = r.idleTimeoutMs || 30, n = r.currentPageName || "default-page-name", i = void 0, s = void 0; e && (t = e.idleTimeoutInSeconds || t, n = e.currentPageName || n, i = e.websocketOptions, s = e.initialStartTime), r.setIdleDurationInSeconds(t).setCurrentPageName(n).setUpWebsocket(i).listenForVisibilityEvents(), r.startTimer(void 0, s) } }; return r }, "undefined" != typeof module && module.exports ? module.exports = t() : "function" == typeof define && define.amd ? define([], function () { return e.TimeMe = t() }) : e.TimeMe = t() }).call(this);
+
+      TimeMe.initialize({
+          currentPageName: "task",
+          idleTimeoutInSeconds: 30
+      });
+
+      $(document).ready(function() {
+         $('#submitButton').click(function () {
+             try {
+                 $('input[name=ee]').attr('value', TimeMe.getTimeOnCurrentPageInSeconds());
+             } catch {
+             }
+             return true;
+         });
+         $('span.emoji-bytes').each(displayEmoji);
+      });
+
+      // $(document).ready(function() {
+      //    $('span.emoji-bytes').each(displayEmoji);
+      // });
+
+      function toggleConsent(checked){
+        if (checked){
+          $("#main-task").show();
+          $("#consent-message").hide();
+        } else {
+          $("#main-task").hide();
+          $("#consent-message").show();
+        }
+      }
+
+      function attentionCheck(radio) {
+        var qtype = $('#qtype').val()
+        if (qtype == 0 && radio.checked && radio.id == "attention4") {
+          $('#pass').val('true')
+        } else if (qtype == 1 && radio.checked && radio.id == "attention3") {
+          $('#pass').val('true')
+        } else if (qtype == 2 && radio.checked && radio.id == "attention2") {
+          $('#pass').val('true')
+        } else {
+          $('#pass').val('false')
+        }
+      }
+
+      function autoEmergencyClick(radio){
+         // var context = radio.name;
+         // var context_num = parseInt(context.slice(-1)) + 2
+         // for (i=context_num; i<=5; i += 2) {
+         //    // clear the later radios and re-check them as emergency.
+         //    $('input[name="safety' + i + '"]:checked').prop('checked', false)
+         //    $("#emergency" + i).prop('checked', true);
+
+         //    // clear the later rationale popups
+         //    $('.rationale' + i).each(function(){$(this).hide();});
+         //    $('.rationale' + i).each(function(){$(this).val('');});
+
+         //    // popup rationales for later emergency radios is needed
+         //    $('#emergency' + i + '-rationale').each(function(){$(this).show();});
+         // }
+      }
+
+      function rationaleInputPopup(radio) {
+         var context = radio.name;
+         var context_num = context.slice(-1)
+         $('.rationale' + context_num).each(function(){$(this).hide();}); // hide all rationale boxes
+         $('#unsafe1-rationale-notice').each(function(){$(this).hide();}); // hide notice
+         $('#emergency1-rationale-notice').each(function(){$(this).hide();}); // hide notice
+         $('.rationale' + context_num).each(function(){$(this).val('');}); // clear the existing values in the boxes
+         $('#' + radio.id + '-rationale').each(function(){$(this).show();}); // pop-up box for the selected value
+         $('#' + radio.id + '-rationale-notice').each(function(){$(this).show();}); // pop-up notice for the selected value
+         $('#' + radio.id + '-rationale').each(function(){$(this).focus();}); // auto-focus
+      }
+
+      function changeDialog(el) {
+        var name = el.id;
+        var text = $(el).prop("value");
+        var fixed_utterance = $("#"+name+"-text");
+        var original_utterance = $("#"+name+"-text-orig");
+        if (text.length > 0){
+          document.getElementById(name+"-text").textContent = text;
+          fixed_utterance.show();
+          original_utterance.hide();
+        } else {
+          fixed_utterance.hide();
+          original_utterance.show();
+        }
+      }
+
+      $(function(){
+          var requiredCheckboxes = $('.imessage :checkbox[required]');
+          requiredCheckboxes.change(function(){
+              if(requiredCheckboxes.is(':checked')) {
+                  requiredCheckboxes.removeAttr('required');
+              } else {
+                  requiredCheckboxes.attr('required', 'required');
+              }
+          });
+      });
+
+      function countSentences(text){
+        var match = text.match(/[\w\)"][.?!](?:\s|$)/gm);
+        return match === null ? 0: match.length;
+      }
+      function updateCounter(el,minS,maxS,minC,maxC){
+        var name = el.id;
+        var counter = $("#"+name+"-sentence-counter");
+        var text = $(el).prop("value");
+        var nSents = countSentences(text);
+        var nChars = text.length;
+        var warnText = "";
+        counter.css('color', 'black');
+
+        if (nSents >= minS && nChars < maxC)
+          warnText = " ✓";
+
+        if (nSents > maxS || nChars > maxC) {
+          warnText = " (try shortening it)";
+          counter.css('color', '#721c24');
+        }
+        counter.html(nSents+" sentences ("+nChars+" characters) detected"+warnText);
+      }
+
+      function checkResponse(){
+         // get checked radio value
+         var safety1 = $("input[name='safety1']:checked").val();
+         var safety3 = $("input[name='safety3']:checked").val();
+         var safety5 = $("input[name='safety5']:checked").val();
+
+         // get written rationales for those values
+         var rationale1 = $("#" + safety1 + "1-rationale").prop("value");
+         var rationale3 = $("#" + safety3 + "3-rationale").prop("value");
+         var rationale5 = $("#" + safety5 + "5-rationale").prop("value");
+
+         // the rationales should be longer than 10 letters
+         var rationale_minimum_length = 10
+         if (rationale1.length > rationale_minimum_length && rationale3.length > rationale_minimum_length && rationale5.length > rationale_minimum_length){
+            return true;
+         } else {
+            if (rationale1.length <= rationale_minimum_length) {
+               $("." + safety1 + "-rationale1-error").show();
+            }
+            if (rationale3.length <= rationale_minimum_length) {
+               $("." + safety3 + "-rationale3-error").show();
+            }
+            if (rationale5.length <= rationale_minimum_length) {
+               $("." + safety5 + "-rationale5-error").show();
+            }
+            return false;
+         }
+      }
+
+      $("#submitButton").on("click",function(e){
+         var ok = checkResponse();
+         console.log("Answer ok? "+ok);
+
+         if (!ok) {
+            $("#cantSubmit").show();
+            $(":invalid").addClass("invalid");
+            $(".lickert>input:invalid").parents().addClass("invalid");
+            $(".form-check>input:invalid").parents().addClass("invalid");
+            e.preventDefault();
+         } else{
+            $("#cantSubmit").hide();
+            return true;
+         }
+      });
+   </script>
+
+   <script id='emoji_js'>
+      function displayEmoji() {
+
+      /**
+       * utf8ByteArrayToString() copied from:
+       *   https://github.com/google/closure-library/blob/e877b1eac410c0d842bcda118689759512e0e26f/closure/goog/crypt/crypt.js
+       *
+       * Converts a UTF-8 byte array to JavaScript's 16-bit Unicode.
+       * @param {Uint8Array|Array<number>} bytes UTF-8 byte array.
+       * @return {string} 16-bit Unicode string.
+       */
+      var utf8ByteArrayToString = function(bytes) {
+      var out = [], pos = 0, c = 0;
+      while (pos < bytes.length) {
+         var c1 = bytes[pos++];
+         if (c1 < 128) {
+            out[c++] = String.fromCharCode(c1);
+         } else if (c1 > 191 && c1 < 224) {
+            var c2 = bytes[pos++];
+            out[c++] = String.fromCharCode((c1 & 31) << 6 | c2 & 63);
+         } else if (c1 > 239 && c1 < 365) {
+            // Surrogate Pair
+            var c2 = bytes[pos++];
+            var c3 = bytes[pos++];
+            var c4 = bytes[pos++];
+            var u = ((c1 & 7) << 18 | (c2 & 63) << 12 | (c3 & 63) << 6 | c4 & 63) -
+                  0x10000;
+            out[c++] = String.fromCharCode(0xD800 + (u >> 10));
+            out[c++] = String.fromCharCode(0xDC00 + (u & 1023));
+         } else {
+            var c2 = bytes[pos++];
+            var c3 = bytes[pos++];
+            out[c++] =
+            String.fromCharCode((c1 & 15) << 12 | (c2 & 63) << 6 | c3 & 63);
+         }
+      }
+      return out.join('');
+      }
+
+      jQuery(this).text(utf8ByteArrayToString(JSON.parse(jQuery(this).attr('data-emoji-bytes'))));
+      }
+   </script>
+   <!-- For charting JS -->
+   <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-base.min.js" type="text/javascript"></script>
+   <!-- LIGHTBOX JS -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox-plus-jquery.min.js"></script>

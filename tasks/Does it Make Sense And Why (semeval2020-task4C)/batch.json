@@ -1,0 +1,3222 @@
+[
+    {
+        "Input.Sensical_Statement1":"Her car broke down, luckily a mechanic stopped to help.",
+        "Input.Nonsensical_Statement1":"Her car broke down, luckily a squid stopped to help,",
+        "Input.Sensical_Statement2":"She walked a mile on the beach.",
+        "Input.Nonsensical_Statement2":"She walked a mile on the sun.",
+        "Answer.reason1":"A squid is not capable of fixing a car",
+        "Answer.reason2":"the sun is a hot ball of gas and cannot be walked on",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Her car broke down, luckily a mechanic stopped to help.",
+        "Input.Nonsensical_Statement1":"Her car broke down, luckily a squid stopped to help,",
+        "Input.Sensical_Statement2":"She walked a mile on the beach.",
+        "Input.Nonsensical_Statement2":"She walked a mile on the sun.",
+        "Answer.reason1":"squid cannot repair the broken car",
+        "Answer.reason2":"sun is so hot no one can even go near the sun",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The man walked on the sidewalk.",
+        "Input.Nonsensical_Statement1":"The man walked on the ocean.",
+        "Input.Sensical_Statement2":"He rode his bicycle to the store to buy an apple.",
+        "Input.Nonsensical_Statement2":"He rode his apple to the store to buy a bicycle.",
+        "Answer.reason1":"ocean is not a sidewalk",
+        "Answer.reason2":"apple is not a bicycle",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The man walked on the sidewalk.",
+        "Input.Nonsensical_Statement1":"The man walked on the ocean.",
+        "Input.Sensical_Statement2":"He rode his bicycle to the store to buy an apple.",
+        "Input.Nonsensical_Statement2":"He rode his apple to the store to buy a bicycle.",
+        "Answer.reason1":"He would sink if he tried to walk on water.",
+        "Answer.reason2":"An apple is not a means of transportation.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The man rode his bike to the store.",
+        "Input.Nonsensical_Statement1":"The man rode his ant to the store.",
+        "Input.Sensical_Statement2":"Corn is grown in a field of dirt.",
+        "Input.Nonsensical_Statement2":"Corn is grown underwater.",
+        "Answer.reason1":"You can not ride an ant.",
+        "Answer.reason2":"Corn is grown in soil, air and sun.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The man rode his bike to the store.",
+        "Input.Nonsensical_Statement1":"The man rode his ant to the store.",
+        "Input.Sensical_Statement2":"Corn is grown in a field of dirt.",
+        "Input.Nonsensical_Statement2":"Corn is grown underwater.",
+        "Answer.reason1":"Ants are too small to ride.",
+        "Answer.reason2":"Corn does not grow with too much water.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Food is necessary for life.",
+        "Input.Nonsensical_Statement1":"Smartphones are necessary for life.",
+        "Input.Sensical_Statement2":"He wore a button on his hat.",
+        "Input.Nonsensical_Statement2":"He wore a hat on his button.",
+        "Answer.reason1":"Life doesn't need smartphones.",
+        "Answer.reason2":"You can't wear hats on buttons.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Food is necessary for life.",
+        "Input.Nonsensical_Statement1":"Smartphones are necessary for life.",
+        "Input.Sensical_Statement2":"He wore a button on his hat.",
+        "Input.Nonsensical_Statement2":"He wore a hat on his button.",
+        "Answer.reason1":"There are alternative means to connect with someone and gain information from the web than with a Smartphone.",
+        "Answer.reason2":"A hat is larger than a button.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Food is necessary for life.",
+        "Input.Nonsensical_Statement1":"Smartphones are necessary for life.",
+        "Input.Sensical_Statement2":"He wore a button on his hat.",
+        "Input.Nonsensical_Statement2":"He wore a hat on his button.",
+        "Answer.reason1":"our forefathers lived happily without smartphones",
+        "Answer.reason2":"button is much smaller",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He washed the dishes in the sink.",
+        "Input.Nonsensical_Statement1":"He washed the dishes in the oven.",
+        "Input.Sensical_Statement2":"Alex lives in the city",
+        "Input.Nonsensical_Statement2":"Alex lives in the piano",
+        "Answer.reason1":"Ovens do not have water to wash dishes.",
+        "Answer.reason2":"A piano is too small to be a living space.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He washed the dishes in the sink.",
+        "Input.Nonsensical_Statement1":"He washed the dishes in the oven.",
+        "Input.Sensical_Statement2":"Alex lives in the city",
+        "Input.Nonsensical_Statement2":"Alex lives in the piano",
+        "Answer.reason1":"Ovens are not used to wash dishes.",
+        "Answer.reason2":"People can not take shelter in a piano because it is too small.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The horse ran across the open field.",
+        "Input.Nonsensical_Statement1":"The horse flew across the open field.",
+        "Input.Sensical_Statement2":"He rides a bicycle to work.",
+        "Input.Nonsensical_Statement2":"He rides a basketball to work.",
+        "Answer.reason1":"Hoeses can't fly.",
+        "Answer.reason2":"Basketballs are not a vehicle.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The horse ran across the open field.",
+        "Input.Nonsensical_Statement1":"The horse flew across the open field.",
+        "Input.Sensical_Statement2":"He rides a bicycle to work.",
+        "Input.Nonsensical_Statement2":"He rides a basketball to work.",
+        "Answer.reason1":"A horse has no wings and cannot fly.",
+        "Answer.reason2":"A basketball is to small to ride and has no wheels and motor",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I picked a flower that had grown in my front yard.",
+        "Input.Nonsensical_Statement1":"I picked a flower that had grown in my ear.",
+        "Input.Sensical_Statement2":"He parked the car in the garage.",
+        "Input.Nonsensical_Statement2":"He parked the airplane in the garage.",
+        "Answer.reason1":"flowers can't grow in your ear",
+        "Answer.reason2":"an airplane is too big for a garage",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I picked a flower that had grown in my front yard.",
+        "Input.Nonsensical_Statement1":"I picked a flower that had grown in my ear.",
+        "Input.Sensical_Statement2":"He parked the car in the garage.",
+        "Input.Nonsensical_Statement2":"He parked the airplane in the garage.",
+        "Answer.reason1":"Flowers can't grow inside one's ear.",
+        "Answer.reason2":"Airplane is too big for a garage.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She had shoes on.",
+        "Input.Nonsensical_Statement1":"She had cats on.",
+        "Input.Sensical_Statement2":"She cooked the fish in the oven.",
+        "Input.Nonsensical_Statement2":"She cooked the giraffe in the oven.",
+        "Answer.reason1":"She does not have cats.",
+        "Answer.reason2":"Giraffe is much bigger than the oven.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She had shoes on.",
+        "Input.Nonsensical_Statement1":"She had cats on.",
+        "Input.Sensical_Statement2":"She cooked the fish in the oven.",
+        "Input.Nonsensical_Statement2":"She cooked the giraffe in the oven.",
+        "Answer.reason1":"CATS IS NOT A SHOE",
+        "Answer.reason2":"GIRAFFE IS NOT A FISH TO COOK",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Most people drink milk with their cereal.",
+        "Input.Nonsensical_Statement1":"Most people drink fire with their cereal.",
+        "Input.Sensical_Statement2":"I killed a deer yesterday.",
+        "Input.Nonsensical_Statement2":"I killed a bridge yesterday.",
+        "Answer.reason1":"Fire isn't a physical liquid that can be drunk.",
+        "Answer.reason2":"A bridge isn't a living thing that can be killed.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Most people drink milk with their cereal.",
+        "Input.Nonsensical_Statement1":"Most people drink fire with their cereal.",
+        "Input.Sensical_Statement2":"I killed a deer yesterday.",
+        "Input.Nonsensical_Statement2":"I killed a bridge yesterday.",
+        "Answer.reason1":"Fire is to hot to drink and is not a liquid.",
+        "Answer.reason2":"A bridge is not alive.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"A guitar is a musical instrument.",
+        "Input.Nonsensical_Statement1":"A guitar is a kitchen gadget.",
+        "Input.Sensical_Statement2":"I ride the horse",
+        "Input.Nonsensical_Statement2":"the horse rides on me",
+        "Answer.reason1":"A guitar is not a kitchen utensil",
+        "Answer.reason2":"A horse can't mount a person",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"A guitar is a musical instrument.",
+        "Input.Nonsensical_Statement1":"A guitar is a kitchen gadget.",
+        "Input.Sensical_Statement2":"I ride the horse",
+        "Input.Nonsensical_Statement2":"the horse rides on me",
+        "Answer.reason1":"A guitar is for making music and isn't used as a kitchen tool.",
+        "Answer.reason2":"People ride horses and horses are too big to ride on people.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"When you have a book you can read it.",
+        "Input.Nonsensical_Statement1":"When you have a book you can cook it.",
+        "Input.Sensical_Statement2":"The mouse ran from the cat.",
+        "Input.Nonsensical_Statement2":"The cat ran from the mouse.",
+        "Answer.reason1":"You don't cook a book.",
+        "Answer.reason2":"Cats Don't run from mice.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"When you have a book you can read it.",
+        "Input.Nonsensical_Statement1":"When you have a book you can cook it.",
+        "Input.Sensical_Statement2":"The mouse ran from the cat.",
+        "Input.Nonsensical_Statement2":"The cat ran from the mouse.",
+        "Answer.reason1":"You cannot cook paper",
+        "Answer.reason2":"A cat is far larger than a mouse",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I ordered a chicken sandwich from the Popeye's establishment",
+        "Input.Nonsensical_Statement1":"I ordered a jet engine from the Popeye's establishment",
+        "Input.Sensical_Statement2":"your ears can listen to music",
+        "Input.Nonsensical_Statement2":"your mouth can listen to music",
+        "Answer.reason1":"Popeye's does not sell jet engines.",
+        "Answer.reason2":"Mouths can not hear.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I ordered a chicken sandwich from the Popeye's establishment",
+        "Input.Nonsensical_Statement1":"I ordered a jet engine from the Popeye's establishment",
+        "Input.Sensical_Statement2":"your ears can listen to music",
+        "Input.Nonsensical_Statement2":"your mouth can listen to music",
+        "Answer.reason1":"Popeye's doesn't sell jet engines.",
+        "Answer.reason2":"Mouth can't listen to music.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I ordered a chicken sandwich from the Popeye's establishment",
+        "Input.Nonsensical_Statement1":"I ordered a jet engine from the Popeye's establishment",
+        "Input.Sensical_Statement2":"your ears can listen to music",
+        "Input.Nonsensical_Statement2":"your mouth can listen to music",
+        "Answer.reason1":"Popeye's does not sell Jet engines.",
+        "Answer.reason2":"Your mouth is for making sounds, not hearing them.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"A tv is for watching shows",
+        "Input.Nonsensical_Statement1":"A tv  can be for driving outside",
+        "Input.Sensical_Statement2":"I would like to buy a house",
+        "Input.Nonsensical_Statement2":"I would like to buy a happy",
+        "Answer.reason1":"TV donot have wheels to drive",
+        "Answer.reason2":"happy is a feeling not a product",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"A tv is for watching shows",
+        "Input.Nonsensical_Statement1":"A tv  can be for driving outside",
+        "Input.Sensical_Statement2":"I would like to buy a house",
+        "Input.Nonsensical_Statement2":"I would like to buy a happy",
+        "Answer.reason1":"A T.V is not a means of transport.",
+        "Answer.reason2":"Happiness is a feeling that cannot be traded for money.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She loves to shop for hammers at the local hardware store.",
+        "Input.Nonsensical_Statement1":"She loves to dance provocatively for money at the local Walmart.",
+        "Input.Sensical_Statement2":"He looked up the address for the restaurant in the phone book.",
+        "Input.Nonsensical_Statement2":"He looked up the name of the president in the phone book.",
+        "Answer.reason1":"Walmart is not a strip club",
+        "Answer.reason2":"The president is not listed in the phone book",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She loves to shop for hammers at the local hardware store.",
+        "Input.Nonsensical_Statement1":"She loves to dance provocatively for money at the local Walmart.",
+        "Input.Sensical_Statement2":"He looked up the address for the restaurant in the phone book.",
+        "Input.Nonsensical_Statement2":"He looked up the name of the president in the phone book.",
+        "Answer.reason1":"Local Walmart is not giving money for any dancing p people",
+        "Answer.reason2":"Phone book is not a current affairs book .",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The boy drives a go kart",
+        "Input.Nonsensical_Statement1":"The boy drives a semi truck",
+        "Input.Sensical_Statement2":"I watched a movie last night.",
+        "Input.Nonsensical_Statement2":"I watched a perfume last night.",
+        "Answer.reason1":"boy cannot drive a semi truck",
+        "Answer.reason2":"perfume is not a movie to watch",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The boy drives a go kart",
+        "Input.Nonsensical_Statement1":"The boy drives a semi truck",
+        "Input.Sensical_Statement2":"I watched a movie last night.",
+        "Input.Nonsensical_Statement2":"I watched a perfume last night.",
+        "Answer.reason1":"A semi truck is to big for a boy to drive.",
+        "Answer.reason2":"Perfume if for wearing.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Milk comes from a cow",
+        "Input.Nonsensical_Statement1":"Milk comes from an apple",
+        "Input.Sensical_Statement2":"Light bulbs use electricity to run.",
+        "Input.Nonsensical_Statement2":"Light bulbs use pudding to run.",
+        "Answer.reason1":"Juice comes from an apple.",
+        "Answer.reason2":"A light bulb does not have the ability to generate energy from pudding.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Milk comes from a cow",
+        "Input.Nonsensical_Statement1":"Milk comes from an apple",
+        "Input.Sensical_Statement2":"Light bulbs use electricity to run.",
+        "Input.Nonsensical_Statement2":"Light bulbs use pudding to run.",
+        "Answer.reason1":"Apple is a fruit and doesn't produce milk",
+        "Answer.reason2":"Pudding does not conduct electricity",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He ran as fast as a dog",
+        "Input.Nonsensical_Statement1":"He ran as fast as a jet plane",
+        "Input.Sensical_Statement2":"She rode her bike to work",
+        "Input.Nonsensical_Statement2":"She rode a dinosaur to work",
+        "Answer.reason1":"A person cannot run as fast as a jet plane",
+        "Answer.reason2":"Dinosaurs were to dangerous to ride and are extinct",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He ran as fast as a dog",
+        "Input.Nonsensical_Statement1":"He ran as fast as a jet plane",
+        "Input.Sensical_Statement2":"She rode her bike to work",
+        "Input.Nonsensical_Statement2":"She rode a dinosaur to work",
+        "Answer.reason1":"Jet goes many times faster than a human can run.",
+        "Answer.reason2":"Dinosaurs are extinct.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"A person wants to be lazy sometimes",
+        "Input.Nonsensical_Statement1":"A person wants to be lucy sometimes",
+        "Input.Sensical_Statement2":"The dog barked at the delivery truck.",
+        "Input.Nonsensical_Statement2":"The truck barked at the dog.",
+        "Answer.reason1":"Lucky has been mispelled.",
+        "Answer.reason2":"Trucks don't bark.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"A person wants to be lazy sometimes",
+        "Input.Nonsensical_Statement1":"A person wants to be lucy sometimes",
+        "Input.Sensical_Statement2":"The dog barked at the delivery truck.",
+        "Input.Nonsensical_Statement2":"The truck barked at the dog.",
+        "Answer.reason1":"Lucy is a name not a state of being",
+        "Answer.reason2":"trucks are vehicles and do not have mouths",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Dog is man's best friend.",
+        "Input.Nonsensical_Statement1":"Tiger is man's best friend.",
+        "Input.Sensical_Statement2":"Laura threw a rock into the sea.",
+        "Input.Nonsensical_Statement2":"Laura threw the sea at a rock.",
+        "Answer.reason1":"Tigers eat men, they are not friendly",
+        "Answer.reason2":"you cannot throw a body of water as large as the sea",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Dog is man's best friend.",
+        "Input.Nonsensical_Statement1":"Tiger is man's best friend.",
+        "Input.Sensical_Statement2":"Laura threw a rock into the sea.",
+        "Input.Nonsensical_Statement2":"Laura threw the sea at a rock.",
+        "Answer.reason1":"A tiger is to dangerous to be man's best friend.",
+        "Answer.reason2":"A sea is not a solid object so can't be thrown.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I put a pie in the oven",
+        "Input.Nonsensical_Statement1":"I put a car in the oven",
+        "Input.Sensical_Statement2":"My dog ate my homework",
+        "Input.Nonsensical_Statement2":"My dog wrote my homework",
+        "Answer.reason1":"A car is too big to be put in an oven",
+        "Answer.reason2":"Dogs cannot write.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I put a pie in the oven",
+        "Input.Nonsensical_Statement1":"I put a car in the oven",
+        "Input.Sensical_Statement2":"My dog ate my homework",
+        "Input.Nonsensical_Statement2":"My dog wrote my homework",
+        "Answer.reason1":"A car cannot fit in an oven.",
+        "Answer.reason2":"A dog is not capable of writing.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"It took him 18 months to build his house",
+        "Input.Nonsensical_Statement1":"It took him 18 minutes to build his house",
+        "Input.Sensical_Statement2":"Put water on stove to boil it",
+        "Input.Nonsensical_Statement2":"Put water in a fridge to boil it",
+        "Answer.reason1":"18 minutes are not enough to build a house.",
+        "Answer.reason2":"Fridge can cool the water.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"It took him 18 months to build his house",
+        "Input.Nonsensical_Statement1":"It took him 18 minutes to build his house",
+        "Input.Sensical_Statement2":"Put water on stove to boil it",
+        "Input.Nonsensical_Statement2":"Put water in a fridge to boil it",
+        "Answer.reason1":"His house cannot built in 18 minutes.",
+        "Answer.reason2":"Fridge cannot to boil the water.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"when it rains you will become wet",
+        "Input.Nonsensical_Statement1":"when it's wet you will become rain",
+        "Input.Sensical_Statement2":"apples can be red or green",
+        "Input.Nonsensical_Statement2":"apples can be black",
+        "Answer.reason1":"A person cannot become rain",
+        "Answer.reason2":"No apples are ever black",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"when it rains you will become wet",
+        "Input.Nonsensical_Statement1":"when it's wet you will become rain",
+        "Input.Sensical_Statement2":"apples can be red or green",
+        "Input.Nonsensical_Statement2":"apples can be black",
+        "Answer.reason1":"When we are wet, we can drip that much just like rain",
+        "Answer.reason2":"There is no black apple in this world . If its there, then it will artificial one",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She ran into the store",
+        "Input.Nonsensical_Statement1":"She ran into the sun",
+        "Input.Sensical_Statement2":"The sun emits light to all the world.",
+        "Input.Nonsensical_Statement2":"The moon emits light to all the world.",
+        "Answer.reason1":"The sun would burn anyone or anything that would get near it.",
+        "Answer.reason2":"The moon does not emit light and what we see is the light shed on it by the sun.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She ran into the store",
+        "Input.Nonsensical_Statement1":"She ran into the sun",
+        "Input.Sensical_Statement2":"The sun emits light to all the world.",
+        "Input.Nonsensical_Statement2":"The moon emits light to all the world.",
+        "Answer.reason1":"sun is not store to run",
+        "Answer.reason2":"moon is not a sun emights light to all the world",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He took the bus to get to work",
+        "Input.Nonsensical_Statement1":"He took the hot air balloon to get to work",
+        "Input.Sensical_Statement2":"The clock is ahead",
+        "Input.Nonsensical_Statement2":"The clock is lazy",
+        "Answer.reason1":"You can't take a hot air balloon to get to work.",
+        "Answer.reason2":"Clocks can't be lazy.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He took the bus to get to work",
+        "Input.Nonsensical_Statement1":"He took the hot air balloon to get to work",
+        "Input.Sensical_Statement2":"The clock is ahead",
+        "Input.Nonsensical_Statement2":"The clock is lazy",
+        "Answer.reason1":"Hot air balloon is a toy object which can not take to work.",
+        "Answer.reason2":"Clock is running on battrey",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The plane landed in Seatac airport",
+        "Input.Nonsensical_Statement1":"The plane landed in Mars",
+        "Input.Sensical_Statement2":"The chili was hot",
+        "Input.Nonsensical_Statement2":"The chili was sexy",
+        "Answer.reason1":"Mars is too far away for a plane to fly too.",
+        "Answer.reason2":"Chili is a food and not a person that can be sexy.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The plane landed in Seatac airport",
+        "Input.Nonsensical_Statement1":"The plane landed in Mars",
+        "Input.Sensical_Statement2":"The chili was hot",
+        "Input.Nonsensical_Statement2":"The chili was sexy",
+        "Answer.reason1":"MARS IS NOT PLANE TO LANDED",
+        "Answer.reason2":"THE CHILI IS HOT NOT SEXY",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The plane landed in Seatac airport",
+        "Input.Nonsensical_Statement1":"The plane landed in Mars",
+        "Input.Sensical_Statement2":"The chili was hot",
+        "Input.Nonsensical_Statement2":"The chili was sexy",
+        "Answer.reason1":"Planes cannot go to Mars.",
+        "Answer.reason2":"Sexy is not for inanimate objects.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"You can walk to the store.",
+        "Input.Nonsensical_Statement1":"The store can walk to you.",
+        "Input.Sensical_Statement2":"Geese migrate to find warmer weather for the winter.",
+        "Input.Nonsensical_Statement2":"Geese migrate to find colder weather for the summer.",
+        "Answer.reason1":"A store is a building which is immovable.",
+        "Answer.reason2":"Geese migrate only in winter.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"You can walk to the store.",
+        "Input.Nonsensical_Statement1":"The store can walk to you.",
+        "Input.Sensical_Statement2":"Geese migrate to find warmer weather for the winter.",
+        "Input.Nonsensical_Statement2":"Geese migrate to find colder weather for the summer.",
+        "Answer.reason1":"He play the keyboard.",
+        "Answer.reason2":"The keyboard play with him.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The lion ate a chicken",
+        "Input.Nonsensical_Statement1":"The chicken ate a lion",
+        "Input.Sensical_Statement2":"She put ice cream in the freezer.",
+        "Input.Nonsensical_Statement2":"She put a candle in the freezer.",
+        "Answer.reason1":"The chicken does not eat a lion.",
+        "Answer.reason2":"Freezer is not a place to keep a candle.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The lion ate a chicken",
+        "Input.Nonsensical_Statement1":"The chicken ate a lion",
+        "Input.Sensical_Statement2":"She put ice cream in the freezer.",
+        "Input.Nonsensical_Statement2":"She put a candle in the freezer.",
+        "Answer.reason1":"chicken not ate lion",
+        "Answer.reason2":"candle is not ice cream",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Tomorrow the sun will be shining on his skin.",
+        "Input.Nonsensical_Statement1":"Tomorrow the sun will cool his skin.",
+        "Input.Sensical_Statement2":"Turkey is kept in the fridge so it can be used afterwards",
+        "Input.Nonsensical_Statement2":"Stones are kept in the  fridge so it can be used afterwards",
+        "Answer.reason1":"The sun does not cause a cooling effect on a persons skin.",
+        "Answer.reason2":"Stones do not require refrigeration.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Tomorrow the sun will be shining on his skin.",
+        "Input.Nonsensical_Statement1":"Tomorrow the sun will cool his skin.",
+        "Input.Sensical_Statement2":"Turkey is kept in the fridge so it can be used afterwards",
+        "Input.Nonsensical_Statement2":"Stones are kept in the  fridge so it can be used afterwards",
+        "Answer.reason1":"The sun makes things warm.",
+        "Answer.reason2":"A regular use of a stone does not require freezing.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"There is a bluebird building a nest in the oak tree",
+        "Input.Nonsensical_Statement1":"There is a penguin building a nest in the oak tree",
+        "Input.Sensical_Statement2":"I called the police to report a crime.",
+        "Input.Nonsensical_Statement2":"I called the post office to report a crime.",
+        "Answer.reason1":"penguin is not a bird",
+        "Answer.reason2":"post office is not for crime",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"There is a bluebird building a nest in the oak tree",
+        "Input.Nonsensical_Statement1":"There is a penguin building a nest in the oak tree",
+        "Input.Sensical_Statement2":"I called the police to report a crime.",
+        "Input.Nonsensical_Statement2":"I called the post office to report a crime.",
+        "Answer.reason1":"Penguins don't build nests in oak trees.",
+        "Answer.reason2":"You don't report crimes at a post office.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Rebooting your phone helps clear the cache out of the memory.",
+        "Input.Nonsensical_Statement1":"Rebooting your phone fills up the memory with cache.",
+        "Input.Sensical_Statement2":"He went to the bar in his car.",
+        "Input.Nonsensical_Statement2":"He went to the bar on a plane.",
+        "Answer.reason1":"The cache is reset when you reboot your phone.",
+        "Answer.reason2":"Planes do not have bars.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Rebooting your phone helps clear the cache out of the memory.",
+        "Input.Nonsensical_Statement1":"Rebooting your phone fills up the memory with cache.",
+        "Input.Sensical_Statement2":"He went to the bar in his car.",
+        "Input.Nonsensical_Statement2":"He went to the bar on a plane.",
+        "Answer.reason1":"Rebooting your phone does not fills up the memory with cache.",
+        "Answer.reason2":"Plane cannot be used to go to bar.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Rebooting your phone helps clear the cache out of the memory.",
+        "Input.Nonsensical_Statement1":"Rebooting your phone fills up the memory with cache.",
+        "Input.Sensical_Statement2":"He went to the bar in his car.",
+        "Input.Nonsensical_Statement2":"He went to the bar on a plane.",
+        "Answer.reason1":"rebooting clears cache",
+        "Answer.reason2":"bars are on the streets",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The pilot flew an airplane",
+        "Input.Nonsensical_Statement1":"The biscuit flew an airplane",
+        "Input.Sensical_Statement2":"She put a chicken in her soup",
+        "Input.Nonsensical_Statement2":"She put her cellphone in her soup",
+        "Answer.reason1":"Biscuits do not fly.",
+        "Answer.reason2":"That will ruin the cellphone.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The pilot flew an airplane",
+        "Input.Nonsensical_Statement1":"The biscuit flew an airplane",
+        "Input.Sensical_Statement2":"She put a chicken in her soup",
+        "Input.Nonsensical_Statement2":"She put her cellphone in her soup",
+        "Answer.reason1":"The biscuit doesn't have ability to fly.",
+        "Answer.reason2":"people can't eat cellphone",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She repaired the zipper on the jacket.",
+        "Input.Nonsensical_Statement1":"She repaired the swimming pool on the jacket.",
+        "Input.Sensical_Statement2":"The lion hunted the deer",
+        "Input.Nonsensical_Statement2":"The rabbit hunted the deer",
+        "Answer.reason1":"Jackets don't have swimming pool in them",
+        "Answer.reason2":"A rabbit is too small to hunt a deer",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She repaired the zipper on the jacket.",
+        "Input.Nonsensical_Statement1":"She repaired the swimming pool on the jacket.",
+        "Input.Sensical_Statement2":"The lion hunted the deer",
+        "Input.Nonsensical_Statement2":"The rabbit hunted the deer",
+        "Answer.reason1":"jacket can not contain swimming pool",
+        "Answer.reason2":"rabbit is not a carnivorous",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"A car can carry five people",
+        "Input.Nonsensical_Statement1":"A car can carry five lions",
+        "Input.Sensical_Statement2":"Artificial Intelligence will save the world.",
+        "Input.Nonsensical_Statement2":"An asteroid impact will save humankind..",
+        "Answer.reason1":"The car is too small to carry five lions",
+        "Answer.reason2":"No human will left to save when an asteroid impact",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"A car can carry five people",
+        "Input.Nonsensical_Statement1":"A car can carry five lions",
+        "Input.Sensical_Statement2":"Artificial Intelligence will save the world.",
+        "Input.Nonsensical_Statement2":"An asteroid impact will save humankind..",
+        "Answer.reason1":"lions cant drive",
+        "Answer.reason2":"asteroid will destroy earth",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The woman waters the plants",
+        "Input.Nonsensical_Statement1":"The woman waters the rocks",
+        "Input.Sensical_Statement2":"I put a blu-ray disc into a blu-ray player.",
+        "Input.Nonsensical_Statement2":"I put my dog into a blu-ray player.",
+        "Answer.reason1":"There is no reason to water a rock.",
+        "Answer.reason2":"Dogs do not fit in blu-ray players.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The woman waters the plants",
+        "Input.Nonsensical_Statement1":"The woman waters the rocks",
+        "Input.Sensical_Statement2":"I put a blu-ray disc into a blu-ray player.",
+        "Input.Nonsensical_Statement2":"I put my dog into a blu-ray player.",
+        "Answer.reason1":"Rocks cannot be watered.",
+        "Answer.reason2":"Dog is much bigger than a blu-ray player.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Plants  prepare their food by photosynthesis metod.",
+        "Input.Nonsensical_Statement1":"Animals prepare their food using photosynthesis metod",
+        "Input.Sensical_Statement2":"He played a beautiful melody on his flute.",
+        "Input.Nonsensical_Statement2":"He played a beautiful melody with his lemon.",
+        "Answer.reason1":"photosynthesis method does not involve or relate to food or its preparation",
+        "Answer.reason2":"lemons can't be used to produce complex sounds",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Plants  prepare their food by photosynthesis metod.",
+        "Input.Nonsensical_Statement1":"Animals prepare their food using photosynthesis metod",
+        "Input.Sensical_Statement2":"He played a beautiful melody on his flute.",
+        "Input.Nonsensical_Statement2":"He played a beautiful melody with his lemon.",
+        "Answer.reason1":"The process of Photosynthesis is used by plants not animals.",
+        "Answer.reason2":"Melody is produced by musical instruments but not with fruits like lemon.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Dice are available in many shapes.",
+        "Input.Nonsensical_Statement1":"Dice are usually round.",
+        "Input.Sensical_Statement2":"The flew fast in the sky",
+        "Input.Nonsensical_Statement2":"The turkey flew fast in the sky",
+        "Answer.reason1":"dice not necessarily round can be found in other shapes",
+        "Answer.reason2":"turkey never flew in the sky",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Dice are available in many shapes.",
+        "Input.Nonsensical_Statement1":"Dice are usually round.",
+        "Input.Sensical_Statement2":"The flew fast in the sky",
+        "Input.Nonsensical_Statement2":"The turkey flew fast in the sky",
+        "Answer.reason1":"if it were round it couldnt lland on anything",
+        "Answer.reason2":"turkeys cant fly fast in the sky",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She drove her car to the store.",
+        "Input.Nonsensical_Statement1":"She drove her car to space",
+        "Input.Sensical_Statement2":"The woman was pregnant with a boy.",
+        "Input.Nonsensical_Statement2":"The woman was pregant with a cow.",
+        "Answer.reason1":"Space is a place where we cannot drove the car.",
+        "Answer.reason2":"The woman cannot pregnant with a cow.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She drove her car to the store.",
+        "Input.Nonsensical_Statement1":"She drove her car to space",
+        "Input.Sensical_Statement2":"The woman was pregnant with a boy.",
+        "Input.Nonsensical_Statement2":"The woman was pregant with a cow.",
+        "Answer.reason1":"Car cannot to driven to space.",
+        "Answer.reason2":"The woman cannot was pregant with a cow.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"ketchup is red",
+        "Input.Nonsensical_Statement1":"ketchup is blue",
+        "Input.Sensical_Statement2":"She drank apple juice from a cup.",
+        "Input.Nonsensical_Statement2":"She drank apple juice from a sock.",
+        "Answer.reason1":"Ketchup is red and made from tomatoes which are never blue.",
+        "Answer.reason2":"Socks would not hold apple juice but would let it fall through.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"ketchup is red",
+        "Input.Nonsensical_Statement1":"ketchup is blue",
+        "Input.Sensical_Statement2":"She drank apple juice from a cup.",
+        "Input.Nonsensical_Statement2":"She drank apple juice from a sock.",
+        "Answer.reason1":"ketchup is alcohol",
+        "Answer.reason2":"she drank apple juice from a river",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"My father reads the newspaper in the morning",
+        "Input.Nonsensical_Statement1":"My father reads the radio in the morning",
+        "Input.Sensical_Statement2":"She paid for her food with a credit card.",
+        "Input.Nonsensical_Statement2":"She paid for her food with banana peels.",
+        "Answer.reason1":"A radio cannot be read, only listened to.",
+        "Answer.reason2":"Banana peels is not a form of currency.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"My father reads the newspaper in the morning",
+        "Input.Nonsensical_Statement1":"My father reads the radio in the morning",
+        "Input.Sensical_Statement2":"She paid for her food with a credit card.",
+        "Input.Nonsensical_Statement2":"She paid for her food with banana peels.",
+        "Answer.reason1":"RADIO IS NOT A NEWSPAPER TO READ",
+        "Answer.reason2":"BANANA PEELS IS NOT A CREDIT CARD",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She placed a pie into the oven",
+        "Input.Nonsensical_Statement1":"She placed a motorcyle into the oven",
+        "Input.Sensical_Statement2":"He took his car to a mechanic to get fixed.",
+        "Input.Nonsensical_Statement2":"He took his car to a baker to get fixed.",
+        "Answer.reason1":"Motorcycles are too big to fit in an oven.",
+        "Answer.reason2":"Cars are fixed in an auto repair shop.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She placed a pie into the oven",
+        "Input.Nonsensical_Statement1":"She placed a motorcyle into the oven",
+        "Input.Sensical_Statement2":"He took his car to a mechanic to get fixed.",
+        "Input.Nonsensical_Statement2":"He took his car to a baker to get fixed.",
+        "Answer.reason1":"A motorcycle is much bigger than the oven.",
+        "Answer.reason2":"Baker can not to get fixed to a car.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He shot the animal with a gun.",
+        "Input.Nonsensical_Statement1":"He shot the animal with a tree.",
+        "Input.Sensical_Statement2":"Joe was late to work becasue he missed his train.",
+        "Input.Nonsensical_Statement2":"Joe was late to work becasue he missed his wife.",
+        "Answer.reason1":"Animal can not be shot with a tree.",
+        "Answer.reason2":"Joe can not miss his wife.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He shot the animal with a gun.",
+        "Input.Nonsensical_Statement1":"He shot the animal with a tree.",
+        "Input.Sensical_Statement2":"Joe was late to work becasue he missed his train.",
+        "Input.Nonsensical_Statement2":"Joe was late to work becasue he missed his wife.",
+        "Answer.reason1":"Trees are too big and cannot be shot like a gun can",
+        "Answer.reason2":"Hoe's wife has nothing to do with his transportation",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"It is important to excerise daily in order to stay in good health.",
+        "Input.Nonsensical_Statement1":"It is important to drink whisky daily in order to stay in good health.",
+        "Input.Sensical_Statement2":"A circle is a shape",
+        "Input.Nonsensical_Statement2":"A circle is a square",
+        "Answer.reason1":"Alcoholic beverages don't improve your overall health",
+        "Answer.reason2":"circles and squares are completely different shapes",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"It is important to excerise daily in order to stay in good health.",
+        "Input.Nonsensical_Statement1":"It is important to drink whisky daily in order to stay in good health.",
+        "Input.Sensical_Statement2":"A circle is a shape",
+        "Input.Nonsensical_Statement2":"A circle is a square",
+        "Answer.reason1":"whisky is not good for health",
+        "Answer.reason2":"circle is not a square",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I exercised in order to lose weight.",
+        "Input.Nonsensical_Statement1":"I exercised in order to lose banks.",
+        "Input.Sensical_Statement2":"Jury duty requires judgement.",
+        "Input.Nonsensical_Statement2":"Computer work requires big muscles.",
+        "Answer.reason1":"You can't lose a bank with excercise.",
+        "Answer.reason2":"Computer work does not require big muscles.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I exercised in order to lose weight.",
+        "Input.Nonsensical_Statement1":"I exercised in order to lose banks.",
+        "Input.Sensical_Statement2":"Jury duty requires judgement.",
+        "Input.Nonsensical_Statement2":"Computer work requires big muscles.",
+        "Answer.reason1":"bank is where we save money",
+        "Answer.reason2":"fingers are sufficient",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The bird ate the worm.",
+        "Input.Nonsensical_Statement1":"The rock ate the worm.",
+        "Input.Sensical_Statement2":"He rode to school in a car.",
+        "Input.Nonsensical_Statement2":"He rode to Pluto in a car.",
+        "Answer.reason1":"A rock is an inanimate object as does not eat.",
+        "Answer.reason2":"Pluto is to far to ride a car to.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The bird ate the worm.",
+        "Input.Nonsensical_Statement1":"The rock ate the worm.",
+        "Input.Sensical_Statement2":"He rode to school in a car.",
+        "Input.Nonsensical_Statement2":"He rode to Pluto in a car.",
+        "Answer.reason1":"Rocks do not have mouths and cannot eat.",
+        "Answer.reason2":"Cars are not capable of interplanetary travel.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I ran over a squirrel with my car.",
+        "Input.Nonsensical_Statement1":"I ran over a skyscraper with my car.",
+        "Input.Sensical_Statement2":"A razor is for shaving a mans face.",
+        "Input.Nonsensical_Statement2":"A bra is for shaving a mans face.",
+        "Answer.reason1":"A skyscraper is to big to run over with a car.",
+        "Answer.reason2":"A bra is worn on a womens chest.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I ran over a squirrel with my car.",
+        "Input.Nonsensical_Statement1":"I ran over a skyscraper with my car.",
+        "Input.Sensical_Statement2":"A razor is for shaving a mans face.",
+        "Input.Nonsensical_Statement2":"A bra is for shaving a mans face.",
+        "Answer.reason1":"SKYSCRAPER IS VERY TALL",
+        "Answer.reason2":"BRA DOESN'T HAS A BLADES",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"You put on sun screen before going out into the sun.",
+        "Input.Nonsensical_Statement1":"You put on cooking oil before going out into the sun.",
+        "Input.Sensical_Statement2":"I am going to the barbershop for a haircut.",
+        "Input.Nonsensical_Statement2":"I am going to the movie theater for a haircut.",
+        "Answer.reason1":"You put on suntanning lotion to go into the sun.",
+        "Answer.reason2":"There is no hairdresser at the movie.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"You put on sun screen before going out into the sun.",
+        "Input.Nonsensical_Statement1":"You put on cooking oil before going out into the sun.",
+        "Input.Sensical_Statement2":"I am going to the barbershop for a haircut.",
+        "Input.Nonsensical_Statement2":"I am going to the movie theater for a haircut.",
+        "Answer.reason1":"Cooking oil is not used on skin",
+        "Answer.reason2":"Movie theaters don't have barbers who can cut hair",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He bought apple and kept in the bag",
+        "Input.Nonsensical_Statement1":"He bought building and kept in the bag",
+        "Input.Sensical_Statement2":"The governor declared a state of emergency and imposed martial law.",
+        "Input.Nonsensical_Statement2":"The governor declared a state of emergency and imposed surgical anesthesia.",
+        "Answer.reason1":"A building doesn't fit in a bag",
+        "Answer.reason2":"A governor can't imposed surgical anesthesia on anyone",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He bought apple and kept in the bag",
+        "Input.Nonsensical_Statement1":"He bought building and kept in the bag",
+        "Input.Sensical_Statement2":"The governor declared a state of emergency and imposed martial law.",
+        "Input.Nonsensical_Statement2":"The governor declared a state of emergency and imposed surgical anesthesia.",
+        "Answer.reason1":"The bag is too small to keep the building",
+        "Answer.reason2":"The governor is not an anesthetist to impose surgical anesthesia",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I walked my dog yesterday.",
+        "Input.Nonsensical_Statement1":"I walked my garage yesterday.",
+        "Input.Sensical_Statement2":"He types on the keyboard",
+        "Input.Nonsensical_Statement2":"He types on the banana",
+        "Answer.reason1":"Garages are stationary.",
+        "Answer.reason2":"Bananas do not have a typing capability.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I walked my dog yesterday.",
+        "Input.Nonsensical_Statement1":"I walked my garage yesterday.",
+        "Input.Sensical_Statement2":"He types on the keyboard",
+        "Input.Nonsensical_Statement2":"He types on the banana",
+        "Answer.reason1":"A garage is building which cannot walk.",
+        "Answer.reason2":"A banana cannot be put inside a typewriter.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Doctor is treating the patient  in the clinic.",
+        "Input.Nonsensical_Statement1":"doctor is cooking in the clinic",
+        "Input.Sensical_Statement2":"The earth is the shape of a ball.",
+        "Input.Nonsensical_Statement2":"The earth is the shape of a table.",
+        "Answer.reason1":"clinic is for checking the sick people  not for cooking",
+        "Answer.reason2":"the earth is round not square or rectangular",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Doctor is treating the patient  in the clinic.",
+        "Input.Nonsensical_Statement1":"doctor is cooking in the clinic",
+        "Input.Sensical_Statement2":"The earth is the shape of a ball.",
+        "Input.Nonsensical_Statement2":"The earth is the shape of a table.",
+        "Answer.reason1":"Doctor can not be cooking in the clinic.",
+        "Answer.reason2":"The earth can not be in the shape of a table.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I drove my car to the store yesterday.",
+        "Input.Nonsensical_Statement1":"I drove my car to the moon yesterday.",
+        "Input.Sensical_Statement2":"he brought a mouse to the house",
+        "Input.Nonsensical_Statement2":"He brought a dinosaur to the house.",
+        "Answer.reason1":"Cars can't ride through space.",
+        "Answer.reason2":"The dinosaurs are extinct.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I drove my car to the store yesterday.",
+        "Input.Nonsensical_Statement1":"I drove my car to the moon yesterday.",
+        "Input.Sensical_Statement2":"he brought a mouse to the house",
+        "Input.Nonsensical_Statement2":"He brought a dinosaur to the house.",
+        "Answer.reason1":"You can't drive a car to the moon.",
+        "Answer.reason2":"Dinosaurs don't exist anymore.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I drove the car to work.",
+        "Input.Nonsensical_Statement1":"I drove the car to the moon.",
+        "Input.Sensical_Statement2":"She unplugged her phone because it was done charging",
+        "Input.Nonsensical_Statement2":"She unplugged her phone because it committed war crimes",
+        "Answer.reason1":"I cannot drive the car to the moon.",
+        "Answer.reason2":"A phone cannot commit war crimes",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I drove the car to work.",
+        "Input.Nonsensical_Statement1":"I drove the car to the moon.",
+        "Input.Sensical_Statement2":"She unplugged her phone because it was done charging",
+        "Input.Nonsensical_Statement2":"She unplugged her phone because it committed war crimes",
+        "Answer.reason1":"Moon is a place where we cannot drove the car.",
+        "Answer.reason2":"Committed war crimes does not need to unplugged her phone.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He drove to work on the bus.",
+        "Input.Nonsensical_Statement1":"He drove to work on the bagel.",
+        "Input.Sensical_Statement2":"A horse racer rides a horse",
+        "Input.Nonsensical_Statement2":"A giraffe racer rides a tortoise",
+        "Answer.reason1":"Bagels are meant for eating not an object meant for driving",
+        "Answer.reason2":"There is no such thing as Giraffe racer and no one rides on a tortoise",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He drove to work on the bus.",
+        "Input.Nonsensical_Statement1":"He drove to work on the bagel.",
+        "Input.Sensical_Statement2":"A horse racer rides a horse",
+        "Input.Nonsensical_Statement2":"A giraffe racer rides a tortoise",
+        "Answer.reason1":"A bagel is to small to drive and has no wheels or motor.",
+        "Answer.reason2":"A tortoise is to small to ride.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Helium is an element.",
+        "Input.Nonsensical_Statement1":"Helium is just like oxygen.",
+        "Input.Sensical_Statement2":"He scrubbed his countertops.",
+        "Input.Nonsensical_Statement2":"He scrubbed his cactus",
+        "Answer.reason1":"Helium is a different element than oxygen.",
+        "Answer.reason2":"You can not scrub a cactus without getting pricked.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Helium is an element.",
+        "Input.Nonsensical_Statement1":"Helium is just like oxygen.",
+        "Input.Sensical_Statement2":"He scrubbed his countertops.",
+        "Input.Nonsensical_Statement2":"He scrubbed his cactus",
+        "Answer.reason1":"We cannot breath helium",
+        "Answer.reason2":"cactus is having throns no one will scrub it",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The child wanted to have some ice cream on a hot day outside.",
+        "Input.Nonsensical_Statement1":"The child wanted to have some hot cocoa on a hot day outside.",
+        "Input.Sensical_Statement2":"She washed the car in the driveway.",
+        "Input.Nonsensical_Statement2":"She washed the car in the bathtub.",
+        "Answer.reason1":"Hot cocoa would only make you feel hotter on a warm day",
+        "Answer.reason2":"A car is too big to fit in a bathtub",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The child wanted to have some ice cream on a hot day outside.",
+        "Input.Nonsensical_Statement1":"The child wanted to have some hot cocoa on a hot day outside.",
+        "Input.Sensical_Statement2":"She washed the car in the driveway.",
+        "Input.Nonsensical_Statement2":"She washed the car in the bathtub.",
+        "Answer.reason1":"On hot days you should have cold drinks",
+        "Answer.reason2":"A car is too big to be washed in a bathtub",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Sam took Julie on a date",
+        "Input.Nonsensical_Statement1":"Sam took the fridge on a date",
+        "Input.Sensical_Statement2":"The Earth revolves around the Sun.",
+        "Input.Nonsensical_Statement2":"Clouds revolve around the sky.",
+        "Answer.reason1":"People do not take fridges on a date.",
+        "Answer.reason2":"Clouds don't revolve.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Sam took Julie on a date",
+        "Input.Nonsensical_Statement1":"Sam took the fridge on a date",
+        "Input.Sensical_Statement2":"The Earth revolves around the Sun.",
+        "Input.Nonsensical_Statement2":"Clouds revolve around the sky.",
+        "Answer.reason1":"You can't date a fridge.",
+        "Answer.reason2":"Clouds don't revolve around the sky.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He lives in an apartment with his family",
+        "Input.Nonsensical_Statement1":"He lives in a pumpkin with his family",
+        "Input.Sensical_Statement2":"I wash my hair with shampoo.",
+        "Input.Nonsensical_Statement2":"I wash my hair with detergent.",
+        "Answer.reason1":"You cannot live in a pumpkin.",
+        "Answer.reason2":"Detergent is for dishes, not for hair.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He lives in an apartment with his family",
+        "Input.Nonsensical_Statement1":"He lives in a pumpkin with his family",
+        "Input.Sensical_Statement2":"I wash my hair with shampoo.",
+        "Input.Nonsensical_Statement2":"I wash my hair with detergent.",
+        "Answer.reason1":"pumpkin is not a place to live",
+        "Answer.reason2":"detergent is a washing product",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"John bought a goldfish",
+        "Input.Nonsensical_Statement1":"John bought a Mammoth",
+        "Input.Sensical_Statement2":"I drank some coffee from a thermos.",
+        "Input.Nonsensical_Statement2":"I drank some cactus from a thermos.",
+        "Answer.reason1":"Mammoths are extinct.",
+        "Answer.reason2":"A cactus is not a drink.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"John bought a goldfish",
+        "Input.Nonsensical_Statement1":"John bought a Mammoth",
+        "Input.Sensical_Statement2":"I drank some coffee from a thermos.",
+        "Input.Nonsensical_Statement2":"I drank some cactus from a thermos.",
+        "Answer.reason1":"Mammoth do not exist.",
+        "Answer.reason2":"Cactus is solid and not drinkable.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She adopted a puppy",
+        "Input.Nonsensical_Statement1":"She adopted a giraffe",
+        "Input.Sensical_Statement2":"She put the cigar into the ashtray",
+        "Input.Nonsensical_Statement2":"She put the sandiwich into the ashtray",
+        "Answer.reason1":"Giraffe cannot be adopted.",
+        "Answer.reason2":"Ashtray is a place where we cannot put the sandwich.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She adopted a puppy",
+        "Input.Nonsensical_Statement1":"She adopted a giraffe",
+        "Input.Sensical_Statement2":"She put the cigar into the ashtray",
+        "Input.Nonsensical_Statement2":"She put the sandiwich into the ashtray",
+        "Answer.reason1":"Giraffes are not pets.",
+        "Answer.reason2":"An ashtray is very dirty and should not come in contact with food.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Peoples visit petrol pumbs to refill fuel on their vehicle",
+        "Input.Nonsensical_Statement1":"People visit petrol pumps to refill fuel on their stomach",
+        "Input.Sensical_Statement2":"I use a brush to clean my dog's fur.",
+        "Input.Nonsensical_Statement2":"I use a knife to clean my dog's fur.",
+        "Answer.reason1":"People don't put petrol in their stomachs.",
+        "Answer.reason2":"You can't use a knife to clean a dog.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Peoples visit petrol pumbs to refill fuel on their vehicle",
+        "Input.Nonsensical_Statement1":"People visit petrol pumps to refill fuel on their stomach",
+        "Input.Sensical_Statement2":"I use a brush to clean my dog's fur.",
+        "Input.Nonsensical_Statement2":"I use a knife to clean my dog's fur.",
+        "Answer.reason1":"You do not put fuel in your body.",
+        "Answer.reason2":"A knife would hurt a dog if you used it to clean it.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The athlete successfully jumped over the high jump.",
+        "Input.Nonsensical_Statement1":"The athlete jumped over Mount Everest.",
+        "Input.Sensical_Statement2":"She was wearing her glasses",
+        "Input.Nonsensical_Statement2":"She was wearing her bats",
+        "Answer.reason1":"Mount Everest is too big to jump over.",
+        "Answer.reason2":"Bats are animals not accessories to be worn.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The athlete successfully jumped over the high jump.",
+        "Input.Nonsensical_Statement1":"The athlete jumped over Mount Everest.",
+        "Input.Sensical_Statement2":"She was wearing her glasses",
+        "Input.Nonsensical_Statement2":"She was wearing her bats",
+        "Answer.reason1":"Mount Everest is way too high to jump over.",
+        "Answer.reason2":"Bats are animals and are not clothing.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Dog still try to catch his ball.",
+        "Input.Nonsensical_Statement1":"Dog still try to catch his  toothbrush.",
+        "Input.Sensical_Statement2":"He ate macaroni from a bowl.",
+        "Input.Nonsensical_Statement2":"He ate cars from a bowl.",
+        "Answer.reason1":"Dogs do not chase toothbrushes.",
+        "Answer.reason2":"Cars can not fit in a bowl.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Dog still try to catch his ball.",
+        "Input.Nonsensical_Statement1":"Dog still try to catch his  toothbrush.",
+        "Input.Sensical_Statement2":"He ate macaroni from a bowl.",
+        "Input.Nonsensical_Statement2":"He ate cars from a bowl.",
+        "Answer.reason1":"toothbrush is not for playing",
+        "Answer.reason2":"cars cannot be ate as those are not food item",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"A sofa is a chair that can fit 3 or more people on it.",
+        "Input.Nonsensical_Statement1":"A chair can fit 7 or more people on it to sit.",
+        "Input.Sensical_Statement2":"He put his key into the lock.",
+        "Input.Nonsensical_Statement2":"He put his dog into the lock.",
+        "Answer.reason1":"A chair can usually fit only one person",
+        "Answer.reason2":"A dog is too big to fit into a lock",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"A sofa is a chair that can fit 3 or more people on it.",
+        "Input.Nonsensical_Statement1":"A chair can fit 7 or more people on it to sit.",
+        "Input.Sensical_Statement2":"He put his key into the lock.",
+        "Input.Nonsensical_Statement2":"He put his dog into the lock.",
+        "Answer.reason1":"a chair is a not human to fit",
+        "Answer.reason2":"dog is not key to lock",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Hummingbirds drink nectar from flowers.",
+        "Input.Nonsensical_Statement1":"Hummingbirds drink chocolate milk from flowers.",
+        "Input.Sensical_Statement2":"She was ice skating on ice",
+        "Input.Nonsensical_Statement2":"She was ice skating on mud",
+        "Answer.reason1":"Flowers don't produce chocolate milk",
+        "Answer.reason2":"You can only ice skate on ice",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Hummingbirds drink nectar from flowers.",
+        "Input.Nonsensical_Statement1":"Hummingbirds drink chocolate milk from flowers.",
+        "Input.Sensical_Statement2":"She was ice skating on ice",
+        "Input.Nonsensical_Statement2":"She was ice skating on mud",
+        "Answer.reason1":"Flowers do not contain chocolate milk.",
+        "Answer.reason2":"Ice skating can only be done on an ice surface.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He was typing with his hands in a computer",
+        "Input.Nonsensical_Statement1":"He was typing with a pen in a computer",
+        "Input.Sensical_Statement2":"The judge sentainced the defendant to life in prison.",
+        "Input.Nonsensical_Statement2":"The victim sentainced the defendant to life in prison.",
+        "Answer.reason1":"He cannot type in a pen with a computer.",
+        "Answer.reason2":"The victim cannot sentence the defendant to life in prison.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He was typing with his hands in a computer",
+        "Input.Nonsensical_Statement1":"He was typing with a pen in a computer",
+        "Input.Sensical_Statement2":"The judge sentainced the defendant to life in prison.",
+        "Input.Nonsensical_Statement2":"The victim sentainced the defendant to life in prison.",
+        "Answer.reason1":"pen is not a hand to type",
+        "Answer.reason2":"victim is not a judge to defendant to life in prison",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The farmer harvested carrots last week.",
+        "Input.Nonsensical_Statement1":"The farmer harvested rocks last week.",
+        "Input.Sensical_Statement2":"The bird flew south for the winter.",
+        "Input.Nonsensical_Statement2":"The bird flew south for spring break.",
+        "Answer.reason1":"Rocks are collected not harvested.",
+        "Answer.reason2":"The birds can't understand the concept of spring break.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The farmer harvested carrots last week.",
+        "Input.Nonsensical_Statement1":"The farmer harvested rocks last week.",
+        "Input.Sensical_Statement2":"The bird flew south for the winter.",
+        "Input.Nonsensical_Statement2":"The bird flew south for spring break.",
+        "Answer.reason1":"Rocks do not grow out of the ground.",
+        "Answer.reason2":"Birds do not migrate South in the spring.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He filled the glass with water after he cleaned it.",
+        "Input.Nonsensical_Statement1":"He filled the glass with water after he broke it.",
+        "Input.Sensical_Statement2":"The Moon is smaller than the Earth.",
+        "Input.Nonsensical_Statement2":"The Earth is bigger than the Sun.",
+        "Answer.reason1":"He cannot fill the glass with water after he broke it.",
+        "Answer.reason2":"Sun is much bigger than the earth.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He filled the glass with water after he cleaned it.",
+        "Input.Nonsensical_Statement1":"He filled the glass with water after he broke it.",
+        "Input.Sensical_Statement2":"The Moon is smaller than the Earth.",
+        "Input.Nonsensical_Statement2":"The Earth is bigger than the Sun.",
+        "Answer.reason1":"a broken glass can not hold liquids",
+        "Answer.reason2":"the earth is many times smaller than the sun",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"When he was on holiday, he didn't go to the office.",
+        "Input.Nonsensical_Statement1":"When he was on holiday, he went to the office to do some work.",
+        "Input.Sensical_Statement2":"I went for a walk this afternoon.",
+        "Input.Nonsensical_Statement2":"I dug a hole to China this afternoon.",
+        "Answer.reason1":"You would not go to the office if you are away on holiday.",
+        "Answer.reason2":"China is to far to dig a hole to.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"When he was on holiday, he didn't go to the office.",
+        "Input.Nonsensical_Statement1":"When he was on holiday, he went to the office to do some work.",
+        "Input.Sensical_Statement2":"I went for a walk this afternoon.",
+        "Input.Nonsensical_Statement2":"I dug a hole to China this afternoon.",
+        "Answer.reason1":"no one goes office when he is on  holiday",
+        "Answer.reason2":"noone can dug hole in any country",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She went to the grocery store to buy food for dinner.",
+        "Input.Nonsensical_Statement1":"She went to the hardware store to buy food for dinner.",
+        "Input.Sensical_Statement2":"I ate an entire rabbit.",
+        "Input.Nonsensical_Statement2":"I ate an entire horse.",
+        "Answer.reason1":"only tools are sold in a hardware store",
+        "Answer.reason2":"humans cannot eat that much food",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She went to the grocery store to buy food for dinner.",
+        "Input.Nonsensical_Statement1":"She went to the hardware store to buy food for dinner.",
+        "Input.Sensical_Statement2":"I ate an entire rabbit.",
+        "Input.Nonsensical_Statement2":"I ate an entire horse.",
+        "Answer.reason1":"hardware ware store is not a grocery store",
+        "Answer.reason2":"horse is not a rabbit to ate",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"That fish was swimming in the water.",
+        "Input.Nonsensical_Statement1":"That fish was swimming in the sky.",
+        "Input.Sensical_Statement2":"She ate some chocolate cake for lunch.",
+        "Input.Nonsensical_Statement2":"She ate some rocks for lunch.",
+        "Answer.reason1":"Fish can not breathe in the sky.",
+        "Answer.reason2":"Rocks can not be eaten.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"That fish was swimming in the water.",
+        "Input.Nonsensical_Statement1":"That fish was swimming in the sky.",
+        "Input.Sensical_Statement2":"She ate some chocolate cake for lunch.",
+        "Input.Nonsensical_Statement2":"She ate some rocks for lunch.",
+        "Answer.reason1":"You can not swim in the sky",
+        "Answer.reason2":"Rocks are not food.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"That fish was swimming in the water.",
+        "Input.Nonsensical_Statement1":"That fish was swimming in the sky.",
+        "Input.Sensical_Statement2":"She ate some chocolate cake for lunch.",
+        "Input.Nonsensical_Statement2":"She ate some rocks for lunch.",
+        "Answer.reason1":"Fish can't swim in the sky.",
+        "Answer.reason2":"You can't eat rocks.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The grocery store sells oranges and milk.",
+        "Input.Nonsensical_Statement1":"The grocery store sells dogs and astronauts.",
+        "Input.Sensical_Statement2":"A bird can fly.",
+        "Input.Nonsensical_Statement2":"A cow can fly.",
+        "Answer.reason1":"Dogs are sold in pet shops and astronauts are not for sell.",
+        "Answer.reason2":"Cows don't have wings.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The grocery store sells oranges and milk.",
+        "Input.Nonsensical_Statement1":"The grocery store sells dogs and astronauts.",
+        "Input.Sensical_Statement2":"A bird can fly.",
+        "Input.Nonsensical_Statement2":"A cow can fly.",
+        "Answer.reason1":"A grocery store sells food and does not have dogs or astronauts.",
+        "Answer.reason2":"A cow has no wings.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He added cucumber to the sandwich",
+        "Input.Nonsensical_Statement1":"He added cotton to the sandwich",
+        "Input.Sensical_Statement2":"He climbed a hill in 5 minutes.",
+        "Input.Nonsensical_Statement2":"He climbed a mountain in 5 minutes.",
+        "Answer.reason1":"People do not eat cotton.",
+        "Answer.reason2":"Mountains are tall and 5 minutes are not enough but you maybe clime a hill in 5 minutes.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He added cucumber to the sandwich",
+        "Input.Nonsensical_Statement1":"He added cotton to the sandwich",
+        "Input.Sensical_Statement2":"He climbed a hill in 5 minutes.",
+        "Input.Nonsensical_Statement2":"He climbed a mountain in 5 minutes.",
+        "Answer.reason1":"cotton is not a vegetable",
+        "Answer.reason2":"mountain is very large",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She threw the football across the football field",
+        "Input.Nonsensical_Statement1":"She threw the large building across the football field",
+        "Input.Sensical_Statement2":"You are likely to find trees in a forest",
+        "Input.Nonsensical_Statement2":"You are likely to find buildings in a forest",
+        "Answer.reason1":"Large buildings cannot be lifted up.",
+        "Answer.reason2":"Forests are remote areas that are void of any buildings.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She threw the football across the football field",
+        "Input.Nonsensical_Statement1":"She threw the large building across the football field",
+        "Input.Sensical_Statement2":"You are likely to find trees in a forest",
+        "Input.Nonsensical_Statement2":"You are likely to find buildings in a forest",
+        "Answer.reason1":"We can't move building with our hands. So it it not possible to throw it",
+        "Answer.reason2":"Nobody lives in a forest so its impossible to find buildings in forest",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The sky is blue.",
+        "Input.Nonsensical_Statement1":"The sky is falling.",
+        "Input.Sensical_Statement2":"The Moon rotates around Earth.",
+        "Input.Nonsensical_Statement2":"The sun rotates around Earth.",
+        "Answer.reason1":"The sky is too light to fall",
+        "Answer.reason2":"There is not enough spaces between planets for the sun to rotate around Earth",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The sky is blue.",
+        "Input.Nonsensical_Statement1":"The sky is falling.",
+        "Input.Sensical_Statement2":"The Moon rotates around Earth.",
+        "Input.Nonsensical_Statement2":"The sun rotates around Earth.",
+        "Answer.reason1":"The sky is atmosphere and already starts from the ground, hence can not fall.",
+        "Answer.reason2":"The Earth rotates around the sun.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Jennifer lost her voice because she sang for too long.",
+        "Input.Nonsensical_Statement1":"Jennifer lost her voice because she slept for too long.",
+        "Input.Sensical_Statement2":"I drove my car to Florida this summer.",
+        "Input.Nonsensical_Statement2":"I drove my apartment to Florida this summer.",
+        "Answer.reason1":"sleeping don't make the voice lost",
+        "Answer.reason2":"apartment does not have wheels to drove",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Jennifer lost her voice because she sang for too long.",
+        "Input.Nonsensical_Statement1":"Jennifer lost her voice because she slept for too long.",
+        "Input.Sensical_Statement2":"I drove my car to Florida this summer.",
+        "Input.Nonsensical_Statement2":"I drove my apartment to Florida this summer.",
+        "Answer.reason1":"Sleep cannot make her lose voice.",
+        "Answer.reason2":"Apartment  cannot be driven to Florida.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The man cooked chicken for dinner.",
+        "Input.Nonsensical_Statement1":"The man cooked a chair for dinner.",
+        "Input.Sensical_Statement2":"Her mouth hurts because she cut her tongue",
+        "Input.Nonsensical_Statement2":"Her mouth hurts because she cut her elbow",
+        "Answer.reason1":"A chair is not food to be cooked",
+        "Answer.reason2":"Her elbow should hurt because that's what she cut",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The man cooked chicken for dinner.",
+        "Input.Nonsensical_Statement1":"The man cooked a chair for dinner.",
+        "Input.Sensical_Statement2":"Her mouth hurts because she cut her tongue",
+        "Input.Nonsensical_Statement2":"Her mouth hurts because she cut her elbow",
+        "Answer.reason1":"A chair is not edible.",
+        "Answer.reason2":"A cut on an elbow would not have any impact on the mouth.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The game was fun",
+        "Input.Nonsensical_Statement1":"The game had fun",
+        "Input.Sensical_Statement2":"Horses can run fast.",
+        "Input.Nonsensical_Statement2":"Turtles can run fast.",
+        "Answer.reason1":"THE GAME IS NOT SERIOUS",
+        "Answer.reason2":"TURTLES CAN RUN SLOW NOT FAST",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The game was fun",
+        "Input.Nonsensical_Statement1":"The game had fun",
+        "Input.Sensical_Statement2":"Horses can run fast.",
+        "Input.Nonsensical_Statement2":"Turtles can run fast.",
+        "Answer.reason1":"Games do not have feelings.",
+        "Answer.reason2":"Turtles are not fast.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The game was fun",
+        "Input.Nonsensical_Statement1":"The game had fun",
+        "Input.Sensical_Statement2":"Horses can run fast.",
+        "Input.Nonsensical_Statement2":"Turtles can run fast.",
+        "Answer.reason1":"Game is always fun for all peoples. Game is fun.",
+        "Answer.reason2":"Turtles cant run fast.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"A guy plays the guitar",
+        "Input.Nonsensical_Statement1":"a dog plays the guitar",
+        "Input.Sensical_Statement2":"Too much calories cause you to gain weight",
+        "Input.Nonsensical_Statement2":"Too much calories cause you to lose weight",
+        "Answer.reason1":"A dog does not have arms.",
+        "Answer.reason2":"Weight is lost by reducing calrories",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"A guy plays the guitar",
+        "Input.Nonsensical_Statement1":"a dog plays the guitar",
+        "Input.Sensical_Statement2":"Too much calories cause you to gain weight",
+        "Input.Nonsensical_Statement2":"Too much calories cause you to lose weight",
+        "Answer.reason1":"DOG IS NOT A GUY TO PLAY GUITAR",
+        "Answer.reason2":"CALORIES CANNOT LOSE WEIGHT",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Sharks swim in the ocean.",
+        "Input.Nonsensical_Statement1":"The shark walked to work.",
+        "Input.Sensical_Statement2":"He jumped over a fence.",
+        "Input.Nonsensical_Statement2":"He jumped over the moon.",
+        "Answer.reason1":"Sharks do not walk or go to work.",
+        "Answer.reason2":"A person can not jump over an object as large as the moon.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Sharks swim in the ocean.",
+        "Input.Nonsensical_Statement1":"The shark walked to work.",
+        "Input.Sensical_Statement2":"He jumped over a fence.",
+        "Input.Nonsensical_Statement2":"He jumped over the moon.",
+        "Answer.reason1":"Shark canno walk .it  can only swim",
+        "Answer.reason2":"Moon can be seen over the sky, so we can't jump over it.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She cooked with a bowl.",
+        "Input.Nonsensical_Statement1":"She cooked with a car.",
+        "Input.Sensical_Statement2":"Planes fly in the sky",
+        "Input.Nonsensical_Statement2":"Planes fly underwater",
+        "Answer.reason1":"car is not the appliance to cook with",
+        "Answer.reason2":"planes are made to fly in the sky",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She cooked with a bowl.",
+        "Input.Nonsensical_Statement1":"She cooked with a car.",
+        "Input.Sensical_Statement2":"Planes fly in the sky",
+        "Input.Nonsensical_Statement2":"Planes fly underwater",
+        "Answer.reason1":"A car is something you drive, not cook wiwth.",
+        "Answer.reason2":"Planes can not run underwater.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Gina is pregnant with a baby girl",
+        "Input.Nonsensical_Statement1":"Gina is pregnant with a baby basketball",
+        "Input.Sensical_Statement2":"He got into his car",
+        "Input.Nonsensical_Statement2":"He got into a tree",
+        "Answer.reason1":"basket is not preganent",
+        "Answer.reason2":"he didnot got tree",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Gina is pregnant with a baby girl",
+        "Input.Nonsensical_Statement1":"Gina is pregnant with a baby basketball",
+        "Input.Sensical_Statement2":"He got into his car",
+        "Input.Nonsensical_Statement2":"He got into a tree",
+        "Answer.reason1":"You can't be pregnant with basketballs.",
+        "Answer.reason2":"You cannot get into a tree. You can climb one.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Chopin composed a nocturne",
+        "Input.Nonsensical_Statement1":"Chopin composed an umbrella",
+        "Input.Sensical_Statement2":"I cooked a chicken.",
+        "Input.Nonsensical_Statement2":"I cooked a spoon.",
+        "Answer.reason1":"composed usually refers to music",
+        "Answer.reason2":"a spoon cannot be cooked, it is not a food item",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Chopin composed a nocturne",
+        "Input.Nonsensical_Statement1":"Chopin composed an umbrella",
+        "Input.Sensical_Statement2":"I cooked a chicken.",
+        "Input.Nonsensical_Statement2":"I cooked a spoon.",
+        "Answer.reason1":"Umbrellas are not music and cannot be composed.",
+        "Answer.reason2":"Spoons are metal which can't be cooked.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The blanket is in the closet",
+        "Input.Nonsensical_Statement1":"The mountain is in the closet",
+        "Input.Sensical_Statement2":"He put his jacket on and went out into the arctic cold.",
+        "Input.Nonsensical_Statement2":"He put his helmet on and went to bed.",
+        "Answer.reason1":"A mountain is too big for a closet",
+        "Answer.reason2":"People don't sleep with helmet on their head",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The blanket is in the closet",
+        "Input.Nonsensical_Statement1":"The mountain is in the closet",
+        "Input.Sensical_Statement2":"He put his jacket on and went out into the arctic cold.",
+        "Input.Nonsensical_Statement2":"He put his helmet on and went to bed.",
+        "Answer.reason1":"Mountains are to big to fit in the closet.",
+        "Answer.reason2":"Helmets are very uncomfortable to sleep with.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He rode a skateboard down the hill.",
+        "Input.Nonsensical_Statement1":"He rode a washing machine down the hill.",
+        "Input.Sensical_Statement2":"It is cold in here",
+        "Input.Nonsensical_Statement2":"It is cold everywhere",
+        "Answer.reason1":"You can't ride a washing machine.",
+        "Answer.reason2":"It is not cold everywhere.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He rode a skateboard down the hill.",
+        "Input.Nonsensical_Statement1":"He rode a washing machine down the hill.",
+        "Input.Sensical_Statement2":"It is cold in here",
+        "Input.Nonsensical_Statement2":"It is cold everywhere",
+        "Answer.reason1":"Washing machine cannot be rode  down the hill.",
+        "Answer.reason2":"It cannot be cold everywhere.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The Army is full of soldiers.",
+        "Input.Nonsensical_Statement1":"The army is full of potatoes.",
+        "Input.Sensical_Statement2":"Jane was eating food.",
+        "Input.Nonsensical_Statement2":"Jane was eating a shoe.",
+        "Answer.reason1":"The army cannot is full of potatoes.",
+        "Answer.reason2":"Jane cannot eating a shoe.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The Army is full of soldiers.",
+        "Input.Nonsensical_Statement1":"The army is full of potatoes.",
+        "Input.Sensical_Statement2":"Jane was eating food.",
+        "Input.Nonsensical_Statement2":"Jane was eating a shoe.",
+        "Answer.reason1":"potatoes is not a soldiers",
+        "Answer.reason2":"shoe is not a food to eat",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Peeling a banana is very easy.",
+        "Input.Nonsensical_Statement1":"Peeling a banana is impossible.",
+        "Input.Sensical_Statement2":"He returned the chair to the store because it was broken",
+        "Input.Nonsensical_Statement2":"He returned the chair to the store because it was stolen",
+        "Answer.reason1":"banana is possible to peel",
+        "Answer.reason2":"if the chair was stolen then it was not returned to the store",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Peeling a banana is very easy.",
+        "Input.Nonsensical_Statement1":"Peeling a banana is impossible.",
+        "Input.Sensical_Statement2":"He returned the chair to the store because it was broken",
+        "Input.Nonsensical_Statement2":"He returned the chair to the store because it was stolen",
+        "Answer.reason1":"banana is only for eat not for peeling",
+        "Answer.reason2":"chair is not broke it was stolen",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The boy rode the bus to school.",
+        "Input.Nonsensical_Statement1":"The bus rode the boy to school",
+        "Input.Sensical_Statement2":"We talked after drinking some tea",
+        "Input.Nonsensical_Statement2":"We talked after drinking some biscuits",
+        "Answer.reason1":"THE BUS IS NOT A BOY TO RODE TO SCHOOL",
+        "Answer.reason2":"BISCUITS IS NOT A DRINK",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The boy rode the bus to school.",
+        "Input.Nonsensical_Statement1":"The bus rode the boy to school",
+        "Input.Sensical_Statement2":"We talked after drinking some tea",
+        "Input.Nonsensical_Statement2":"We talked after drinking some biscuits",
+        "Answer.reason1":"A busy is to heavy for a boy to hold.",
+        "Answer.reason2":"Biscuits are not a liquid.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Vegetarians do not eat meat.",
+        "Input.Nonsensical_Statement1":"Vegetables do not eat beef.",
+        "Input.Sensical_Statement2":"He built a house with the help of wood",
+        "Input.Nonsensical_Statement2":"He built a house with the help of water",
+        "Answer.reason1":"Vegetables do not eat anything, they draw nutrients from the soil.",
+        "Answer.reason2":"Water is a liquid, and liquids are not suitable building materials.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Vegetarians do not eat meat.",
+        "Input.Nonsensical_Statement1":"Vegetables do not eat beef.",
+        "Input.Sensical_Statement2":"He built a house with the help of wood",
+        "Input.Nonsensical_Statement2":"He built a house with the help of water",
+        "Answer.reason1":"A vegetable doesn't eat.",
+        "Answer.reason2":"Water is liquid and can't be used to build houses.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She was watching tv",
+        "Input.Nonsensical_Statement1":"She was watching the paper",
+        "Input.Sensical_Statement2":"I run a marathon yesterday",
+        "Input.Nonsensical_Statement2":"I run a chicken yesterday",
+        "Answer.reason1":"Paper is an inanamant object.",
+        "Answer.reason2":"A chicken is to small to run.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She was watching tv",
+        "Input.Nonsensical_Statement1":"She was watching the paper",
+        "Input.Sensical_Statement2":"I run a marathon yesterday",
+        "Input.Nonsensical_Statement2":"I run a chicken yesterday",
+        "Answer.reason1":"PAPER IS NOT A TV TO WATCH IT",
+        "Answer.reason2":"CHICKEN IS NOT A MARATHON",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Some dust went up my nose.",
+        "Input.Nonsensical_Statement1":"Some house went up my nose.",
+        "Input.Sensical_Statement2":"He threw the ball into the glove.",
+        "Input.Nonsensical_Statement2":"He threw the ball into the sun.",
+        "Answer.reason1":"A house is to big to go up a nose.",
+        "Answer.reason2":"The sun is to far for someone to throw a ball into.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Some dust went up my nose.",
+        "Input.Nonsensical_Statement1":"Some house went up my nose.",
+        "Input.Sensical_Statement2":"He threw the ball into the glove.",
+        "Input.Nonsensical_Statement2":"He threw the ball into the sun.",
+        "Answer.reason1":"Houses are way too big to fit inside a person's nose.",
+        "Answer.reason2":"The sun is too far to get anywhere near enough to throw a ball at.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She enjoys playing the piano.",
+        "Input.Nonsensical_Statement1":"She enjoys playing the rock",
+        "Input.Sensical_Statement2":"John had a spoonful of beans",
+        "Input.Nonsensical_Statement2":"john had a spoonful of acid",
+        "Answer.reason1":"She cannot enjoy playing the rock",
+        "Answer.reason2":"John cannot have a spoonful of acid.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She enjoys playing the piano.",
+        "Input.Nonsensical_Statement1":"She enjoys playing the rock",
+        "Input.Sensical_Statement2":"John had a spoonful of beans",
+        "Input.Nonsensical_Statement2":"john had a spoonful of acid",
+        "Answer.reason1":"rock is not a game to play",
+        "Answer.reason2":"acid makes harm its not a drink",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"You are likely to buy a meal in a cafeteria",
+        "Input.Nonsensical_Statement1":"You are likely to buy a car in a cafeteria",
+        "Input.Sensical_Statement2":"The stock market lost 25% of it's value in a matter of minutes.",
+        "Input.Nonsensical_Statement2":"The stock market lost 25% of it's friends in a matter of minutes.",
+        "Answer.reason1":"You can't buy a car at a cafeteria, only food and drink.",
+        "Answer.reason2":"The stock market doesn't have friends.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"You are likely to buy a meal in a cafeteria",
+        "Input.Nonsensical_Statement1":"You are likely to buy a car in a cafeteria",
+        "Input.Sensical_Statement2":"The stock market lost 25% of it's value in a matter of minutes.",
+        "Input.Nonsensical_Statement2":"The stock market lost 25% of it's friends in a matter of minutes.",
+        "Answer.reason1":"Cars are brought in car showroom not in a cafetaria",
+        "Answer.reason2":"Stock markets are an entity and do not have friends",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She ate a bagel with cheese.",
+        "Input.Nonsensical_Statement1":"She ate an inflatable tire with cheese.",
+        "Input.Sensical_Statement2":"Toyota sold the man a car.",
+        "Input.Nonsensical_Statement2":"Toyota sold the man a refrigerator.",
+        "Answer.reason1":"a tire is not food",
+        "Answer.reason2":"totoya don;t make refrigerators to sell them",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She ate a bagel with cheese.",
+        "Input.Nonsensical_Statement1":"She ate an inflatable tire with cheese.",
+        "Input.Sensical_Statement2":"Toyota sold the man a car.",
+        "Input.Nonsensical_Statement2":"Toyota sold the man a refrigerator.",
+        "Answer.reason1":"An inflatable tire is not food",
+        "Answer.reason2":"Toyota doesn't make refrigerators",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He peeled oranges skins fast to make juice",
+        "Input.Nonsensical_Statement1":"He peeled Apple skins fast to make juice",
+        "Input.Sensical_Statement2":"Mike put on running shoes to go running.",
+        "Input.Nonsensical_Statement2":"Mike put on dance shoes to go running.",
+        "Answer.reason1":"apple skins can't be used to make juice",
+        "Answer.reason2":"dance shoes are not appropriate running wear",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He peeled oranges skins fast to make juice",
+        "Input.Nonsensical_Statement1":"He peeled Apple skins fast to make juice",
+        "Input.Sensical_Statement2":"Mike put on running shoes to go running.",
+        "Input.Nonsensical_Statement2":"Mike put on dance shoes to go running.",
+        "Answer.reason1":"APPLE SKINS ARE NOT GOOD FOR FAST JUICE",
+        "Answer.reason2":"MIKE IS NOT A HUMAN TO DANCE",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"my mom let me eat a crawfish",
+        "Input.Nonsensical_Statement1":"my mom let a crawfish eat me",
+        "Input.Sensical_Statement2":"He played chess with his friend in the pub.",
+        "Input.Nonsensical_Statement2":"He played chess with his friend in the stone.",
+        "Answer.reason1":"A crawfish is too small to eat a human.",
+        "Answer.reason2":"A chess player can drink beer in a pub and only water in a stone.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"my mom let me eat a crawfish",
+        "Input.Nonsensical_Statement1":"my mom let a crawfish eat me",
+        "Input.Sensical_Statement2":"He played chess with his friend in the pub.",
+        "Input.Nonsensical_Statement2":"He played chess with his friend in the stone.",
+        "Answer.reason1":"A mother would never let a crawfish eat her child.",
+        "Answer.reason2":"The game of chess cannot be played in a stone.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He drove his car to work.",
+        "Input.Nonsensical_Statement1":"He flew his car to work.",
+        "Input.Sensical_Statement2":"Swimming in salty seas is good for the skin.",
+        "Input.Nonsensical_Statement2":"Swimming in a sea with garbage in it is good for the skin.",
+        "Answer.reason1":"There are no flying cars in this world",
+        "Answer.reason2":"If we swim with garbage in it then we will get skin allergies",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He drove his car to work.",
+        "Input.Nonsensical_Statement1":"He flew his car to work.",
+        "Input.Sensical_Statement2":"Swimming in salty seas is good for the skin.",
+        "Input.Nonsensical_Statement2":"Swimming in a sea with garbage in it is good for the skin.",
+        "Answer.reason1":"car have only drove not flew",
+        "Answer.reason2":"garbage is not salty seas",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The man ate a salad.",
+        "Input.Nonsensical_Statement1":"The man ate a cave.",
+        "Input.Sensical_Statement2":"The ocean is a large body of water.",
+        "Input.Nonsensical_Statement2":"The ocean is dry.",
+        "Answer.reason1":"Caves are not food.",
+        "Answer.reason2":"The ocean is made of water.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The man ate a salad.",
+        "Input.Nonsensical_Statement1":"The man ate a cave.",
+        "Input.Sensical_Statement2":"The ocean is a large body of water.",
+        "Input.Nonsensical_Statement2":"The ocean is dry.",
+        "Answer.reason1":"Cave cannot ate by a man.",
+        "Answer.reason2":"The ocean cannot be dry.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He tied a bow on the present",
+        "Input.Nonsensical_Statement1":"He tied a ferret to the present",
+        "Input.Sensical_Statement2":"The radio station played his favorite music.",
+        "Input.Nonsensical_Statement2":"The radio station played his favorite movie.",
+        "Answer.reason1":"FERRET IS NOT A BOW TO TIED",
+        "Answer.reason2":"RADIO STATION ONLY FOR MUSIC NOT FOR MOVIE",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He tied a bow on the present",
+        "Input.Nonsensical_Statement1":"He tied a ferret to the present",
+        "Input.Sensical_Statement2":"The radio station played his favorite music.",
+        "Input.Nonsensical_Statement2":"The radio station played his favorite movie.",
+        "Answer.reason1":"He cannot tied a ferret to the present.",
+        "Answer.reason2":"The radio station cannot play his favorite movie.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"There is a place to sleep in every home.",
+        "Input.Nonsensical_Statement1":"There is a pool in every home.",
+        "Input.Sensical_Statement2":"GEORGE WENT TO THE ZOO FOR SEEING THE SNACKS",
+        "Input.Nonsensical_Statement2":"GEORGE WENT TO THE ZOO FOR KILLING THE SNACKS",
+        "Answer.reason1":"All homes do not have pools",
+        "Answer.reason2":"Snacks are not able to be killed",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"There is a place to sleep in every home.",
+        "Input.Nonsensical_Statement1":"There is a pool in every home.",
+        "Input.Sensical_Statement2":"GEORGE WENT TO THE ZOO FOR SEEING THE SNACKS",
+        "Input.Nonsensical_Statement2":"GEORGE WENT TO THE ZOO FOR KILLING THE SNACKS",
+        "Answer.reason1":"Homes don't have pools inside them.",
+        "Answer.reason2":"You don't go to a zoo to kill things.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"There is a place to sleep in every home.",
+        "Input.Nonsensical_Statement1":"There is a pool in every home.",
+        "Input.Sensical_Statement2":"GEORGE WENT TO THE ZOO FOR SEEING THE SNACKS",
+        "Input.Nonsensical_Statement2":"GEORGE WENT TO THE ZOO FOR KILLING THE SNACKS",
+        "Answer.reason1":"There isn't a pool in every home.",
+        "Answer.reason2":"Zoo is a visiting place not a kill ground.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She put on underwear, then pants.",
+        "Input.Nonsensical_Statement1":"She put on pants, then underwear.",
+        "Input.Sensical_Statement2":"She is going to the grocery store to buy rice.",
+        "Input.Nonsensical_Statement2":"She is going to the gym to buy rice.",
+        "Answer.reason1":"Underwear are worn underneath the pants.",
+        "Answer.reason2":"One goes to the gym to exercise.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She put on underwear, then pants.",
+        "Input.Nonsensical_Statement1":"She put on pants, then underwear.",
+        "Input.Sensical_Statement2":"She is going to the grocery store to buy rice.",
+        "Input.Nonsensical_Statement2":"She is going to the gym to buy rice.",
+        "Answer.reason1":"Underwear is used under pants",
+        "Answer.reason2":"A gym doesn't sell groceries",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He put milk in the fridge",
+        "Input.Nonsensical_Statement1":"He put a dog in the fridge",
+        "Input.Sensical_Statement2":"Moon is the earth's only natural satellite.",
+        "Input.Nonsensical_Statement2":"Saturn is the earth's only natural satellite.",
+        "Answer.reason1":"A dog it to big to put in a fridge and would die in there.",
+        "Answer.reason2":"Saturn is not a natural satellite of Earth",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He put milk in the fridge",
+        "Input.Nonsensical_Statement1":"He put a dog in the fridge",
+        "Input.Sensical_Statement2":"Moon is the earth's only natural satellite.",
+        "Input.Nonsensical_Statement2":"Saturn is the earth's only natural satellite.",
+        "Answer.reason1":"Dog is much bigger than a fridge",
+        "Answer.reason2":"Saturn is not the earth's only natural satellite.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The ice melted on the hot cement.",
+        "Input.Nonsensical_Statement1":"The puddle of water on the hot cement turned to ice.",
+        "Input.Sensical_Statement2":"The window opened to the outdoors",
+        "Input.Nonsensical_Statement2":"The window opened to the attic",
+        "Answer.reason1":"Water only turns to ice when it is cold.",
+        "Answer.reason2":"Windows usually open to the outside.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The ice melted on the hot cement.",
+        "Input.Nonsensical_Statement1":"The puddle of water on the hot cement turned to ice.",
+        "Input.Sensical_Statement2":"The window opened to the outdoors",
+        "Input.Nonsensical_Statement2":"The window opened to the attic",
+        "Answer.reason1":"Ice can't form on hot cement.",
+        "Answer.reason2":"Windows can't open attics.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Giraffes are tall animals",
+        "Input.Nonsensical_Statement1":"Pigs are tall animals",
+        "Input.Sensical_Statement2":"he learned music on a piano",
+        "Input.Nonsensical_Statement2":"he learned badminton on a piano",
+        "Answer.reason1":"Pigs are short animals",
+        "Answer.reason2":"Badminton is a sport and cannot be played on a piano",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Giraffes are tall animals",
+        "Input.Nonsensical_Statement1":"Pigs are tall animals",
+        "Input.Sensical_Statement2":"he learned music on a piano",
+        "Input.Nonsensical_Statement2":"he learned badminton on a piano",
+        "Answer.reason1":"Pigs are only a few feet tall.",
+        "Answer.reason2":"A piano is for playing music.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The girl drank a glass of iced tea.",
+        "Input.Nonsensical_Statement1":"The girl drank a glass of pizza.",
+        "Input.Sensical_Statement2":"A grocery store sells items people need everyday.",
+        "Input.Nonsensical_Statement2":"A grocery store sells items giraffes need everyday.",
+        "Answer.reason1":"Pizza isn't a liquid, so you can't drink it.",
+        "Answer.reason2":"Giraffes don't shop at grocery stores.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The girl drank a glass of iced tea.",
+        "Input.Nonsensical_Statement1":"The girl drank a glass of pizza.",
+        "Input.Sensical_Statement2":"A grocery store sells items people need everyday.",
+        "Input.Nonsensical_Statement2":"A grocery store sells items giraffes need everyday.",
+        "Answer.reason1":"PIZZA IS USED FOR EAT NOT FOR DRINK",
+        "Answer.reason2":"GIRAFFES DOES NOT NEED GROCERY ITEMS",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The student read a book about computers.",
+        "Input.Nonsensical_Statement1":"The dog read a book about computers.",
+        "Input.Sensical_Statement2":"He put the dog in the kennel",
+        "Input.Nonsensical_Statement2":"He put the dog in the microwave",
+        "Answer.reason1":"Dogs cannot read books.",
+        "Answer.reason2":"Dogs are too big do fit in a microwave.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The student read a book about computers.",
+        "Input.Nonsensical_Statement1":"The dog read a book about computers.",
+        "Input.Sensical_Statement2":"He put the dog in the kennel",
+        "Input.Nonsensical_Statement2":"He put the dog in the microwave",
+        "Answer.reason1":"DOG DOESN'T HAVE READING KNOWLEDGE",
+        "Answer.reason2":"DOG IS BIGGER THAN MICROWAVE",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"You take a shower to clean yourself.",
+        "Input.Nonsensical_Statement1":"You can take a bath in your shower.",
+        "Input.Sensical_Statement2":"If you want to go to a performance then you should get tickets",
+        "Input.Nonsensical_Statement2":"If you want to stay home you should get tickets",
+        "Answer.reason1":"You need a tub to take a bath.",
+        "Answer.reason2":"Staying home does not require tickets.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"You take a shower to clean yourself.",
+        "Input.Nonsensical_Statement1":"You can take a bath in your shower.",
+        "Input.Sensical_Statement2":"If you want to go to a performance then you should get tickets",
+        "Input.Nonsensical_Statement2":"If you want to stay home you should get tickets",
+        "Answer.reason1":"You can't take a bath in the shower.",
+        "Answer.reason2":"You don't buy tickets to stay home.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"You take a shower to clean yourself.",
+        "Input.Nonsensical_Statement1":"You can take a bath in your shower.",
+        "Input.Sensical_Statement2":"If you want to go to a performance then you should get tickets",
+        "Input.Nonsensical_Statement2":"If you want to stay home you should get tickets",
+        "Answer.reason1":"bath can not taken in shower.",
+        "Answer.reason2":"To stay home no ticket is needed.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"she put the charger in the phone",
+        "Input.Nonsensical_Statement1":"she put the phone in the charger",
+        "Input.Sensical_Statement2":"Children enjoy playing outside with friends",
+        "Input.Nonsensical_Statement2":"Oranges enjoy playing outside with friends",
+        "Answer.reason1":"She cannot put the phone in the charger.",
+        "Answer.reason2":"Oranges cannot enjoy playing outside with friends.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"she put the charger in the phone",
+        "Input.Nonsensical_Statement1":"she put the phone in the charger",
+        "Input.Sensical_Statement2":"Children enjoy playing outside with friends",
+        "Input.Nonsensical_Statement2":"Oranges enjoy playing outside with friends",
+        "Answer.reason1":"Phone can't be put in chargers.",
+        "Answer.reason2":"Oranges don't play outside.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"she put the charger in the phone",
+        "Input.Nonsensical_Statement1":"she put the phone in the charger",
+        "Input.Sensical_Statement2":"Children enjoy playing outside with friends",
+        "Input.Nonsensical_Statement2":"Oranges enjoy playing outside with friends",
+        "Answer.reason1":"Phones do not fit in chargers.",
+        "Answer.reason2":"Oranges are inanimate objects and can not play.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"To play football, you need a ball, cleats, a field, and pads.",
+        "Input.Nonsensical_Statement1":"To play football, you need pigs, grass, paint, and plastic.",
+        "Input.Sensical_Statement2":"He looked up at the stars in the night sky.",
+        "Input.Nonsensical_Statement2":"He looked up at the potatos in the night sky.",
+        "Answer.reason1":"to play football, you need football court and a team",
+        "Answer.reason2":"in the night sky one can see stars and moon not photos",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"To play football, you need a ball, cleats, a field, and pads.",
+        "Input.Nonsensical_Statement1":"To play football, you need pigs, grass, paint, and plastic.",
+        "Input.Sensical_Statement2":"He looked up at the stars in the night sky.",
+        "Input.Nonsensical_Statement2":"He looked up at the potatos in the night sky.",
+        "Answer.reason1":"None of those things are used in football other than grass.",
+        "Answer.reason2":"Potatoes are never in the sky.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"A scale can measure your weight.",
+        "Input.Nonsensical_Statement1":"A caliper can measure your height.",
+        "Input.Sensical_Statement2":"wearing shoes keeps feet from getting wet",
+        "Input.Nonsensical_Statement2":"dogs keep feet from getting wet",
+        "Answer.reason1":"Calipers don't measure height.",
+        "Answer.reason2":"Dogs don't prevent wetness.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"A scale can measure your weight.",
+        "Input.Nonsensical_Statement1":"A caliper can measure your height.",
+        "Input.Sensical_Statement2":"wearing shoes keeps feet from getting wet",
+        "Input.Nonsensical_Statement2":"dogs keep feet from getting wet",
+        "Answer.reason1":"calipers only measures very short lenghts",
+        "Answer.reason2":"dogs are animals",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The hot coffee burnt my mouth",
+        "Input.Nonsensical_Statement1":"The cold coffee burnt my mouth",
+        "Input.Sensical_Statement2":"A puppy is a younger version of an adult dog.",
+        "Input.Nonsensical_Statement2":"A puppy is a younger version of a baby bird.",
+        "Answer.reason1":"Cold coffee doesn't burn human skin.",
+        "Answer.reason2":"Bird is a different species than a dog .",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The hot coffee burnt my mouth",
+        "Input.Nonsensical_Statement1":"The cold coffee burnt my mouth",
+        "Input.Sensical_Statement2":"A puppy is a younger version of an adult dog.",
+        "Input.Nonsensical_Statement2":"A puppy is a younger version of a baby bird.",
+        "Answer.reason1":"cold coffee is not hot",
+        "Answer.reason2":"puppy is a dog",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He used a phone to call his sister.",
+        "Input.Nonsensical_Statement1":"He used a banana to call his sister.",
+        "Input.Sensical_Statement2":"He stood in front of the TV and cried",
+        "Input.Nonsensical_Statement2":"The TV stood in front of him and cried",
+        "Answer.reason1":"banana is not a cellphone to use call",
+        "Answer.reason2":"tv is a object it should not cried",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He used a phone to call his sister.",
+        "Input.Nonsensical_Statement1":"He used a banana to call his sister.",
+        "Input.Sensical_Statement2":"He stood in front of the TV and cried",
+        "Input.Nonsensical_Statement2":"The TV stood in front of him and cried",
+        "Answer.reason1":"Bananas are fruits and have no ability to make or recieve calls.",
+        "Answer.reason2":"TV's are inanimate objects that have no emotions nor nears.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I went to the doctor when I was sick.",
+        "Input.Nonsensical_Statement1":"I went to the doctor when I was healthy",
+        "Input.Sensical_Statement2":"I ran a marathon.",
+        "Input.Nonsensical_Statement2":"I ran a train.",
+        "Answer.reason1":"You don't go to the doctor when healthy.",
+        "Answer.reason2":"You can't run a train.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I went to the doctor when I was sick.",
+        "Input.Nonsensical_Statement1":"I went to the doctor when I was healthy",
+        "Input.Sensical_Statement2":"I ran a marathon.",
+        "Input.Nonsensical_Statement2":"I ran a train.",
+        "Answer.reason1":"People don't go to the doctor when they're healthy",
+        "Answer.reason2":"A person cannot physically ran a train",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The thirsty cat drinks milk.",
+        "Input.Nonsensical_Statement1":"The thirsty cat drinks beef.",
+        "Input.Sensical_Statement2":"He parked the car on the parking lot",
+        "Input.Nonsensical_Statement2":"He parked the car on the roof",
+        "Answer.reason1":"beef is not drink",
+        "Answer.reason2":"roof is not for parking",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The thirsty cat drinks milk.",
+        "Input.Nonsensical_Statement1":"The thirsty cat drinks beef.",
+        "Input.Sensical_Statement2":"He parked the car on the parking lot",
+        "Input.Nonsensical_Statement2":"He parked the car on the roof",
+        "Answer.reason1":"Beef is solid item not liquid to drink it",
+        "Answer.reason2":"Cannot drive the car on to the roof. So it's not possible to park on the roof",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She went to the post office to mail a letter",
+        "Input.Nonsensical_Statement1":"She went to the bottom of the ocean to mail a letter",
+        "Input.Sensical_Statement2":"She went to the opera because she loves hearing people sing",
+        "Input.Nonsensical_Statement2":"She went to the opera because she loves watching interpretive dance",
+        "Answer.reason1":"OCEAN IS NOT SUITABLE FOR MAIL",
+        "Answer.reason2":"OPERA IS NOT GOOD FOR DANCE",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"She went to the post office to mail a letter",
+        "Input.Nonsensical_Statement1":"She went to the bottom of the ocean to mail a letter",
+        "Input.Sensical_Statement2":"She went to the opera because she loves hearing people sing",
+        "Input.Nonsensical_Statement2":"She went to the opera because she loves watching interpretive dance",
+        "Answer.reason1":"There is no mail service in the ocean.",
+        "Answer.reason2":"There is no dancing at the opera.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"A teacher teaches students",
+        "Input.Nonsensical_Statement1":"A student teaches a teacher",
+        "Input.Sensical_Statement2":"I use a phone to call my mother",
+        "Input.Nonsensical_Statement2":"I use a banana to call my mother",
+        "Answer.reason1":"A student does not teach the teacher.",
+        "Answer.reason2":"A banana is incapable of cellular communication.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"A teacher teaches students",
+        "Input.Nonsensical_Statement1":"A student teaches a teacher",
+        "Input.Sensical_Statement2":"I use a phone to call my mother",
+        "Input.Nonsensical_Statement2":"I use a banana to call my mother",
+        "Answer.reason1":"Students aren't qualified to teach the teacher.",
+        "Answer.reason2":"Bananas cannot be used to make phone calls.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"You can enjoy the outdoors more than the indoors",
+        "Input.Nonsensical_Statement1":"You must enjoy the outdoors more than the indoors",
+        "Input.Sensical_Statement2":"You can boil water in a pot.",
+        "Input.Nonsensical_Statement2":"You can boil water in an oven.",
+        "Answer.reason1":"Enjoying is subjective, not an obligation.",
+        "Answer.reason2":"An oven can't contain water.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"You can enjoy the outdoors more than the indoors",
+        "Input.Nonsensical_Statement1":"You must enjoy the outdoors more than the indoors",
+        "Input.Sensical_Statement2":"You can boil water in a pot.",
+        "Input.Nonsensical_Statement2":"You can boil water in an oven.",
+        "Answer.reason1":"Indoors and outdoors can enjoy.",
+        "Answer.reason2":"Water cannot boil in the oven.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I wrote on the paper with the pencil.",
+        "Input.Nonsensical_Statement1":"I wrote on the pencil with the paper.",
+        "Input.Sensical_Statement2":"She fed the cat some tuna.",
+        "Input.Nonsensical_Statement2":"The tuna fed the cat some food.",
+        "Answer.reason1":"Paper cannot write on pencil.",
+        "Answer.reason2":"The tuna cannot feed the cat some food.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I wrote on the paper with the pencil.",
+        "Input.Nonsensical_Statement1":"I wrote on the pencil with the paper.",
+        "Input.Sensical_Statement2":"She fed the cat some tuna.",
+        "Input.Nonsensical_Statement2":"The tuna fed the cat some food.",
+        "Answer.reason1":"Paper is not a writing implement.",
+        "Answer.reason2":"A live tuna would be in water so there wouldn't be a cat there and a dead tuna wouldn't be able to do anything.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I travel by plane from continent to continent.",
+        "Input.Nonsensical_Statement1":"I travel by pigeon mail from continent to continent.",
+        "Input.Sensical_Statement2":"He ate a sandwich.",
+        "Input.Nonsensical_Statement2":"He ate a bed.",
+        "Answer.reason1":"People don't travel by pigeon mail.",
+        "Answer.reason2":"You can't eat a bed.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I travel by plane from continent to continent.",
+        "Input.Nonsensical_Statement1":"I travel by pigeon mail from continent to continent.",
+        "Input.Sensical_Statement2":"He ate a sandwich.",
+        "Input.Nonsensical_Statement2":"He ate a bed.",
+        "Answer.reason1":"Pigeon mail does not use for travel.",
+        "Answer.reason2":"Bed can't ate.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The boy played with his ball.",
+        "Input.Nonsensical_Statement1":"The boy played with his chainsaw.",
+        "Input.Sensical_Statement2":"He put the bread in the closet",
+        "Input.Nonsensical_Statement2":"He put the bread in the oven",
+        "Answer.reason1":"a chainsaw is not something to play with",
+        "Answer.reason2":"bread in the closet would get wasted",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The boy played with his ball.",
+        "Input.Nonsensical_Statement1":"The boy played with his chainsaw.",
+        "Input.Sensical_Statement2":"He put the bread in the closet",
+        "Input.Nonsensical_Statement2":"He put the bread in the oven",
+        "Answer.reason1":"CHAINSAW IS NOT A BALL TO PLAY",
+        "Answer.reason2":"BREAD IS NOT SUITABLE FOR OVEN",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Mike's car accelerates quickly when he hits the gas.",
+        "Input.Nonsensical_Statement1":"Mike's car stops quickly when he hits the gas.",
+        "Input.Sensical_Statement2":"She was smelling the flowers.",
+        "Input.Nonsensical_Statement2":"She was smelling the wall.",
+        "Answer.reason1":"Cars don't stop when you hit the gas.",
+        "Answer.reason2":"Humans smelling walls is not normal behaviour.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Mike's car accelerates quickly when he hits the gas.",
+        "Input.Nonsensical_Statement1":"Mike's car stops quickly when he hits the gas.",
+        "Input.Sensical_Statement2":"She was smelling the flowers.",
+        "Input.Nonsensical_Statement2":"She was smelling the wall.",
+        "Answer.reason1":"Hitting the gas makes a car goes faster, not stop",
+        "Answer.reason2":"A person doesn't usually smell walls",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The chef cooked a goose.",
+        "Input.Nonsensical_Statement1":"The chef cooked an airplane.",
+        "Input.Sensical_Statement2":"He threw the ball to his friend.",
+        "Input.Nonsensical_Statement2":"He threw the car to his friend.",
+        "Answer.reason1":"An airplane is not food to be cooked",
+        "Answer.reason2":"A car is too big to be thrown",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The chef cooked a goose.",
+        "Input.Nonsensical_Statement1":"The chef cooked an airplane.",
+        "Input.Sensical_Statement2":"He threw the ball to his friend.",
+        "Input.Nonsensical_Statement2":"He threw the car to his friend.",
+        "Answer.reason1":"airplane is not a cooking things",
+        "Answer.reason2":"car is not a playing thing to threw",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"My friend works at a gas station.",
+        "Input.Nonsensical_Statement1":"My friend eats a gas station.",
+        "Input.Sensical_Statement2":"Billy Joel is a good singer",
+        "Input.Nonsensical_Statement2":"Billy Joel is the strongest man alive",
+        "Answer.reason1":"a gas station is too big and not nutritious to be eaten by a person",
+        "Answer.reason2":"billy joel's strength is not even remarkable",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"My friend works at a gas station.",
+        "Input.Nonsensical_Statement1":"My friend eats a gas station.",
+        "Input.Sensical_Statement2":"Billy Joel is a good singer",
+        "Input.Nonsensical_Statement2":"Billy Joel is the strongest man alive",
+        "Answer.reason1":"A gas station can't be eaten.",
+        "Answer.reason2":"Billy Joel is not the strongest man alive.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The trash is full",
+        "Input.Nonsensical_Statement1":"The trash is bored",
+        "Input.Sensical_Statement2":"He saw the bird flying fast",
+        "Input.Nonsensical_Statement2":"He saw the bird flying with a dog on its back",
+        "Answer.reason1":"The trash can not be board.",
+        "Answer.reason2":"A dog is much bigger than the back.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The trash is full",
+        "Input.Nonsensical_Statement1":"The trash is bored",
+        "Input.Sensical_Statement2":"He saw the bird flying fast",
+        "Input.Nonsensical_Statement2":"He saw the bird flying with a dog on its back",
+        "Answer.reason1":"trash does not experience emotions",
+        "Answer.reason2":"a dog is too big for a bird to carry it in its back",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I like to eat apples",
+        "Input.Nonsensical_Statement1":"I like to eat lamps",
+        "Input.Sensical_Statement2":"Staplers Staple paper",
+        "Input.Nonsensical_Statement2":"Staplers punch holes in paper",
+        "Answer.reason1":"Lamps are not food.",
+        "Answer.reason2":"Staplers staple paper.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I like to eat apples",
+        "Input.Nonsensical_Statement1":"I like to eat lamps",
+        "Input.Sensical_Statement2":"Staplers Staple paper",
+        "Input.Nonsensical_Statement2":"Staplers punch holes in paper",
+        "Answer.reason1":"Lamps are not food.",
+        "Answer.reason2":"Hole punches are for making holes, not staplers.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Ants are small",
+        "Input.Nonsensical_Statement1":"Ants are huge",
+        "Input.Sensical_Statement2":"Asia is the largest continent.",
+        "Input.Nonsensical_Statement2":"Asia is an elephant.",
+        "Answer.reason1":"Ants are the opposite of huge",
+        "Answer.reason2":"Elephants live in Asia.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Ants are small",
+        "Input.Nonsensical_Statement1":"Ants are huge",
+        "Input.Sensical_Statement2":"Asia is the largest continent.",
+        "Input.Nonsensical_Statement2":"Asia is an elephant.",
+        "Answer.reason1":"Ant is an insect which is only small.",
+        "Answer.reason2":"Elephant is an animal and not a continent.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Serial killers are dangerous.",
+        "Input.Nonsensical_Statement1":"Serial killers are safe.",
+        "Input.Sensical_Statement2":"My friend has a pet dog.",
+        "Input.Nonsensical_Statement2":"My friend has a pet truck.",
+        "Answer.reason1":"Serial killers are not safe.",
+        "Answer.reason2":"A truck is a vehicle.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Serial killers are dangerous.",
+        "Input.Nonsensical_Statement1":"Serial killers are safe.",
+        "Input.Sensical_Statement2":"My friend has a pet dog.",
+        "Input.Nonsensical_Statement2":"My friend has a pet truck.",
+        "Answer.reason1":"Serial killers may kill you so they are not safe.",
+        "Answer.reason2":"Trucks are not animals and can't be kept as pets.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He went to a party last night and drank too much.",
+        "Input.Nonsensical_Statement1":"He went to a party last night and studied too much.",
+        "Input.Sensical_Statement2":"The water flowed into the sink.",
+        "Input.Nonsensical_Statement2":"The car flowed into the sink.",
+        "Answer.reason1":"You don't study at parties.",
+        "Answer.reason2":"Cars are not a liquid.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He went to a party last night and drank too much.",
+        "Input.Nonsensical_Statement1":"He went to a party last night and studied too much.",
+        "Input.Sensical_Statement2":"The water flowed into the sink.",
+        "Input.Nonsensical_Statement2":"The car flowed into the sink.",
+        "Answer.reason1":"Studying is not a usual activity for a party.",
+        "Answer.reason2":"Cars are too big to fit in sinks.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Brushing your teeth three times a day is good for your dental health.",
+        "Input.Nonsensical_Statement1":"Brushing your teeth three times a year is good for your dental health.",
+        "Input.Sensical_Statement2":"Everyone eventually dies.",
+        "Input.Nonsensical_Statement2":"No one ever dies.",
+        "Answer.reason1":"Brushing your teeth less than daily causes poor dental health.",
+        "Answer.reason2":"Death is inevitable for everyone.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Brushing your teeth three times a day is good for your dental health.",
+        "Input.Nonsensical_Statement1":"Brushing your teeth three times a year is good for your dental health.",
+        "Input.Sensical_Statement2":"Everyone eventually dies.",
+        "Input.Nonsensical_Statement2":"No one ever dies.",
+        "Answer.reason1":"Your teeth would rot if you only brushed them three times a year.",
+        "Answer.reason2":"Dying is a part of life.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The light is bright",
+        "Input.Nonsensical_Statement1":"The light is dark",
+        "Input.Sensical_Statement2":"She used a camera to take a photo of the eiffel tower",
+        "Input.Nonsensical_Statement2":"She used a banana to take a photo of the eiffel tower",
+        "Answer.reason1":"Light cannot be dark.",
+        "Answer.reason2":"You can't take photos with a banana.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The light is bright",
+        "Input.Nonsensical_Statement1":"The light is dark",
+        "Input.Sensical_Statement2":"She used a camera to take a photo of the eiffel tower",
+        "Input.Nonsensical_Statement2":"She used a banana to take a photo of the eiffel tower",
+        "Answer.reason1":"A light is never dark.",
+        "Answer.reason2":"Bananas do not take pictures.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The teacher receives the payment corresponding to the class schedule, varying the price according to his expertise. higher expertise, higher pay.",
+        "Input.Nonsensical_Statement1":"The teacher receives the payment corresponding to the class schedule, varying the price according to his expertise. smaller expertise, higher pay.",
+        "Input.Sensical_Statement2":"I saw a concert at the opera hall.",
+        "Input.Nonsensical_Statement2":"I saw a car race at the opera hall.",
+        "Answer.reason1":"Usually the better the expertise the better the pay.",
+        "Answer.reason2":"Car races are not on roads and not in halls.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The teacher receives the payment corresponding to the class schedule, varying the price according to his expertise. higher expertise, higher pay.",
+        "Input.Nonsensical_Statement1":"The teacher receives the payment corresponding to the class schedule, varying the price according to his expertise. smaller expertise, higher pay.",
+        "Input.Sensical_Statement2":"I saw a concert at the opera hall.",
+        "Input.Nonsensical_Statement2":"I saw a car race at the opera hall.",
+        "Answer.reason1":"Basic supply and demand ecomonics show that the rarer the service (higher expertise), the higher the pay.",
+        "Answer.reason2":"An opera hall is not big enough for a car race.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"My aunt drinks a cup of coffee every morning with breakfast",
+        "Input.Nonsensical_Statement1":"My aunt drinks a cup of nails every morning with breakfast.",
+        "Input.Sensical_Statement2":"Steven fell down the stairs and landed on his head.",
+        "Input.Nonsensical_Statement2":"Steven fell down the stairs and landed in a giant bowl of vegan soup.",
+        "Answer.reason1":"Nails are not a liquid",
+        "Answer.reason2":"A giant bowl of vegan soup is not found on the bottom of stairs",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"My aunt drinks a cup of coffee every morning with breakfast",
+        "Input.Nonsensical_Statement1":"My aunt drinks a cup of nails every morning with breakfast.",
+        "Input.Sensical_Statement2":"Steven fell down the stairs and landed on his head.",
+        "Input.Nonsensical_Statement2":"Steven fell down the stairs and landed in a giant bowl of vegan soup.",
+        "Answer.reason1":"Nails will hurt if you drink them",
+        "Answer.reason2":"Soup should not be at the bottom of the stairs.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He put rice inside the pot to cook",
+        "Input.Nonsensical_Statement1":"He put mountain inside the pot to cook",
+        "Input.Sensical_Statement2":"The boy rides his bicycle to school.",
+        "Input.Nonsensical_Statement2":"The boy rides his basketball to school.",
+        "Answer.reason1":"A mountain can not be moved by a person because of it's size.",
+        "Answer.reason2":"Basketballs can not be ridden.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He put rice inside the pot to cook",
+        "Input.Nonsensical_Statement1":"He put mountain inside the pot to cook",
+        "Input.Sensical_Statement2":"The boy rides his bicycle to school.",
+        "Input.Nonsensical_Statement2":"The boy rides his basketball to school.",
+        "Answer.reason1":"Mountains are not food so no one cooks them and they are also too big to fit in a pot.",
+        "Answer.reason2":"A basketball is not a vehicle.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The girl crossed at the crosswalk.",
+        "Input.Nonsensical_Statement1":"The girl crossed the crosswalk under the bus.",
+        "Input.Sensical_Statement2":"I like to eat apples",
+        "Input.Nonsensical_Statement2":"I like to eat lamps",
+        "Answer.reason1":"the girl cannot go under the bus , she can get crushed",
+        "Answer.reason2":"lamps are not food",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The girl crossed at the crosswalk.",
+        "Input.Nonsensical_Statement1":"The girl crossed the crosswalk under the bus.",
+        "Input.Sensical_Statement2":"I like to eat apples",
+        "Input.Nonsensical_Statement2":"I like to eat lamps",
+        "Answer.reason1":"A person can't fit under a bus",
+        "Answer.reason2":"Lamps are not edible",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The boat is about to sink",
+        "Input.Nonsensical_Statement1":"The house is about to sink",
+        "Input.Sensical_Statement2":"The lion loves to eat ham.",
+        "Input.Nonsensical_Statement2":"The lion loves to eat dirt.",
+        "Answer.reason1":"The house can not sink.",
+        "Answer.reason2":"The lion does not loves to eat to dirt.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The boat is about to sink",
+        "Input.Nonsensical_Statement1":"The house is about to sink",
+        "Input.Sensical_Statement2":"The lion loves to eat ham.",
+        "Input.Nonsensical_Statement2":"The lion loves to eat dirt.",
+        "Answer.reason1":"A house is on land not water.",
+        "Answer.reason2":"Dirt is not edible.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"My dog was howling at the moon.",
+        "Input.Nonsensical_Statement1":"My dog was singing old Sinatra tunes.",
+        "Input.Sensical_Statement2":"coca cola has a lot of sugar",
+        "Input.Nonsensical_Statement2":"coca cola never has sugar",
+        "Answer.reason1":"A dog cannot sing.",
+        "Answer.reason2":"Coca Cola has sugar.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"My dog was howling at the moon.",
+        "Input.Nonsensical_Statement1":"My dog was singing old Sinatra tunes.",
+        "Input.Sensical_Statement2":"coca cola has a lot of sugar",
+        "Input.Nonsensical_Statement2":"coca cola never has sugar",
+        "Answer.reason1":"Dogs do not sing.",
+        "Answer.reason2":"Sugar is in regular coca cola.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"many people like sugar",
+        "Input.Nonsensical_Statement1":"everyone hates sugar",
+        "Input.Sensical_Statement2":"In a lunar eclipse the Earth comes between the Moon and the Sun.",
+        "Input.Nonsensical_Statement2":"In a solar eclipse the Sun comes between the Moon and the Earth.",
+        "Answer.reason1":"Some people do not like sugar.",
+        "Answer.reason2":"The sun is bigger than the space between the earth and the moon.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"many people like sugar",
+        "Input.Nonsensical_Statement1":"everyone hates sugar",
+        "Input.Sensical_Statement2":"In a lunar eclipse the Earth comes between the Moon and the Sun.",
+        "Input.Nonsensical_Statement2":"In a solar eclipse the Sun comes between the Moon and the Earth.",
+        "Answer.reason1":"Everyone does not hates sugar.",
+        "Answer.reason2":"In a solar eclipse the Sun cannot come between the Moon and the Earth.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Birds can fly in the sky",
+        "Input.Nonsensical_Statement1":"Cows can fly in the sky",
+        "Input.Sensical_Statement2":"The boy picked an apple from the tree.",
+        "Input.Nonsensical_Statement2":"The tree picked an apple from the boy.",
+        "Answer.reason1":"COWS DOESN'T HAVE A FEATHER",
+        "Answer.reason2":"BOY NOT A TREE",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"Birds can fly in the sky",
+        "Input.Nonsensical_Statement1":"Cows can fly in the sky",
+        "Input.Sensical_Statement2":"The boy picked an apple from the tree.",
+        "Input.Nonsensical_Statement2":"The tree picked an apple from the boy.",
+        "Answer.reason1":"Cows can't fly.",
+        "Answer.reason2":"Trees can't pick apples from people.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The tropical breeze was warm",
+        "Input.Nonsensical_Statement1":"The warm tropical breeze was cold",
+        "Input.Sensical_Statement2":"The US President can only serve two terms.",
+        "Input.Nonsensical_Statement2":"The Nicaraguan President can only serve two terms.",
+        "Answer.reason1":"A warm breeze can't be cold.",
+        "Answer.reason2":"There is no two term rule in Nicaragua.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The tropical breeze was warm",
+        "Input.Nonsensical_Statement1":"The warm tropical breeze was cold",
+        "Input.Sensical_Statement2":"The US President can only serve two terms.",
+        "Input.Nonsensical_Statement2":"The Nicaraguan President can only serve two terms.",
+        "Answer.reason1":"A tropical breeze cannot be warm and cold at the same time.",
+        "Answer.reason2":"The Nicaraguan president can serve indefinitely.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The kitten slept on his bed.",
+        "Input.Nonsensical_Statement1":"The whale slept on his bed.",
+        "Input.Sensical_Statement2":"I packed the turkey in my trunk.",
+        "Input.Nonsensical_Statement2":"I packed the large camel in my trunk.",
+        "Answer.reason1":"WHALE SLEPT ON SEA NOT ON BED",
+        "Answer.reason2":"CAMEL IS NOT A TURKEY TO PACK",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The kitten slept on his bed.",
+        "Input.Nonsensical_Statement1":"The whale slept on his bed.",
+        "Input.Sensical_Statement2":"I packed the turkey in my trunk.",
+        "Input.Nonsensical_Statement2":"I packed the large camel in my trunk.",
+        "Answer.reason1":"WHALE IS NOT A HUMAN",
+        "Answer.reason2":"CAMEL IS NOT A TURKEY TO PACK",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"People went into the skyscraper to work.",
+        "Input.Nonsensical_Statement1":"People went into the alpaca to work.",
+        "Input.Sensical_Statement2":"He plays cricket in the play ground",
+        "Input.Nonsensical_Statement2":"He plays cricket in the swimming pool",
+        "Answer.reason1":"People cannot go into the alpaca to work.",
+        "Answer.reason2":"He cannot plays cricket in the swimming pool.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"People went into the skyscraper to work.",
+        "Input.Nonsensical_Statement1":"People went into the alpaca to work.",
+        "Input.Sensical_Statement2":"He plays cricket in the play ground",
+        "Input.Nonsensical_Statement2":"He plays cricket in the swimming pool",
+        "Answer.reason1":"An alpaca is not a place.",
+        "Answer.reason2":"You can't play cricket in water.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The cat caught a mouse.",
+        "Input.Nonsensical_Statement1":"The kid caught a car.",
+        "Input.Sensical_Statement2":"She poured milk on her weetbix",
+        "Input.Nonsensical_Statement2":"She poured paper on her weetbix",
+        "Answer.reason1":"Kid is too young to catch a car.",
+        "Answer.reason2":"Paper is a solid.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The cat caught a mouse.",
+        "Input.Nonsensical_Statement1":"The kid caught a car.",
+        "Input.Sensical_Statement2":"She poured milk on her weetbix",
+        "Input.Nonsensical_Statement2":"She poured paper on her weetbix",
+        "Answer.reason1":"A kid is too slow to catch a car",
+        "Answer.reason2":"Paper is not a liquid",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The mouse is smaller than the car.",
+        "Input.Nonsensical_Statement1":"The mouse is smaller than the flea.",
+        "Input.Sensical_Statement2":"The soldier was mentally scared",
+        "Input.Nonsensical_Statement2":"The soldier was physically spongy",
+        "Answer.reason1":"Fleas are bigger than mice.",
+        "Answer.reason2":"Soldiers are not spongy.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The mouse is smaller than the car.",
+        "Input.Nonsensical_Statement1":"The mouse is smaller than the flea.",
+        "Input.Sensical_Statement2":"The soldier was mentally scared",
+        "Input.Nonsensical_Statement2":"The soldier was physically spongy",
+        "Answer.reason1":"A mouse is bigger than a flea.",
+        "Answer.reason2":"Human body have bones and can not be spongy.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I drank too much whisky and cannot drive.",
+        "Input.Nonsensical_Statement1":"I drank too much water and cannot drive.",
+        "Input.Sensical_Statement2":"The birds fly over the field.",
+        "Input.Nonsensical_Statement2":"The rhinos fly over the field.",
+        "Answer.reason1":"Water does not impair your driving.",
+        "Answer.reason2":"Rhinos do not fly.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I drank too much whisky and cannot drive.",
+        "Input.Nonsensical_Statement1":"I drank too much water and cannot drive.",
+        "Input.Sensical_Statement2":"The birds fly over the field.",
+        "Input.Nonsensical_Statement2":"The rhinos fly over the field.",
+        "Answer.reason1":"drinking water does not impair one's ability to drive",
+        "Answer.reason2":"rhinos can not fly",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I drank too much whisky and cannot drive.",
+        "Input.Nonsensical_Statement1":"I drank too much water and cannot drive.",
+        "Input.Sensical_Statement2":"The birds fly over the field.",
+        "Input.Nonsensical_Statement2":"The rhinos fly over the field.",
+        "Answer.reason1":"You can't get drunk from water.",
+        "Answer.reason2":"Rhinos can't fly.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The horse jumped over the fence.",
+        "Input.Nonsensical_Statement1":"The tree jumped over the fence.",
+        "Input.Sensical_Statement2":"I got a bag of popcorn to microwave for later.",
+        "Input.Nonsensical_Statement2":"I got an elephant to microwave for later.",
+        "Answer.reason1":"Trees cannot jump.",
+        "Answer.reason2":"An elephant will not fit in a microwave.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The horse jumped over the fence.",
+        "Input.Nonsensical_Statement1":"The tree jumped over the fence.",
+        "Input.Sensical_Statement2":"I got a bag of popcorn to microwave for later.",
+        "Input.Nonsensical_Statement2":"I got an elephant to microwave for later.",
+        "Answer.reason1":"Trees are inanimate objects that cannot jump.",
+        "Answer.reason2":"An elephant is smaller than a microwave and wouldn't fit in it.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He put the computer on his desk.",
+        "Input.Nonsensical_Statement1":"He put the desk on the chair.",
+        "Input.Sensical_Statement2":"She drove her car to the store",
+        "Input.Nonsensical_Statement2":"She drove her house to the store",
+        "Answer.reason1":"A desk cannot fit on a chair.",
+        "Answer.reason2":"A house can't drive.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"He put the computer on his desk.",
+        "Input.Nonsensical_Statement1":"He put the desk on the chair.",
+        "Input.Sensical_Statement2":"She drove her car to the store",
+        "Input.Nonsensical_Statement2":"She drove her house to the store",
+        "Answer.reason1":"Desk is much bigger than the chair.",
+        "Answer.reason2":"House cannot be drove to the store.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The bee stung the boy in the hand.",
+        "Input.Nonsensical_Statement1":"The boy stung the bee's hand.",
+        "Input.Sensical_Statement2":"She paints with a paintbrush.",
+        "Input.Nonsensical_Statement2":"She paints with a spatula.",
+        "Answer.reason1":"The boy doesn't have a stinger.",
+        "Answer.reason2":"Spatulas are used for cooking.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The bee stung the boy in the hand.",
+        "Input.Nonsensical_Statement1":"The boy stung the bee's hand.",
+        "Input.Sensical_Statement2":"She paints with a paintbrush.",
+        "Input.Nonsensical_Statement2":"She paints with a spatula.",
+        "Answer.reason1":"Boys do not have stings and bees do not have hands.",
+        "Answer.reason2":"A spatula does not have bristles.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The old man made soup for dinner.",
+        "Input.Nonsensical_Statement1":"The old man wore soup to work.",
+        "Input.Sensical_Statement2":"He takes insulin when his blood sugar is low.",
+        "Input.Nonsensical_Statement2":"He takes aspirin when his blood sugar is low.",
+        "Answer.reason1":"soup is not something one can wear",
+        "Answer.reason2":"aspirin does not affect blood sugar",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The old man made soup for dinner.",
+        "Input.Nonsensical_Statement1":"The old man wore soup to work.",
+        "Input.Sensical_Statement2":"He takes insulin when his blood sugar is low.",
+        "Input.Nonsensical_Statement2":"He takes aspirin when his blood sugar is low.",
+        "Answer.reason1":"Soup is not clothing.",
+        "Answer.reason2":"Aspirin does not affect blood sugar.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I answer the phone when it rings.",
+        "Input.Nonsensical_Statement1":"I answered the phone when it was not ringing.",
+        "Input.Sensical_Statement2":"Some people are deaf.",
+        "Input.Nonsensical_Statement2":"All people are deaf.",
+        "Answer.reason1":"We cannot answer the phone before it rings.",
+        "Answer.reason2":"All people are not deaf.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I answer the phone when it rings.",
+        "Input.Nonsensical_Statement1":"I answered the phone when it was not ringing.",
+        "Input.Sensical_Statement2":"Some people are deaf.",
+        "Input.Nonsensical_Statement2":"All people are deaf.",
+        "Answer.reason1":"There is a call to be answered only when the phone rings.",
+        "Answer.reason2":"Most people can hear.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I poured milk in my cereal bowl.",
+        "Input.Nonsensical_Statement1":"I poured the entire ocean in my cereal bowl.",
+        "Input.Sensical_Statement2":"I packed a sandwich for lunch.",
+        "Input.Nonsensical_Statement2":"I packed a donkey for lunch.",
+        "Answer.reason1":"Entire ocean is much bigger than cereal bowl.",
+        "Answer.reason2":"Donkey cannot be packed for lunch.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I poured milk in my cereal bowl.",
+        "Input.Nonsensical_Statement1":"I poured the entire ocean in my cereal bowl.",
+        "Input.Sensical_Statement2":"I packed a sandwich for lunch.",
+        "Input.Nonsensical_Statement2":"I packed a donkey for lunch.",
+        "Answer.reason1":"Entire ocean in my cereal bowl much bigger than the poured.",
+        "Answer.reason2":"A donkey can not be packed for lunch.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I prefer apples over bananas.",
+        "Input.Nonsensical_Statement1":"I prefer bananas over apples.",
+        "Input.Sensical_Statement2":"Carrots are a great source of fiber",
+        "Input.Nonsensical_Statement2":"Carrots are a great source of weaponry",
+        "Answer.reason1":"I prefer apples over bananas.",
+        "Answer.reason2":"Carrots can't be used as weapons.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I prefer apples over bananas.",
+        "Input.Nonsensical_Statement1":"I prefer bananas over apples.",
+        "Input.Sensical_Statement2":"Carrots are a great source of fiber",
+        "Input.Nonsensical_Statement2":"Carrots are a great source of weaponry",
+        "Answer.reason1":"Apples are the favourite fruit of most people",
+        "Answer.reason2":"A carrot cannot supply weapons.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The computer fell to the ground",
+        "Input.Nonsensical_Statement1":"The computer caught itself",
+        "Input.Sensical_Statement2":"I put my gloves on my hands.",
+        "Input.Nonsensical_Statement2":"I put my shoes on my hands.",
+        "Answer.reason1":"computer don't have hands to catch itself",
+        "Answer.reason2":"shoes are for feet not for hands",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The computer fell to the ground",
+        "Input.Nonsensical_Statement1":"The computer caught itself",
+        "Input.Sensical_Statement2":"I put my gloves on my hands.",
+        "Input.Nonsensical_Statement2":"I put my shoes on my hands.",
+        "Answer.reason1":"Computers can not catch falling things.",
+        "Answer.reason2":"Shoes are always worn on the feet.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The journalist writes with a pen.",
+        "Input.Nonsensical_Statement1":"The journalist writes with a sandwich.",
+        "Input.Sensical_Statement2":"She wore a dress in the train.",
+        "Input.Nonsensical_Statement2":"She wore a chandelier in the train.",
+        "Answer.reason1":"sandwiches dont have ink to write anything.",
+        "Answer.reason2":"a dress would fit just right ,but a chandelier would take up a lot of space.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The journalist writes with a pen.",
+        "Input.Nonsensical_Statement1":"The journalist writes with a sandwich.",
+        "Input.Sensical_Statement2":"She wore a dress in the train.",
+        "Input.Nonsensical_Statement2":"She wore a chandelier in the train.",
+        "Answer.reason1":"A sandwich is a food item and cannot be used for writing.",
+        "Answer.reason2":"A chandelier is a heavy light fixture and is not designed to be worn.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I brush my teeth with toothpaste after eating breakfast.",
+        "Input.Nonsensical_Statement1":"I brush my eyes with toothpaste after eating breakfast.",
+        "Input.Sensical_Statement2":"There are cars on the highway.",
+        "Input.Nonsensical_Statement2":"There are helicopters on the highway.",
+        "Answer.reason1":"toothpaste damages the eye",
+        "Answer.reason2":"helicopters are used to fly,only cars are allowed on the hoghway",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I brush my teeth with toothpaste after eating breakfast.",
+        "Input.Nonsensical_Statement1":"I brush my eyes with toothpaste after eating breakfast.",
+        "Input.Sensical_Statement2":"There are cars on the highway.",
+        "Input.Nonsensical_Statement2":"There are helicopters on the highway.",
+        "Answer.reason1":"I cannot brush my eyes with toothpaste after eating breakfast.",
+        "Answer.reason2":"There cannot be helicopters on the highway.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"My wife put a pie in the oven.",
+        "Input.Nonsensical_Statement1":"My wife put a house in the oven.",
+        "Input.Sensical_Statement2":"I used my new fishing rod to catch my first fish",
+        "Input.Nonsensical_Statement2":"I used my toothbrush to catch my first fish",
+        "Answer.reason1":"Houses are too big to go in an oven.",
+        "Answer.reason2":"Toothbrushes do not have anything on them that could hook a fish.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"My wife put a pie in the oven.",
+        "Input.Nonsensical_Statement1":"My wife put a house in the oven.",
+        "Input.Sensical_Statement2":"I used my new fishing rod to catch my first fish",
+        "Input.Nonsensical_Statement2":"I used my toothbrush to catch my first fish",
+        "Answer.reason1":"A house is much bigger than a oven.",
+        "Answer.reason2":"Toothbrush cannot be used to catch my first fish.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The man drove to the store.",
+        "Input.Nonsensical_Statement1":"The baby drove to the store.",
+        "Input.Sensical_Statement2":"The dentist filled my brothers cavity",
+        "Input.Nonsensical_Statement2":"The hairdresser filled my brothers cavity",
+        "Answer.reason1":"Baby can not drive.",
+        "Answer.reason2":"Hairdressers are not dentists",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"The man drove to the store.",
+        "Input.Nonsensical_Statement1":"The baby drove to the store.",
+        "Input.Sensical_Statement2":"The dentist filled my brothers cavity",
+        "Input.Nonsensical_Statement2":"The hairdresser filled my brothers cavity",
+        "Answer.reason1":"Babies are too small to drive.",
+        "Answer.reason2":"Hairdressers don't deal with cavities or teeth.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"the put the bike into his trunk",
+        "Input.Nonsensical_Statement1":"he also put a bookshelf in his trunk",
+        "Input.Sensical_Statement2":"an accountant did my taxes",
+        "Input.Nonsensical_Statement2":"an astronaut did my taxes",
+        "Answer.reason1":"A bookshelf won't fit in a normal trunk.",
+        "Answer.reason2":"Astronauts don't do other people's taxes.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"the put the bike into his trunk",
+        "Input.Nonsensical_Statement1":"he also put a bookshelf in his trunk",
+        "Input.Sensical_Statement2":"an accountant did my taxes",
+        "Input.Nonsensical_Statement2":"an astronaut did my taxes",
+        "Answer.reason1":"A bookshelf much bigger than his truck.",
+        "Answer.reason2":"An astronaut do not taxes.",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I called my wife this morning.",
+        "Input.Nonsensical_Statement1":"I called my macaroni this morning.",
+        "Input.Sensical_Statement2":"The dog jumped over the fence.",
+        "Input.Nonsensical_Statement2":"The ant jumped over the fence.",
+        "Answer.reason1":"MACARONI IS FOOD NOT HUMAN",
+        "Answer.reason2":"ANT IS AN INSECT NOT AN ANIMAL",
+        "Approve":null,
+        "Reject":null
+    },
+    {
+        "Input.Sensical_Statement1":"I called my wife this morning.",
+        "Input.Nonsensical_Statement1":"I called my macaroni this morning.",
+        "Input.Sensical_Statement2":"The dog jumped over the fence.",
+        "Input.Nonsensical_Statement2":"The ant jumped over the fence.",
+        "Answer.reason1":"Macaroni are a food",
+        "Answer.reason2":"Ants are much smaller than fences.",
+        "Approve":null,
+        "Reject":null
+    }
+]

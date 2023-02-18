@@ -1,0 +1,309 @@
+<!-- Bootstrap v3.0.3 -->
+<link href="https://s3.amazonaws.com/mturk-public/bs30/css/bootstrap.min.css" rel="stylesheet" /><script src="//code.jquery.com/jquery-1.11.2.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<section class="container" id="DataCollection" style="margin-bottom:15px; padding: 10px 10px; font-family: Verdana, Geneva, sans-serif; color:#333333; font-size:0.9em;">
+<div class="row col-xs-12 col-md-12"><!-- Instructions -->
+<div class="panel panel-primary">
+<div class="panel-heading"><strong>Instructions</strong></div>
+
+<div class="panel-body">
+<p>Given the URL of an article related to gun violence, find images online of the victim(s) and shooter(s)</p>
+
+<ul>
+	<li>
+	<h4><b>You are allowed to go to /search other websites in order to find the images</b></h4>
+	</li>
+	<li>You only need to provide one image per victim/shooter. Try to find a photo that is clear, and ideally only of the one person</li>
+	<li>If while reading the article, you find a victim/shooter that we have not listed, please click the "Add victim/shooter" button</li>
+	<li>If you find an image url that ends in dimensions (e.g "640x320"), then <b>remove that</b> until the last part of the url is an image file extension. e.g: "http://www.pic1.jpg?503x200" should become "http://www.pic1.jpg"</li>
+	<li>If you cannot find a victim/shooter specified in the article, leave the URL blank.</li>
+	<li><b>If there are two victims/shooters who are clearly the same person, just fill in one of their fields.</b></li>
+</ul>
+</div>
+</div>
+<span id="victim_names_from_file" style="display:none">${victim_names}</span> <span id="shooter_names_from_file" style="display:none">${shooter_names}</span> <!-- <span style="display:none" id="victim_names_from_file" style="display:none">Maj. Greg Barney;V2</span>
+<span style="display:none" id="shooter_names_from_file" style="display:none">S1</span> --> <label><span style="color:red">This is not an article, or the url is broken.</span></label> <input name="not_article" type="checkbox" value="not_article" />
+<table width="400px">
+	<tbody>
+		<tr>
+			<td><label>Article URL:</label></td>
+			<td><a href="${url}" target="_blank">${url}</a></td>
+		</tr>
+		<tr>
+			<td><label>Possible Victim(s):</label></td>
+			<td>${victim_names}</td>
+		</tr>
+		<tr>
+			<td><label>Possible Shooter(s):</label></td>
+			<td>${shooter_names}</td>
+		</tr>
+	</tbody>
+</table>
+&nbsp;
+
+<h2>Victim Photos</h2>
+
+<div class="form-horizontal" id="victim_photos">&nbsp;</div>
+<button class="btn" id="addVictimButton" type="button">Add New Victim</button>
+
+<h2>Shooter Photos</h2>
+
+<div class="form-horizontal" id="shooter_photos">&nbsp;</div>
+<button class="btn" id="addShooterButton" type="button">Add New Shooter</button>
+
+<div id="errors">&nbsp;</div>
+</div>
+<!-- <p><button id="submitButton" style="margin-top:50px">submit</button></p> --><!-- Modal -->
+
+<div class="modal fade" id="myModal" role="dialog">
+<div class="modal-dialog modal-sm"><!-- Modal content-->
+<div class="modal-content" style="padding:10px">
+<div class="modal-header"><a class="close" data-dismiss="modal" type="button">&times;</a>
+
+<h4 class="modal-title" id="modal_title">Add victim</h4>
+</div>
+
+<div class="modal-body">
+<div class="form-inline">
+<div class="form-group"><label>Name</label> <input class="form-control" id="newName" placeholder="Jane Doe" type="text" /></div>
+
+<div class="form-group pull-right"><a class="btn btn-default" id="addPersonButton" style="margin-top:10px" type="submit">Add to list</a></div>
+</div>
+</div>
+
+<div class="modal-footer" id="modal_footer" style="border-color:transparent; margin-top: 20px;">&nbsp;</div>
+</div>
+</div>
+</div>
+
+<div style="display:none;visibility:hidden"><input id="victim-names-submit" name="victim-names" type="text" /> <input id="shooter-names-submit" name="shooter-names" type="text" /> <input id="victim-photos-submit" name="victim-photos" type="text" /> <input id="shooter-photos-submit" name="shooter-photos" type="text" /></div>
+</section>
+<!-- close container -->
+<style type="text/css">td { font-size:1.0em; padding: 5px 5px; }
+</style>
+<script type="text/javascript">
+$(document).ready(function () {
+
+	// $("#submitForm").hide();
+
+	victim_names = ($("#victim_names_from_file").text()).split(";")
+	shooter_names = ($("#shooter_names_from_file").text()).split(";")
+	for (var i = 0; i < victim_names.length; i++) {
+		var v = victim_names[i];
+		if (v.length ==0) continue
+		addFields("#victim_photos", v, "victim", false);
+	}
+	for (var i = 0; i < shooter_names.length; i++) {
+		var s = shooter_names[i];
+		if (s.length ==0) continue
+		addFields("#shooter_photos", s, "shooter", false);
+	}
+
+	//trash determines whether or not we show a checkbox or a trash bin
+	function addFields(parent_div, name, person_type, trash) {
+		var new_div = $('<div/>', {
+			class: "form-group",
+			id: name+person_type+"Div"
+		}).appendTo(parent_div);
+		new_div.append('<label class="col-sm-2 control-label">' + name + '</label>')
+		var new_inner_div = $('<div/>', {
+			class: "col-sm-4"
+		}).appendTo(new_div);
+		new_inner_div.append('<input class="form-control name-input url-input ' + person_type +'-name-input" id="' + name + person_type + '" placeholder="http://" type="text" for="'+name+'" person-type="'+person_type+'"  input-class="name-input"/>')
+		var new_inner_div = $('<div/>', {
+			class: "col-sm-4"
+		}).appendTo(new_div);
+		if (trash) {
+			new_inner_div.append('<label><button type="button" class="btn btn-default delete-button" person-name="'+name+'" person-type="'+person_type+'">'+
+				  '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>'+
+				'</button></label>');
+		} else {
+			new_inner_div.addClass("checkbox");
+			new_inner_div.append('<label><input type="checkbox" class="not_' + person_type + '" for='+name+'> This is not a ' + person_type + '</label>')
+		}
+		var new_div = $('<div/>', {
+			class: "form-group",
+			id: name+person_type+"DivExtra"
+		}).appendTo(parent_div);
+		new_div.append('<label class="col-sm-2 control-label">URL of website where you found image of ' + name + '</label>')
+		var new_inner_div = $('<div/>', {
+			class: "col-sm-4"
+		}).appendTo(new_div);
+		new_inner_div.append('<input class="form-control url-input site-input ' + person_type +'-site-input" id="site' + name + person_type + '" placeholder="http://" type="text" for="'+name+'" person-type="'+person_type+'" input-class="site-input"/>')
+		var new_inner_div = $('<div/>', {
+			class: "col-sm-4"
+		}).appendTo(new_div);
+	}
+
+	var valid_photo_extensions = [".jpeg", ".jpg", ".gif", ".png", ".tif"]
+	var reg = /^https?\:\/\/.*\.(jpeg|JPEG|jpg|JPG|gif|GIF|png|PNG|tif|TIF)$/;
+	var reg_url = /^https?\:\/\//;
+
+	updateFormFields();
+
+
+	function updateFormFields() {
+		$(".url-input").change(function () {
+			// must begin with "http://" and end with an image file extension (e.g ".png")
+			validateInput("."+$(this).attr("input-class"), $(this).attr("for"), $(this).attr("person-type"));
+		});
+		$(".delete-button").click(function() {
+			var name = $(this).attr("person-name");
+			var type = $(this).attr("person-type");
+			$("#" + name + type +"Div").remove();
+			$("#" + name + type +"DivExtra").remove();
+			if (type == "victim") {
+				victim_names.splice(victim_names.indexOf(name), 1);
+			} else {
+				shooter_names.splice(shooter_names.indexOf(name), 1);
+			}
+		});
+	}
+
+	num_errors = 0;
+	// return true if valid, false if not
+	function validateInput(input_class, name, person_type) {
+		el = $(input_class+"[for='" + name + "'][person-type='" + person_type + "']");
+		$(el).next(".alert").remove();
+		var val = $(el).val();
+
+		var reg_exp = null;
+		if (input_class==".name-input") {
+			reg_exp = reg;
+		} else {
+			reg_exp = reg_url;
+		}
+
+		if (val != "" && !reg_exp.test(val)) {
+			num_errors += 1;
+			if (input_class==".name-input") {
+				$(el).closest(".col-sm-4").append('<div class="alert alert-danger">'+
+					'Must begin with "http(s)://" and end with a valid file extension (' + valid_photo_extensions.join(",") + ').' +
+					' Or, you may leave the field blank if you cannot find a photo.</div>')
+			} else {
+				$(el).closest(".col-sm-4").append('<div class="alert alert-danger">'+
+					'Must begin with "http(s)://". You may leave the field blank if you cannot find a photo.</div>')
+			}
+		} else {
+			$(el).next(".alert").remove();
+		}
+	}
+
+
+	function validateAll() {
+		num_errors = 0;
+		$(".url-input").each(function(index, element) {
+			var valid = validateInput("." + $(element).attr("input-class"), $(element).attr("for"), $(element).attr("person-type"));
+		});
+	}
+
+	// converts to stringified JSON and submits
+	function submitNewForm() {
+		// victim and shooter names to json
+		$("#victim-names-submit").val(JSON.stringify(victim_names))
+		$("#shooter-names-submit").val(JSON.stringify(shooter_names))
+
+		// make dictionary of victims and shooters to photos
+		var person_types = ["victim", "shooter"];
+		//victim_photos = {"john": {"photo": "1.jpg", "site-url": "site.html"}
+		victim_photos = {}
+		shooter_photos = {}
+		$.each(person_types, function(i, type) {
+			if (type == "victim") {
+				photos_dic = victim_photos;
+			} else if (type == "shooter") {
+				photos_dic = shooter_photos
+			}
+
+			$("."+type+"-name-input").each(function(i, el) {
+				var name = $(el).attr("for");
+				var img_url = $(el).val();
+				var site_url = $(".site-input[for='" + name + "'][person-type='" + type + "']").val();
+				photos_dic[name] = {"photo": img_url, "site-url": site_url, "person": true};
+				var checkbox = $(".not_"+type+"[for='" + name +"']");
+				if ($(checkbox).is(':checked')) {
+					photos_dic[name]["person"] = false
+				}
+			});
+
+			// console.log("herez")
+			// $(".not_"+type+":checked").each(function(i, el) {
+			// 	var name = $(el).attr("for");
+			// 	console.log("for " + name)
+			// 	photos_dic[name]["person"] = false
+			// });
+
+			console.log(photos_dic)
+		})
+
+		$("#victim-photos-submit").val(JSON.stringify(victim_photos));
+		$("#shooter-photos-submit").val(JSON.stringify(shooter_photos));
+		console.log($("#submitForm").serialize())
+		// $("#submitForm").submit();
+
+	}
+
+	$("#submitButton").click(function () {
+		$("#submitButton").next(".alert").remove();
+		validateAll();
+		return_val = false;
+		if (num_errors == 0) {
+			return_val = true;
+			// submit form
+			submitNewForm();
+		} else {
+			$(this).closest("p").append('<div class="alert alert-danger">'+
+   				'Please fix all errors before submitting.</div>');
+		}
+		console.log("returning " + return_val)
+		return return_val;
+	});
+
+	var adding_type = "victim";
+	$("#addVictimButton").click(function() {
+		$("#myModal .alert").remove();
+		$("#modal_title").text("Add Victim");
+		$("#myModal").modal('show');
+		adding_type = "victim";
+	})
+
+	$("#addShooterButton").click(function() {
+		$("#myModal .alert").remove();
+		$("#modal_title").text("Add Shooter");
+		$("#myModal").modal('show');
+		adding_type = "shooter";
+	})
+
+
+	$("#addPersonButton").click(function() {
+		$("#myModal .alert").remove();
+		var newName = $("#newName").val();
+		var keepAdding = true;
+		var ar;
+		if (newName.length > 0) {
+			if (adding_type == "victim") {
+				ar = victim_names;
+			} else if (adding_type == "shooter") {
+				ar = shooter_names
+			}
+			if (ar.indexOf(newName) != -1) {
+				keepAdding = false;
+			} else {
+				ar.push(newName)
+			}
+
+			if (keepAdding) {
+				addFields("#"+adding_type+"_photos", newName, adding_type, true);
+				$("#myModal").modal("hide");
+				updateFormFields();
+				$("#newName").val("")
+			} else {
+				$("#modal_footer").append('<div class="alert alert-danger">'+ newName +
+	   				' is already listed as a '+adding_type+'.</div>');
+			}
+		}
+	});
+
+});
+
+</script>

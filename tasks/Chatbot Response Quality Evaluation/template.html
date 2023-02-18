@@ -1,0 +1,619 @@
+<h2>Please Note</h2>
+
+<ul>
+	<li>You have to be an <span style="color: rgb(255, 0, 0);"><b>English Native Speaker</b></span>.</li>
+	<li>You have to complete the judgments for all sentences.<span style="color: rgb(255, 0, 0);"><b> All fields are required.</b></span></li>
+</ul>
+
+<h2>Instructions</h2>
+
+<p>In this task you will read part of a conversation. You will see a series of prompts, and possible responses to these prompts created by a computer program. The program attempts to generate responses that are relevant, while also making an interesting contribution to the conversation.</p>
+
+<p>For each prompt, you will read five or six possible responses, and make the following judgments:</p>
+
+<ol>
+	<li><font size="+2"><font color="red">Grammatical response?</font> Whether or not the response is a correct English sentence.</font></li>
+	<li><font size="+2"><font color="red">Coherent response?</font> Whether or not the response is appropriate given the prompt.</font></li>
+	<li><font size="+2"><font color="red">Interesting response?</font> Whether or not the response makes an interesting and informative contribution to the conversation.</font></li>
+</ol>
+
+<h2>Example</h2>
+
+<p>Below we show a prompt and several possible responses, along with a suggested score for each response.</p>
+
+<p><b>Prompt: What do you do for work?</b></p>
+
+<table class="instructions">
+	<thead>
+		<tr>
+			<th><b>Responses</b></th>
+			<th><b>Grammatical?</b></th>
+			<th><b>Coherent?</b></th>
+			<th><b>Interesting?</b></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>What the what?</th>
+			<th>No</th>
+			<th>No</th>
+			<th>No</th>
+		</tr>
+		<tr>
+			<th>I&#39;m a what?</th>
+			<th><font color="green">Yes</font></th>
+			<th>No</th>
+			<th>No</th>
+		</tr>
+		<tr>
+			<th>I like pancakes.</th>
+			<th><font color="green">Yes</font></th>
+			<th>No</th>
+			<th><font color="green">Yes</font></th>
+		</tr>
+		<tr>
+			<th>How are you?</th>
+			<th><font color="green">Yes</font></th>
+			<th>No</th>
+			<th>No</th>
+		</tr>
+		<tr>
+			<th>I don&#39;t know.</th>
+			<th><font color="green">Yes</font></th>
+			<th><font color="green">Yes</font></th>
+			<th>No</th>
+		</tr>
+		<tr>
+			<th>What?</th>
+			<th><font color="green">Yes</font></th>
+			<th><font color="green">Yes</font></th>
+			<th>No</th>
+		</tr>
+		<tr>
+			<th>I&#39;m an artist.</th>
+			<th><font color="green">Yes</font></th>
+			<th><font color="green">Yes</font></th>
+			<th><font color="green">Yes</font></th>
+		</tr>
+		<tr>
+			<th>I work at the police department.</th>
+			<th><font color="green">Yes</font></th>
+			<th><font color="green">Yes</font></th>
+			<th><font color="green">Yes</font></th>
+		</tr>
+	</tbody>
+</table>
+
+<h1>Prompts and Responses</h1>
+<style type="text/css">table {
+  font-size: 80%;
+  margin-top: 5px;
+  text-align: center;
+}
+
+.instructions {
+  font-size: 100%;
+  margin-top: 5px;
+}
+
+.instructions th {
+  text-align: left;
+  font-weight: normal;
+}
+</style>
+<hr align="left" noshade="noshade" size="3" width="85%" />
+<ol>
+	<li>
+	<h3><strong>&nbsp;Prompt: </strong>${input1}</h3>
+
+	<hr align="left" width="75%" />
+	<h4><b>System 1: </b>${sys11}</h4>
+
+	<table border="0" cellpadding="0" cellspacing="0" rules="NONE">
+		<tbody>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Grammatical Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Coherent Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Interesting Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+			</tr>
+			<tr style="border-bottom: 1px solid #000;">
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="grammar11" type="radio" value="Yes" /></td>
+				<td align="center"><input name="grammar11" type="radio" value="No" /></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="coherence11" type="radio" value="Yes" /></td>
+				<td align="center"><input name="coherence11" type="radio" value="No" /></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="interesting11" type="radio" value="Yes" /></td>
+				<td align="center"><input name="interesting11" type="radio" value="No" /></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<hr align="left" width="75%" />
+	<h4><strong>System 2: </strong>${sys12}</h4>
+
+	<table border="0" cellpadding="0" cellspacing="0" rules="NONE">
+		<tbody>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Grammatical Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Coherent Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Interesting Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+			</tr>
+			<tr style="border-bottom: 1px solid #000;">
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="grammar12" type="radio" value="Yes" /></td>
+				<td align="center"><input name="grammar12" type="radio" value="No" /></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="coherence12" type="radio" value="Yes" /></td>
+				<td align="center"><input name="coherence12" type="radio" value="No" /></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="interesting12" type="radio" value="Yes" /></td>
+				<td align="center"><input name="interesting12" type="radio" value="No" /></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<hr align="left" width="75%" />
+	<h4><strong>System 3: </strong>${sys13}</h4>
+
+	<table border="0" cellpadding="0" cellspacing="0" rules="NONE">
+		<tbody>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Grammatical Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Coherent Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Interesting Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+			</tr>
+			<tr style="border-bottom: 1px solid #000;">
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="grammar13" type="radio" value="Yes" /></td>
+				<td align="center"><input name="grammar13" type="radio" value="No" /></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="coherence13" type="radio" value="Yes" /></td>
+				<td align="center"><input name="coherence13" type="radio" value="No" /></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="interesting13" type="radio" value="Yes" /></td>
+				<td align="center"><input name="interesting13" type="radio" value="No" /></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<hr align="left" width="75%" />
+	<h4><strong>System 4: </strong>${sys14}</h4>
+
+	<table border="0" cellpadding="0" cellspacing="0" rules="NONE">
+		<tbody>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Grammatical Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Coherent Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Interesting Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+			</tr>
+			<tr style="border-bottom: 1px solid #000;">
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="grammar14" type="radio" value="Yes" /></td>
+				<td align="center"><input name="grammar14" type="radio" value="No" /></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="coherence14" type="radio" value="Yes" /></td>
+				<td align="center"><input name="coherence14" type="radio" value="No" /></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="interesting14" type="radio" value="Yes" /></td>
+				<td align="center"><input name="interesting14" type="radio" value="No" /></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<hr align="left" width="75%" />
+	<h4><strong>System 5: </strong>${sys15}</h4>
+
+	<table border="0" cellpadding="0" cellspacing="0" rules="NONE">
+		<tbody>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Grammatical Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Coherent Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Interesting Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+			</tr>
+			<tr style="border-bottom: 1px solid #000;">
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="grammar15" type="radio" value="Yes" /></td>
+				<td align="center"><input name="grammar15" type="radio" value="No" /></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="coherence15" type="radio" value="Yes" /></td>
+				<td align="center"><input name="coherence15" type="radio" value="No" /></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="interesting15" type="radio" value="Yes" /></td>
+				<td align="center"><input name="interesting15" type="radio" value="No" /></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<hr align="left" noshade="noshade" size="3" width="85%" /></li>
+	<li>
+	<h3><strong>&nbsp;Prompt: </strong>${input2}</h3>
+
+	<hr align="left" width="75%" />
+	<h4><strong>System 1: </strong>${sys21}</h4>
+
+	<table border="0" cellpadding="0" cellspacing="0" rules="NONE">
+		<tbody>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Grammatical Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Coherent Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Interesting Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+			</tr>
+			<tr style="border-bottom: 1px solid #000;">
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="grammar21" type="radio" value="Yes" /></td>
+				<td align="center"><input name="grammar21" type="radio" value="No" /></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="coherence21" type="radio" value="Yes" /></td>
+				<td align="center"><input name="coherence21" type="radio" value="No" /></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="interesting21" type="radio" value="Yes" /></td>
+				<td align="center"><input name="interesting21" type="radio" value="No" /></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<hr align="left" width="75%" />
+	<h4><strong>System 2: </strong>${sys22}</h4>
+
+	<table border="0" cellpadding="0" cellspacing="0" rules="NONE">
+		<tbody>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Grammatical Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Coherent Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Interesting Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+			</tr>
+			<tr style="border-bottom: 1px solid #000;">
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="grammar22" type="radio" value="Yes" /></td>
+				<td align="center"><input name="grammar22" type="radio" value="No" /></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="coherence22" type="radio" value="Yes" /></td>
+				<td align="center"><input name="coherence22" type="radio" value="No" /></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="interesting22" type="radio" value="Yes" /></td>
+				<td align="center"><input name="interesting22" type="radio" value="No" /></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<hr align="left" width="75%" />
+	<h4><strong>System 3: </strong>${sys23}</h4>
+
+	<table border="0" cellpadding="0" cellspacing="0" rules="NONE">
+		<tbody>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Grammatical Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Coherent Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Interesting Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+			</tr>
+			<tr style="border-bottom: 1px solid #000;">
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="grammar23" type="radio" value="Yes" /></td>
+				<td align="center"><input name="grammar23" type="radio" value="No" /></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="coherence23" type="radio" value="Yes" /></td>
+				<td align="center"><input name="coherence23" type="radio" value="No" /></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="interesting23" type="radio" value="Yes" /></td>
+				<td align="center"><input name="interesting23" type="radio" value="No" /></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<hr align="left" width="75%" />
+	<h4><strong>System 4: </strong>${sys24}</h4>
+
+	<table border="0" cellpadding="0" cellspacing="0" rules="NONE">
+		<tbody>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Grammatical Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Coherent Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Interesting Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+			</tr>
+			<tr style="border-bottom: 1px solid #000;">
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="grammar24" type="radio" value="Yes" /></td>
+				<td align="center"><input name="grammar24" type="radio" value="No" /></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="coherence24" type="radio" value="Yes" /></td>
+				<td align="center"><input name="coherence24" type="radio" value="No" /></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="interesting24" type="radio" value="Yes" /></td>
+				<td align="center"><input name="interesting24" type="radio" value="No" /></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<hr align="left" width="75%" />
+	<h4><strong>System 5: </strong>${sys25}</h4>
+
+	<table border="0" cellpadding="0" cellspacing="0" rules="NONE">
+		<tbody>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Grammatical Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Coherent Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Interesting Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+			</tr>
+			<tr style="border-bottom: 1px solid #000;">
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="grammar25" type="radio" value="Yes" /></td>
+				<td align="center"><input name="grammar25" type="radio" value="No" /></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="coherence25" type="radio" value="Yes" /></td>
+				<td align="center"><input name="coherence25" type="radio" value="No" /></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="interesting25" type="radio" value="Yes" /></td>
+				<td align="center"><input name="interesting25" type="radio" value="No" /></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<hr align="left" width="75%" />
+	<h4><strong>System 6: </strong>${sys26}</h4>
+
+	<h4>&nbsp;</h4>
+
+	<table border="0" cellpadding="0" cellspacing="0" rules="NONE">
+		<tbody>
+			<tr>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Grammatical Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Coherent Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td rowspan="2"><b><font color="#ff0000">Interesting Response?</font></b></td>
+				<td align="center">&nbsp; Yes &nbsp;</td>
+				<td align="center">&nbsp; No &nbsp;</td>
+			</tr>
+			<tr style="border-bottom: 1px solid #000;">
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="grammar26" type="radio" value="Yes" /></td>
+				<td align="center"><input name="grammar26" type="radio" value="No" /></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="coherence26" type="radio" value="Yes" /></td>
+				<td align="center"><input name="coherence26" type="radio" value="No" /></td>
+				<td>&nbsp;</td>
+				<td>&nbsp;</td>
+				<td align="center"><input name="interesting26" type="radio" value="Yes" /></td>
+				<td align="center"><input name="interesting26" type="radio" value="No" /></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>Please provide any feedback&nbsp;you may have below, we appreciate your input!</p>
+
+	<p><textarea cols="80" name="comment" rows="3">None?</textarea></p>
+
+	<p id="error_message">&nbsp;</p>
+	<!-- add some validation code --><script type='text/javascript'>
+window.onload = function() { document.getElementById('submitButton').setAttribute('onclick', 'return validateForm()'); }
+
+function getCheckValue(checkName)
+{
+  var genders = document.getElementsByName(checkName);
+
+  for(var i = 0; i < genders.length; i++) {
+     if(genders[i].checked == true) {
+         return genders[i].value;
+     }
+  }
+  return ""
+}
+
+function checkScores() {
+  // grammar - mean - simp
+  var cnames = ["grammar", "coherence", "interesting"];
+  var actual_names = ["Grammaticality", "Coherent", "Interesting"]
+  var N_sys = 5;
+  var N_sent = 2;
+  for(var i = 1; i <= N_sent; i ++)
+  {
+    if(i == 1)
+        {
+        for(var j = 1; j <= N_sys; j ++)
+    {
+      for(var k = 0; k < cnames.length; k ++)
+      {
+        checkName = cnames[k] + i + "" + j;
+        // alert(checkName);
+        checkValue = getCheckValue(checkName);
+        if(checkValue == "")
+        {
+          alert("Evaluation for Group " + i + ", System " + j + " is not finished! (" + actual_names[k] + " empty!)");
+          document.getElementById("error_message").innerHTML = "\<font color=\"red\"\>Evaluation for Group "
+            + i + ", System " + j + " is not finished! (" + actual_names[k] + " empty!)\<\/font\>";
+          return false;
+        }
+      }
+    }
+        }
+        else
+        {
+        for(var j = 1; j <= N_sys+1; j ++)
+    {
+      for(var k = 0; k < cnames.length; k ++)
+      {
+        checkName = cnames[k] + i + "" + j;
+        // alert(checkName);
+        checkValue = getCheckValue(checkName);
+        if(checkValue == "")
+        {
+          alert("Evaluation for Group " + i + ", System " + j + " is not finished! (" + actual_names[k] + " empty!)");
+          document.getElementById("error_message").innerHTML = "\<font color=\"red\"\>Evaluation for Group "
+            + i + ", System " + j + " is not finished! (" + actual_names[k] + " empty!)\<\/font\>";
+          return false;
+        }
+      }
+    }
+        }
+  }
+  return true;
+}
+
+function validateForm() {
+  return checkScores();
+}
+
+</script></li>
+</ol>

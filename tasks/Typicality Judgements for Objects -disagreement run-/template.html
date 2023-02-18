@@ -1,0 +1,501 @@
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /><script type='text/javascript' src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script><!-- BOOTSTRAP CSS -->
+<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet" /><!-- HITPUB CSS -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet" />
+<style id="hitpub_css" type="text/css">/***********************************************
+                        MOSAIC BOOSTRAP OVERWRITES
+                        ***********************************************/
+                        #hitinfo .card {
+                            border-radius: 0;
+                        }
+                         #hitinfo button.btn-link {
+                            color: #fff;
+                            text-decoration: none;
+                         }
+                        #hitinfo button.btn-link:hover {
+                            text-decoration: none;
+                        }
+                        #hit ul.question-choice {
+                            list-style-type: none;
+                        }
+
+                        /***********************************************
+                        MOSAIC GENERAL STYLING
+                        ***********************************************/
+                        body {
+                            font-family: "Open Sans", "Roboto", sans-serif;
+                            line-height: 1.25;
+                        }
+                        textarea#feedback {
+                            width: 100%
+                        }
+                        input#submitButton {
+                            margin: auto;
+                            display: block;
+                            background-color: #2172a4;
+                            color: #fff;
+                            font-size: 1.125rem;
+                            padding: .5rem 1rem;
+                            cursor: pointer;
+                            border-radius: 1rem;
+                        }
+                        input#submitButton:hover {
+                            background-color: #06486F;
+                        }
+
+                        input[type="radio"] {
+                            cursor: pointer;
+                        }
+
+                        div.goal-category {
+                            border-bottom: solid 1px #ccc;
+                            padding: 1rem 1rem;
+                        }
+
+                        li {
+                            margin:0.6em;
+                        }
+
+                        table {
+                            width: 80%;
+                            margin: 5px;
+                        }
+
+                        tr {
+                            border:1px solid #ccc;
+                        }
+
+                        th {
+                            width:20%;
+                            background-color:#fff;
+                            font-weight:normal;
+                            text-align: center;
+                            padding:0.5em;
+                        }
+
+
+                        td {
+                            padding-left:20px;
+                            padding-right:10px;
+                        }
+
+
+
+
+                        /***********************************************
+                        HIT CUSTOM GENERAL STYLING
+                        ***********************************************/
+                        div.card-header {
+                            background-color: #06486F;
+                        }
+                        div.card-header h5 {
+                            color: #fff !important;
+                        }
+
+
+
+                        label[for="object"]:hover, label[for="object"].active {
+                            background-color:  #00009d !important;
+                        }
+                        label[for="person"]:hover, label[for="person"].active {
+                            background-color:  #00009d !important;
+                        }
+                        label[for="animal"]:hover, label[for="animal"].active {
+                            background-color:  #00009d !important;
+                        }
+                        label[for="place"]:hover, label[for="place"].active {
+                            background-color:  #00009d !important;
+                        }
+                        label[for="action"]:hover, label[for="action"].active {
+                            background-color:  #00009d !important;
+                        }
+                        label[for="bodypart"]:hover, label[for="bodypart"].active {
+                            background-color:  #00009d !important;
+                        }
+                        label[for="other"]:hover, label[for="other"].active {
+                            background-color:  #00009d !important;
+                        }
+                        label[for="invalid"]:hover, label[for="invalid"].active {
+                            background-color:  red !important;
+                        }
+
+                        label[for="typicality_4"]:hover, label[for="typicality_4"].active {
+                            background-color:  #009d00 !important;
+                        }
+                        label[for="typicality_3"]:hover, label[for="typicality_3"].active {
+                            background-color:  #00d800 !important;
+                        }
+                        label[for="typicality_2"]:hover, label[for="typicality_2"].active {
+                            background-color:  #00e2e2 !important;
+                        }
+                        label[for="typicality_1"]:hover, label[for="typicality_1"].active {
+                            background-color:  #00bbbb !important;
+                        }
+                        label[for="typicality_0"]:hover, label[for="typicality_0"].active {
+                            background-color:  red !important;
+                        }
+
+                        .question-choice-container label.btn {
+                            background-color: #eee;
+                            border: none;
+                            margin-left: 0 !important;
+                            color: black;
+                        }
+
+                        .question-choice-container label.btn:hover {
+                            color: white;
+                        }
+
+                        .legend {
+                            margin-top: .33rem;
+                            font-weight: normal;
+                            padding-left: 40px;
+                        }
+                        .legend .label{
+                            font-style: italic;
+                        }
+
+                        .emphasize {
+                            font-weight: bold;
+                            color: black;
+                            font-style: italic;
+                        }
+
+                        .btn-group-container {
+                            align:left;
+                            padding:0;
+                        }
+
+                        .example {
+                            pointer-events:none;
+                        }
+
+                        input.goal {
+                            border: none;
+                            background-color: inherit;
+                            border-bottom: solid 1px #ccc;
+                            padding: 2px;
+                            margin-top:0.5em;
+                        }
+
+                        .title {
+                            font-style: italic;
+                        }
+
+                        .entity {
+                            color: blue;
+                            font-weight: bold;
+                        }
+
+                        .use {
+                            color: purple;
+                            font-weight: bold;
+                        }
+
+                        .btn-group-xs > .btn, .btn-xs {
+                          padding: .4rem .4rem;
+                          font-size: .8rem;
+                          line-height: 1.2;
+                          border-radius: .2rem;
+                        }
+
+                        .card-body {
+                            background-color:#fbfbfb;
+                        }
+</style>
+<!-- HIT START -->
+<div class="container" id="hit"><!-- ACCORDION START -->
+<div class="col-12 accordion" id="hitinfo"><!-- INSTRUCTIONS START -->
+<div class="card">&lt;div class=&quot;card-header id=&quot; instructionsheading&quot;=&quot;&quot;&gt;
+<h5 class="mb-0"><button aria-controls="instructions" aria-expanded="true" class="btn btn-link" data-target="#instructions" data-toggle="collapse" type="button">Instructions (click to expand/collapse)</button></h5>
+</div>
+
+<div aria-labelledby="instructionsHeading" class="collapse show" data-parent="#hitinfo" id="instructions">
+<div class="card-body">
+<div class="card-content">
+<p>Thanks for participating in this HIT!</p>
+
+<p>In this HIT, given an <span class="entity">entity</span> and a <span class="use">function</span>, we will ask you to:</p>
+
+<ul>
+	<li class="border-top border-bottom">decide the <span class="emphasize">categorical type</span> of the <span class="entity">entity</span>:
+
+	<ul>
+		<li><strong style="color:#0000eb">object</strong>: this is an thing, object, or item (MOST COMMON).</li>
+		<li><strong style="color:#0000eb">person</strong>: this is a person or human.</li>
+		<li><strong style="color:#0000eb">living thing</strong>: this is a non-human living entity like animals and plants.</li>
+		<li><strong style="color:#0000eb">place</strong>: this is a place or a location.</li>
+		<li><strong style="color:#0000eb">action</strong>: this is an action, situation or event.</li>
+		<li><strong style="color:#0000eb">body part</strong>: this is an external part or internal part of body.</li>
+		<li><strong style="color:#0000eb">other</strong>: none of the above.</li>
+		<li><strong style="color:red">invalid</strong>: no idea what this is.</li>
+	</ul>
+	</li>
+	<li class="mt-3 border-top border-bottom">make a snap judgement about <span class="emphasize">typicality</span> or <span class="emphasize">expectedness</span> of the <span class="use">function/role</span> given the <span class="entity">entity</span>
+	<ul>
+		<li><strong style="color:darkgreen">highly expected</strong>: the statement describes an absolutely normal or usual.</li>
+		<li><strong style="color:green">somewhat expected</strong>: the statement is somewhat normal or usual.</li>
+		<li><strong style="color:#00bbbb">somewhat unusual</strong>: the statement is somewhat unusual or creative.</li>
+		<li><strong style="color:#009494">highly unusual</strong>: the statement is highly unusual or rather creative.</li>
+		<li><strong style="color:red">weird or invalid</strong>: the statement is invalid, weird, or nonsensical.</li>
+	</ul>
+	</li>
+</ul>
+
+<h5>Notes:</h5>
+
+<ul>
+	<li>Sometimes an <span class="entity">entity</span> can have multiple meanings (see Examples 1 and 2).<br />
+	A <code>&quot;bat&quot;</code>, for example, can refer to a baseball bat or the nocturnal animal.<br />
+	In such cases, assume that the <span class="entity">entity</span> means what <em>best fits</em> the <span class="use">function/role</span></li>
+	<li>You will invariably encounter some <em>spelling errors</em>. If you can figure out what it means, <strong>please do</strong>!<br />
+	If it is completely undecipherable, mark it as <strong style="color:red">invalid</strong>.</li>
+</ul>
+&nbsp;
+
+<h5>Examples:</h5>
+
+<div class="row question-choice-container border-top mt-3 pt-3">
+<div class="col col-6">
+<div class="row"><span class="col col-2"><strong><em>1:</em></strong></span> <span class="col border col-7">bat</span> <span class="col col-2 text-right"><strong>to/for</strong></span></div>
+</div>
+
+<div class="col col-6">
+<div class="row col-12 border ml-3">play baseball</div>
+</div>
+</div>
+
+<div class="row question-choice-container mt-3">
+<div class="col col-1">&nbsp;</div>
+
+<div class="col col-5"><span class="btn-group-toggle" data-toggle="buttons"><label class="btn  btn-xs btn-secondary mr-1 pt-2 active example" for="object">object</label> <label class="btn btn-xs btn-secondary mr-1 pt-2 example" for="person">person</label> <label class="btn btn-xs btn-secondary mr-1 example" for="animal">living thing</label> <label class="btn btn-xs btn-secondary mr-1 pt-2 example" for="place">place</label> <label class="btn btn-xs btn-secondary mr-1 pt-2 example" for="action">action</label> <label class="btn btn-xs btn-secondary mr-1 example" for="bodypart">body part</label> <label class="btn btn-xs btn-secondary mr-1 pt-2 example" for="other">other</label> <label class="btn btn-xs btn-secondary pt-2 example" for="invalid">invalid</label> </span></div>
+
+<div class="col col-6"><span class="btn-group-container pl-3"><span class="btn-group btn-group-toggle" data-toggle="buttons"><label class="btn btn-xs btn-secondary mr-1 active example" for="typicality_4">highly<br />
+expected</label> <label class="btn btn-xs btn-secondary mr-1 example" for="typicality_3">somewhat<br />
+expected</label> <label class="btn btn-xs btn-secondary mr-1 example" for="typicality_2">somewhat<br />
+unusual</label> <label class="btn btn-xs btn-secondary mr-1 example" for="typicality_1">highly<br />
+unusual</label> <label class="btn btn-xs btn-secondary example" for="typicality_0">weird or<br />
+invalid</label> </span> </span></div>
+</div>
+
+<div class="row question-choice-container border-top mt-3 pt-3">
+<div class="col col-6">
+<div class="row"><span class="col col-2"><strong><em>2:</em></strong></span> <span class="border col-7">bat</span> <span class="col-2 text-right"><strong>to/for</strong></span></div>
+</div>
+
+<div class="col col-6">
+<div class="row col-12 border ml-3">watch them fly</div>
+</div>
+</div>
+
+<div class="row question-choice-container mt-3">
+<div class="col col-1">&nbsp;</div>
+
+<div class="col col-5"><span class="btn-group-toggle" data-toggle="buttons"><label class="btn  btn-xs btn-secondary mr-1 pt-2 example" for="object">object</label> <label class="btn btn-xs btn-secondary mr-1 pt-2 example" for="person">person</label> <label class="btn btn-xs btn-secondary mr-1 active example" for="animal">living thing</label> <label class="btn btn-xs btn-secondary mr-1 pt-2 example" for="place">place</label> <label class="btn btn-xs btn-secondary mr-1 pt-2 example" for="action">action</label> <label class="btn btn-xs btn-secondary mr-1 example" for="bodypart">body part</label> <label class="btn btn-xs btn-secondary mr-1 pt-2 example" for="other">other</label> <label class="btn btn-xs btn-secondary pt-2 example" for="invalid">invalid</label> </span></div>
+
+<div class="col col-6"><span class="btn-group-container pl-3"><span class="btn-group btn-group-toggle" data-toggle="buttons"><label class="btn btn-xs btn-secondary mr-1 example" for="typicality_4">highly<br />
+expected</label> <label class="btn btn-xs btn-secondary mr-1 active example" for="typicality_3">somewhat<br />
+expected</label> <label class="btn btn-xs btn-secondary mr-1 example" for="typicality_2">somewhat<br />
+unusual</label> <label class="btn btn-xs btn-secondary mr-1 example" for="typicality_1">highly<br />
+unusual</label> <label class="btn btn-xs btn-secondary example" for="typicality_0">weird or<br />
+invalid</label> </span> </span></div>
+</div>
+
+<div class="row question-choice-container border-top mt-3 pt-3">
+<div class="col col-6">
+<div class="row"><span class="col col-2"><strong><em>3:</em></strong></span> <span class="border col-7">mixing bowl</span> <span class="col-2 text-right"><strong>to/for</strong></span></div>
+</div>
+
+<div class="col col-6">
+<div class="row col-12 border ml-3">cover head from rain</div>
+</div>
+</div>
+
+<div class="row question-choice-container mt-3">
+<div class="col col-1">&nbsp;</div>
+
+<div class="col col-5"><span class="btn-group-toggle" data-toggle="buttons"><label class="btn  btn-xs btn-secondary mr-1 pt-2 active example" for="object">object</label> <label class="btn btn-xs btn-secondary mr-1 pt-2 example" for="person">person</label> <label class="btn btn-xs btn-secondary mr-1 example" for="animal">living thing</label> <label class="btn btn-xs btn-secondary mr-1 pt-2 example" for="place">place</label> <label class="btn btn-xs btn-secondary mr-1 pt-2 example" for="action">action</label> <label class="btn btn-xs btn-secondary mr-1 example" for="bodypart">body part</label> <label class="btn btn-xs btn-secondary mr-1 pt-2 example" for="other">other</label> <label class="btn btn-xs btn-secondary pt-2 example" for="invalid">invalid</label> </span></div>
+
+<div class="col col-6"><span class="btn-group-container pl-3"><span class="btn-group btn-group-toggle" data-toggle="buttons"><label class="btn btn-xs btn-secondary mr-1 example" for="typicality_4">highly<br />
+expected</label> <label class="btn btn-xs btn-secondary mr-1 example" for="typicality_3">somewhat<br />
+expected</label> <label class="btn btn-xs btn-secondary mr-1 example" for="typicality_2">somewhat<br />
+unusual</label> <label class="btn btn-xs btn-secondary mr-1 active example" for="typicality_1">highly<br />
+unusual</label> <label class="btn btn-xs btn-secondary example" for="typicality_0">weird or<br />
+invalid</label> </span> </span></div>
+</div>
+
+<div class="row question-choice-container border-top mt-3 pt-3">
+<div class="col col-6">
+<div class="row"><span class="col col-2"><strong><em>4:</em></strong></span> <span class="border col-7">kitten</span> <span class="col-2 text-right"><strong>to/for</strong></span></div>
+</div>
+
+<div class="col col-6">
+<div class="row col-12 border ml-3">put inside a cage</div>
+</div>
+</div>
+
+<div class="row question-choice-container mt-3">
+<div class="col col-1">&nbsp;</div>
+
+<div class="col col-5"><span class="btn-group-toggle" data-toggle="buttons"><label class="btn  btn-xs btn-secondary mr-1 pt-2 example" for="object">object</label> <label class="btn btn-xs btn-secondary mr-1 pt-2 example" for="person">person</label> <label class="btn btn-xs btn-secondary mr-1 active example" for="animal">living thing</label> <label class="btn btn-xs btn-secondary mr-1 pt-2 example" for="place">place</label> <label class="btn btn-xs btn-secondary mr-1 pt-2 example" for="action">action</label> <label class="btn btn-xs btn-secondary mr-1 example" for="bodypart">body part</label> <label class="btn btn-xs btn-secondary mr-1 pt-2 example" for="other">other</label> <label class="btn btn-xs btn-secondary pt-2 example" for="invalid">invalid</label> </span></div>
+
+<div class="col col-6"><span class="btn-group-container pl-3"><span class="btn-group btn-group-toggle" data-toggle="buttons"><label class="btn btn-xs btn-secondary mr-1 example" for="typicality_4">highly<br />
+expected</label> <label class="btn btn-xs btn-secondary mr-1 active example" for="typicality_3">somewhat<br />
+expected</label> <label class="btn btn-xs btn-secondary mr-1 example" for="typicality_2">somewhat<br />
+unusual</label> <label class="btn btn-xs btn-secondary mr-1 example" for="typicality_1">highly<br />
+unusual</label> <label class="btn btn-xs btn-secondary example" for="typicality_0">weird or<br />
+invalid</label> </span> </span></div>
+</div>
+
+<div class="row question-choice-container border-top mt-3 pt-3">
+<div class="col col-6">
+<div class="row"><span class="col col-2"><strong><em>5:</em></strong></span> <span class="border col-7">walking</span> <span class="col-2 text-right"><strong>to/for</strong></span></div>
+</div>
+
+<div class="col col-6">
+<div class="row col-12 border ml-3">go grocery shopping</div>
+</div>
+</div>
+
+<div class="row question-choice-container mt-3">
+<div class="col col-1">&nbsp;</div>
+
+<div class="col col-5"><span class="btn-group-toggle" data-toggle="buttons"><label class="btn  btn-xs btn-secondary mr-1 pt-2 example" for="object">object</label> <label class="btn btn-xs btn-secondary mr-1 pt-2 example" for="person">person</label> <label class="btn btn-xs btn-secondary mr-1 example" for="animal">living thing</label> <label class="btn btn-xs btn-secondary mr-1 pt-2 example" for="place">place</label> <label class="btn btn-xs btn-secondary mr-1 pt-2 active example" for="action">action</label> <label class="btn btn-xs btn-secondary mr-1 example" for="bodypart">body part</label> <label class="btn btn-xs btn-secondary mr-1 pt-2 example" for="other">other</label> <label class="btn btn-xs btn-secondary pt-2 example" for="invalid">invalid</label> </span></div>
+
+<div class="col col-6"><span class="btn-group-container pl-3"><span class="btn-group btn-group-toggle" data-toggle="buttons"><label class="btn btn-xs btn-secondary mr-1 example" for="typicality_4">highly<br />
+expected</label> <label class="btn btn-xs btn-secondary mr-1 active example" for="typicality_3">somewhat<br />
+expected</label> <label class="btn btn-xs btn-secondary mr-1 example" for="typicality_2">somewhat<br />
+unusual</label> <label class="btn btn-xs btn-secondary mr-1 example" for="typicality_1">highly<br />
+unusual</label> <label class="btn btn-xs btn-secondary example" for="typicality_0">weird or<br />
+invalid</label> </span> </span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- INSTRUCTIONS END --></div>
+<!-- ACCORDION END -->
+
+<p class="mt-5 pt-3 border-top pl-3">We want your <span class="emphasize">snap judgement</span>.</p>
+
+<p class="pl-3"><span class="badge badge-pill badge-info">IMPORTANT</span> Please remember to make sure that the <span class="emphasize">categorical type</span> of the <span class="entity">entity</span> is correct!</p>
+<!-- MTURK INPUT START -->
+
+<div class="col-12 mt-3 mb-1 border-top">
+<form action="https://www.mturk.com/mturk/externalSubmit" id="mturk_form" method="post" name="mturk_form"><input id="assignmentId" name="assignmentId" type="hidden" value="" /> <!-- QUESTION MACRO START --> <!-- GOAL CATEGORY MACRO END --> <!-- GOAL CAT START -->
+<div class="goal-category" id="question-1">
+<div class="question" id="question">
+<div class="row question-choice-container">
+<div class="col col-5">
+<div class="row"><span class="col col-1"><strong><em>1:</em></strong></span> <span class="col border col-8">${object1}</span> <span class="col col-2 text-right"><strong>to/for</strong></span></div>
+</div>
+
+<div class="col col-7">
+<div class="row col-12 border ml-3">${use1}</div>
+</div>
+</div>
+
+<div class="row question-choice-container mt-3">
+<div class="col col-5 ml-3"><span class="col btn-group-container"><span class="btn-group-toggle" data-toggle="buttons"><label class="btn  btn-xs btn-secondary mr-1 active" for="object"><input autocomplete="off" checked="checked" id="obj1_category_object" name="obj1_category" required="" type="radio" value="object" />object </label> <label class="btn btn-xs btn-secondary mr-1 " for="person"> <input autocomplete="off" id="obj1_category_person" name="obj1_category" type="radio" value="person" />person </label> <label class="btn btn-xs btn-secondary mr-1 " for="animal"> <input autocomplete="off" id="obj1_category_animal" name="obj1_category" type="radio" value="animal" />living thing </label> <label class="btn btn-xs btn-secondary mr-1 pt-2 " for="place"> <input autocomplete="off" id="obj1_category_place" name="obj1_category" type="radio" value="place" />place </label> <label class="btn btn-xs btn-secondary mr-1 pt-2 " for="action"> <input autocomplete="off" id="obj1_category_action" name="obj1_category" type="radio" value="action" />action </label> <label class="btn btn-xs btn-secondary mr-1 pt-2 " for="bodypart"> <input autocomplete="bodypart" id="obj1_category_bodypart" name="obj1_category" type="radio" value="other" />body part </label> <label class="btn btn-xs btn-secondary mr-1 pt-2" for="other"> <input autocomplete="off" id="obj1_category_other" name="obj1_category" type="radio" value="other" />other </label> <label class="btn btn-xs btn-secondary  pt-2" for="invalid"> <input autocomplete="off" id="obj1_category_invalid" name="obj1_category" type="radio" value="other" />invalid </label> </span> </span></div>
+
+<div class="col col-4"><span class="btn-group-container pl-3"><span class="btn-group btn-group-toggle" data-toggle="buttons"><label class="btn btn-xs btn-secondary mr-1" for="typicality_4"><input autocomplete="off" id="obj1_typicality_4" name="obj1_typicality" required="" type="radio" value="typicality_4" />highly<br />
+expected </label> <label class="btn btn-xs btn-secondary mr-1" for="typicality_3"> <input autocomplete="off" id="obj1_typicality_3" name="obj1_typicality" type="radio" value="typicality_3" />somewhat<br />
+expected </label> <label class="btn btn-xs btn-secondary mr-1" for="typicality_2"> <input autocomplete="off" id="obj1_typicality_2" name="obj1_typicality" type="radio" value="typicality_2" />somewhat<br />
+unusual </label> <label class="btn btn-xs btn-secondary mr-1" for="typicality_1"> <input autocomplete="off" id="obj1_typicality_1" name="obj1_typicality" type="radio" value="typicality_1" />highly<br />
+unusual </label> <label class="btn btn-xs btn-secondary" for="typicality_0"> <input autocomplete="off" id="obj1_typicality_0" name="obj1_typicality" type="radio" value="typicality_0" />weird or<br />
+invalid </label> </span> </span></div>
+</div>
+</div>
+</div>
+
+<div class="goal-category" id="question-2">
+<div class="question" id="question">
+<div class="row question-choice-container">
+<div class="col col-5">
+<div class="row"><span class="col col-1"><strong><em>2:</em></strong></span> <span class="col border col-8">${object2}</span> <span class="col col-2 text-right"><strong>to/for</strong></span></div>
+</div>
+
+<div class="col col-7">
+<div class="row col-12 border ml-3">${use2}</div>
+</div>
+</div>
+
+<div class="row question-choice-container mt-3">
+<div class="col col-5 ml-3"><span class="col btn-group-container"><span class="btn-group-toggle" data-toggle="buttons"><label class="btn  btn-xs btn-secondary mr-1 active" for="object"><input autocomplete="off" checked="checked" id="obj2_category_object" name="obj2_category" required="" type="radio" value="object" />object </label> <label class="btn btn-xs btn-secondary mr-1 " for="person"> <input autocomplete="off" id="obj2_category_person" name="obj2_category" type="radio" value="person" />person </label> <label class="btn btn-xs btn-secondary mr-1 " for="animal"> <input autocomplete="off" id="obj2_category_animal" name="obj2_category" type="radio" value="animal" />living thing </label> <label class="btn btn-xs btn-secondary mr-1 pt-2 " for="place"> <input autocomplete="off" id="obj2_category_place" name="obj2_category" type="radio" value="place" />place </label> <label class="btn btn-xs btn-secondary mr-1 pt-2 " for="action"> <input autocomplete="off" id="obj2_category_action" name="obj2_category" type="radio" value="action" />action </label> <label class="btn btn-xs btn-secondary mr-1 pt-2 " for="bodypart"> <input autocomplete="bodypart" id="obj2_category_bodypart" name="obj2_category" type="radio" value="other" />body part </label> <label class="btn btn-xs btn-secondary mr-1 pt-2" for="other"> <input autocomplete="off" id="obj2_category_other" name="obj2_category" type="radio" value="other" />other </label> <label class="btn btn-xs btn-secondary  pt-2" for="invalid"> <input autocomplete="off" id="obj2_category_invalid" name="obj2_category" type="radio" value="other" />invalid </label> </span> </span></div>
+
+<div class="col col-4"><span class="btn-group-container pl-3"><span class="btn-group btn-group-toggle" data-toggle="buttons"><label class="btn btn-xs btn-secondary mr-1" for="typicality_4"><input autocomplete="off" id="obj2_typicality_4" name="obj2_typicality" required="" type="radio" value="typicality_4" />highly<br />
+expected </label> <label class="btn btn-xs btn-secondary mr-1" for="typicality_3"> <input autocomplete="off" id="obj2_typicality_3" name="obj2_typicality" type="radio" value="typicality_3" />somewhat<br />
+expected </label> <label class="btn btn-xs btn-secondary mr-1" for="typicality_2"> <input autocomplete="off" id="obj2_typicality_2" name="obj2_typicality" type="radio" value="typicality_2" />somewhat<br />
+unusual </label> <label class="btn btn-xs btn-secondary mr-1" for="typicality_1"> <input autocomplete="off" id="obj2_typicality_1" name="obj2_typicality" type="radio" value="typicality_1" />highly<br />
+unusual </label> <label class="btn btn-xs btn-secondary" for="typicality_0"> <input autocomplete="off" id="obj2_typicality_0" name="obj2_typicality" type="radio" value="typicality_0" />weird or<br />
+invalid </label> </span> </span></div>
+</div>
+</div>
+</div>
+
+<div class="goal-category" id="question-3">
+<div class="question" id="question">
+<div class="row question-choice-container">
+<div class="col col-5">
+<div class="row"><span class="col col-1"><strong><em>3:</em></strong></span> <span class="col border col-8">${object3}</span> <span class="col col-2 text-right"><strong>to/for</strong></span></div>
+</div>
+
+<div class="col col-7">
+<div class="row col-12 border ml-3">${use3}</div>
+</div>
+</div>
+
+<div class="row question-choice-container mt-3">
+<div class="col col-5 ml-3"><span class="col btn-group-container"><span class="btn-group-toggle" data-toggle="buttons"><label class="btn  btn-xs btn-secondary mr-1 active" for="object"><input autocomplete="off" checked="checked" id="obj3_category_object" name="obj3_category" required="" type="radio" value="object" />object </label> <label class="btn btn-xs btn-secondary mr-1 " for="person"> <input autocomplete="off" id="obj3_category_person" name="obj3_category" type="radio" value="person" />person </label> <label class="btn btn-xs btn-secondary mr-1 " for="animal"> <input autocomplete="off" id="obj3_category_animal" name="obj3_category" type="radio" value="animal" />living thing </label> <label class="btn btn-xs btn-secondary mr-1 pt-2 " for="place"> <input autocomplete="off" id="obj3_category_place" name="obj3_category" type="radio" value="place" />place </label> <label class="btn btn-xs btn-secondary mr-1 pt-2 " for="action"> <input autocomplete="off" id="obj3_category_action" name="obj3_category" type="radio" value="action" />action </label> <label class="btn btn-xs btn-secondary mr-1 pt-2 " for="bodypart"> <input autocomplete="bodypart" id="obj3_category_bodypart" name="obj3_category" type="radio" value="other" />body part </label> <label class="btn btn-xs btn-secondary mr-1 pt-2" for="other"> <input autocomplete="off" id="obj3_category_other" name="obj3_category" type="radio" value="other" />other </label> <label class="btn btn-xs btn-secondary  pt-2" for="invalid"> <input autocomplete="off" id="obj3_category_invalid" name="obj3_category" type="radio" value="other" />invalid </label> </span> </span></div>
+
+<div class="col col-4"><span class="btn-group-container pl-3"><span class="btn-group btn-group-toggle" data-toggle="buttons"><label class="btn btn-xs btn-secondary mr-1" for="typicality_4"><input autocomplete="off" id="obj3_typicality_4" name="obj3_typicality" required="" type="radio" value="typicality_4" />highly<br />
+expected </label> <label class="btn btn-xs btn-secondary mr-1" for="typicality_3"> <input autocomplete="off" id="obj3_typicality_3" name="obj3_typicality" type="radio" value="typicality_3" />somewhat<br />
+expected </label> <label class="btn btn-xs btn-secondary mr-1" for="typicality_2"> <input autocomplete="off" id="obj3_typicality_2" name="obj3_typicality" type="radio" value="typicality_2" />somewhat<br />
+unusual </label> <label class="btn btn-xs btn-secondary mr-1" for="typicality_1"> <input autocomplete="off" id="obj3_typicality_1" name="obj3_typicality" type="radio" value="typicality_1" />highly<br />
+unusual </label> <label class="btn btn-xs btn-secondary" for="typicality_0"> <input autocomplete="off" id="obj3_typicality_0" name="obj3_typicality" type="radio" value="typicality_0" />weird or<br />
+invalid </label> </span> </span></div>
+</div>
+</div>
+</div>
+
+<div class="goal-category" id="question-4">
+<div class="question" id="question">
+<div class="row question-choice-container">
+<div class="col col-5">
+<div class="row"><span class="col col-1"><strong><em>4:</em></strong></span> <span class="col border col-8">${object4}</span> <span class="col col-2 text-right"><strong>to/for</strong></span></div>
+</div>
+
+<div class="col col-7">
+<div class="row col-12 border ml-3">${use4}</div>
+</div>
+</div>
+
+<div class="row question-choice-container mt-3">
+<div class="col col-5 ml-3"><span class="col btn-group-container"><span class="btn-group-toggle" data-toggle="buttons"><label class="btn  btn-xs btn-secondary mr-1 active" for="object"><input autocomplete="off" checked="checked" id="obj4_category_object" name="obj4_category" required="" type="radio" value="object" />object </label> <label class="btn btn-xs btn-secondary mr-1 " for="person"> <input autocomplete="off" id="obj4_category_person" name="obj4_category" type="radio" value="person" />person </label> <label class="btn btn-xs btn-secondary mr-1 " for="animal"> <input autocomplete="off" id="obj4_category_animal" name="obj4_category" type="radio" value="animal" />living thing </label> <label class="btn btn-xs btn-secondary mr-1 pt-2 " for="place"> <input autocomplete="off" id="obj4_category_place" name="obj4_category" type="radio" value="place" />place </label> <label class="btn btn-xs btn-secondary mr-1 pt-2 " for="action"> <input autocomplete="off" id="obj4_category_action" name="obj4_category" type="radio" value="action" />action </label> <label class="btn btn-xs btn-secondary mr-1 pt-2 " for="bodypart"> <input autocomplete="bodypart" id="obj4_category_bodypart" name="obj4_category" type="radio" value="other" />body part </label> <label class="btn btn-xs btn-secondary mr-1 pt-2" for="other"> <input autocomplete="off" id="obj4_category_other" name="obj4_category" type="radio" value="other" />other </label> <label class="btn btn-xs btn-secondary  pt-2" for="invalid"> <input autocomplete="off" id="obj4_category_invalid" name="obj4_category" type="radio" value="other" />invalid </label> </span> </span></div>
+
+<div class="col col-4"><span class="btn-group-container pl-3"><span class="btn-group btn-group-toggle" data-toggle="buttons"><label class="btn btn-xs btn-secondary mr-1" for="typicality_4"><input autocomplete="off" id="obj4_typicality_4" name="obj4_typicality" required="" type="radio" value="typicality_4" />highly<br />
+expected </label> <label class="btn btn-xs btn-secondary mr-1" for="typicality_3"> <input autocomplete="off" id="obj4_typicality_3" name="obj4_typicality" type="radio" value="typicality_3" />somewhat<br />
+expected </label> <label class="btn btn-xs btn-secondary mr-1" for="typicality_2"> <input autocomplete="off" id="obj4_typicality_2" name="obj4_typicality" type="radio" value="typicality_2" />somewhat<br />
+unusual </label> <label class="btn btn-xs btn-secondary mr-1" for="typicality_1"> <input autocomplete="off" id="obj4_typicality_1" name="obj4_typicality" type="radio" value="typicality_1" />highly<br />
+unusual </label> <label class="btn btn-xs btn-secondary" for="typicality_0"> <input autocomplete="off" id="obj4_typicality_0" name="obj4_typicality" type="radio" value="typicality_0" />weird or<br />
+invalid </label> </span> </span></div>
+</div>
+</div>
+</div>
+<!-- GOAL CAT END --> <!-- OPTIONAL FEEDBACK -->
+
+<div class="row mt-5">
+<div class="col-8 offset-2 col-lg-6 offset-lg-3">
+<p>(Optional) Please let us know if anything was unclear, if you experienced any issues, or if you have any other fedback for us.</p>
+<textarea id="feedback" name="feedback" rows="3"></textarea></div>
+</div>
+<!-- SUBMIT BUTTON -->
+
+<div class="row mt-5">
+<div class="col-2 offset-5"><input id="submitButton" onclick="getnext()" type="submit" value="Submit" /></div>
+</div>
+</form>
+<script language='Javascript'>turkSetAssignmentID();</script></div>
+<!-- MTURK INPUT END --><!-- HIT END --><!-- BOOSTRAP JS --><script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script><!-- HITPUB JS --><script id="hitpub_js">
+                    $(document).ready(function(){    $('[data-toggle="tooltip"]').tooltip();   });
+                </script>

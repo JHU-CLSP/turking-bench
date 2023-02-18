@@ -1,0 +1,76 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects">
+
+    <crowd-instructions link-text="View instructions" link-type="button">
+        <short-summary>
+            <h3>Collect common scences with given concepts</h3>
+            <p>Dear users, we would like to collect <strong>setnences describing everyday scenes</strong> in everyday life about given concepts (nouns/verbs), as well as the <strong>background commonsense knowledge</strong> about them.</p>
+            <p>For example, given a set of concepts: <strong>{apple,  bag, put, tree, pick}</strong>. (the order does <strong>NOT</strong> matter)</p>
+            <p>You can describe a natural scene with a simple sentence containing all of them like: </p>
+            <p><em>"A boy <strong>picks</strong> some <strong>apples</strong> from a <strong>tree</strong> and <strong>puts</strong> them into a <strong>bag</strong>."</em></p>
+            <p>You also need to write some sentences about the <strong>common sense knowledge</strong> that you used in writing the sentence:</p>
+            <p>"Apples are grown on trees. Bag is a container. You can pick something and then put them in a container."</p>
+           
+           
+        </short-summary>
+        <detailed-instructions>
+            <!--<h3>Collect common scences with given concepts</h3>-->
+            <p>The set of given concepts are randomly ordered and you should ignore the order when writing the sentences.</p>
+            <p>The sentence is better to be <strong>simple</strong> and <strong>grammatical</strong>, and describes a <strong>natural</strong> scene in our daily life.
+            <ul>
+            <li>You can use other forms of the given words to make the sentence grammatical, like plural forms (e.g. apples) and subject-verb agreement rules (e.g. picks, puts).</li>
+            <li>You can add some new concepts like "boy" to make the scenes natural and complete. </li>
+            <li>It is better to be with <strong>simple present tense</strong> and <strong>active voice</strong>.</li>
+            <li>Use specific words "a/an man/woman/girl/boy/adult/teenager/group of guys/..." instead of pronouns "I/You/He/She/They".
+            </ul>
+            </p>
+            <p>The commonsense knowledge is a set of simple sentences descibing facts behind the scene, which make it common. They must be also grammatical following the above requirements.</p>
+        </detailed-instructions>
+   
+        <positive-example>
+            <h3>Given concepts: "apple,  bag, put, tree, pick"</h3>
+            <p><em>"A boy <strong>picks</strong> some <strong>apples</strong> from a <strong>tree</strong> and <strong>puts</strong> them into a <strong>bag</strong>."</em></p>
+            <h3>Background Commmonsense Knowledge</h3>
+            <p>"Apples are grown on trees. Bag is a container. You can pick something and then put them in a container."</p>
+        </positive-example>
+       
+        <positive-example>
+            <h3>Given concepts: "face, look, mirror, shave "</h3>
+            <p>"A man <strong>shaves</strong> his <strong>face</strong> while <strong>looking</strong> at the <strong>mirror</strong>."</p>
+            <h3>Background Commmonsense Knowledge</h3>
+            <p>"Men needs to shave their faces. Looking at the mirror can help people adjust their face."</p>
+        </positive-example>
+       
+       
+    </crowd-instructions>
+   
+   
+    <h3>Instructions</h3>
+    <p>Write a natural and simple ENGLISH sentence about a common scene containing all given nouns/verbs, and the underlying commonsense knowledge about the scene.</p>
+    <p>Rules: The set of given concepts are randomly ordered and you can <strong>ignore the order</strong> when write the sentences.</p>
+            <p>The sentence is better to be <strong>simple</strong> and <strong>grammatical</strong>, and describes a <strong>natural</strong> scenen in our daily life.
+            <ul>
+            <li>You can use other forms of the given words to make the sentence grammtical, like plural forms (e.g. apples) and subject-verb agreement rules (e.g. picks, puts).</li>
+            <li>You can add some new concepts like "boy" to make the scenes natural and complette. </li>
+            <li>Use <strong>simple present tense</strong> and <strong>active voice</strong>.</li>
+            <li><strong>DO NOT use Pronouns!!</strong> "I/You/He/She/They"!!  Use specific words "a/an man/woman/girl/boy/adult/teenager/group of guys/...". Imagine that you are looking at a video or an image of the scene.
+            </ul>
+    </p>
+   
+    <h3>Examples</h3>        
+    <p>Given concepts: "apple, tree, pick"</p>
+   
+    <p>Scene: <em>"A boy <strong>picks</strong> some <strong>apples</strong> from a <strong>tree</strong>."</em></p>
+    <p>Reason: <em>"Apples are grown on trees. People can pick something from tree."</em></p>
+    <!-- Your contexts and intents will be substituted for the "context" and "intent" variables when you
+           publish a batch with an input file containing multiple contexts and intents -->
+    <br><br><br>
+    <h3>Your Task:</h3>
+    <p>The current given set of concepts: <strong>${context}</strong></p>
+    <crowd-input name="scene" placeholder="Write ONE sentence about a natural scene containing all given concepts here. (simple, grammatical, no longer than 20 words.)" required></crowd-input>
+    <crowd-input name="reason" placeholder="Write the commosense knowledge you used in completing the scene. (can have multiple sentences, seperated by periods.)" required></crowd-input>
+</crowd-form>

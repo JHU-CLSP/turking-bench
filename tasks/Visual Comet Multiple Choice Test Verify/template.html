@@ -1,0 +1,545 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<section class="container" id="Survey">
+    <div class="row" id="workContent">
+        <div class="col-xl-12">
+
+            <!-- ACCORDION HEADER START -->
+            <div class="accordion col-12" id="hitinfo">
+                <!-- INSTRUCTIONS START -->
+                <div class="card">
+                    <div class="card-header" id="instructionsHeading">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#instructions" aria-expanded="true" aria-controls="instructions">
+                                Instructions (click to expand)
+                            </button>
+                        </h5>
+                    </div>
+                    <div class="collapse show" id="instructions" aria-labelledby="instructionsHeading" data-parent="#hitinfo">
+                        <div class="card-body">
+                            <h5><b>Overview <span class="need"></span> </b></h5>
+                            <p>Thanks for participating in this HIT! </p>
+                            <p>In this task, you'll be given an <b> image </b> from a movie clip and <b>tags</b> that refer to objects and people in the image. <br> Following the image, you'll be given a <b>prompt with Person ID</b>, which is one of the following:</p>
+                            <ul> <b>
+                              <li> <span class="need"> Before, PersonX needed to:</span> Possible things that PersonX might need to do before whatever he/she is doing in the image. </li>
+                              <li> <span class="intent"> Currently, PersonX want to:</span> Most likely things that PersonX want to do or is doing right now in the image. </li>
+                              <li> <span class="react"> After, PersonX will most likely:</span> Possible things that PersonX might do after this image. </li>
+                              </b>
+                            </ul>
+
+                            <h5><SPAN STYLE="font-size:15.0pt"> <b>Task:</b> </SPAN> You will be given <b>4 statements</b> and asked to choose the <b>ONE</b> that best fits the image and prompt.</h5>
+
+
+                            <h5><b>Note:</b></h5>
+                            <ul>
+                                <li> Please be forgiving of minor spelling and grammar errors. </li>
+                                <li> Try to keep the <b>prompt</b> and <b> temporal order</b> in mind. Statement is incorrect if the prompt is <span class="react">After, ...</span> but it is about something that already happened <b>before</b>.</li>
+                                <li> There might be more than one statement (or None) that matches the image and prompt. Try to do your best to choose the most plausible option.</li>
+                                <li> If you are not sure about your answer for the above reasons, you can check the <b>"not clear"</b> box</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- INSTRUCTIONS END -->
+            </div>
+            <!-- ACCORDION HEADER END -->
+
+            <!-- MTURK INPUT START -->
+            <div class="panel">
+                <!--IMG-->
+                <div class="img-container">
+                    <!--<img class="img-fluid annotimage" src="https://s3-us-west-2.amazonaws.com/ai2-rowanz/vcr1images/movieclips_Taxi/NMKgdzm1pWs@13.jpg" width="800" height="500">-->
+                    <img class="img-fluid annotimage" src="https://s3-us-west-2.amazonaws.com/ai2-rowanz/vcr1images/${img_fn}">
+                    <div id="drawing" class="drawing-class"></div>
+                </div>
+                <div class="row">
+                    <div id="globalbutton" class="col-lg-2 text-center" style="padding:0"></div>
+                    <div class="col-lg-10 buttonrow"></div>
+                </div>
+                <!--STATEMENTS-->
+                <div class="questionrow">
+                    <p></p>
+                    <div class="row offset-1 mt-4">
+                        <div class="inline_blank col-lg-4"> <span class="statement"> ${prompt} </span> </div>
+                        <div class="col-lg-2 choicebox">
+                            <div class="form-check">
+                              <label class="btn btn-sm form-check-label">
+                                <input class="form-check-input" type="radio" name="c0" value="e0" required>
+                                  <span class="statement"> ${choice0} </span>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <label class="btn btn-sm form-check-label">
+                                <input class="form-check-input" type="radio" name="c0" value="e1">
+                                <span class="statement"> ${choice1} </span>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <label class="btn btn-sm form-check-label">
+                                <input class="form-check-input" type="radio" name="c0" value="e2">
+                                <span class="statement"> ${choice2} </span>
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <label class="btn btn-sm form-check-label">
+                                <input class="form-check-input" type="radio" name="c0" value="e3">
+                                <span class="statement"> ${choice3} </span>
+                              </label>
+                            </div>
+                        </div>
+                    </div>
+                    <input class="form-check-input" type="checkbox" name="uc" id="unclear0">
+                    <label class="form-check-label" for="unclear0">
+                        <strong> Not Clear (More than one or None of the statement applies). </strong>
+                    </label>
+                </div>
+
+            </div>
+
+            <!--OPTIONAL FEEDBACK-->
+            <div class="card">
+                <h5 class="card-header">Optional feedback? &nbsp; &nbsp;<a data-toggle="collapse" href="#feedback"
+                                                                           style="color:#0080ff;font-weight:normal;text-decoration: underline;">(expand/collapse)</a>
+                </h5>
+                <div id="feedback" class="collapse" style="margin:5px">
+                    <div class="card-body">
+                    <p>If anything about the HIT was unclear, please comment below. I'd like to make my HITs easier for future workers, so I really appreciate feedback! Note: no need to point out incorrect/missing detections here. </p>
+                    <textarea class="form-control" rows="2" name="commentbox"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div id="problems"> </div>
+
+            <!-- SUBMIT BUTTON -->
+            <div class="row mt-5">
+                <div class="col-2 offset-5">
+                    <input id="submitButton" type="submit" value="Submit">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+      integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+<style type="text/css">
+
+    /***********************************************
+    MOSAIC BOOSTRAP OVERWRITES
+    ***********************************************/
+    #hitinfo .card {
+        border-radius: 0;
+    }
+    #hitinfo .card:first-child {
+        border-bottom: 0;
+    }
+     #hitinfo button.btn-link {
+        color: #06486F;
+        text-decoration: none;
+     }
+    #hitinfo button.btn-link:hover {
+        text-decoration: none;
+    }
+    #hit ul.question-choice {
+        list-style-type: none;
+    }
+    #hit #mturk_form .card {
+        border: none;
+        background-color: inherit;
+    }
+    #hit .accordion .card-header {
+        background-color: #E5E5E5;
+        border: none;
+    }
+    #hit .card {
+        border: none;
+    }
+    /***********************************************
+    MOSAIC GENERAL STYLING
+    ***********************************************/
+    #hit {
+        background-color: rgba(0,0,0,.03);
+        padding-bottom: 4rem;
+    }
+     body {
+        font-family: "Open Sans", "Roboto", sans-serif;
+        font-size: .92rem;
+     }
+    textarea#feedback {
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+    textarea#feedback:focus {
+        outline: none !important;
+        border-color: #85c8ea;
+    }
+    input#submitButton {
+        margin: auto;
+        display: block;
+        background-color: #2172a4;
+        color: #fff;
+        font-size: 1.125rem;
+        padding: .5rem 1rem;
+        cursor: pointer;
+        border-radius: 1rem;
+    }
+    input#submitButton:hover {
+        background-color: #06486F;
+    }
+    #event, div.question {
+        border-bottom: solid 1px #ccc;
+    }
+    .event-container h4 {
+        font-size: 1.24rem;
+        padding: 1rem 1.5rem;
+    }
+    .event {
+        background-color: rgba(0,0,0,.03);
+        border-radius: 1rem;
+        margin-top: 25px;
+        margin-bottom: 0px;
+    }
+    input.person {
+        margin-left: 20px;
+        border: none;
+        background-color: white;
+        text-align: left;
+    }
+    input.inline_blank {
+        border: none;
+        border-bottom: solid 1px #ccc;
+        background-color: inherit;
+        font-weight:bold
+
+    }
+    .inline_blank {
+        text-align: left;
+        font-weight:bold
+    }
+    input.inline_blank:focus {
+        outline: none;
+    }
+    .optional span.obj-num, .optional span.indicator {
+        color: #aaa;
+    }
+    span.optional {
+        font-style: italic;
+    }
+    div.question-field-group .card-body{
+        padding: 2rem 0 0;
+    }
+    div.example div.card-body {
+        padding: 1rem 0 0;
+    }
+    div.form-check, div.form-check label, div.form-check input {
+        cursor: pointer;
+    }
+    .example {
+        padding: 2rem 0;
+        border-bottom: solid 1px #ccc;
+    }
+    div.example:last-child {
+        border-bottom: none;
+    }
+    div.question-container{
+        padding: 3rem 0;
+        border-bottom: solid 1px #ccc;
+    }
+    div.question-container:first-child{
+        padding: 0 0 5rem;
+    }
+    li {
+        margin-top: 0;
+    }
+    li.level1 {
+        margin-top: 1rem;
+    }
+    #instructions li.warning {
+        color: darkorange;
+    }
+    #instructions li.sub-warning {
+        color: black;
+    }
+    #instructions li.good {
+        color: green;
+    }
+    #instructions li.bad {
+        color: darkred;
+    }
+    #instructions span.bad {
+        color: darkred;
+    }
+    div.req-obj-container div.card-body {
+        padding: 0;
+    }
+    div.req-obj-fields-container {
+        padding-left: 0;
+    }
+    span.highlight {
+        font-weight: bold;
+        color: darkslateblue;
+    }
+    span.emphasize {
+        font-style: italic;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+    div.xneed div.card-body {
+        padding: 0;
+    }
+
+    .minipad {
+        padding-left: 0rem;
+    }
+    .questionrow {
+        border-bottom: 1px solid gray;
+        padding-bottom: 2px;
+        margin-bottom: 4px;
+        margin-left: 0;
+        margin-right: -5px;
+    }
+
+    .panel {
+        padding: 10px;
+        margin-bottom: 3px;
+        margin-top: 5px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        font-size: 11pt;
+    }
+    .statement {
+        font-size: 15pt;
+    }
+    .table td, .table th {
+        padding: 0.3rem;
+    }
+
+    .body {
+        font-size:11pt;
+    }
+
+    .emph {
+        background-color: #c3e6cb;
+        color: #000;
+        font-weight: bold;
+    }
+
+    .person {
+      background-color: #ffc107;
+    }
+
+    .react {
+      background-color: lightgreen;
+      font-weight:bold;
+    }
+
+    .need {
+      background-color: lightgoldenrodyellow;
+      font-weight:bold;
+    }
+
+    .intent {
+      background-color: lightblue;
+      font-weight:bold;
+    }
+
+    .new {
+        background-color: yellow;
+        color: #000;
+        font-weight: bold;
+    }
+
+    .new-latest {
+        background-color: orange;
+        color: #000;
+        font-weight: bold;
+    }
+
+    .row {
+        margin-right: -5px;
+        margin-left:-5px;
+    }
+    .choicebox{
+      padding-right: 1px;
+      padding-left: 1.5rem;
+    }
+    .card-header {
+        padding: .25rem .5rem;
+    }
+    .card {
+        margin-bottom: 3px;
+    }
+    .card-body {
+        padding-top: .75rem;
+        padding-bottom: 0;
+    }
+
+    .image-toggle {
+        border-color: #000;
+        white-space: normal;
+        color: #fff;
+    }
+
+    .img-container {
+      position: relative;
+      display: inline-block;
+    }
+    .annotimage {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin-top:0;
+    }
+
+    .drawing-class {
+        height:0;
+    }
+    .segmentation {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height:100%;
+      width:100%;
+    }
+
+    .smalltxt {
+        font-size:.6rem;
+    }
+    .form-check {
+        padding-left:0;
+        font-size:1rem;
+    }
+    .form-check-input {
+        margin-left:0;
+        position: relative;
+    }
+
+    .btn-sm {
+        border-radius: .2rem;
+        padding: 0.1rem 0.5rem;
+        margin-bottom:0;
+    }
+
+    .container {
+        padding:0;
+    }
+    .col-xl-12 {
+        padding:0;
+    }
+
+
+</style>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"
+        integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.5/svg.min.js" integrity="sha256-QvaFssiJCr71CxCZfYVWAXXGlwAqXbXerSdoW2t/Few=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/1.3.7/chroma.min.js"></script>
+<script src="https://cdn.rawgit.com/internalfx/distinct-colors/3bbd4cc2/dist/distinct-colors.min.js"></script>
+
+<script>
+const FONTSIZE=20;
+
+function flattenPoints(points) {
+    const scaledPoints = [];
+    for(let i=0; i < points.length; i++) {
+        scaledPoints.push(points[i][0]);
+        scaledPoints.push(points[i][1]);
+    }
+    return scaledPoints
+}
+
+function drawSegmentation(name, box, segm, color, width, height) {
+    const draw = SVG('drawing').viewbox(0, 0, width, height);
+    draw.addClass('segmentation');
+    for (let i=0; i < segm.length; i++) {
+        draw.polygon(flattenPoints(segm[i])).fill({color: color.brighten(2).hex(), opacity: 0.3}).stroke({opacity:0.5, width:2, color:color.darken(2).hex()});
+    }
+    draw.rect(box[2]-box[0], box[3]-box[1]).move(box[0],box[1]).fill({opacity: 0}).stroke({opacity: 0.8, width: 5, color:color.hex()});
+
+    // const group = draw.group();
+    const color2use = '#000';
+    const topY = box[1]-FONTSIZE-7 > 0 ? box[1]-FONTSIZE-7 : box[1]-3;
+
+    const mytext = draw.text(name).move(box[0]+2, topY).font({family: 'Helvetica', size: FONTSIZE, weight:500}).fill(color2use);
+    // console.log(draw);
+    // console.log(mytext);
+    // const thebox = mytext.rbox(draw);
+    const thebox = mytext.bbox();
+    draw.rect(thebox.w+4, thebox.h+4).move(thebox.x, thebox.y-2).fill({color: color.brighten(2).hex(), opacity: 0.8}).stroke({opacity:0.8, width:3, color:color.hex()}).backward();
+    return draw;
+}
+
+
+$( document ).ready(function() {
+    // $.getJSON('https://s3-us-west-2.amazonaws.com/ai2-rowanz/vcr1images/movieclips_Taxi/NMKgdzm1pWs@13.json?sigh=' + Math.floor(Math.random() * 1000), function (data) {
+
+    $.getJSON('https://s3-us-west-2.amazonaws.com/ai2-rowanz/vcr1images/${metadata_fn}?sigh=' + Math.floor(Math.random() * 1000), function (data) {
+        console.log(data);
+        // Show or hide on hover
+        const palette = new DistinctColors({count: data.names.length, lightMin: 25});
+
+        for (let i = 0; i < data.names.length; i++) {
+            let bgcolor = palette[i].darker().hex();
+            let bgcolorHighlight = palette[i].brighten().hex();
+            let name_i = (i+1).toString() + " (" + data.names[i] + ")";
+            if (data.names[i] === "person") {
+              let mybutton = $('<button type="button" class="btn image-toggle active" style="background-color: ' + bgcolorHighlight + '; color: #000" data-toggle="button" aria-pressed="true">').text(name_i);
+              let draw = drawSegmentation(name_i, data.boxes[i], data.segms[i], palette[i], data.width, data.height);
+              mybutton.on('click', function () {
+                if (mybutton.attr('aria-pressed') === 'true') {
+                  mybutton.css({backgroundColor: bgcolor, color: '#fff'});
+                  draw.attr('opacity', 0);
+                } else {
+                  draw.attr('opacity', 1);
+                  mybutton.css({backgroundColor: bgcolorHighlight, color: '#000'});
+                }
+              });
+
+              mybutton.hover(function () {
+                if (mybutton.attr('aria-pressed') === 'true') {
+                  mybutton.css({backgroundColor: bgcolor, color: '#fff'});
+                } else {
+                  mybutton.css({backgroundColor: bgcolorHighlight, color: '#000'});
+                }
+              }, function () {
+                if (mybutton.attr('aria-pressed') === 'true') {
+                  mybutton.css({backgroundColor: bgcolorHighlight, color: '#000'});
+                } else {
+                  mybutton.css({backgroundColor: bgcolor, color: '#fff'});
+                }
+              });
+              $('.buttonrow').append(mybutton);
+            }
+
+        }
+
+        let hideall = $('<button type="button" class="btn btn-outline-dark">').text('hide all').appendTo('#globalbutton');
+        hideall.on('click', function () {
+            $('.buttonrow > button.active').click();
+        });
+
+        let showall = $('<button type="button" class="btn btn-outline-dark">').text('show all').appendTo('#globalbutton');
+        showall.on('click', function () {
+            $('.buttonrow > button:not(.active)').click();
+        });
+
+        $('#submitButton').on('click', function () {
+            return true;
+        });
+    });
+
+    // Unfortunately I had to get rid of this script because it was causing some workers problems. Sorry about that :(
+    // $('[name="q0"]').focus().click();
+});
+</script>

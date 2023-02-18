@@ -1,0 +1,400 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script><script type="text/javascript">
+
+	function requoteStr(str){
+		return str.split('SQUOT').join("'").split('DQUOT').join('"').split('-lrb-').join('(').split('-rrb-').join(')').split("DASH").join("-")
+	}
+
+	function dequoteStr(str){
+		return str.split("'").join("SQUOT").split('"').join("DQUOT").split('(').join('-lrb-').split(')').join('-rrb-').split("-").join("DASH")
+	}
+
+	function parseSents(str){
+	  var ret = []
+	  sents = str.split('###')
+	  for (i in sents){
+		ret.push(sents[i].split(':::'))
+	  }
+	  return ret
+	}
+
+//	var inputStr = "0:::Just hours after naming a civilian to take over as interim <b><u>prime minister</u></b> , military leaders suddenly withdrew the nomination of former diplomat Ratu Epeli Nailatikau , the AAP said .:::Just hours after naming a civilian to take over as interim <b><u>minister</u></b> , military leaders suddenly withdrew the nomination of former diplomat Ratu Epeli Nailatikau , the AAP said .:::prime:::minister###0:::Just hours after naming a civilian to take over as interim <b><u>prime dude</u></b> , military leaders suddenly withdrew the nomination of former diplomat Ratu Epeli Nailatikau , the AAP said .:::Just hours after naming a civilian to take over as interim <b><u>dude</u></b> , military leaders suddenly withdrew the nomination of former diplomat Ratu Epeli Nailatikau , the AAP said .:::prime:::minister###0:::Just hours after naming a civilian to take over as interim <b><u>prime guy</u></b> , military leaders suddenly withdrew the nomination of former diplomat Ratu Epeli Nailatikau , the AAP said .:::Just hours after naming a civilian to take over as interim <b><u>guy</u></b> , military leaders suddenly withdrew the nomination of former diplomat Ratu Epeli Nailatikau , the AAP said .:::prime:::minister"
+	var inputStr = "${blob}"
+	var elems = parseSents(inputStr)
+	var selected = {}
+	var cur = 0
+
+	function init(){
+		optHead = "<p><select id='entailment' name='entailment'>"
+		$('#entailment').append($("<option></option>")
+	         .attr("value","None")
+	         .text("--"))
+		$('#entailment').append($("<option></option>")
+			.attr("value","5")
+			.text("5: The sentence is definitely true."))
+	    $('#entailment').append($("<option></option>")
+		         .attr("value","4")
+		         .text("4: The sentence is probably true. It is more like to be true than false given the information available."))
+		$('#entailment').append($("<option></option>")
+			.attr("value","3")
+			.text("3: The sentence is not necessarily true or necessarily false. It is not possible to say given the information available."))
+		$('#entailment').append($("<option></option>")
+			.attr("value","2")
+			.text("2: The sentence is probably NOT true. It is more like to be false than true given the information available."))
+		$('#entailment').append($("<option></option>")
+			.attr("value","1")
+			.text("1: The sentence is definitely NOT true"))
+	//	$('#entailment').append($("<option></option>")
+	//		.attr("value","0")
+	//		.text("The sentence in the box does not make sense."))
+	//	$('#entailment').append($("<option></option>")
+	//		.attr("value","0")
+	//		.text("The first sentence does not make sense."))
+	    $('#entailment').append($("<option></option>")
+			.attr("value","0")
+			.text("At least one of the sentences does not make sense."))
+		$("#nextbutton").click()
+		$("#example-btn").click()
+
+	}
+
+        //store values of any checked boxes
+        function save(id, sent1, sent2, adj, nn){
+			selected[cur] = {}
+			selected[cur]['id'] = id
+			selected[cur]['sent1'] = dequoteStr(sent1)
+			selected[cur]['sent2'] = dequoteStr(sent2)
+			selected[cur]['adj'] = adj
+			selected[cur]['nn'] = nn
+			selected[cur]['answer'] = $('#entailment').val()
+	    }
+
+
+		function validateChecks(){
+			if (cur > 0){
+			if ($("#entailment").val() == 'None'){
+	           return false
+			}
+		}
+	     	return true
+		}
+
+function toggleExamples(){
+    $('.examples').toggle()
+    if($('#example-btn').text() == "Show examples"){
+$('#example-btn').text("Hide examples")
+    }else{
+$('#example-btn').text("Show examples")
+    }
+}
+
+       function advanceCursor(){
+			if(!validateChecks()){
+          		alert("Please make a selection.")
+        	}
+			else{
+				progress(cur/elems.length)
+				if (cur < elems.length){
+					thiselem = elems[cur]
+					var id =  thiselem[0]
+					var sent1 = thiselem[1]
+					var sent2 = thiselem[2]
+                    //var sent2 = thiselem[1]
+					//var sent1 = thiselem[2]
+					var adj = thiselem[3]
+					var nn = thiselem[4]
+					$("#orig").html(sent1)
+					$("#replaced").html(sent2)
+					save(id, sent1, sent2, adj, nn)
+					cur++
+					$('#entailment').val('None')
+				}
+	      		else{
+					//if done, write all the selected values to hidden fields
+	        		$('#selections').val(JSON.stringify(selected))
+            		$("#nextbutton").hide()
+	        		$("#submitButton").prop('disabled', false);
+	      		}
+			}
+	      return
+	     }
+
+         function progress(percent) {
+	       var progressBarWidth = percent * $('#progressBar').width()
+		   $('#progressBar').find('div').animate({ width: progressBarWidth }, 500).html(parseInt(percent*100) + "% ");
+	       if (percent == 1){
+			$('#progressBar div').css('background-color', '#449d44')
+	       }
+         }
+
+          $(document).ready(function() {
+	        $("#submitButton").click( function(){
+                  return true;
+            });
+    	    $("#submitButton").prop('disabled', true);
+	        init()
+          });
+
+    </script>
+<style type="text/css">#progressBar {
+	        width: 500px;
+	        height: 22px;
+	        border: None; /*1px solid #111;*/
+	        background-color: white;
+                border-radius: 24px;
+	}
+
+	    #progressBar div {
+	        height: 100%;
+	        text-align: left;
+                font-weight: 700;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                padding: 7px 12px;
+	        line-height: 22px; /* same as #progressBar height if we want text middle aligned */
+	        min-width: 10;
+                background-color: #0099cc;
+                color: #ffffff;
+                border-radius: 24px;
+	}
+
+	.context {
+        text-align: center;
+        min-width: 10;
+        width: 70%;
+      /*  color: #C47451;*/
+ 		color: #7F525D;
+	    padding: 7px 12px;
+	    border-radius: 12px;
+	    font-size: 14pt;
+
+}
+
+.question {
+    text-align: center;
+    min-width: 10;
+    width: 70%;
+    /*background-color: #C47451;*/
+	background-color: #7F525D;
+    color: #FFF5EE;
+    padding: 7px 12px;
+    border-radius: 12px;
+    font-size: 14pt;
+}
+
+    .btn {
+      box-shadow: 0 3px 0 0 #007299;
+      padding: 14px 24px;
+      border: 0 none;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 24px;
+    }
+
+    .btn:disabled {
+      padding: 14px 24px;
+      border: 0 none;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 24px;
+      background: gray;
+      box-shadow: 0 0 0 0;
+    }
+
+
+    .btn:focus, .btn:active:focus, .btn.active:focus {
+      outline: 0 none;
+    }
+
+    .btn-primary {
+     box-shadow: 0 3px 0 0 #007299;
+     background: #0099cc;
+     color: #ffffff;
+    }
+
+    .btn-success {
+     box-shadow: 0 3px 0 0 #007299;
+      background: #449d44;
+      color: #ffffff;
+    }
+
+    .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+      background: #33a6cc;
+    }
+
+    .btn-primary:active, .btn-primary.active {
+      background: #007299;
+      box-shadow: none;
+    }
+
+    p{
+      color: #585858;
+      font-size: 12pt;
+      font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+    }
+
+    .regular{
+      color: #585858;
+      font-size: 14pt;
+      font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+    }
+
+    .hilite{
+      font-weight: bold;
+      color: #6666FF;
+      font-size: 14pt;
+      //font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+    }
+
+    .sub{
+      font-weight: bold;
+      color: #B2B2FF;
+      font-size: 14pt;
+      //font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+    }
+
+   .examples{
+      color: #696969;
+       font-size: 11pt;
+      font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+    }
+</style>
+<div class="instructions">We are researchers from the University of Pennsylvania, trying to help computers understand language!&nbsp;Understanding language allows computers to do useful things like&nbsp;answer&nbsp;our questions or&nbsp;summarize&nbsp;news articles for us.&nbsp;While common sense reasoning is easy for people, it&nbsp;is very very hard for computers. Please help us by using your common sense to decide if sentences are more likely to be&nbsp;true or false.&nbsp;</div>
+
+<div class="instructions">&nbsp;</div>
+
+<div class="instructions"><b>Instructions</b>: For each pair of sentences, <u>assume that the first sentence is true, or describes a real scenerio</u>. Using your best judgement, <u>indicate how likely it is, on a scale of 1 to 5, that the sentence in the shaded box is also true, or describes the same scenerio</u>. <span style="line-height: 20.8px;">If either of the sentences do&nbsp;not make sense, indicate so by selecting "The sentence does not make sense."&nbsp;</span><span style="line-height: 1.6em;">&nbsp;</span></div>
+
+<div class="instructions">&nbsp;</div>
+
+<div class="instructions"><span style="line-height: 20.8px;">Your answers should&nbsp;be based only on information which is stated or implied by the first sentence.&nbsp;</span><u style="line-height: 20.8px;">For many sentences, there is not a clear correct answer</u>, and several<span style="line-height: 1.6em;">&nbsp;of the sentences are fragments that&nbsp;may be&nbsp;hard to evaluate in terms of clear true/false. In these cases, we ask you to&nbsp;</span><u style="line-height: 20.8px;">rely on your common sense</u><span style="line-height: 20.8px;">&nbsp;and knowledge of how people typically use language in order to provide your best answer</span><span style="line-height: 1.6em;">. When the sentence is truly too fragmented to be interpreted, you can choose "The sentence does not make sense."&nbsp;Keep in mind, <u><strong>w</strong></u></span><strong style="line-height: 20.8px;"><u><u style="line-height: 1.6em;">e are predominantly&nbsp;interested in understanding whether the second sentence communicates the same information as the first, or if it adds or removes important information</u></u></strong><span style="line-height: 1.6em;">.</span></div>
+
+<div class="instructions">&nbsp;</div>
+
+<div class="instructions">See the below examples for guidance.&nbsp;</div>
+
+<p><button class="btn btn-primary" id="example-btn" onclick="toggleExamples()" type="button">Hide examples</button></p>
+
+<div class="examples"><span style="line-height: 20.8px;">Thank you to all the Turkers who asked thoughtful questions and gave feedback on our first round of HITs, and helped us find good clarifying examples.</span></div>
+
+<div class="examples">&nbsp;</div>
+
+<div class="examples">Example 1</div>
+
+<div class="examples">A <u>dog</u> is playing in the dirt.</div>
+
+<div class="examples">A <u>black dog</u> is playing in the dirt.</div>
+
+<div class="examples"><strong>You should answer 3 (neither true nor false)</strong>&nbsp;for this example, since we cannot infer the&nbsp;color of the dog from the first sentence.</div>
+
+<div class="examples" style="line-height: 20.8px;">&nbsp;</div>
+
+<div class="examples" style="line-height: 20.8px;">Example 2</div>
+
+<div class="examples" style="line-height: 20.8px;">A&nbsp;man is in a car talking on a <u>phone</u>.&nbsp;</div>
+
+<div class="examples" style="line-height: 20.8px;"><span style="color: rgb(105, 105, 105); font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; font-size: 14.6667px; line-height: 20.8px;">A&nbsp;man is in a car talking on a <u>cell&nbsp;</u></span><u style="color: rgb(105, 105, 105); font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; font-size: 14.6667px; line-height: 20.8px;">phone</u><span style="color: rgb(105, 105, 105); font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; font-size: 14.6667px; line-height: 20.8px;">.</span><span style="color: rgb(105, 105, 105); font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; font-size: 14.6667px; line-height: 20.8px;">&nbsp;</span></div>
+
+<div class="examples" style="line-height: 20.8px;"><strong style="line-height: 20.8px;">You should answer 4 (probably true)&nbsp;</strong><span style="line-height: 20.8px;">for this example, since it is reasonable to assume that if the man&nbsp;is in his car, he is most likely&nbsp;on a cell phone as opposed to a landline phone.&nbsp;</span></div>
+
+<div class="examples" style="line-height: 20.8px;">&nbsp;</div>
+
+<div class="examples" style="line-height: 20.8px;">
+<div class="examples" style="line-height: 20.8px;">Example 3</div>
+
+<div class="examples" style="line-height: 20.8px;">A&nbsp;dog&nbsp;is playing in the&nbsp;<u>snow</u>.</div>
+
+<div class="examples" style="line-height: 20.8px;">A&nbsp;dog&nbsp;is playing in the&nbsp;<u>white snow</u>.</div>
+
+<div class="examples" style="line-height: 20.8px;"><strong style="line-height: 20.8px;">You should answer 4 (probably true)&nbsp;</strong><span style="line-height: 20.8px;">for this example, since it is reasonable to assume that the snow is white. 5 (definitely true) would also be acceptable here, but 4 would be a better choice, since it is possible for the&nbsp;snow not to be&nbsp;white.&nbsp;</span></div>
+</div>
+
+<div class="examples">&nbsp;</div>
+
+<div class="examples">Example 4</div>
+
+<div class="examples">
+<div class="examples" style="line-height: 20.8px;">The <u>policies</u> are aimed at eliminating tax loopholes.</div>
+
+<div class="examples" style="line-height: 20.8px;"><span style="line-height: 20.8px;">The <u>tax&nbsp;</u></span><u style="line-height: 20.8px;">policies</u><span style="line-height: 20.8px;">&nbsp;are aimed at eliminating tax loopholes</span><span style="line-height: 20.8px;">.</span></div>
+
+<div class="examples" style="line-height: 20.8px;"><strong>You should answer 4 (probably true)&nbsp;or 5 (definitely true) </strong>for this example, since it is reasonable to assume that the policies are tax policies, given that then are aimed at eliminating tax loopholes.</div>
+
+<div class="examples" style="line-height: 20.8px;">&nbsp;</div>
+
+<div class="examples" style="line-height: 20.8px;">Example 5</div>
+
+<div class="examples" style="line-height: 20.8px;">A boy is holding a <u>gun</u>.</div>
+
+<div class="examples" style="line-height: 20.8px;"><span style="color: rgb(105, 105, 105); font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; font-size: 14.6667px; line-height: 20.8px;">A boy is holding a <u>fake gun</u>.</span></div>
+
+<div class="examples" style="line-height: 20.8px;"><strong style="color: rgb(105, 105, 105); font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; font-size: 14.6667px; line-height: 20.8px;">You should answer 1&nbsp;(false)&nbsp;or 2&nbsp;(probably false)</strong><strong>&nbsp;</strong>for this example, since the word "fake" in the sentence implies that the boy is not actually holding a gun.</div>
+
+<div class="examples" style="line-height: 20.8px;">&nbsp;</div>
+
+<div class="examples" style="line-height: 20.8px;">
+<div class="examples" style="font-size: 14.6667px; line-height: 20.8px;">Example 6</div>
+
+<div class="examples" style="font-size: 14.6667px; line-height: 20.8px;">Barack Obama&nbsp;is the&nbsp;<u>president</u>&nbsp;of the United States.</div>
+
+<div class="examples" style="font-size: 14.6667px; line-height: 20.8px;"><span style="font-size: 14.6667px; line-height: 20.8px;">Barack Obama</span><span style="line-height: 20.8px;">&nbsp;is the&nbsp;<u>former president</u>&nbsp;of the United States</span><span style="line-height: 20.8px;">.</span></div>
+
+<div class="examples" style="font-size: 14.6667px; line-height: 20.8px;"><strong>You should answer 1&nbsp;(false)&nbsp;or 2&nbsp;(probably false)&nbsp;</strong>for this example, since the word "former" in the sentence implies that Barack Obama is no longer the president.</div>
+</div>
+
+<div class="examples" style="line-height: 20.8px;">&nbsp;</div>
+</div>
+
+<div class="examples" style="line-height: 20.8px;">Example 7</div>
+
+<div class="examples" style="line-height: 20.8px;">My favorite move is the Butterfly <u>Effect</u>.</div>
+
+<div class="examples" style="line-height: 20.8px;"><span style="color: rgb(105, 105, 105); font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; font-size: 14.6667px; line-height: 20.8px;">My favorite move is the Butterfly <u>large effect</u></span><span style="color: rgb(105, 105, 105); font-family: 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; font-size: 14.6667px; line-height: 20.8px;">.</span></div>
+
+<div class="examples" style="line-height: 20.8px;"><strong>You should answer the "sentence does not make sense"&nbsp;</strong>for this example, since it does not make sense to break up the phrase "Butterfly Effect" which is the&nbsp;name of a movie.&nbsp;Many of these sentences are generated automatically,&nbsp;and so there will be mistakes that may prevent you from providing a meaningful answer. Use your best judgement in determining whether or not an error prevents you from providing an answer. Some errors (e.g. poor grammar or missing spaces) can be overlooked and you should still attempt to answer the question.&nbsp;</div>
+
+<div class="examples" style="line-height: 20.8px;">&nbsp;</div>
+
+<div class="examples" style="line-height: 20.8px;"><u style="color: rgb(51, 51, 51); font-family: sans-serif, Arial, Verdana, 'Trebuchet MS'; font-size: 13px; line-height: 20.8px;">For a small number of cases, there is only one correct answer. These cases will be quality controlled</u><span style="color: rgb(51, 51, 51); font-family: sans-serif, Arial, Verdana, 'Trebuchet MS'; font-size: 13px; line-height: 20.8px;">, and we will not approve your work if you fail to answer these quality control question correctly. We try very hard to ensure that the quality control questions are unambiguous.&nbsp;If you read the examples carefully, you should not have trouble answering the quality control questions&nbsp;correctly.&nbsp;</span></div>
+
+<div class="examples" style="line-height: 20.8px;">&nbsp;</div>
+
+<div class="examples" style="line-height: 20.8px;"><span style="color: rgb(51, 51, 51); font-family: sans-serif, Arial, Verdana, 'Trebuchet MS'; font-size: 13px; line-height: 20.8px;">Please read the sentences and think about each one carefully before making a selection. We rely on your careful judgements in our research,&nbsp;and very much appreciate your time and effort.&nbsp;</span></div>
+
+<div class="instructions">&nbsp;</div>
+
+<div class="instructions"><span style="line-height: 20.8px;">Thank you so much in advance!</span></div>
+
+<div class="instructions">&nbsp;</div>
+
+<div id="progressBar">
+<div>&nbsp;</div>
+</div>
+
+<div>&nbsp;</div>
+<!--div>Assume the following sentence is <u>true</u>:</div>
+<br>
+<div class="context" id="orig"></div>
+<br>
+<div class="question" id="replaced"></div>
+<br>
+<div>Assume the first sentence shown is true. How likely is it that the sentence in the shaded box also true?</div>
+<br-->
+
+<div class="context" id="orig">&nbsp;</div>
+
+<div>&nbsp;</div>
+
+<div class="question" id="replaced">&nbsp;</div>
+
+<p><select id="entailment" name="entailment"></select></p>
+<!--div id="options"></div--><!--table><tr>
+	<td><div>Assume the first sentence shown is true.</td></tr>
+	<tr><td>Is the sentence in the shaded box also true?</div></td>
+	<td><div id="options"></div></td>
+</tr>	</table-->
+
+<p><button class="btn btn-primary" id="nextbutton" onclick="advanceCursor()" type="button">Next</button></p>
+
+<p><input id="selections" name="selections" type="hidden" /></p>

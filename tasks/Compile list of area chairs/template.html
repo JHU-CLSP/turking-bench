@@ -1,0 +1,282 @@
+<!-- Bootstrap v3.0.3 -->
+<link href="https://s3.amazonaws.com/mturk-public/bs30/css/bootstrap.min.css" rel="stylesheet" />
+<section class="container" id="Writing" style="margin-bottom:15px; padding: 10px 10px; font-family: Verdana, Geneva, sans-serif; color:#333333; font-size:0.9em;">
+<div class="row col-xs-12 col-md-12"><!-- Instructions -->
+<div class="panel panel-primary">
+<div class="panel-heading"><strong>Instructions</strong></div>
+
+<div class="panel-body">
+<p>Please use this PDF document to extract information about the conference organizers for the ${conference}: <a href="${link}">${link}</a></p>
+
+<p>We want you to extract the names of all of the researchers who were listed as <b>General Chair, Program Co-Chairs&nbsp;</b>or<b> Area Chairs</b>. Note that there are several other roles of conference organizers, like Local Organizers, and Publications Co-Chairs. We only want information about General Chairs, Program Co-Chairs, Area Chairs. In addition to their names, please also extract their affiliations. Affiliations are the names of a university or a company or an institute. They look like this:</p>
+
+<ul>
+	<li>University of Groningen</li>
+	<li>Jožef Stefan Institute</li>
+	<li>Microsoft Research</li>
+</ul>
+
+<p>Finally, we would like you to extract the research area that each Area Chair was in charge of. &nbsp;Research areas are things like &nbsp;&nbsp;</p>
+
+<ul>
+	<li>Phonology, Morphology, and Segmentation</li>
+	<li>Tagging, Chunking, Syntax and Parsing</li>
+	<li>Discourse, Dialogue, and Pragmatics</li>
+	<li>Semantics</li>
+	<li>Summarization and Generation</li>
+</ul>
+
+<p>In some cases multiple people might be in charge of one research area. Write the research area next to each of their names. In some cases the research areas might not be listed. If the research area is not listed, please write NA in the field. &nbsp;The area tends not to be listed for ACL area chairs, but is usually listed for EMNLP, NAACL and EACL conferences.</p>
+
+<p>Typically there will be 20-30 area chairs for a conference. They will be listed all together in one part of the PDF. You will be paid so long as you extract information about all of them. Please do not submit an incomplete list.</p>
+</div>
+</div>
+</div>
+<!-- End Instructions -->
+
+<p>First, find the General Chair and Program Co-Chairs.</p>
+
+<table>
+	<tbody>
+		<tr>
+			<th>Name</th>
+			<th>Affiliation</th>
+			<th>Title</th>
+		</tr>
+		<tr>
+			<td><input name="general_chair" type="text" /></td>
+			<td><input name="affiliation_general_chair" type="text" /></td>
+			<td>General Chair</td>
+		</tr>
+		<tr>
+			<td><input name="program_chair_1" type="text" /></td>
+			<td><input name="affiliation_program_chair_1" type="text" /></td>
+			<td>Program Co-Chair</td>
+		</tr>
+		<tr>
+			<td><input name="program_chair_2" type="text" /></td>
+			<td><input name="affiliation_program_chair_2" type="text" /></td>
+			<td>Program Co-Chair</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Next, do the area chairs.</p>
+
+<div><label>Scratch Pad: Copy and paste the text describing the Area Chairs here. You can use his to more easily cut and paste into the fields below. You won't be graded on this information. </label><textarea class="form-control" cols="250" name="scratch_pad" rows="6"></textarea></div>
+</section>
+
+<div>
+<table>
+	<tbody>
+		<tr>
+			<th>Name</th>
+			<th>Affiliation</th>
+			<th>Research Area</th>
+		</tr>
+		<tr>
+			<td><input name="name_0" type="text" /></td>
+			<td><input name="affiliation_0" type="text" /></td>
+			<td><input name="area_0" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_1" type="text" /></td>
+			<td><input name="affiliation_1" type="text" /></td>
+			<td><input name="area_1" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_2" type="text" /></td>
+			<td><input name="affiliation_2" type="text" /></td>
+			<td><input name="area_2" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_3" type="text" /></td>
+			<td><input name="affiliation_3" type="text" /></td>
+			<td><input name="area_3" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_4" type="text" /></td>
+			<td><input name="affiliation_4" type="text" /></td>
+			<td><input name="area_4" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_5" type="text" /></td>
+			<td><input name="affiliation_5" type="text" /></td>
+			<td><input name="area_5" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_6" type="text" /></td>
+			<td><input name="affiliation_6" type="text" /></td>
+			<td><input name="area_6" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_7" type="text" /></td>
+			<td><input name="affiliation_7" type="text" /></td>
+			<td><input name="area_7" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_8" type="text" /></td>
+			<td><input name="affiliation_8" type="text" /></td>
+			<td><input name="area_8" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_9" type="text" /></td>
+			<td><input name="affiliation_9" type="text" /></td>
+			<td><input name="area_9" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_10" type="text" /></td>
+			<td><input name="affiliation_10" type="text" /></td>
+			<td><input name="area_10" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_11" type="text" /></td>
+			<td><input name="affiliation_11" type="text" /></td>
+			<td><input name="area_11" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_12" type="text" /></td>
+			<td><input name="affiliation_12" type="text" /></td>
+			<td><input name="area_12" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_13" type="text" /></td>
+			<td><input name="affiliation_13" type="text" /></td>
+			<td><input name="area_13" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_14" type="text" /></td>
+			<td><input name="affiliation_14" type="text" /></td>
+			<td><input name="area_14" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_15" type="text" /></td>
+			<td><input name="affiliation_15" type="text" /></td>
+			<td><input name="area_15" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_16" type="text" /></td>
+			<td><input name="affiliation_16" type="text" /></td>
+			<td><input name="area_16" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_17" type="text" /></td>
+			<td><input name="affiliation_17" type="text" /></td>
+			<td><input name="area_17" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_18" type="text" /></td>
+			<td><input name="affiliation_18" type="text" /></td>
+			<td><input name="area_18" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_19" type="text" /></td>
+			<td><input name="affiliation_19" type="text" /></td>
+			<td><input name="area_19" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_20" type="text" /></td>
+			<td><input name="affiliation_20" type="text" /></td>
+			<td><input name="area_20" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_21" type="text" /></td>
+			<td><input name="affiliation_21" type="text" /></td>
+			<td><input name="area_21" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_22" type="text" /></td>
+			<td><input name="affiliation_22" type="text" /></td>
+			<td><input name="area_22" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_23" type="text" /></td>
+			<td><input name="affiliation_23" type="text" /></td>
+			<td><input name="area_23" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_24" type="text" /></td>
+			<td><input name="affiliation_24" type="text" /></td>
+			<td><input name="area_24" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_25" type="text" /></td>
+			<td><input name="affiliation_25" type="text" /></td>
+			<td><input name="area_25" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_26" type="text" /></td>
+			<td><input name="affiliation_26" type="text" /></td>
+			<td><input name="area_26" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_27" type="text" /></td>
+			<td><input name="affiliation_27" type="text" /></td>
+			<td><input name="area_27" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_28" type="text" /></td>
+			<td><input name="affiliation_28" type="text" /></td>
+			<td><input name="area_28" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_29" type="text" /></td>
+			<td><input name="affiliation_29" type="text" /></td>
+			<td><input name="area_29" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_30" type="text" /></td>
+			<td><input name="affiliation_30" type="text" /></td>
+			<td><input name="area_30" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_31" type="text" /></td>
+			<td><input name="affiliation_31" type="text" /></td>
+			<td><input name="area_31" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_32" type="text" /></td>
+			<td><input name="affiliation_32" type="text" /></td>
+			<td><input name="area_32" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_33" type="text" /></td>
+			<td><input name="affiliation_33" type="text" /></td>
+			<td><input name="area_33" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_34" type="text" /></td>
+			<td><input name="affiliation_34" type="text" /></td>
+			<td><input name="area_34" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_35" type="text" /></td>
+			<td><input name="affiliation_35" type="text" /></td>
+			<td><input name="area_35" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_36" type="text" /></td>
+			<td><input name="affiliation_36" type="text" /></td>
+			<td><input name="area_36" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_37" type="text" /></td>
+			<td><input name="affiliation_37" type="text" /></td>
+			<td><input name="area_37" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_38" type="text" /></td>
+			<td><input name="affiliation_38" type="text" /></td>
+			<td><input name="area_38" type="text" /></td>
+		</tr>
+		<tr>
+			<td><input name="name_39" type="text" /></td>
+			<td><input name="affiliation_39" type="text" /></td>
+			<td><input name="area_39" type="text" /></td>
+		</tr>
+	</tbody>
+</table>
+
+<div><label>Any comments about this HIT? </label><textarea class="form-control" cols="250" name="comments" rows="6"></textarea></div>
+</div>
+<!-- close container -->

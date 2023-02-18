@@ -1,0 +1,255 @@
+<p><style type="text/css">
+<!--
+.odd {background: #E9CFEC;}
+//-->
+</style>
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" /></p>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script> <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<table>
+    <tbody>
+        <tr>
+            <td>
+            <h1>Question Answering</h1>
+            <p>You will be shown a question and several sentences that possibly answer the question.  Please judge  whether or not each of the sentences contains an answer to the question.</p>
+            <ul>
+                <li>To the right of each question we give a hint - a short phrase that is one possible correct answer.  This is not the only correct answer.</li>
+                <li>The questions and sentences were created several years ago, so they may no longer be true.  You should still answer them as correct, if the text of the sentence gives a good answer that was true at that time.</li>
+                <li>You do not need to look up whether each answer is correct.  Just say whether the sentence is a possible answer for the question.</li>
+            </ul>
+            <p>Here is one example:</p>
+            <table>
+                <tbody>
+                    <tr>
+                        <td colspan="2">Who is Tom Cruise married to?</td>
+                        <td colspan="2"><b>Possible answer:</b> nicole kidman</td>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Does the following sentence answer the question:</th>
+                        <td><b>Yes</b></td>
+                        <td><b>No</b></td>
+                    </tr>
+                    <tr>
+                        <td>1.</td>
+                        <td>The film itself, starring Tom Cruise and Nicole Kidman as a married couple in New York on a sexual odyssey, received wildly mixed reviews.</td>
+                        <td>&nbsp;</td>
+                        <td><input type="radio" checked="checked" /></td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td>One of the world's most lusted-after men, Tom Cruise, is married to Nicole Kidman and her curls.</td>
+                        <td><input type="radio" checked="checked" /></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td>The drama is said to be about a pair of married psychiatrists (played by the married Tom Cruise and Nicole Kidman) and their sexual lives, but only a few Warner executives, Cruise and Kidman, and Pat Kingsley, a top public relations executive, have seen the film .</td>
+                        <td>&nbsp;</td>
+                        <td><input type="radio" checked="checked" /></td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td>Now with the release of ``Eyes Wide Shut'' on DVD, everyone has a chance to give the film the look it deserves _ without the hype about sexual titillation or its married stars, Tom Cruise and Nicole Kidman .</td>
+                        <td><input type="radio" checked="checked" /></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+            </td>
+            <td bgcolor="#d3d3d3" valign="top"><font size="-2"><center><u><b>Informed Consent Form</b></u></center>
+            <p><b>Purpose of research study:</b> We are collecting judgments about the quality of automatically generated text as part of our research into human language technologies.</p>
+            <p><b>Benefits:</b> Although it will not directly benefit you, this study may benefit society by improving how computers process human languages. This could lead to better translation software, improved web searching, or new user interfaces for computers and mobile devices.</p>
+            <p><b>Risks:</b>There are no risks for participating in this study.</p>
+            <p><b>Voluntary participation:</b>You may stop participating at any time without penalty by clicking on the &ldquo;Return HIT&rdquo; button, or closing your browser window.</p>
+            <p><b>We may end your participation if</b> you do not have adequate knowledge of the language, or you are not following the instructions, or your answers significantly deviate from known translations.</p>
+            <p><b>Confidentiality: </b>The only identifying information kept about you will be a WorkerID serial number and your IP address. This information may be disclosed to other researchers.</p>
+            <p><b>Questions/concerns: </b>You may e-mail questions to the principle investigator, <a href="http://cs.jhu.edu/~ccb/">Chris Callison-Burch</a>. If you feel you have been treated unfairly you may contact the Johns Hopkins University <a href="http://web.jhu.edu/Homewood-IRB/contact.html">Institutional Review Board</a>.</p>
+            <p><b>Clicking on the &ldquo;Accept HIT&rdquo; button</b> indicates that you understand the information in this consent form. You have not waived any legal rights you otherwise would have as a participant in a research study.</p>
+            </font></td>
+        </tr>
+    </tbody>
+</table>
+<table>
+    <tbody>
+        <tr>
+            <td>
+            <p><u><b>Notes:</b></u></p>
+            <p><i>This was true in the past</i></p>
+            Even though Cruise is not married to Kidman anymore, it was true in the past. Thus as long as the sentence suggests such a "fact", you should click the "Yes" button.             You'll see other similar examples in the HIT, such as asking whom the president of the U.S. is, and the answer is not necessarily Obama.             <br />
+            <p><i>The possible answer is just a hint!</i></p>
+            For each question, we provide some possible answers to help you. However, a sentence containing a hint <i>doesn't always mean it is a good answer</i> to the question.             For instance, sentence 1 above mentions Nicole Kidman, but it only suggests that Cruise and Kidman played a married couple in a movie (not real life), thus it does not answer the original question.</td>
+        </tr>
+    </tbody>
+</table>
+<script type="text/Javascript">
+
+$(document).ready(function(){
+  $("sth").hide();
+  $('#second').click(function(){
+    $('sth').toggle();
+  });
+});
+
+$(document).ready(function(){
+  $("sh").hide();
+  $('#first').click(function(){
+    $('sh').toggle();
+  });
+});
+
+var questions = [
+	"${question0}",
+	"${question1}",
+	"${question2}"
+    ];
+
+var answers = [
+	"${answer0}",
+	"${answer1}",
+	"${answer2}"
+    ];
+
+var sentences = new Array();
+
+
+sentences[0] = [
+	"${sentence0_0}",
+	"${sentence0_1}",
+	"${sentence0_2}",
+	"${sentence0_3}",
+    "${sentence0_4}",
+	"${sentence0_5}",
+	"${sentence0_6}",
+	"${sentence0_7}",
+	"${sentence0_8}",
+    "${sentence0_9}",
+    ];
+
+sentences[1] = [
+	"${sentence1_0}",
+	"${sentence1_1}",
+	"${sentence1_2}",
+	"${sentence1_3}",
+    "${sentence1_4}",
+	"${sentence1_5}",
+	"${sentence1_6}",
+	"${sentence1_7}",
+	"${sentence1_8}",
+    "${sentence1_9}",
+    ];
+
+sentences[2] = [
+	"${sentence2_0}",
+	"${sentence2_1}",
+	"${sentence2_2}",
+	"${sentence2_3}",
+    "${sentence2_4}",
+	"${sentence2_5}",
+	"${sentence2_6}",
+	"${sentence2_7}",
+	"${sentence2_8}",
+    "${sentence2_9}",
+    ];
+
+
+
+function randOrd(){
+	return (Math.random()-0.5);
+}
+
+function checkedRadios() {
+    if ($('input[type=radio]:checked').size() - 4 == ($('input[type=radio]').size() - 4) / 2) {
+        return true;
+    } else {
+        alert("You have to finish all 30 judgement to submit!");
+        return false;
+    }
+}
+
+function showHide(showHideDiv, switchTextDiv1, switchTextDiv2) {
+    var text = document.getElementById(showHideDiv);
+    var ele1 = document.getElementById(switchTextDiv1);
+    var ele2 = document.getElementById(switchTextDiv2);
+    if(ele1.style.display == "inline") {
+        ele1.style.display = "none";
+        ele2.style.display = "none";
+        text.innerHTML = "[more]";
+    }
+    else {
+        ele1.style.display = "inline";
+        ele2.style.display = "inline";
+        text.innerHTML = "[hide]";
+    }
+}
+
+function writeParaphraseTables() {
+
+    // randomize the order
+    var word_order = new Array(questions.length);
+    for(var k = 0; k < word_order.length; k++) {
+        word_order[k] = [k];
+    }
+    word_order.sort( randOrd );
+
+	for(i0 = 0; i0 < questions.length; i0++) {
+        i = word_order[i0];
+		document.write('<p><table>');
+        document.write('<tr>\n');
+        document.write('<td colspan="2">' + questions[i] + '</td>');
+        document.write('<td colspan="2"><b>Possible Answer:</b> ' + answers[i] + '</td>');
+		document.write('</tr>');
+
+        document.write('<tr><th colspan="2">Does the following sentence answer the question:</th><th>Yes</th><th>No</th></tr>');
+
+		// randomize the order
+		var order = new Array(sentences[i].length);
+		for(var k = 0; k < order.length; k++) {
+			order[k] = [k];
+		}
+		order.sort( randOrd );
+
+		for(j0 = 0; j0 < order.length; j0++) {
+            j = order[j0];
+				document.write('<tr>');
+				document.write('<td>' + (j0 + 1) + '. ' + '</td>');
+				document.write('<td>'+sentences[i][j]+'</td>');
+				document.write('<td align="center">');
+			        document.write('<input type="radio" name="radio' + i + '_' + j + '" value="1">');
+				document.write('</td>');
+				document.write('<td align="center">')
+			        document.write('<input type="radio" name="radio' + i + '_' + j + '" value="0">');
+				document.write('</td>');
+				document.write('</tr>');
+		}
+		document.write('</table></p>');
+	}
+}
+writeParaphraseTables();
+$("tr:odd").addClass("odd");
+</script>
+<p>&nbsp;Please provide any comments that you have about this HIT. We appreciate your input!</p>
+<p><textarea rows="4" cols="80" name="comment"> </textarea>&nbsp;</p>
+<p>&nbsp;</p>
+<p><input type="submit" value="Submit" onclick="return checkedRadios()" name="submitit" /></p>
+<p>&nbsp;</p>
+<p><input type="hidden" name="userDisplayLanguage" /> <input type="hidden" name="browserInfo" /> <input type="hidden" name="ipAddress" /> <input type="hidden" name="country" /> <input type="hidden" name="city" /> <input type="hidden" name="region" /></p>
+<script language="Javascript" src="http://gd.geobytes.com/gd?after=-1&variables=GeobytesCountry,GeobytesCity,GeobytesRegion,GeobytesIpAddress">
+</script><script language="Javascript">
+<!--
+function getUserInfo() {
+	var userDisplayLanguage = navigator.language ? navigator.language : navigator.userDisplayLanguage;
+	var browserInfo = navigator.userAgent;
+	var country = sGeobytesCountry;
+	var city = sGeobytesCity;
+	var region = sGeobytesRegion;
+
+	document.mturk_form.userDisplayLanguage.value = userDisplayLanguage;
+	document.mturk_form.browserInfo.value = browserInfo;
+	document.mturk_form.country.value = country;
+	document.mturk_form.city.value = city;
+	document.mturk_form.region.value = region;
+}
+
+getUserInfo();
+
+// -->
+</script>

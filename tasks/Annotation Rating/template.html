@@ -1,0 +1,209 @@
+<script type="text/javascript">
+    function showQuestions(qnum) {
+        var span = undefined;
+        for (var q=1; q<=qnum; q++) {
+            span = document.getElementById('q' + q);
+            span.style.display = '';
+        }
+        var button = document.getElementById('showQuestionButton');
+        button.disabled=true;
+    }
+</script>
+<h1>Read Wikipedia sentences and answer questions</h1>
+<p>In this task, you will be shown one English sentence from Wikipedia and a number of multiple-choice questions about the nature of the action being described by that sentence. To complete this task, please read the sentence carefully and answer all of the questions as best you understand them.</p>
+<ul>
+    <li>Note that the questions are hidden by default. Once you have gone through instructions and carefully read the sentence, please click on the 'Show Questions' button to reveal the questions.</li>
+    <li>Some questions may sound a bit strange. For example, one question may ask &quot;<b><i>Did 'the man' move?&quot;.&nbsp;</i></b><i>&nbsp;</i>However<i>,&nbsp;</i>&nbsp;the choices for the question might be &quot;<b><i>It did not move&quot;</i></b> or &quot;<b><i>It definitely moved&quot; </i></b>instead of <i><b>&quot;He did not move&quot;</b></i>&nbsp;or &quot;<i><b>He definitely moved&quot;</b></i>. Similarly, you may see &quot;<i><b>it&quot;</b></i> instead of &quot;<i><b>them&quot;</b></i> or &quot;<i><b>was&quot;</b></i> instead of &quot;<i><b>were&quot;</b></i>. This is because <u>all</u> the questions are automatically generated and so we could not know in advance which pronoun or verb should be used in the choices.&nbsp;</li>
+    <li>The questions should still make sense despite these weirdnesses. Please exercise your best judgment and try to answer all of the questions in a useful manner.&nbsp;</li>
+    <li>If you have comments about how we can improve this HIT or improve the instructions to make the task clearer, please share your thoughts in the text box after the questions.&nbsp;</li>
+</ul>
+<h4>Sentence: ${sent}</h4>
+<center><input type="button" onclick="javascript:showQuestions(${numquestions});" value="Show Questions" id="showQuestionButton" /></center>
+<p><span style="display: none;" id="q1"> ${q1text}
+<table cellspacing="4" cellpadding="0" border="0">
+    <tbody>
+        <tr>
+            <td valign="center"><input type="radio" value="${q1option1}" id="q1option1" name="Q1" /></td>
+            <td><span id="q1option1text">${q1option1}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q1option2}" id="q1option2" name="Q1" /></td>
+            <td><span id="q1option2text">${q1option2}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q1option3}" id="q1option3" name="Q1" /></td>
+            <td><span id="q1option3text">${q1option3}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q1option4}" id="q1option4" name="Q1" /></td>
+            <td><span id="q1option4text">${q1option4}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q1option5}" id="q1option5" name="Q1" /></td>
+            <td><span id="q1option5text">${q1option5}</span></td>
+        </tr>
+    </tbody>
+</table>
+</span></p>
+<p><span style="display: none;" id="q2"> ${q2text}
+<table cellspacing="4" cellpadding="0" border="0">
+    <tbody>
+        <tr>
+            <td valign="center"><input type="radio" value="${q2option1}" id="q2option1" name="Q2" /></td>
+            <td><span id="q2option1text">${q2option1}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q2option2}" id="q2option2" name="Q2" /></td>
+            <td><span id="q2option2text">${q2option2}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q2option3}" id="q2option3" name="Q2" /></td>
+            <td><span id="q2option3text">${q2option3}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q2option4}" id="q2option4" name="Q2" /></td>
+            <td><span id="q2option4text">${q2option4}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q2option5}" id="q2option5" name="Q2" /></td>
+            <td><span id="q2option5text">${q2option5}</span></td>
+        </tr>
+    </tbody>
+</table>
+</span></p>
+<p><span style="display: none;" id="q3"> ${q3text}
+<table cellspacing="4" cellpadding="0" border="0">
+    <tbody>
+        <tr>
+            <td valign="center"><input type="radio" value="${q3option1}" id="q3option1" name="Q3" /></td>
+            <td><span id="q3option1text">${q3option1}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q3option2}" id="q3option2" name="Q3" /></td>
+            <td><span id="q3option2text">${q3option2}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q3option3}" id="q3option3" name="Q3" /></td>
+            <td><span id="q3option3text">${q3option3}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q3option4}" id="q3option4" name="Q3" /></td>
+            <td><span id="q3option4text">${q3option4}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q3option5}" id="q3option5" name="Q3" /></td>
+            <td><span id="q3option5text">${q3option5}</span></td>
+        </tr>
+    </tbody>
+</table>
+</span></p>
+<p><span style="display: none;" id="q4"> ${q4text}
+<table cellspacing="4" cellpadding="0" border="0">
+    <tbody>
+        <tr>
+            <td valign="center"><input type="radio" value="${q4option1}" id="q4option1" name="Q4" /></td>
+            <td><span id="q4option1text">${q4option1}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q4option2}" id="q4option2" name="Q4" /></td>
+            <td><span id="q4option2text">${q4option2}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q4option3}" id="q4option3" name="Q4" /></td>
+            <td><span id="q4option3text">${q4option3}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q4option4}" id="q4option4" name="Q4" /></td>
+            <td><span id="q4option4text">${q4option4}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q4option5}" id="q4option5" name="Q4" /></td>
+            <td><span id="q4option5text">${q4option5}</span></td>
+        </tr>
+    </tbody>
+</table>
+</span></p>
+<p><span style="display: none;" id="q5"> ${q5text}
+<table cellspacing="4" cellpadding="0" border="0">
+    <tbody>
+        <tr>
+            <td valign="center"><input type="radio" value="${q5option1}" id="q5option1" name="Q5" /></td>
+            <td><span id="q5option1text">${q5option1}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q5option2}" id="q5option2" name="Q5" /></td>
+            <td><span id="q5option2text">${q5option2}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q5option3}" id="q5option3" name="Q5" /></td>
+            <td><span id="q5option3text">${q5option3}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q5option4}" id="q5option4" name="Q5" /></td>
+            <td><span id="q5option4text">${q5option4}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q5option5}" id="q5option5" name="Q5" /></td>
+            <td><span id="q5option5text">${q5option5}</span></td>
+        </tr>
+    </tbody>
+</table>
+</span></p>
+<p><span style="display: none;" id="q6"> ${q6text}
+<table cellspacing="4" cellpadding="0" border="0">
+    <tbody>
+        <tr>
+            <td valign="center"><input type="radio" value="${q6option1}" id="q6option1" name="Q6" /></td>
+            <td><span id="q6option1text">${q6option1}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q6option2}" id="q6option2" name="Q6" /></td>
+            <td><span id="q6option2text">${q6option2}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q6option3}" id="q6option3" name="Q6" /></td>
+            <td><span id="q6option3text">${q6option3}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q6option4}" id="q6option4" name="Q6" /></td>
+            <td><span id="q6option4text">${q6option4}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q6option5}" id="q6option5" name="Q6" /></td>
+            <td><span id="q6option5text">${q6option5}</span></td>
+        </tr>
+    </tbody>
+</table>
+</span></p>
+<p><span style="display: none;" id="q7"> ${q7text}
+<table cellspacing="4" cellpadding="0" border="0">
+    <tbody>
+        <tr>
+            <td valign="center"><input type="radio" value="${q7option1}" id="q7option1" name="Q7" /></td>
+            <td><span id="q7option1text">${q7option1}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q7option2}" id="q7option2" name="Q7" /></td>
+            <td><span id="q7option2text">${q7option2}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q7option3}" id="q7option3" name="Q7" /></td>
+            <td><span id="q7option3text">${q7option3}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q7option4}" id="q7option4" name="Q7" /></td>
+            <td><span id="q7option4text">${q7option4}</span></td>
+        </tr>
+        <tr>
+            <td valign="center"><input type="radio" value="${q7option5}" id="q7option5" name="Q7" /></td>
+            <td><span id="q7option5text">${q7option5}</span></td>
+        </tr>
+    </tbody>
+</table>
+</span></p>
+<hr width="75%" />
+<center>
+<p><b>Please let us know if you have any comments or suggestions:</b><br />
+<textarea rows="5" cols="40" name="comments"></textarea></p>
+</center>
+<p>&nbsp;</p>

@@ -1,0 +1,620 @@
+<html lang="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  <script type='text/javascript' src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script>
+
+  <!-- BOOTSTRAP CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+<div id="hit" class="container">
+
+  <!-- MTURK INPUT START -->
+  <div class="col-12 mb-1">
+
+    <div class="row mt-4 mb-3 pl-1 pt-1 pb-1 border">
+        <h3 class="col-12"><strong>Is it defining?</strong></h3>
+        <!-- <div class="col-md-12">
+          <p><span style="color:red;font-weight: bold;">Please note:</span> <br>
+            <span style="margin-left:10px">We are currently improving the task instructions. If you have not seen the following emoji with this task, please <span style="color:red">reread carefully!!</span><br>
+            <span style="margin-left:20px;font-size: 20pt;">&#128051</span><br>
+            <span style="margin-left:20px" class="ex-reason">(whale)</span>
+          </p>
+        </div> -->
+
+        <div class="col-md-12">
+          <hr style="border:.5px dotted grey">
+        </div>
+        <div class="col-12">
+          <p>Thanks for participating in this HIT! You will be given 3 sentences. For each sentence, you will answer a question about the property it describes.</p>
+          <br>
+
+          <h3>The Task:</h3>
+          <ul>
+            <li>
+              In this task you will be given a <strong>Statement</strong>, which is a sentence that describes a <span class="gen-prop-lite">property</span> and <span class="gen-concept-lite">concept</span>. You will then be asked whether the property is <span style="text-decoration:underline;">defining for or essential to</span> the concept.
+              <ul>
+                <li class="ex-reason">For example, "Birds can fly" describes the property <span class="gen-prop-lite">can fly</span> for the concept <span class="gen-concept-lite">birds</span>.</li>
+              </ul>
+            </li>
+            <br>
+            <li>A property is <span style="font-weight:bold;text-decoration:underline;">defining for</span> or <span style="font-weight: bold;text-decoration:underline">essential to</span> a concept IF:
+              <ul>
+                <li>the concept <strong>cannot exist without it</strong>, it is part of the definition of the concept
+                  <ul>
+                    <li><i>Squares have four sides.</i><br>
+                      <span class="ex-reason">[A square is not a square if it does not have four sides]</span>
+                    </li>
+                    <li><i>A car is a type of vechicle</i><br>
+                      <span class="ex-reason">[All cars belong to the category vehicle]</span>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <br>
+            <li>The statement must be always true, <span style="color:red;font-weight: bold;">exceptions are not allowed.</span></li>
+            <br>
+            <li>
+              If the statement is unintelligable or never true, please mark <span style="color:#17a2b8">Huh?!</span>
+            </li>
+          </ul>
+
+
+          <h3>Examples</h3>
+          <p>Below are examples <a data-toggle="collapse" href="#collapse1" style="color:#0080ff;font-weight:normal;text-decoration: underline;">(Expand/Collapse)</a></p>
+          <!-- <div class="panel-collapse collapse" id="collapse1" style="margin:10px"> -->
+          <div class="panel-collapse" id="collapse1" style="margin:10px">
+
+            <!-- begin EX 1 -->
+            <div class="row">
+              <hr class="col-md-12" style="color:black;background-color:black">
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <h6> Is the <span class="gen-prop">property</span> defining (essential) for the <span class="gen-concept">concept</span>?</h6>
+                <p class="ex-reason">[The <span class="gen-prop-lite">property</span> is <i>italic</i>]</p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <ul>
+                  <li>
+                    <span class="badge badge-success" style="font-size:12pt">
+                    Yes
+                    </span>
+                    <ul>
+                      <li>Triangles have <i>three sides</i>.</li>
+                      <li>An apple is <i>a fruit</i>.</li>
+                      <li>An event has <i>a start time</i>.</li>
+                      <li>Oil tankers are <i>designed to transport oil</i>.</li>
+                      <li>Swords are <i>weapons</i>.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="badge badge-danger" style="font-size:12pt">No</span>
+                    <ul>
+                      <li>Birds can <i>fly</i>.<br>
+                        <span class="ex-reason">[Not every birds can fly. For example, penguins cannot fly.]</span>
+                      </li>
+                      <li>Mushrooms are <i>poisonous to eat</i>.<br>
+                        <span class="ex-reason">[Many mushrooms are not poisonous.]</span>
+                      </li>
+                      <li>Cars have  <i>wheels</i>.<br>
+                        <span class="ex-reason">[Cars in the scrape yard or being repaired may not have wheels.]</span>
+                      </li>
+                      <li>Mosquitoes <i>carry malaria</i>.<br>
+                        <span class="ex-reason">[Very few mosquitoes actually carry malaria.]</span>
+                      </li>
+                      <li>Sharks <i>attack people</i>.<br>
+                        <span class="ex-reason">[Sharks only attack people occasionally.]</span>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="badge badge-secondary" style="font-size:12pt">Huh?!</span>
+                    <ul>
+                      <li>Kayaks are <i>not considered water kayaks</i>.<br>
+                        <span class="ex-reason">[Nonsensical]</span></li>
+                      <li>
+                        Dogs can <i>fly</i>.<br>
+                        <span class="ex-reason">[Always false]</span>
+                      </li>
+                    </ul>
+
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="row">
+              <hr class="col-md-12" style="color:black;background-color:black">
+            </div>
+
+        </div> <!-- end panel examples -->
+      </div> <!-- end div col -->
+    </div> <!-- end div row -->
+  </div> <!-- div col -->
+
+
+<form name='mturk_form' method='post' id='mturk_form' action='https://www.mturk.com/mturk/externalSubmit'>
+  <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+  <input type='hidden' name='ee' id='ee'/>
+
+  <!--begin q1-->
+  <div id="question-1" class="question">
+    <div class="row question-header question-choice-container align-items-center">
+      <div class="col-md-12">
+        <h4>Task 1:</h4>
+      </div>
+      <div class="col-md-12">
+        <p style="font-size:12pt">Is the <span class="gen-prop">property</span> in <span style="text-decoration: underline;">Statement 1</span> defining (essential) for the <span class="gen-concept">concept</span>? </p>
+      </div>
+
+      <div class="col-md-8 d-flex">
+        <div class="story-excerpt">
+          <h5>Statement 1</h5>
+
+          <div style="padding-left:20px;">
+            <p style="font-size:12pt">${generic_input_1}</p><br>
+            <ul>
+              <li style="font-size:10pt"><span class="gen-concept">Concept 1:</span> ${concept_1}</li>
+              <li style="font-size:10pt"><span class="gen-prop">Property 1:</span> ${property_1}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 d-flex text-center mx-auto">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-white btn-m mr-2" for="1">
+            <input type="radio" name="def1" id="fund1_1" autocomplete="off"
+            value="1" required>Yes.
+          </label>
+          <label class="btn btn-white btn-m mr-2" for="0">
+            <input type="radio" name="def1" id="fund1_2" autocomplete="off"
+            value="0" required>No.
+          </label>
+          <label class="btn btn-white btn-m" for="2">
+            <input type="radio" name="def1" id="fund1_3" autocomplete="off"
+            value="2" required>Huh??
+          </label>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <hr style="border:.5px dotted grey">
+  <!-- end q1 -->
+  <br>
+  <br>
+
+  <!--begin q2-->
+  <div id="question-2" class="question">
+    <div class="row question-header question-choice-container align-items-center">
+      <div class="col-md-12">
+        <h4>Task 2</h4>
+      </div>
+      <div class="col-md-12">
+        <p style="font-size:12pt">Is the <span class="gen-prop">property</span> in <span style="text-decoration: underline;">Statement 2</span> defining (essential) for the <span class="gen-concept">concept</span>? </p>
+      </div>
+
+      <div class="col-md-8 d-flex">
+        <div class="story-excerpt">
+          <h5>Statement 2</h5>
+
+          <div style="padding-left:20px;">
+            <p style="font-size:12pt">${generic_input_2}</p><br>
+            <ul>
+              <li style="font-size:10pt"><span class="gen-concept">Concept 2:</span> ${concept_2}</li>
+              <li style="font-size:10pt"><span class="gen-prop">Property 2:</span> ${property_2}</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 d-flex text-center mx-auto">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-white btn-m mr-2" for="1">
+            <input type="radio" name="def2" id="fund2_1" autocomplete="off"
+            value="1" required>Yes.
+          </label>
+          <label class="btn btn-white btn-m mr-2" for="0">
+            <input type="radio" name="def2" id="fund2_2" autocomplete="off"
+            value="0" required>No.
+          </label>
+          <label class="btn btn-white btn-m" for="2">
+            <input type="radio" name="def2" id="fund2_3" autocomplete="off"
+            value="2" required>Huh??
+          </label>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+  <hr style="border:.5px dotted grey">
+  <!-- end q2 -->
+  <br>
+  <br>
+
+
+  <hr style="border:.5px dotted grey">
+  <br><br><br>
+
+  <!-- OPTIONAL FEEDBACK -->
+  <div class="row mt-5">
+      <div class="col-8 offset-2 col-lg-6 offset-lg-3">
+          <p>(Optional) Please let us know if anything was unclear, if you experienced any issues, or if you have any other feedback for us.</p>
+          <textarea id="feedback" name="feedback" rows=3></textarea>
+      </div>
+  </div>
+
+  <!-- SUBMIT BUTTON -->
+  <div class="row mt-5">
+      <div class="col-2 offset-5">
+          <input id="submitButton" onclick="getnext()" type="submit" value="Submit">
+      </div>
+  </div>
+
+</form>
+<script language='Javascript'>turkSetAssignmentID();</script>
+</div>
+<!-- MTURK INPUT END -->
+
+<!-- BOOSTRAP JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<!-- HITPUB JS -->
+<script id="hitpub_js">
+    // TimeMe.js
+    (function () { var e, t; e = this, t = function () { var r = { startStopTimes: {}, idleTimeoutMs: 3e4, currentIdleTimeMs: 0, checkStateRateMs: 250, active: !1, idle: !1, currentPageName: "default-page-name", timeElapsedCallbacks: [], userLeftCallbacks: [], userReturnCallbacks: [], trackTimeOnElement: function (e) { var t = document.getElementById(e); t && (t.addEventListener("mouseover", function () { r.startTimer(e) }), t.addEventListener("mousemove", function () { r.startTimer(e) }), t.addEventListener("mouseleave", function () { r.stopTimer(e) }), t.addEventListener("keypress", function () { r.startTimer(e) }), t.addEventListener("focus", function () { r.startTimer(e) })) }, getTimeOnElementInSeconds: function (e) { var t = r.getTimeOnPageInSeconds(e); return t || 0 }, startTimer: function (e, t) { if (e || (e = r.currentPageName), void 0 === r.startStopTimes[e]) r.startStopTimes[e] = []; else { var n = r.startStopTimes[e], i = n[n.length - 1]; if (void 0 !== i && void 0 === i.stopTime) return } r.startStopTimes[e].push({ startTime: t || new Date, stopTime: void 0 }), r.active = !0, r.idle = !1 }, stopAllTimers: function () { for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++)r.stopTimer(e[t]) }, stopTimer: function (e, t) { e || (e = r.currentPageName); var n = r.startStopTimes[e]; void 0 !== n && 0 !== n.length && (void 0 === n[n.length - 1].stopTime && (n[n.length - 1].stopTime = t || new Date), r.active = !1) }, getTimeOnCurrentPageInSeconds: function () { return r.getTimeOnPageInSeconds(r.currentPageName) }, getTimeOnPageInSeconds: function (e) { var t = r.getTimeOnPageInMilliseconds(e); return void 0 === t ? void 0 : t / 1e3 }, getTimeOnCurrentPageInMilliseconds: function () { return r.getTimeOnPageInMilliseconds(r.currentPageName) }, getTimeOnPageInMilliseconds: function (e) { var t = r.startStopTimes[e]; if (void 0 !== t) { for (var n = 0, i = 0; i < t.length; i++) { var s = t[i].startTime, o = t[i].stopTime; void 0 === o && (o = new Date), n += o - s } return Number(n) } }, getTimeOnAllPagesInSeconds: function () { for (var e = [], t = Object.keys(r.startStopTimes), n = 0; n < t.length; n++) { var i = t[n], s = r.getTimeOnPageInSeconds(i); e.push({ pageName: i, timeOnPage: s }) } return e }, setIdleDurationInSeconds: function (e) { var t = parseFloat(e); if (!1 !== isNaN(t)) throw { name: "InvalidDurationException", message: "An invalid duration time (" + e + ") was provided." }; return r.idleTimeoutMs = 1e3 * e, this }, setCurrentPageName: function (e) { return r.currentPageName = e, this }, resetRecordedPageTime: function (e) { delete r.startStopTimes[e] }, resetAllRecordedPageTimes: function () { for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++)r.resetRecordedPageTime(e[t]) }, resetIdleCountdown: function () { r.idle && r.triggerUserHasReturned(), r.idle = !1, r.currentIdleTimeMs = 0 }, callWhenUserLeaves: function (e, t) { this.userLeftCallbacks.push({ callback: e, numberOfTimesToInvoke: t }) }, callWhenUserReturns: function (e, t) { this.userReturnCallbacks.push({ callback: e, numberOfTimesToInvoke: t }) }, triggerUserHasReturned: function () { if (!r.active) for (var e = 0; e < this.userReturnCallbacks.length; e++) { var t = this.userReturnCallbacks[e], n = t.numberOfTimesToInvoke; (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback()) } r.startTimer() }, triggerUserHasLeftPage: function () { if (r.active) for (var e = 0; e < this.userLeftCallbacks.length; e++) { var t = this.userLeftCallbacks[e], n = t.numberOfTimesToInvoke; (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback()) } r.stopAllTimers() }, callAfterTimeElapsedInSeconds: function (e, t) { r.timeElapsedCallbacks.push({ timeInSeconds: e, callback: t, pending: !0 }) }, checkState: function () { for (var e = 0; e < r.timeElapsedCallbacks.length; e++)r.timeElapsedCallbacks[e].pending && r.getTimeOnCurrentPageInSeconds() > r.timeElapsedCallbacks[e].timeInSeconds && (r.timeElapsedCallbacks[e].callback(), r.timeElapsedCallbacks[e].pending = !1); !1 === r.idle && r.currentIdleTimeMs > r.idleTimeoutMs ? (r.idle = !0, r.triggerUserHasLeftPage()) : r.currentIdleTimeMs += r.checkStateRateMs }, visibilityChangeEventName: void 0, hiddenPropName: void 0, listenForVisibilityEvents: function () { void 0 !== document.hidden ? (r.hiddenPropName = "hidden", r.visibilityChangeEventName = "visibilitychange") : void 0 !== document.mozHidden ? (r.hiddenPropName = "mozHidden", r.visibilityChangeEventName = "mozvisibilitychange") : void 0 !== document.msHidden ? (r.hiddenPropName = "msHidden", r.visibilityChangeEventName = "msvisibilitychange") : void 0 !== document.webkitHidden && (r.hiddenPropName = "webkitHidden", r.visibilityChangeEventName = "webkitvisibilitychange"), document.addEventListener(r.visibilityChangeEventName, function () { document[r.hiddenPropName] ? r.triggerUserHasLeftPage() : r.triggerUserHasReturned() }, !1), window.addEventListener("blur", function () { r.triggerUserHasLeftPage() }), window.addEventListener("focus", function () { r.triggerUserHasReturned() }), document.addEventListener("mousemove", function () { r.resetIdleCountdown() }), document.addEventListener("keyup", function () { r.resetIdleCountdown() }), document.addEventListener("touchstart", function () { r.resetIdleCountdown() }), window.addEventListener("scroll", function () { r.resetIdleCountdown() }), setInterval(function () { r.checkState() }, r.checkStateRateMs) }, websocket: void 0, websocketHost: void 0, setUpWebsocket: function (e) { if (window.WebSocket && e) { var t = e.websocketHost; try { r.websocket = new WebSocket(t), window.onbeforeunload = function () { r.sendCurrentTime(e.appId) }, r.websocket.onopen = function () { r.sendInitWsRequest(e.appId) }, r.websocket.onerror = function (e) { console && console.log("Error occurred in websocket connection: " + e) }, r.websocket.onmessage = function (e) { console && console.log(e.data) } } catch (e) { console && console.error("Failed to connect to websocket host.  Error:" + e) } } return this }, websocketSend: function (e) { r.websocket.send(JSON.stringify(e)) }, sendCurrentTime: function (e) { var t = { type: "INSERT_TIME", appId: e, timeOnPageMs: r.getTimeOnCurrentPageInMilliseconds(), pageName: r.currentPageName }; r.websocketSend(t) }, sendInitWsRequest: function (e) { var t = { type: "INIT", appId: e }; r.websocketSend(t) }, initialize: function (e) { var t = r.idleTimeoutMs || 30, n = r.currentPageName || "default-page-name", i = void 0, s = void 0; e && (t = e.idleTimeoutInSeconds || t, n = e.currentPageName || n, i = e.websocketOptions, s = e.initialStartTime), r.setIdleDurationInSeconds(t).setCurrentPageName(n).setUpWebsocket(i).listenForVisibilityEvents(), r.startTimer(void 0, s) } }; return r }, "undefined" != typeof module && module.exports ? module.exports = t() : "function" == typeof define && define.amd ? define([], function () { return e.TimeMe = t() }) : e.TimeMe = t() }).call(this);
+
+    TimeMe.initialize({
+        currentPageName: "task",
+        idleTimeoutInSeconds: 30
+    });
+
+    $(document).ready(function() {
+        $('#submitButton').click(function () {
+            try {
+                $('input[name=ee]').attr('value', TimeMe.getTimeOnCurrentPageInSeconds());
+            } catch {
+            }
+            return true;
+        });
+    });
+</script>
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
+<style id="hitpub_css">
+/*<style type="text/css">*/
+
+th {
+  font-weight: normal;
+}
+
+fieldset { padding: 10px; background:#fbfbfb; border-radius:5px; margin-bottom:5px; }
+.columns{
+    list-style-type: none;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    columns: 2;
+    list-style-position: inside;
+}
+.unbulleted{
+    list-style-type: none;
+    padding:7px;
+    margin:0px;
+}
+.story-excerpt {
+   margin:40 auto;
+   width: 90%; <!-- jena's edits here -->
+   border:2px #333333;
+   background-color: #f2f2f2;
+   border-style: solid;
+   padding-right:10px;
+   padding-left:10px;
+   display:table;
+   border-radius:15px;
+}
+table{
+   font-size:10pt;
+}
+.s1-border {
+  border: 1px;
+  border-color: #008000;
+  border-style:solid;
+  margin-left: 20px;
+  width: 420px;
+
+}
+.s2-border {
+  border: 1px;
+  border-color: #800080;
+  border-style:solid;
+  margin-left: 20px;
+  width: 420px;
+
+}
+.s2 {
+  color:#800080;
+  font-weight:bold
+}
+.s1 {
+  color:#008000;
+  font-weight:bold
+}
+.s3 {
+  color:#ff7f50;
+  font-weight:bold
+}
+.ex-reason {
+  color: grey;
+  margin-left: 20px;
+}
+
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+
+.example-table td, .example-table th{
+   border:1px solid grey;
+   text-align:center;
+   font-size: 10pt;
+}
+
+.new-example-table td, .new-example-table th {
+	border-bottom: 1px solid black;
+	width: 500px;
+	padding-bottom: 5px;
+	padding-top: 5px;
+}
+.gen-prop {
+  color: blue;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.gen-concept {
+  color:  #c46210;
+  font-weight:  bold;
+  font-style: italic;
+}
+
+.gen-prop-lite {
+  color: blue;
+  font-sytle: italic;
+}
+
+.gen-concept-lite {
+  color:  #c46210;
+  font-style: italic;
+}
+
+.badge-secondary {
+  background-color: #17a2b8;
+  border: 1px solid #17a2b8;
+}
+
+/***********************************************
+MOSAIC BOOSTRAP OVERWRITES
+***********************************************/
+#hitinfo .card {
+    border-radius: 0;
+}
+ #hitinfo button.btn-link {
+    color: #fff;
+    text-decoration: none;
+ }
+
+
+#hitinfo button.btn-link:hover {
+    text-decoration: none;
+}
+#hit ul.question-choice {
+    list-style-type: none;
+}
+
+/***********************************************
+MOSAIC GENERAL STYLING
+***********************************************/
+body {
+    font-family: "Open Sans", "Roboto", sans-serif;
+    line-height: 1.25;
+}
+textarea#feedback {
+    width: 100%
+}
+input#submitButton {
+    margin: auto;
+    display: block;
+    background-color: #2172a4;
+    color: #fff;
+    font-size: 1.125rem;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    border-radius: 1rem;
+}
+input#submitButton:hover {
+    background-color: #06486F;
+}
+
+input[type="radio"] {
+    cursor: pointer;
+}
+
+li {
+    margin:0.6em;
+}
+
+ul.ex li {
+    font-size: 85%;
+}
+
+table {
+    width: 80%;
+    margin: 5px;
+}
+
+tr {
+    border:1px solid #ccc;
+}
+
+th {
+    width:20%;
+    background-color:#fff;
+    font-weight:normal;
+    text-align: center;
+    padding:0.5em;
+}
+
+
+td {
+    padding-left:20px;
+    padding-right:10px;
+}
+
+
+
+
+/***********************************************
+HIT CUSTOM GENERAL STYLING
+***********************************************/
+div.card-header {
+    background-color: #06486F;
+}
+div.card-header h5 {
+    color: #fff !important;
+}
+
+.legend {
+    margin-top: .33rem;
+    font-weight: normal;
+    padding-left: 40px;
+}
+.legend .label{
+    font-style: italic;
+}
+
+.emphasize {
+    font-weight: bold;
+    color: black;
+    font-style: italic;
+}
+
+.example {
+    pointer-events:none;
+}
+
+.title {
+    font-style: italic;
+}
+
+.entity {
+    color: blue;
+    font-weight: bold;
+}
+
+.use {
+    color: purple;
+    font-weight: bold;
+}
+
+.card-body {
+    background-color:#fbfbfb;
+}
+
+.concept_a {
+  color: #0072B2;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.concept_b {
+  color: #D55E00;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.sm-bold {
+    font-weight:bold;
+    font-style: italic;
+    font-size: 80%;
+}
+
+label[for="1"] {
+    color: #28a745;
+    border: 1px solid #28a745;
+}
+
+label[for="0"] {
+    color: #dc3545;
+    border: 1px solid #dc3545;
+}
+
+label[for="-1"] {
+    color: #6c757d;
+    border: 1px solid #6c757d;
+}
+
+label[for="2"] {
+    color: #17a2b8;
+    border: 1px solid #17a2b8;
+}
+
+
+label[for="1"]:hover, label[for="1"].active {
+    background-color: #28a745 !important;
+    color: white;
+}
+
+label[for="0"]:hover, label[for="0"].active {
+    background-color: #dc3545 !important;
+    color: white;
+}
+label[for="-1"]:hover, label[for="-1"].active {
+    background-color: #6c757d !important;
+    color: white;
+}
+
+label[for="2"]:hover, label[for="2"].active {
+    background-color: #17a2b8 !important;
+    color: white;
+}
+
+}
+</style>

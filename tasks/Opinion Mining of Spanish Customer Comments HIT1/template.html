@@ -1,0 +1,63 @@
+<p><input type="hidden" id="SENTENCEID" name="SENTENCEID" value="${NUMBER}" />  <input type="hidden" id="userDisplayLanguage" name="userDisplayLanguage" /> <input type="hidden" id="browserInfo" name="browserInfo" /> <input type="hidden" id="country" name="country" />  <input type="hidden" id="city" name="city" /> <input type="hidden" id="region" name="region" /></p>
+<script language="Javascript" src="http://gd.geobytes.com/gd?after=-1&variables=GeobytesCountry,GeobytesCity,GeobytesRegion,GeobytesIpAddress"></script> <script language="Javascript">
+<!--
+function getUserInfo() {
+document.mturk_form.userDisplayLanguage.value = navigator.language ? navigator.language : navigator.userDisplayLanguage;
+document.mturk_form.browserInfo.value = navigator.userAgent;
+document.mturk_form.country.value = sGeobytesCountry;
+document.mturk_form.city.value = sGeobytesCity;
+document.mturk_form.region.value = sGeobytesRegion;
+}
+ 
+getUserInfo();
+
+// -->
+</script>    <center>
+<h4><big>Clasifica el comentario seg&uacute;n refleje una opini&oacute;n positiva o negativa</big><br />
+De manera aleatoria se mostrar&aacute;n comentarios entre los que aparecer&aacute;n opiniones sobre modelos de autom&oacute;vil.</h4>
+<table>
+    <tbody>
+        <tr>
+            <td><b>Instrucciones:</b></td>
+            <td><b>Ejemplos:</b></td>
+        </tr>
+        <tr>
+            <td valign="top">
+            <ul class="overview-list">
+                <li class="overview-list-item">Marca como &quot;<b><span style="color: rgb(51, 153, 51);">Positiva</span></b>&quot; las opiniones claramente positivas.</li>
+                <li class="overview-list-item">Marca como &quot;<b><span style="color: rgb(204, 0, 0);">Negativa</span></b>&quot; las opiniones claramente negativas.</li>
+                <li class="overview-list-item">Marca como &quot;<b><span style="color: rgb(51, 51, 51);">Otro</span></b>&quot; todo lo que no sea claramente una opini&oacute;n</li>
+            </ul>
+            </td>
+            <td valign="top">
+            <ul class="overview-list">
+                <ul class="overview-list">
+                    <li style="color: rgb(51, 153, 51);" overview-list-item="">Positiva (ej. &quot;no te lo pienses m&aacute;s , compratelo !&quot; )</li>
+                    <li style="color: rgb(204, 0, 0);" overview-list-item="">Negativa (ej. &quot;tiene muchas piezas defectuosas&quot; )</li>
+                    <li class="overview-list-item">Otro: No-opiniones (ej. &quot;hasta luego&quot; o &quot;este coche tiene 6 cilindros&quot;)</li>
+                    <li class="overview-list-item">Otro: Ambiguedades (ej. &quot;la conducci&oacute;n es genial pero el dise&ntilde;o una porquer&iacute;a&quot;)</li>
+                    <li class="overview-list-item">Otro: Comparaciones (ej. &quot;el Volvo es mejor que el Fiat&quot;)</li>
+                </ul>
+            </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<blockquote> <font size="4"><span style="color: rgb(0, 0, 255);"> &quot;${SENTENCE}&quot;</span></font> </blockquote>
+<table cellspacing="4" cellpadding="0" border="0">
+    <tbody>
+        <tr>
+            <td valign="center" bgcolor="#339933"><input type="radio" value="positive" id="POLARITY" name="POLARITY" /></td>
+            <td><span style="color: rgb(51, 153, 51);"><b> [ + ] Es una opini&oacute;n claramente POSITIVA</b></span></td>
+        </tr>
+        <tr>
+            <td valign="center" bgcolor="#cc0000"><input type="radio" value="negative" id="POLARITY" name="POLARITY" /></td>
+            <td><span style="color: rgb(204, 0, 0);"><b> [ - ] Es una opini&oacute;n claramente NEGATIVA</b></span></td>
+        </tr>
+        <tr>
+            <td valign="center" bgcolor="#333333"><input type="radio" value="neutral" id="POLARITY" name="POLARITY" /></td>
+            <td><span style="color: rgb(51, 51, 51);"><b> [ ? ] No es ninguna de las anteriores, OTRO</b></span></td>
+        </tr>
+    </tbody>
+</table>
+</center>

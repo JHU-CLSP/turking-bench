@@ -1,0 +1,286 @@
+<!-- HIT template: Writing-v3.0 --><!-- The following snippet enables the 'responsive' behavior on smaller screens -->
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<section class="container" id="Writing"><!-- Instructions -->
+<div class="row">
+<div class="col-xs-12 col-md-12">
+<div class="panel panel-primary"><!-- WARNING: the ids "collapseTrigger" and "instructionBody" are being used to enable expand/collapse feature --><a class="panel-heading" href="javascript:void(0);" id="collapseTrigger"><strong>Instructions</strong></a>
+<div class="panel-body" id="instructionBody">
+<p>You need to read a passage and construct questions about the information presented in the passage. For each question, you also need to provide the correct answer. The question should be answerable from the passage. <a style="color: red">Most importantly, only those questions are allowed whose answer <b> cannot be determined from a single sentence </b>.</a></p>
+
+<p>Below are a few example passages and sample questions (and answers).</p>
+
+<div class="boxedBig">
+<h3>Paragraph:</h3>
+<b>Sent 1: </b> A Republican bid to keep the government open past Friday includes no new money for the construction of a border wall along the U.S.-Mexico border, according to several congressional aides familiar with ongoing talks.<br />
+<b>Sent 2: </b> GOP leaders submitted the new offer Tuesday afternoon in an effort to appease Democrats, whose votes are needed to avert a shutdown of federal agencies, several House and Senate aides said.<br />
+<b>Sent 3: </b> However, Republicans also insisted on increases in border security and defense spending, including money to repair existing fencing and new surveillance technology to patrol the nearly 2,000-mile border.<br />
+<b>Sent 4: </b> Democrats have indicated that they would support such appropriations so long as no money goes toward an actual wall.</div>
+Here are a few example questions with our criteria:
+
+<div class="boxedBig"><b>Question: </b> Who has to be appeased to keep the government open?<br />
+<b>Correct Answer: </b> &ldquo;Democrats&rdquo;<br />
+<b>Sentences needed to answer this question: </b>
+
+<div class="form-group">
+<div class="col-lg-10"><label class="checkbox-inline"><input checked="checked" onclick="return false;" type="checkbox" /> 1 </label> <label class="checkbox-inline"><input checked="checked" onclick="return false;" type="checkbox" /> 2 </label> <label class="checkbox-inline"><input onclick="return false;" type="checkbox" /> 3 </label> <label class="checkbox-inline"><input onclick="return false;" type="checkbox" /> 4 </label></div>
+</div>
+<br />
+<b>Explanation: </b> This is multi-sentence question because, &ldquo;appease Democrats&rdquo; is mentioned in Sent 2, while &ldquo;keep the government open&rdquo; is part of Sent 1.</div>
+
+<div class="boxedBig"><b>Question: </b> When was the republican bid submitted?<br />
+<b>Correct Answer: </b> &ldquo;Tuesday afternoon&rdquo;<br />
+<b>Sentences needed to answer this question: </b>
+
+<div class="form-group">
+<div class="col-lg-10"><label class="checkbox-inline"><input checked="checked" onclick="return false;" type="checkbox" /> 1 </label> <label class="checkbox-inline"><input checked="checked" onclick="return false;" type="checkbox" /> 2 </label> <label class="checkbox-inline"><input onclick="return false;" type="checkbox" /> 3 </label> <label class="checkbox-inline"><input onclick="return false;" type="checkbox" /> 4 </label></div>
+</div>
+<br />
+<b>Explanation: </b> Republican bid is mentioned in Sent 1 while Tuesday afternoon occurs in Sent 2.</div>
+
+<div class="boxedBig"><b>Question: </b> Who does not want a border wall?<br />
+<b>Correct Answer: </b> &ldquo;Democrats&rdquo;<br />
+<b>Sentences needed to answer this question: </b>
+
+<div class="form-group">
+<div class="col-lg-10"><label class="checkbox-inline"><input checked="checked" onclick="return false;" type="checkbox" /> 1 </label> <label class="checkbox-inline"><input checked="checked" onclick="return false;" type="checkbox" /> 2 </label> <label class="checkbox-inline"><input onclick="return false;" type="checkbox" /> 3 </label> <label class="checkbox-inline"><input onclick="return false;" type="checkbox" /> 4 </label></div>
+</div>
+<br />
+<b>Explanation: </b> Democrats will be appeased by the new offer (Sent 2). The new offer includes no money for the wall (Sent 1). This implies that Democrats don&rsquo;t want the wall.</div>
+Here is another example paragraph:
+
+<div class="boxedBig">
+<h3>Paragraph:</h3>
+<b>Sent 1: </b> Obama was born on August 4, 1961, at Kapiʻolani Maternity & Gynecological Hospital in Honolulu, Hawaii.<br />
+<b>Sent 2: </b> He is the only President to have been born in Hawaii.<br />
+<b>Sent 3: </b> He was born to a white mother and a black father.<br />
+<b>Sent 4: </b> His mother, Ann Dunham (1942&ndash;1995), was born in Wichita, Kansas, of mostly English descent, with some German, Irish, Scottish,Swiss, and Welsh ancestry.</div>
+
+<div class="boxedBig"><b>Question: </b> How old was Obama&rsquo;s mother when he was born?<br />
+<b>Correct Answer: </b> &ldquo;19&rdquo;<br />
+<b>Sentences needed to answer this question: </b>
+
+<div class="form-group">
+<div class="col-lg-10"><label class="checkbox-inline"><input checked="checked" onclick="return false;" type="checkbox" /> 1 </label> <label class="checkbox-inline"><input onclick="return false;" type="checkbox" /> 2 </label> <label class="checkbox-inline"><input onclick="return false;" type="checkbox" /> 3 </label> <label class="checkbox-inline"><input checked="checked" onclick="return false;" type="checkbox" /> 4 </label></div>
+</div>
+<br />
+<b>Explanation: </b> Obama was born in 1961. His mother was born in 1942. This question reasoning about time across Sentences 1 and 4 (1961-1942=19)</div>
+
+<div class="boxedBig"><b>Question: </b> Where was Ann living in August, 1961?<br />
+<b>Correct Answer: </b> &ldquo;Hawaii&rdquo;<br />
+<b>Sentences needed to answer this question: </b>
+
+<div class="form-group">
+<div class="col-lg-10"><label class="checkbox-inline"><input checked="checked" onclick="return false;" type="checkbox" /> 1 </label> <label class="checkbox-inline"><input checked="checked" onclick="return false;" type="checkbox" /> 2 </label> <label class="checkbox-inline"><input onclick="return false;" type="checkbox" /> 3 </label> <label class="checkbox-inline"><input onclick="return false;" type="checkbox" /> 4 </label></div>
+</div>
+<br />
+<b>Explanation: </b> Ann is Obama&rsquo;s mother (Sent 4). She must have been there when Obama was born (Sent 1). Obama was born in Hawaii (Sent 2).</div>
+
+<div class="boxedBig"><b>Question: </b> Was one of Ann&rsquo;s children a future president?<br />
+<b>Correct Answer: </b> &ldquo;Yes&rdquo;
+
+<div class="form-group">
+<div class="col-lg-10"><label class="checkbox-inline"><input onclick="return false;" type="checkbox" /> 1 </label> <label class="checkbox-inline"><input checked="checked" onclick="return false;" type="checkbox" /> 2 </label> <label class="checkbox-inline"><input onclick="return false;" type="checkbox" /> 3 </label> <label class="checkbox-inline"><input checked="checked" onclick="return false;" type="checkbox" /> 4 </label></div>
+</div>
+<br />
+<b>Explanation: </b> Ann is Obama&rsquo;s mother (Sent 4). Obama was a future president (Sent 2).</div>
+
+<div class="boxedBig">
+<h4 style="color: red">Exmple of a bad question:</h4>
+
+<div class="boxedBig">
+<h3>Paragraph:</h3>
+<b>Sent 1: </b> Safti succumbs to Edwina 's charms and falls hopelessly in love with her.<br />
+<b>Sent 2: </b> Lord Esketh becomes aware of this but Safti saves him from a man-eating tiger during a safari.</div>
+
+<div class="boxedBig"><b>Question: </b> What is the name of the man who succumbs to Edwina's charms and saves her husband from a man-eating tiger during a safari?<br />
+<b>Correct Answer: </b> &ldquo;Safti&rdquo;<br />
+<br />
+<b>Explanation: </b> This is a <a style="color: red">BAD question</a> because even though it is constructed using phrases from more than one sentence (&ldquo;succumbs to Edwina's charms&rdquo; and &ldquo;a man-eating tiger during a safari&rdquo;) but the answer can be guessed by reading ONLY ONE of the two sentences.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row" id="workContent">
+<ul>
+	<li>For the paragraph below, create at least 3 questions that require multiple sentences (examples above).&nbsp;</li>
+	<li>If you create more than 3 questions, you'd get bonus rewards.</li>
+	<li>For each generated questions you write the answer in the space followed by the question, as well as denoting what sentences are required for answering it.</li>
+	<li>Items with <span class="star">*</span> are required.</li>
+</ul>
+
+<div id="hiddenDiv">${FOLDER} ${FILE}</div>
+
+<div class="boxedBig">
+<h3>Paragraph:</h3>
+${PARAGRAPH}</div>
+
+<div id="userInputBox">
+<div class="boxedBig">
+<h4 id="q1-ans-msg" style="color: red; position: absolute; background-color: white; width: 600px">Fill out an answer</h4>
+
+<h4 id="q1-question-msg" style="color: red; position: absolute; background-color: white; width: 600px">Fill out a valid question.</h4>
+
+<h4 id="q1-checkbox-msg" style="color: red; background-color: white; width: 600px">At least two sentences must be used (see the checkboxes below)</h4>
+<b>Question: </b><span class="star">*</span><input class="form-control" id="Question-1" name="Question-1" required="" type="text" /><br />
+<b>Correct Answer: </b><span class="star">*</span><input class="form-control" id="Answer-1" name="Answer-1" required="" type="text" /><br />
+<b>Sentences needed to answer this question: </b><span class="star">*</span> ${SENTENCES1} <!--<div class='form-group'>--> <!--<div class='col-lg-10' id="checks-q1"> --> <!--<label class='checkbox-inline'><input type='checkbox' id='chBoxes' name='sent-1-question-1'> 1 </label>--> <!--<label class='checkbox-inline'><input type='checkbox' id='chBoxes' name='sent-2-question-1'> 2 </label>--> <!--<label class='checkbox-inline'><input type='checkbox' id='chBoxes' name='sent-3-question-1'> 3 </label>--> <!--</div>--> <!--</div>--></div>
+
+<div class="boxedBig">
+<h4 id="q2-ans-msg" style="color: red; position: absolute; background-color: white; width: 600px">Fill out an answer</h4>
+
+<h4 id="q2-question-msg" style="color: red; position: absolute; background-color: white; width: 600px">Fill out a valid question.</h4>
+
+<h4 id="q2-checkbox-msg" style="color: red; background-color: white; width: 600px">At least two sentences must be used (see the checkboxes below)</h4>
+<b>Question: </b><span class="star">*</span><input class="form-control" id="Question-2" name="Question-2" required="" type="text" /><br />
+<b>Correct Answer: </b><span class="star">*</span><input class="form-control" id="Answer-2" name="Answer-2" required="" type="text" /><br />
+<b>Sentences needed to answer this question: </b><span class="star">*</span> ${SENTENCES2}</div>
+
+<div class="boxedBig">
+<h4 id="q3-ans-msg" style="color: red; position: absolute; background-color: white; width: 600px">Fill out an answer</h4>
+
+<h4 id="q3-question-msg" style="color: red; position: absolute; background-color: white; width: 600px">Fill out a valid question.</h4>
+
+<h4 id="q3-checkbox-msg" style="color: red; background-color: white; width: 600px">At least two sentences must be used (see the checkboxes below)</h4>
+<b>Question: </b><span class="star">*</span><input class="form-control" id="Question-3" name="Question-3" required="" type="text" /><br />
+<b>Correct Answer: </b><span class="star">*</span><input class="form-control" id="Answer-3" name="Answer-3" required="" type="text" /><br />
+<b>Sentences needed to answer this question: </b><span class="star">*</span> ${SENTENCES3}</div>
+
+<div class="boxedBig"><b>Question: </b><input class="form-control" name="Question-4" type="text" /><br />
+<b>Correct Answer: </b><input class="form-control" name="Answer-4" type="text" /><br />
+<b>Sentences needed to answer this question: </b> ${SENTENCES4}</div>
+
+<div class="boxedBig"><b>Question: </b><input class="form-control" name="Question-5" type="text" /><br />
+<b>Correct Answer: </b><input class="form-control" name="Answer-5" type="text" /><br />
+<b>Sentences needed to answer this question: </b> ${SENTENCES5}</div>
+</div>
+<!--<div class="bottonWrapper">--><!--<button type="button" class="btn btn-default" id="addNew">Add More Questions</button>--><!--</div>--><input class="form-control" id="hiddenQuestion" name="hiddenName" type="text" /><br />
+<br />
+&nbsp;</div>
+</section>
+<!-- End Writing Layout --><!-- Please note that Bootstrap CSS/JS and JQuery are 3rd party libraries that may update their url/code at any time. Amazon Mechanical Turk (MTurk) is including these libraries as a default option for you, but is not responsible for any changes to the external libraries --><!-- External CSS references -->
+<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" integrity="sha384-IS73LIqjtYesmURkDE9MXKbXqYA8rvKEp/ghicjem7Vc3mGRdQRptJSz60tvrB6+" rel="stylesheet" /><!-- Open internal style sheet -->
+<style type="text/css">#collapseTrigger{
+        color:#fff;
+        display: block;
+        text-decoration: none;
+    }
+    #submitButton{
+        white-space: normal;
+    }
+    .image{
+        margin-bottom: 15px;
+    }
+    /* CSS for breaking long words/urls */
+    .dont-break-out {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        -ms-word-break: break-all;
+        word-break: break-all;
+        word-break: break-word;
+        -ms-hyphens: auto;
+        -moz-hyphens: auto;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+    }
+    .boxedBig {
+        border: 1px solid black ;
+        margin-left: 1%;
+        width: 97%;
+        padding: 10px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+    .bottonWrapper {
+        text-align: center;
+    }
+    #hiddenQuestion {
+        visibility: hidden;
+    }
+    #hiddenDiv {
+        visibility: hidden;
+    }
+    #chBoxes {
+        padding-right: 30px;
+        margin-left: -15px;
+    }
+    .star{
+        color:red;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js" integrity="sha384-s1ITto93iSMDxlp/79qhWHi+LsIi9Gx6yL+cOKDuymvihkfol83TYbLbOw+W/wv4" crossorigin="anonymous"></script><!-- Open internal javascript --><script>
+    var id = 1;
+    function addQuestion() {
+        var questioName = 'Question-' + id;
+        var ansName = 'Answer-' + id ;
+        var withStar = '';
+        if( id < 4 ) {
+            withStar = "<span class='star'>*</span>"
+        }
+        else {
+            withStar = "";
+        }
+        $("#userInputBox").append(
+            "<div class='boxedBig'>\
+                <b>Question: </b> " + withStar + " <input type='text' class='form-control' name=" +  questioName + "> <br> \
+                <b>Correct Answer: </b> " + withStar + " <input type='text' class='form-control' name=" + ansName  + "> <br> \
+                <b>Sentences needed to answer this question: </b> " + withStar + " ${SENTENCES" + id + "} \
+             </div>");
+        id = id + 1;
+    }
+
+    function conditionsPerQuestion(questionId) {
+        jQuery('#Question-' + questionId).on('input', function() {
+            var textLength = $("#Question-" + questionId)[0].value.length;
+            console.log("textLength" + textLength)
+            if(textLength > 10) {
+                // the div should be invisible
+                jQuery('#q' + questionId + '-question-msg').css("visibility", "hidden");
+            }
+            else {
+                jQuery('#q' + questionId + '-question-msg').css("visibility", "visible");
+            }
+        });
+
+        jQuery('#Answer-' + questionId).on('input', function() {
+            var textLength = $("#Answer-" + questionId)[0].value.length;
+            if(textLength >= 1) {
+                // the div should be invisible // q1-ans-msg-div
+                jQuery('#q' + questionId + '-ans-msg').css("visibility", "hidden");
+            }
+            else {
+                jQuery('#q' + questionId + '-ans-msg').css("visibility", "visible");
+            }
+        });
+
+        // id="checks-q1"
+        $("#checks-q" + questionId).change(function(e){
+            console.log("yooooo");
+        // jQuery('#Answer-1').on('input', function() {
+            var numSelected = Array.from($('input[name*=-question-' + questionId + ']').map(function(i, x){ return (x.checked)? 1.0 : 0.0; })).reduce((v, i) => (v + i));
+            if(numSelected >= 2) { // the corresponding div should be visible
+                jQuery('#q' + questionId + '-checkbox-msg').css("visibility", "hidden");
+            }
+            else {
+                jQuery('#q' + questionId + '-checkbox-msg').css("visibility", "visible");
+            }
+        });
+    };
+
+    conditionsPerQuestion(1);
+    conditionsPerQuestion(2);
+    conditionsPerQuestion(3);
+
+
+    $(document).ready(function() {
+//        addQuestion();
+//        addQuestion();
+//        addQuestion();
+//        addQuestion();
+//        addQuestion();
+//        $("#addNew").click(function(){
+//            addQuestion();
+//        });
+    });
+</script>

@@ -1,0 +1,695 @@
+
+            <html lang="en">
+
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+                    <script type='text/javascript' src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script>
+
+                    <!-- BOOTSTRAP CSS -->
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+                    <!-- HITPUB CSS -->
+                    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
+                    <style id="hitpub_css">
+                        /***********************************************
+                        MOSAIC BOOSTRAP OVERWRITES
+                        ***********************************************/
+                        #hitinfo .card {
+                            border-radius: 0;
+                        }
+
+                         #hitinfo button.btn-link {
+                            color: #fff;
+                            text-decoration: none;
+                         }
+                        #hitinfo button.btn-link:hover {
+                            text-decoration: none;
+                        }
+                        #hit ul.question-choice {
+                            list-style-type: none;
+                        }
+
+                        /***********************************************
+                        MOSAIC GENERAL STYLING
+                        ***********************************************/
+                        body {
+                            font-family: "Open Sans", "Roboto", sans-serif;
+                            line-height: 1.25;
+                        }
+                        textarea#feedback {
+                            width: 100%;
+                        }
+                        input#submitButton {
+                            margin: auto;
+                            display: block;
+                            background-color: #2172a4;
+                            color: #fff;
+                            font-size: 1.125rem;
+                            padding: .5rem 1rem;
+                            cursor: pointer;
+                            border-radius: 1rem;
+                        }
+                        input#submitButton:hover {
+                            background-color: #06486F;
+                        }
+
+                        input[type="radio"] {
+                            cursor: pointer;
+                        }
+
+                        div.question {
+                            border-bottom: solid 1px #ccc;
+                            padding: 1rem 0;
+                        }
+
+
+                        /***********************************************
+                        HIT CUSTOM GENERAL STYLING
+                        ***********************************************/
+                        div.card-header {
+                            background-color: #06486F;
+                        }
+                        div.card-header h5 {
+                            color: #fff !important;
+                        }
+
+
+                        label[for="2"] {
+                            background-color: #bbda9a !important;
+                            color:#368b00;
+                        }
+                        label[for="1"] {
+                            background-color: #d8eac5 !important;
+                            color:#71b300;
+                        }
+                        label[for="0"] {
+                            background-color: #cecece !important;
+                            color:#636363;
+                        }
+                        label[for="-1"] {
+                            background-color:  #fde9e9 !important;
+                            color:#ea0000;
+                        }
+                        label[for="-2"] {
+                            background-color: #f9c5c5 !important;
+                            color:#c90000;
+                        }
+                        label[for="-9"] {
+                            background-color: #dfdfff !important;
+                            color:#636363;
+                        }
+
+                        label[for="2"]:hover, label[for="2"].active {
+                            background-color: #368b00 !important;
+                        }
+                        label[for="1"]:hover, label[for="1"].active {
+                            background-color: #71b300 !important;
+                        }
+                        label[for="0"]:hover, label[for="0"].active {
+                            background-color: #555555 !important;
+                        }
+                        label[for="-1"]:hover, label[for="-1"].active {
+                            background-color:  #ea0000 !important;
+                        }
+                        label[for="-2"]:hover, label[for="-2"].active {
+                            background-color: #c90000 !important;
+                        }
+
+                        label[for="-9"]:hover, label[for="-9"].active {
+                            background-color: #0000f9 !important;
+                        }
+
+                        .text2 {
+                            color: #368b00;
+                            font-weight: bold;
+                        }
+                        .text1 {
+                            color: #71b300;
+                            font-weight: bold;
+                        }
+                        .text0 {
+                            color: #555555;
+                            font-weight: bold;
+                        }
+                        .text-1 {
+                            color: #f90000;
+                            font-weight: bold;
+                        }
+                        .text-2 {
+                            color: #c90000;
+                            font-weight: bold;
+                        }
+                        .text-9 {
+                            color: #000093;
+                            font-weight: bold;
+                        }
+
+                        .question-choice-container label.btn {
+                            background-color: #eee;
+                            border: none;
+                            margin-left: 0 !important;
+                            color: black;
+                            font-size:95%;
+                        }
+
+                        .question-choice-container label.btn:hover {
+                            color: white;
+                            font-size:95%;
+
+                        }
+
+                        .legend {
+                            margin-top: .33rem;
+                            font-weight: normal;
+                            padding-left: 40px;
+                        }
+                        .legend .label{
+                            font-style: italic;
+                        }
+
+                        .emphasize {
+                            font-weight: bold;
+                            color: black;
+                        }
+
+                        .obj-emph {
+                            font-weight: bold;
+                            color: blue;
+                        }
+
+                        .use-emph{
+                            font-weight: bold;
+                            color: green;
+                        }
+
+                        .example {
+                            pointer-events:none;
+                            font-size:90%;
+                        }
+
+                        .goal {
+                            border-radius: .25rem;
+                            padding: 0.5rem 0.5rem;
+                            color: white;
+                            background-color: #555;
+                            transform: translateY(-20%);
+                        }
+
+                        .goal-sm {
+                            border-radius: .25rem;
+                            padding: 0.05rem 0.25rem;
+                            color: white;
+                            background-color: #555;
+                            transform: translateY(-20%);
+                            font-weight: bold;
+                            font-style:italic;
+                        }
+
+                        .goal-sm-light {
+                            border-radius: .25rem;
+                            padding: 0.05rem 0.25rem;
+                            color: white;
+                            background-color: #cc0;
+                            transform: translateY(-20%);
+                        }
+
+                        input[type=number]{
+                            width: 3em;
+                        }
+
+
+                        input[type="text"].like-text
+                        {
+                            background: transparent;
+                            border: none;
+                            width: 5em;
+                            font-weight: bold;
+                            font-style:italic;
+                            color: white;
+                            text-align:left;
+                        }
+
+                        input[type="text"].number
+                        {
+                            width: 2em;
+                        }
+
+                        .main-timeline-section{
+                          position: relative;
+                          width: 100%;
+                          margin:auto;
+                          height:100px;
+                        }
+
+                        .main-timeline-section .conference-center-line{
+                          position: absolute;
+                          width:100%;
+                          height:5px;
+                          top:10%;
+                          border:1px solid black;
+                        }
+                        .timeline-article{
+                            width: 20%;
+                            position: relative;
+                            min-height: 50px;
+                            float:right;
+                        }
+                        .timeline-article .meta-dot{
+                            position: absolute;
+                            top: 35%;
+                            left: 5px;
+                            transform: translateY(-100%);
+                            width:10px;
+                            height:10px;
+                            border-radius: 100%;
+                            background:black;
+                            border:1px solid black;
+                        }
+
+                        .timeline-article .meta-label{
+                            position: absolute;
+                            top: 40%;
+                            left: 0px;
+                            transform: translate(5%, -100%);
+                            width:100%;
+                            height:20px;
+                            background:#fff;
+                            border:1px solid black;
+                            text-align:center;
+                        }
+
+                        .timeline-article .content-box{
+                          box-shadow: 2px 2px 4px 0px #c1c1c1;
+                          border:1px solid #666;
+                          border-radius: 5px;
+                          background-color: #fff;
+                          width: 120px;
+                          position: absolute;
+                          top: 80%;
+                          left: -50px;
+                          padding:5px;
+                          text-align:center;
+
+                        }
+                        .timeline-article-top .content-box:before{
+                          content: " ";
+                          position:absolute;
+                          left:50%;
+                          transform: translateX(-50%);
+                          top:-20px;
+                          border:10px solid transparent;
+                          border-bottom-color: #666;
+                        }
+
+                        @media (max-width:460px){
+                          body{
+                            display: none;
+                          }
+                        }
+
+                        .key-term {
+                            font-weight:bold;
+                            font-style: italic;
+                        }
+
+                    </style>
+                    <!-- LIGHTBOX CSS -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
+
+
+
+                    <!-- HIT START -->
+                    <div id="hit" class="container">
+                        <!-- ACCORDION START -->
+                        <div class="col-12 accordion" id="hitinfo">
+                            <!-- INSTRUCTIONS START -->
+                            <div class="card">
+                                <div class="card-header id="instructionsHeading">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#instructions" aria-expanded="true" aria-controls="instructions">
+                                            Instructions (click to expand)
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div class="collapse show" id="instructions" aria-labelledby="instructionsHeading" data-parent="#hitinfo">
+                                    <div class="card-body">
+                                        <p>Thanks for participating in this HIT!</p>
+
+                                        <div class="pl-2 pt-2 pb-2 border">
+                                        Instruction version: <span style="font-size:200%">♘</span> <!--♬♘✾☃ -->
+                                        <em>(If this is the first time seeing this image for this task, then please pay attention to updates.)</em>
+
+                                        <br><br>
+                                        <p class="font-weight-bold"> UPDATES:</p>
+                                        <ul>
+                                            <li>If you see a personal name (of an individual or a particular entity like a company) in the action/situation, please mark this as Cannot Interpret (also in the instructions below). Names of locations are not included here because they persist over time and across individuals.</li>
+                                            <li>New FAQ added.</li>
+                                        </u>
+
+                                        </div>
+
+                                        <div class="mt-4 mb-2 font-weight-bold">TASK DESCRIPTION:</div>
+                                        <p>In this task we assess the duration of an action or a situation.<br>
+                                        Tell us if the duration specified is <strong>reasonable</strong> for the given action/situation.</p>
+                                            <ul class="smaller-text mb-3">
+                                                <li><span class="text2">Reasonable</span>: The durations are reasonable for the action/situation.
+                                                    [<a href="https://ai2-atomic.s3-us-west-2.amazonaws.com/images/duration_examples/bake.png" data-lightbox="image-reasonable" data-title="bake">Example 1</a>,
+                                                    <a href="https://ai2-atomic.s3-us-west-2.amazonaws.com/images/duration_examples/practiced.png" data-lightbox="image-reasonable" data-title="practiced">Example 2</a>]
+
+                                                <li class="mt-1"><span class="text1">Moderately Reasonable</span>: The durations are moderately reasonable. Or the durations are reasonable for the action/situation once variabilities of an action/situation is considered.
+                                                    [<a href="https://ai2-atomic.s3-us-west-2.amazonaws.com/images/duration_examples/remained_high.png" data-lightbox="image-mreasonable" data-title="remained high">Example 3</a>,
+                                                    <a href="https://ai2-atomic.s3-us-west-2.amazonaws.com/images/duration_examples/hold.png" data-lightbox="image-mreasonable" data-title="hold">Example 4</a>,
+                                                    <a href="https://ai2-atomic.s3-us-west-2.amazonaws.com/images/duration_examples/worked.png" data-lightbox="image-mreasonable" data-title="worked">Example 5</a>]
+
+                                                <li class="mt-1"><span class="text-1">Unreasonable</span>: The durations are not reasonable.
+                                                    [<a href="https://ai2-atomic.s3-us-west-2.amazonaws.com/images/duration_examples/ate_a_grape.png" data-lightbox="image-6" data-title="ate a grape">Example 6</a>]
+
+
+                                                <li class="mt-1"><span class="badge badge-info">Updated!</span><span class="text-2">Cannot Interpret Action/Situation</span>: Cannot interpret what the action or the situation means,
+                                                <u class="font-weight-bold">or</u> the action/situation contains a personal name (of an individual or a particular entity like a company).
+                                                Names of locations are not included here because they persist over time and across individuals.
+                                                    [<a href="https://ai2-atomic.s3-us-west-2.amazonaws.com/images/duration_examples/went_5_0.png" data-lightbox="image-7" data-title="went 5 0">Example 7</a>]
+
+                                            </ul>
+
+                                        <p><span class="badge badge-warning">TIP #1</span> If you find yourself stuck between <span class="text2">Reasonable</span> and <span class="text1">Moderately Reasonable</span>,
+                                        please go with your gut/intuition. </p>
+
+                                        <p><span class="badge badge-warning">TIP #2</span> If you simply can't interpret the action/situation or significant amount of information is missing
+                                        from the phrase, it is okay to mark <span class="text-2">Cannot Interpret Action/Situation</span>. We are very much aware that there are certain levels of odd phrases in the data!</p>
+
+
+                                        <div class="mt-4 mb-2 font-weight-bold">HOW TO READ THE CHART:</div>
+                                        <ul>
+                                        <li><strong>Y-axis:</strong> Duration unit categories (seconds, minutes, hours, decades, etc)</li>
+                                        <li><strong>X-axis:</strong> Probability distribution in percentage (%) over the Y-axis categories.
+                                        Given <a href="https://ai2-atomic.s3-us-west-2.amazonaws.com/images/duration_examples/hold.png" data-lightbox="image-4" data-title="hold">Example 4</a> above,</li>
+                                            <ul class="smaller-text mb-1 mt-1">
+                                            <li>"hold" has ~27% chance of lasting seconds
+                                            <li>"hold" has ~26% chance of lasting years
+                                            <li>"hold" has ~11% chance of lasting decades
+                                            <li>"hold" has ~2% chance of lasting hours
+                                            </ul>
+                                        In other words, the act of "holding" will mostly likely last seconds or years.
+
+                                        <li class="mt-2">A good chart will reflect <strong>highest % in the most relevant duration units</strong> and less in others</li>
+                                        </ul>
+
+                                        <p><span class="badge badge-warning">TIP #3</span> Overall, you want to <u>pay closest attention</u> to the peaks (longest/longer bars). If those seem to be on target, you can be more forgiving of the low percentage point bars
+                                            (especially ones that are have very low likelihood).</p>
+
+                                        <p><span class="badge badge-warning">TIP #4</span> This data will be used to teach AI systems. Do what you can to be accurate, but also trust your instincts and don't stress over a single question for too long. </p>
+
+                                        <div class="mt-4 mb-2 font-weight-bold">FAQs:</div>
+                                        <ul>
+                                            <li><em class="font-weight-bold">This action/situation doesn't seem to have a duration. How do I judge this?</em>
+                                            <br>Construct a sentence by adding on "<u>for</u> X minutes/hours" or "<u>in</u> X minutes/hours".
+                                                <ul class="mb-2 mt-2">
+                                                    <li><span class="badge badge-secondary">put beer in fridge</span>
+                                                    <br>- "I put the beer in the fridge <u>for 30 minutes</u>": It means you kept on putting in bottles of beer in the fridge.</li>
+                                                    <li><span class="badge badge-secondary">discovered</span>
+                                                    <br>- "They discovered the cure <u>in 10 days</u>!": It means it took them 10 days to get to the point of discovery.</li>
+                                                </ul>
+                                            These are valid interpretations. Now check if the given durations make sense under the interpretation.
+                                            </li>
+
+                                            <li class="mt-2"><em class="font-weight-bold"><span class="badge badge-info">New!</span> I can think of a potential duration that is missing from the chart. How do I handle this?</em>
+                                            <br>Ask yourself: if the missing duration bar were to be present in the chart, would it be among the longest peaks (or longer than the longest peaks)?
+                                                <ul class="mb-2 mt-2">
+                                                    <li>
+                                                    If yes, this means a significant loss of information in the chart, so the data would be <span class="text-1">Unreasonable</span>.</li>
+                                                    <li>If no (the bar would be relatively short in the chart), then the data is likely <span class="text1">Moderately Reasonable</span>. </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- MTURK INPUT START -->
+                        <div class="mb-1 col-12">
+                            <form name='mturk_form' method='post' id='mturk_form' action='https://www.mturk.com/mturk/externalSubmit'>
+                                <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+                                <input type='hidden' name='tm' id='tm'/>
+
+
+
+                                <div id="question" class="question">
+                                    <div class="row question-choice-container col-12" >
+                                        <div class="row col-12 border pt-1 pb-1 mb-1 ml-2 border-warning" style="background-color:#eee">
+                                            <span>Action/Situation: <span class="goal-sm">${event1}</span></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="offset-1 col col-5 pt-4">
+                                            Are the time durations reasonable for the above action/situation?
+                                            <br><br>
+
+                                            <div class="mt-2">
+
+
+                                                <div class="col-12">
+                                                    <input type="radio" name="reasonable-q1" id="reasonable-q1-1"  value="2" required>
+                                                    <label>
+                                                        <span class="text2">Reasonable</span>
+                                                    </label>
+                                                </div>
+
+
+                                                <div class="col-12">
+                                                    <input type="radio" name="reasonable-q1" id="reasonable-q1-2"  value="1" required>
+                                                    <label>
+                                                        <span class="text1">Moderately Reasonable</span>
+                                                    </label>
+                                                </div>
+
+
+                                                <div class="col-12">
+                                                    <input type="radio" name="reasonable-q1" id="reasonable-q1-3"  value="-1" required>
+                                                    <label>
+                                                        <span class="text-1">Unreasonable</span>
+                                                    </label>
+                                                </div>
+
+
+                                                <div class="col-12">
+                                                    <input type="radio" name="reasonable-q1" id="reasonable-q1-4"  value="-2" required>
+                                                    <label>
+                                                        <span class="text-2">Cannot Interpret Action/Situation</span>
+                                                    </label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col col-5">
+                                            <div id="chart-durations-q1" class="chart-durations" style="width: 500px; height: 400px;">
+                                                <input type="hidden" value="${durations1}" id="durations-q1-values" name="durations-q1-values"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div id="question" class="question">
+                                    <div class="row question-choice-container col-12" >
+                                        <div class="row col-12 border pt-1 pb-1 mb-1 ml-2 border-warning" style="background-color:#eee">
+                                            <span>Action/Situation: <span class="goal-sm">${event2}</span></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="offset-1 col col-5 pt-4">
+                                            Are the time durations reasonable for the above action/situation?
+                                            <br><br>
+
+                                            <div class="mt-2">
+
+
+                                                <div class="col-12">
+                                                    <input type="radio" name="reasonable-q2" id="reasonable-q2-1"  value="2" required>
+                                                    <label>
+                                                        <span class="text2">Reasonable</span>
+                                                    </label>
+                                                </div>
+
+
+                                                <div class="col-12">
+                                                    <input type="radio" name="reasonable-q2" id="reasonable-q2-2"  value="1" required>
+                                                    <label>
+                                                        <span class="text1">Moderately Reasonable</span>
+                                                    </label>
+                                                </div>
+
+
+                                                <div class="col-12">
+                                                    <input type="radio" name="reasonable-q2" id="reasonable-q2-3"  value="-1" required>
+                                                    <label>
+                                                        <span class="text-1">Unreasonable</span>
+                                                    </label>
+                                                </div>
+
+
+                                                <div class="col-12">
+                                                    <input type="radio" name="reasonable-q2" id="reasonable-q2-4"  value="-2" required>
+                                                    <label>
+                                                        <span class="text-2">Cannot Interpret Action/Situation</span>
+                                                    </label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col col-5">
+                                            <div id="chart-durations-q2" class="chart-durations" style="width: 500px; height: 400px;">
+                                                <input type="hidden" value="${durations2}" id="durations-q2-values" name="durations-q2-values"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div id="question" class="question">
+                                    <div class="row question-choice-container col-12" >
+                                        <div class="row col-12 border pt-1 pb-1 mb-1 ml-2 border-warning" style="background-color:#eee">
+                                            <span>Action/Situation: <span class="goal-sm">${event3}</span></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="offset-1 col col-5 pt-4">
+                                            Are the time durations reasonable for the above action/situation?
+                                            <br><br>
+
+                                            <div class="mt-2">
+
+
+                                                <div class="col-12">
+                                                    <input type="radio" name="reasonable-q3" id="reasonable-q3-1"  value="2" required>
+                                                    <label>
+                                                        <span class="text2">Reasonable</span>
+                                                    </label>
+                                                </div>
+
+
+                                                <div class="col-12">
+                                                    <input type="radio" name="reasonable-q3" id="reasonable-q3-2"  value="1" required>
+                                                    <label>
+                                                        <span class="text1">Moderately Reasonable</span>
+                                                    </label>
+                                                </div>
+
+
+                                                <div class="col-12">
+                                                    <input type="radio" name="reasonable-q3" id="reasonable-q3-3"  value="-1" required>
+                                                    <label>
+                                                        <span class="text-1">Unreasonable</span>
+                                                    </label>
+                                                </div>
+
+
+                                                <div class="col-12">
+                                                    <input type="radio" name="reasonable-q3" id="reasonable-q3-4"  value="-2" required>
+                                                    <label>
+                                                        <span class="text-2">Cannot Interpret Action/Situation</span>
+                                                    </label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col col-5">
+                                            <div id="chart-durations-q3" class="chart-durations" style="width: 500px; height: 400px;">
+                                                <input type="hidden" value="${durations3}" id="durations-q3-values" name="durations-q3-values"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <!-- OPTIONAL FEEDBACK -->
+                                <div class="row mt-5">
+                                    <div class="col-8 offset-2 col-lg-6 offset-lg-3">
+                                        <p>(Optional) Please let us know if anything was unclear, if you experienced any issues, or if you have any other fedback for us.</p>
+                                        <textarea id="feedback" name="feedback" rows=3></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- SUBMIT BUTTON -->
+                                <div class="row mt-5">
+                                    <div class="col-2 offset-5">
+                                        <input id="submitButton" onclick="getnext()" type="submit" value="Submit">
+                                    </div>
+                                </div>
+
+                            </form>
+                            <script language='Javascript'>turkSetAssignmentID();</script>
+                        </div>
+                        <!-- MTURK INPUT END -->
+                    </div>
+		            <!-- HIT END -->
+
+                <!-- BOOSTRAP JS -->
+                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+                <!-- HITPUB JS -->
+                <script id="hitpub_js">
+                    $(document).ready(fill_chart);
+
+
+                    function fill_chart() {
+
+                        $('.chart-durations').each(function() {
+                            durations_val = $(this).children("input[type='hidden']:first").val();
+                            draw_chart(durations_val.split("|"), $(this).attr("id") );
+                        });
+
+                    }
+
+                    function draw_chart(durations_val, chart_container_id) {
+                        var chart = anychart.bar();
+                        // set the data
+                        chart.data([
+                          ["seconds", durations_val[0]],
+                          ["minutes", durations_val[1]],
+                          ["hours", durations_val[2]],
+                          ["days", durations_val[3]],
+                          ["weeks", durations_val[4]],
+                          ["months", durations_val[5]],
+                          ["years", durations_val[6]],
+                          ["decades", durations_val[7]],
+                          ["centuries", durations_val[8]],
+                          ["forever", durations_val[9]]
+                        ]);
+                        // set chart title
+                        //    chart.title("Top 5 pancake fillings");
+                        // set the container element
+                        chart.container(chart_container_id);
+                        // initiate chart display
+                        chart.draw();
+
+                    }
+
+                    // TIME ME CODE
+                    // TimeMe.js
+                    (function () { var e, t; e = this, t = function () { var r = { startStopTimes: {}, idleTimeoutMs: 3e4, currentIdleTimeMs: 0, checkStateRateMs: 250, active: !1, idle: !1, currentPageName: "default-page-name", timeElapsedCallbacks: [], userLeftCallbacks: [], userReturnCallbacks: [], trackTimeOnElement: function (e) { var t = document.getElementById(e); t && (t.addEventListener("mouseover", function () { r.startTimer(e) }), t.addEventListener("mousemove", function () { r.startTimer(e) }), t.addEventListener("mouseleave", function () { r.stopTimer(e) }), t.addEventListener("keypress", function () { r.startTimer(e) }), t.addEventListener("focus", function () { r.startTimer(e) })) }, getTimeOnElementInSeconds: function (e) { var t = r.getTimeOnPageInSeconds(e); return t || 0 }, startTimer: function (e, t) { if (e || (e = r.currentPageName), void 0 === r.startStopTimes[e]) r.startStopTimes[e] = []; else { var n = r.startStopTimes[e], i = n[n.length - 1]; if (void 0 !== i && void 0 === i.stopTime) return } r.startStopTimes[e].push({ startTime: t || new Date, stopTime: void 0 }), r.active = !0, r.idle = !1 }, stopAllTimers: function () { for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++)r.stopTimer(e[t]) }, stopTimer: function (e, t) { e || (e = r.currentPageName); var n = r.startStopTimes[e]; void 0 !== n && 0 !== n.length && (void 0 === n[n.length - 1].stopTime && (n[n.length - 1].stopTime = t || new Date), r.active = !1) }, getTimeOnCurrentPageInSeconds: function () { return r.getTimeOnPageInSeconds(r.currentPageName) }, getTimeOnPageInSeconds: function (e) { var t = r.getTimeOnPageInMilliseconds(e); return void 0 === t ? void 0 : t / 1e3 }, getTimeOnCurrentPageInMilliseconds: function () { return r.getTimeOnPageInMilliseconds(r.currentPageName) }, getTimeOnPageInMilliseconds: function (e) { var t = r.startStopTimes[e]; if (void 0 !== t) { for (var n = 0, i = 0; i < t.length; i++) { var s = t[i].startTime, o = t[i].stopTime; void 0 === o && (o = new Date), n += o - s } return Number(n) } }, getTimeOnAllPagesInSeconds: function () { for (var e = [], t = Object.keys(r.startStopTimes), n = 0; n < t.length; n++) { var i = t[n], s = r.getTimeOnPageInSeconds(i); e.push({ pageName: i, timeOnPage: s }) } return e }, setIdleDurationInSeconds: function (e) { var t = parseFloat(e); if (!1 !== isNaN(t)) throw { name: "InvalidDurationException", message: "An invalid duration time (" + e + ") was provided." }; return r.idleTimeoutMs = 1e3 * e, this }, setCurrentPageName: function (e) { return r.currentPageName = e, this }, resetRecordedPageTime: function (e) { delete r.startStopTimes[e] }, resetAllRecordedPageTimes: function () { for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++)r.resetRecordedPageTime(e[t]) }, resetIdleCountdown: function () { r.idle && r.triggerUserHasReturned(), r.idle = !1, r.currentIdleTimeMs = 0 }, callWhenUserLeaves: function (e, t) { this.userLeftCallbacks.push({ callback: e, numberOfTimesToInvoke: t }) }, callWhenUserReturns: function (e, t) { this.userReturnCallbacks.push({ callback: e, numberOfTimesToInvoke: t }) }, triggerUserHasReturned: function () { if (!r.active) for (var e = 0; e < this.userReturnCallbacks.length; e++) { var t = this.userReturnCallbacks[e], n = t.numberOfTimesToInvoke; (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback()) } r.startTimer() }, triggerUserHasLeftPage: function () { if (r.active) for (var e = 0; e < this.userLeftCallbacks.length; e++) { var t = this.userLeftCallbacks[e], n = t.numberOfTimesToInvoke; (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback()) } r.stopAllTimers() }, callAfterTimeElapsedInSeconds: function (e, t) { r.timeElapsedCallbacks.push({ timeInSeconds: e, callback: t, pending: !0 }) }, checkState: function () { for (var e = 0; e < r.timeElapsedCallbacks.length; e++)r.timeElapsedCallbacks[e].pending && r.getTimeOnCurrentPageInSeconds() > r.timeElapsedCallbacks[e].timeInSeconds && (r.timeElapsedCallbacks[e].callback(), r.timeElapsedCallbacks[e].pending = !1); !1 === r.idle && r.currentIdleTimeMs > r.idleTimeoutMs ? (r.idle = !0, r.triggerUserHasLeftPage()) : r.currentIdleTimeMs += r.checkStateRateMs }, visibilityChangeEventName: void 0, hiddenPropName: void 0, listenForVisibilityEvents: function () { void 0 !== document.hidden ? (r.hiddenPropName = "hidden", r.visibilityChangeEventName = "visibilitychange") : void 0 !== document.mozHidden ? (r.hiddenPropName = "mozHidden", r.visibilityChangeEventName = "mozvisibilitychange") : void 0 !== document.msHidden ? (r.hiddenPropName = "msHidden", r.visibilityChangeEventName = "msvisibilitychange") : void 0 !== document.webkitHidden && (r.hiddenPropName = "webkitHidden", r.visibilityChangeEventName = "webkitvisibilitychange"), document.addEventListener(r.visibilityChangeEventName, function () { document[r.hiddenPropName] ? r.triggerUserHasLeftPage() : r.triggerUserHasReturned() }, !1), window.addEventListener("blur", function () { r.triggerUserHasLeftPage() }), window.addEventListener("focus", function () { r.triggerUserHasReturned() }), document.addEventListener("mousemove", function () { r.resetIdleCountdown() }), document.addEventListener("keyup", function () { r.resetIdleCountdown() }), document.addEventListener("touchstart", function () { r.resetIdleCountdown() }), window.addEventListener("scroll", function () { r.resetIdleCountdown() }), setInterval(function () { r.checkState() }, r.checkStateRateMs) }, websocket: void 0, websocketHost: void 0, setUpWebsocket: function (e) { if (window.WebSocket && e) { var t = e.websocketHost; try { r.websocket = new WebSocket(t), window.onbeforeunload = function () { r.sendCurrentTime(e.appId) }, r.websocket.onopen = function () { r.sendInitWsRequest(e.appId) }, r.websocket.onerror = function (e) { console && console.log("Error occurred in websocket connection: " + e) }, r.websocket.onmessage = function (e) { console && console.log(e.data) } } catch (e) { console && console.error("Failed to connect to websocket host.  Error:" + e) } } return this }, websocketSend: function (e) { r.websocket.send(JSON.stringify(e)) }, sendCurrentTime: function (e) { var t = { type: "INSERT_TIME", appId: e, timeOnPageMs: r.getTimeOnCurrentPageInMilliseconds(), pageName: r.currentPageName }; r.websocketSend(t) }, sendInitWsRequest: function (e) { var t = { type: "INIT", appId: e }; r.websocketSend(t) }, initialize: function (e) { var t = r.idleTimeoutMs || 30, n = r.currentPageName || "default-page-name", i = void 0, s = void 0; e && (t = e.idleTimeoutInSeconds || t, n = e.currentPageName || n, i = e.websocketOptions, s = e.initialStartTime), r.setIdleDurationInSeconds(t).setCurrentPageName(n).setUpWebsocket(i).listenForVisibilityEvents(), r.startTimer(void 0, s) } }; return r }, "undefined" != typeof module && module.exports ? module.exports = t() : "function" == typeof define && define.amd ? define([], function () { return e.TimeMe = t() }) : e.TimeMe = t() }).call(this);
+
+                    TimeMe.initialize({
+                        currentPageName: "task",
+                        idleTimeoutInSeconds: 30
+                    });
+
+                    $(document).ready(function() {
+                        $('#submitButton').click(function () {
+                            try {
+                                $('input[name=tm]').attr('value', TimeMe.getTimeOnCurrentPageInSeconds());
+                            } catch {
+                            }
+                            return true;
+                        });
+                    });
+                </script>
+                <!-- For charting JS -->
+                <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-base.min.js" type="text/javascript"></script>
+
+                <!-- LIGHTBOX JS -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox-plus-jquery.min.js"></script>

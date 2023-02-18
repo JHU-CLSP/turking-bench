@@ -1,0 +1,703 @@
+            <html lang="en">
+
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+                    <script type='text/javascript' src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script>
+
+                    <!-- BOOTSTRAP CSS -->
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+                    <!-- HITPUB CSS -->
+                    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
+                    <style id="hitpub_css">
+                        /***********************************************
+                        MOSAIC BOOSTRAP OVERWRITES
+                        ***********************************************/
+                        #hitinfo .card {
+                            border-radius: 0;
+                        }
+                        #hitinfo .card:first-child {
+                            border-bottom: 0;
+                        }
+                         #hitinfo button.btn-link {
+                            color: #06486F;
+                            text-decoration: none;
+                         }
+                        #hitinfo button.btn-link:hover {
+                            text-decoration: none;
+                        }
+                        #hit ul.question-choice {
+                            list-style-type: none;
+                        }
+                        #hit #mturk_form .card {
+                            border: none;
+                            background-color: inherit;
+                        }
+                        #hit .accordion .card-header {
+                            background-color: #E5E5E5;
+                            border: none;
+                        }
+                        #hit .card {
+                            border: none;
+                        }
+                        /***********************************************
+                        MOSAIC GENERAL STYLING
+                        ***********************************************/
+                        #hit {
+                            background-color: rgba(0,0,0,.03);
+                            padding-bottom: 4rem;
+                        }
+                         body {
+                             font-family: "Open Sans", "Roboto", sans-serif;
+                         }
+                        textarea#feedback {
+                            width: 100%;
+                            border: 1px solid #ddd;
+                        }
+                        textarea#feedback:focus {
+                            outline: none !important;
+                            border-color: #85c8ea;
+                        }
+                        input#submitButton {
+                            margin: auto;
+                            display: block;
+                            background-color: #2172a4;
+                            color: #fff;
+                            font-size: 1.125rem;
+                            padding: .5rem 1rem;
+                            cursor: pointer;
+                            border-radius: 1rem;
+                        }
+                        input#submitButton:hover {
+                            background-color: #06486F;
+                        }
+                        div.question-field-group .card-body {
+                            padding: 2rem 0 0;
+                        }
+                        div.form-check, div.form-check label, div.form-check input {
+                            cursor: pointer;
+                        }
+                        .example {
+                            padding: 2rem 0;
+                            border-bottom: solid 1px #ccc;
+                        }
+                        div.example:last-child {
+                            border-bottom: none;
+                        }
+                        div.question-container{
+                            padding: 5rem 0;
+                            border-bottom: solid 1px #ccc;
+                        }
+                        div.question-container:first-child{
+                            padding: 0 0 5rem;
+                        }
+                        li {
+                            margin-top: 0;
+                        }
+                        #instructions li.sub-warning {
+                            color: black;
+                        }
+                        #instructions li.good, #examples .good{
+                            color: green;
+                        }
+                        #instructions li.bad, #examples .bad{
+                            color: darkred;
+                        }
+                        div.question label {
+                            font-style: italic;
+                        }
+                        div.question label, input.inline-input , span.prefix {
+                            padding: .25rem 0;
+                        }
+                        input.inline-input , span.prefix{
+                            border: none;
+                        }
+                        input.inline-input:focus{
+                            outline: none;
+                        }
+                        div.input-container {
+                            /*border: solid 1px #ccc;*/
+                            background-color: white;
+                            padding-top: .5rem;
+                        }
+                        div.example label {
+                            padding: 0;
+                            margin-bottom: 0;
+                        }
+                        div.event-container, div.event-container input , div.question-toggle-container {
+                            color: #777;
+                        }
+                        ul.sublist li {
+                            color: black;
+                        }
+                        li.emphasize {
+                            font-weight: bold;
+                        }
+                        #mturk_form div.question {
+                            margin: 4rem 0 6rem;
+                        }
+                        textarea.inline-input {
+                            width: 100%;
+                            outline: none;
+                            border: none;
+                            padding: 0;
+                        }
+                        div.event-container {
+                            padding-top: 0;
+                        }
+                        div.event-container .input-container {
+                            padding-right: 30px;
+                        }
+                        div.event-container textarea {
+                            padding-right: 15px;
+                            padding-left: 15px;
+                        }
+                        div.textarea-container {
+                            padding-left: 0;
+                        }
+                        div.example .input-container {
+                            padding-top: 0;
+                        }
+                        div.example .row {
+                            padding: .25rem 0;
+                        }
+                        div.example .reason-container {
+                            font-style: italic;
+                            margin-top: 2rem;
+                            color: #777;
+                        }
+                        .example div.event-container, .example div.event-container input {
+                            color: inherit;
+                        }
+                        span.highlight {
+                            font-weight: bold;
+                            font-style: italic;
+                            text-decoration: underline;
+                        }
+                        li.level1 {
+                            margin-top: 1.25rem;
+                        }
+                    </style>
+                <!-- HIT START -->
+                <div id="hit" class="container">
+
+                        <!-- ACCORDION HEADER START -->
+                        <div class="accordion col-10 offset-1" id="hitinfo">
+                            <!-- INSTRUCTIONS START -->
+                            <div class="card">
+                                <div class="card-header id="instructionsHeading">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#instructions" aria-expanded="true" aria-controls="instructions">
+                                            Instructions (click to expand)
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div class="collapse show" id="instructions" aria-labelledby="instructionsHeading" data-parent="#hitinfo">
+                                    <div class="card-body">
+                                        <h5><b>Overview</b></h5>
+                                        <p>Thanks for participating in this HIT!</p>
+                                        <p>For this task, you will read a short sentence fragment depicting an event. The names of specific people have been replaced by generic words (e.g. "PersonX", "PersonY").</p>
+                                        <p><b>Your goal is to create a short story using event phrases.</b></p>
+                                        <ol type="a">
+                                            <li class="level1"><b>Read the given event.</b></li>
+                                            <li class="level1"><b>Describe what PersonX did <span class="highlight">before</span> the event.</b>
+                                                <ul class="sublist">
+                                                    <li>Ask yourself:
+                                                        <ul class="sublist">
+                                                            <li>Is there a <em>specfic action they needed to take <span class="highlight"</span>before</span>?</em></li>
+                                                            <li>What would most people do before the event?</li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="level1"><b>Describe what PersonX will do <span class="highlight">after</span> the event.</b>
+                                                <ul>
+                                                    <li>Ask yourself:
+                                                        <ul>
+                                                            <li>Is there a <em>specific action they need to take <span class="highlight">after</span>?</em></li>
+                                                            <li>What would most people do after the event?</li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="level1"><b>Mark "Event makes no sense" if you are unable to create a story.</b>
+                                                <ul>
+                                                    <li>NOTE: We have prefiltered the events so that most of them should make sense.</li>
+                                                </ul>
+                                            </li>
+                                        </ol>
+                                        <h5><b>Guidelines</b></h5>
+                                        <ul>
+                                            <li class="good"><b>Use present tense.</b></li>
+                                            <li class="good"><b>Use actions.</b></li>
+                                            <li class="good"><b>Be specific (see examples).</b></li>
+                                            <li class="bad"><b>Do not use wants, feelings, emotions (see examples).</b></li>
+                                            <li class="bad"><b>Do not use passive statements (see examples).</b></li>
+                                        </ul>
+                                   </div>
+                                </div>
+                            </div>
+                            <!-- INSTRUCTIONS END -->
+
+                            <!-- EXAMPLES START -->
+                            <div class="card">
+                                <div class="card-header id="examplesHeading">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#examples" aria-expanded="true" aria-controls="examples">
+                                            Examples (click to expand)
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div class="collapse" id="examples" aria-labelledby="examplesHeading" data-parent="#hitinfo">
+                                    <div class="card-body">
+
+
+                                        <!-- EXAMPLE START -->
+                                        <div class="question example">
+                                            <div class="prompt row">
+                                                <div class="q-num col-1"></div>
+                                                <div class="col-11">What did PersonX do before/after?</div>
+                                            </div>
+                                            <div class="col-11 offset-1 mt-4 pl-4 good">
+                                                <div class="before-container row">
+                                                    <label class="col-2">Before:</label>
+                                                    <div class="col-10 input-container">
+                                                        <div class="textarea-container">
+                                                            PersonX invites PersonY to a coffee shop.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="event-container row">
+                                                    <label class="col-2">Event:</label>
+                                                    <div class="col-10 input-container">
+                                                        <div class="col-12 textarea-container">PersonX buys PersonY coffee.</div>
+                                                    </div>
+                                                </div>
+                                                <div class="after-container row">
+                                                    <label class="col-2">After:</label>
+                                                    <div class="col-10 input-container">
+                                                        <div class="textarea-container">
+                                                            PersonX asks PersonY to sit down at a table.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="reason-container row">
+                                                    <label class="col-2">Reason:</label>
+                                                    <div class="col-6 input-container">
+                                                        Both before and after events are specific, detailed actions.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- QUESTION END -->
+
+
+                                        <!-- EXAMPLE START -->
+                                        <div class="question example">
+                                            <div class="prompt row">
+                                                <div class="q-num col-1"></div>
+                                                <div class="col-11">What did PersonX do before/after?</div>
+                                            </div>
+                                            <div class="col-11 offset-1 mt-4 pl-4 good">
+                                                <div class="before-container row">
+                                                    <label class="col-2">Before:</label>
+                                                    <div class="col-10 input-container">
+                                                        <div class="textarea-container">
+                                                            PersonX enters a radio contest.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="event-container row">
+                                                    <label class="col-2">Event:</label>
+                                                    <div class="col-10 input-container">
+                                                        <div class="col-12 textarea-container">PersonX wins concert tickets.</div>
+                                                    </div>
+                                                </div>
+                                                <div class="after-container row">
+                                                    <label class="col-2">After:</label>
+                                                    <div class="col-10 input-container">
+                                                        <div class="textarea-container">
+                                                            PersonX accepts tickets via email
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="reason-container row">
+                                                    <label class="col-2">Reason:</label>
+                                                    <div class="col-6 input-container">
+                                                        Both before and after events are specific, detailed actions.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- QUESTION END -->
+
+
+                                        <!-- EXAMPLE START -->
+                                        <div class="question example">
+                                            <div class="prompt row">
+                                                <div class="q-num col-1"></div>
+                                                <div class="col-11">What did PersonX do before/after?</div>
+                                            </div>
+                                            <div class="col-11 offset-1 mt-4 pl-4 good">
+                                                <div class="before-container row">
+                                                    <label class="col-2">Before:</label>
+                                                    <div class="col-10 input-container">
+                                                        <div class="textarea-container">
+                                                            PersonX starts their shift at the diner.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="event-container row">
+                                                    <label class="col-2">Event:</label>
+                                                    <div class="col-10 input-container">
+                                                        <div class="col-12 textarea-container">PersonX takes food to the counter.</div>
+                                                    </div>
+                                                </div>
+                                                <div class="after-container row">
+                                                    <label class="col-2">After:</label>
+                                                    <div class="col-10 input-container">
+                                                        <div class="textarea-container">
+                                                            PersonX calls out the order is done.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="reason-container row">
+                                                    <label class="col-2">Reason:</label>
+                                                    <div class="col-6 input-container">
+                                                        The before event sets up a specific context, and the after event is a likely next step/action.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- QUESTION END -->
+
+
+                                        <!-- EXAMPLE START -->
+                                        <div class="question example">
+                                            <div class="prompt row">
+                                                <div class="q-num col-1"></div>
+                                                <div class="col-11">What did PersonX do before/after?</div>
+                                            </div>
+                                            <div class="col-11 offset-1 mt-4 pl-4 bad">
+                                                <div class="before-container row">
+                                                    <label class="col-2">Before:</label>
+                                                    <div class="col-10 input-container">
+                                                        <div class="textarea-container">
+                                                            PersonX wants to see PersonY.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="event-container row">
+                                                    <label class="col-2">Event:</label>
+                                                    <div class="col-10 input-container">
+                                                        <div class="col-12 textarea-container">PersonX rides the bus to PersonY's house.</div>
+                                                    </div>
+                                                </div>
+                                                <div class="after-container row">
+                                                    <label class="col-2">After:</label>
+                                                    <div class="col-10 input-container">
+                                                        <div class="textarea-container">
+                                                            PersonX is happy to see PersonY.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="reason-container row">
+                                                    <label class="col-2">Reason:</label>
+                                                    <div class="col-6 input-container">
+                                                        Involves wants and emotions.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- QUESTION END -->
+
+
+                                        <!-- EXAMPLE START -->
+                                        <div class="question example">
+                                            <div class="prompt row">
+                                                <div class="q-num col-1"></div>
+                                                <div class="col-11">What did PersonX do before/after?</div>
+                                            </div>
+                                            <div class="col-11 offset-1 mt-4 pl-4 bad">
+                                                <div class="before-container row">
+                                                    <label class="col-2">Before:</label>
+                                                    <div class="col-10 input-container">
+                                                        <div class="textarea-container">
+                                                            PersonX owns jeans.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="event-container row">
+                                                    <label class="col-2">Event:</label>
+                                                    <div class="col-10 input-container">
+                                                        <div class="col-12 textarea-container">PersonX always wears jeans.</div>
+                                                    </div>
+                                                </div>
+                                                <div class="after-container row">
+                                                    <label class="col-2">After:</label>
+                                                    <div class="col-10 input-container">
+                                                        <div class="textarea-container">
+                                                            PersonX is a farmer.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="reason-container row">
+                                                    <label class="col-2">Reason:</label>
+                                                    <div class="col-6 input-container">
+                                                        Doesn't describe actions - owning jeans and being a Farmer are passive states.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- QUESTION END -->
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- EXAMPLES END -->
+
+                        </div>
+                    <!-- ACCORDION HEADER END -->
+
+                    <!-- MTURK INPUT START -->
+                    <div class="col-10 offset-1 mt-3">
+                        <form name='mturk_form' method='post' id='mturk_form' autocomplete="off" action='https://www.mturk.com/mturk/externalSubmit'>
+                            <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+
+
+
+                            <!-- START QUESTIONS -->
+
+                            <!-- QUESTION1 START -->
+                            <div id="q1" class="question">
+                                <input type="hidden" name="Id1" value="${Id1}"/>
+                                <input type="hidden" name="Event1" value="${Event1}"/>
+                                <div class="prompt row mb-4">
+                                    <div class="q-num col-1">1)</div>
+                                    <div class="col-11">What did PersonX do before/after?</div>
+                                </div>
+                                <div id="sequence-container1" class="col-11 offset-1 pl-4 collapse show">
+                                        <div class="before-container row">
+                                            <label class="col-2">Before:</label>
+                                            <div class="col-8 row input-container">
+                                                <div class="prefix col-2">PersonX</div>
+                                                <div class="col-10 textarea-container">
+                                                    <textarea rows=1 name="before1" type="text" class="inline-input enabled" placeholder="..." required></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="event-container row">
+                                            <label class="col-2">Event:</label>
+                                            <div class="col-8 input-container row">
+                                                <textarea rows=1 name="event1" type="text" value="" class="inline-input" disabled>${Event1}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="after-container row">
+                                            <label class="col-2">After:</label>
+                                            <div class="col-8 input-container row">
+                                                <div class="prefix col-2">PersonX</div>
+                                                <div class="col-10 textarea-container">
+                                                    <textarea rows=1 name="after1" type="text" class="inline-input enabled" placeholder="..." required></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="question-toggle-container row offset-2 pt-4 col-8">
+                                    <div class="form-check form-check-inline offset-1 col-8">
+                                        <label class="form-check-label pr-2" for="toggle-question1">Event makes no sense</label>
+                                        <input name="event-valid1" type="checkbox" class="form-check-input" id="toggle-question1" data-target="#sequence-container1">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- QUESTION1 END -->
+
+
+                            <!-- QUESTION2 START -->
+                            <div id="q2" class="question">
+                                <input type="hidden" name="Id2" value="${Id2}"/>
+                                <input type="hidden" name="Event2" value="${Event2}"/>
+                                <div class="prompt row mb-4">
+                                    <div class="q-num col-1">2)</div>
+                                    <div class="col-11">What did PersonX do before/after?</div>
+                                </div>
+                                <div id="sequence-container2" class="col-11 offset-1 pl-4 collapse show">
+                                        <div class="before-container row">
+                                            <label class="col-2">Before:</label>
+                                            <div class="col-8 row input-container">
+                                                <div class="prefix col-2">PersonX</div>
+                                                <div class="col-10 textarea-container">
+                                                    <textarea rows=1 name="before2" type="text" class="inline-input enabled" placeholder="..." required></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="event-container row">
+                                            <label class="col-2">Event:</label>
+                                            <div class="col-8 input-container row">
+                                                <textarea rows=1 name="event2" type="text" value="" class="inline-input" disabled>${Event2}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="after-container row">
+                                            <label class="col-2">After:</label>
+                                            <div class="col-8 input-container row">
+                                                <div class="prefix col-2">PersonX</div>
+                                                <div class="col-10 textarea-container">
+                                                    <textarea rows=1 name="after2" type="text" class="inline-input enabled" placeholder="..." required></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="question-toggle-container row offset-2 pt-4 col-8">
+                                    <div class="form-check form-check-inline offset-1 col-8">
+                                        <label class="form-check-label pr-2" for="toggle-question2">Event makes no sense</label>
+                                        <input name="event-valid2" type="checkbox" class="form-check-input" id="toggle-question2" data-target="#sequence-container2">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- QUESTION2 END -->
+
+
+                            <!-- QUESTION3 START -->
+                            <div id="q3" class="question">
+                                <input type="hidden" name="Id3" value="${Id3}"/>
+                                <input type="hidden" name="Event3" value="${Event3}"/>
+                                <div class="prompt row mb-4">
+                                    <div class="q-num col-1">3)</div>
+                                    <div class="col-11">What did PersonX do before/after?</div>
+                                </div>
+                                <div id="sequence-container3" class="col-11 offset-1 pl-4 collapse show">
+                                        <div class="before-container row">
+                                            <label class="col-2">Before:</label>
+                                            <div class="col-8 row input-container">
+                                                <div class="prefix col-2">PersonX</div>
+                                                <div class="col-10 textarea-container">
+                                                    <textarea rows=1 name="before3" type="text" class="inline-input enabled" placeholder="..." required></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="event-container row">
+                                            <label class="col-2">Event:</label>
+                                            <div class="col-8 input-container row">
+                                                <textarea rows=1 name="event3" type="text" value="" class="inline-input" disabled>${Event3}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="after-container row">
+                                            <label class="col-2">After:</label>
+                                            <div class="col-8 input-container row">
+                                                <div class="prefix col-2">PersonX</div>
+                                                <div class="col-10 textarea-container">
+                                                    <textarea rows=1 name="after3" type="text" class="inline-input enabled" placeholder="..." required></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="question-toggle-container row offset-2 pt-4 col-8">
+                                    <div class="form-check form-check-inline offset-1 col-8">
+                                        <label class="form-check-label pr-2" for="toggle-question3">Event makes no sense</label>
+                                        <input name="event-valid3" type="checkbox" class="form-check-input" id="toggle-question3" data-target="#sequence-container3">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- QUESTION3 END -->
+
+                            <!-- END QUESTIONS -->
+
+                            <!-- OPTIONAL FEEDBACK -->
+                            <div class="row mt-5">
+                                <div class="col-8 offset-2">
+                                    <p>(Optional) Please let us know if anything was unclear, if you experienced any issues, or if you have any other fedback for us.</p>
+                                    <textarea id="feedback" name="feedback" rows=3></textarea>
+                                </div>
+                            </div>
+
+                            <!-- SUBMIT BUTTON -->
+                            <div class="row mt-5">
+                                <div class="col-2 offset-5">
+                                    <input id="submitButton" onclick="getnext()" type="submit" value="Submit">
+                                </div>
+                            </div>
+
+                        </form>
+                        <script language='Javascript'>turkSetAssignmentID();</script>
+                    </div>
+                    <!-- MTURK INPUT END -->
+
+                </div>
+                <!-- HIT END -->
+
+                <!-- BOOSTRAP JS -->
+                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+                <!-- HITPUB JS -->
+                <script id="hitpub_js">
+                    // radio toggle collapse function
+                    function addToggleListener(targetId, toggleId) {
+                        var targetElement = document.getElementById(targetId);
+                        var targetCollapse = $("#" + targetId);
+                        var toggleElement = document.getElementById(toggleId);
+                        toggleElement.addEventListener("click", function() {
+                            var toggleInputs = targetElement.getElementsByClassName("inline-input enabled");
+                    		if (targetElement.classList.contains("show")) {
+                                console.log('hide')
+                                targetCollapse.collapse('toggle');
+                                // add required attribute to fields
+                                for (var i = 0; i < toggleInputs.length; i++) {
+                                    toggleInputs[i].required = false;
+                                }
+                            }
+                            else {
+                                console.log('show')
+                                targetCollapse.collapse('toggle');
+                                // add required attribute to fields
+                                for (var i = 0; i < toggleInputs.length; i++) {
+                                    toggleInputs[i].required = true;
+                                }
+                            }
+                        });
+                    }
+                    // add toggle listener to question elements
+                    for (var i = 1; i < 4; i++) {
+                        var containerId = "sequence-container" + String(i);
+                        var toggleId = "toggle-question" + String(i);
+                        addToggleListener(containerId, toggleId);
+                    }
+
+                    // automatically resize textarea fields based on content
+                    var autoExpand = function (field) {
+                    	// Reset field height
+                    	field.style.height = 'inherit';
+                    	// Get the computed styles for the element
+                    	var computed = window.getComputedStyle(field);
+                    	// Calculate the height
+                    	var height = parseInt(computed.getPropertyValue('border-top-width'), 10)
+                    	             + parseInt(computed.getPropertyValue('padding-top'), 10)
+                    	             + field.scrollHeight
+                    	             + parseInt(computed.getPropertyValue('padding-bottom'), 10)
+                    	             + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
+
+                    	field.style.height = height + 'px';
+                    };
+                    // add autoExpand listeners to textarea inputs
+                    document.addEventListener('input', function (event) {
+                    	if (event.target.tagName.toLowerCase() !== 'textarea') return;
+                    	autoExpand(event.target);
+                    }, false);
+
+                    // autoExpand inputs on document load
+                    document.addEventListener('DOMContentLoaded', function(event) {
+                       inputs = document.getElementsByTagName('textarea');
+                       for (var i = 1; i < inputs.length; i++) {
+                           autoExpand(inputs[i]);
+                       }
+                    })
+
+                    // prevent submit on enter key
+                    document.getElementById("mturk_form").onkeypress = function(e) {
+                        var key = e.charCode || e.keyCode || 0;
+                        if (key == 13) {
+                          e.preventDefault();
+                        }
+                    }
+                </script>

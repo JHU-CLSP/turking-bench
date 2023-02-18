@@ -1,0 +1,130 @@
+<!-- Bootstrap v3.0.3 -->
+<link href="https://s3.amazonaws.com/mturk-public/bs30/css/bootstrap.min.css" rel="stylesheet" />
+<section class="container" id="Other" style="margin-bottom:15px; padding: 10px 10px; font-family: Verdana, Geneva, sans-serif; color:#333333; font-size:0.9em;">
+<div class="row col-xs-12 col-md-12"><!-- Instructions -->
+<div class="panel panel-primary">
+<div class="panel-heading" id="instructions-bar"><strong>Instructions</strong> - click to hide</div>
+
+<div class="panel-body" id="instructions">
+<p class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);">You are given the text of an article. We are considering three main categories of words, and your objective is to identify <b>at least 10 complex words</b>, i.e. words that are less common/more difficult to understand.Please click on these complex words to highlight them below.</p>
+
+<p class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);">The three categories of words are as follows:</p>
+
+<ul>
+	<li class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);"><b><font color="blue">Complex</font></b> = The word is difficult to understand in the context of the sentence, and simplifying it would be helpful, especially for younger children, people with reading disabilities, and people learning a second language. Note that some words can be difficult in some sentences, and simple in others.</li>
+	<li class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);"><b><font color="green">Simple</font></b> = This word is easy to understand in the context of the sentence, and simplifying it is not necessary</li>
+	<li class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);"><b><font color="red">Irrelevant</font></b> = This word is a proper noun (e.g. a part of a title, name or a person, place, etc.), and should not be considered complex or simple.</li>
+</ul>
+
+<table border="2" class="center">
+	<tbody>
+		<tr>
+			<th class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);">Example Sentence</th>
+			<th class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);">Complex Words</th>
+			<th class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);">Simple Words</th>
+			<th class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);">Irrelevant Words</th>
+		</tr>
+		<tr>
+			<td class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);">That <font color="blue">particularly</font> upsets Jacob.</td>
+			<td class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);"><font color="blue">particularly</font></td>
+			<td class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);"><font color="green">That, upsets</font></td>
+			<td class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);"><font color="red">Jacob</font></td>
+		</tr>
+		<tr>
+			<td class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);">She only makes <font color="blue">sporadic</font> mistakes.</td>
+			<td class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);"><font color="blue">sporadic</font></td>
+			<td class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);"><font color="green">she, only, make, mistakes, in</font></td>
+			<td class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);">&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);">No city <font color="blue">evokes memories</font> like New York.</td>
+			<td class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);"><font color="blue">evokes, memories</font></td>
+			<td class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);"><font color="green">No, city, like</font></td>
+			<td class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);"><font color="red">New York</font></td>
+		</tr>
+	</tbody>
+</table>
+
+<div>&nbsp;</div>
+
+<p class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);">These sentences have been pre-processed by separating punctuation, and replacing double quotations with single quotes. Please ignore this in your work and do not allow it to affect your judgement of whether each blue word is complex, simple, or irrelevant.</p>
+
+<p class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);">These HITs will be <b>quality controlled</b>. If you are unsure whether or not you are doing them well, we recommend you do a small number and wait for feedback before continuing.</p>
+
+<p class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);">Thank you in advance!</p>
+</div>
+</div>
+<!-- End Instructions --><!-- Content Body --></div>
+
+<h1>Highlight at least 10 complex words</h1>
+<style type="text/css"><!--
+span.white { background-color: #FFFFFF; }
+span.highlight  { background-color: yellow; }
+
+A:link {text-decoration: none; color: black;}
+A:visited {text-decoration: none; color: black;}
+A:active {text-decoration: none; color: black;}
+A:hover {text-decoration: none; color: black;}
+//-->
+</style>
+<script type="text/Javascript">
+        var sentence = "${text}";
+        var words = sentence.split(/\s/);
+        var initialhighlights = "";
+        var highlights = initalizeBooleanArray(words.length, initialhighlights);
+        writeSentence(words);
+
+        function initalizeBooleanArray(length, indexOfTruesString) {
+                var array = new Array(length);
+                for (i = 0; i < array.length; i++) {
+                        array[i] = false;
+                }
+                return array;
+        }
+
+        // This method wraps every word in a sentence with a javascript click function.
+        function writeSentence(words) {
+                for(i = 0; i < words.length; i++) {
+                        var word = words[i];
+                        document.write('<span class="white" id="word.' + i + '">');
+                        document.write('<a href="javascript:clickWord(' + i + ')"> ');
+                        document.write(word);
+                        document.write('</a>');
+                        document.write('</span>');
+                }
+        }
+
+
+        function boolArrayToString(array) {
+                var arrayString = "";
+                for(i = 0; i < array.length; i++) {
+                        if(array[i]) {
+                                arrayString = arrayString + "1";
+                        } else {
+                                arrayString = arrayString + "0";
+                        }
+                }
+                return arrayString;
+        }
+
+
+
+        function clickWord(x) {
+                highlights[x] = (!highlights[x]);
+                var y = 0;
+                var word = document.getElementById("word."+x);
+                if(highlights[x]) {
+                        word.className = "highlight";
+                } else {
+                        word.className = "white";
+                }
+                document.getElementById('highlights').value = boolArrayToString(highlights);
+        }
+
+</script>
+<form action="edit" method="get" name="mturk_form"><input id="highlights" name="highlights" type="hidden" value="unchanged" />
+<p>&nbsp;</p>
+<font color="gray" size="-1">Comments</font><br />
+<textarea cols="30" name="comment" rows="5"> </textarea><br />
+<input name="submit" type="submit" value="Submit" />&nbsp;</form>
+</section>

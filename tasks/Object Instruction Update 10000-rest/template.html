@@ -1,0 +1,727 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<section class="container" id="Survey">
+    <div class="row" id="workContent">
+        <div class="col-xl-12">
+
+            <!-- ACCORDION HEADER START -->
+            <class="accordion col-12" id="hitinfo">
+                <!-- INSTRUCTIONS START -->
+                <div class="card">
+                    <div class="card-header" id="instructionsHeading">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#instructions" aria-expanded="true" aria-controls="instructions">
+                                Instructions (click to expand/collapse)
+                            </button>
+                        </h5>
+                    </div>
+                    <div class="collapse show" id="instructions" aria-labelledby="instructionsHeading" data-parent="#hitinfo">
+                        <div class="card-body">
+                            <h5><b>Overview</b></h5>
+                            <p>Thanks for participating in this HIT!</p>
+                            <p>In this task, you will be asked to <span class="emph"> write instructions </span> that describe physical actions done by a robot in the video. <br>
+                            Hopefully, a robot should be able to reproduce the same actions based on your written instructions!</p>
+                            <h5><b>Guidelines</b></h5>
+                            <ul>
+                              <li>You will be shown <b> a video </b> where a robot agent performs some physical, interactive actions with <b>ONE</b> object. </li>
+                              <li>Provide precise <b> instructions </b> in 1-2 sentences that describe actions done by the agent in the video, and can be reproduced by the agent.</li>
+                                <li><span class="emph"><b>NOTE:</b> Use the word <b>'object'</b> in your description to describe the object the robot interacts with (e.g. 'lift the object...'). See the example instruction below. </span></li>
+                                <li>But, you <b> can name different objects</b> in the scene (e.g. move the <b>'object'</b> ahead and drop it on the <b>'desk'</b>) in your instruction other than the object of interest. </li>
+                                <li><b>DO NOT</b> include if the object is <b>BROKEN or ON GROUND</b>. FYI, we will be asking a model to answer these questions..</li>
+                                <li>Please state all the <b>actions</b> happening in the video leveraging some details specific to the scene and relative to other objects (see example below).</li>
+                                <li>We have included <b>optional fast-forwarded videos</b> that can track the object throughout the video and show the top view of the object to help you understand the content. But only the first video is needed to write the instruction.</li>
+                                <li>Note: After the last physical action (push,throw, e.g.) by agent is executed, the object will be moved by itself via physics of the environment (e.g. gravity).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- INSTRUCTIONS END -->
+
+                <!-- EXAMPLES START -->
+                <div class="card">
+                    <div class="card-header" id="examplesHeading">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#examples" aria-expanded="true" aria-controls="examples">
+                                Examples (click to expand/collapse)
+                            </button>
+                        </h5>
+                    </div>
+                    <div class="collapse" id="examples" aria-labelledby="examplesHeading">
+                        <div class="card-body">
+
+                          <div class="row col-lg-12">
+                              <div class="img-container">
+                                <video height="300" width="600" controls loop>
+                                  <source src= "https://storage.googleapis.com/jamesp_euro/thor_rule/new_replay_experiments/drop_experiments/00357/smooth_video.mp4">
+                                  <!--<source src= "exp1/video.mp4">-->
+                                </video>
+                              </div>
+
+                              <div class="col-lg-12">
+                                  <p></p>
+                                  <h5> <b> Instruction:</b> Pick up and move the object <em> forward towards the stove </em>, then release it <em> above the  edge of the stove</em>.</h5>
+                                  <ul>
+                                  <li><h5> We use the word object instead of mug.</h5>
+                                  <li><h5> Details such as 'forward towards the stove' and 'above the edge of the stove' makes it easy for agent to reproduce this experiment.</h5>
+                                  <li><h5> The instruction also does not necessarily give away that the mug falls on the ground (though we can infer it).</h5>
+                                      </ul>
+                              </div>
+                          </div>
+
+                          <hr>
+
+                          <div class="row col-lg-12">
+                              <div class="img-container">
+                                <video height="300" width="600" controls>
+                                  <source src= "https://storage.googleapis.com/jamesp_euro/thor_rule/new_replay_experiments/throw_experiments/02019/smooth_video.mp4">
+                                  <!--<source src= "exp1/video.mp4">-->
+                                </video>
+                              </div>
+
+                              <div class="col-lg-12">
+                                  <p></p>
+                                  <h5> <b> Instruction:</b> Pick up the object and turn to the left until the object <em>lines up with the light switch </em>, throw it with <em> a lot of force </em> to the light switch.</h5>
+                              </div>
+                          </div>
+                          <hr>
+
+                          <!--EX-->
+                          <div class="row col-lg-12">
+                              <div class="img-container">
+                                <video height="300" width="600" controls>
+                                  <source src="https://storage.googleapis.com/jamesp_euro/thor_rule/new_replay_experiments/push_experiments/02415/smooth_video.mp4">
+                                </video>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-12">
+                              <p></p>
+                                <h5> <b> Instruction:</b> Push the object to the left with a strong force so it hits the bookshelf.</h5>
+                              <p></p>
+                          </div>
+
+                          <hr>
+
+
+                          <div class="row col-lg-12">
+                              <div class="img-container">
+                                <video height="300" width="600" controls>
+                                  <source src="https://storage.googleapis.com/jamesp_euro/thor_rule/new_replay_experiments/throw_experiments/02450/smooth_video.mp4">
+                                </video>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-12">
+                              <p></p>
+                                <h5> <b> Instruction:</b> Turn right a bit while holding the object, look down a bit, then throw it at the shelf.</h5>
+                              <p></p>
+                          </div>
+
+                          <hr>
+
+
+
+                          <div class="row col-lg-12">
+                              <div class="img-container">
+                                <video height="300" width="900" controls>
+                                  <source src="https://storage.googleapis.com/jamesp_euro/thor_rule/new_replay_experiments/push_experiments/01325/smooth_video.mp4">
+                                </video>
+                            </div>
+                          </div>
+
+                          <div class="col-lg-12">
+                              <p></p>
+                                <h5> <b> Instruction:</b> Pull the object toward the right-hand side of the table at a right angle</h5>
+                              <p></p>
+                          </div>
+
+                          <hr>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <!-- EXAMPLES END -->
+            </div>
+            <!-- ACCORDION HEADER END -->
+
+            <div class="card-body">
+                <h1></h1>
+                <div class="video-container">
+                    <video height="400" width="800" controls autoplay>
+                      <source src="${exp_link}/smooth_video.mp4">
+                    <!--<source src="https://storage.googleapis.com/jamesp/thor_com/experiments/push_experiments/push_00001/video.mp4">-->
+                    </video>
+                </div>
+                <div class="ml-3 row">
+                    <div class="form-check form-check-inline btn btn-sm btn-outline-primary">
+                        <label class="form-check-label"><input type="checkbox" name="video_not_shown" value="true">
+                        Video is not shown.</label>
+                    </div>
+                    <div class="form-check form-check-inline btn btn-sm btn-outline-danger">
+                        <label class="form-check-label"><input type="checkbox" name="video_hard" value="true">
+                        Difficult to tell what is happening in the video.</label>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header" id="optionalHeading">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#optional" aria-expanded="true" aria-controls="optional">
+                                Optional Videos (click to expand/collapse)
+                            </button>
+                        </h5>
+                    </div>
+                    <div class="collapse" id="optional" aria-labelledby="optionalHeading">
+                        <div class="row">
+                        <video height="420" width="500" controls>
+                          <source src="${exp_link}/video.mp4">
+                        <!--<source src="https://storage.googleapis.com/jamesp/thor_com/experiments/push_experiments/push_00001/video.mp4">-->
+                        </video>
+                            <p></p>
+                        <video height="420" width="500" controls>
+                          <source src="${exp_link}/3rd_id_1_frames_video.mp4">
+                        <!--<source src="https://storage.googleapis.com/jamesp/thor_com/experiments/push_experiments/push_00001/video.mp4">-->
+                        </video>
+                        </div>
+                    </div>
+                </div>
+
+                <p></p>
+                <b>
+                    <ul>
+
+                    <li> Please read the <span class="emph"> guidelines and examples</span> before you begin.
+                    <li> Avoid writing the interacted object by its name. Use the word <span class="emph">'object'</span> to describe the object of interest in your description. You can however name other objects (e.g. desk, countertop, wall).</li>
+                    <li> DO NOT include the following outcome of object: BREAK, ON GROUND.
+                    <li> If it is hard to tell what happened, it is most likely that object was <span class="emph">'pushed'</span> with some force.</li>
+                    <li> Try to include <span class="emph">relative directions</span> (northwest, towards the left wall, on the countertop, etc) specific to the scene to better reproduce the actions.</li>
+                    <li> Optional videos are included to help you understand what happened in the scene, but please write the instruction based on the first video.</li>
+                        </b>
+                    </ul>
+
+                </b>
+
+                <div class="row ml-2">
+                    <h5><b>Interacted Object: ${object_type} (use the word 'object' instead in your instruction.)</b></h5>
+                </div>
+                <div class="required_obj_field">
+
+                    <div class="row">
+                        <h4><b>Instruction (avoid explicitly writing that the object was shattered/broken or on ground)</b></h4>
+                        <textarea rows="2" class="col-12 input-group-text" name="instruction" required></textarea>
+                    </div>
+                </div>
+                <hr>
+            </div>
+
+            <!--end here-->
+
+            <div class="col-12">
+                <h5 class="card-header col-12 mb-0" style="border: 2px solid #eee;">
+                    Optional feedback? &nbsp; &nbsp;
+                    <a data-toggle="collapse" href="#feedback" style="color:#0080ff;font-weight:normal;text-decoration: underline;">(expand/collapse)</a>
+                </h5>
+
+                <div class="collapse" id="feedback">
+                    <div class="card-body col-12" style="border: 2px solid #eee;">
+                    <p>If anything about the HIT was unclear, please comment below. I'd like to make my HITs easier for future workers, so I really appreciate feedback!</p>
+                    <textarea class="form-control" rows="2" name="commentbox"></textarea>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="problems"> </div>
+
+            <p></p>
+            <div class="col-2 offset-5 mt-3 text-center">
+                <input id="submitButton" type="submit" value="Submit">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+      integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+<style type="text/css">
+
+    /***********************************************
+    MOSAIC BOOSTRAP OVERWRITES
+    ***********************************************/
+    #hitinfo .card {
+        border-radius: 0;
+    }
+    #hitinfo .card:first-child {
+        border-bottom: 0;
+    }
+     #hitinfo button.btn-link {
+        color: #06486F;
+        text-decoration: none;
+     }
+    #hitinfo button.btn-link:hover {
+        text-decoration: none;
+    }
+    #hit ul.question-choice {
+        list-style-type: none;
+    }
+    #hit #mturk_form .card {
+        border: none;
+        background-color: inherit;
+    }
+    #hit .accordion .card-header {
+        background-color: #E5E5E5;
+        border: none;
+    }
+    #hit .card {
+        border: none;
+    }
+    /***********************************************
+    MOSAIC GENERAL STYLING
+    ***********************************************/
+    #hit {
+        background-color: rgba(0,0,0,.03);
+        padding-bottom: 4rem;
+    }
+     body {
+        font-family: "Open Sans", "Roboto", sans-serif;
+        font-size: .92rem;
+     }
+    textarea#feedback {
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+    textarea#feedback:focus {
+        outline: none !important;
+        border-color: #85c8ea;
+    }
+    input#submitButton {
+        margin: auto;
+        display: block;
+        background-color: #2172a4;
+        color: #fff;
+        font-size: 1.125rem;
+        padding: .5rem 1rem;
+        cursor: pointer;
+        border-radius: 1rem;
+    }
+    input#submitButton:hover {
+        background-color: #06486F;
+    }
+    #event, div.question {
+        //border-bottom: solid 1px #ccc;
+    }
+    .event-container h4 {
+        font-size: 1.24rem;
+        padding: 1rem 1.5rem;
+    }
+    .event {
+        background-color: rgba(0,0,0,.03);
+        border-radius: 1rem;
+        margin-top: 25px;
+        margin-bottom: 0px;
+    }
+    input.person {
+        margin-left: 20px;
+        border: none;
+        background-color: white;
+        text-align: left;
+    }
+    input.inline_blank {
+        border: none;
+        border-bottom: solid 1px #ccc;
+        background-color: inherit;
+        text-align: center;
+    }
+    input.inline_blank.hitbox {
+        text-align: left;
+    }
+    input.inline_blank:focus {
+        outline: none;
+    }
+    .optional span.obj-num, .optional span.indicator {
+        color: #aaa;
+    }
+    span.optional {
+        font-style: italic;
+    }
+    div.question-field-group .card-body{
+        padding: 2rem 0 0;
+    }
+    div.example div.card-body {
+        padding: 1rem 0 0;
+    }
+    div.form-check, div.form-check label, div.form-check input {
+        cursor: pointer;
+    }
+    }
+    #instructions li.warning {
+        color: darkorange;
+    }
+    #instructions li.sub-warning {
+        color: black;
+    }
+    #instructions li.good {
+        color: green;
+    }
+    #instructions li.bad {
+        color: darkred;
+    }
+    #instructions span.bad {
+        color: darkred;
+    }
+    div.req-obj-container div.card-body {
+        padding: 0;
+    }
+    div.req-obj-fields-container {
+        padding-left: 0;
+    }
+    span.highlight {
+        font-weight: bold;
+        color: darkslateblue;
+    }
+    span.emphasize {
+        font-style: italic;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+    div.xneed div.card-body {
+        padding: 0;
+    }
+
+    .minipad {
+        padding-left: 0rem;
+    }
+    .questionrow {
+        /*border-bottom: 1px solid gray;*/
+        padding-bottom: 2px;
+        margin-bottom: 4px;
+        margin-left: 0;
+        margin-right: -5px;
+    }
+
+    .video-container {
+      border: 20px solid #ddd;
+      top: 0;
+      bottom: 0;
+      width: 850px;
+        /*900px;*/
+      /*height: 400px;*/
+      overflow: hidden;
+    }
+
+    .panel {
+        padding: 10px;
+        margin-bottom: 3px;
+        margin-top: 5px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        font-size: 11pt;
+    }
+    .table {
+        margin-top: 0.2rem;
+        margin-bottom: 0.2rem;
+        background-color: #e6e6e633;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+    .table td, .table th {
+        padding: 0.3rem;
+    }
+
+    .body {
+        font-size:11pt;
+    }
+
+    .emph {
+        background-color: #c3e6cb;
+        color: #000;
+        font-weight: bold;
+    }
+
+    .new {
+        background-color: yellow;
+        color: #000;
+        font-weight: bold;
+    }
+
+    .new-latest {
+        background-color: orange;
+        color: #000;
+        font-weight: bold;
+    }
+
+    .superemph {
+        background-color: #e6a0a5;
+        color: #000;
+        font-weight: bold;
+    }
+
+    .required_obj_field {
+      padding: 10px;
+      border: 2px solid gray;
+      margin: 2;
+    }
+
+    .deemph {
+        /*background-color: #f9f9f9;*/
+        color: #141414;
+        /*font-weight: lighter;*/
+        font-size:10pt;
+    }
+
+    .row {
+        margin-right: -5px;
+        margin-left:-5px;
+    }
+    .questionbox {
+        padding-right: 1px;
+        padding-left: 1px;
+    }
+    .choicebox{
+      padding-right: 1px;
+      padding-left: 1.5rem;
+      margin-left: 25px;
+    }
+    .answerbox {
+        padding-right: 1px;
+        padding-left: 1px;
+    }
+    .input-group-text {
+        padding: 3px;
+        font-size: 1.2rem;
+        background-color: white; /* #ECECEC;*/
+        text-align: left;
+        color: black;
+
+    }
+    .card-header {
+        padding: .25rem .5rem;
+        border: none;
+    }
+    .card {
+        margin-bottom: 3px;
+    }
+    .card-body {
+        padding-top: .75rem;
+        padding-bottom: 0;
+    }
+    .list-group-item {
+        padding: .2rem .5rem;
+        background-color: #e6e6e6;
+    }
+
+    .image-toggle {
+        border-color: #000;
+        white-space: normal;
+        color: #fff;
+    }
+
+    .img-container {
+      position: relative;
+      display: inline-block;
+    }
+    .annotimage {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin-top:0;
+    }
+
+    .drawing-class {
+        height:0;
+    }
+    .segmentation {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height:100%;
+      width:100%;
+    }
+
+    .smalltxt {
+        font-size:.6rem;
+    }
+    .form-check {
+        padding-left:0;
+        font-size:0.75rem;
+    }
+    .form-check-input {
+        margin-left:0;
+        position: relative;
+    }
+
+    .btn-sm {
+        border-radius: .2rem;
+        padding: 0.1rem 0.5rem;
+        margin-bottom:0;
+    }
+
+    .container {
+        padding:0;
+    }
+    .col-xl-12 {
+        padding:0;
+    }
+
+
+</style>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"
+        integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.5/svg.min.js" integrity="sha256-QvaFssiJCr71CxCZfYVWAXXGlwAqXbXerSdoW2t/Few=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/1.3.7/chroma.min.js"></script>
+<script src="https://cdn.rawgit.com/internalfx/distinct-colors/3bbd4cc2/dist/distinct-colors.min.js"></script>
+
+<script>
+const FONTSIZE=20;
+
+function flattenPoints(points) {
+    const scaledPoints = [];
+    for(let i=0; i < points.length; i++) {
+        scaledPoints.push(points[i][0]);
+        scaledPoints.push(points[i][1]);
+    }
+    return scaledPoints
+}
+
+function drawSegmentation(name, box, segm, color, width, height) {
+    const draw = SVG('drawing').viewbox(0, 0, width, height);
+    draw.addClass('segmentation');
+    for (let i=0; i < segm.length; i++) {
+        draw.polygon(flattenPoints(segm[i])).fill({color: color.brighten(2).hex(), opacity: 0.3}).stroke({opacity:0.5, width:2, color:color.darken(2).hex()});
+    }
+    draw.rect(box[2]-box[0], box[3]-box[1]).move(box[0],box[1]).fill({opacity: 0}).stroke({opacity: 0.8, width: 5, color:color.hex()});
+
+    // const group = draw.group();
+    const color2use = '#000';
+    const topY = box[1]-FONTSIZE-7 > 0 ? box[1]-FONTSIZE-7 : box[1]-3;
+
+    const mytext = draw.text(name).move(box[0]+2, topY).font({family: 'Helvetica', size: FONTSIZE, weight:500}).fill(color2use);
+    // console.log(draw);
+    // console.log(mytext);
+    // const thebox = mytext.rbox(draw);
+    const thebox = mytext.bbox();
+    draw.rect(thebox.w+4, thebox.h+4).move(thebox.x, thebox.y-2).fill({color: color.brighten(2).hex(), opacity: 0.8}).stroke({opacity:0.8, width:3, color:color.hex()}).backward();
+    return draw;
+}
+
+function det_match(text, dets) {
+    var matches = text.match(/(\d+|everyone)/gi);
+    if (matches === null) {
+        return [];
+    }
+    matches.filter(function (x) {
+        return (x === "everyone") || (Number(x) <= dets.length)
+    });
+    return matches;
+}
+
+function det_sub(text, dets) {
+    return text.replace(/(\d+|everyone)/gi, function(x) {
+        if ((x === "everyone") || (Number(x) <= dets.length)) {
+            return '';
+        } else {
+            return x;
+        }
+    });
+}
+
+function count_corefs(dets) {
+    // Make sure there are enough
+    let numCorefs = 0;
+    $('.hitbox').each(function() {
+        let text = $(this).val();
+        numCorefs += det_match(text, dets).length;
+    });
+    return numCorefs;
+}
+
+function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+}
+
+function ensure_long_enough() {
+    var rowStatus = {
+        0: {is_problem: false, problems: []},
+        1: {is_problem: false, problems: []},
+        2: {is_problem: false, problems: []},
+        3: {is_problem: false, problems: []},
+        4: {is_problem: false, problems: []},
+        5: {is_problem: false, problems: []},
+        6: {is_problem: false, problems: []}
+    };
+
+    var is_checked = {};
+    $('.choicebox > .form-check > > input:checked').each(function() {
+        is_checked[$(this).attr('name')] = true;
+    });
+    for(var i=0; i < 7; i++) {
+        if (!(('c' + i) in is_checked)) {
+            rowStatus[i]['is_problem'] = true;
+            rowStatus[i]['problems'].push({name: 'L' + (i + 1), unchecked: true});
+        }
+
+    }
+    return rowStatus;
+}
+
+function addAlert(msg) {
+    let myAlert = $('<div class="alert alert-danger">');
+    myAlert.append(msg);
+    $('#problems').append(myAlert);
+}
+
+function addWarning(msg) {
+    let myAlert = $('<div class="alert alert-warning">');
+    myAlert.append(msg);
+    $('#problems').append(myAlert);
+}
+
+function validate(dets) {
+    // Make sure that we have enough brackets
+    let rowStatus = ensure_long_enough();
+
+    var isgood=true;
+    // $('#problems').empty();
+    //
+    // for (let row in rowStatus) {
+    //     let row_int = Number(row) + 1;
+    //     if (rowStatus[row]['is_problem']) {
+    //         rowStatus[row]['problems'].forEach(function(problem) {
+    //             addAlert("Question " + row_int + " is currently unchecked - please pick an option.");
+    //             isgood = false;
+    //         });
+    //     }
+    // }
+
+    return isgood;
+}
+
+$( document ).ready(function() {
+    // $.getJSON('https://s3-us-west-2.amazonaws.com/ai2-rowanz/vcr1images/movieclips_Taxi/NMKgdzm1pWs@13.json?sigh=' + Math.floor(Math.random() * 1000), function (data) {
+
+
+        $('#submitButton').on('click', function () {
+            return validate();
+        });
+
+    // Unfortunately I had to get rid of this script because it was causing some workers problems. Sorry about that :(
+    // $('[name="q0"]').focus().click();
+});
+</script>

@@ -1,0 +1,213 @@
+<!-- Bootstrap v3.0.3 -->
+<link href="https://s3.amazonaws.com/mturk-public/bs30/css/bootstrap.min.css" rel="stylesheet" />
+<style type="text/css">header, section {
+		display: block;
+	}
+	body {
+		font-family: 'Droid Serif';
+	}
+	h1, h2 {
+		text-align: center;
+		font-weight: normal;
+	}
+	#features {
+		margin: auto;
+		width: 460px;
+		font-size: 0.9em;
+	}
+	.connected, .sortable, .exclude, .handles {
+		margin: auto;
+		padding: 0;
+		width: 310px;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+	.sortable.grid {
+		overflow: hidden;
+	}
+	.connected li, .sortable li, .exclude li, .handles li {
+		list-style: none;
+		border: 1px solid #CCC;
+		background: #F6F6F6;
+		font-family: "Tahoma";
+		color: #1C94C4;
+		margin: 5px;
+		padding: 5px;
+		height: 30px;
+	}
+	.handles span {
+		cursor: move;
+	}
+	li.disabled {
+		opacity: 0.5;
+	}
+	.sortable.grid li {
+		line-height: 80px;
+		float: left;
+		width: 80px;
+		height: 80px;
+		text-align: center;
+	}
+	li.highlight {
+		background: #FEE25F;
+	}
+	#connected {
+		width: 440px;
+		overflow: hidden;
+		margin: auto;
+	}
+	.connected {
+		float: left;
+		width: 200px;
+	}
+	.connected.no2 {
+		float: right;
+	}
+	li.sortable-placeholder {
+		border: 1px dashed #CCC;
+		background: none;
+	}
+</style>
+<meta charset="utf-8" />
+<title></title>
+<link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet" type="text/css" /><!-- Instructions -->
+<div class="panel panel-primary">
+<div class="panel-heading" id="instructions-bar"><strong>Instructions</strong> - click to hide</div>
+
+<div class="panel-body" id="instructions">
+<h3>Sort adjectives along a scale</h3>
+
+<p>You will be shown a list of adjectives which refer to the same attribute (e.g. "warm", "hot" and "scalding" all describe temperature). Please drag and drop to&nbsp;<u><strong>sort the adjectives from the weakest/most neutral adjective to the&nbsp;strongest/most intense&nbsp;adjective.</strong></u>&nbsp;</p>
+
+<p>If multiple adjectives are of equal strength, and thus cannot be ordered, use the yellow lines to designate groups of equally weighted adjectives&nbsp;(see the third and forth&nbsp;examples below).</p>
+
+<p>Occassionally, there may be adjectives in the group that seem to describe a slightly different attribute than the others. Please do your best to order them anyway, you will not be punished for your choices on where to rank misplaced adjectives.</p>
+
+<p>If all adjectives are of the same intensity, it is fine to have them all in a single group. However, only do this if absolutely necessary. Please try to place them in some order whenever possible.&nbsp;</p>
+
+<p>Some examples of correct orderings are below.</p>
+<!--ul>
+	<li><span style="color:#A9A9A9;">(least extreme)&nbsp;</span><strong>warm <&nbsp;hot <&nbsp;scalding</strong><span style="color:#A9A9A9;"> (most extreme)</span></li>
+	<li><span style="color: rgb(169, 169, 169);">(least extreme)&nbsp;</span><strong>attractive <&nbsp;pretty <&nbsp;beautiful <&nbsp;drop-dead gorgeous</strong><span style="color: rgb(169, 169, 169);">&nbsp;(most extreme)</span></li>
+	<li><span style="color: rgb(169, 169, 169);">(least extreme)&nbsp;</span><strong>intriguing -> interesting -> fascinating</strong><span style="color: rgb(169, 169, 169);">&nbsp;(most extreme)</span></li>
+</ul-->
+
+<table border="1">
+	<tbody><!--tr>
+			<td style="text-align: center;"><strong><span style="color:#0000FF;">warm</span> < <span style="color:#0000FF;">hot</span> < <span style="color:#0000FF;">scalding</span></strong></td>
+			<td style="text-align: center;"><strong>&nbsp;<span style="color:#0000FF;">pretty</span> < <span style="color:#0000FF;">beautiful</span> < <span style="color:#0000FF;">drop-dead gorgeous</span></strong></td>
+			<td style="text-align: center;"><strong><span style="color:#0000FF;">big</span> = <span style="color:#0000FF;">large</span> < <span style="color:#0000FF;">huge</span> < <span style="color:#0000FF;">enormous</span> = <span style="color:#0000FF;">gigantic</span></strong></td>
+		</tr-->
+		<tr>
+			<td style="text-align: center;">
+			<p><strong><span style="color:#008080;">warm</span> < <span style="color:#008080;">hot</span> < <span style="color:#008080;">scalding</span></strong></p>
+
+			<p>Note that no yellow delimiters are needed here since</p>
+
+			<p>there are no "ties" in the strength of the words.</p>
+			</td>
+			<td><img src="https://www.seas.upenn.edu/~epavlick/hot.png" style="width:150px" /></td>
+		</tr>
+		<tr>
+		</tr>
+		<tr>
+			<td style="text-align: center;">
+			<p><strong style="text-align: center;">&nbsp;<span style="color: rgb(0, 128, 128);">attractive</span>&nbsp;<</strong><strong>&nbsp;<span style="color:#008080;">pretty</span> < <span style="color:#008080;">beautiful</span> < <span style="color:#008080;">drop-dead gorgeous</span></strong></p>
+			</td>
+			<td><img src="https://www.seas.upenn.edu/~epavlick/pretty.png" style="width:150px" /></td>
+		</tr>
+		<tr>
+		</tr>
+		<tr>
+			<td style="text-align: center;">
+			<p><strong><span style="color:#008080;">big</span> = <span style="color:#008080;">large</span> < <span style="color:#008080;">huge</span> < <span style="color:#008080;">enormous</span> = <span style="color:#008080;">gigantic</span></strong></p>
+
+			<p>Use the yellow delimiters to indicate that "big" and "large"</p>
+
+			<p>are of equal strength, as are&nbsp;<span style="background-color: transparent;">"enormous" and "gigantic."&nbsp;</span></p>
+
+			<p><span style="background-color: transparent;">You can place extra delimiters at the top or the bottom&nbsp;</span><span style="background-color: transparent;">of the list.</span></p>
+			</td>
+			<td><img src="https://www.seas.upenn.edu/~epavlick/big.png" style="width:150px" /></td>
+		</tr>
+		<tr>
+		</tr>
+		<tr>
+			<td style="text-align: center;">
+			<p style="text-align: center;"><strong><span style="color: rgb(0, 128, 128);">loud&nbsp;</span><&nbsp;<span style="color: rgb(0, 128, 128);">noisy</span>&nbsp;<&nbsp;<span style="color: rgb(0, 128, 128);">ear-splitting</span>&nbsp;=&nbsp;<span style="color: rgb(0, 128, 128);">deafening</span></strong></p>
+			</td>
+			<td><img src="https://www.seas.upenn.edu/~epavlick/loud.png" style="width:150px" /></td>
+		</tr>
+	</tbody>
+</table>
+
+<p><span style="color: rgb(169, 169, 169);">​​</span></p>
+</div>
+</div>
+<!-- End Instructions --><!-- Content Body -->
+<meta charset="utf-8" />
+<link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet" type="text/css" />
+<section>
+<ul class="exclude list" id="adjectivelist">
+	<li class="disabled">Least Extreme</li>
+</ul>
+</section>
+
+<section><!--ul class="connected list no2" id="delimiters">
+</ul--><input id="order" name="order" type="hidden" value="unchanged" /></section>
+<script src="https://code.jquery.com/jquery-1.7.1.min.js"></script><script src="https://www.seas.upenn.edu/~epavlick/html5sortable/jquery.sortable.js"></script><script>
+
+		adjectives = "${Cluster}"
+    //	adjectives = "warm ::: hot ::: burning";
+	//  adjectives = "attractive ::: pretty ::: beautiful ::: drop-dead gorgeous";
+	//	adjectives = "noisy ::: loud ::: ear-splitting ::: deafening";
+	//	adjectives = "big ::: large ::: huge ::: enormous ::: gigantic";
+
+		    pps = adjectives.split(' ::: ');
+		    for(i=0; i < pps.length; i++){
+	         	 pp = pps[i].trim();
+	             $("#adjectivelist").append("<li class='adj-li'>"+pp+"</li>");
+	             $("#adjectivelist").append("<li class='adj-li' style='background:#FEE25F;height:10px'></li>");
+			}
+			$("#adjectivelist").append('<li class="disabled">Most Extreme</li>')
+
+	</script><script type="text/javascript">
+    $('#instructions-bar').click(function(){
+		$('#instructions').toggle()
+		if ($('#instructions').is(":visible")) {
+		$('#instructions-bar').html("<strong>Instructions</strong> - click to hide");
+		}else {
+		$('#instructions-bar').html("<strong>Instructions</strong> - click to show");
+		}
+	});
+</script><script>
+		$(function() {
+			$('.sortable').sortable();
+			$('.handles').sortable({
+				handle: 'span'
+			});
+			$('.connected').sortable({
+				connectWith: '.connected'
+			});
+			//$('#adjectivelist').sortable().bind('sortupdate', function() {
+			$('#adjectivelist').sortable({items: ':not(.disabled)'}).bind('sortupdate', function() {
+				order = "";
+				$('.adj-li').each(function() {
+                  txt = $( this ).text();
+                  if (txt == ""){
+                    order += " ||| ";
+                  } else {
+				    order += $( this ).text() + " ::: ";
+                  }
+				});
+				$("#order").val(order);
+			});
+			$('.exclude').sortable({
+				items: ':not(.disabled)'
+			});
+		});
+	</script>

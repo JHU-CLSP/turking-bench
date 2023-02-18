@@ -1,0 +1,486 @@
+<html lang="en">
+
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+                    <script type='text/javascript' src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script>
+
+                    <!-- BOOTSTRAP CSS -->
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+                    <!-- HITPUB CSS -->
+                    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
+                    <style id="hitpub_css">
+                        /***********************************************
+                        MOSAIC BOOSTRAP OVERWRITES
+                        ***********************************************/
+                        #hitinfo .card {
+                            border-radius: 0;
+                        }
+                         #hitinfo button.btn-link {
+                            color: #fff;
+                            text-decoration: none;
+                         }
+                        #hitinfo button.btn-link:hover {
+                            text-decoration: none;
+                        }
+                        #hit ul.question-choice {
+                            list-style-type: none;
+                        }
+
+                        /***********************************************
+                        MOSAIC GENERAL STYLING
+                        ***********************************************/
+                        body {
+                            font-family: "Open Sans", "Roboto", sans-serif;
+                            line-height: 1.25;
+                        }
+                        textarea#feedback {
+                            width: 100%
+                        }
+                        input#submitButton {
+                            margin: auto;
+                            display: block;
+                            background-color: #2172a4;
+                            color: #fff;
+                            font-size: 1.125rem;
+                            padding: .5rem 1rem;
+                            cursor: pointer;
+                            border-radius: 1rem;
+                        }
+                        input#submitButton:hover {
+                            background-color: #06486F;
+                        }
+
+                        input[type="radio"] {
+                            cursor: pointer;
+                        }
+
+                        div.goal-category {
+                            border-bottom: solid 1px #ccc;
+                            padding: 1rem 1rem;
+                        }
+
+                        li {
+                            margin:0.6em;
+                        }
+
+                        table {
+                            width: 80%;
+                            margin: 5px;
+                        }
+
+                        tr {
+                            border:1px solid #ccc;
+                        }
+
+                        th {
+                            width:20%;
+                            background-color:#fff;
+                            font-weight:normal;
+                            text-align: center;
+                            padding:0.5em;
+                        }
+
+
+                        td {
+                            padding-left:20px;
+                            padding-right:10px;
+                        }
+
+
+
+
+                        /***********************************************
+                        HIT CUSTOM GENERAL STYLING
+                        ***********************************************/
+
+                        div.card-header {
+                            background-color: #06486F;
+                        }
+                        div.card-header h5 {
+                            color: #fff !important;
+                        }
+
+                        .cannot {
+                            color:red;
+                            text-decoration:italic;
+                        }
+
+                        .wants-to {
+                            font-weight: bold;
+                            color: green;
+                        }
+
+                        .question-choice-container label.btn {
+                            background-color: #eee;
+                            border: none;
+                            margin-left: 0 !important;
+                            color: black;
+                        }
+
+                        .question-choice-container label.btn:hover {
+                            color: white;
+                        }
+
+                        .legend {
+                            margin-top: .33rem;
+                            font-weight: normal;
+                            padding-left: 40px;
+                        }
+                        .legend .label{
+                            font-style: italic;
+                        }
+
+                        .emphasize {
+                            font-weight: bold;
+                            color: black;
+                        }
+
+                        .btn-group-container {
+                            align:left;
+                            padding:0;
+                        }
+
+                        .example {
+                            pointer-events:none;
+                        }
+
+                        input.goal {
+                            border: none;
+                            background-color: inherit;
+                            border-bottom: solid 1px #ccc;
+                            padding: 2px;
+                            margin-top:0.5em;
+                        }
+
+                        .tooltip {
+                          font-size: 12px;
+                        }
+
+                        span.bad-reason {
+                            color: #cc0000;
+                        }
+
+                        .bad-reason::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                          color: #cc9999;
+                        }
+                        .bad-reason::-moz-placeholder { /* Firefox 19+ */
+                          color: #cc9999;
+                        }
+                        .bad-reason:-ms-input-placeholder { /* IE 10+ */
+                          color: #cc9999;
+                        }
+                        .bad-reason:-moz-placeholder { /* Firefox 18- */
+                          color: #cc9999;
+                        }
+                        ::placeholder { color: black; opacity: 1; /* Firefox */ }
+                        :-ms-input-placeholder {color: black;}
+                        ::-ms-input-placeholder {color: black;}
+                    </style>
+
+                    <!-- HIT START -->
+                   <div id="hit" class="container">
+
+                        <!-- ACCORDION START -->
+                        <div class="col-12 accordion" id="hitinfo">
+
+                            <!-- INSTRUCTIONS START -->
+                            <div class="card">
+                                <div class="card-header id="instructionsHeading">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#instructions" aria-expanded="true" aria-controls="instructions">
+                                            Instructions (click to expand/collapse)
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div class="collapse show" id="instructions" aria-labelledby="instructionsHeading" data-parent="#hitinfo">
+                                    <div class="card-body">
+                                        <div class="card-content">
+                                            <p>Thanks for participating in this qualification HIT!
+                                            For this hit:</p>
+                                            <ul>
+                                            <li>Imagine a friend comes to you with a situation or question and you have to decide whether this situation is ok or not ok, e.g. socially acceptable or not acceptable.</li>
+                                            <li>What <span class="text-primary">questions</span> would you ask to get a better understanding of the situation in order to give better advice or make a better decision?</li>
+                                                <ul>
+                                                <li>Try to ask questions which provide more <strong>context</strong> to the given situation.</li>
+                                                <li>The questions should be <strong>relevant</strong> to both the situation and the decision you have to take:</li>
+                                                <li>Try to think of questions where your judgement might change given the answer your friend would provide: (This is the most important aspect of these questions!)</li>
+                                                    <ul>
+                                                    <li><strong>Situation:</strong> I married my sister's friend.</li>
+                                                    <li><strong>Question:</strong> <span class="text-primary">What does your sister think about this?</span></li>
+                                                    <li>This is a good question because: if your friends answers <span class="text-secondary">"She is ok with it."</span>, <br>
+                                                    then your decision might be swayed towards <i>it's ok</i>, while if the answer were  <span class="text-secondary">"She is very upset about it."</span>, then your decision might be <i>it's not ok</i></li>
+                                                    </ul>
+                                                </ul>
+                                                <li>In general, we ask you to not ask yes/no question if possible. If that’s the only type of question you can come up with for a situation, then that’s okay!</li>
+                                                <li>The situations can quite often be <strong>very general</strong> situations like 'get a new job' and with the help of the questions we want to make these situations less general, e.g. "What kind of job?", "Who got a new job?" etc.</li>
+                                                <li>The situations might sometimes be a bit ungrammatical, in these cases simply try to go with what you understand from the situation.</li>
+                                                <li><strong>Perspective</strong> is another issue:.</li>
+                                                   <ul>
+                                                    <li>In general you can assume that you are in a conversation with a friend and they are presenting you with a general situation and want to hear your opinion on it.</li>
+                                                    <li>This means you can usually use 'you' in your questions to address the friend, even if the situation is general.</li>
+                                                    <li>Sometimes the situations contain names such as 'Colin visits hom to see family but keeps his distance from bad influence'. Here you can ask 'Why does Colin want to keep his distance?' or 'What does Colin's family do?' etc. without having to use 'you' in your questions.</li>
+                                                   </ul>
+                                            </ul>
+                                            <br><p>Examples:</p>
+                                            <div id="row col-12 bb-1" class="question">
+                                                <div class="row mb-2 mt-4 col-12">
+                                                    <span class="col-1">1.</span>
+                                                    <span class="col-10"><span class="wants-to">a friend wants to sleep in</span></span>
+                                                </div>
+                                                <div class="col-12">
+                                                    <span  class="row offset-1 col-8"> Acceptable Question:</span>
+                                                    <input class="row offset-1 col-8 inline-blank" type="text" placeholder="Until when do they want to sleep in?" disabled>
+                                                    <span  class="row offset-1 col-8 pt-2"> Acceptable Question:</span>
+                                                    <input class="row offset-1 col-8 inline-blank" type="text" placeholder="Do they have to do anything else instead?" disabled>
+                                                    <span  class="row offset-1 col-8" style="color:MediumSeaGreen;"> This is a good question because, depending on the answer, it might be more ok or less ok to sleep in. For example if they have to be at work, then it's less ok, but if it's the weekend then it's probably ok.</span>
+
+                                                    <span  class="row offset-1 col-8 pt-2"> Acceptable Question:</span>
+                                                    <input class="row offset-1 col-8 inline-blank" type="text" placeholder="What is their reason for wanting to sleep in?" disabled>
+                                                    <span  class="row offset-1 col-8 pt-2 bad-reason">Bad Question:</span>
+                                                    <input class="row offset-1 col-8 inline-blank bad-reason" type="text" placeholder="What is the meaning of life?" disabled>
+                                                </div>
+                                                <div class="row mb-2 mt-4 col-12">
+                                                    <span class="col-1">2.</span>
+                                                    <span class="col-10"><span class="wants-to">looking at someone's phone or computer</span></span>
+                                                </div>
+                                                <div class="col-12">
+                                                    <span  class="row offset-1 col-8"> Acceptable Question:</span>
+                                                    <input class="row offset-1 col-8 inline-blank" type="text" placeholder="What are you looking for?" disabled>
+                                                    <span  class="row offset-1 col-8 pt-2"> Acceptable Question:</span>
+                                                    <input class="row offset-1 col-8 inline-blank" type="text" placeholder="Who does the phone or computer belong to?" disabled>
+                                                    <span  class="row offset-1 col-8 pt-2"> Acceptable Question:</span>
+                                                    <input class="row offset-1 col-8 inline-blank" type="text" placeholder="Who is someone?" disabled>
+                                                    <span  class="row offset-1 col-8 pt-2 bad-reason">Bad Question:</span>
+                                                    <input class="row offset-1 col-8 inline-blank bad-reason" type="text" placeholder="What are your friend's hobbies?" disabled>
+                                                </div>
+                                                <div class="row mb-2 mt-4 col-12">
+                                                    <span class="col-1">3.</span>
+                                                    <span class="col-10"><span class="wants-to">rooting through people's cabinets without their permission</span></span>
+                                                </div>
+                                                <div class="col-12">
+                                                    <span  class="row offset-1 col-8"> Acceptable Question:</span>
+                                                    <input class="row offset-1 col-8 inline-blank" type="text" placeholder="What are you trying to find in the cabinets?" disabled>
+                                                    <span  class="row offset-1 col-8" style="color:MediumSeaGreen;"> This is a good question because, depending on the answer, it might be more ok or less ok to root through cabinets. For example if they are trying to find life-saving medication.</span>
+                                                    <span  class="row offset-1 col-8"> Acceptable Question:</span>
+                                                    <input class="row offset-1 col-8 inline-blank" type="text" placeholder="What is your relation to these people?" disabled>
+                                                    <span  class="row offset-1 col-8 pt-2"> Acceptable Question:</span>
+                                                    <input class="row offset-1 col-8 inline-blank" type="text" placeholder="What do these people think about you doing this?" disabled>
+                                                    <span  class="row offset-1 col-8 pt-2"> Acceptable Question:</span>
+                                                    <input class="row offset-1 col-8 inline-blank" type="text" placeholder="Who is rooting through people's cabinets?" disabled>
+
+                                                </div>
+                                                <div class="row mb-2 mt-4 col-12">
+                                                    <span class="col-1">4.</span>
+                                                    <span class="col-10"><span class="wants-to">I filed my friend's tax return when he needed help</span></span>
+                                                </div>
+                                                <div class="col-12">
+                                                    <span  class="row offset-1 col-8"> Acceptable Question:</span>
+                                                    <input class="row offset-1 col-8 inline-blank" type="text" placeholder="Are you qualified to do so?" disabled>
+                                                    <span  class="row offset-1 col-8 pt-2"> Acceptable Question:</span>
+                                                    <input class="row offset-1 col-8 inline-blank" type="text" placeholder="Did your friend give you permission?" disabled>
+                                                    <span  class="row offset-1 col-8 pt-2"> Acceptable Question:</span>
+                                                    <input class="row offset-1 col-8 inline-blank" type="text" placeholder="What experience do you have with filing tax returns?" disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- INSTRUCTIONS END -->
+                        </div>
+                        <!-- ACCORDION END -->
+
+                        <!-- MTURK INPUT START -->
+                        <div class="col-12 mt-5 mb-1 border-top">
+                            <form name='mturk_form' method='post' id='mturk_form' action='https://www.mturk.com/mturk/externalSubmit'>
+                                <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+                                <input type='hidden' name='ee' id='ee'/>
+
+                                <!-- QUESTION MACRO START -->
+
+                                <!-- GOAL CATEGORY MACRO END -->
+
+                                <!-- GOAL CAT START -->
+
+                                <div id="row goal1 col-12 bb-1" class="question">
+                                    <div class="row mb-2 mt-4 col-12">
+                                        <span class="offset-1 col-1">1.</span>
+                                        <span class="col-10"><span class="text-secondary">Situation: </span> <span class="wants-to">${situation1}</span></span>
+                                    </div>
+
+
+                                    <div class="col-12" id="goal1_1-question-fields">
+                                        <span class="offset-2 col-3"> Question 1:</span>
+                                        <input class="col-7 inline-blank" placeholder="[required]" type="text" name="goal1_distractor_1" id="goal1_distractor_1" required>
+                                    </div>
+
+
+<!--                                    <div class="col-12" id="goal1_3-question-fields">-->
+<!--                                        <span class="offset-2 col-3"> Question 2:</span>-->
+<!--                                        <input class="col-7 inline-blank" placeholder="[optional]" type="text" name="goal1_distractor_3" id="goal1_distractor_3" >-->
+<!--                                    </div>-->
+
+
+                                </div>
+
+
+
+                                <div id="row goal2 col-12 bb-1" class="question">
+                                    <div class="row mb-2 mt-4 col-12">
+                                        <span class="offset-1 col-1">2.</span>
+                                        <span class="col-10"><span class="text-secondary">Situation: </span> <span class="wants-to">${situation2}</span></span>
+                                    </div>
+
+                                    <div class="col-12" id="goal2_1-question-fields">
+                                        <span class="offset-2 col-3"> Question 1:</span>
+                                        <input class="col-7 inline-blank" placeholder="[required]" type="text" name="goal2_distractor_1" id="goal2_distractor_1" required>
+                                    </div>
+
+<!--                                    <div class="col-12" id="goal2_3-question-fields">-->
+<!--                                        <span class="offset-2 col-3"> Question 2:</span>-->
+<!--                                        <input class="col-7 inline-blank" placeholder="[optional]" type="text" name="goal2_distractor_3" id="goal2_distractor_3" >-->
+<!--                                    </div>-->
+
+
+                                </div>
+
+
+
+                                <div id="row goal3 col-12 bb-1" class="question">
+                                    <div class="row mb-2 mt-4 col-12">
+                                        <span class="offset-1 col-1">3.</span>
+                                        <span class="col-10"><span class="text-secondary">Situation: </span> <span class="wants-to">${situation3}</span></span>
+                                    </div>
+                                    <div class="col-12" id="goal3_1-question-fields">
+                                        <span class="offset-2 col-3"> Question 1:</span>
+                                        <input class="col-7 inline-blank" placeholder="[required]" type="text" name="goal3_distractor_1" id="goal3_distractor_1" required>
+                                    </div>
+
+<!--                                    <div class="col-12" id="goal3_3-question-fields">-->
+<!--                                        <span class="offset-2 col-3"> Question 2:</span>-->
+<!--                                        <input class="col-7 inline-blank" placeholder="[optional]" type="text" name="goal3_distractor_3" id="goal3_distractor_3" >-->
+<!--                                    </div>-->
+
+                                </div>
+
+                                <div id="row goal4 col-12 bb-1" class="question">
+                                    <div class="row mb-2 mt-4 col-12">
+                                        <span class="offset-1 col-1">4.</span>
+                                        <span class="col-10"><span class="text-secondary">Situation: </span> <span class="wants-to">${situation4}</span></span>
+                                    </div>
+                                    <div class="col-12" id="goal4_1-question-fields">
+                                        <span class="offset-2 col-3"> Question 1:</span>
+                                        <input class="col-7 inline-blank" placeholder="[required]" type="text" name="goal4_distractor_1" id="goal4_distractor_1" required>
+                                    </div>
+
+<!--                                    <div class="col-12" id="goal4_3-question-fields">-->
+<!--                                        <span class="offset-2 col-3"> Question 2:</span>-->
+<!--                                        <input class="col-7 inline-blank" placeholder="[optional]" type="text" name="goal4_distractor_3" id="goal4_distractor_3" >-->
+<!--                                    </div>-->
+
+                                </div>
+
+
+                                <div id="row goal5 col-12 bb-1" class="question">
+                                    <div class="row mb-2 mt-4 col-12">
+                                        <span class="offset-1 col-1">5.</span>
+                                        <span class="col-10"><span class="text-secondary">Situation: </span> <span class="wants-to">${situation5}</span></span>
+                                    </div>
+                                    <div class="col-12" id="goal5_1-question-fields">
+                                        <span class="offset-2 col-3"> Question 1:</span>
+                                        <input class="col-7 inline-blank" placeholder="[required]" type="text" name="goal5_distractor_1" id="goal5_distractor_1" required>
+                                    </div>
+
+<!--                                    <div class="col-12" id="goal5_3-question-fields">-->
+<!--                                        <span class="offset-2 col-3"> Question 2:</span>-->
+<!--                                        <input class="col-7 inline-blank" placeholder="[optional]" type="text" name="goal5_distractor_3" id="goal5_distractor_3" >-->
+<!--                                    </div>-->
+
+                                </div>
+
+
+                                <!-- GOAL CAT END -->
+
+                                <!-- OPTIONAL FEEDBACK -->
+                                <div class="row mt-5">
+                                    <div class="col-8 offset-2 col-lg-6 offset-lg-3">
+                                        <p>(Optional) Please let us know if anything was unclear, if you experienced any issues, or if you have any other fedback for us.</p>
+                                        <textarea id="feedback" name="feedback" rows=3></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- SUBMIT BUTTON -->
+                                <div class="row mt-5">
+                                    <div class="col-2 offset-5">
+                                        <input id="submitButton" onclick="getnext()" type="submit" value="Submit">
+                                    </div>
+                                </div>
+
+                            </form>
+                            <script language='Javascript'>turkSetAssignmentID();</script>
+                        </div>
+                        <!-- MTURK INPUT END -->
+
+                    </div>
+		    <!-- HIT END -->
+
+                <!-- BOOSTRAP JS -->
+                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+                <!-- HITPUB JS -->
+
+                <script id="hitpub_js">
+                    // TimeMe.js
+                    (function () { var e, t; e = this, t = function () { var r = { startStopTimes: {}, idleTimeoutMs: 3e4, currentIdleTimeMs: 0, checkStateRateMs: 250, active: !1, idle: !1, currentPageName: "default-page-name", timeElapsedCallbacks: [], userLeftCallbacks: [], userReturnCallbacks: [], trackTimeOnElement: function (e) { var t = document.getElementById(e); t && (t.addEventListener("mouseover", function () { r.startTimer(e) }), t.addEventListener("mousemove", function () { r.startTimer(e) }), t.addEventListener("mouseleave", function () { r.stopTimer(e) }), t.addEventListener("keypress", function () { r.startTimer(e) }), t.addEventListener("focus", function () { r.startTimer(e) })) }, getTimeOnElementInSeconds: function (e) { var t = r.getTimeOnPageInSeconds(e); return t || 0 }, startTimer: function (e, t) { if (e || (e = r.currentPageName), void 0 === r.startStopTimes[e]) r.startStopTimes[e] = []; else { var n = r.startStopTimes[e], i = n[n.length - 1]; if (void 0 !== i && void 0 === i.stopTime) return } r.startStopTimes[e].push({ startTime: t || new Date, stopTime: void 0 }), r.active = !0, r.idle = !1 }, stopAllTimers: function () { for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++)r.stopTimer(e[t]) }, stopTimer: function (e, t) { e || (e = r.currentPageName); var n = r.startStopTimes[e]; void 0 !== n && 0 !== n.length && (void 0 === n[n.length - 1].stopTime && (n[n.length - 1].stopTime = t || new Date), r.active = !1) }, getTimeOnCurrentPageInSeconds: function () { return r.getTimeOnPageInSeconds(r.currentPageName) }, getTimeOnPageInSeconds: function (e) { var t = r.getTimeOnPageInMilliseconds(e); return void 0 === t ? void 0 : t / 1e3 }, getTimeOnCurrentPageInMilliseconds: function () { return r.getTimeOnPageInMilliseconds(r.currentPageName) }, getTimeOnPageInMilliseconds: function (e) { var t = r.startStopTimes[e]; if (void 0 !== t) { for (var n = 0, i = 0; i < t.length; i++) { var s = t[i].startTime, o = t[i].stopTime; void 0 === o && (o = new Date), n += o - s } return Number(n) } }, getTimeOnAllPagesInSeconds: function () { for (var e = [], t = Object.keys(r.startStopTimes), n = 0; n < t.length; n++) { var i = t[n], s = r.getTimeOnPageInSeconds(i); e.push({ pageName: i, timeOnPage: s }) } return e }, setIdleDurationInSeconds: function (e) { var t = parseFloat(e); if (!1 !== isNaN(t)) throw { name: "InvalidDurationException", message: "An invalid duration time (" + e + ") was provided." }; return r.idleTimeoutMs = 1e3 * e, this }, setCurrentPageName: function (e) { return r.currentPageName = e, this }, resetRecordedPageTime: function (e) { delete r.startStopTimes[e] }, resetAllRecordedPageTimes: function () { for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++)r.resetRecordedPageTime(e[t]) }, resetIdleCountdown: function () { r.idle && r.triggerUserHasReturned(), r.idle = !1, r.currentIdleTimeMs = 0 }, callWhenUserLeaves: function (e, t) { this.userLeftCallbacks.push({ callback: e, numberOfTimesToInvoke: t }) }, callWhenUserReturns: function (e, t) { this.userReturnCallbacks.push({ callback: e, numberOfTimesToInvoke: t }) }, triggerUserHasReturned: function () { if (!r.active) for (var e = 0; e < this.userReturnCallbacks.length; e++) { var t = this.userReturnCallbacks[e], n = t.numberOfTimesToInvoke; (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback()) } r.startTimer() }, triggerUserHasLeftPage: function () { if (r.active) for (var e = 0; e < this.userLeftCallbacks.length; e++) { var t = this.userLeftCallbacks[e], n = t.numberOfTimesToInvoke; (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback()) } r.stopAllTimers() }, callAfterTimeElapsedInSeconds: function (e, t) { r.timeElapsedCallbacks.push({ timeInSeconds: e, callback: t, pending: !0 }) }, checkState: function () { for (var e = 0; e < r.timeElapsedCallbacks.length; e++)r.timeElapsedCallbacks[e].pending && r.getTimeOnCurrentPageInSeconds() > r.timeElapsedCallbacks[e].timeInSeconds && (r.timeElapsedCallbacks[e].callback(), r.timeElapsedCallbacks[e].pending = !1); !1 === r.idle && r.currentIdleTimeMs > r.idleTimeoutMs ? (r.idle = !0, r.triggerUserHasLeftPage()) : r.currentIdleTimeMs += r.checkStateRateMs }, visibilityChangeEventName: void 0, hiddenPropName: void 0, listenForVisibilityEvents: function () { void 0 !== document.hidden ? (r.hiddenPropName = "hidden", r.visibilityChangeEventName = "visibilitychange") : void 0 !== document.mozHidden ? (r.hiddenPropName = "mozHidden", r.visibilityChangeEventName = "mozvisibilitychange") : void 0 !== document.msHidden ? (r.hiddenPropName = "msHidden", r.visibilityChangeEventName = "msvisibilitychange") : void 0 !== document.webkitHidden && (r.hiddenPropName = "webkitHidden", r.visibilityChangeEventName = "webkitvisibilitychange"), document.addEventListener(r.visibilityChangeEventName, function () { document[r.hiddenPropName] ? r.triggerUserHasLeftPage() : r.triggerUserHasReturned() }, !1), window.addEventListener("blur", function () { r.triggerUserHasLeftPage() }), window.addEventListener("focus", function () { r.triggerUserHasReturned() }), document.addEventListener("mousemove", function () { r.resetIdleCountdown() }), document.addEventListener("keyup", function () { r.resetIdleCountdown() }), document.addEventListener("touchstart", function () { r.resetIdleCountdown() }), window.addEventListener("scroll", function () { r.resetIdleCountdown() }), setInterval(function () { r.checkState() }, r.checkStateRateMs) }, websocket: void 0, websocketHost: void 0, setUpWebsocket: function (e) { if (window.WebSocket && e) { var t = e.websocketHost; try { r.websocket = new WebSocket(t), window.onbeforeunload = function () { r.sendCurrentTime(e.appId) }, r.websocket.onopen = function () { r.sendInitWsRequest(e.appId) }, r.websocket.onerror = function (e) { console && console.log("Error occurred in websocket connection: " + e) }, r.websocket.onmessage = function (e) { console && console.log(e.data) } } catch (e) { console && console.error("Failed to connect to websocket host.  Error:" + e) } } return this }, websocketSend: function (e) { r.websocket.send(JSON.stringify(e)) }, sendCurrentTime: function (e) { var t = { type: "INSERT_TIME", appId: e, timeOnPageMs: r.getTimeOnCurrentPageInMilliseconds(), pageName: r.currentPageName }; r.websocketSend(t) }, sendInitWsRequest: function (e) { var t = { type: "INIT", appId: e }; r.websocketSend(t) }, initialize: function (e) { var t = r.idleTimeoutMs || 30, n = r.currentPageName || "default-page-name", i = void 0, s = void 0; e && (t = e.idleTimeoutInSeconds || t, n = e.currentPageName || n, i = e.websocketOptions, s = e.initialStartTime), r.setIdleDurationInSeconds(t).setCurrentPageName(n).setUpWebsocket(i).listenForVisibilityEvents(), r.startTimer(void 0, s) } }; return r }, "undefined" != typeof module && module.exports ? module.exports = t() : "function" == typeof define && define.amd ? define([], function () { return e.TimeMe = t() }) : e.TimeMe = t() }).call(this);
+
+                    TimeMe.initialize({
+                        currentPageName: "task",
+                        idleTimeoutInSeconds: 30
+                    });
+
+                    $(document).ready(function() {
+                        $('#submitButton').click(function () {
+                            try {
+                                $('input[name=ee]').attr('value', TimeMe.getTimeOnCurrentPageInSeconds());
+                            } catch {
+                            }
+                            return true;
+                        });
+                    });
+                    $(document).ready(hide_show);
+
+                    function hide_show() {
+                        $('input[type=checkbox]').change( function() {
+                            goal = this.name.split("_")[0];
+                            if (this.checked) {
+                                console.log(this.checked);
+                                $("#"+goal+"_1-question-fields").hide();
+                                $("#"+goal+"_2-question-fields").hide();
+                                $("#"+goal+"_3-question-fields").hide();
+                                $("#"+goal+"_4-question-fields").hide();
+                                $("#"+goal+"_distractor_1").removeAttr('required');
+                                $("#"+goal+"_distractor_2").removeAttr('required');
+                                $("#"+goal+"_impossible_reason_div").show();
+                                $("#"+goal+"_impossible_reason").attr('required',true);
+                            } else {
+                                console.log(this.checked);
+                                $("#"+goal+"_1-question-fields").show();
+                                $("#"+goal+"_2-question-fields").show();
+                                $("#"+goal+"_3-question-fields").show();
+                                $("#"+goal+"_4-question-fields").show();
+                                $("#"+goal+"_distractor_1").attr('required',true);
+                                $("#"+goal+"_distractor_2").attr('required',true);
+                                $("#"+goal+"_impossible_reason_div").hide();
+                                $("#"+goal+"_impossible_reason").removeAttr();
+                            }
+                        });
+                    }
+
+
+
+
+                </script>

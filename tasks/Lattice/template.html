@@ -1,0 +1,376 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script><script type="text/javascript">
+
+         DELETESTR = 'This phrase can be deleted (without changing the meaning of the sentence)'
+         NONESTR = 'None of the above options apply to this sentence.'
+	  function parsePPs(str){
+		  var ret = {}
+	    spns = str.split('###')
+	    for (i in spns){
+	      span=spns[i]
+	      var toks = span.split(':::')
+	      var key = toks[0]
+	      ret[key] = []
+	      for(i=1; i<toks.length;i++){
+                if(!(toks[i]=='')){
+                  ret[key].push(toks[i])
+		}
+	      }
+		ret[key].push(DELETESTR)
+		ret[key].push(NONESTR)
+	    }
+	    return ret
+	  }
+
+         function requoteStr(str){
+           return str.split('SQUOT').join("'").split('DQUOT').join('"').split('-lrb-').join('(').split('-rrb-').join(')').split("DASH").join("-")
+	 }
+
+         function dequoteStr(str){
+           return str.split("'").join("SQUOT").split('"').join("DQUOT").split('(').join('-lrb-').split(')').join('-rrb-').split("-").join("DASH")
+	 }
+
+            var id =  "${id}"
+	    var sent =  "${sent}".split(' ')
+	    var pps = parsePPs("${pps}")
+        /*    var id =  "0"
+	    //var sent =  "this is a sentence that needs paraphrasing badly".split(' ')
+	    var sent =  "this is a sentence that needs paraphrasing badly and it is really long and it just keeps going on and on and on and it also contains some hy-phens which is kind of weird but whatever anyway i-supposed i will stop now but this is not even that long of a sentence".split(' ')
+	    //var pps = {"0-1": ['that', 'these'], '3-4': ['span', 'piece of text']}
+	    var ppstr = "0-1:::that:::these###3-4:::span:::piece of text"
+	    var pps = parsePPs(ppstr)*/
+   	    var spans = Object.keys(pps).sort(function(xx, yy){
+			x = parseInt(xx.split('-')[0])
+			y = parseInt(yy.split('-')[0])
+		    if (x < y) {
+	            return -1;
+	        }
+		    if (x > y) {
+	            return 1;
+	        }
+		return 0;
+	    });
+            var selected = {}
+	    var cur = 0
+	    var done = false
+
+	    function init(){
+	      linenum = -1
+	      for (i=0; i<sent.length; i++){
+		      txt = requoteStr(sent[i])
+		      if (((i % 15) == 0)){
+		      linenum += 1
+  		      //$("#sentence tbody tr"+linenum).append("<td class='regular' id='word" + i + "'>" + txt + "</td>");
+  		      $("#row"+linenum+" tbody tr").append("<td class='regular' id='word" + i + "'>" + txt + "</td>");
+		    }
+		    else{
+  		      //$("#sentence tbody tr"+linenum).append("<td class='regular' id='word" + i + "'>" + txt + "</td>");
+  		      $("#row"+linenum+" tbody tr").append("<td class='regular' id='word" + i + "'>" + txt + "</td>");
+		    }
+	      }
+	      $("#nextbutton").click()
+	    }
+
+            //store values of any checked boxes
+            function saveChecks(){
+              if(cur > 0){
+                lastij = spans[cur-1]
+	        lastidxs = lastij.split("-")
+	        lasti = parseInt(lastidxs[0])
+	        lastj = parseInt(lastidxs[1])
+	        for (k=0; k<pps[lastij].length; k++){
+			w = dequoteStr(pps[lastij][k])
+		        wid = 'word_'+lastij+'_option_'+k
+		        if (!(lastij in selected)){
+				selected[lastij] = {}
+				selected[lastij]['id'] = id
+				selected[lastij]['text'] = dequoteStr(sent.slice(lasti,lastj).join(' '))
+				selected[lastij]['paraphrases'] = []
+		        }
+		        if ($("#"+wid).is(":checked")){
+		  	      selected[lastij]['paraphrases'].push([w, 1])
+		        }else{
+		  	      selected[lastij]['paraphrases'].push([w, 0])
+		        }
+	        }
+	      }
+	    }
+
+           function clearPs(){
+	      //clear old hilighting
+              for (k=0; k<sent.length; k++){
+                $("#word"+k).toggleClass("hilite", false)
+                $("#word"+k).toggleClass("sub", false)
+                $("#word"+k).toggleClass("regular", true)
+                $("#word"+k).text(requoteStr(sent[k]))
+              }
+              $("#options p").remove()
+	   }
+
+           function validateChecks(){
+              if(cur > 0){
+	     lastij = spans[cur-1]
+             lastidxs = lastij.split("-")
+             lasti = parseInt(lastidxs[0])
+	     lastj = parseInt(lastidxs[1])
+	     numChecked=0
+	     noneChecked=false
+	     for (k=0; k<pps[lastij].length; k++){
+               wid = 'word_'+lastij+'_option_'+k
+	       if ($("#"+wid).is(":checked")){
+	         if(pps[lastij][k]== NONESTR){
+	           noneChecked = true
+		 }else{
+		   numChecked += 1
+		 }
+	       }
+	     }
+	     pickedSomething = (numChecked > 0 && !noneChecked)
+	     pickedNothing = (numChecked == 0 && noneChecked)
+	     return pickedSomething || pickedNothing
+	      }
+	      return true
+	   }
+
+           function advanceCursor(){
+             if(!validateChecks()){
+                alert("Please select at least one option, or indicate that no options apply. If you indicate that no options apply, please do not check any other options.")
+             }
+             else{
+	     progress(cur/spans.length)
+             //if there are spans that have not yet been judged, display options to users
+	     if(cur < spans.length){
+	              saveChecks()
+                      ij = spans[cur]
+		      idxs = ij.split("-")
+		      i = parseInt(idxs[0])
+		      j = parseInt(idxs[1])
+		      clearPs()
+		      //hilight current span
+		      for (k=i; k<j; k++){
+                        $("#word"+k).toggleClass("regular", false)
+                        $("#word"+k).toggleClass("hilite", true)
+		      }
+		      //present options
+		      for (k=0; k<pps[ij].length; k++){
+			      w = pps[ij][k]
+			      wid = 'word_'+ij+'_option_'+k
+			      if (w == NONESTR){ wname='NONE' }
+			      else {
+			        if(w == DELETESTR){ wname='DELETE' }
+		                else {
+			          wname = w.split(' ').join('_')
+		                }
+		              }
+			      $("#options").append("<p><input id='"+wid+"' name='"+wname+"' type='checkbox'>" + "     "+ requoteStr(w) + "</input><p>")
+			      $("#"+wid).click(function() {
+				      iijj = $(this)[0].id.split('_')[1].split('-')
+				      ii = parseInt(iijj[0])
+				      jj = parseInt(iijj[1])
+
+				      if (this.checked){
+                                         if(!($(this)[0].name == "NONE")){
+		  		           if($(this)[0].name == "DELETE"){ sub = "" }
+                                           else{
+                                             sub = requoteStr($(this)[0].name.split('_').join(' '))
+                                           }
+	                                   for (k=ii; k<jj; k++){
+                                            $("#word"+k).text("")
+	                                   }
+                                           $("#word"+ii).text(sub)
+                                           $("#word"+ii).toggleClass("sub", true)
+                                           $("#word"+ii).toggleClass("hilite", false)
+				         }
+                                       }
+				      else{
+	                                for (k=ii; k<jj; k++){
+                                          $("#word"+k).text(requoteStr(sent[k]))
+                                          $("#word"+ii).toggleClass("sub", false)
+                                          $("#word"+ii).toggleClass("hilite", true)
+	                                }
+				      }
+	                      });
+		      }
+		      //advance cursor
+		      cur++
+	      }
+	      else{
+                //if done, write all the selected values to hidden fields
+	        saveChecks()
+	        $('#selections').val(JSON.stringify(selected))
+	        $("#options p").remove()
+                $("#nextbutton").hide()
+	        $("#submitButton").prop('disabled', false);
+	      }
+	      }
+	      return
+	     }
+
+             function progress(percent) {
+	       var progressBarWidth = percent * $('#progressBar').width()
+		       $('#progressBar').find('div').animate({ width: progressBarWidth }, 500).html(parseInt(percent*100) + "% ");
+	       if (percent == 1){
+			$('#progressBar div').css('background-color', '#449d44')
+	       }
+             }
+
+             $(document).ready(function() {
+	      $("#submitButton").click( function(){
+                  return true;
+              });
+	      $("#submitButton").prop('disabled', true);
+	      init()
+
+    })
+    </script>
+<style type="text/css">#progressBar {
+	        width: 500px;
+	        height: 22px;
+	        border: None; /*1px solid #111;*/
+	        background-color: white;
+                border-radius: 24px;
+	}
+
+	    #progressBar div {
+	        height: 100%;
+	        text-align: left;
+                font-weight: 700;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                padding: 7px 12px;
+	        line-height: 22px; /* same as #progressBar height if we want text middle aligned */
+	        min-width: 10;
+                background-color: #0099cc;
+                color: #ffffff;
+                border-radius: 24px;
+	}
+
+    .btn {
+      box-shadow: 0 3px 0 0 #007299;
+      padding: 14px 24px;
+      border: 0 none;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 24px;
+    }
+
+    .btn:disabled {
+      padding: 14px 24px;
+      border: 0 none;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 24px;
+      background: gray;
+      box-shadow: 0 0 0 0;
+    }
+
+
+    .btn:focus, .btn:active:focus, .btn.active:focus {
+      outline: 0 none;
+    }
+
+    .btn-primary {
+     box-shadow: 0 3px 0 0 #007299;
+     background: #0099cc;
+     color: #ffffff;
+    }
+
+    .btn-success {
+     box-shadow: 0 3px 0 0 #007299;
+      background: #449d44;
+      color: #ffffff;
+    }
+
+    .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+      background: #33a6cc;
+    }
+
+    .btn-primary:active, .btn-primary.active {
+      background: #007299;
+      box-shadow: none;
+    }
+
+    p{
+      color: #585858;
+      font-size: 12pt;
+      font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+    }
+
+    .regular{
+      color: #585858;
+      font-size: 14pt;
+      font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+    }
+
+    .hilite{
+      font-weight: bold;
+      color: #6666FF;
+      font-size: 14pt;
+      //font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+    }
+
+    .sub{
+      font-weight: bold;
+      color: #B2B2FF;
+      font-size: 14pt;
+      //font-family: "Trebuchet MS","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Tahoma,sans-serif;
+    }
+</style>
+<div id="progressBar">
+<div>&nbsp;</div>
+</div>
+
+<h4>Please choose all appropriate paraphrases of each highlighted phrase, or inidicate that no options apply.</h4>
+
+<h5>Please consider both the <u>meaning</u> and the <u>grammaticality</u> of the resulting sentence. The paraphrased sentence should read naturally and should make sense.</h5>
+<!--table id="sentence">
+	<tbody>
+		<tr id="row0"> </tr>
+		<tr id="row1"> </tr>
+		<tr id="row2"> </tr>
+		<tr id="row3"> </tr>
+		<tr id="row4"> </tr>
+	</tbody>
+</table-->
+
+<table id="row0">
+	<tbody>
+		<tr>
+		</tr>
+	</tbody>
+</table>
+
+<table id="row1">
+	<tbody>
+		<tr>
+		</tr>
+	</tbody>
+</table>
+
+<table id="row2">
+	<tbody>
+		<tr>
+		</tr>
+	</tbody>
+</table>
+
+<table id="row3">
+	<tbody>
+		<tr>
+		</tr>
+	</tbody>
+</table>
+
+<table id="row4">
+	<tbody>
+		<tr>
+		</tr>
+	</tbody>
+</table>
+
+<p><button class="btn btn-primary" id="nextbutton" onclick="advanceCursor()" type="button">Next</button></p>
+
+<div id="options">&nbsp;</div>
+
+<p><input id="selections" name="selections" type="hidden" /></p>

@@ -1,0 +1,93 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects">
+<h1>Instructions</h1>
+Pick all phrases a person might say that would lead you to believe that they belong to a certain demographic.
+<hr>
+Example:
+A person who says <strong>"my paint brush"</strong> is most likely an <strong>artist</strong>, whereas a person who says <strong>"my kid"</strong> is not necessarily a <strong>gamer</strong>.
+
+<hr>
+<hr>
+
+Pick phrases from the following that if said by a person would lead you to believe they are (a|an) <b>${dem}?</b><br>
+
+<hr>
+<hr>
+
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+table#t01 {
+  width: 100%;
+  background-color: #f1f1c1;
+}
+</style>
+</head>
+
+<table id='t01'>
+    <tr>
+        <td><input type="checkbox" id=1 name=1><label for=1>${text0}</label><br></td>
+        <td><input type="checkbox" id=2 name=2><label for=2>${text1}</label><br></td>
+        <td><input type="checkbox" id=3 name=3><label for=3>${text2}</label><br></td>
+        <td><input type="checkbox" id=4 name=4><label for=4>${text3}</label><br></td>
+        <td><input type="checkbox" id=5 name=5><label for=5>${text4}</label><br></td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" id=6 name=6><label for=6>${text5}</label><br></td>
+        <td><input type="checkbox" id=7 name=7><label for=7>${text6}</label><br></td>
+        <td><input type="checkbox" id=8 name=8><label for=8>${text7}</label><br></td>
+        <td><input type="checkbox" id=9 name=9><label for=9>${text8}</label><br></td>
+        <td><input type="checkbox" id=10 name=10><label for=10>${text9}</label><br></td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" id=11 name=11><label for=11>${text10}</label><br></td>
+        <td><input type="checkbox" id=12 name=12><label for=12>${text11}</label><br></td>
+        <td><input type="checkbox" id=13 name=13><label for=13>${text12}</label><br></td>
+        <td><input type="checkbox" id=14 name=14><label for=14>${text13}</label><br></td>
+        <td><input type="checkbox" id=15 name=15><label for=15>${text14}</label><br></td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" id=16 name=16><label for=16>${text15}</label><br></td>
+        <td><input type="checkbox" id=17 name=17><label for=17>${text16}</label><br></td>
+        <td><input type="checkbox" id=18 name=18><label for=18>${text17}</label><br></td>
+        <td><input type="checkbox" id=19 name=19><label for=19>${text18}</label><br></td>
+        <td><input type="checkbox" id=20 name=20><label for=20>${text19}</label><br></td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" id=21 name=21><label for=21>${text20}</label><br></td>
+        <td><input type="checkbox" id=22 name=22><label for=22>${text21}</label><br></td>
+        <td><input type="checkbox" id=23 name=23><label for=23>${text22}</label><br></td>
+        <td><input type="checkbox" id=24 name=24><label for=24>${text23}</label><br></td>
+        <td><input type="checkbox" id=25 name=25><label for=25>${text24}</label><br></td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" id=26 name=26><label for=26>${text25}</label><br></td>
+        <td><input type="checkbox" id=27 name=27><label for=27>${text26}</label><br></td>
+        <td><input type="checkbox" id=28 name=28><label for=28>${text27}</label><br></td>
+        <td><input type="checkbox" id=29 name=29><label for=29>${text28}</label><br></td>
+        <td><input type="checkbox" id=30 name=30><label for=30>${text29}</label><br></td>
+    </tr>
+     <tr>
+        <td><input type="checkbox" id=31 name=31><label for=31>None of the phrases</label><br></td>
+
+    </tr>
+
+
+</table>
+
+</crowd-form> <hr>
+
+
+

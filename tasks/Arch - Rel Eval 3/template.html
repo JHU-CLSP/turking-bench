@@ -1,0 +1,477 @@
+<<!-- You must include this JavaScript file -->
+    <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+    ​
+    <!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+    ​
+    <!-- You must include crowd-form so that your task submits answers to MTurk -->
+    <crowd-form answer-format="flatten-objects">
+        ​
+        ​
+        <!-- Bootstrap v3.0.3 -->
+        <!-- Bootstrap v3.0.3 -->
+        <link href="https://s3.amazonaws.com/mturk-public/bs30/css/bootstrap.min.css" rel="stylesheet" />
+        <section class="container" id="Other"
+            style="margin-bottom:15px; padding: 10px 10px; font-family: Verdana, Geneva, sans-serif; color:#333333; font-size:0.9em;">
+            <div class="row col-xs-12 col-md-12">
+                <!-- Instructions -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading"><strong>Instructions</strong></div>
+                    ​
+                    <div class="panel-body">
+                        <p style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">In
+                            this task you will be provided with a five-sentence story and two sets of commonsense
+                            knowledge relations that have been matched to each sentence of that story.&nbsp;For each of
+                            four questions, you will tell us which relation set is better. When considering each
+                            question, think about the following criteria that define a good relation set:</p>
+                        ​
+                        <ol style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+                            <li>How well does the proposed relation set capture <strong>coherency with the original
+                                    story</strong> (i.e. how relevant are the matched relations to the original story
+                                and are they consistent/non-contradicting with story events both for the matched
+                                sentence and other sentences in the story).</li>
+                            <li>How well does the proposed relation set capture <strong>completeness</strong> (i.e. how
+                                well do the matched relations cover the events and possible inferences from the original
+                                story? Could later events in the story be predicted from relations matched in earlier
+                                sentences?).</li>
+                            <li>How well does the proposed relation set capture <strong>intra-relation
+                                    coherency</strong> (i.e. how coherent is the relation set without considering the
+                                story? Do extracted relations contradict each other or are they consistent across the
+                                relation set?).</li>
+                            <li>How well does the proposed relation set capture <strong>diversity</strong> (i.e. is
+                                there diversity in the information introduced by additional relations or do relations
+                                seem to repeat the same information?).</li>
+                        </ol>
+                        ​
+                        <p>Please answer the best that you can by choosing the best relation set for each story. Note
+                            that some sentences may not have matched relations.</p>
+                        ​
+                        <p style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+                            Thank you!</p>
+                    </div>
+                </div>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                ​
+                <!-- <section class="container"> -->
+                <section>
+                    <fieldset>
+                        <table border="0" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px;">
+                            <tbody>
+                                <tr>
+                                    <td><strong>Story:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</strong></td>
+                                    <td>​${story}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        ​
+                    </fieldset>
+                    <br>
+
+                    <p>Now, we will consider the story sentence-by-sentence, and look at two sets of potential relations
+                        for each sentence.</p>
+
+                    <hr />
+
+<p><b>Full story (for reference):</b> ${story}</p>
+<p><b>Sentence:</b> ${sentence1}</p>
+<p><b>Relation Set A:</b> ${relations1a}</p>
+<p><b>Relation Set B:</b> ${relations2a}</p>
+
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">1.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations is most coherent with the rest of the story?
+        </b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="coherent-1" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="coherent-1" type="radio" value="2" /></label>Relation Set B</div>
+</fieldset>
+<br>
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">2.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations is most complete?
+        </b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="complete-1" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="complete-1" type="radio" value="2" /></label>Relation Set B</div>
+</fieldset>
+<br>
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">3.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations has the most intra-relation coherency?
+        </b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="intra-1" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="intra-1" type="radio" value="2" /></label>Relation Set B</div>
+</fieldset>
+<br>
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">4.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations is most diverse?
+        </b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="diverse-1" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="diverse-1" type="radio" value="2" /></label>Relation Set B</div>
+
+</fieldset>
+<br>
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">5.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations has the best quality overall:
+            <!--(e.g., she was proud and <font color="red">she was proud</font>!)--></b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="bestq-1" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="bestq-1" type="radio" value="2" /></label>Relation Set B</div>
+
+</fieldset>
+<hr />
+
+<p><b>Full story (for reference):</b> ${story}</p>
+<p><b>Sentence:</b> ${sentence2}</p>
+<p><b>Relation Set A:</b> ${relations1b}</p>
+<p><b>Relation Set B:</b> ${relations2b}</p>
+
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">1.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations is most coherent with the rest of the story?
+        </b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="coherent-2" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="coherent-2" type="radio" value="2" /></label>Relation Set B</div>
+</fieldset>
+<br>
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">2.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations is most complete?
+        </b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="complete-2" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="complete-2" type="radio" value="2" /></label>Relation Set B</div>
+</fieldset>
+<br>
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">3.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations has the most intra-relation coherency?
+        </b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="intra-2" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="intra-2" type="radio" value="2" /></label>Relation Set B</div>
+</fieldset>
+<br>
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">4.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations is most diverse?
+        </b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="diverse-2" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="diverse-2" type="radio" value="2" /></label>Relation Set B</div>
+
+</fieldset>
+<br>
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">5.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations has the best quality overall:
+            <!--(e.g., she was proud and <font color="red">she was proud</font>!)--></b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="bestq-2" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="bestq-2" type="radio" value="2" /></label>Relation Set B</div>
+
+</fieldset>
+<hr />
+
+<p><b>Full story (for reference):</b> ${story}</p>
+<p><b>Sentence:</b> ${sentence3}</p>
+<p><b>Relation Set A:</b> ${relations1c}</p>
+<p><b>Relation Set B:</b> ${relations2c}</p>
+
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">1.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations is most coherent with the rest of the story?
+        </b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="coherent-3" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="coherent-3" type="radio" value="2" /></label>Relation Set B</div>
+</fieldset>
+<br>
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">2.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations is most complete?
+        </b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="complete-3" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="complete-3" type="radio" value="2" /></label>Relation Set B</div>
+</fieldset>
+<br>
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">3.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations has the most intra-relation coherency?
+        </b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="intra-3" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="intra-3" type="radio" value="2" /></label>Relation Set B</div>
+</fieldset>
+<br>
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">4.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations is most diverse?
+        </b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="diverse-3" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="diverse-3" type="radio" value="2" /></label>Relation Set B</div>
+
+</fieldset>
+<br>
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">5.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations has the best quality overall:
+            <!--(e.g., she was proud and <font color="red">she was proud</font>!)--></b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="bestq-3" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="bestq-3" type="radio" value="2" /></label>Relation Set B</div>
+
+</fieldset>
+<hr />
+
+<p><b>Full story (for reference):</b> ${story}</p>
+<p><b>Sentence:</b> ${sentence4}</p>
+<p><b>Relation Set A:</b> ${relations1d}</p>
+<p><b>Relation Set B:</b> ${relations2d}</p>
+
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">1.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations is most coherent with the rest of the story?
+        </b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="coherent-4" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="coherent-4" type="radio" value="2" /></label>Relation Set B</div>
+</fieldset>
+<br>
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">2.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations is most complete?
+        </b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="complete-4" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="complete-4" type="radio" value="2" /></label>Relation Set B</div>
+</fieldset>
+<br>
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">3.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations has the most intra-relation coherency?
+        </b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="intra-4" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="intra-4" type="radio" value="2" /></label>Relation Set B</div>
+</fieldset>
+<br>
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">4.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations is most diverse?
+        </b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="diverse-4" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="diverse-4" type="radio" value="2" /></label>Relation Set B</div>
+
+</fieldset>
+<br>
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">5.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations has the best quality overall:
+            <!--(e.g., she was proud and <font color="red">she was proud</font>!)--></b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="bestq-4" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="bestq-4" type="radio" value="2" /></label>Relation Set B</div>
+
+</fieldset>
+<hr />
+
+<p><b>Full story (for reference):</b> ${story}</p>
+<p><b>Sentence:</b> ${sentence5}</p>
+<p><b>Relation Set A:</b> ${relations1e}</p>
+<p><b>Relation Set B:</b> ${relations2e}</p>
+
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">1.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations is most coherent with the rest of the story?
+        </b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="coherent-5" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="coherent-5" type="radio" value="2" /></label>Relation Set B</div>
+</fieldset>
+<br>
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">2.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations is most complete?
+        </b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="complete-5" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="complete-5" type="radio" value="2" /></label>Relation Set B</div>
+</fieldset>
+<br>
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">3.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations has the most intra-relation coherency?
+        </b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="intra-5" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="intra-5" type="radio" value="2" /></label>Relation Set B</div>
+</fieldset>
+<br>
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">4.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations is most diverse?
+        </b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="diverse-5" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="diverse-5" type="radio" value="2" /></label>Relation Set B</div>
+
+</fieldset>
+<br>
+<fieldset>
+    <b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span
+            style="font-size: 12px; line-height: 20.8px; text-align: center;"><label
+                style="font-size: 11.7px; line-height: 20.8px;">5.</label><b>&nbsp;</b></span><b>Which&nbsp;set
+            of relations has the best quality overall:
+            <!--(e.g., she was proud and <font color="red">she was proud</font>!)--></b></b></p>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="bestq-5" type="radio" value="1" /></label>Relation Set A</div>
+
+    <div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;">
+        <label><input name="bestq-5" type="radio" value="2" /></label>Relation Set B</div>
+
+</fieldset>
+
+                    <!--<fieldset>
+<b style="font-size: 12px; line-height: 20.8px; background-color: rgb(251, 251, 251);"><span style="font-size: 12px; line-height: 20.8px; text-align: center;"><label style="font-size: 11.7px; line-height: 20.8px;">1.</label><b>&nbsp;</b></span><b>Which&nbsp;abstract ranks third?: </b></b></p>
+
+<div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;"><label><input name="third" type="radio" value="1" /></label>Abstract A</div>
+
+<div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;"><label><input name="third" type="radio" value="2" /></label>Abstract B</div>
+
+<div class="radio" style="font-family: Verdana, Geneva, sans-serif; font-size: 11.7px; line-height: 20.8px;"><label><input name="third" type="radio" value="3" /></label>Abstract C</div>
+</fieldset>-->
+
+                    </style>
+                    ​
+    </crowd-form>

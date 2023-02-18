@@ -1,0 +1,160 @@
+<script type="text/javascript">
+var numClicks = [];
+var clickArray = [];
+var chosenText = [];
+var chosenTokens = [];
+
+function updateStatusText(sentnum, numClicks) 
+{
+    var statusId = "sent" + sentnum + "status";
+    var statusText = document.getElementById(statusId)
+    
+	if (numClicks == 0) 
+	{
+	    statusText.innerHTML = '<span style="color: red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;click on first word...</span>';
+	}
+	else if (numClicks == 1)
+	{
+		statusText.innerHTML = '<span style="color: #ff9933">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;click on final word...</span>';
+	}
+	else if (numClicks == 2)
+	{
+		statusText.innerHTML = '<span style="color: green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;done!</span>';
+	}
+}
+
+function updateTextBox(sentence, sentnum, wordnum)
+{
+    var tokens = sentence.split(" ");
+	
+    if (numClicks[sentnum] == undefined)
+    {
+        numClicks[sentnum] = 1;
+		clickArray[sentnum] = [];
+		clickArray[sentnum][0] = wordnum;
+		chosenText[sentnum] = "";
+    }
+    else if (numClicks[sentnum] == 1)
+    {
+        clickArray[sentnum][1] = wordnum;
+		if (clickArray[sentnum][0] > clickArray[sentnum][1])
+		{
+			numClicks[sentnum] = 0;
+			clickArray[sentnum] = [];
+		}
+		else
+		{
+			numClicks[sentnum] = 2;
+			chosenTokens[sentnum] = tokens.slice(clickArray[sentnum][0], clickArray[sentnum][1]+1);
+			chosenText[sentnum] = chosenTokens[sentnum].join(" ");
+		}
+	}
+	else 
+	{
+	    numClicks[sentnum] = 1;
+		clickArray[sentnum][0] = wordnum;
+		chosenText[sentnum] = "";
+	}
+	
+	updateStatusText(sentnum, numClicks[sentnum]);
+	var textboxid = "sent" + sentnum + "subject";
+	document.getElementById(textboxid).value = chosenText[sentnum];
+}
+
+function makeClickableWords(sentence, sentnum)
+{
+    var tokens = new Array();
+    tokens = sentence.split(" ");
+    var ans = '<p>' + sentnum + '.';
+    for (i=0; i<tokens.length; i++) 
+    {
+        ans +=  " <a href=\'javascript:updateTextBox(\"" + escape(sentence)	+ "\", " + sentnum + ", " + i + ")\' style=\"text-decoration: none; color:#000000;\">" + tokens[i] + "</a>";		
+    }
+    ans += '</p>';
+    return ans;
+}
+
+function handleCheckBox(sentnum) 
+{
+	var textboxid = "sent" + sentnum + "subject";
+	var box = document.getElementById(textboxid);
+	if (box.disabled == true) 
+	{
+		box.disabled = false;
+		box.value = '';
+		updateStatusText(sentnum, 0);
+	}
+	else 
+	{
+		box.value = '--NO SUBJECT--';
+		box.disabled = true;
+		updateStatusText(sentnum, 2);
+	}
+}
+</script>
+<h1>Identify the subject of a given verb for a list of English sentences</h1>
+<p>You will be shown ten English sentences each containing the verb &quot;${verb}&quot;. Your task is to <b>i</b>dentify the subject<b> </b>for &quot;${verb}&quot;&nbsp;in each sentence. Please read the instructions below before starting the task:</p>
+<ul>
+    <li>Simply stated, the subject in each sentence below is the answer to the question &quot;<b>What/Who is doing the ${verbgerund}?</b>&quot;.&nbsp;You may further refresh your memory about the subject of a verb using <a href="http://en.wikipedia.org/wiki/Subject_(grammar)">this</a> Wikipedia article. It also contains some useful examples.</li>
+    <li>Please note that the subject may be a single word or even a phrase from the sentence. For example, in the sentence &quot;The tall man kicked the ball&quot;, the subject for the verb &quot;kick&quot; is &quot;The tall man&quot; and&nbsp;<b><i>not</i></b>&nbsp;just &quot;man&quot;.</li>
+    <li>It is possible that the subject of the verb may be a pronoun like &quot;I&quot; or &quot;He&quot;, instead of a noun.</li>
+    <li>There may be other verbs present in the sentence besides &quot;${verb}&quot;. Please make sure that you only identify the subject for &quot;${verb}&quot;.&nbsp;</li>
+    <li>There may be multiple subjects in the sentence. For example, in the sentence &quot;The man and the woman went to the ball&quot;, you should identify the phrase &quot;The man and the woman&quot; as the subject.</li>
+    <li>If the sentence is in the passive voice, the subject may come later&nbsp;in the sentence. For example, in the sentence &quot;The book was read by Tom&quot;, the subject is &quot;Tom&quot; and <b><i>not</i></b> &quot;The book&quot;.</li>
+    <li>Once you have read through the sentence and identified the subject, you will need to record your answer in the text box provided below each sentence. One way to do this is to type the identified subject in the box yourself. However, an easier alternative is to use your mouse to make the selection. To do so, first click on the word the begins the subject. Then click on the word that ends the subject.&nbsp;The text box will then be automatically populated with the phrase that starts with the first word and ends with the second.&nbsp;&nbsp;For example, in the sentence &quot;The tall man kicked the ball&quot;, you will first click on the word &quot;The&quot; and then on the word &quot;man&quot;.&nbsp;</li>
+    <li>To provide feedback, we have provided a label below each text box. When starting the task, the label will say 'click on first word...'(in red). &nbsp;After you click once, the label will say 'click on final word...' (in orange). Once you click on the ending word, the label will say &quot;done!&quot; (in green).&nbsp;</li>
+    <li>There may also be rare cases where the sentence has no subject. For example, the sentence &quot;Things were heard&quot; has no subject (a common mistake might be to choose &quot;Things&quot; as the subject). For such sentences, you should check the box labeled &quot;No subject&quot;. Doing so will populate the textbox with a dummy value and change the label to say 'done!'.&nbsp;</li>
+    <li>To select a single word as the subject, you will need to click on that word <b>twice</b> in order to populate the textbox.</li>
+    <li>When selecting a phrase as the subject, the second click&nbsp;<b>must</b>&nbsp;be on a word that comes&nbsp;<i>after</i> the word that is clicked first. Otherwise, the selection will <b>not register </b>and the label will return to saying 'click on first word...' instead of 'done!'.&nbsp;</li>
+    <li>Even after you have selected the subject for a sentence and the label says 'done!', you can still change your selection. Just click again on a different first word and then a different final word.</li>
+    <li>
+    <h3>When in doubt, choose the word/phrase that best answers the question &quot;What/Who is doing the ${verbgerund}?&quot;<br />
+    <br />
+    &nbsp;</h3>
+    </li>
+</ul>
+<p style="font-size: 100%;"><script>document.writeln(makeClickableWords("${sent1}",1))</script></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" onchange="javascript: if(sent1subject.value == '') { updateStatusText(1, 0); } else { updateStatusText(1, 2); }" size="50" tabindex="1" id="sent1subject" name="sent1subject" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onClick="handleCheckBox(1);" value="no" name="sent1box" />No subject</p>
+<div id="sent1status" style="font-size: 75%;"><span style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;click on first word...</span></div>
+<p>&nbsp;</p>
+<p style="font-size: 100%;"><script>document.writeln(makeClickableWords("${sent2}",2))</script></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" onchange="javascript: if(sent2subject.value == '') { updateStatusText(2, 0); } else { updateStatusText(2, 2); }" size="50" tabindex="2" id="sent2subject" name="sent2subject" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onClick="handleCheckBox(2);" value="no" name="sent2box" />No subject</p>
+<div id="sent2status" style="font-size: 75%;"><span style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;click on first word...</span></div>
+<p>&nbsp;</p>
+<p style="font-size: 100%;"><script>document.writeln(makeClickableWords("${sent3}",3))</script></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" onchange="javascript: if(sent3subject.value == '') { updateStatusText(3, 0); } else { updateStatusText(2, 2); }" size="50" tabindex="3" id="sent3subject" name="sent3subject" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onClick="handleCheckBox(3);" value="no" name="sent3box" />No subject</p>
+<div id="sent3status" style="font-size: 75%;"><span style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;click on first word...</span></div>
+<p>&nbsp;</p>
+<p style="font-size: 100%;"><script>document.writeln(makeClickableWords("${sent4}",4))</script></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" onchange="javascript: if(sent4subject.value == '') { updateStatusText(4, 0); } else { updateStatusText(4, 2); }" size="50" tabindex="4" id="sent4subject" name="sent4subject" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onClick="handleCheckBox(4);" value="no" name="sent4box" />No subject</p>
+<div id="sent4status" style="font-size: 75%;"><span style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;click on first word...</span></div>
+<p>&nbsp;</p>
+<p style="font-size: 100%;"><script>document.writeln(makeClickableWords("${sent5}",5))</script></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" onchange="javascript: if(sent5subject.value == '') { updateStatusText(5, 0); } else { updateStatusText(5, 2); }" size="50" tabindex="5" id="sent5subject" name="sent5subject" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onClick="handleCheckBox(5);" value="no" name="sent5box" />No subject</p>
+<div id="sent5status" style="font-size: 75%;"><span style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;click on first word...</span></div>
+<p>&nbsp;</p>
+<p style="font-size: 100%;"><script>document.writeln(makeClickableWords("${sent6}",6))</script></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" onchange="javascript: if(sent6subject.value == '') { updateStatusText(6, 0); } else { updateStatusText(6, 2); }" size="50" tabindex="6" id="sent6subject" name="sent6subject" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onClick="handleCheckBox(6);" value="no" name="sent6box" />No subject</p>
+<div id="sent6status" style="font-size: 75%;"><span style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;click on first word...</span></div>
+<p>&nbsp;</p>
+<p style="font-size: 100%;"><script>document.writeln(makeClickableWords("${sent7}",7))</script></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" onchange="javascript: if(sent7subject.value == '') { updateStatusText(7, 0); } else { updateStatusText(7, 2); }" size="50" tabindex="7" id="sent7subject" name="sent7subject" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onClick="handleCheckBox(7);" value="no" name="sent7box" />No subject</p>
+<div id="sent7status" style="font-size: 75%;"><span style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;click on first word...</span></div>
+<p>&nbsp;</p>
+<p style="font-size: 100%;"><script>document.writeln(makeClickableWords("${sent8}",8))</script></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" onchange="javascript: if(sent8subject.value == '') { updateStatusText(8, 0); } else { updateStatusText(8, 2); }" size="50" tabindex="8" id="sent8subject" name="sent8subject" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onClick="handleCheckBox(8);" value="no" name="sent8box" />No subject</p>
+<div id="sent8status" style="font-size: 75%;"><span style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;click on first word...</span></div>
+<p>&nbsp;</p>
+<p style="font-size: 100%;"><script>document.writeln(makeClickableWords("${sent9}",9))</script></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" onchange="javascript: if(sent9subject.value == '') { updateStatusText(9, 0); } else { updateStatusText(9, 2); }" size="50" tabindex="9" id="sent9subject" name="sent9subject" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onClick="handleCheckBox(9);" value="no" name="sent9box" />No subject</p>
+<div id="sent9status" style="font-size: 75%;"><span style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;click on first word...</span></div>
+<p>&nbsp;</p>
+<p style="font-size: 100%;"><script>document.writeln(makeClickableWords("${sent10}",10))</script></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" onchange="javascript: if(sent10subject.value == '') { updateStatusText(10, 0); } else { updateStatusText(10, 2); }" size="50" tabindex="10" id="sent10subject" name="sent10subject" />&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onClick="handleCheckBox(10);" value="no" name="sent10box" />No subject</p>
+<div id="sent10status" style="font-size: 75%;"><span style="color: red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;click on first word...</span></div>
+<p>&nbsp;</p>
+<hr width="75%" />
+<center>
+<p><b>Please let us know if you have any comments or suggestions:</b><br />
+<textarea rows="5" cols="40" name="comments"></textarea></p>
+</center>

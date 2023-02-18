@@ -1,0 +1,1062 @@
+<script type='text/javascript'
+        src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/bootstrap-slider.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gojs/release/go.js"></script>
+<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/gojs/extensions/ZoomSlider.css'>
+<script src="https://cdn.jsdelivr.net/npm/gojs/extensions/ZoomSlider.js"></script>
+
+<style>
+
+    body {
+        font-family: 'Helvetica', 'Arial', sans-serif;
+        color: #444444;
+        font-size: 12pt;
+        background-color: #FAFAFA;
+    }
+
+    mark {
+        background-color: transparent;
+        color: black;
+        padding-left: 3px;
+        padding-right: 3px;
+
+    }
+
+    ul {
+        text-align: left;
+        list-style-position: inside;
+    }
+
+    textarea {
+        font-size: 18px;
+        margin: 0 auto;
+        display: block;
+        resize: none;
+    }
+
+
+    #submitButton {
+        margin: auto;
+        display: block;
+        width: auto;
+        background-color: #2172a4;
+        color: #fff;
+        font-size: 20pt;
+        padding: .5rem;
+        cursor: pointer;
+        border-radius: .75rem;
+    }
+
+    #submitButton:hover {
+        background-color: #06486F;
+    }
+
+    table {
+        border-spacing: 5px;
+    }
+
+    td.min {
+        width: 1%;
+        white-space: nowrap;
+    }
+
+    .examples {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+    }
+
+    .red {
+        color: red;
+    }
+
+    .accordion {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: 0.4s;
+    }
+
+    .active, .accordion:hover {
+        background-color: #ccc;
+    }
+
+    .accordion:after {
+        content: '\002B';
+        color: #777;
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
+    }
+
+    .active:after {
+        content: "\2212";
+    }
+
+    .panel {
+        padding: 0 18px;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+    }
+
+    /************************************
+    SLIDER STYLING
+    Taken from: https://www.w3schools.com/howto/howto_js_rangeslider.asp
+    ************************************/
+    .slidecontainer {
+        width: 50%; /* Width of the outside container */
+        display: block;
+        margin: auto;
+        position: relative;
+    }
+    .slidecontainer:before {
+        content: "\2796";
+        position: absolute;
+        left: -2rem;
+        top: 0;
+    }
+    .slidecontainer:after {
+        content: '\02795';
+        position: absolute;
+        right: -2rem;
+        top: 0;
+    }
+
+    /* The slider itself */
+    .slider {
+        -webkit-appearance: none;  /* Override default CSS styles */
+        appearance: none;
+        background-size: 95%;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 100%; /* Full-width */
+        height: 1rem;
+        outline: none; /* Remove outline */
+        opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+        -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+        transition: opacity .2s;
+    }
+
+    /* Mouse-over effects */
+    .slider:hover {
+        opacity: 1; /* Fully shown on mouse-over */
+    }
+
+    /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Override default look */
+        appearance: none;
+        width: 2.1rem; /* Set a specific slider handle width */
+        height: 2.1rem;
+        border-radius: 50%;
+        background: #06486F;
+        cursor: pointer; /* Cursor on hover */
+    }
+
+    .slider::-moz-range-thumb {
+        width: 2.1rem; /* Set a specific slider handle width */
+        height: 2.1rem;
+        border-radius: 50%;
+        background: #06486F;
+        cursor: pointer; /* Cursor on hover */
+    }
+
+    .sliderticks {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 10px;
+    }
+
+    .sliderticks p {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: 1px;
+        background: #D3D3D3;
+        height: 10px;
+        line-height: 40px;
+        margin: 0 0 20px 0;
+    }
+
+</style>
+
+<script>
+    var non_sequential = false;
+
+    var pronouns = [
+        "i",
+        "my",
+        "me",
+        "mine",
+        "you",
+        "your",
+        "yours",
+        "he",
+        "his",
+        "him",
+        "she",
+        "her",
+        "they",
+        "their",
+        "them",
+        "them.",
+        "them,",
+        "it",
+        "it,",
+        "it.",
+    ];
+
+    //TODO adjust numbers later on
+    var min_len = 3;
+    var max_len = 10;
+    var num_steps = 7;
+    var num_exsteps = 3;
+    var goal_txt = "";
+    var start_txt = "";
+    var gen_steps = "";
+
+    function init() {
+        console.log("init");
+
+        var iter_depth = '${iter_depth}';
+        iter_depth = parseInt(iter_depth);
+
+        var gen_steps = '${gen_nodes}';
+        gen_steps = jQuery.parseJSON(gen_steps);
+
+        //TODO: no parents!!
+        //var parents_img = '${parents_img}';
+        //parents_img = jQuery.parseJSON(parents_img);
+
+        //console.log(iter_depth);
+        //console.log(parents_img);
+
+        //var parents_html = "";
+
+        //if (iter_depth >= 1) {
+        //    // add explanation about the context
+        //    var context_explanation = '<p><b style="color:red"> In this HIT, please make your answer (steps) within the following situation(s). Most relevant steps are highlighted. You can think of this HIT as further breaking down the highlighted steps in a smaller scale. In your answer, please do not use the same steps in the flow chart(s) below. </b></p>';
+        //    parents_html = parents_html + context_explanation;
+        //}
+
+        //// closest parent first.
+        //if (iter_depth >= 2){
+        //    var parent_img_url = '&nbsp; &nbsp; <img src="https://ai2-mosaic-mturk.s3-us-west-2.amazonaws.com/n-pop/dag-img/' + parents_img['2'] + '">';
+        //    parents_html = parents_html + parent_img_url;
+        //}
+
+        //// if iter_depth==2, this is the grandparent (if ==1, it's parent.)
+        //if (iter_depth >= 1){
+        //    var parent_img_url = '<img src="https://ai2-mosaic-mturk.s3-us-west-2.amazonaws.com/n-pop/dag-img/' + parents_img['1'] + '">';
+        //    parents_html = parents_html + parent_img_url;
+        //}
+
+        //document.getElementById("parents").innerHTML = parents_html;
+
+        // TODO: debug online
+        var questions_html =
+                `<table class="table table-bordered">` +
+                `<tbody><tr>` +
+                `<th width="70%" style="vertical-align:middle; text-align: center;">` +
+                `Steps</th>` +
+                `<th colspan="1" width="30%" style="vertical-align:middle; text-align: center;">` +
+                //`Duration (time)</th></tr>`;
+                `unnecessary/irrelevant step?</th></tr>`;
+
+        for (const action_idx in gen_steps){
+            //if gen_steps[action_idx]
+            questions_html = questions_html +
+                //`<tr><td style="vertical-align:middle; text-align: center;">Step`+ action_idx.toString() +
+                `<tr><td style="vertical-align:middle; text-align: center;">Step ` +
+                `: He/She must <textarea class="form-control" cols="80" name="step` + action_idx.toString() +
+                `" id="step` + action_idx.toString() + `" rows="1" style="display: inline; width:600px; " readonly>` +
+                gen_steps[action_idx] +
+                `</textarea></td>` +
+                `<td style="vertical-align:middle; text-align: center; border-right: 0px;">` +
+                `<label class="checkbox-inline" for="checkboxes-` + action_idx.toString() + `"><input type="checkbox" name="checkboxes" id="checkboxes-` + action_idx.toString() + `" value="1"></label>` +
+                `</td></tr>`;
+        }
+
+        questions_html = questions_html + `</tbody></table>`;
+        var questions = document.getElementById("questions");
+        questions.innerHTML = questions_html;
+
+
+        additional_steps_html =
+                `<table class="table table-bordered">` +
+                `<tbody><tr>` +
+                `<th width="70%" style="vertical-align:middle; text-align: center;">` +
+                `Additional steps (optional)</th>` +
+                `</tr>`;
+
+
+        // TODO: check it this works
+        for (var exstep=1; exstep<=num_exsteps; exstep++) {
+            additional_steps_html = additional_steps_html +
+                `<tr><td style="vertical-align:middle; text-align: center;">Step`+ exstep.toString() +
+                `: He/She must <textarea class="form-control" cols="80" name="addstep` + exstep.toString() +
+                `" id="addstep` + exstep.toString() + `" rows="1" style="display: inline; width:600px; border:3px solid lightgreen; "></textarea></td>` +
+                `</tr>`;
+        }
+        var question1b = document.getElementById("question1b");
+        question1b.innerHTML = additional_steps_html;
+
+
+        title_html = "";
+        // add explanation on the fly if non_sequential is true (forcing degree > 1)
+        if (non_sequential){
+            var explanation = `<span style="background-color: crimson; color:white"> Important note &nbsp; In this HIT, the steps must have branches, where the essential steps that can be performed in any order. </span> For example, "put on right shoe" and "put on left shoe" must be done for achieving "go out for a walk", but the order doesn't matter. Another example is "add bacon", "add lettuce", and "add tomato" to achieve "create a BLT sandwitch". Please note that branches <b style="color:red">should NOT be alternatives</b> (e.g., "drive to the grocery store" and "take a bus to the grocery store" are alternatives to achieve a goal "buy a pumpkin".)`;
+            var emb_nsq1 = document.getElementById("emb_nsq1");
+            var emb_nsq2 = document.getElementById("emb_nsq2");
+            emb_nsq1.innerHTML = '<li>' + explanation + '</li>';
+            emb_nsq2.innerHTML = '<li>' + explanation + '</li>';
+
+            var expA_example = `<span style="background-color: crimson; color:white"> Note: In this HIT, this is a bad example.</span>`;
+            var expB_example = `<span style="background-color: crimson; color:white"> The flow chart is a straight sequence of steps and has no branch. This is not allowed in this HIT.</span>`;
+
+            var emb_exp_1 = document.getElementById("emb_exp_1");
+            emb_exp_1.innerHTML = expA_example;
+            var emb_exp_2 = document.getElementById("emb_exp_2");
+            emb_exp_2.innerHTML = expB_example;
+
+            var emb_exp_1_2 = document.getElementById("emb_exp_1_2");
+            emb_exp_1_2.innerHTML = expA_example;
+            var emb_exp_2_2 = document.getElementById("emb_exp_2_2");
+            emb_exp_2_2.innerHTML = expB_example;
+
+            /// title html
+            title_html = `<h5 align="center" style="color: white; background-color:crimson">(Pattern B) Please read the instructions and examples carefully, before you accept this HIT.</h5>`
+
+        } else {
+            title_html = `<h5 align="center" style="color: white; background-color:darkslateblue"> Please read the instructions and examples carefully, before you accept this HIT.</h5>`
+        }
+        var title_emb = document.getElementById("emb_title");
+        title_emb.innerHTML = title_html;
+
+
+        // GoJS
+        var $ = go.GraphObject.make;  // for conciseness in defining templates
+        myDiagram = $(go.Diagram, "myDiagramDiv",  // create a Diagram for the DIV HTML element
+                {
+                    "undoManager.isEnabled": true,  // enable undo & redo
+                    layout: $(go.LayeredDigraphLayout,
+                            {direction: 90, layerSpacing: 30}
+                            )
+                });
+
+        myDiagram.nodeTemplate =
+                $(go.Node, "Auto", {deletable: false, portId: "", fromLinkable: true, toLinkable: true },
+                        $(go.Shape, "RoundedRectangle", { strokeWidth: 0, fill: "white" },
+                                // Shape.fill is bound to Node.data.color
+                                new go.Binding("fill", "color")),
+
+                        $(go.TextBlock,
+                                { margin: 8, font: "bold 14px sans-serif", stroke: '#333' }, // Specify a margin to add some room around the text
+                                new go.Binding("text")),
+                );
+
+        myDiagram.linkTemplate =
+                $(go.Link,
+                        { relinkableFrom: true, relinkableTo: true },
+                        $(go.Shape),
+                        $(go.Shape, { toArrow: "Standard" })
+                );
+
+        myDiagram.model = new go.GraphLinksModel([],[]);
+        myDiagram.allowLink = true;
+
+        zoomSlider = new ZoomSlider(myDiagram,
+                {
+                    alignment: go.Spot.TopRight, alignmentFocus: go.Spot.TopRight,
+                    size: 250, buttonSize: 30, orientation: 'horizontal'
+                });
+
+        // trick to avoid the buttons to submit
+        document.getElementById('zoomSliderIn').remove();
+        document.getElementById('zoomSliderOut').remove();
+
+        window.initializeDiagram = function(){
+            console.log("initialize flow chart");
+            var nodes = [];
+
+            //start_txt = "NONE"; // for debugging diagram
+            start_txt = "${start_state}";
+            nodes.push({ key: 'S', color: "lightgray", text: start_txt });
+
+            //goal_txt = "travel to foreign country"; // for debugging diagram
+            goal_txt = "${goal}";
+
+            var is_valid = true;
+
+            //if (!validate_total_duration()){
+            //    is_valid = false;
+            //    return false;
+            //}
+
+            if (!validate_steps()){
+                is_valid = false;
+                return false;
+            }
+
+            // TODO: add original steps excluding the marked unnecessary steps, and then add additional steps
+            if (is_valid){
+                for (const action_idx in gen_steps){
+                    is_checked = document.getElementById("checkboxes-" + action_idx.toString()).checked
+
+                    if (!is_checked){
+                        console.log("add node: " + action_idx.toString());
+
+                        var node_i = document.getElementById("step" + action_idx.toString()).value;
+                        node_i = trimming(node_i);
+                        if (node_i) {
+                            nodes.push({key: action_idx.toString(), color: "lightgreen", text: node_i})
+                        }
+                    }
+                }
+
+                // TODO: check on browser (additional nodes)
+                for (var exstep = 1; exstep<=num_exsteps; exstep++) {
+                    console.log("addstep: " + exstep.toString());
+                    var add_node_i = document.getElementById("addstep" + exstep.toString()).value;
+                    add_node_i = trimming(add_node_i);
+                    if (add_node_i) {
+                        nodes.push({key: "addstep_" + exstep.toString(), color: "lightgreen", text: add_node_i})
+                    }
+                }
+
+                nodes.push({ key: 'G', color: "lightblue", text: goal_txt });
+                myDiagram.model = new go.GraphLinksModel(nodes,[]);
+            }
+            // add pop up saying "initialized!"
+            alert("Flowchart is initialized! You may begin Question 2.");
+
+            // TODO from here
+
+            //if (is_valid){
+            //    for (var i=1; i<=num_steps; i++){
+            //        console.log("i: " + i.toString());
+            //        var node_i = document.getElementById("step" + i.toString()).value;
+            //        node_i = trimming(node_i);
+            //        if (node_i) {
+            //            nodes.push({key: i.toString(), color: "lightgreen", text: node_i})
+            //        }
+            //    }
+
+            //    nodes.push({ key: 'G', color: "lightblue", text: goal_txt });
+
+            //    myDiagram.model = new go.GraphLinksModel(nodes,[]);
+            //}
+        }
+
+    }
+
+    function validateDiagram(){
+        console.log("validate diagram");
+
+        // check if previous question is already answered.
+        //if (!validate_total_duration()){
+        //    return false;
+        //}
+
+        if (!validate_steps()){
+            return false;
+        }
+
+        // auxiliary functions and class for graph
+        function Graph() {
+            this.adjList = {};
+        }
+
+        Graph.prototype.addVertex = function(vertex) {
+            this.adjList[vertex] = []
+        };
+
+        Graph.prototype.addEdge = function(vertex1,vertex2) {
+            // vertex1: src, vertex2: dest
+            //console.log("v1: " + vertex1);
+            //console.log("v2: " + vertex2);
+            this.adjList[vertex1].push(vertex2);
+        };
+
+        Graph.prototype.dfs = function() {
+            const nodes = Object.keys(this.adjList);
+            const visited = {};
+            for (let i = 0; i < nodes.length; i++) {
+                const node = nodes[i];
+                this._dfsUtil(node, visited)
+            }
+        };
+
+        Graph.prototype._dfsUtil = function(vertex, visited) {
+            if (!visited[vertex]){
+                visited[vertex] = true;
+                //console.log(vertex, visited);
+                const neighbors = this.adjList[vertex];
+                for (let i = 0; i < neighbors.length; i++) {
+                    const neighbor = neighbors[i];
+                    this._dfsUtil(neighbor, visited);
+                }
+            }
+        };
+
+        Graph.prototype.numberComponents = function(){
+            const nodes = Object.keys(this.adjList);
+            const visited = {};
+            var count = 0;
+            for (let i=0; i<nodes.length; i++){
+                visited[nodes[i]] = false;
+            }
+
+            for (let i=0; i<nodes.length; i++){
+                const node = nodes[i];
+                if (!visited[node]){
+                    this._dfsUtil(node, visited);
+                    count += 1;
+                }
+            }
+            return count;
+        };
+
+        Graph.prototype.detectCycle = function() {
+            const graphNodes = Object.keys(this.adjList);
+            const visited = {};
+            const recStack = {};
+
+            for (let i = 0; i < graphNodes.length; i++) {
+                const node = graphNodes[i];
+                if (this._detectCycleUtil(node, visited , recStack))
+                    //return 'there is a cycle'
+                    return true;
+            }
+            //'no cycle!'
+            return false;
+        };
+
+        Graph.prototype._detectCycleUtil = function(vertex, visited, recStack) {
+            if(!visited[vertex]){
+                visited[vertex] = true;
+                recStack[vertex] = true;
+                const nodeNeighbors = this.adjList[vertex];
+                for(let i = 0; i < nodeNeighbors.length; i++){
+                    const currentNode = nodeNeighbors[i];
+                    //console.log('parent', vertex, 'Child', currentNode);
+                    if(!visited[currentNode] && this._detectCycleUtil(currentNode,visited, recStack)){
+                        return true;
+                    } else if (recStack[currentNode]){
+                        return true;
+                    }
+                }
+            }
+            recStack[vertex] = false;
+            return false;
+        };
+
+        const graph = new Graph();
+        const undir_graph = new Graph();
+
+        console.log("validation_flowchart");
+
+        // validation main
+        var ans_nodes_array = myDiagram.model.nodeDataArray;
+        var steps = {};
+        var ans_edges = {};
+
+        // check if the number of nodes is the same as steps
+        console.log(ans_nodes_array.length);
+        if (ans_nodes_array.length == 0){
+            var alert_msg = "The flow chart looks incomplete. Please check if you answered the question for creating a flow chart. Please click `initialize the flow chart` above.)";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        for (var i=0; i<ans_nodes_array.length; i++){
+            var ans_node_i = ans_nodes_array[i];
+            console.log(ans_node_i);
+            steps[ans_node_i["key"]] = ans_node_i["text"];
+            ans_edges[ans_node_i["key"]] = [];
+        }
+
+        console.log(steps);
+        document.getElementById("nodes").value = JSON.stringify(steps);
+
+        var steps_array = Object.keys(steps);
+        for (var i=0; i<steps_array.length; i++){
+            graph.addVertex(steps_array[i]);
+            undir_graph.addVertex(steps_array[i]);
+        }
+
+
+        var ans_edges_array = myDiagram.model.linkDataArray;
+        for (var i=0; i<ans_edges_array.length; i++){
+            var ans_edge_i = ans_edges_array[i];
+            if (ans_edge_i["to"] == 'S'){
+                // no edges to START node
+                var alert_msg = "The start (gray) node must not have an incoming link.";
+                validation_failed(alert_msg);
+                return false;
+            }
+            if (ans_edge_i["from"] == 'G') {
+                // no edges from GOAL node
+                var alert_msg = "The goal (blue) node must not have an outgoing link.";
+                validation_failed(alert_msg);
+                return false;
+            }
+
+            ans_edges[ans_edge_i["from"]].push(ans_edge_i["from"] + '->' + ans_edge_i["to"]);
+            graph.addEdge(ans_edge_i["from"], ans_edge_i["to"]);
+            undir_graph.addEdge(ans_edge_i["from"], ans_edge_i["to"]);
+            undir_graph.addEdge(ans_edge_i["to"], ans_edge_i["from"]);
+        }
+        console.log(ans_edges);
+
+        // no cycle
+        if (graph.detectCycle()){
+            var alert_msg = "The flow chart contains a cycle/loop. Please read the instructions and examples. ";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        // 3. no split
+        var num_components = undir_graph.numberComponents();
+        //console.log("num_components :" + num_components.toString());
+        if (num_components > 1){
+            var alert_msg = "The flow chart has two or more split (i.e., disconnected) structures. Please read the instructions and examples. ";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        // 4. no shortcuts or no goal-unreachable nodes
+        var error_code = has_shortcuts_or_unreachable_nodes(ans_edges);
+        //#if (has_shortcuts_or_unreachable_nodes(ans_edges)){
+        if (error_code == 2){
+            var alert_msg = "The flow chart has a shortcut path. Please read the instructions.";
+            validation_failed(alert_msg);
+            return false;
+        } else if (error_code == 3){
+            var alert_msg = 'The flow chart has a node that is unreachable to the goal node. Please make sure that all the paths can reach to the goal node. (See a bad flow chart example at https://ai2-mosaic-mturk.s3-us-west-2.amazonaws.com/n-pop/bad_flow.png")';
+            validation_failed(alert_msg);
+
+            alert_msg = 'The flow chart has a node that is unreachable to the goal node. Please make sure that all the paths can reach to the goal node. (<a href="https://ai2-mosaic-mturk.s3-us-west-2.amazonaws.com/n-pop/bad_flow.png" target="_blank">See a bad flow chart example.</a>) ';
+            var warnings = document.getElementById("warnings");
+            warnings.innerHTML = '<span style="color:red;">' + alert_msg + '</span>';
+            return false;
+        } else if (error_code == 4){
+            var alert_msg = 'The flow chart has a node that is unreachable from the start node. Please make sure that all the paths can reach from the start node. (See a bad flow chart example at https://ai2-mosaic-mturk.s3-us-west-2.amazonaws.com/n-pop/bad_flow.png")';
+            validation_failed(alert_msg);
+
+            alert_msg = 'The flow chart has a node that is unreachable from the start node. Please make sure that all the paths can reach from the start node. (<a href="https://ai2-mosaic-mturk.s3-us-west-2.amazonaws.com/n-pop/bad_flow.png" target="_blank">See a bad flow chart example.</a>) ';
+            var warnings = document.getElementById("warnings");
+            warnings.innerHTML = '<span style="color:red;">' + alert_msg + '</span>';
+            return false;
+        }
+
+        // 5. (for non_sequential DAG HITs) check if the graph has branches
+        if (non_sequential){
+            // check if it's linear sequence
+            var max_degree = 0;
+            for (var i=0; i<steps_array.length; i++){
+                max_degree = Math.max(max_degree, ans_edges[steps_array[i]].length);
+            }
+            //console.log(max_degree);
+
+            if (max_degree <= 1){
+                var alert_msg = "In this HIT, the flow chart must contain branches. Namely, at least one node has 2 or more incoming/outcoming links. Please read the instructions and examples. ";
+                validation_failed(alert_msg);
+                return false;
+            }
+        }
+
+        document.getElementById("edges").value = JSON.stringify(ans_edges);
+        console.log("validation clear");
+        var alert_msg = "The flow chart looks valid! You can submit now.";
+        validation_passed(alert_msg);
+        return true;
+    }
+
+    function has_shortcuts_or_unreachable_nodes(edges){
+        console.log("check shortcuts");
+        var nodes = Object.keys(edges);
+        var dist_edges = {};
+        var dist_edges_orig = {};
+        // initialize the dist_edges and dist_edges_orig
+        for (i=0; i<nodes.length; i++) {
+            dist_edges[nodes[i]] = {};
+            dist_edges_orig[nodes[i]] = {};
+
+            for (var j=0; j<nodes.length; j++) {
+                var adj_nodes = edges[nodes[i]];
+                dist_edges[nodes[i]][nodes[j]] = null;
+                dist_edges_orig[nodes[i]][nodes[j]] = null;
+
+                for (var k=0; k<adj_nodes.length; k++){
+                    dist_edges[nodes[i]][adj_nodes[k].split('->')[1]] = 1;
+                    dist_edges_orig[nodes[i]][adj_nodes[k].split('->')[1]] = 1
+                }
+            }
+        }
+
+        // Floyd-Warshall for longest distance
+        for (var k=0; k<nodes.length; k++) {
+            for (var i=0; i<nodes.length; i++) {
+                for (var j=0; j<nodes.length; j++) {
+                    var old_dist = dist_edges[nodes[i]][nodes[j]];
+                    if (dist_edges[nodes[i]][nodes[k]] && dist_edges[nodes[k]][nodes[j]]){
+                        var new_dist = dist_edges[nodes[i]][nodes[k]] + dist_edges[nodes[k]][nodes[j]];
+                        dist_edges[nodes[i]][nodes[j]] = Math.max(new_dist, old_dist);
+                    }
+                }
+            }
+        }
+        console.log(dist_edges_orig);
+        console.log(dist_edges);
+
+        // There's dual paths if there's a direct (dist=1) path origianally and it ends up with longer distance.
+        for (i=0; i<nodes.length; i++){
+            for (j=0; j<nodes.length; j++){
+                if (dist_edges_orig[nodes[i]][nodes[j]]==1 && dist_edges[nodes[i]][nodes[j]] > 1){
+                    return 2;
+                }
+            }
+        }
+
+        // If there's a node that cannot reach TO the goal state, it is invalid.
+        for (i=0; i<nodes.length; i++) {
+            console.log("node" + nodes[i]);
+            if (nodes[i]!="G" && !dist_edges[nodes[i]]["G"]) {
+                return 3;
+            }
+        }
+
+        // If there's a node that cannot reach FROM the start state, it is invalid.
+        for (i=0; i<nodes.length; i++) {
+            console.log("node" + [nodes[i]]);
+            if (nodes[i]!="S" && !dist_edges["S"][nodes[i]]) {
+                return 4;
+            }
+        }
+
+        return 1;
+    }
+
+
+    function trimming(str){
+        if (str != null) {
+            str = str.trim();
+            if (str.length == 0) {
+                str = null;
+            }
+        }
+        return str;
+    }
+
+    function validation_failed(alert_msg){
+        var warnings = document.getElementById("warnings");
+        alert(alert_msg);
+        warnings.innerHTML = '<span style="color:red;">' + alert_msg + '</span>';
+    }
+
+    function validation_passed(alert_msg){
+        var warnings = document.getElementById("warnings");
+        warnings.innerHTML = '<span style="color:blue;">' + alert_msg + '</span>';
+    }
+
+    function validate_steps(){
+        console.log("validation_steps");
+
+        // check if the step doesn't be the same as other steps, start, and goal texts
+        var steps_set = [];
+        steps_set.push(start_txt);
+        steps_set.push(goal_txt);
+
+        for (const action_idx in gen_steps){
+            steps_set.push(gen_steps[action_idx]);
+        }
+
+        for (var exstep = 1; exstep<=num_exsteps; exstep++) {
+            console.log("exstep: " + exstep.toString());
+            var exstep_i = document.getElementById("addstep" + exstep.toString()).value;
+            exstep_i = trimming(exstep_i);
+
+            if (exstep_i){
+                if (steps_set.includes(exstep_i)){
+                    var alert_msg = "additional step #" + exstep.toString() + " looks overlapped. The same step cannot be used twice.";
+                    validation_failed(alert_msg);
+                    return false;
+                } else {
+                    steps_set.push(exstep_i);
+                }
+
+                if (exstep_i.includes('"')){
+                    var alert_msg = "additional step #" + exstep.toString() + " includes double quotation symbol. Please avoid using the symbol.";
+                    validation_failed(alert_msg);
+                    return false;
+                }
+
+                var exstep_i_tokens = exstep_i.split(' ');
+                if (exstep_i_tokens.length < min_len) {
+                    var alert_msg = "additional step #" + exstep.toString() + " looks too short. The length of each step must be between 3 and 10 words";
+                    validation_failed(alert_msg);
+                    return false;
+                }
+                if (exstep_i_tokens.length > max_len) {
+                    var alert_msg = "additional step #" + exstep.toString() + " looks too long. The length of each step must be between 3 and 10 words";
+                    validation_failed(alert_msg);
+                    return false;
+                }
+
+                for (var j=0; j<exstep_i_tokens.length; j++){
+                    if (pronouns.includes(exstep_i_tokens[j].toLowerCase())){
+                        var alert_msg = "The additional step #" + i.toString() + " contains pronouns (I, you, her, it, etc.).";
+                        validation_failed(alert_msg);
+                        return false;
+                    }
+                }
+            }
+        }
+
+        return true
+    }
+
+    //function validate_total_duration(){
+    //    console.log("validate_total_duration");
+    //    var duration = document.getElementById("duration").value;
+    //    if (isNaN(duration) || Number(duration)<=0){
+    //        var alert_msg = "The preliminary question (duration) looks invalid. Please enter a positive number (e.g., 7, 2.5, 60).";
+    //        validation_failed(alert_msg);
+    //        return false;
+    //    }
+
+    //    if (!($('input[name=radios_duration]:checked').length == 1)) {
+    //        var alert_msg = "The preliminary question (duration radio button) is not answered.";
+    //        validation_failed(alert_msg);
+    //        return false;
+    //    }
+    //    return true
+    //}
+
+
+    function validation() {
+        console.log("final validation");
+
+        // Preliminary question
+        //if (!validate_total_duration()){
+        //    return false;
+        //}
+
+        // writing step question
+        if (!validate_steps()){
+            return false;
+        }
+
+        // drawing flow chart question
+        if (!validateDiagram()){
+            return false;
+        }
+
+        return true;
+    }
+
+</script>
+
+</head>
+
+<body onload="init()">
+<noscript>
+    <h1 align="center" style="color:white; background-color: crimson">In this HIT, you must enable JavaScript. <br> This warning appears only when JavaScript is disabled. <br> (Please check https://enablejavascript.co/) <br/></h1>
+</noscript>
+<form name='mturk_form' method='post' id='mturk_form' action='/mturk/externalSubmit'
+      onsubmit="return validation()">
+    <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+
+    <div class="container">
+        <h2 align="center">Check actions and make a plan. <br/></h2>
+        <div id="emb_title"></div>
+        <!--<h5 align="center" style="color: white; background-color:crimson">(Pattern A) Please read the instructions and examples carefully, before you accept this HIT.</h5>-->
+
+        <button type="button" class="accordion"><span style="font-size: x-large ">Instructions</span></button>
+        <div class="panel">
+            <p>Humans are very good at breaking a big goal down to actionable steps. </p>
+            <p>In this HIT, you will be shown a goal and actionable steps that someone wants to achieve. There are two questions for you; (1) check if each step is necessary/unnecessary and add missing steps (if any), (2) create a plan with the confirmed steps. For more details, please take a look at the following rules and examples below.
+        </div>
+
+
+        <hr/>
+
+        <!-- put hidden variables such as -->
+        <input type='hidden' value="${id_goal}" name='id_goal' id='id_goal'/>
+        <input type='hidden' value="${id_start}" name='id_start' id='id_start'/>
+        <input type='hidden' value="${id_start_goal}" name='id_start_goal' id='id_start_goal'/>
+        <input type='hidden' value="${id_start_goal_with_parent}" name='id_start_goal' id='id_start_goal'/>
+        <input type='hidden' value="${src}" name='src' id='src'/>
+        <input type='hidden' value="${minutes}" name='minutes' id='minutes'/>
+        <input type='hidden' value="${parent}" name='parent' id='parent'/>
+
+        <div style="margin:0 auto;">
+
+            <h4><u>Question 1A (Check each step)</u> </h4>
+            <p> Let's suppose that someone wants to achieve <span style="background-color: lightblue;"><b><u>${goal_state}</u></b></span>,
+                (and <span style="background-color: lightgray;"><b><u>${start_state}</u></b></span> being already achieved).
+
+            <p align="left">
+                <u>Please check if each step below MUST be done for achieving the goal. <b>Please select the check box if the step is unnecessary or overlapped with other steps. You can exclude the selected steps in the question 2.</b></u><br />
+            </p>
+            <p>Key rules :</p>
+            <ul>
+                <!--<li>
+                    Please be conservative and <b style="color: red">select as few steps (checkboxes) as possible. </b>
+                </li>-->
+                <li>
+                    In this question, the order of steps does NOT matter.
+                </li>
+                <li>
+                    If there are overlapped or alternative steps, please keep one of them by selecting the checkboxes for the others. (For example, if there are steps like "go to the airport by taxi" and "go to the airport by train", we don't have to do both to achieve "get to the airport".
+                </li>
+                <li>
+                    <span style="color: red">Some steps may sound trivial (e.g., walk to the door, move arms) but necessary to achieve the goal. Please keep these steps (i.e., do not select the checkboxes). </span>
+                </li>
+            </ul>
+
+            <p style="background-color: yellow;">If steps are not shown below, please skip the HIT. (Some HITs may have an input format issue.) </p>
+
+            <div id="questions"></div>
+
+            <h4><u>[optional] Question 1B (Add necessary step(s) if any)</u> </h4>
+            <p> In addition to the steps shown in Question 1A, if there are steps that are essential/necessary to achive <span style="background-color: lightblue;"><b><u>${goal}</u></b></span>,
+                you can add up to 3 step(s). </p>
+
+            <p>Key rules :</p>
+            <ul>
+                <li>
+                This is optional. If there are no necessary steps to be added, move on to Question 2 below.
+                </li>
+                <li>
+                    The added steps <b style="color: red">do not have to be in chronological order</b>.
+                </li>
+                <li>
+                    Please <b>avoid using pronouns</b> such as "I", "my", "me", "your", "her", "it", "them" in your answer for adding steps.
+                </li>
+                <li>
+                    The length of each step must be between 3 and 10 words. Please make each step description as simple as possible.
+                </li>
+            </ul>
+
+            <div id="question1b"></div>
+
+
+            <p align="center">
+                <input id="button_initializ_diagram" type="button" class="btn btn-warning" onclick="initializeDiagram()" value="Initialize the flow chart" />
+            </p>
+            <p align="center" style="color: blue">
+            Please click the yellow button above, before moving on to Question 2 below.
+            </p>
+
+
+            <!-- from here -->
+
+            <h4><u>Question 2 (create a flow chart for the small steps)</u> </h4>
+            <p align="left">
+                Please make sure if you initialized the flow chart by clicking
+                <input id="button_initializ_diagram" type="button" class="btn btn-warning" onclick="initializeDiagram()" value="Initialize the flow chart" />
+                (flow chart will show up below). <br/>
+                Now, add links between steps <b style="color: red">from pre-requisite step to the next immediate step</b>.</p>
+            <ul>
+                <div id="emb_nsq2"></div>
+                <li>Shortcut links are <b style="color:red">NOT</b> allowed. For example, when there are links <b>A&rarr;B&rarr;C</b>, then <b style="color:red">you cannot add A&rarr;C</b> to it. </li>
+                <li>Please make sure that all the steps are reachable through the links FROM the start state and TO the goal state. (<a href="https://ai2-mosaic-mturk.s3-us-west-2.amazonaws.com/n-pop/bad_flow.png" target="_blank">See a bad flow chart example.</a>) </li>
+                <li>Mouse-down and drag on the steps to start drawing a new link.</li>
+                <li>If you want to delete a link, click the link and press the delete (backspace) key.</li>
+                <li>If you changed the step descriptions in <u>Question 1B (add necessary steps)</u>, please click <b style="background-color: gold">initialize the flow chart</b> (above) again to refresh the flow chart.</li>
+                <li>You can use Ctrl-mouse-wheel (or the slider bar at upper right) to zoom in and out.</li>
+                <li>Start (gray) node must not have any incoming link.</li>
+                <li>Goal (blue) node must not have any outgoing link.</li>
+                <li>The flow chart should not have a cycle/loop, and  should not have two or more splits.</li>
+            </ul>
+            </p>
+
+            <p>Please take a look at a good example and bad example for reference. </p>
+            <div align="center">
+                <img src="https://ai2-mosaic-mturk.s3-us-west-2.amazonaws.com/n-pop/eg.png" style="border-style: dotted" target="_blank">
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                <img src="https://ai2-mosaic-mturk.s3-us-west-2.amazonaws.com/n-pop/bad_flow.png" style="border-style: dotted" target="_blank">
+            </div>
+            <br/>
+
+            <div align="center">
+                <input id="undo" type="button" class="btn btn-secondary" onclick="myDiagram.commandHandler.undo()" value="undo" />
+                <input id="redo" type="button" class="btn btn-secondary" onclick="myDiagram.commandHandler.redo()" value="redo" />
+                <div id="sample" style="position: relative;">
+                    <div id="myDiagramDiv" style="border: solid 1px black; height:800px;"></div>
+                </div>
+
+            </div>
+
+            <p></p>
+            <p>
+            When you are done, please click
+            <input id="button_validate_diagram" type="button" class="btn btn-success" onclick="validateDiagram()" value="Validate the flow chart" />
+            to check whether the flow chart is well structured. If there is an issue, you will see a pop up message. The message is also shown below.
+            </p>
+            <p align="center">
+            <div align="center" id="warnings" style="color:red"></div>
+            </p>
+
+            <input name="nodes" value="" id="nodes" hidden>
+            <input name="edges" value="" id="edges" hidden>
+
+            <p></p>
+            <hr />
+            <h5>Comments and feedback
+                (Please leave a comment if you have any questions, suggestions, etc.)</h5>
+            <span><textarea class="form-control" cols="120" name="Comments" rows="5"></textarea></span>
+            <br/>
+
+        </div>
+    </div>
+
+
+
+    <p align="center"><u>By clicking Submit, you agree that you have read the instructions and examples.</u></p>
+    <p align="center">
+        <input type='submit' id='submitButton' value='Submit'/>
+    </p>
+
+</form>
+
+<script language='Javascript'>turkSetAssignmentID();</script>
+<script>
+    // accordion
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight){
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+
+</script>
+
+
+</body>
+

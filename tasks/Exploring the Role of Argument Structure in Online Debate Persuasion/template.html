@@ -1,0 +1,63 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+
+<crowd-form answer-format="flatten-objects">
+
+    <!-- The crowd-classifier element will create a tool for the Worker to select the
+           correct answer to your question -->
+    <crowd-classifier
+        categories="['Policy', 'Value', 'Fact', 'Testimony', 'Reference']"
+        header="Classify the type of the following sentence in the debate based on debate topic"
+        name="argument mining">
+
+        <!-- The text you want classified will be substituted for the "text" variable when you
+               publish a batch with a CSV input file containing multiple text items  -->
+        <classification-target>
+            <p><strong>Debate Topic: </strong>${topic}</p>
+            <p><strong>Classification Target Sentence:</strong></p>
+            <p>${sentence}</p>
+            </classification-target>
+
+       <!-- Use the short-instructions section for quick instructions that the Worker
+              will see while working on the task. Including some basic examples of
+              good and bad answers here can help get good results. You can include
+              any HTML here. -->
+        <short-instructions>
+            <p>Please refer to full instruction.</p>
+        </short-instructions>
+
+      <!-- Use the full-instructions section for more detailed instructions that the
+            Worker can open while working on the task. Including more detailed
+            instructions and additional examples of good and bad answers here can
+            help get good results. You can include any HTML here. -->
+      <full-instructions header="Classification Instructions">
+            <p><strong>Sentence type description</strong></p>
+            <div>
+                <p><strong>Policy: </strong>This refers to a sentence proposing a specific course of action to be taken. It typically contains modal verbs like “should” and “ought to.”
+It cannot be directly proved with objective evidence, and a proper type of support is a logical reason from which the proposition can be inferred.</p>
+                <p>Example: They should not be allowed to contact anyone (other than the debtor him/herself) more than once.</p>
+                <p><strong>Value: </strong>This refers to a sentence containing value judgments without making specific claims about what should be done (If so, then it is a Policy sentence.). Because of the subjectivity of value judgments, it cannot be proved directly with objective evidence.</p>
+                <p>Example: That would be a starting point that can be expanded on as the system is fine tuned.</p>
+                <p><strong>Fact: </strong>This refers to an objective proposition “expressing or dealing with facts or conditions as perceived without distortion by personal feelings, prejudices, or interpretations.” A Fact sentence has a truth value that can be verified with objective evidence that may be available at the time the claim is made; predictions about future are considered unverifiable.</p>
+                <p>Example: Recently, courts have held that debt collectors can escape 1692i’s venue provisions entirely by pursuing debt collection through arbitration instead.</p>
+                <p><strong>Testimony: </strong>This refers to an objective sentence about the author’s personal state or experience. Evidence for Testimony is not publicly available in most cases.</p>
+                <p>Example: A neighbor who has since moved away has had her debts turned over to collection agencies.</p>
+                <p><strong>Reference: </strong>This refers to a reference to a source of objective evidence. It is typically a citation or a URL of a published work from a renowned source.</p>
+                <p>Example: http://files.consumerfinance.gov/f/201309 cfpb agencybrief 12-cv-04057.pdf</p>
+                <p>Note: All the definition and examples are cited from paper https://www.aclweb.org/anthology/L18-1257.pdf</p>
+            </div>
+            <p><strong>Example HIT:</strong></p>
+            <div>
+                <p><strong>Debate Topic: </strong>Dane Cook's stand-up is overrated and not funny</p>
+                <p><strong>Classification Target Sentence: </strong>Dane Cook is a stand-up comedian whose popularity remains an enigma.</p>
+                <p><strong>Type: </strong>Value</p>
+            </div>
+        </full-instructions>
+
+    </crowd-classifier>
+</crowd-form>

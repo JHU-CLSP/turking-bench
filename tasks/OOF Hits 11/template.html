@@ -1,0 +1,1879 @@
+<meta charset="utf-8">
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/vue-form-wizard/dist/vue-form-wizard.min.css">
+<link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+<style type="text/css">
+
+    * {
+  box-sizing: border-box;
+}
+
+html *
+{
+   font-family: sans-serif;
+}
+
+.bg-Technical_Jargon {
+  background-color: #FF6300
+}
+
+.Technical_Jargon {
+  color: #FF6300
+}
+
+.border-Technical_Jargon {
+  border-bottom: 3px solid #FF6300;
+}
+
+.bg-Bad_Math {
+  background-color: #111111
+}
+
+.Bad_Math {
+  color: #111111
+}
+
+.border-Bad_Math {
+  border-bottom: 3px solid #111111;
+}
+
+.bg-Encyclopedic {
+  background-color: #137752
+}
+
+.Encyclopedic {
+  color: #137752
+}
+
+.border-Encyclopedic {
+  border-bottom: 3px solid #137752
+}
+
+.bg-Commonsense {
+  background-color: #9EEBCF
+}
+
+.Commonsense {
+  color: #9EEBCF
+}
+
+.border-Commonsense {
+  border-bottom: 3px solid #9EEBCF
+}
+
+.bg-Needs_Google {
+  background-color: #5E2CA5
+}
+
+.Needs_Google {
+  color: #5E2CA5
+}
+
+.border-Needs_Google {
+  border-bottom: 3px solid #5E2CA5
+}
+
+.bg-Grammar_Usage {
+  background-color: #CCCCCC
+}
+
+.Grammar_Usage {
+  color: #CCCCCC
+}
+
+.border-Grammar_Usage {
+  border-bottom: 3px solid #CCCCCC
+}
+
+.bg-Redundant {
+  background-color: #E7040F
+}
+
+.Redundant {
+  color: #E7040F
+}
+
+.border-Redundant {
+  border-bottom: 3px solid #E7040F
+}
+
+.bg-Redundant_antecedent {
+  background-color: #FF725C
+}
+
+.Redundant_antecedent {
+  color: #FF725C
+}
+
+.border-Redundant_antecedent {
+  border-bottom: 3px solid #FF725C
+}
+
+.bg-Off-prompt {
+  background-color: #FFD700
+}
+
+.Off-prompt {
+  color: #FFD700
+}
+
+.border-Off-prompt {
+  border-bottom: 3px solid #FFD700
+}
+
+.bg-Self-contradiction {
+  background-color: #00449E
+}
+
+.Self-contradiction {
+  color: #00449E
+}
+
+.border-Self-contradiction {
+  border-bottom: 3px solid #00449E
+}
+
+.bg-Self-contradiction_antecedent {
+  background-color: #96CCFF
+}
+
+.Self-contradiction_antecedent {
+  color: #96CCFF
+}
+
+.border-Self-contradiction_antecedent {
+  border-bottom: 3px solid #96CCFF
+}
+
+.bg-Incoherent {
+  background-color: #FF80CC
+}
+
+.Incoherent {
+  color: #FF80CC
+}
+
+.border-Incoherent {
+  border-bottom: 3px solid #FF80CC
+}
+
+/* .bg-Other {
+  background-color: #B9770E
+}
+
+.Other {
+  color: #B9770E
+}
+
+.border-Other {
+  border-bottom:3px solid #B9770E
+} */
+
+.single_part {
+  border-top: 1px solid #d6d6d6;
+}
+
+.single_part_error_qual {
+  border-top: 3px solid #d6d6d6;
+}
+
+
+.prompt {font-style: italic}
+
+.paragraph {
+  line-height: 1.6
+}
+
+span.quality-span {
+  cursor: default;
+}
+
+/* span.annotation { border-bottom:3px solid; } */
+
+span.annotation span.annotation { padding-bottom:6px; }
+
+span.annotation span.annotation span.annotation { padding-bottom:12px; }
+
+span.annotation span.annotation span.annotation span.annotation { padding-bottom:18px; }
+
+span.annotation span.annotation span.annotation span.annotation span.annotation { padding-bottom:24px; }
+
+/* span[data-uid="001"] { border-color:#f08080; }
+span[data-uid="002"] { border-color:#dda0dd; }
+span[data-uid="003"] { border-color:#a9d6bf; }
+span[data-uid="004"] { border-color:#edbb85; }
+span[data-uid="005"] { border-color:#add8e6; } */
+
+#quality-selection {
+    display: none;
+    position: absolute;
+    background-color: white;
+    padding:10px;
+    /* text-align: center; */
+    width: 640px;
+    /* max-width: 400px; */
+    margin: 20px;
+    z-index: 100;
+}
+
+/* #dropdown-button-container {
+  text-align: center;
+} */
+/*
+#explanation_div {
+  padding-top: 20px;
+} */
+
+.single_part {
+  padding-bottom: 20px;
+}
+
+#close-icon {
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 60px;
+  /* box-shadow: 0px 0px 2px #888; */
+  padding: 0.25em 0.3em;
+}
+
+#close-icon:hover {
+  background-color: #C0C0C0;
+}
+
+/* ::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+} */
+
+/* submit button css */
+/* .multi-button {
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+} */
+.quality_button{
+  /* margin: auto; */
+  display: inline-block;
+  background: white;
+  border: 0.125em solid black;
+  cursor: pointer;
+  margin: 0em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  letter-spacing: 0.125em;
+  /* margin: 0.5rem; */
+  padding: 0.4em 0.55em;
+  position: relative;
+  text-transform: uppercase;
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+}
+.quality_button:before, .quality_button:after {
+  content: '';
+  position: absolute;
+  transition: all 0.135s ease-in-out;
+}
+
+.confirm:after {
+  border: 0.125em dashed black;
+  bottom: -0.125em;
+  left: -0.125em;
+  right: -0.125em;
+  top: -0.125em;
+}
+
+.confirm:hover:after, .confirm:focus:after {
+  bottom: 0.125em;
+  left: 0.125em;
+  right: 0.125em;
+  top: 0.125em;
+}
+
+/* clear and confirm button css end */
+
+/* #situation-0-div {
+  margin-top: 5em;
+} */
+
+.alignment {
+  vertical-align: top;
+  display: inline-block;
+}
+
+.quality { font-size: 24px; font-weight: 300; line-height: 32px; margin: 0px; display:inline-block}
+
+.situation-display {
+    padding-left: 10px;
+}
+
+.disable {
+  opacity: .3;
+  cursor: default;
+  outline: none;
+  pointer-events: none;
+}
+
+.selection_a {
+    /* color: #FFFFFF; */
+    background: #FFD700;
+    padding: 5px;
+    line-height: 1.5;
+    text-decoration: none;
+}
+
+.selection_a_antecedent {
+    background: #FBF1A9;
+    padding: 5px;
+    line-height: 1.8;
+    text-decoration: none;
+}
+
+
+#selection_text {
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 5px;
+}
+
+#selection_antecedent {
+  margin-bottom: 0;
+}
+
+/*for div border animation*/
+.gradient-border {
+    --borderWidth: 3px;
+    background: #1D1F20;
+    position: relative;
+    border-radius: var(--borderWidth);
+  }
+  .gradient-border:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 4px;
+    background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+    background-size: 300% 300%;
+    clip-path: polygon(0% 100%, 3px 100%, 3px 3px, calc(100% - 3px) 3px, calc(100% - 3px) calc(100% - 3px), 3px calc(100% - 3px), 3px 100%, 100% 100%, 100% 0%, 0% 0%);
+    animation: animatedgradient 3.5s ease-in-out infinite;
+  }
+
+  @-webkit-keyframes animatedgradient {
+      0% {
+          background-position: 0% 50%;
+      }
+      50% {
+          background-position: 100% 50%;
+      }
+      100% {
+          background-position: 0% 50%;
+      }
+  }
+
+
+  @keyframes animatedgradient {
+      0% {
+          background-position: 0% 50%;
+      }
+      50% {
+          background-position: 100% 50%;
+      }
+      100% {
+          background-position: 0% 50%;
+      }
+  }
+
+    :root {
+	--white: #ffffff;
+	--light: #f0eff3;
+	--black: #000000;
+	--dark-blue: #1f2029;
+	--dark-light: #353746;
+	--red: #da2c4d;
+	--yellow: #f8ab37;
+	--grey: #ecedf3;
+}
+
+/* #Primary
+================================================== */
+
+/* body{
+	width: 100%;
+	background: var(--dark-blue);
+	overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+	font-size: 17px;
+	line-height: 30px;
+}
+p{
+    font-family: 'Poppins', sans-serif;
+	font-size: 17px;
+	line-height: 30px;
+	color: var(--white);
+	letter-spacing: 1px;
+	font-weight: 500;
+} */
+.section {
+    position: relative;
+	width: 100%;
+	display: block;
+	/* text-align: center; */
+	margin: 0 auto;
+}
+.column {
+	text-align: center;
+	margin: 0;
+    padding-left: 2px;
+    padding-right: 2px;
+	float: left;
+	width: 20%;
+}
+
+.column-severity {
+	text-align: center;
+	margin: 0;
+    padding-left: 2px;
+    padding-right: 2px;
+	float: left;
+	width: 33%;
+}
+.row {
+	position: relative;
+	overflow: auto;
+	width: 100%;
+}
+/* .over-hide {
+    overflow: hidden;
+} */
+.z-bigger {
+    z-index: 100 !important;
+}
+
+
+.background-color{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+    /* background-color: var(--dark-blue); */
+    background-color: var(--white);
+	z-index: 1;
+}
+
+
+.checkbox-tools:checked,
+.checkbox-tools:not(:checked){
+	position: absolute;
+	left: -9999px;
+	width: 0;
+	height: 0;
+	visibility: hidden;
+}
+
+.checkbox-tools:checked + label,
+.checkbox-tools:not(:checked) + label{
+	position: relative;
+	display: flex;
+    align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 10px;
+	width: 115px;
+	height: 70px;
+	font-size: 14px;
+	line-height: 20px;
+	letter-spacing: 1px;
+	/* margin: 0; */
+	margin: 0 auto;
+	margin-left: 2px;
+	margin-right: 2px;
+	margin-bottom: 5px;
+	text-align: center;
+	border-radius: 4px;
+	overflow: hidden;
+	cursor: pointer;
+	vertical-align: middle;
+	color: var(--white);
+}
+
+.checkbox-tools-severity:checked + label,
+.checkbox-tools-severity:not(:checked) + label{
+	position: relative;
+	display: flex;
+    align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 10px;
+	width: 198px;
+	height: 70px;
+	font-size: 14px;
+	line-height: 20px;
+	letter-spacing: 1px;
+	/* margin: 0; */
+	margin: 0 auto;
+	margin-left: 2px;
+	margin-right: 2px;
+	margin-bottom: 5px;
+	text-align: center;
+	border-radius: 4px;
+	overflow: hidden;
+	cursor: pointer;
+	vertical-align: middle;
+	color: var(--white);
+}
+
+.checkbox-tools:not(:checked) + label{
+	background-color: var(--dark-light);
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+.checkbox-tools:checked + label{
+	background-color: transparent;
+    /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); */
+    -webkit-transition: all 300ms linear;
+    transition: all 300ms linear;
+}
+.checkbox-tools:not(:checked) + label:hover{
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    -webkit-transition: all 300ms linear;
+    transition: all 300ms linear;
+}
+.checkbox-tools:checked + label::before,
+.checkbox-tools:not(:checked) + label::before{
+	position: absolute;
+	content: '';
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 4px;
+	/* background-image: linear-gradient(298deg, var(--red), var(--yellow)); */
+    z-index: -1;
+}
+
+#error-1-label::before {
+	background-color: #FF6300
+}
+
+#error-2-label::before {
+	background-color: #111111
+}
+
+#error-3-label::before {
+	background-color: #137752
+}
+
+#error-4-label {
+	color: black;
+}
+
+#error-4-label::before {
+	background-color: #9EEBCF;
+}
+
+#error-5-label::before {
+	background-color: #5E2CA5
+}
+
+#error-6-label {
+	color: black;
+}
+
+#error-6-label::before {
+	background-color: #CCCCCC
+}
+
+#error-7-label {
+	color: black;
+}
+
+#error-7-label::before {
+	background-color: #FFD700
+}
+
+#error-8-label::before {
+	background-color: #E7040F
+}
+
+#error-9-label::before {
+	background-color: #00449E
+}
+
+#error-10-label::before {
+	background-color: #FF80CC
+}
+
+#severity-1-label::before {
+	background-image: linear-gradient(298deg, var(--red), var(--yellow));
+}
+
+#severity-2-label::before {
+	background-image: linear-gradient(298deg, var(--red), var(--yellow));
+}
+
+#severity-3-label::before {
+	background-image: linear-gradient(298deg, var(--red), var(--yellow));
+}
+
+.checkbox-tools:checked + label .uil,
+.checkbox-tools:not(:checked) + label .uil{
+	font-size: 24px;
+	line-height: 24px;
+	display: block;
+	padding-bottom: 10px;
+}
+
+.section .quality_selection_container .row .column .checkbox-tools:not(:checked) + label{
+	background-color: var(--light);
+	color: var(--black);
+	box-shadow: 0 1x 4px 0 rgba(0, 0, 0, 0.05);
+}
+
+.column-severity .checkbox-tools:not(:checked) + label{
+	background-color: var(--light);
+	color: var(--black);
+	box-shadow: 0 1x 4px 0 rgba(0, 0, 0, 0.05);
+}
+
+    .container {
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-bottom: 1rem;
+}
+
+.card {
+  margin: 1rem;
+  /* background-color: #f8f9fa;
+  border: 1px solid #d9dadb; */
+  border-radius: 4px;
+
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-header {
+  width: 100%;
+  background-color: rgba(0, 0, 0, .03);
+  text-decoration: none;
+  padding: .75rem 1.25rem;
+  border-bottom: 1px solid #d9dadb;
+  display: flex;
+}
+
+.link {
+  color: #157ffb;
+}
+
+.link:hover {
+  color: #0a4d99;
+  text-decoration: underline;
+
+}
+
+.card-body {
+  /* padding: 1rem; */
+  margin-left: auto!important;
+  margin-right: auto!important;
+}
+
+.mf-textarea {
+  width: 100%;
+  /* max-width: 500px; */
+  height: 80px;
+  margin-top: 0px;
+}
+
+.inputs li {
+  /* float: left; */
+  list-style-type: none;
+  padding: 5px;
+  margin-right: 5px;
+}
+
+.f7 {
+  font-size: 0.5 rem;
+}
+
+hr {
+  border-top: 1px solid #dfe0e1;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+
+.form__group {
+  position  : relative;
+  padding   : 20px 0 0;
+  margin    : auto;
+  margin-top: 5px;
+  max-width : 400px;
+}
+
+.form__field {
+  width        : 100%;
+  border       : 0;
+  border-bottom: 2px solid;
+  border-image : linear-gradient(to right, #2B32B2, #1488CC) 0 0 100% 0/0 0 2px 0;
+  /* outline   : 0; */
+  color        : #283048;
+  padding      : 4px 0;
+  background   : transparent;
+  transition   : border-color 0.2s;
+}
+
+.form__field::placeholder {
+  color: transparent;
+}
+
+.form__field:placeholder-shown~.form__label {
+  /* font-size: 1.3rem; */
+  cursor: text;
+  top   : 20px;
+}
+
+.form__label {
+  position  : absolute;
+  top       : 0;
+  display   : block;
+  transition: 0.2s;
+  font-size : 1rem;
+  color     : #707070;
+}
+
+.form__field:focus {
+  padding-bottom    : 4px;
+  border-image      : linear-gradient(to right, #2B32B2, #1488CC);
+  border-image-slice: 1;
+}
+
+.form__field:focus~.form__label {
+  position  : absolute;
+  top       : 0;
+  display   : block;
+  transition: 0.2s;
+  font-size : 1rem;
+  color     : #2B32B2;
+}
+
+/* reset input */
+.form__field:required,
+.form__field:invalid {
+  box-shadow: none;
+}
+
+.radio-instruction {
+  text-align: left;
+}
+
+.radios {
+  box-sizing: border-box;
+  display   : inline-block;
+  width     : 100%;
+}
+
+.radios *,
+.radios *:before,
+.radios *:after {
+  box-sizing: border-box;
+}
+
+.radio {
+  /* float: left; */
+  display            : block;
+  cursor             : pointer;
+  -webkit-user-select: none;
+  -moz-user-select   : none;
+  -ms-user-select    : none;
+  user-select        : none;
+  text-align         : left;
+}
+
+/* .radio + .radio {
+    margin-left: 10px;
+  } */
+.radio input {
+  display: none;
+}
+
+.radio input+span {
+  display     : inline-block;
+  position    : relative;
+  padding-left: 20px;
+}
+
+.radio input+span:before {
+  content      : '';
+  display      : block;
+  position     : absolute;
+  top          : 0px;
+  left         : 0px;
+  border-radius: 50%;
+  margin-right : 5px;
+  width        : 16px;
+  height       : 16px;
+  border       : 1px solid #ccc;
+  background   : #fff;
+}
+
+.radio input+span:after {
+  content           : '';
+  display           : block;
+  width             : 10px;
+  height            : 10px;
+  background        : #222;
+  position          : absolute;
+  border-radius     : 50%;
+  top               : 3px;
+  left              : 3px;
+  opacity           : 0;
+  -webkit-transform : scale(0, 0);
+  transform         : scale(0, 0);
+  -webkit-transition: all 0.2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+  transition        : all 0.2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+}
+
+.radio input:checked+span:after {
+  opacity          : 1;
+  -webkit-transform: scale(1, 1);
+  transform        : scale(1, 1);
+}
+
+.situation-display {
+  margin-top: 4px;
+}
+
+#p_button {
+  max-width   : 1140px;
+  margin-left : auto;
+  margin-right: auto;
+}
+
+.wizard-navigation {
+  top: 0;
+}
+
+.wizard-nav {
+  background-color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.wizard-progress-with-circle {
+  z-index: 2;
+}
+
+.wizard-icon-circle {
+  z-index: 3;
+}
+
+</style>
+
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+<script>
+    (function () { var e, t; e = this, t = function () { var r = { startStopTimes: {}, idleTimeoutMs: 3e4, currentIdleTimeMs: 0, checkStateRateMs: 250, active: !1, idle: !1, currentPageName: "default-page-name", timeElapsedCallbacks: [], userLeftCallbacks: [], userReturnCallbacks: [], trackTimeOnElement: function (e) { var t = document.getElementById(e); t && (t.addEventListener("mouseover", function () { r.startTimer(e) }), t.addEventListener("mousemove", function () { r.startTimer(e) }), t.addEventListener("mouseleave", function () { r.stopTimer(e) }), t.addEventListener("keypress", function () { r.startTimer(e) }), t.addEventListener("focus", function () { r.startTimer(e) })) }, getTimeOnElementInSeconds: function (e) { var t = r.getTimeOnPageInSeconds(e); return t || 0 }, startTimer: function (e, t) { if (e || (e = r.currentPageName), void 0 === r.startStopTimes[e]) r.startStopTimes[e] = []; else { var n = r.startStopTimes[e], i = n[n.length - 1]; if (void 0 !== i && void 0 === i.stopTime) return } r.startStopTimes[e].push({ startTime: t || new Date, stopTime: void 0 }), r.active = !0, r.idle = !1 }, stopAllTimers: function () { for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++)r.stopTimer(e[t]) }, stopTimer: function (e, t) { e || (e = r.currentPageName); var n = r.startStopTimes[e]; void 0 !== n && 0 !== n.length && (void 0 === n[n.length - 1].stopTime && (n[n.length - 1].stopTime = t || new Date), r.active = !1) }, getTimeOnCurrentPageInSeconds: function () { return r.getTimeOnPageInSeconds(r.currentPageName) }, getTimeOnPageInSeconds: function (e) { var t = r.getTimeOnPageInMilliseconds(e); return void 0 === t ? void 0 : t / 1e3 }, getTimeOnCurrentPageInMilliseconds: function () { return r.getTimeOnPageInMilliseconds(r.currentPageName) }, getTimeOnPageInMilliseconds: function (e) { var t = r.startStopTimes[e]; if (void 0 !== t) { for (var n = 0, i = 0; i < t.length; i++) { var s = t[i].startTime, o = t[i].stopTime; void 0 === o && (o = new Date), n += o - s } return Number(n) } }, getTimeOnAllPagesInSeconds: function () { for (var e = [], t = Object.keys(r.startStopTimes), n = 0; n < t.length; n++) { var i = t[n], s = r.getTimeOnPageInSeconds(i); e.push({ pageName: i, timeOnPage: s }) } return e }, setIdleDurationInSeconds: function (e) { var t = parseFloat(e); if (!1 !== isNaN(t)) throw { name: "InvalidDurationException", message: "An invalid duration time (" + e + ") was provided." }; return r.idleTimeoutMs = 1e3 * e, this }, setCurrentPageName: function (e) { return r.currentPageName = e, this }, resetRecordedPageTime: function (e) { delete r.startStopTimes[e] }, resetAllRecordedPageTimes: function () { for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++)r.resetRecordedPageTime(e[t]) }, resetIdleCountdown: function () { r.idle && r.triggerUserHasReturned(), r.idle = !1, r.currentIdleTimeMs = 0 }, callWhenUserLeaves: function (e, t) { this.userLeftCallbacks.push({ callback: e, numberOfTimesToInvoke: t }) }, callWhenUserReturns: function (e, t) { this.userReturnCallbacks.push({ callback: e, numberOfTimesToInvoke: t }) }, triggerUserHasReturned: function () { if (!r.active) for (var e = 0; e < this.userReturnCallbacks.length; e++) { var t = this.userReturnCallbacks[e], n = t.numberOfTimesToInvoke; (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback()) } r.startTimer() }, triggerUserHasLeftPage: function () { if (r.active) for (var e = 0; e < this.userLeftCallbacks.length; e++) { var t = this.userLeftCallbacks[e], n = t.numberOfTimesToInvoke; (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback()) } r.stopAllTimers() }, callAfterTimeElapsedInSeconds: function (e, t) { r.timeElapsedCallbacks.push({ timeInSeconds: e, callback: t, pending: !0 }) }, checkState: function () { for (var e = 0; e < r.timeElapsedCallbacks.length; e++)r.timeElapsedCallbacks[e].pending && r.getTimeOnCurrentPageInSeconds() > r.timeElapsedCallbacks[e].timeInSeconds && (r.timeElapsedCallbacks[e].callback(), r.timeElapsedCallbacks[e].pending = !1); !1 === r.idle && r.currentIdleTimeMs > r.idleTimeoutMs ? (r.idle = !0, r.triggerUserHasLeftPage()) : r.currentIdleTimeMs += r.checkStateRateMs }, visibilityChangeEventName: void 0, hiddenPropName: void 0, listenForVisibilityEvents: function () { void 0 !== document.hidden ? (r.hiddenPropName = "hidden", r.visibilityChangeEventName = "visibilitychange") : void 0 !== document.mozHidden ? (r.hiddenPropName = "mozHidden", r.visibilityChangeEventName = "mozvisibilitychange") : void 0 !== document.msHidden ? (r.hiddenPropName = "msHidden", r.visibilityChangeEventName = "msvisibilitychange") : void 0 !== document.webkitHidden && (r.hiddenPropName = "webkitHidden", r.visibilityChangeEventName = "webkitvisibilitychange"), document.addEventListener(r.visibilityChangeEventName, function () { document[r.hiddenPropName] ? r.triggerUserHasLeftPage() : r.triggerUserHasReturned() }, !1), window.addEventListener("blur", function () { r.triggerUserHasLeftPage() }), window.addEventListener("focus", function () { r.triggerUserHasReturned() }), document.addEventListener("mousemove", function () { r.resetIdleCountdown() }), document.addEventListener("keyup", function () { r.resetIdleCountdown() }), document.addEventListener("touchstart", function () { r.resetIdleCountdown() }), window.addEventListener("scroll", function () { r.resetIdleCountdown() }), setInterval(function () { r.checkState() }, r.checkStateRateMs) }, websocket: void 0, websocketHost: void 0, setUpWebsocket: function (e) { if (window.WebSocket && e) { var t = e.websocketHost; try { r.websocket = new WebSocket(t), window.onbeforeunload = function () { r.sendCurrentTime(e.appId) }, r.websocket.onopen = function () { r.sendInitWsRequest(e.appId) }, r.websocket.onerror = function (e) { console && console.log("Error occurred in websocket connection: " + e) }, r.websocket.onmessage = function (e) { console && console.log(e.data) } } catch (e) { console && console.error("Failed to connect to websocket host.  Error:" + e) } } return this }, websocketSend: function (e) { r.websocket.send(JSON.stringify(e)) }, sendCurrentTime: function (e) { var t = { type: "INSERT_TIME", appId: e, timeOnPageMs: r.getTimeOnCurrentPageInMilliseconds(), pageName: r.currentPageName }; r.websocketSend(t) }, sendInitWsRequest: function (e) { var t = { type: "INIT", appId: e }; r.websocketSend(t) }, initialize: function (e) { var t = r.idleTimeoutMs || 30, n = r.currentPageName || "default-page-name", i = void 0, s = void 0; e && (t = e.idleTimeoutInSeconds || t, n = e.currentPageName || n, i = e.websocketOptions, s = e.initialStartTime), r.setIdleDurationInSeconds(t).setCurrentPageName(n).setUpWebsocket(i).listenForVisibilityEvents(), r.startTimer(void 0, s) } }; return r }, "undefined" != typeof module && module.exports ? module.exports = t() : "function" == typeof define && define.amd ? define([], function () { return e.TimeMe = t() }) : e.TimeMe = t() }).call(this);
+
+    TimeMe.initialize({
+        currentPageName: "task",
+        idleTimeoutInSeconds: 30
+    });
+
+    // update debug display
+    // setInterval(function () {
+    //     document.getElementById('timing-debug').innerText = TimeMe.getTimeOnCurrentPageInSeconds();
+    // }, 0.1);
+</script>
+
+<body>
+    <div id="task_app">
+        <div>
+          <form-wizard @on-complete="onComplete" ref="wizard">
+              <tab-content title="Instructions">
+                <div class="container card mb-3 card-body" id="bodyInstructions">
+                  <p class="mt0 f2 b">Instructions</p>
+                  <p class="f4">
+                        Congratulation! You did very well in the new OOF qualification!
+                  </p>
+
+                  <p class="f4">
+                    In this task (same as the real task question in the qual), you will read text written by an Artificial Intelligence and note the errors or things you don't understand
+                    in the text. Please carefully read the text and take your time, since the pay is set assuming you will spend 15 mintues average on one task.
+                  </p>
+
+                  <p class="f4">
+                    Notice: Each hit only contains one task, so feel free to do more hits.
+                  </p>
+
+                  <p class="f4">
+                    Here is the link for the qual solution <a href="https://yao-dou.github.io/qual-solution/" target="_blank">https://yao-dou.github.io/qual-solution/</a>, you are highly encouraged to look at it while doing the task.
+                  </p>
+
+                  <p class="f4">
+                     Here’s the big picture of what we’re doing:
+                  </p>
+
+                  <img src="https://raw.githubusercontent.com/mbforbes/oof/master/task.png?token=AMTFCL7E4UMSQOEWONGRHZTASLXT2">
+                </div>
+              </tab-content>
+
+
+              <tab-content title="Real Task">
+                <div class="container card mb-3 card-body" id="bodyTask">
+                  <p class="mt0 f2 b">Task</p>
+                  <p class="f4">
+                      Now it's time for you to apply what you learn in the qual (<a href="https://yao-dou.github.io/qual-solution/" target="_blank">https://yao-dou.github.io/qual-solution/</a>) to this task.
+                      This text continuation is truncated from a longer text continuation.
+                      Please annotate any kind of "badness" (no matter how small the error is) in the text continuation, and if you think this text
+                      continuation doesn't have any "badness", please check the box below.
+                      If you encounter any bug (e.g. couldn't delete the span), please illustrate it in the optional feedback section, thank you!
+                  </p>
+
+                  <p class="f4 red">
+                      You are very encouraged to check this webpage (<a href="https://yao-dou.github.io/oof-feedbacks/" target="_blank">https://yao-dou.github.io/oof-feedbacks/</a>), which has many feedbacks and answers common questions you may have. Also feel Free to email us if you have other questions!
+                  </p>
+
+                  <!-- Example situation to be annotated -->
+                  <div id="situation-0-div" class="outline">
+                      <div id="situation-0-prompt-div">
+                          <p class="f5 pl4 pr4 pt1 mt0 mb0">Sytem Prompt (Human Written): </p>
+                          <p id="situation-0-prompt" class="f3 pl4 pr4 pa1 mt0 mb0 prompt">
+                              ${situation-0-prompt}
+                          </p>
+                      </div>
+                      <div id="situation-0-generation-div">
+                          <p class="f5 pl4 pr4 pt4 mt0 mb0">Continuation (Human or AI Model Written): </p>
+                          <p id="situation-0" class="f3 pl4 pr4 pa1 mt0 paragraph">${situation-0}</p>
+                      </div>
+                  </div>
+                  <div class="pl4">
+                      <input type="checkbox" id="no_badness" name="no_badness">
+                      <label for="no_badness">There is no "badness" in this text!</label>
+                  </div>
+                  <div id="situation-0-display" class="situation-display"></div>
+                  <input type="hidden" name="situation-0" id="situation-0-serialize">
+                  <input type="hidden" name="situation-0-id" value="${situation-0-id}">
+                </div>
+              </tab-content>
+
+              <tab-content title="Optional Feedback">
+                <div class="container card mb-3 card-body" id="bodyFeedback">
+
+                  <!--Motivation text -->
+                  <p class="mt0 f2 b">Optional Feedback</p>
+
+                  <p class=" lh-copy f4">
+                      If you have any feedback about improving this task, you can let
+                      us know here! Completely optional / not required.
+                  </p>
+                  <textarea id="feedback" name="feedback" class="mf-textarea"></textarea>
+                </div>
+              </tab-content>
+          </form-wizard>
+        </div>
+
+        <div id="quality-selection" class="quality-selection gradient-border">
+          <i class="fa fa-close" id="close-icon"></i>
+          <p id="selection_text" class="selection_text"></p>
+          <!-- <input type="text" id="text_input" name="quality" placeholder="type your problem"> -->
+          <div id="dropdown-button-container">
+                  <!-- <input class="checkbox" type="checkbox" name="general" id="general">
+                  <label class="for-checkbox" for="general"></label> -->
+                  <div class="single_part section over-hide z-bigger">
+                      <p class="b mb2">Select the error.</p>
+                      <div class="quality_selection_container">
+                          <p class="f6 mb2">Factual</p>
+                          <div class="row">
+                              <div class="column">
+                                  <input class="checkbox-tools antecedent_no_able" type="radio" name="error_type" id="error-1" value="Technical_Jargon">
+                                  <label class="b for-checkbox-tools" for="error-1" id="error-1-label">
+                                      Technical Jargon
+                                  </label>
+                              </div>
+                              <div class="column">
+                                  <input class="checkbox-tools antecedent_no_able" type="radio" name="error_type" id="error-2" value="Bad_Math">
+                                  <label class="b for-checkbox-tools" for="error-2" id="error-2-label">
+                                      Bad Math
+                                  </label>
+                              </div>
+                              <div class="column">
+                                  <input class="checkbox-tools antecedent_no_able" type="radio" name="error_type" id="error-3" value="Encyclopedic">
+                                  <label class="b for-checkbox-tools" for="error-3" id="error-3-label">
+                                      Wrong: Encyclopedic
+                                  </label>
+                              </div>
+                              <div class="column">
+                                  <input class="checkbox-tools antecedent_no_able" type="radio" name="error_type" id="error-4" value="Commonsense">
+                                  <label class="b for-checkbox-tools" for="error-4" id="error-4-label">
+                                      Wrong: Commonsense
+                                  </label>
+                              </div>
+                              <div class="column">
+                                  <input class="checkbox-tools antecedent_no_able" type="radio" name="error_type" id="error-5" value="Needs_Google">
+                                  <label class="b for-checkbox-tools" for="error-5" id="error-5-label">
+                                      Needs Google
+                                  </label>
+                              </div>
+                          </div>
+                          <p class="f6 mb2">Language</p>
+                          <div class="row">
+                              <div class="column">
+                                  <input class="checkbox-tools antecedent_no_able" type="radio" name="error_type" id="error-6" value="Grammar_Usage">
+                                  <label class="b for-checkbox-tools" for="error-6" id="error-6-label">
+                                      Grammar / Usage
+                                  </label>
+                              </div>
+                              <div class="column">
+                                  <input class="checkbox-tools antecedent_no_able" type="radio" name="error_type" id="error-7" value="Off-prompt">
+                                  <label class="b for-checkbox-tools" for="error-7" id="error-7-label">
+                                      Off-prompt
+                                  </label>
+                              </div>
+                              <div class="column">
+                                  <input class="checkbox-tools antecedent_able" type="radio" name="error_type" id="error-8" value="Redundant">
+                                  <label class="b for-checkbox-tools" for="error-8" id="error-8-label">
+                                      Redundant
+                                  </label>
+                              </div>
+                              <div class="column">
+                                  <input class="checkbox-tools antecedent_able" type="radio" name="error_type" id="error-9" value="Self-contradiction">
+                                  <label class="b for-checkbox-tools" for="error-9" id="error-9-label">
+                                      Self-contradiction
+                                  </label>
+                              </div>
+                              <div class="column">
+                                  <input class="checkbox-tools antecedent_no_able" type="radio" name="error_type" id="error-10" value="Incoherent">
+                                  <label class="b for-checkbox-tools" for="error-10" id="error-10-label">
+                                      Incoherent
+                                  </label>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+              <div class="single_part" id="antecedent_selection" style="display:none;">
+                  <p id="antecedent_select_text" class="b mb2" >Select the antecedent.</p>
+                  <p id="selection_antecedent" class="selection_text">Selected antecedents: </p>
+              </div>
+              <!-- <div class="form__group field">
+                  <input type="text" class="form__field" placeholder="Explanation" name="explanation" id='explanation'/>
+                  <label for="explanation" class="form__label">Explanation *</label>
+              </div> -->
+              <div class="disable single_part" id="explanation_div">
+                  <p class="b mb2">Explain your selection.</p>
+                  <textarea id="explanation" name="explanation" placeholder="Please write down your explanation!" rows="4" style="width: 100%; resize: none; overflow-y: hidden;"></textarea>
+              </div>
+
+
+              <div class="disable single_part section over-hide z-bigger" id="severity_div">
+                  <div class="quality_selection_container">
+                      <p class="radio-instruction mb2 b">Select the severity <i>(how severe is this error?).</i></p>
+                      <div class="row">
+                          <div class="column-severity">
+                              <input class="checkbox-tools-severity checkbox-tools" type="radio" name="severity" id="severity-1" value="1">
+                              <label class="b for-checkbox-tools-severity" for="severity-1" id="severity-1-label">
+                                  1 - Almost no impact
+                              </label>
+                          </div>
+                          <div class="column-severity">
+                              <input class="checkbox-tools-severity checkbox-tools" type="radio" name="severity" id="severity-2" value="2">
+                              <label class="b for-checkbox-tools-severity" for="severity-2" id="severity-2-label">
+                                  2 - Understandable, but difficult
+                              </label>
+                          </div>
+                          <div class="column-severity">
+                              <input class="checkbox-tools-severity checkbox-tools" type="radio" name="severity" id="severity-3" value="3">
+                              <label class="b for-checkbox-tools-severity" for="severity-3" id="severity-3-label">
+                                  3 - Very hard to understand
+                              </label>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="disable buttons" id="button_div">
+                  <!-- <input type="button" id="clear_button" class="clear quality_button" value="Clear"> -->
+                  <button id="confirm_button" class="b confirm quality_button" type="button">Confirm</button>
+              </div>
+          </div>
+        </div>
+
+        <input type='submit' id='submitButton' class="db center mb4 pa3 f4 pointer hover-bg-yellow" style="visibility: hidden;"
+        value='Submit this Qual' />
+         <input type="hidden" id="time_record" name="te" value="0">
+      </div>
+    <!-- built files will be auto injected -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.6/vue.min.js"></script>
+    <script src="https://unpkg.com/vue-form-wizard/dist/vue-form-wizard.js"></script>
+        <script>
+        Vue.use(VueFormWizard)
+new Vue({
+  el: '#task_app',
+  methods: {
+      onComplete: function(){
+        $("#submitButton").click();
+      }
+  },
+  mounted(){
+    var wizard = this.$refs.wizard
+    wizard.activateAll()
+   }
+})
+
+var button_text = "Next"
+$(document).ready(function () {
+    $('#submitButton').click(function () {
+        try {
+            $('input[name=te]').attr('value', TimeMe.getTimeOnCurrentPageInSeconds());
+            // console.log(TimeMe.getTimeOnCurrentPageInSeconds())
+        } catch {
+
+        }
+        // NOTE: Can add validation here if desired.
+        return true;
+    });
+
+    $( ".wizard-header" ).remove();
+
+    $(".wizard-progress-with-circle").css({top: '50px'});
+
+    $(".wizard-tab-content").css("padding-top", '15px');
+
+    $("li a").click(function() {
+        // $("html, body").animate({ scrollTop: 0 });
+        // return false;
+        window.scrollTo(0, 0)
+    });
+
+    $(".wizard-footer-right").on('mousedown', function() {
+        button_text = $(".wizard-footer-right .wizard-btn").text()
+        button_text = button_text.replace(/\s/g, "");
+    });
+
+    $(".wizard-footer-right").on('click', function() {
+        // $("html, body").animate({ scrollTop: 0 });
+        // return false;
+        window.scrollTo(0, 0)
+        // var button_text = $(".wizard-footer-right .wizard-btn").text()
+        // button_text = button_text.replace(/\s/g, "");
+        // console.log(button_text)
+        // if (button_text == "Finish") {
+        //     $("#submitButton").click();
+        // }
+    });
+
+    $(".wizard-footer-left").click(function() {
+        // $("html, body").animate({ scrollTop: 0 });
+        // return false;
+        window.scrollTo(0, 0)
+    });
+
+    $(window).scroll(function() {
+        $('.wizard-nav').css('top', $(this).scrollTop() - 5);
+        $('.wizard-progress-with-circle').css('top', $(this).scrollTop() + 45);
+    });
+
+});
+    </script>
+    <script>
+        /**
+ * Map from selection id (e.g., "selection-0") to the Characters
+ */
+let original_ontologies = ["Technical_Jargon", "Bad_Math", "Encyclopedic", "Commonsense", "Needs_Google", "Grammar_Usage", "Off-prompt", "Redundant", "Self-contradiction", "Incoherent"]
+let black_text_errors_types = ["Commonsense", "Grammar_Usage", "Off-prompt"]
+var error_types_dict = {
+    "Technical_Jargon": "Technical Jargon",
+    "Bad_Math" : "Bad Math",
+    "Encyclopedic" : "Wrong: Encyclopedic",
+    "Commonsense" : "Wrong: Commonsense",
+    "Needs_Google" : "Needs Google",
+    "Grammar_Usage" : "Grammar / Usage",
+    "Off-prompt" : "Off-prompt",
+    "Redundant" : "Redundant",
+    "Self-contradiction" : "Self-contradiction",
+    "Incoherent" : "Incoherent"
+};
+var situation_text = {};
+var old_value = ""
+
+function substitute(input_text) {
+    let new_input_text = input_text.replace(/,/g, "_SEP_");
+    new_input_text = new_input_text.replace(/"/g, "_QUOTE_");
+    new_input_text = new_input_text.replace(/</g, "_LEFT_");
+    new_input_text = new_input_text.replace(/>/g, "_RIGHT_");
+    new_input_text = new_input_text.replace(/[\r\n]+/g, "_NEWLINE_");
+    return new_input_text
+}
+
+/**
+ * All selected spans
+ */
+class Characters {
+    constructor(situationID, num) {
+        this.situationID = situationID;
+        this.data = [];
+        this.displayID = situationID + '-display';
+        this.serializeID = situationID + '-serialize';
+    }
+    add(newCS) {
+        // check for duplicates and add if it's not there.
+        for (let oldCS of this.data) {
+            if (oldCS == null) {
+                continue;
+            }
+            if (oldCS.equals(newCS)) {
+                // animate it to show it exists.
+                oldCS.noticeMeSenpai = true;
+                return;
+            }
+        }
+        this.data.push(newCS);
+    }
+    remove(cs) {
+        for (let i = this.data.length - 1; i >= 0; i--) {
+            if (this.data[i] == null) {
+                continue;
+            }
+            if (this.data[i].equals(cs)) {
+                this.data[i] = null
+            }
+        }
+    }
+    update() {
+        this.render();
+        this.serialize();
+    }
+    render() {
+        let display = $('#' + this.displayID).empty();
+        for (let i = 0; i < this.data.length; i++) {
+            // console.log(this.data)
+            if (this.data[i] == null) {
+                continue;
+            }
+            display.append(this.data[i].render(this.situationID, i));
+        }
+    }
+    serialize() {
+        let strings = [];
+        for (let character of this.data) {
+            if (character == null) {
+                continue;
+            }
+            strings.push(character.serialize());
+        }
+        let vals = strings.join(',');
+        if ($("#no_badness").is(':not(:checked)')) {
+            var situationID = this.situationID
+            let serialize = $('#' + situationID + '-serialize');
+            serialize.attr('value', '[' + vals + ']');
+        } else {
+            old_value = '[' + vals + ']';
+        }
+    }
+}
+class CharacterSelection {
+    constructor(error_type, explanation, severity, start_end_pairs, antecedent_start_end_pairs, num) {
+        this.error_type = error_type;
+        this.explanation = explanation;
+        this.severity = severity
+        this.start_end_pairs = start_end_pairs
+        this.antecedent_start_end_pairs = antecedent_start_end_pairs
+        this.num = num
+        this.noticeMeSenpai = false;
+    }
+    equals(other) {
+        return this.error_type == other.error_type && this.explanation == other.explanation
+            && this.severity == other.severity && JSON.stringify(this.start_end_pairs) === JSON.stringify(other.start_end_pairs) && JSON.stringify(this.antecedent_start_end_pairs) === JSON.stringify(other.antecedent_start_end_pairs);
+    }
+    render(situationID, num) {
+        let error_type = this.error_type, explanation = this.explanation, severity = this.severity, start_end_pairs = this.start_end_pairs, antecedent_start_end_pairs = this.antecedent_start_end_pairs; // so they go in the closure
+        // let txt = $('#' + situationID).text().substring(start, end);
+        let txt = error_types_dict[error_type] + " (" + severity + "): " + explanation;
+        // let new_input_text = txt.replace(/"/g, "_QUOTE_");
+        // new_input_text = new_input_text.replace(/</g, "_LEFT_");
+        // new_input_text = new_input_text.replace(/>/g, "_RIGHT_");
+        let color_class= error_type
+        let text_color = "white"
+        let opposite_color = "black"
+        if (black_text_errors_types.includes(color_class)) {
+            text_color = "black"
+            opposite_color = "white"
+        }
+
+        let removeButton = $('<button></button>')
+            .addClass('bg-transparent ' + text_color +' bn hover-' + opposite_color + ' hover-bg-' + text_color + ' br-pill mr1 pointer')
+            .append('✘')
+            .on('click', function () {
+                document.getElementById(situationID).innerHTML = situation_text[situationID]
+                C.remove(new CharacterSelection(error_type, explanation, severity, start_end_pairs, antecedent_start_end_pairs));
+                annotate(C, situation_text["situation-0"])
+                C.update();
+            });
+
+        let span = $('<span></span>')
+            .addClass('b grow bg-' + color_class + " " + text_color +' pa2 ma1 br-pill dib quality-span')
+            .append(removeButton)
+            .append(txt);
+        span.attr('id', 'quality-span-'+num)
+        // span.addClass('quality-span-'+num)
+        span.attr('data-situation-id', situationID)
+        span.attr('data-error-type', error_type)
+        span.attr('data-severity', severity)
+        span.attr('data-explanation', explanation)
+        span.attr('data-start-end-pairs', start_end_pairs)
+        span.attr('data-antecedent-start-end-pairs', antecedent_start_end_pairs)
+        console.log(antecedent_start_end_pairs)
+        span.attr('data-num', num)
+        // span.attr('data-num', characters_num)
+        // if the character needs to be noticed, abide.
+        if (this.noticeMeSenpai) {
+            this.noticeMeSenpai = false;
+            span.addClass("animated bounce faster");
+            setTimeout(function () {
+                span.removeClass('animated bounce faster');
+            }, 1000);
+        }
+        return span;
+    }
+    serialize() {
+        // let txt = $('#' + situationID).text().substring(start, end);
+        // let quality_name = quality_map[situationID][this.num]
+        // let new_quality_name = quality_name.replace(/,/g, "_SEP_");
+        // new_quality_name = new_quality_name.replace(/"/g, "_QUOTE_");
+        // console.log($('#' + situationID).text())
+        // // console.log($('#' + situationID).text().substring(0, 5))
+        // console.log($('#' + situationID).text().length)
+        // console.log($('#' + situationID).text())
+        // console.log($('#' + situationID).text().substring(0, 5))
+        // console.log($('#' + situationID).text().length)
+        var filtered = this.antecedent_start_end_pairs.filter(function (el) {
+            return el != null;
+          });
+        return '["' + substitute(this.error_type) + '","' + substitute(this.explanation) + '",' + this.severity + ','+ this.start_end_pairs[0][0] + ',' + this.start_end_pairs[0][1] + ',[' + filtered + ']]';
+    }
+}
+
+// globals
+let C = new Characters("situation-0", 0);
+// provided externally to the script!
+// let start;
+// let end;
+let start_end_pairs = []
+let antecedent_start_end_pairs = []
+let n_situations = 1;
+let situationID;
+
+function comparespan(span_a, span_b) {
+    let index_a = span_a[1]
+    let index_b = span_b[1]
+    if(index_a == index_b) {
+        return span_a[3] - span_b[3]
+    }
+    return index_a - index_b;
+}
+
+function annotate(character, text) {
+    let character_selections = character.data
+    let span_list = []
+    for(selection of character_selections) {
+        if (selection == null) {
+            continue;
+        }
+        let num = selection.num
+        let p_span_id = "p-span-" + num
+        let start_end_pair = selection.start_end_pairs[0]
+        span_list.push([p_span_id, start_end_pair[0], true, num, selection.error_type]);
+        span_list.push([p_span_id, start_end_pair[1], false, num, selection.error_type]);
+        let antecedent_start_end_pairs = selection.antecedent_start_end_pairs
+        if (antecedent_start_end_pairs.length > 0) {
+            for(antecedent of antecedent_start_end_pairs) {
+                if (antecedent != null) {
+                    span_list.push([p_span_id + "_antecedent", antecedent[0], true, num, selection.error_type + "_antecedent"]);
+                    span_list.push([p_span_id + "_antecedent", antecedent[1], false, num, selection.error_type + "_antecedent"]);
+                }
+            }
+        }
+    }
+    // console
+    console.log(span_list)
+    span_list.sort(comparespan)
+    // console.log(span_list)
+    let new_text = ""
+    for(i in span_list) {
+        span = span_list[i]
+        var before_pair_end;
+        if(i == 0) {
+            before_pair_end = 0
+        } else{
+            before_pair_end = span_list[i - 1][1]
+        }
+        start_temp = span[1]
+        subtxt = text.substring(before_pair_end, start_temp)
+        var span_to_add;
+        var color_class = span[4]
+
+        if(span[2]) {
+            // span_to_add = "<span id=\"p-span-" + span[3]+ "\"class=\"annotation border-" + color_class + "\">"
+            span_to_add = "<span class=\"annotation border-" + color_class + " " + span[0]+ "\">"
+        } else {
+            span_to_add = "</span>"
+            // multiple spans cross together (intersect)
+            for (j = i; j >0; j--) {
+                if (span_list[j - 1][2] && span_list[j-1][3] != span[3]) {
+                    var previous_color_class = span_list[j-1][4]
+                    span_to_add += "</span>"
+                } else {
+                    break
+                }
+            }
+            for (j = i; j >0; j--) {
+                if (span_list[j - 1][2] && span_list[j-1][3] != span[3]) {
+                    var previous_color_class = span_list[j-1][4]
+                    span_to_add += "<span class=\"annotation border-" + previous_color_class + " p-span-" + span_list[j-1][3]+ "\">"
+                } else {
+                    break
+                }
+            }
+        }
+        new_text += subtxt + span_to_add
+    }
+    if (span_list.length == 0) {
+        new_text += text
+    } else {
+        new_text += text.substring(span_list[span_list.length - 1][1])
+    }
+    document.getElementById("situation-0").innerHTML = new_text
+};
+
+function annotate_select_span(character, text, select_span, select_antecedents) {
+    let character_selections = character.data
+    let span_list = []
+    for(selection of character_selections) {
+        if (selection == null) {
+            continue;
+        }
+        let num = selection.num
+        let p_span_id = "p-span-" + num
+        let start_end_pair = selection.start_end_pairs[0]
+        span_list.push([p_span_id, start_end_pair[0], true, num, selection.error_type]);
+        span_list.push([p_span_id, start_end_pair[1], false, num, selection.error_type]);
+    }
+    for(l in select_antecedents) {
+        if (select_antecedents[l] != null) {
+            span_list.push(["select-antecedent--" + (l+1), select_antecedents[l][0], true, -1, "select-antecedent"]);
+            span_list.push(["select-antecedent--" + (l+1), select_antecedents[l][1], false, -1, "select-antecedent"]);
+        }
+    }
+    if (select_span !== undefined) {
+        span_list.push(["select-span--1", select_span[0], true, -1, "select-span"]);
+        span_list.push(["select-span--1", select_span[1], false, -1, "select-span"]);
+    }
+    // console.log(span_list)
+    span_list.sort(comparespan)
+    // console.log(span_list)
+    let new_text = ""
+    for(i in span_list) {
+        span = span_list[i]
+        var before_pair_end;
+        if(i == 0) {
+            before_pair_end = 0
+        } else{
+            before_pair_end = span_list[i - 1][1]
+        }
+        start_temp = span[1]
+        subtxt = text.substring(before_pair_end, start_temp)
+        var span_to_add;
+        var color_class = span[4]
+        if(span[2]) {
+            // span_to_add = "<span id=\"p-span-" + span[3]+ "\"class=\"annotation border-" + color_class + "\">"
+            span_to_add = "<span class=\"annotation border-" + color_class + " " + span[0]+ "\">"
+            if (span[4] == "select-span") {
+                span_to_add = "<span class=\"annotation bg-yellow " + span[0]+ "\">"
+            }
+            if (span[4] == "select-antecedent") {
+                span_to_add = "<span class=\"annotation bg-light-yellow " + span[0]+ "\">"
+            }
+        } else {
+            span_to_add = "</span>"
+            // multiple spans cross together (intersect)
+            for (j = i; j >0; j--) {
+                if (span_list[j - 1][2] && span_list[j-1][3] != span[3]) {
+                    var previous_color_class = span_list[j-1][4]
+                    span_to_add += "</span>"
+                } else {
+                    break
+                }
+            }
+            for (j = i; j >0; j--) {
+                if (span_list[j - 1][2] && span_list[j-1][3] != span[3]) {
+                    var previous_color_class = span_list[j-1][4]
+                    if (span_list[j - 1][4] == "select-span") {
+                        span_to_add += "<span class=\"annotation bg-yellow " + span_list[j-1][0] + "\">"
+                    }
+                    if (span_list[j - 1][4] == "select-antecedent") {
+                        span_to_add += "<span class=\"annotation bg-light-yellow " + span_list[j-1][0] + "\">"
+                    }
+                    else {
+                        span_to_add += "<span class=\"annotation border-" + previous_color_class + " " + span_list[j-1][0]+ "\">"
+                    }
+                } else {
+                    break
+                }
+            }
+        }
+        new_text += subtxt + span_to_add
+    }
+    if (span_list.length == 0) {
+        new_text += text
+    } else {
+        new_text += text.substring(span_list[span_list.length - 1][1])
+    }
+    document.getElementById("situation-0").innerHTML = new_text
+}
+
+function list_antecedents() {
+    let display = $('#selection_antecedent').text("Selected antecedents: ");
+    // console.log(antecedent_start_end_pairs)
+    for (a in antecedent_start_end_pairs) {
+        pair = antecedent_start_end_pairs[a]
+        if (pair != null) {
+            start = pair[0]
+            end = pair[1]
+            let txt = situation_text["situation-0"].substring(start, end)
+            let removeButton = $('<button></button>')
+                .addClass('bg-transparent black bn hover-white hover-bg-black br-pill mr1')
+                .attr('antecedent-num', a)
+                .append('✘')
+                .on('click', function () {
+                    antecedent_start_end_pairs[$(this).attr('antecedent-num')] = null
+                    list_antecedents();
+                    // C.remove(new CharacterSelection(error_type, explanation, severity, start_end_pairs));
+                    annotate_select_span(C, situation_text["situation-0"], start_end_pairs[0], antecedent_start_end_pairs)
+                    // C.update();
+                });
+            let span = $('<span></span>')
+                .addClass('bg-light-yellow black pa2 ma1 dib quality-span')
+                .append(removeButton)
+                .append(txt);
+            display.append(span);
+        }
+    }
+}
+
+function disable_everything() {
+    // $('#confirm_button').prop('disabled', true);
+    $("input[name='error_type']").removeClass("selected")
+    $("input:radio[name='severity']").prop('checked', false);
+    $("input:radio[name='error_type']").prop('checked', false);
+    $('#explanation').val('');
+    $("#button_div").addClass("disable");
+    $("#severity_div").addClass("disable");
+    $("#explanation_div").addClass("disable");
+    $("#antecedent_selection").slideUp("fast");
+    // antecedent_start_end_pairs = []
+    // annotate_select_span(C, situation_text["situation-0"], start_end_pairs[0], antecedent_start_end_pairs)
+}
+
+// script
+$(document).ready(function () {
+    // build up elements we're working with
+    situation_text['situation-0'] = $('#' + 'situation-0').text()
+    // initialize our data structures NOTE: later we'll have to add data that's loaded
+    // into the page (the machine's default guesses). or... maybe we won't?
+    var pageX;
+    var pageY;
+    // $(document).on('mousedown', function(e){
+    //     var selector = $("#quality-selection");
+    //     if (!selector.is(e.target) &&
+    //         !selector.has(e.target).length) {
+    //             selector.fadeOut(1);
+    //     }
+    // });
+
+    $('#close-icon').on("click", function(e) {
+        $("input:radio[name='severity']").prop('checked', false);
+        $('#error_type').val('');
+        $('#explanation').val('');
+        $("#quality-selection").fadeOut(0.2);
+        start_end_pairs = []
+        antecedent_start_end_pairs = []
+        annotate(C, situation_text["situation-0"])
+        disable_everything();
+    });
+    $("#situation-0").on("mousedown", function(e){
+        pageX = e.pageX;
+        pageY = e.pageY;
+        document.getElementById("situation-0").innerHTML = situation_text["situation-0"]
+    });
+    $("#situation-0").on('mouseup', function (e) {
+        situationID = e.target.id;
+        let selection = window.getSelection();
+        if (selection.anchorNode != selection.focusNode || selection.anchorNode == null) {
+            // highlight across spans
+            return;
+        }
+        // $('#quality-selection').fadeOut(1);
+        let range = selection.getRangeAt(0);
+        let [start, end] = [range.startOffset, range.endOffset];
+        if (start == end) {
+            // disable on single clicks
+            annotate(C, situation_text["situation-0"])
+            return;
+        }
+        // manipulate start and end to try to respect word boundaries and remove
+        // whitespace.
+        end -= 1; // move to inclusive model for these computations.
+        let txt = $('#' + situationID).text();
+        while (txt.charAt(start) == ' ') {
+            start += 1; // remove whitespace
+        }
+        while (start - 1 >= 0 && txt.charAt(start - 1) != ' ') {
+            start -= 1; // find word boundary
+        }
+        while (txt.charAt(end) == ' ') {
+            end -= 1; // remove whitespace
+        }
+        while (end + 1 <= txt.length - 1 && txt.charAt(end + 1) != ' ') {
+            end += 1; // find word boundary
+        }
+        // move end back to exclusive model
+        end += 1;
+        // stop if empty or invalid range after movement
+        if (start >= end) {
+            return;
+        }
+        console.log([start, end])
+        if ($("#antecedent_selection").first().is(":hidden")) {
+            start_end_pairs = []
+            antecedent_start_end_pairs = []
+            start_end_pairs.push([start, end])
+            let selection_text = "<b>Selected span:</b> <a class=\"selection_a\">";
+            start = start_end_pairs[0][0]
+            end = start_end_pairs[0][1]
+            let select_text = $('#' + situationID).text().substring(start, end)
+            selection_text += select_text + "</a>"
+            // if (start_end_pairs.length != 1) {
+            //     for (pair of start_end_pairs.slice(1)) {
+            //         start = pair[0]
+            //         end = pair[1]
+            //         let select_text = $('#' + situationID).text().substring(start, end)
+            //         selection_text += ", <a class=\"selection_a\">" + select_text + "</a>"
+            //     }
+            // }
+            document.getElementById("selection_text").innerHTML = selection_text
+            $('#quality-selection').css({
+                'display': "inline-block",
+                'left': pageX - 45,
+                'top' : pageY + 20
+            }).fadeIn(200, function() {
+                disable_everything()
+            });
+            annotate_select_span(C, situation_text["situation-0"], [start, end], antecedent_start_end_pairs)
+        } else {
+            $("#explanation_div").removeClass("disable");
+            antecedent_start_end_pairs.push([start, end])
+            list_antecedents()
+            // let selection_text = "Selected antecedents: <a class=\"selection_a_antecedent\">";
+            // start = antecedent_start_end_pairs[0][0]
+            // end = antecedent_start_end_pairs[0][1]
+            // let select_text = $('#' + situationID).text().substring(start, end)
+            // selection_text += select_text + "</a>"
+            // if (antecedent_start_end_pairs.length != 1) {
+            //     for (pair of antecedent_start_end_pairs.slice(1)) {
+            //         start = pair[0]
+            //         end = pair[1]
+            //         let select_text = $('#' + situationID).text().substring(start, end)
+            //         selection_text += ", <a class=\"selection_a_antecedent\">" + select_text + "</a>"
+            //         annotate_select_span(C, situation_text["situation-0"], [start, end])
+            //     }
+            // }
+            // document.getElementById("selection_antecedent").innerHTML = selection_text
+            annotate_select_span(C, situation_text["situation-0"], start_end_pairs[0], antecedent_start_end_pairs)
+        }
+    });
+    $('#confirm_button').on("click", function(e) {
+        // var disabled = $(this).prop("disabled")
+
+        // get text input value
+        var error_type = $('input[name="error_type"]:checked').val();
+        var explanation = $("textarea#explanation").val();
+        var severity = $('input[name="severity"]:checked').val();
+        if (error_type === "" || explanation === "" ||  severity === undefined) {
+            alert("Error Type, Explanation, and Severity are required!")
+            return false
+        }
+        let display = $('#' + situationID + "-display")
+        display.attr('id', situationID + '-display')
+        display.attr('data-situation-id', situationID)
+        C.add(new CharacterSelection(error_type, explanation, severity, start_end_pairs, antecedent_start_end_pairs, C.data.length));
+
+        C.update();
+        $('#quality-selection').fadeOut(1, function() {
+           disable_everything()
+        });
+        start_end_pairs = []
+        antecedent_start_end_pairs = []
+        annotate(C, situation_text["situation-0"])
+        // console.log(C)
+    });
+    // $(document).on('focusout','.quality',function(e){
+    //     var situation_id = $(this).attr("data-situation-id")
+    //     var quality_num = $(this).attr("data-quality-num")
+    //     var new_quality = $(this).text()
+    //     let new_input_text = new_quality.replace(/"/g, "_QUOTE_");
+    //     new_input_text = new_input_text.replace(/</g, "_LEFT_");
+    //     new_input_text = new_input_text.replace(/>/g, "_RIGHT_");
+    //     quality_map[situation_id][quality_num] = new_input_text
+    //     AC.update()
+    // });
+    $(document).on('mouseover','.quality-span',function(e){
+        // $(this).css("color","black")
+        // $(this).css("background-color","white")
+        var color_class = $(this).attr("data-error-type")
+        // $(this).removeClass(color_class)
+        var quality_id = e.target.id
+        var situation_id = $(this).attr("data-situation-id")
+        var span_num = $(this).attr("data-num")
+        var p_span_id = ".p-span-" + span_num
+        $(p_span_id).addClass("bg-"+color_class);
+        var antecedent_color_class= color_class+"_antecedent"
+        var antecedent_p_span_id = ".p-span-" + span_num + "_antecedent"
+        $(antecedent_p_span_id).addClass("bg-"+antecedent_color_class);
+        if (black_text_errors_types.includes(color_class)) {
+            $(p_span_id).addClass("black");
+            $(antecedent_p_span_id).addClass("black")
+        } else {
+            $(p_span_id).addClass("white");
+            $(antecedent_p_span_id).addClass("white")
+        }
+
+        // cs = C.data[span_num]
+        // var start_end_pair = cs.start_end_pairs[0]
+        // let text = document.getElementById(situation_id).innerHTML
+        // start_temp = start_end_pair[0]
+        // end_temp = start_end_pair[1]
+        // subtxt = text.substring(start_temp, end_temp)
+        // front_part = text.substring(0, start_temp)
+        // end_part = text.substring(end_temp)
+        // old_text = text
+        // text = front_part + "<span class=\""+color_class+"\">" + subtxt + "</span>" + end_part
+        // document.getElementById(situation_id).innerHTML = text
+    });
+    $(document).on('mouseout','.quality-span',function(e){
+        // $(this).css("color","white")
+        var color_class = $(this).attr("data-error-type")
+        // $(this).addClass(color_class)
+        var quality_id = e.target.id
+        var situation_id = $(this).attr("data-situation-id")
+        var span_num = $(this).attr("data-num")
+        var p_span_id = ".p-span-" + span_num
+        $(p_span_id).removeClass("bg-"+color_class);
+        var antecedent_color_class= color_class+"_antecedent"
+        var antecedent_p_span_id = ".p-span-" + span_num + "_antecedent"
+        $(antecedent_p_span_id).removeClass("bg-"+antecedent_color_class);
+        if (black_text_errors_types.includes(color_class)) {
+            $(p_span_id).removeClass("black");
+            $(antecedent_p_span_id).removeClass("black")
+        } else {
+            $(p_span_id).removeClass("white");
+            $(antecedent_p_span_id).removeClass("white")
+        }
+
+        // document.getElementById(situation_id).innerHTML = situation_text[situation_id]
+    });
+
+    $("#no_badness").on("change", function(){
+        if($(this).is(':checked')) {
+            old_value = $("#situation-0-serialize").attr("value")
+            $("#situation-0-serialize").attr("value", "There is no badeness in text.")
+        } else {
+            $("#situation-0-serialize").attr("value", old_value)
+        }
+     });
+
+    // clear button in the quality select box
+    $("#clear_button").on("click", function(){
+        $("input:radio[name='error_type']").prop('checked', false);
+        $("input:radio[name='severity']").prop('checked', false);
+        $('#error_type').val('');
+        $('#explanation').val('');
+    });
+
+    $(".antecedent_able").on('click',function(e){
+        if (!$(this).hasClass("selected")) {
+            $("input[name='error_type']").removeClass("selected")
+            $(this).addClass("selected")
+            $("#antecedent_selection").slideDown("fast");
+            antecedent_start_end_pairs = []
+            annotate_select_span(C, situation_text["situation-0"], start_end_pairs[0], antecedent_start_end_pairs)
+            var id = $(this).attr("id")
+            if (id == "error-8") {
+                document.getElementById("antecedent_select_text").innerHTML = "Select the antecedents (earlier spans of text) that are being repeated."
+            } else if (id == "error-9") {
+                document.getElementById("antecedent_select_text").innerHTML = "Select the antecedents (earlier spans of text) that are being contradicted."
+            }
+            document.getElementById("selection_antecedent").innerHTML = "Selected antecedents: "
+            $("input:radio[name='severity']").prop('checked', false);
+            $('#explanation').val('');
+            $("#button_div").addClass("disable");
+            $("#severity_div").addClass("disable");
+            $("#explanation_div").addClass("disable");
+        }
+    });
+
+    $(".antecedent_no_able").on('click',function(e){
+        $("input[name='error_type']").removeClass("selected")
+        $("#antecedent_selection").slideUp("fast");
+        antecedent_start_end_pairs = []
+        annotate_select_span(C, situation_text["situation-0"], start_end_pairs[0], antecedent_start_end_pairs)
+        document.getElementById("selection_antecedent").innerHTML = "Selected antecedents: "
+        $("input:radio[name='severity']").prop('checked', false);
+        $('#explanation').val('');
+        $("#button_div").addClass("disable");
+        $("#severity_div").addClass("disable");
+        $("#explanation_div").removeClass("disable");
+    });
+
+    $("#explanation").on('change keyup paste', function() {
+        $("#severity_div").removeClass("disable");
+    });
+
+    $(document).on('click','.checkbox-tools-severity',function(e){
+        $("#button_div").removeClass("disable");
+    });
+
+
+
+
+    // $("#quality-selection").on('keydown',function(e) {
+    //     var disabled = $('#confirm_button').prop("disabled")
+    //     if(e.key === "Enter" && !disabled) {
+    //         e.preventDefault();
+    //         $('#confirm_button').click();
+    //     }
+    // });
+    $(document).on("keypress", function(e){
+          if (e.key === "Enter") {
+            e.preventDefault();
+          }
+    });
+
+    $( function() {
+        $( "#quality-selection" ).draggable();
+      } );
+});
+    </script>
+  </body>

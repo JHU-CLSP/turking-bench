@@ -1,0 +1,419 @@
+<!-- Bootstrap v3.0.3 -->
+<link href="https://s3.amazonaws.com/mturk-public/bs30/css/bootstrap.min.css" rel="stylesheet" />
+<section class="container" id="Other" style="margin-bottom:15px; padding: 10px 10px; font-family: Verdana, Geneva, sans-serif; color:#333333; font-size:0.9em;">
+<div class="row col-xs-12 col-md-12"><!-- Instructions -->
+<div class="panel panel-primary">
+<div class="panel-heading" id="instructions-bar"><strong>Instructions</strong> - click to hide</div>
+
+<div class="panel-body" id="instructions">
+<p class="text"><i>Paraphrases</i> are words or phrases with approximately similar meaning, like <i>bug</i> and <i>glitch</i>.</p>
+
+<p class="text">Some words like <i>bug</i> can take on different meanings, depending on how they are used. For example, <i>bug</i> can refer to a computer problem, a creepy crawly pest, or a microorganism that makes people sick. In each case, <i>bug</i> has a different set of paraphrases.</p>
+
+<p class="text">This task asks you to determine whether a paraphrase is appropriate for a target word in a specific context. We will show you a sentence containing a <b><font color="blue">target</font></b> word, and ask you whether one of its <b><font color="red">paraphrases</font></b> is applicable in that specific sentence. The possible answers are:</p>
+
+<ul>
+	<li><b>YES </b> The target word has roughly the same meaning as the paraphrase in this particular sentence.</li>
+	<li><b>NO </b> The target word has a different meaning from the paraphrase in this sentence (but the target word can mean the same thing as the paraphrase in other contexts).</li>
+	<li><b>UNCLEAR </b> There is not enough information to tell.</li>
+	<li><b>NEVER </b> Not a valid paraphrase. The target word and the proposed paraphrase never have similar meaning.&nbsp;</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p class="text">Here are some examples:</p>
+
+<ul>
+	<li><label>Example 1</label>
+
+	<table border="1" cellpadding="5">
+		<tbody>
+			<tr>
+				<th>Test Sentence</th>
+				<td>We're looking into a <b><font color="blue">bug</font></b> that was planted in the office ceiling.</td>
+			</tr>
+			<tr>
+				<th>Paraphrase</th>
+				<td><b><font color="red">microphone</font></b></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>&nbsp;</p>
+	<b>Answer:</b> YES. Here <i>bug</i> refers to a hidden listening device, or <i>microphone</i>. &nbsp;</li>
+	<li><label>Example 2</label>
+	<table border="1" cellpadding="5">
+		<tbody>
+			<tr>
+				<th>Test Sentence</th>
+				<td>There 's a nasty <b><font color="blue">bug</font></b> going around.</td>
+			</tr>
+			<tr>
+				<th>Paraphrase</th>
+				<td><b><font color="red">microbe</font></b></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>&nbsp;</p>
+	<b>Answer:</b> YES. Here <i>bug</i> and <i>microbe</i> both refer to some type of microorganism that makes people sick. &nbsp;</li>
+	<li><label>Example 3</label>
+	<table border="1" cellpadding="5">
+		<tbody>
+			<tr>
+				<th>Test Sentence</th>
+				<td>The <b><font color="blue">bug</font></b> crawled up my arm.</td>
+			</tr>
+			<tr>
+				<th>Paraphrase</th>
+				<td><b><font color="red">microphone</font></b></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>&nbsp;</p>
+	<b>Answer:</b> NO. In the test sentence, <i>bug</i> refers to an organism, not a device. &nbsp;</li>
+	<li><label>Example 4</label>
+	<table border="1" cellpadding="5">
+		<tbody>
+			<tr>
+				<th>Test Sentence</th>
+				<td>The <b><font color="blue">bug</font></b> crawled up my arm.</td>
+			</tr>
+			<tr>
+				<th>Paraphrase</th>
+				<td><b><font color="red">photography</font></b></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>&nbsp;</p>
+	<b>Answer:</b> NEVER. <i>Photography</i> is never a good paraphrase for <i>bug</i>. &nbsp;</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p class="text">These sentences have been pre-processed by converting all letters to lowercase, separating punctuation, and splitting conjunctions. Please ignore this in your work and do not allow it to affect your judgement of meaning similarity.</p>
+
+<p class="text">Also, for some target words, replacing the target with the paraphrase will lead to incorrect grammar. Please ignore grammaticality and spelling in your work, and concentrate only on whether the <i>meaning</i> of the paraphrase is roughly equivalent to the target in the given sentence.</p>
+
+<p class="text">These HITs will be <b>quality controlled</b>. If you are unsure whether or not you are doing them well, we recommend you do a small number and wait for feedback before continuing.</p>
+
+<p class="text">Thank you in advance!</p>
+</div>
+</div>
+<!-- End Instructions --><!-- Content Body -->
+
+<section>
+<fieldset>
+<table border="1" cellpadding="5">
+	<tbody>
+		<tr>
+			<th>Test Sentence</th>
+			<td>${Q1TestSentence}</td>
+		</tr>
+		<tr>
+			<th>Paraphrase</th>
+			<td><b><font color="red">${Q1Paraphrase}</font></b></td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;">Sometimes <b><font color="blue">${Q1Target}</font></b> means roughly the same thing as <b><font color="red">${Q1Paraphrase}</font></b>. Is that true in this sentence?</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;"><input name="Q1Answer" required="" type="radio" value="1" />&nbsp;&nbsp;YES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q1Answer" required="" type="radio" value="0" />&nbsp;&nbsp;NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q1Answer" required="" type="radio" value="-1" />&nbsp;&nbsp;UNCLEAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q1Answer" required="" type="radio" value="-2" />&nbsp;&nbsp;NEVER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+</fieldset>
+
+<fieldset>
+<table border="1" cellpadding="5">
+	<tbody>
+		<tr>
+			<th>Test Sentence</th>
+			<td>${Q2TestSentence}</td>
+		</tr>
+		<tr>
+			<th>Paraphrase</th>
+			<td><b><font color="red">${Q2Paraphrase}</font></b></td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;">Sometimes <b><font color="blue">${Q2Target}</font></b> means roughly the same thing as <b><font color="red">${Q2Paraphrase}</font></b>. Is that true in this sentence?</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;"><input name="Q2Answer" required="" type="radio" value="1" />&nbsp;&nbsp;YES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q2Answer" required="" type="radio" value="0" />&nbsp;&nbsp;NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q2Answer" required="" type="radio" value="-1" />&nbsp;&nbsp;UNCLEAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q2Answer" required="" type="radio" value="-2" />&nbsp;&nbsp;NEVER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+</fieldset>
+
+<fieldset>
+<table border="1" cellpadding="5">
+	<tbody>
+		<tr>
+			<th>Test Sentence</th>
+			<td>${Q3TestSentence}</td>
+		</tr>
+		<tr>
+			<th>Paraphrase</th>
+			<td><b><font color="red">${Q3Paraphrase}</font></b></td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;">Sometimes <b><font color="blue">${Q3Target}</font></b> means roughly the same thing as <b><font color="red">${Q3Paraphrase}</font></b>. Is that true in this sentence?</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;"><input name="Q3Answer" required="" type="radio" value="1" />&nbsp;&nbsp;YES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q3Answer" required="" type="radio" value="0" />&nbsp;&nbsp;NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q3Answer" required="" type="radio" value="-1" />&nbsp;&nbsp;UNCLEAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q3Answer" required="" type="radio" value="-2" />&nbsp;&nbsp;NEVER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+</fieldset>
+
+<fieldset>
+<table border="1" cellpadding="5">
+	<tbody>
+		<tr>
+			<th>Test Sentence</th>
+			<td>${Q4TestSentence}</td>
+		</tr>
+		<tr>
+			<th>Paraphrase</th>
+			<td><b><font color="red">${Q4Paraphrase}</font></b></td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;">Sometimes <b><font color="blue">${Q4Target}</font></b> means roughly the same thing as <b><font color="red">${Q4Paraphrase}</font></b>. Is that true in this sentence?</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;"><input name="Q4Answer" required="" type="radio" value="1" />&nbsp;&nbsp;YES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q4Answer" required="" type="radio" value="0" />&nbsp;&nbsp;NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q4Answer" required="" type="radio" value="-1" />&nbsp;&nbsp;UNCLEAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q4Answer" required="" type="radio" value="-2" />&nbsp;&nbsp;NEVER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+</fieldset>
+
+<fieldset>
+<table border="1" cellpadding="5">
+	<tbody>
+		<tr>
+			<th>Test Sentence</th>
+			<td>${Q5TestSentence}</td>
+		</tr>
+		<tr>
+			<th>Paraphrase</th>
+			<td><b><font color="red">${Q5Paraphrase}</font></b></td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;">Sometimes <b><font color="blue">${Q5Target}</font></b> means roughly the same thing as <b><font color="red">${Q5Paraphrase}</font></b>. Is that true in this sentence?</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;"><input name="Q5Answer" required="" type="radio" value="1" />&nbsp;&nbsp;YES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q5Answer" required="" type="radio" value="0" />&nbsp;&nbsp;NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q5Answer" required="" type="radio" value="-1" />&nbsp;&nbsp;UNCLEAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q5Answer" required="" type="radio" value="-2" />&nbsp;&nbsp;NEVER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+</fieldset>
+
+<fieldset>
+<table border="1" cellpadding="5">
+	<tbody>
+		<tr>
+			<th>Test Sentence</th>
+			<td>${Q6TestSentence}</td>
+		</tr>
+		<tr>
+			<th>Paraphrase</th>
+			<td><b><font color="red">${Q6Paraphrase}</font></b></td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;">Sometimes <b><font color="blue">${Q6Target}</font></b> means roughly the same thing as <b><font color="red">${Q6Paraphrase}</font></b>. Is that true in this sentence?</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;"><input name="Q6Answer" required="" type="radio" value="1" />&nbsp;&nbsp;YES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q6Answer" required="" type="radio" value="0" />&nbsp;&nbsp;NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q6Answer" required="" type="radio" value="-1" />&nbsp;&nbsp;UNCLEAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q6Answer" required="" type="radio" value="-2" />&nbsp;&nbsp;NEVER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+</fieldset>
+
+<fieldset>
+<table border="1" cellpadding="5">
+	<tbody>
+		<tr>
+			<th>Test Sentence</th>
+			<td>${Q7TestSentence}</td>
+		</tr>
+		<tr>
+			<th>Paraphrase</th>
+			<td><b><font color="red">${Q7Paraphrase}</font></b></td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;">Sometimes <b><font color="blue">${Q7Target}</font></b> means roughly the same thing as <b><font color="red">${Q7Paraphrase}</font></b>. Is that true in this sentence?</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;"><input name="Q7Answer" required="" type="radio" value="1" />&nbsp;&nbsp;YES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q7Answer" required="" type="radio" value="0" />&nbsp;&nbsp;NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q7Answer" required="" type="radio" value="-1" />&nbsp;&nbsp;UNCLEAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q7Answer" required="" type="radio" value="-2" />&nbsp;&nbsp;NEVER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+</fieldset>
+
+<fieldset>
+<table border="1" cellpadding="5">
+	<tbody>
+		<tr>
+			<th>Test Sentence</th>
+			<td>${QXTestSentence}</td>
+		</tr>
+		<tr>
+			<th>Paraphrase</th>
+			<td><b><font color="red">${QXParaphrase}</font></b></td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;">Sometimes <b><font color="blue">${QXTarget}</font></b> means roughly the same thing as <b><font color="red">${QXParaphrase}</font></b>. Is that true in this sentence?</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;"><input name="QXAnswer" required="" type="radio" value="1" />&nbsp;&nbsp;YES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="QXAnswer" required="" type="radio" value="0" />&nbsp;&nbsp;NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="QXAnswer" required="" type="radio" value="-1" />&nbsp;&nbsp;UNCLEAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="QXAnswer" required="" type="radio" value="-2" />&nbsp;&nbsp;NEVER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+</fieldset>
+
+<fieldset>
+<table border="1" cellpadding="5">
+	<tbody>
+		<tr>
+			<th>Test Sentence</th>
+			<td>${Q8TestSentence}</td>
+		</tr>
+		<tr>
+			<th>Paraphrase</th>
+			<td><b><font color="red">${Q8Paraphrase}</font></b></td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;">Sometimes <b><font color="blue">${Q8Target}</font></b> means roughly the same thing as <b><font color="red">${Q8Paraphrase}</font></b>. Is that true in this sentence?</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;"><input name="Q8Answer" required="" type="radio" value="1" />&nbsp;&nbsp;YES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q8Answer" required="" type="radio" value="0" />&nbsp;&nbsp;NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q8Answer" required="" type="radio" value="-1" />&nbsp;&nbsp;UNCLEAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q8Answer" required="" type="radio" value="-2" />&nbsp;&nbsp;NEVER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+</fieldset>
+
+<fieldset>
+<table border="1" cellpadding="5">
+	<tbody>
+		<tr>
+			<th>Test Sentence</th>
+			<td>${Q9TestSentence}</td>
+		</tr>
+		<tr>
+			<th>Paraphrase</th>
+			<td><b><font color="red">${Q9Paraphrase}</font></b></td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;">Sometimes <b><font color="blue">${Q9Target}</font></b> means roughly the same thing as <b><font color="red">${Q9Paraphrase}</font></b>. Is that true in this sentence?</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;"><input name="Q9Answer" required="" type="radio" value="1" />&nbsp;&nbsp;YES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q9Answer" required="" type="radio" value="0" />&nbsp;&nbsp;NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q9Answer" required="" type="radio" value="-1" />&nbsp;&nbsp;UNCLEAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q9Answer" required="" type="radio" value="-2" />&nbsp;&nbsp;NEVER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+</fieldset>
+
+<fieldset>
+<table border="1" cellpadding="5">
+	<tbody>
+		<tr>
+			<th>Test Sentence</th>
+			<td>${Q10TestSentence}</td>
+		</tr>
+		<tr>
+			<th>Paraphrase</th>
+			<td><b><font color="red">${Q10Paraphrase}</font></b></td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;">Sometimes <b><font color="blue">${Q10Target}</font></b> means roughly the same thing as <b><font color="red">${Q10Paraphrase}</font></b>. Is that true in this sentence?</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="border:0;text-align:center;"><input name="Q10Answer" required="" type="radio" value="1" />&nbsp;&nbsp;YES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q10Answer" required="" type="radio" value="0" />&nbsp;&nbsp;NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q10Answer" required="" type="radio" value="-1" />&nbsp;&nbsp;UNCLEAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input name="Q10Answer" required="" type="radio" value="-2" />&nbsp;&nbsp;NEVER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+</fieldset>
+</section>
+<!-- End Content Body --></div>
+</section>
+<!-- close container -->
+<style type="text/css">fieldset { padding: 10px; background:#fbfbfb; border-radius:5px; margin-bottom:5px; }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script><script type="text/javascript">
+    $('#instructions-bar').click(function(){
+		$('#instructions').toggle()
+		if ($('#instructions').is(":visible")) {
+		$('#instructions-bar').html("<strong>Instructions</strong> - click to hide");
+		}else {
+		$('#instructions-bar').html("<strong>Instructions</strong> - click to show");
+		}
+	});
+</script>
+<style type="text/css">fieldset {
+    padding: 10px;
+    background:#fbfbfb;
+    border-radius:5px;
+    margin-bottom:5px;
+}
+table {
+    font-size:11px;
+    line-height:14px;
+    font-family:verdana, arial, sans-serif;
+    width:80%;
+}
+.text {
+    font-size: 11px;
+    line-height: 14px;
+    font-family: verdana, arial, sans-serif;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: rgb(0, 0, 0);
+}
+li {
+    margin: 12px;
+    font-size: 11px;
+    line-height: 14px;
+    font-family: verdana, arial, sans-serif;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: rgb(0, 0, 0);
+}
+th  {
+    width:10%;
+    }
+</style>

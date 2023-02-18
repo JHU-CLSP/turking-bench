@@ -1,0 +1,319 @@
+<h1>Compare machine translation outputs</h1>
+<p>
+<b>Instructions:</b>
+<ul>
+<li>You are shown a <FONT color=crimson><B>"source" Urdu sentence</B></FONT>,<br>
+followed by two <FONT style="BACKGROUND-COLOR: #f0f0ff" color=#000080><B>machine translated outputs in English</B></FONT>.<br>
+<br>
+<li>Your task: <u>Decide which of the two outputs is a better translation.</u><br>
+<br>
+<li>We realize the two sentences sometimes appear to be equally good (or equally bad),<br>
+but <b>please try your best to draw a distinction</b>, based on grammaticality and meaning-preserving.<br>
+<li>Since we do not expect you to be fluent in Urdu, you can use the provided <FONT color=#2E8B57>"reference" translation</FONT> for guidance.<br>
+<i>Be aware, however, that the reference could involve some rewording and/or paraphrasing</i>.<br>
+</ul>
+<b>NOTE</b>: You need JavaScript to participate in this task. It is probably already enabled on your browser.<br>
+If you're not sure, see <a href="http://www.mistered.us/tips/javascript/browsers.shtml">here</a> (Explorer users)
+  or <a href="http://www.mistered.us/tips/javascript/firefox.shtml">here</a> (Firefox users).<br>
+<p></p>
+<hr/>
+<p></p>
+
+<!-- Sentence Pair #1 -->
+<table border="1">
+    <tbody>
+        <tr>
+            <td colspan="6"><b>Source: <FONT color=crimson>${source_1}</FONT></b></td>
+        </tr>
+        <tr>
+            <td colspan="6"><b>Reference:</b> <FONT color=#2E8B57>${reference_1}</font></td>
+        </tr>
+
+        <tr>
+            <script type="text/javascript">
+<!--
+var randomnumber=Math.random();
+if(randomnumber < 0.5) {
+            document.write("<td align=\"center\"><b>Translation 1</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation1_1}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 1 is better<br /><input type=\"RADIO\" name=\"Judgment_1\" value=\"1_1\" /></td>");
+            document.write("</tr>");
+            document.write("<tr>");
+            document.write("<td align=\"center\"><b>Translation 2</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation2_1}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 2 is better<br /><input type=\"RADIO\" name=\"Judgment_1\" value=\"2_1\" /></td>");
+	        document.write("<tr>");
+            document.write("<td align=\"center\" colspan=\"4\">No difference<br /><input type=\"RADIO\" name=\"Judgment_1\" value=\"0_1\" /></td>");
+            document.write("</tr>");
+} else {
+            document.write("<td align=\"center\"><b>Translation 1</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation2_1}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 1 is better<br /><input type=\"RADIO\" name=\"Judgment_1\" value=\"2_1\" /></td>");
+            document.write("</tr>");
+            document.write("<tr>");
+            document.write("<td align=\"center\"><b>Translation 2</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation1_1}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 2 is better<br /><input type=\"RADIO\" name=\"Judgment_1\" value=\"1_1\" /></td>");
+	        document.write("<tr>");
+            document.write("<td align=\"center\" colspan=\"4\">No difference<br /><input type=\"RADIO\" name=\"Judgment_1\" value=\"0_1\" /></td>");
+            document.write("</tr>");
+}
+//-->
+            </script>
+        </tr>
+    </tbody>
+</table>
+<br>
+<br>
+<br>
+<br>
+
+<!-- Sentence Pair #2 -->
+<table border="1">
+    <tbody>
+        <tr>
+            <td colspan="6"><b>Source: <FONT color=crimson>${source_2}</FONT></b></td>
+        </tr>
+        <tr>
+            <td colspan="6"><b>Reference:</b> <FONT color=#2E8B57>${reference_2}</font></td>
+        </tr>
+
+        <tr>
+            <script type="text/javascript">
+<!--
+var randomnumber=Math.random();
+if(randomnumber < 0.5) {
+            document.write("<td align=\"center\"><b>Translation 1</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation1_2}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 1 is better<br /><input type=\"RADIO\" name=\"Judgment_2\" value=\"1_2\" /></td>");
+            document.write("</tr>");
+            document.write("<tr>");
+            document.write("<td align=\"center\"><b>Translation 2</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation2_2}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 2 is better<br /><input type=\"RADIO\" name=\"Judgment_2\" value=\"2_2\" /></td>");
+	        document.write("<tr>");
+            document.write("<td align=\"center\" colspan=\"4\">No difference<br /><input type=\"RADIO\" name=\"Judgment_2\" value=\"0_2\" /></td>");
+            document.write("</tr>");
+} else {
+            document.write("<td align=\"center\"><b>Translation 1</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation2_2}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 1 is better<br /><input type=\"RADIO\" name=\"Judgment_2\" value=\"2_2\" /></td>");
+            document.write("</tr>");
+            document.write("<tr>");
+            document.write("<td align=\"center\"><b>Translation 2</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation1_2}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 2 is better<br /><input type=\"RADIO\" name=\"Judgment_2\" value=\"1_2\" /></td>");
+	        document.write("<tr>");
+            document.write("<td align=\"center\" colspan=\"4\">No difference<br /><input type=\"RADIO\" name=\"Judgment_2\" value=\"0_2\" /></td>");
+            document.write("</tr>");
+}
+//-->
+            </script>
+        </tr>
+    </tbody>
+</table>
+<br>
+<br>
+<br>
+<br>
+
+<!-- Sentence Pair #3 -->
+<table border="1">
+    <tbody>
+        <tr>
+            <td colspan="6"><b>Source: <FONT color=crimson>${source_3}</FONT></b></td>
+        </tr>
+        <tr>
+            <td colspan="6"><b>Reference:</b> <FONT color=#2E8B57>${reference_3}</font></td>
+        </tr>
+
+        <tr>
+            <script type="text/javascript">
+<!--
+var randomnumber=Math.random();
+if(randomnumber < 0.5) {
+            document.write("<td align=\"center\"><b>Translation 1</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation1_3}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 1 is better<br /><input type=\"RADIO\" name=\"Judgment_3\" value=\"1_3\" /></td>");
+            document.write("</tr>");
+            document.write("<tr>");
+            document.write("<td align=\"center\"><b>Translation 2</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation2_3}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 2 is better<br /><input type=\"RADIO\" name=\"Judgment_3\" value=\"2_3\" /></td>");
+	        document.write("<tr>");
+            document.write("<td align=\"center\" colspan=\"4\">No difference<br /><input type=\"RADIO\" name=\"Judgment_3\" value=\"0_3\" /></td>");
+            document.write("</tr>");
+} else {
+            document.write("<td align=\"center\"><b>Translation 1</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation2_3}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 1 is better<br /><input type=\"RADIO\" name=\"Judgment_3\" value=\"2_3\" /></td>");
+            document.write("</tr>");
+            document.write("<tr>");
+            document.write("<td align=\"center\"><b>Translation 2</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation1_3}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 2 is better<br /><input type=\"RADIO\" name=\"Judgment_3\" value=\"1_3\" /></td>");
+	        document.write("<tr>");
+            document.write("<td align=\"center\" colspan=\"4\">No difference<br /><input type=\"RADIO\" name=\"Judgment_3\" value=\"0_3\" /></td>");
+            document.write("</tr>");
+}
+//-->
+            </script>
+        </tr>
+    </tbody>
+</table>
+<br>
+<br>
+<br>
+<br>
+
+<!-- Sentence Pair #4 -->
+<table border="1">
+    <tbody>
+        <tr>
+            <td colspan="6"><b>Source: <FONT color=crimson>${source_4}</FONT></b></td>
+        </tr>
+        <tr>
+            <td colspan="6"><b>Reference:</b> <FONT color=#2E8B57>${reference_4}</font></td>
+        </tr>
+
+        <tr>
+            <script type="text/javascript">
+<!--
+var randomnumber=Math.random();
+if(randomnumber < 0.5) {
+            document.write("<td align=\"center\"><b>Translation 1</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation1_4}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 1 is better<br /><input type=\"RADIO\" name=\"Judgment_4\" value=\"1_4\" /></td>");
+            document.write("</tr>");
+            document.write("<tr>");
+            document.write("<td align=\"center\"><b>Translation 2</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation2_4}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 2 is better<br /><input type=\"RADIO\" name=\"Judgment_4\" value=\"2_4\" /></td>");
+	        document.write("<tr>");
+            document.write("<td align=\"center\" colspan=\"4\">No difference<br /><input type=\"RADIO\" name=\"Judgment_4\" value=\"0_4\" /></td>");
+            document.write("</tr>");
+} else {
+            document.write("<td align=\"center\"><b>Translation 1</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation2_4}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 1 is better<br /><input type=\"RADIO\" name=\"Judgment_4\" value=\"2_4\" /></td>");
+            document.write("</tr>");
+            document.write("<tr>");
+            document.write("<td align=\"center\"><b>Translation 2</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation1_4}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 2 is better<br /><input type=\"RADIO\" name=\"Judgment_4\" value=\"1_4\" /></td>");
+	        document.write("<tr>");
+            document.write("<td align=\"center\" colspan=\"4\">No difference<br /><input type=\"RADIO\" name=\"Judgment_4\" value=\"0_4\" /></td>");
+            document.write("</tr>");
+}
+//-->
+            </script>
+        </tr>
+    </tbody>
+</table>
+<br>
+<br>
+<br>
+<br>
+
+<!-- Sentence Pair #5 -->
+<table border="1">
+    <tbody>
+        <tr>
+            <td colspan="6"><b>Source: <FONT color=crimson>${source_5}</FONT></b></td>
+        </tr>
+        <tr>
+            <td colspan="6"><b>Reference:</b> <FONT color=#2E8B57>${reference_5}</font></td>
+        </tr>
+
+        <tr>
+            <script type="text/javascript">
+<!--
+var randomnumber=Math.random();
+if(randomnumber < 0.5) {
+            document.write("<td align=\"center\"><b>Translation 1</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation1_5}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 1 is better<br /><input type=\"RADIO\" name=\"Judgment_5\" value=\"1_5\" /></td>");
+            document.write("</tr>");
+            document.write("<tr>");
+            document.write("<td align=\"center\"><b>Translation 2</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation2_5}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 2 is better<br /><input type=\"RADIO\" name=\"Judgment_5\" value=\"2_5\" /></td>");
+	        document.write("<tr>");
+            document.write("<td align=\"center\" colspan=\"4\">No difference<br /><input type=\"RADIO\" name=\"Judgment_5\" value=\"0_5\" /></td>");
+            document.write("</tr>");
+} else {
+            document.write("<td align=\"center\"><b>Translation 1</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation2_5}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 1 is better<br /><input type=\"RADIO\" name=\"Judgment_5\" value=\"2_5\" /></td>");
+            document.write("</tr>");
+            document.write("<tr>");
+            document.write("<td align=\"center\"><b>Translation 2</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation1_5}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 2 is better<br /><input type=\"RADIO\" name=\"Judgment_5\" value=\"1_5\" /></td>");
+	        document.write("<tr>");
+            document.write("<td align=\"center\" colspan=\"4\">No difference<br /><input type=\"RADIO\" name=\"Judgment_5\" value=\"0_5\" /></td>");
+            document.write("</tr>");
+}
+//-->
+            </script>
+        </tr>
+    </tbody>
+</table>
+<br>
+<br>
+
+<!-- Sentence Pair #6 -->
+<table border="1">
+    <tbody>
+        <tr>
+            <td colspan="6"><b>Source: <FONT color=crimson>${source_6}</FONT></b></td>
+        </tr>
+        <tr>
+            <td colspan="6"><b>Reference:</b> <FONT color=#2E8B57>${reference_6}</font></td>
+        </tr>
+
+        <tr>
+            <script type="text/javascript">
+<!--
+var randomnumber=Math.random();
+if(randomnumber < 0.5) {
+            document.write("<td align=\"center\"><b>Translation 1</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation1_6}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 1 is better<br /><input type=\"RADIO\" name=\"Judgment_6\" value=\"1_6\" /></td>");
+            document.write("</tr>");
+            document.write("<tr>");
+            document.write("<td align=\"center\"><b>Translation 2</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation2_6}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 2 is better<br /><input type=\"RADIO\" name=\"Judgment_6\" value=\"2_6\" /></td>");
+	        document.write("<tr>");
+            document.write("<td align=\"center\" colspan=\"4\">No difference<br /><input type=\"RADIO\" name=\"Judgment_6\" value=\"0_6\" /></td>");
+            document.write("</tr>");
+} else {
+            document.write("<td align=\"center\"><b>Translation 1</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation2_6}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 1 is better<br /><input type=\"RADIO\" name=\"Judgment_6\" value=\"2_6\" /></td>");
+            document.write("</tr>");
+            document.write("<tr>");
+            document.write("<td align=\"center\"><b>Translation 2</b></td>");
+            document.write("<td align=\"center\"><FONT style=\"BACKGROUND-COLOR: #f0f0ff\" color=#000080><b>${translation1_6}</b></font></td>");
+            document.write("<td align=\"center\" >Translation 2 is better<br /><input type=\"RADIO\" name=\"Judgment_6\" value=\"1_6\" /></td>");
+	        document.write("<tr>");
+            document.write("<td align=\"center\" colspan=\"4\">No difference<br /><input type=\"RADIO\" name=\"Judgment_6\" value=\"0_6\" /></td>");
+            document.write("</tr>");
+}
+//-->
+            </script>
+        </tr>
+    </tbody>
+</table>
+<br>
+<br>
+
+<P></P>
+<HR>
+The collected data is post-reviewed by a human. <b>It is easy for us to identify random answers</b>, which will be rejected.
+<br>
+So please provide <b>consistent answers</b>. If we like your work, you could be invited to future tasks that pay a higher rate!
+<br>
+In short, please don't waste our time, and we won't waste yours. :-)
+<HR>

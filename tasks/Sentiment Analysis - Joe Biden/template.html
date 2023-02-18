@@ -1,0 +1,45 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects">
+
+    <!-- The crowd-classifier element will create a tool for the Worker to select the
+           correct answer to your question -->
+    <crowd-classifier
+      name="sentiment"
+      categories="['Positive', 'Negative', 'Neutral', 'N/A']"
+      header="What sentiment does this tweet convey about ${name}?  Select N/A if the tweet isn't about ${name} or if the tweet isn't written in English."
+    >
+
+      <classification-target>
+        <!-- The text you want classified will be substituted for the "text" variable when you
+               publish a batch with a CSV input file containing multiple text items  -->
+        ${tweet}
+      </classification-target>
+
+     <!-- Use the short-instructions section for quick instructions that the Worker
+            will see while working on the task. Including some basic examples of
+            good and bad answers here can help get good results. You can include
+            any HTML here. -->
+      <short-instructions>
+       Choose the primary sentiment that is expressed by the text.
+      </short-instructions>
+
+      <!-- Use the full-instructions section for more detailed instructions that the
+            Worker can open while working on the task. Including more detailed
+            instructions and additional examples of good and bad answers here can
+            help get good results. You can include any HTML here. -->
+      <full-instructions header="Sentiment Analysis Instructions">
+        <p><strong>Positive</strong> sentiment include: joy, excitement, delight</p>
+        <p><strong>Negative</strong> sentiment include: anger, sarcasm, anxiety</p>
+        <p><strong>Neutral</strong>: neither positive or negative, such as stating a fact</p>
+        <p><strong>N/A</strong>: when the text cannot be understood</p>
+        <p>When the sentiment is mixed, such as both joy and sadness, use your judgment to choose the stronger emotion.</p>
+      </full-instructions>
+
+    </crowd-classifier>
+</crowd-form>

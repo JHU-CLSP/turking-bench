@@ -1,0 +1,67 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects">
+<h1>Instructions</h1>
+<h2>Choose how likely an author belongs to the given in-group based on the comment. </h2>
+<p><strong>Highly Likely</strong> The author belongs to the given in-group with high confidence. For example, authors who use "my kid","my daughter",etc. in their comments are highly likely to be parents</p>
+<p><strong>Likely</strong> The author probably belongs to the given in-group. For example, authors who say "my PC" in their comments are probably gamers</p>
+<p><strong>Hard to tell</strong> An author belonging to any in-group could use the phrase. For example, "my mom" is not a good phrase to decide whether an author is a gamer.</p>
+<p><strong>Unlikely</strong> The author does not belong to the given in-group with high confidence. For example, authors who use "my child" are highly unlikely to be high schoolers.</p>
+<hr>
+<hr>
+
+Based on each of the given comments, would you think the author is (a|an) <b>${dem}?</b><br>
+
+<hr>
+<hr>
+
+<b>${text0}</b><br>
+<br>
+  <input type="radio" name="option0" value="Highly likely"> Highly likely<br>
+  <input type="radio" name="option0" value="Likely"> Likely<br>
+  <input type="radio" name="option0" value="Hard to tell"> Hard to tell<br>
+  <input type="radio" name="option0" value="Unlikely"> Unlikely
+<hr>
+
+
+<b>${text1}</b><br>
+<br>
+  <input type="radio" name="option1" value="Highly likely"> Highly likely<br>
+  <input type="radio" name="option1" value="Likely"> Likely<br>
+  <input type="radio" name="option1" value="Hard to tell"> Hard to tell<br>
+  <input type="radio" name="option1" value="Unlikely"> Unlikely
+<hr>
+
+<b>${text2}</b><br>
+<br>
+  <input type="radio" name="option2" value="Highly likely"> Highly likely<br>
+  <input type="radio" name="option2" value="Likely"> Likely<br>
+  <input type="radio" name="option2" value="Hard to tell"> Hard to tell<br>
+  <input type="radio" name="option2" value="Unlikely"> Unlikely
+<hr>
+
+<b>${text3}</b><br>
+<br>
+  <input type="radio" name="option3" value="Highly likely"> Highly likely<br>
+  <input type="radio" name="option3" value="Likely"> Likely<br>
+  <input type="radio" name="option3" value="Hard to tell"> Hard to tell<br>
+  <input type="radio" name="option3" value="Unlikely"> Unlikely
+<hr>
+
+<b>${text4}</b><br>
+<br>
+  <input type="radio" name="option4" value="Highly likely"> Highly likely<br>
+  <input type="radio" name="option4" value="Likely"> Likely<br>
+  <input type="radio" name="option4" value="Hard to tell"> Hard to tell<br>
+  <input type="radio" name="option4" value="Unlikely"> Unlikely
+<hr>
+
+</crowd-form>
+
+
+

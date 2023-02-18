@@ -1,0 +1,279 @@
+<!-- Bootstrap v3.0.3 -->
+<link href="https://s3.amazonaws.com/mturk-public/bs30/css/bootstrap.min.css" rel="stylesheet" />
+<section class="container" id="Other" style="margin-bottom:15px; padding: 10px 10px; font-family: Verdana, Geneva, sans-serif; color:#333333; font-size:0.9em;">
+<div class="row col-xs-12 col-md-12"><!-- Instructions -->
+<div class="panel panel-primary">
+<div class="panel-heading" id="instructions-bar"><strong>Instructions</strong> - click to hide</div>
+
+<div class="panel-body" id="instructions">
+<p class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);">This HIT asks you determine the relative intensity of adjectives.</p>
+
+<p class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);">You will be provided with a set of adjectives that describe the same attribute (e.g.&nbsp;<em>warm</em>, <em>hot</em>, and <em>scalding</em>&nbsp;all describe temperature). The adjectives can be placed along an intensity scale, from less intense to more intense (<em style="color: rgb(0, 0, 0); font-family: verdana, arial, sans-serif; font-size: 11px;">warm <&nbsp;</em><em style="color: rgb(0, 0, 0); font-family: verdana, arial, sans-serif; font-size: 11px;">hot</em><span style="color: rgb(0, 0, 0); font-family: verdana, arial, sans-serif; font-size: 11px;">&nbsp;<&nbsp;</span><em style="color: rgb(0, 0, 0); font-family: verdana, arial, sans-serif; font-size: 11px;">scalding</em><em style="color: rgb(0, 0, 0); font-family: verdana, arial, sans-serif; font-size: 11px;">).</em> For each pair of adjectives (<span style="font-family:courier new,courier,monospace;">word1</span>, <span style="font-family:courier new,courier,monospace;">word2</span>) within the set, we want you to tell us which of the following is true:</p>
+
+<ul>
+	<li class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);"><span style="font-family:courier new,courier,monospace;">word1</span> is less intense than&nbsp;<span style="font-family:courier new,courier,monospace;">word2</span> (<span style="font-family:courier new,courier,monospace;">word1 < word2</span>)</li>
+	<li class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);"><span style="font-family:courier new,courier,monospace;">word2</span> is less intense than <span style="font-family:courier new,courier,monospace;">word1</span> (<span style="font-family:courier new,courier,monospace;">word2 < word1</span>), or</li>
+	<li class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);"><span style="font-family:courier new,courier,monospace;">word1</span> and <span style="font-family:courier new,courier,monospace;">word2</span> are equally intense (<span style="font-family:courier new,courier,monospace;">word1 = word2</span>)</li>
+</ul>
+
+<p class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);">Here are some examples with a correct answer selected in each row.</p>
+
+<p class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);">&nbsp;</p>
+
+<table border="2" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif;">
+	<tbody>
+		<tr>
+			<th bgcolor="#999" colspan="4">SCALE: (LESS INTENSE) good --> excellent (MORE INTENSE)</th>
+		</tr>
+		<tr bgcolor="#ccc">
+			<td><em>Word Pair</em></td>
+			<td colspan="3"><em>Annotation (choose one in each row)</em></td>
+		</tr>
+		<tr bgcolor="#fff">
+			<td><b>fine, ok</b></td>
+			<td>&nbsp; <input disabled="disabled" name="dummy1" type="radio" value="l" />&nbsp; fine < ok</td>
+			<td>&nbsp; <input disabled="disabled" name="dummy1" type="radio" value="g" />&nbsp; ok < fine</td>
+			<td>&nbsp; <input checked="checked" disabled="disabled" name="dummy1" type="radio" value="e" />&nbsp; fine = ok</td>
+			<!--<td>&nbsp;[&nbsp;&nbsp;]&nbsp;&nbsp; fine < ok</td>
+    <td>&nbsp;[&nbsp;&nbsp;]&nbsp;&nbsp; ok < fine</td>
+    <td>&nbsp;[X]&nbsp;&nbsp; fine = ok</td>-->
+		</tr>
+		<tr bgcolor="#e6e6e6">
+			<td><b>fine, great</b></td>
+			<td>&nbsp; <input checked="checked" disabled="disabled" name="dummy2" type="radio" value="l" />&nbsp; fine < great</td>
+			<td>&nbsp; <input disabled="disabled" name="dummy2" type="radio" value="g" />&nbsp; great < fine</td>
+			<td>&nbsp; <input disabled="disabled" name="dummy2" type="radio" value="e" />&nbsp; fine = great</td>
+		</tr>
+		<tr bgcolor="#fff">
+			<td><b>great, ok</b></td>
+			<td>&nbsp; <input disabled="disabled" name="dummy3" type="radio" value="l" />&nbsp; great < ok</td>
+			<td>&nbsp; <input checked="checked" disabled="disabled" name="dummy3" type="radio" value="g" />&nbsp; ok < great</td>
+			<td>&nbsp; <input disabled="disabled" name="dummy3" type="radio" value="e" />&nbsp; great = ok</td>
+		</tr>
+	</tbody>
+</table>
+
+<p class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);">&nbsp;</p>
+
+<table border="2" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif;">
+	<tbody>
+		<tr>
+			<th bgcolor="#999" colspan="4">SCALE: (LESS INTENSE) warm --> hot (MORE INTENSE)</th>
+		</tr>
+		<tr bgcolor="#ccc">
+			<td><em>Word Pair</em></td>
+			<td colspan="3"><em>Annotation (choose one in each row)</em></td>
+		</tr>
+		<tr bgcolor="#fff">
+			<td><b>hot, warm</b></td>
+			<td>&nbsp; <input disabled="disabled" name="dummy4" type="radio" value="l" />&nbsp; hot < warm</td>
+			<td>&nbsp; <input checked="checked" disabled="disabled" name="dummy4" type="radio" value="g" />&nbsp; warm < hot</td>
+			<td>&nbsp; <input disabled="disabled" name="dummy4" type="radio" value="e" />&nbsp; hot = warm</td>
+		</tr>
+		<tr bgcolor="#e6e6e6">
+			<td><b>hot, scalding</b></td>
+			<td>&nbsp; <input checked="checked" disabled="disabled" name="dummy5" type="radio" value="l" />&nbsp; hot < scalding</td>
+			<td>&nbsp; <input disabled="disabled" name="dummy5" type="radio" value="g" />&nbsp; scalding < hot</td>
+			<td>&nbsp; <input disabled="disabled" name="dummy5" type="radio" value="e" />&nbsp; hot = scalding</td>
+		</tr>
+		<tr bgcolor="#fff">
+			<td><b>scalding, warm</b></td>
+			<td>&nbsp; <input disabled="disabled" name="dummy6" type="radio" value="l" />&nbsp; scalding < warm</td>
+			<td>&nbsp; <input checked="checked" disabled="disabled" name="dummy6" type="radio" value="g" />&nbsp; warm < scalding</td>
+			<td>&nbsp; <input disabled="disabled" name="dummy6" type="radio" value="e" />&nbsp; scalding = warm</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<p class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);">These HITs will be <b>quality controlled</b>. In particular, we <span style="color:red"><b>cannot approve HITs with any rows left undone</b></span>. If you are unsure whether or not you are doing them well, we recommend you do a small number and wait for feedback before continuing.</p>
+
+<p class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);">Thank you in advance!</p>
+</div>
+</div>
+<!-- End Instructions --><!-- Content Body -->
+
+<section>
+<fieldset id="questions">
+<div id="dummy"><label>DUMMY FIELD </label> <input name="QXAnswer" type="radio" value="DUMMY" /></div>
+
+<div id="q1" style="background-color: #ffffff; padding: 15px;">
+<p class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);">&nbsp;</p>
+
+<table border="2" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif;" width="100%">
+	<tbody>
+		<tr bgcolor="#999">
+			<th colspan="4" id="q1hdr">&nbsp;</th>
+		</tr>
+		<tr bgcolor="#ccc" id="q1-row0">
+			<td><em>Word Pair</em></td>
+			<td colspan="3"><em>Annotation (choose one in each row)</em></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<p>&nbsp;</p>
+
+<div id="q3" style="background-color: #ffffff; padding: 15px;">
+<p class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);">&nbsp;</p>
+
+<table border="2" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif;" width="100%">
+	<tbody>
+		<tr bgcolor="#999">
+			<th colspan="4" id="q3hdr">&nbsp;</th>
+		</tr>
+		<tr bgcolor="#ccc" id="q3-row0">
+			<td><em>Word Pair</em></td>
+			<td colspan="3"><em>Annotation (choose one in each row)</em></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<p>&nbsp;</p>
+
+<div id="q2" style="background-color: #ffffff; padding: 15px;">
+<p class="text" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif; padding-left: 5px; padding-right: 5px; color: rgb(0, 0, 0);">&nbsp;</p>
+
+<table border="2" style="font-size: 11px; line-height: 14px; font-family: verdana, arial, sans-serif;" width="100%">
+	<tbody>
+		<tr bgcolor="#999">
+			<th colspan="4" id="q2hdr">&nbsp;</th>
+		</tr>
+		<tr bgcolor="#ccc" id="q2-row0">
+			<td><em>Word Pair</em></td>
+			<td colspan="3"><em>Annotation (choose one in each row)</em></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+</fieldset>
+</section>
+<!-- End Content Body --></div>
+</section>
+<!-- close container -->
+<style type="text/css">fieldset
+{
+    padding:10px;
+    background:#fbfbfb;
+    border-radius:5px;
+    margin-bottom:5px;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script><script type="text/javascript">
+    $('#instructions-bar').click(function(){
+		$('#instructions').toggle()
+		if ($('#instructions').is(":visible")) {
+		$('#instructions-bar').html("<strong>Instructions</strong> - click to hide");
+		}else {
+		$('#instructions-bar').html("<strong>Instructions</strong> - click to show");
+		}
+	});
+</script><script>
+
+//     dummysclid1 = 'good-excellentXX';
+//     dummysclmin1 = 'good';
+//     dummysclmax1 = 'excellent';
+//     dummypairs1 = 'excellent XXX good ||| excellent XXX great ||| good XXX great';
+//     dummysclid2 = 'bad-awfulXX';
+//     dummysclmin2 = 'bad';
+//     dummysclmax2 = 'awful';
+//     dummypairs2 = 'awful XXX bad ||| awful XXX worse ||| bad XXX worse';
+//
+//     scoid1 = dummysclid1;
+//     sclmin1 = dummysclmin1;
+//     sclmax1 = dummysclmax1;
+//     pairs1 = dummypairs1.split(' ||| ');
+//     sclid2 = dummysclid2;
+//     sclmin2 = dummysclmin2;
+//     sclmax2 = dummysclmax2;
+//     pairs2 = dummypairs2.split(' ||| ');
+
+    sclid1 = '${sclid1}';
+    sclmin1 = '${sclmin1}';
+    sclmax1 = '${sclmax1}';
+    pairs1 = '${pairs1}'.split(' ||| ');
+    n1 = '${n1}';
+    sclid2 = '${sclid2}';
+    sclmin2 = '${sclmin2}';
+    sclmax2 = '${sclmax2}';
+    pairs2 = '${pairs2}'.split(' ||| ');
+    n2 = '${n2}';
+    sclid3 = '${sclid3}';
+    sclmin3 = '${sclmin3}';
+    sclmax3 = '${sclmax3}';
+    pairs3 = '${pairs3}'.split(' ||| ');
+    n3 = '${n3}';
+
+
+
+    $('#q1hdr').append("SCALE:  (LESS INTENSE) "+sclmin1+" --> "+sclmax1+" (MORE INTENSE)");
+    for(i=0; i < pairs1.length; i++) {
+        console.log(pairs1[i]);
+        qnum = i + 1;
+        words = pairs1[i].split(' XXX ');
+        w1 = words[0];
+        w2 = words[1];
+        if(qnum % 2 == 1) {
+           col="#fff";
+        } else {
+           col="#e6e6e6";
+        }
+        row = '<tr id="q1-row'+qnum+'" bgcolor="'+col+'">';
+        row += '<td><b>'+w1+', '+w2+'</b></td>';
+        row += '<td>&nbsp; <input type="radio" name="Answer.sclid1.'+qnum+'" value="'+w1+"**LT**"+w2+'" />&nbsp;'+w1+' < '+w2+'</td>';
+        row += '<td>&nbsp; <input type="radio" name="Answer.sclid1.'+qnum+'" value="'+w1+"**GT**"+w2+'" />&nbsp;'+w2+' < '+w1+'</td>';
+        row += '<td>&nbsp; <input type="radio" name="Answer.sclid1.'+qnum+'" value="'+w1+"**EQ**"+w2+'" />&nbsp;'+w1+' = '+w2+'</td>';
+        row += '</tr>';
+        $('#q1-row'+i).after(row);
+        console.log(row);
+    }
+
+    $('#q3hdr').append("SCALE:  (LESS INTENSE) "+sclmin3+" --> "+sclmax3+" (MORE INTENSE)");
+    for(i=0; i < pairs3.length; i++) {
+        console.log(pairs3[i]);
+        qnum = i + 1;
+        words = pairs3[i].split(' XXX ');
+        w1 = words[0];
+        w2 = words[1];
+        if(qnum % 2 == 1) {
+           col="#fff";
+        } else {
+           col="#e6e6e6";
+        }
+        row = '<tr id="q3-row'+qnum+'" bgcolor="'+col+'">';
+        row += '<td><b>'+w1+', '+w2+'</b></td>';
+        row += '<td>&nbsp; <input type="radio" name="Answer.sclid3.'+qnum+'" value="'+w1+"**LT**"+w2+'" />&nbsp;'+w1+' < '+w2+'</td>';
+        row += '<td>&nbsp; <input type="radio" name="Answer.sclid3.'+qnum+'" value="'+w1+"**GT**"+w2+'" />&nbsp;'+w2+' < '+w1+'</td>';
+        row += '<td>&nbsp; <input type="radio" name="Answer.sclid3.'+qnum+'" value="'+w1+"**EQ**"+w2+'" />&nbsp;'+w1+' = '+w2+'</td>';
+        row += '</tr>';
+        $('#q3-row'+i).after(row);
+        console.log(row);
+    }
+
+    $('#q2hdr').append("SCALE:  (LESS INTENSE) "+sclmin2+" --> "+sclmax2+" (MORE INTENSE)");
+    for(i=0; i < pairs2.length; i++) {
+        console.log(pairs2[i]);
+        qnum = i + 1;
+        words = pairs2[i].split(' XXX ');
+        w1 = words[0];
+        w2 = words[1];
+        if(qnum % 2 == 1) {
+           col="#fff";
+        } else {
+           col="#e6e6e6";
+        }
+        row = '<tr id="q2-row'+qnum+'" bgcolor="'+col+'">';
+        row += '<td><b>'+w1+', '+w2+'</b></td>';
+        row += '<td>&nbsp; <input type="radio" name="Answer.sclid2.'+qnum+'" value="'+w1+"**LT**"+w2+'" />&nbsp;'+w1+' < '+w2+'</td>';
+        row += '<td>&nbsp; <input type="radio" name="Answer.sclid2.'+qnum+'" value="'+w1+"**GT**"+w2+'" />&nbsp;'+w2+' < '+w1+'</td>';
+        row += '<td>&nbsp; <input type="radio" name="Answer.sclid2.'+qnum+'" value="'+w1+"**EQ**"+w2+'" />&nbsp;'+w1+' = '+w2+'</td>';
+        row += '</tr>';
+        $('#q2-row'+i).after(row);
+        console.log(row);
+    }
+    $('#dummy').remove();
+
+</script>
