@@ -1,0 +1,203 @@
+Title,Action
+Abductive Reasoning 11,tasks\Abductive Reasoning 11\template.html
+Aductive Pairwise Eval 9,tasks\Aductive Pairwise Eval 9\template.html
+advice-qual-feb-13-2020 v0,tasks\advice-qual-feb-13-2020 v0\template.html
+An Enriched MT Grammar,tasks\An Enriched MT Grammar\template.html
+ANES 2008 open-ended survey,tasks\ANES 2008 open-ended survey\template.html
+ANLI Generation Eval - Reflective_ACL_1,tasks\ANLI Generation Eval - Reflective_ACL_1\template.html
+Annotate WaNLI 23,tasks\Annotate WaNLI 23\template.html
+Annotating Meeting Speech for Extractive Summarization,tasks\Annotating Meeting Speech for Extractive Summarization\template.html
+Annotation Rating,tasks\Annotation Rating\template.html
+Annotation subj_obj,tasks\Annotation subj_obj\template.html
+Arabic Nickname Collection,tasks\Arabic Nickname Collection\template.html
+Arabic Nickname Verification,tasks\Arabic Nickname Verification\template.html
+Arch - Rel Eval 3,tasks\Arch - Rel Eval 3\template.html
+ASSET,tasks\ASSET\template.html
+Associate countries and languages with Ethnologue,tasks\Associate countries and languages with Ethnologue\template.html
+ATOMIC - Event Sequences 9,tasks\ATOMIC - Event Sequences 9\template.html
+ATOMIC - NL Rephrase 16,tasks\ATOMIC - NL Rephrase 16\template.html
+ATOMIC - NL Rephrase Eval 10,tasks\ATOMIC - NL Rephrase Eval 10\template.html
+ATOMIC - Object Rationale 13,tasks\ATOMIC - Object Rationale 13\template.html
+ATOMIC - Required Objects (Sequence) 9,tasks\ATOMIC - Required Objects (Sequence) 9\template.html
+ATOMIC - Required Objects 5,tasks\ATOMIC - Required Objects 5\template.html
+ATOMIC KB Completion 2.2,tasks\ATOMIC KB Completion 2.2\template.html
+ATOMIC Neg Discriminator Eval 25,tasks\ATOMIC Neg Discriminator Eval 25\template.html
+ATOMIC Negation Need Want 28,tasks\ATOMIC Negation Need Want 28\template.html
+ATOMIC Validate gl,tasks\ATOMIC Validate gl\template.html
+atomic_event2event-effects 4,tasks\atomic_event2event-effects 4\template.html
+Author In-Group Analysis Phrase Classification 2,tasks\Author In-Group Analysis Phrase Classification 2\template.html
+Automatic Detection of Generated Text,tasks\Automatic Detection of Generated Text\template.html
+BiSECT Human Evaluation II (2),tasks\BiSECT Human Evaluation II (2)\template.html
+BiSECT Multilingual Evaluation,tasks\BiSECT Multilingual Evaluation\template.html
+Chatbot Response Quality Evaluation,tasks\Chatbot Response Quality Evaluation\template.html
+clarifyD Qualification 1,tasks\clarifyD Qualification 1\template.html
+Coherence Evaluation,tasks\Coherence Evaluation\template.html
+COMET2020 ATOMIC Inference Vp 5,tasks\COMET2020 ATOMIC Inference Vp 5\template.html
+COMET2020 ATOMIC Prag Neg Pilot 10,tasks\COMET2020 ATOMIC Prag Neg Pilot 10\template.html
+CommonGen,tasks\CommonGen\template.html
+Commongen Evals (RLUE) 2,tasks\Commongen Evals (RLUE) 2\template.html
+Commonsense Misinformation Tracking Pilot [cancer data setup] 10,tasks\Commonsense Misinformation Tracking Pilot [cancer data setup] 10\template.html
+Commonsense Morality - Class Label Collect 8,tasks\Commonsense Morality - Class Label Collect 8\template.html
+Commonsense Morality - Text Label Validate-Collect 17,tasks\Commonsense Morality - Text Label Validate-Collect 17\template.html
+Commonsense Morality - Validate Instances 2,tasks\Commonsense Morality - Validate Instances 2\template.html
+Commonsense Morality - Verify Action Comprehensible 2,tasks\Commonsense Morality - Verify Action Comprehensible 2\template.html
+Commonsense Morality-Text Label Validate-Collect-Extended,tasks\Commonsense Morality-Text Label Validate-Collect-Extended\template.html
+CommonsenseQAPlus_Scale_17,tasks\CommonsenseQAPlus_Scale_17\template.html
+Compile list of area chairs,tasks\Compile list of area chairs\template.html
+Compression HIT,tasks\Compression HIT\template.html
+Congressional Bills 5 point,tasks\Congressional Bills 5 point\template.html
+Contextual Similarity -- Paraphrase Round,tasks\Contextual Similarity -- Paraphrase Round\template.html
+Creating Sentence Paraphrases 8,tasks\Creating Sentence Paraphrases 8\template.html
+defeasible inference RUN6 (500),tasks\defeasible inference RUN6 (500)\template.html
+Detox_pilot,tasks\Detox_pilot\template.html
+DI Rationale Gen. evaluation - single 2,tasks\DI Rationale Gen. evaluation - single 2\template.html
+Dialog Human Evaluation 7 DD,tasks\Dialog Human Evaluation 7 DD\template.html
+Dialogue rot annotation 2,tasks\Dialogue rot annotation 2\template.html
+Dialogue safety (socialchemistry) 5,tasks\Dialogue safety (socialchemistry) 5\template.html
+DnD Identify Guidance in DM Text 7,tasks\DnD Identify Guidance in DM Text 7\template.html
+Does it Make Sense And Why (semeval2020-task4 A&B),tasks\Does it Make Sense And Why (semeval2020-task4 A&B)\template.html
+Does it Make Sense And Why (semeval2020-task4C),tasks\Does it Make Sense And Why (semeval2020-task4C)\template.html
+drop_essential_0.4,tasks\drop_essential_0.4\template.html
+Duration Range Evaluation 10_07,tasks\Duration Range Evaluation 10_07\template.html
+Elicitation Generation,tasks\Elicitation Generation\template.html
+Elicitation obj,tasks\Elicitation obj\template.html
+Elicitation subj,tasks\Elicitation subj\template.html
+Email Formality Annotation,tasks\Email Formality Annotation\template.html
+ESNLI Rationale Generation 4,tasks\ESNLI Rationale Generation 4\template.html
+ET-dropEssentials0.8,tasks\ET-dropEssentials0.8\template.html
+ethics_sbic dialogue 2nd 0,tasks\ethics_sbic dialogue 2nd 0\template.html
+Evaluate free-text rationales 10,tasks\Evaluate free-text rationales 10\template.html
+Evaluate Questions Defeasibility 5,tasks\Evaluate Questions Defeasibility 5\template.html
+Evaluate Questions Step 1 5,tasks\Evaluate Questions Step 1 5\template.html
+Evaluate the Quality of Explanations (Relative CommonsenseQA),tasks\Evaluate the Quality of Explanations (Relative CommonsenseQA)\template.html
+Evaluate the Quality of Explanations (Relative NLI) 7,tasks\Evaluate the Quality of Explanations (Relative NLI) 7\template.html
+Evaluate the Quality of Explanations (Singular Acceptability NLI) 1,tasks\Evaluate the Quality of Explanations (Singular Acceptability NLI) 1\template.html
+evaluate_e2e 5,tasks\evaluate_e2e 5\template.html
+Explanation Acceptability (CommonsenseQA),tasks\Explanation Acceptability (CommonsenseQA)\template.html
+Exploring the Role of Argument Structure in Online Debate Persuasion,tasks\Exploring the Role of Argument Structure in Online Debate Persuasion\template.html
+Formalize this,tasks\Formalize this\template.html
+Full sentence style annotations,tasks\Full sentence style annotations\template.html
+Generics Categories (Definitional),tasks\Generics Categories (Definitional)\template.html
+Generics Embodiment Pilot - gpt3-gens grp4 batch2,tasks\Generics Embodiment Pilot - gpt3-gens grp4 batch2\template.html
+Generics Eval - comparatives gpt3,tasks\Generics Eval - comparatives gpt3\template.html
+Generics Eval - Soft,tasks\Generics Eval - Soft\template.html
+Generics Eval - Soft - all dataset eval,tasks\Generics Eval - Soft - all dataset eval\template.html
+Goal Distractor - ATOMIC base events 1,tasks\Goal Distractor - ATOMIC base events 1\template.html
+Gun violence structured extraction,tasks\Gun violence structured extraction\template.html
+Hindi Word Alignment,tasks\Hindi Word Alignment\template.html
+HTER - 27 Sep 1859,tasks\HTER - 27 Sep 1859\template.html
+HTER - longer sentences -27 Sep 1129,tasks\HTER - longer sentences -27 Sep 1129\template.html
+Human evaluation - gentle vs canary,tasks\Human evaluation - gentle vs canary\template.html
+Human evaluation - quals,tasks\Human evaluation - quals\template.html
+HUSE - WebText — GPT-L — Unconditional — Pure Sampling,tasks\HUSE - WebText — GPT-L — Unconditional — Pure Sampling\template.html
+Identify Ukrainian text,tasks\Identify Ukrainian text\template.html
+Identify Urdu text,tasks\Identify Urdu text\template.html
+Image labeling,tasks\Image labeling\template.html
+IMDB Sentiment Completions (RLUE) 5,tasks\IMDB Sentiment Completions (RLUE) 5\template.html
+InconsistentMiddles 3,tasks\InconsistentMiddles 3\template.html
+intuitive physics 01,tasks\intuitive physics 01\template.html
+JiminyCricket-HumanVal-b10,tasks\JiminyCricket-HumanVal-b10\template.html
+JJ-NN HIT,tasks\JJ-NN HIT\template.html
+Know Your Nyms,tasks\Know Your Nyms\template.html
+Lattice,tasks\Lattice\template.html
+Local View,tasks\Local View\template.html
+mars human eval (a-b testing) 3,tasks\mars human eval (a-b testing) 3\template.html
+Mauve human eval v1 2,tasks\Mauve human eval v1 2\template.html
+MCN - Multiple Choice testset,tasks\MCN - Multiple Choice testset\template.html
+MinimalChangeInconsistentMiddles 10,tasks\MinimalChangeInconsistentMiddles 10\template.html
+Missing Adjective FITB,tasks\Missing Adjective FITB\template.html
+Multimodal Prompt Caption Eval Clip-fixed 100,tasks\Multimodal Prompt Caption Eval Clip-fixed 100\template.html
+"NER - Task scruples 26,200 - 30,922","tasks\NER - Task scruples 26,200 - 30,922\template.html"
+neural-pop (PLAN evaluation) t5-human-test b,tasks\neural-pop (PLAN evaluation) t5-human-test b\template.html
+Neurologic Recipe Eval 3,tasks\Neurologic Recipe Eval 3\template.html
+new accept (dev),tasks\new accept (dev)\template.html
+Newsela Complex words,tasks\Newsela Complex words\template.html
+newyorker_joke_explain_pairwise 11,tasks\newyorker_joke_explain_pairwise 11\template.html
+newyorker_joke_explain_quality 6,tasks\newyorker_joke_explain_quality 6\template.html
+NLI for GenGen (neurologic train),tasks\NLI for GenGen (neurologic train)\template.html
+Number of sense,tasks\Number of sense\template.html
+o+s_test_logicNeg_beam_10,tasks\o+s_test_logicNeg_beam_10\template.html
+"Object Instruction drop,throw,push balanced 4000","tasks\Object Instruction drop,throw,push balanced 4000\template.html"
+Object Instruction Update 10000-rest,tasks\Object Instruction Update 10000-rest\template.html
+OOF Hits 11,tasks\OOF Hits 11\template.html
+Opinion Mining of Spanish Customer Comments HIT1,tasks\Opinion Mining of Spanish Customer Comments HIT1\template.html
+Opinion Mining of Spanish Customer Comments HIT2,tasks\Opinion Mining of Spanish Customer Comments HIT2\template.html
+Opinion Mining of Spanish Customer Comments HIT3,tasks\Opinion Mining of Spanish Customer Comments HIT3\template.html
+Paraphrase Clustering with Merge,tasks\Paraphrase Clustering with Merge\template.html
+Paraphrase Evaluation 9,tasks\Paraphrase Evaluation 9\template.html
+Passive voice Parents 1st-2nd Person Persuasiveness Comparison,tasks\Passive voice Parents 1st-2nd Person Persuasiveness Comparison\template.html
+PerSenT,tasks\PerSenT\template.html
+Photo Collection GVDB,tasks\Photo Collection GVDB\template.html
+Polite versus rude,tasks\Polite versus rude\template.html
+Pseudoword Dataset Creation PPDB,tasks\Pseudoword Dataset Creation PPDB\template.html
+PSTS-Lexsub-1,tasks\PSTS-Lexsub-1\template.html
+PSTS-Pivot-4,tasks\PSTS-Pivot-4\template.html
+PSTS-psts.c2v-4,tasks\PSTS-psts.c2v-4\template.html
+Question Gen 2,tasks\Question Gen 2\template.html
+Question Typing 4,tasks\Question Typing 4\template.html
+QuestionKeyPhrases 7,tasks\QuestionKeyPhrases 7\template.html
+Radiology Report Sentence Classification,tasks\Radiology Report Sentence Classification\template.html
+Rationale Generation 5,tasks\Rationale Generation 5\template.html
+Reading Comprehension,tasks\Reading Comprehension\template.html
+Recreation of the Dan Johnson,tasks\Recreation of the Dan Johnson\template.html
+Reddit In-group Analysis Comment annotation 3,tasks\Reddit In-group Analysis Comment annotation 3\template.html
+Relative CommonsenseQA Explanation Pairwise Judgements Collection 3,tasks\Relative CommonsenseQA Explanation Pairwise Judgements Collection 3\template.html
+Rewrite sentences (+ context),tasks\Rewrite sentences (+ context)\template.html
+RocStories 1,tasks\RocStories 1\template.html
+ROFT 3,tasks\ROFT 3\template.html
+ROT - Task [4+ Stars] rocstories 0 - 1999,tasks\ROT - Task [4+ Stars] rocstories 0 - 1999\template.html
+ROT Details [m=50] rocstories - 0 - 99,tasks\ROT Details [m=50] rocstories - 0 - 99\template.html
+Scalar Adjective Ordering,tasks\Scalar Adjective Ordering\template.html
+Scalar Adjectives Identification,tasks\Scalar Adjectives Identification\template.html
+Science Questions test without any answers dropped,tasks\Science Questions test without any answers dropped\template.html
+Script KD eval LONG V2 - disc result eval 1,tasks\Script KD eval LONG V2 - disc result eval 1\template.html
+Sentence Compression - Manual Deletion 2,tasks\Sentence Compression - Manual Deletion 2\template.html
+Sentence Formality Annotation,tasks\Sentence Formality Annotation\template.html
+Sentence Summarization 29,tasks\Sentence Summarization 29\template.html
+Sentiment Analysis - Joe Biden,tasks\Sentiment Analysis - Joe Biden\template.html
+Sentiment_Negative 3,tasks\Sentiment_Negative 3\template.html
+Sherlock Four Sent Choice mixed,tasks\Sherlock Four Sent Choice mixed\template.html
+Sherlock IMG 2 TXT Eval 15,tasks\Sherlock IMG 2 TXT Eval 15\template.html
+Simplicity HIT,tasks\Simplicity HIT\template.html
+Simplicity HIT - rank simplicity,tasks\Simplicity HIT - rank simplicity\template.html
+Simplification-Meaning-Grammar-Simplicity,tasks\Simplification-Meaning-Grammar-Simplicity\template.html
+Social Chem - Pilot-3 Rule-of-Thumb round-1,tasks\Social Chem - Pilot-3 Rule-of-Thumb round-1\template.html
+Sorting Scalar Adjectives,tasks\Sorting Scalar Adjectives\template.html
+Spanish Word Alignment,tasks\Spanish Word Alignment\template.html
+Spheres of Alturism 1,tasks\Spheres of Alturism 1\template.html
+Step 1 Generating Multi-Sentence Questions (CNN),tasks\Step 1 Generating Multi-Sentence Questions (CNN)\template.html
+Step 1 Generating Multi-Sentence Questions (science),tasks\Step 1 Generating Multi-Sentence Questions (science)\template.html
+Step 2 Verifying Multi-sentence-ness for questions 14,tasks\Step 2 Verifying Multi-sentence-ness for questions 14\template.html
+Step 3 Creating Answers Given Questions 23,tasks\Step 3 Creating Answers Given Questions 23\template.html
+Step 4 Selecting good - bad answers to questions (short),tasks\Step 4 Selecting good - bad answers to questions (short)\template.html
+Step 5 human performance 17,tasks\Step 5 human performance 17\template.html
+Story Eval [Quality],tasks\Story Eval [Quality]\template.html
+Style Adaptaion - Subjective-Objective,tasks\Style Adaptaion - Subjective-Objective\template.html
+"Style adaptation, pairwise, complex-simple","tasks\Style adaptation, pairwise, complex-simple\template.html"
+"Style adaptation, pairwise, subjective-objective","tasks\Style adaptation, pairwise, subjective-objective\template.html"
+Summarization (RLUE) 1,tasks\Summarization (RLUE) 1\template.html
+ToTTo Evals (RLUE) 1,tasks\ToTTo Evals (RLUE) 1\template.html
+Transcribe Meeting Speech for Extractive Summarization firstpass,tasks\Transcribe Meeting Speech for Extractive Summarization firstpass\template.html
+Transcribe Meeting Speech for Extractive Summarization secondpass,tasks\Transcribe Meeting Speech for Extractive Summarization secondpass\template.html
+TrecQA,tasks\TrecQA\template.html
+Triple Quality Eval -- Peter 8,tasks\Triple Quality Eval -- Peter 8\template.html
+TuringAdvice_GPT3-instruct,tasks\TuringAdvice_GPT3-instruct\template.html
+Typicality Judgements for Objects -disagreement run-,tasks\Typicality Judgements for Objects -disagreement run-\template.html
+Video MC Eval lsmdc_generative_finetune_mc_neg3,tasks\Video MC Eval lsmdc_generative_finetune_mc_neg3\template.html
+Video MC Eval val_negatives_human_written_mc_neg_3_eval_1500,tasks\Video MC Eval val_negatives_human_written_mc_neg_3_eval_1500\template.html
+video sentence evaluation neg 1,tasks\video sentence evaluation neg 1\template.html
+video sentence evaluation pos 1,tasks\video sentence evaluation pos 1\template.html
+Visual Comet Multiple Choice Test Verify,tasks\Visual Comet Multiple Choice Test Verify\template.html
+VisualCOMET Selection test,tasks\VisualCOMET Selection test\template.html
+Vote for the best Spanish-English translation,tasks\Vote for the best Spanish-English translation\template.html
+VQA Rationale Generation 5,tasks\VQA Rationale Generation 5\template.html
+What breaks the flow - no categories 4,tasks\What breaks the flow - no categories 4\template.html
+wiki103_quality 7,tasks\wiki103_quality 7\template.html
+wikiHow Goal Membership,tasks\wikiHow Goal Membership\template.html
+wikiHow Step Membership,tasks\wikiHow Step Membership\template.html
+wikiHow Step Ordering,tasks\wikiHow Step Ordering\template.html
+wikiHow step-goal linking pilot cleanse-url,tasks\wikiHow step-goal linking pilot cleanse-url\template.html
+winogrande (object) batch_13a,tasks\winogrande (object) batch_13a\template.html
+winogrande validation (grammar) additional_ph,tasks\winogrande validation (grammar) additional_ph\template.html
+Word Formality Annotation,tasks\Word Formality Annotation\template.html
+word-alignment,tasks\word-alignment\template.html
