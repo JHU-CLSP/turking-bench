@@ -1,4 +1,4 @@
-# Web-grounded Natural Language Instructions 
+# Web-Grounded Natural Language Instructions 
 
 This repository maintains a large collection of tasks and their natural language instructions that are grounded in the visual information. 
 
