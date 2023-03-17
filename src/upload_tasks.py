@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import argparse
-from client import TurkleClient
+from Turkle.scripts.client import TurkleClient
 import sys
 import os
 import pandas as pd
@@ -27,7 +27,7 @@ class Options:
 
 
 client = TurkleClient(args.server, args.u, args.p)
-for root, dirs, files in os.walk('tasks'):
+for root, dirs, files in os.walk('../tasks'):
     for dir in dirs:
         try:
             temp = ''

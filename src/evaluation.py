@@ -1,4 +1,5 @@
 import csv
+import argparse
 from rouge import Rouge
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -13,26 +14,28 @@ from PIL import Image
 from io import BytesIO
 import math
 
+
 class Evaluation:
     def __init__(self, rouge):
         self.rouge = Rouge()
-    
+
     def calculate_rouge(self, n, input_name, baseline_answer):
         # TBD
         df = pd.read_csv('batch.csv')
-        start_index = (n * 3) - 1       
+        start_index = (n * 3) - 1
         answers = []
         for i in range(3):
-            answer = self.df.iloc[start_index+i][f'Answer.{input_name}']
+            answer = self.df.iloc[start_index + i][f'Answer.{input_name}']
             answers.append(answer)
-        
+
         scores = []
         for answer in answers:
             score = self.rouge.get_scores(answer, baseline_answer)[0]['rouge-1']['f']
             scores.append(score)
-        
+
         avg_score = sum(scores) / len(scores)
         return avg_score
+
 
 class Input:
     def __init__(self, url, input_id):
@@ -123,6 +126,7 @@ class Input:
             input_names.add(input_name)
         return input_values
 
+
 class Baseline:
     @staticmethod
     def solve_task(task):
@@ -133,21 +137,32 @@ class Baseline:
         result = None
         return result
 
-def main(url):
+
+def enumerate_tasks(url):
     driver = webdriver.Firefox()
     driver.get(url)
     evaluation = Evaluation(driver)
     inputs = Input.extract_input_values_from_url(url)
-    screenshot= Input.take_screenshot(driver)
-    full_screenshot= Input.take_full_screenshot(driver)
+    # TODO: add the followings to the baseline code
+    # move it inside the baseline
+    screenshot = Input.take_screenshot(driver)
+    full_screenshot = Input.take_full_screenshot(driver)
     print(inputs)
     for i in inputs:
         if i['input_type'] != 'hidden':
             task = Input(url, i['input_name'])
             summary = Baseline.solve_task(task)
             Input.enter_input(i['input_type'], summary, i['input_name'], driver)
-    
+
     scores = evaluation.enumerate(task)
     print(scores)
 
-main(url)
+
+if __name__ == "__main__":
+    # receive input arguments from the command line
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--url', type=str,
+                        help='URL of the task; make sure to use double quotes to prevent parsing errors')
+    args = parser.parse_args()
+    url = args.url
+    enumerate_tasks(url)
