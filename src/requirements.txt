@@ -1,0 +1,3 @@
+GitPython
+rouge
+selenium==4.8.2
