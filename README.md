@@ -8,7 +8,7 @@ Here are two example tasks:
 ![Screen Shot 2023-02-20 at 12 21 22 PM](https://user-images.githubusercontent.com/2441454/220168815-10c22ddd-2deb-422f-b41e-2203bee25e25.png)
 
 **Where can I see more tasks?**
-You can see the instructions for each task [here](mturk.html). 
+You can see the instructions for each task [here](https://jhu-clsp.github.io/turk-instructions/mturk.html). 
 Note, in this visualization, the variables are not filled in with any variables. 
 During the evaluation, the variables are filled in with the input instances. 
 We have prepared the necessary scripts for simulating the interaction with the templates (see below).
