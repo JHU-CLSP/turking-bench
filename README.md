@@ -26,7 +26,7 @@ Most of the past work focus on raw-text task instructions. Here the instructions
 and grounded in the visual information. 
 
 
-**Why collect this data?** 
+**How did we collect this data?** 
 We have collected about XX tasks that were originally created for crowdworkers. 
 Each task comes with an HTML template `template.html` that contains the visual information and a natural language instruction.
 Additionally the templates contain variables to be filled in by input instances maintained in `batch.csv` files.
