@@ -27,6 +27,13 @@ Each task comes with an HTML template `template.html` that contains the visual i
 Additionally the templates contain variables to be filled in by input instances maintained in `batch.csv` files.
 
 
+**Where can I see the tasks?**
+You can see the instructions for each task [here](mturk.html). 
+Note, in this visualization, the variables are not filled in with any variables. 
+During the evaluation, the variables are filled in with the input instances. 
+We have prepared the necessary scripts for simulating the interaction with the templates (see below).
+
+
 Task schema  
 --- 
 TODO
