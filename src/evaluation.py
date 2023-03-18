@@ -138,31 +138,50 @@ class Baseline:
         return result
 
 
-def enumerate_tasks(url):
-    driver = webdriver.Firefox()
-    driver.get(url)
-    evaluation = Evaluation(driver)
-    inputs = Input.extract_input_values_from_url(url)
-    # TODO: add the followings to the baseline code
-    # move it inside the baseline
-    screenshot = Input.take_screenshot(driver)
-    full_screenshot = Input.take_full_screenshot(driver)
-    print(inputs)
-    for i in inputs:
-        if i['input_type'] != 'hidden':
-            task = Input(url, i['input_name'])
-            summary = Baseline.solve_task(task)
-            Input.enter_input(i['input_type'], summary, i['input_name'], driver)
+def find_frame_url(project_name, driver):
+    # Find the project with the given name
+    project_row_xpath = f"//td[contains(text(), '{project_name}')]/.."
+    project_row = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, project_row_xpath)))
 
-    scores = evaluation.enumerate(task)
-    print(scores)
+    # Accept the next task for that project
+    accept_button = project_row.find_element(By.XPATH, ".//input[@value='Accept next Task']")
+    accept_button.click()
+
+    # Find the URL of the frame and open it
+    frame_id = "task_assignment_iframe"
+    frame = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, frame_id)))
+    frame_url = frame.get_attribute('src')
+    return frame_url
+
+def enumerate_tasks(tasks):
+    base_url = "http://localhost:8000"
+    driver = webdriver.Firefox()
+    for task in tasks:
+        driver.get(base_url)
+        url = find_frame_url(task, driver)
+        driver.get(url)
+        evaluation = Evaluation(driver)
+        inputs = Input.extract_input_values_from_url(url)
+        # TODO: add the followings to the baseline code
+        # move it inside the baseline
+        screenshot = Input.take_screenshot(driver)
+        full_screenshot = Input.take_full_screenshot(driver)
+        print(inputs)
+        for i in inputs:
+            if i['input_type'] != 'hidden':
+                task = Input(url, i['input_name'])
+                summary = Baseline.solve_task(task)
+                Input.enter_input(i['input_type'], summary, i['input_name'], driver)
+
+        scores = evaluation.enumerate(task)
+        print(scores)
 
 
 if __name__ == "__main__":
     # receive input arguments from the command line
     parser = argparse.ArgumentParser()
-    parser.add_argument('--url', type=str,
-                        help='URL of the task; make sure to use double quotes to prevent parsing errors')
+    parser.add_argument('--tasks', nargs='+', type=str,
+                    help='names of the tasks (Project column of the website); make sure to use double quotes to prevent parsing errors')
     args = parser.parse_args()
-    url = args.url
-    enumerate_tasks(url)
+    tasks = args.tasks
+    enumerate_tasks(tasks)

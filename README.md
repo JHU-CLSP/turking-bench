@@ -49,7 +49,7 @@ Here are the steps you need to follow:
  2. Create a server for visualizing the tasks `./scripts/run_server.sh` This will create a clone oof Turkle server at `http://localhost:8000` which we will use for visualizing the tasks. This will also ask you for a one-time username and password.  
  3. Run the script for copying the tasks to the server `python upload_tasks.py -u <username> -p <password> -t <task_name> -d <task_dir>`. 
  4. Go the website `http://localhost:8000`, click on a task, copy its frame URL. 
- 5. Run the script for evaluating the baseline by passing in the URL of the frame: `python evaluation.py --url <url>`
+ 5. Run the script for evaluating the baseline by passing in the URL of the frame: `python evaluation.py --tasks <task_names>`
 
 
 
