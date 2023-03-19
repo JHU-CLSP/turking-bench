@@ -62,7 +62,7 @@ class Input:
                 action.perform()
                 text_box.submit()
             elif input_type == 'radio' or input_type == 'checkbox':
-                option = driver.find_element_by_xpath(f"//input[@type='{input_type}'][@value='{input_value}']")
+                option = driver.find_element(f"//input[@type='{input_type}'][@value='{input_value}']")
                 option.click()
         except NoSuchElementException:
             print(f"Element with name '{input_name}' not found")

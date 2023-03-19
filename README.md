@@ -52,10 +52,9 @@ To facilitate the evaluation of models on this data, we have included the script
 The scripts are in `src/` directory.
 Here are the steps you need to follow: 
  1. Install the dependencies: `pip install -r requirements.txt`
- 2. Create a server for visualizing the tasks `./run_server.sh` This will create a clone oof Turkle server at `http://localhost:8000` which we will use for visualizing the tasks. This will also ask you for a one-time username and password.  
- 3. Run the script for copying the tasks to the server `python upload_tasks.py -u <username> -p <password> -t <task_name> -d <task_dir>`. 
- 4. Go the website `http://localhost:8000`, click on a task, copy its frame URL. 
- 5. Run the script for evaluating the baseline by passing in the names of the tasks: `python evaluation.py --tasks <task_names>`
+ 2. Create a server for visualizing the tasks `./run_server.sh` This will create a clone of [Turkle](https://github.com/hltcoe/turkle/) server at `http://localhost:8000` which is an engine for simulating Mechanical Turk locally. This will also ask you for a one-time username and password.  At this point you will see no tasks on Turkle; we will upload them in next step. 
+ 3. Now open another terminal tab and run the script for copying the tasks to the server `python upload_tasks.py -u <username> -p <password> -t <task_name> -d <task_dir>`. While this script is running, you can go back to Turkle to see that the tasks are indeed being uploaded.
+ 4. Run the script for evaluating the baseline by passing in the names of the tasks: `python evaluation.py --tasks <task_names>`
 
 
 ![Screen Shot 2023-02-20 at 12 22 37 PM](https://user-images.githubusercontent.com/2441454/220168960-9080b552-446b-4385-bca3-7f662ce95e20.png)
