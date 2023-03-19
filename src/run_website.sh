@@ -10,6 +10,8 @@ fi
 # clone the repo to the directory
 git clone $GIT_URL $repo_dir
 
+cd $repo_dir
+
 # choose the right pip/python
 if [ -f "/usr/bin/pip3" ]; then
     pip="/usr/bin/pip3"
@@ -19,7 +21,9 @@ else
     python="/usr/bin/python"
 fi
 
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py createsuperuser
-python manage.py runserver 0.0.0.0:8000
+echo "Using $pip and $python"
+
+$pip install -r requirements.txt
+$python manage.py migrate
+$python manage.py createsuperuser
+$python manage.py runserver 0.0.0.0:8000

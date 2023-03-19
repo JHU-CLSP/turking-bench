@@ -49,10 +49,10 @@ This work is licensed under Apache License 2.0.
 Evaluation and Baselines 
 --- 
 To facilitate the evaluation of models on this data, we have included the scripts needed to simulate interaction with the templates. 
-The scripts are in `scripts/` directory.
+The scripts are in `src/` directory.
 Here are the steps you need to follow: 
  1. Install the dependencies: `pip install -r requirements.txt`
- 2. Create a server for visualizing the tasks `./scripts/run_server.sh` This will create a clone oof Turkle server at `http://localhost:8000` which we will use for visualizing the tasks. This will also ask you for a one-time username and password.  
+ 2. Create a server for visualizing the tasks `./run_server.sh` This will create a clone oof Turkle server at `http://localhost:8000` which we will use for visualizing the tasks. This will also ask you for a one-time username and password.  
  3. Run the script for copying the tasks to the server `python upload_tasks.py -u <username> -p <password> -t <task_name> -d <task_dir>`. 
  4. Go the website `http://localhost:8000`, click on a task, copy its frame URL. 
  5. Run the script for evaluating the baseline by passing in the names of the tasks: `python evaluation.py --tasks <task_names>`
