@@ -36,7 +36,7 @@ for root, dirs, files in os.walk('../tasks'):
             for file in os.listdir(dir_path):
                 if file.endswith('.html'):
                     temp = os.path.join(dir_path, file)
-                if file.endswith('.csv'):
+                if file.endswith('input.csv'):
                     csvpath = os.path.join(dir_path, file)
                     input_encoding = 'utf8'
                     output_encoding = 'utf8'
