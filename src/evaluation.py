@@ -185,12 +185,14 @@ class Input:
             input_names = set(input_names)
             inputs=[]
             for name in input_names:
-                inputs += soup.find_all(name)
+                inputs.append(soup.find(attrs={'name': name}))
         else:
             input_names = set()
             inputs = soup.find_all(['input', 'textarea'])
         for input in inputs:
-            input_type = input.get('type', 'text')
+            input_type = input.get('type')
+            if not input_type:
+                input_type = 'text'
             input_name = input.get('name')
             if not input_name:
                 continue
@@ -210,7 +212,7 @@ class Baseline:
         return result
 
 
-def find_frame_url(project_name, driver):
+def find_task_id(project_name, driver):
     table = driver.find_element(By.TAG_NAME, 'table')
     rows = table.find_elements(By.TAG_NAME, 'tr')
     sum_of_tasks = 0
@@ -225,11 +227,11 @@ def find_frame_url(project_name, driver):
 
 def enumerate_tasks(tasks, batch, maximum):
     base_url = "http://localhost:8000"
-    #driver = webdriver.Firefox()
-    driver = webdriver.Chrome()
+    driver = webdriver.Firefox()
+    #driver = webdriver.Chrome()
     for task in tasks:
         driver.get(base_url)
-        offset, instances = find_frame_url(task, driver)
+        offset, instances = find_task_id(task, driver)
         random_numbers = [random.randint(1, instances) for _ in range(min(instances, maximum))]
         for num in random_numbers:
             url = f'http://localhost:8000/task/{num+offset}/iframe/'
@@ -248,6 +250,7 @@ def enumerate_tasks(tasks, batch, maximum):
                     Input.enter_input(i['input_type'], summary, i['input_name'], driver)
                 score = evaluation.calculate_rouge(task, num, i['input_name'], baseline_answer)
                 print(score)
+            
 
 if __name__ == "__main__":
     # receive input arguments from the command line
