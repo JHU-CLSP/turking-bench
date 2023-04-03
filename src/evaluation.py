@@ -225,7 +225,8 @@ def find_frame_url(project_name, driver):
 
 def enumerate_tasks(tasks, batch, maximum):
     base_url = "http://localhost:8000"
-    driver = webdriver.Firefox()
+    #driver = webdriver.Firefox()
+    driver = webdriver.Chrome()
     for task in tasks:
         driver.get(base_url)
         offset, instances = find_frame_url(task, driver)
