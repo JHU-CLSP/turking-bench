@@ -246,21 +246,19 @@ def enumerate_tasks(tasks, batch, maximum):
             for i in inputs:
                 if i['input_type'] != 'hidden':
                     task = Input(url, i['input_name'])
-                    summary = Baseline.solve_task(task)
-                    Input.enter_input(i['input_type'], summary, i['input_name'], driver)
+                    baseline_answer = Baseline.solve_task(task)
+                    Input.enter_input(i['input_type'], baseline_answer, i['input_name'], driver)
                 score = evaluation.calculate_rouge(task, num, i['input_name'], baseline_answer)
                 print(score)
             
 
 if __name__ == "__main__":
-    # receive input arguments from the command line
+    with open('../test.txt', 'r') as f:
+        tasks = f.read().splitlines()
     parser = argparse.ArgumentParser()
-    parser.add_argument('--tasks', type=str,
-                    help='names of the tasks (Project column of the website); separate multiple tasks with semicolons', required=True)
     parser.add_argument('--batch', type=bool, default=True, help='determine if this task has a batch or not')
     parser.add_argument('--num', type=int, default=1, help='Maximum number of instances from each task')
     args = parser.parse_args()
-    tasks = args.tasks.split(';')
     batch = args.batch
     maximum = int(args.num)
     enumerate_tasks(tasks, batch, maximum)
