@@ -22,14 +22,14 @@ class Evaluation:
     def __init__(self, rouge):
         self.rouge = Rouge()
 
-    def calculate_rouge(self, task, index, input_name, baseline_answer):
-        df = pd.read_csv(f'../tasks/{task}/batch.csv')
+    def calculate_rouge(self, project_name, index, input_name, baseline_answer):
+        df = pd.read_csv(f'../tasks/{project_name}/batch.csv')
         cols = [col for col in df.columns if not col.startswith("Answer.")]
         distinct_rows = df[cols].drop_duplicates()
         if index <= len(distinct_rows):
             ith_row = distinct_rows.iloc[[index-1]]            
             result = df[df[cols].isin(ith_row.to_dict('list')).all(axis=1)]            
-            answers = result[input_name].tolist()
+            answers = result[f'Answer.{input_name}'].tolist()
         else:
             answers = []
         scores = []
@@ -41,22 +41,21 @@ class Evaluation:
 
 
 class Input:
-    def __init__(self, url, input_id):
-        self.task = url
-        self.input_id = input_id
+    def __init__(self, url, input_name):
+        self.url = url
+        self.input_name = input_name
 
     def get_html(self):
-        response = requests.get(self.task)
+        response = requests.get(self.url)
         html = response.text
         return html
 
     @staticmethod
     def enter_input(input_type, input_value, input_name, driver):
         try:
-            if input_type == 'text' or input_type == 'textarea':
-                # Wait for element to become visible
+            driver.maximize_window()            
+            if input_type in ['text', 'textarea']:
                 text_box = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.NAME, input_name)))
-                # Scroll element into view
                 driver.execute_script("arguments[0].scrollIntoView();", text_box)
                 action = ActionChains(driver)
                 action.move_to_element(text_box)
@@ -64,74 +63,16 @@ class Input:
                 action.send_keys(input_value)
                 action.perform()
                 text_box.submit()
-            elif input_type == 'radio' or input_type == 'checkbox':
-                option = driver.find_element(f"//input[@type='{input_type}'][@value='{input_value}']")
-                option.click()
-            elif input_type == 'button':
-                button = driver.find_element(By.NAME, input_name)
-                button.click()
-            elif input_type == 'color':
-                color_picker = driver.find_element(By.NAME, input_name)
-                color_picker.click()
-                color_picker.send_keys(input_value)
-            elif input_type == 'date':
-                date_picker = driver.find_element(By.NAME, input_name)
-                date_picker.click()
-                date_picker.send_keys(input_value)
-            elif input_type == 'datetime-local':
-                datetime_picker = driver.find_element(By.NAME, input_name)
-                datetime_picker.click()
-                datetime_picker.send_keys(input_value)
-            elif input_type == 'email':
-                email_input = driver.find_element(By.NAME, input_name)
-                email_input.click()
-                email_input.send_keys(input_value)
-            elif input_type == 'file':
-                file_input = driver.find_element(By.NAME, input_name)
-                file_input.send_keys(input_value)
-            elif input_type == 'hidden':
-                hidden_input = driver.find_element(By.NAME, input_name)
-                hidden_input.send_keys(input_value)
-            elif input_type == 'image':
-                image_input = driver.find_element(By.NAME, input_name)
-                image_input.click()
-            elif input_type == 'month':
-                month_picker = driver.find_element(By.NAME, input_name)
-                month_picker.click()
-                month_picker.send_keys(input_value)
-            elif input_type == 'number':
-                number_input = driver.find_element(By.NAME, input_name)
-                number_input.click()
-                number_input.send_keys(input_value)
-            elif input_type == 'password':
-                password_input = driver.find_element(By.NAME, input_name)
-                password_input.click()
-                password_input.send_keys(input_value)
-            elif input_type == 'range':
-                range_slider = driver.find_element(By.NAME, input_name)
-                range_slider.click()
-            elif input_type == 'reset':
-                reset_button = driver.find_element(By.NAME, input_name)
-                reset_button.click()
-            elif input_type == 'search':
-                search_box = driver.find_element(By.NAME, input_name)
-                search_box.click()
-                search_box.send_keys(input_value)
-            elif input_type == 'submit':
-                submit_button = driver.find_element(By.NAME, input_name)
-                submit_button.click()
-            elif input_type == 'tel':
-                tel_input = driver.find_element(By.NAME, input_name)
-                tel_input.click()
-                tel_input.send_keys(input_value) 
-            elif input_type == 'time':
-                time_picker = driver.find_element(By.NAME, input_name) 
-                time_picker.click() 
-                time_picker.send_keys(input_value) 
-            elif input_type == 'url': 
-                url_input = driver.find_element(By.NAME, input_name) 
-                url_input.click() 
-                url_input.send_keys(input_value) 
+            elif input_type in ['button', 'checkbox', 'color', 'date', 'datetime-local', 'email', 'file', 'hidden', 'image', 'month', 'number', 'password', 'radio', 'range', 'reset', 'search', 'submit', 'tel', 'time', 'url']:
+                WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, input_name)))
+                input_element = driver.find_element(By.NAME, input_name)
+                action = ActionChains(driver)
+                if input_type in ['button', 'checkbox', 'color', 'date', 'datetime-local', 'email', 'image', 'month', 'number', 'password', 'radio', 'range', 'reset', 'search', 'submit', 'tel', 'time']:
+                    action.move_to_element(input_element)
+                    action.click()
+                if input_type in ['color', 'date', 'datetime-local', 'email', 'file', 'hidden', 'month', 'number', 'password', 'search', 'tel']:
+                    action.send_keys(input_value)
+                action.perform()
         except:
             print(f"We have a problem with '{input_name}'")
 
@@ -201,7 +142,7 @@ class Input:
 
 class Baseline:
     @staticmethod
-    def solve_task(task):
+    def solve_task(task, driver):
         screenshot = Input.take_screenshot(driver)
         full_screenshot = Input.take_full_screenshot(driver)
         html = task.get_html()
@@ -210,6 +151,77 @@ class Baseline:
 
         result = None
         return result
+
+    def oracle_baseline(project_name, index, input_name):
+        df = pd.read_csv(f'../tasks/{project_name}/batch.csv')
+        cols = [col for col in df.columns if not col.startswith("Answer.")]
+        distinct_rows = df[cols].drop_duplicates()
+        if index <= len(distinct_rows):
+            ith_row = distinct_rows.iloc[[index-1]]            
+            result = df[df[cols].isin(ith_row.to_dict('list')).all(axis=1)]            
+            answers = result[f'Answer.{input_name}'].tolist()
+            for answer in answers:
+                if answer and answer != {}:
+                    return answer
+        return None
+
+    def random_baseline(input_name, input_type, driver):
+        input_element = driver.find_element(By.NAME, input_name)
+        if input_type == 'text':
+            messages = ["Hello!", "How are you?", "What's up?", "Nice to meet you!"]
+            return random.choice(messages)
+        else:
+            options = []
+            if input_type == 'radio' or input_type == 'checkbox':
+                options = [option.get_attribute('value') for option in driver.find_elements(By.NAME, input_name)]
+            elif input_type == 'select-one':
+                select_element = Select(input_element)
+                options = [option.get_attribute('value') for option in select_element.options]
+            elif input_type == 'number':
+                min_value = int(input_element.get_attribute('min'))
+                max_value = int(input_element.get_attribute('max'))
+                step_value = int(input_element.get_attribute('step'))
+                options = list(range(min_value, max_value + 1, step_value))
+            elif input_type == 'range':
+                min_value = int(input_element.get_attribute('min'))
+                max_value = int(input_element.get_attribute('max'))
+                step_value = int(input_element.get_attribute('step'))
+                options = list(range(min_value, max_value + 1, step_value))
+            elif input_type == 'color':
+                colors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#00FFFF', '#FF00FF']
+                options = colors
+            elif input_type == 'date':
+                start_date = date(2022, 1, 1)
+                end_date = date(2023, 12, 31)
+                delta = end_date - start_date
+                options = [(start_date + timedelta(days=i)).strftime('%Y-%m-%d') for i in range(delta.days + 1)]
+            elif input_type == 'month':
+                start_month = date(2022, 1, 1)
+                end_month = date(2023, 12, 1)
+                options = [start_month.strftime('%Y-%m')]
+                while start_month < end_month:
+                    start_month += relativedelta(months=+1)
+                    options.append(start_month.strftime('%Y-%m'))
+            elif input_type == 'week':
+                start_week = date(2022, 1, 3)
+                end_week = date(2023, 12, 26)
+                options = [start_week.strftime('%Y-W%U')]
+                while start_week < end_week:
+                    start_week += timedelta(weeks=+1)
+                    options.append(start_week.strftime('%Y-W%U'))
+            elif input_type == 'time':
+                start_time = datetime.strptime('00:00', '%H:%M')
+                end_time = datetime.strptime('23:59', '%H:%M')
+                delta_time = end_time - start_time
+                minutes_diff = delta_time.total_seconds() / 60.0
+                options = [(start_time + timedelta(minutes=i)).strftime('%H:%M') for i in range(int(minutes_diff) + 1)]
+            elif input_type == 'datetime-local':
+                start_datetime = datetime(2022, 1, 1, 0, 0)
+                end_datetime = datetime(2023, 12, 31, 23, 59)
+                delta_datetime = end_datetime - start_datetime
+                minutes_diff = delta_datetime.total_seconds() / 60.0
+                options = [(start_datetime + timedelta(minutes=i)).strftime('%Y-%m-%dT%H:%M') for i in range(int(minutes_diff) + 1)]
+            return random.choice(options)
 
 
 def find_task_id(project_name, driver):
@@ -227,18 +239,18 @@ def find_task_id(project_name, driver):
 
 def enumerate_tasks(tasks, batch, maximum):
     base_url = "http://localhost:8000"
-    driver = webdriver.Firefox()
-    #driver = webdriver.Chrome()
-    for task in tasks:
+    #driver = webdriver.Firefox()
+    driver = webdriver.Chrome()
+    for project_name in tasks:
         driver.get(base_url)
-        offset, instances = find_task_id(task, driver)
+        offset, instances = find_task_id(project_name, driver)
         random_numbers = [random.randint(1, instances) for _ in range(min(instances, maximum))]
         for num in random_numbers:
             url = f'http://localhost:8000/task/{num+offset}/iframe/'
             driver.get(url)
             evaluation = Evaluation(driver)
             if batch:
-                df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
+                df = pd.read_csv(f'../tasks/{project_name}/batch.csv', nrows=0)
                 input_names = [col.replace('Answer.', '') for col in df.columns if col.startswith('Answer.')]
                 inputs = Input.extract_input_values_from_url(url,input_names)
             else:
@@ -246,9 +258,11 @@ def enumerate_tasks(tasks, batch, maximum):
             for i in inputs:
                 if i['input_type'] != 'hidden':
                     task = Input(url, i['input_name'])
-                    baseline_answer = Baseline.solve_task(task)
+                    baseline_answer = Baseline.solve_task(task, driver)
+                    #baseline_answer = Baseline.oracle_baseline(project_name, num, i['input_name'])
+                    #baseline_answer = Baseline.random_baseline(i['input_name'], i['input_type'], driver)
                     Input.enter_input(i['input_type'], baseline_answer, i['input_name'], driver)
-                score = evaluation.calculate_rouge(task, num, i['input_name'], baseline_answer)
+                score = evaluation.calculate_rouge(project_name, num, i['input_name'], baseline_answer)
                 print(score)
             
 
