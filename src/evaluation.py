@@ -23,6 +23,7 @@ class Evaluation:
         self.rouge = Rouge()
 
     def calculate_rouge(self, project_name, index, input_name, baseline_answer):
+        baseline_answer = str(baseline_answer)
         df = pd.read_csv(f'../tasks/{project_name}/batch.csv')
         cols = [col for col in df.columns if not col.startswith("Answer.")]
         distinct_rows = df[cols].drop_duplicates()
@@ -32,13 +33,9 @@ class Evaluation:
             answers = result[f'Answer.{input_name}'].tolist()
         else:
             answers = []
-        scores = []
-        for answer in answers:
-            score = self.rouge.get_scores(answer, baseline_answer)[0]['rouge-1']['f']
-            scores.append(score)
-        avg_score = sum(scores) / len(scores)
+        scores = self.rouge.get_scores([str(answer) for answer in answers], [baseline_answer] * len(answers))
+        avg_score = sum([score['rouge-1']['f'] for score in scores]) / len(scores)
         return avg_score
-
 
 class Input:
     def __init__(self, url, input_name):
@@ -138,7 +135,7 @@ class Input:
             if not input_name:
                 continue
             input_values.append({'input_type': input_type, 'input_name': input_name})
-        return input_values
+        return sorted(input_values, key=lambda x: str(soup).index(str(soup.find(attrs={'name': x['input_name']}))))
 
 class Baseline:
     @staticmethod
