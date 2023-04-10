@@ -49,5 +49,8 @@ for root, dirs, files in os.walk('../tasks'):
             result = client.upload(options)
             if result:
                 print("Success")
-        except:
-            continue
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            unsuccessful_tasks.append(dir)
+
+print(f"Unsuccessful tasks: {unsuccessful_tasks}")
