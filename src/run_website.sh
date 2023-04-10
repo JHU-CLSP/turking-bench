@@ -1,4 +1,4 @@
-GIT_URL="https://github.com/hltcoe/turkle.git"
+GIT_URL="https://github.com/yeganehkordi/turkle.git"
 repo_dir="Turkle"
 
 # check if the directory exists
