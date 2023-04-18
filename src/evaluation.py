@@ -126,7 +126,7 @@ class Input:
                 inputs.append(soup.find(attrs={'name': name}))
         else:
             input_names = set()
-            inputs = soup.find_all(['input', 'textarea'])
+            inputs = soup.find_all(['input', 'textarea', 'select'])
         for input in inputs:
             input_type = input.get('type')
             if not input_type:
