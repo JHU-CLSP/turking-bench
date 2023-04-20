@@ -9,13 +9,15 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
 import requests
 from time import sleep
-from PIL import Image
+from PIL import Image, ImageDraw
 from io import BytesIO
 import math
 import pandas as pd
 import random
+import configparser
 
 
 class Evaluation:
@@ -88,6 +90,77 @@ class Input:
             last_height = new_height
         # Take screenshot
         driver.save_screenshot('screenshot.png')
+
+    def get_element_screenshot(driver, input_name, input_type):
+    # find the element based on input name and type
+        if input_type in ['select', 'textarea']:
+            element = Select(driver.find_element(By.NAME, input_name)).first_selected_option
+        else:
+            element = driver.find_element(By.NAME, input_name)
+        # get the location and size of the element
+        location = element.location
+        size = element.size
+        
+        # take a screenshot of the entire page
+        screenshot = driver.get_screenshot_as_png()
+        image = Image.open(BytesIO(screenshot))
+
+        # crop the image to the size of the element
+        left = location['x']
+        top = location['y']
+        right = location['x'] + size['width']
+        bottom = location['y'] + size['height']
+        cropped_image = image.crop((left, top, right, bottom))
+        return cropped_image
+
+    def get_element_screenshot_with_border(driver, input_name, input_type):
+        # find the element based on input name and type
+        if input_type in ['select', 'textarea']:
+            element = Select(driver.find_element(By.NAME, input_name)).first_selected_option
+        else:
+            element = driver.find_element(By.NAME, input_name)
+
+        # get the location and size of the element
+        location = element.location
+        size = element.size
+
+        # scroll to the element and wait for it to be visible
+        driver.execute_script("arguments[0].scrollIntoView();", element)
+        time.sleep(1)
+
+        # take a screenshot of the entire page
+        screenshot = driver.get_screenshot_as_png()
+        image = Image.open(BytesIO(screenshot))
+
+        # draw a red border around the element
+        draw = ImageDraw.Draw(image)
+        draw.rectangle((location['x'], location['y'], location['x']+size['width'], location['y']+size['height']), outline='red')
+
+        return image
+
+    def get_page_screenshots(driver):
+        screenshots = []
+
+        # get the size of the window
+        window_size = driver.execute_script("return [window.innerWidth, window.innerHeight];")
+
+        # get the height of the entire page
+        page_height = driver.execute_script("return document.documentElement.scrollHeight")
+
+        # set the initial scroll position to the top
+        scroll_position = 0
+
+        while scroll_position < page_height:
+            # take a screenshot of the current view
+            screenshot = driver.get_screenshot_as_png()
+            image = Image.open(io.BytesIO(screenshot))
+            screenshots.append(image)
+
+            # scroll down to the next view
+            scroll_position += window_size[1]
+            driver.execute_script(f"window.scrollTo(0, {scroll_position});")
+
+        return screenshots
 
     def take_full_screenshot(driver):
         # Get dimensions of webpage
@@ -221,6 +294,11 @@ class Baseline:
             return random.choice(options)
 
 
+def read_config(file):
+    config = configparser.ConfigParser()
+    config.read(file)
+    return config
+
 def find_task_id(project_name, driver):
     table = driver.find_element(By.TAG_NAME, 'table')
     rows = table.find_elements(By.TAG_NAME, 'tr')
@@ -234,7 +312,7 @@ def find_task_id(project_name, driver):
             sum_of_tasks += int(cells[3].text)
     return sum_of_tasks, instances
 
-def enumerate_tasks(tasks, batch, maximum):
+def enumerate_tasks(tasks, batch, maximum, mode, html_type, input_format, image_format):
     base_url = "http://localhost:8000"
     #driver = webdriver.Firefox()
     driver = webdriver.Chrome()
@@ -242,6 +320,7 @@ def enumerate_tasks(tasks, batch, maximum):
         driver.get(base_url)
         offset, instances = find_task_id(project_name, driver)
         random_numbers = [random.randint(1, instances) for _ in range(min(instances, maximum))]
+        data = []
         for num in random_numbers:
             url = f'http://localhost:8000/task/{num+offset}/iframe/'
             driver.get(url)
@@ -255,21 +334,39 @@ def enumerate_tasks(tasks, batch, maximum):
             for i in inputs:
                 if i['input_type'] != 'hidden':
                     task = Input(url, i['input_name'])
-                    baseline_answer = Baseline.solve_task(task, driver)
-                    #baseline_answer = Baseline.oracle_baseline(project_name, num, i['input_name'])
-                    #baseline_answer = Baseline.random_baseline(i['input_name'], i['input_type'], driver)
-                    Input.enter_input(i['input_type'], baseline_answer, i['input_name'], driver)
-                score = evaluation.calculate_rouge(project_name, num, i['input_name'], baseline_answer)
-                print(score)
-            
-
+                    if input_format== 'image' or 'both':
+                        if image_format == 'full_page':
+                            task_image = Input.get_page_screenshots(driver)
+                        elif image_format == 'div':
+                            task_image = Input.get_element_screenshot(driver, i['input_name'], i['input_type'])
+                        elif image_format == 'bordered_div':
+                            task_image = Input.get_element_screenshot_with_border(driver, i['input_name'], i['input_type'])
+                    if mode =='test':
+                        baseline_answer = Baseline.solve_task(task, driver)
+                        #baseline_answer = Baseline.random_baseline(i['input_name'], i['input_type'], driver)
+                        Input.enter_input(i['input_type'], baseline_answer, i['input_name'], driver)
+                        score = evaluation.calculate_rouge(project_name, num, i['input_name'], baseline_answer)
+                    if mode =='train':
+                        baseline_answer = Baseline.oracle_baseline(project_name, num, i['input_name'])
+                        Input.enter_input(i['input_type'], baseline_answer, i['input_name'], driver)
+                    data.append({
+                        'input': [i['input_type'], i['input_name']],
+                        'output': baseline_answer
+                    })
+        if mode =='test':
+            directory = f'./{project_name}'
+            if not os.path.exists(directory):
+                os.makedirs(directory)
+            with open(f'{directory}/{project_name}.json', 'w') as f:
+                json.dump(data, f)
 if __name__ == "__main__":
     with open('../test.txt', 'r') as f:
         tasks = f.read().splitlines()
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--batch', type=bool, default=True, help='determine if this task has a batch or not')
-    parser.add_argument('--num', type=int, default=1, help='Maximum number of instances from each task')
-    args = parser.parse_args()
-    batch = args.batch
-    maximum = int(args.num)
-    enumerate_tasks(tasks, batch, maximum)
+    config = read_config('config.ini')
+    batch = config.getboolean('DEFAULT', 'batch')
+    maximum = config.getint('DEFAULT', 'num')
+    mode = config.get('DEFAULT', 'mode')
+    html_type = config.get('DEFAULT', 'html_type')
+    input_format = config.get('DEFAULT', 'input_format')
+    image_format = config.get('DEFAULT', 'image_format', fallback='full_page')
+    enumerate_tasks(tasks, batch, maximum, mode, html_type, input_format, image_format)
