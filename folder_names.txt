@@ -1,0 +1,190 @@
+Abductive Reasoning 11
+Aductive Pairwise Eval 9
+advice-qual-feb-13-2020 v0
+ANLI Generation Eval - Reflective_ACL_1
+Annotate WaNLI 23
+Annotating Meeting Speech for Extractive Summarization
+Annotation Rating
+Annotation subj_obj
+Arabic Nickname Collection
+Arabic Nickname Verification
+Arch - Rel Eval 3
+Associate countries and languages with Ethnologue
+ATOMIC - Event Sequences 9
+ATOMIC - NL Rephrase 16
+ATOMIC - NL Rephrase Eval 10
+ATOMIC - Object Rationale 13
+ATOMIC - Required Objects (Sequence) 9
+ATOMIC - Required Objects 5
+ATOMIC KB Completion 2.2
+ATOMIC Neg Discriminator Eval 25
+ATOMIC Negation Need Want 28
+ATOMIC Validate gl
+atomic_event2event-effects 4
+Author In-Group Analysis Phrase Classification 2
+Automatic Detection of Generated Text
+BiSECT Human Evaluation II (2)
+BiSECT Multilingual Evaluation
+Chatbot Response Quality Evaluation
+clarifyD Qualification 1
+Coherence Evaluation
+COMET2020 ATOMIC Inference Vp 5
+COMET2020 ATOMIC Prag Neg Pilot 10
+Commongen Evals (RLUE) 2
+Commonsense Misinformation Tracking Pilot [cancer data setup] 10
+Commonsense Morality - Class Label Collect 8
+Commonsense Morality - Text Label Validate-Collect 17
+Commonsense Morality - Validate Instances 2
+Commonsense Morality - Verify Action Comprehensible 2
+Commonsense Morality-Text Label Validate-Collect-Extended
+CommonsenseQAPlus_Scale_17
+Compile list of area chairs
+Congressional Bills 5 point
+Contextual Similarity -- Paraphrase Round
+Creating Sentence Paraphrases 8
+defeasible inference RUN6 (500)
+Detox_pilot
+DI Rationale Gen. evaluation - single 2
+Dialog Human Evaluation 7 DD
+Dialogue rot annotation 2
+Dialogue safety (socialchemistry) 5
+DnD Identify Guidance in DM Text 7
+drop_essential_0.4
+Duration Range Evaluation 10_07
+Elicitation Generation
+Elicitation obj
+Elicitation subj
+Email Formality Annotation
+ESNLI Rationale Generation 4
+ET-dropEssentials0.8
+ethics_sbic dialogue 2nd 0
+Evaluate free-text rationales 10
+Evaluate Questions Defeasibility 5
+Evaluate Questions Step 1 5
+Evaluate the Quality of Explanations (Relative CommonsenseQA)
+Evaluate the Quality of Explanations (Relative NLI) 7
+Evaluate the Quality of Explanations (Singular Acceptability NLI) 1
+evaluate_e2e 5
+Explanation Acceptability (CommonsenseQA)
+Formalize this
+Full sentence style annotations
+Generics Categories (Definitional)
+Generics Embodiment Pilot - gpt3-gens grp4 batch2
+Generics Eval - comparatives gpt3
+Generics Eval - Soft
+Generics Eval - Soft - all dataset eval
+Goal Distractor - ATOMIC base events 1
+Gun violence structured extraction
+Hindi Word Alignment
+HTER - 27 Sep 1859
+HTER - longer sentences -27 Sep 1129
+Human evaluation - gentle vs canary
+Human evaluation - quals
+HUSE - WebText — GPT-L — Unconditional — Pure Sampling
+Identify Ukrainian text
+Identify Urdu text
+IMDB Sentiment Completions (RLUE) 5
+InconsistentMiddles 3
+intuitive physics 01
+JiminyCricket-HumanVal-b10
+JJ-NN HIT
+Know Your Nyms
+Lattice
+mars human eval (a-b testing) 3
+Mauve human eval v1 2
+MCN - Multiple Choice testset
+MinimalChangeInconsistentMiddles 10
+Missing Adjective FITB
+Multimodal Prompt Caption Eval Clip-fixed 100
+NER - Task scruples 26,200 - 30,922
+neural-pop (PLAN evaluation) t5-human-test b
+Neurologic Recipe Eval 3
+new accept (dev)
+Newsela Complex words
+newyorker_joke_explain_pairwise 11
+newyorker_joke_explain_quality 6
+NLI for GenGen (neurologic train)
+Number of sense
+o+s_test_logicNeg_beam_10
+Object Instruction Update 10000-rest
+OOF Hits 11
+Opinion Mining of Spanish Customer Comments HIT1
+Opinion Mining of Spanish Customer Comments HIT2
+Opinion Mining of Spanish Customer Comments HIT3
+Paraphrase Clustering with Merge
+Paraphrase Evaluation 9
+Passive voice Parents 1st-2nd Person Persuasiveness Comparison
+PerSenT
+Photo Collection GVDB
+Polite versus rude
+Pseudoword Dataset Creation PPDB
+PSTS-Lexsub-1
+PSTS-Pivot-4
+PSTS-psts.c2v-4
+Question Gen 2
+Question Typing 4
+QuestionKeyPhrases 7
+Radiology Report Sentence Classification
+Rationale Generation 5
+Reading Comprehension
+Recreation of the Dan Johnson
+Reddit In-group Analysis Comment annotation 3
+Relative CommonsenseQA Explanation Pairwise Judgements Collection 3
+Rewrite sentences (+ context)
+RocStories 1
+ROFT 3
+ROT - Task [4+ Stars] rocstories 0 - 1999
+ROT Details [m=50] rocstories - 0 - 99
+Scalar Adjective Ordering
+Scalar Adjectives Identification
+Science Questions test without any answers dropped
+Script KD eval LONG V2 - disc result eval 1
+Sentence Compression - Manual Deletion 2
+Sentence Formality Annotation
+Sentence Summarization 29
+Sentiment_Negative 3
+Sherlock Four Sent Choice mixed
+Sherlock IMG 2 TXT Eval 15
+Simplicity HIT
+Simplicity HIT - rank simplicity
+Simplification-Meaning-Grammar-Simplicity
+Social Chem - Pilot-3 Rule-of-Thumb round-1
+Sorting Scalar Adjectives
+Spanish Word Alignment
+Spheres of Alturism 1
+Step 1 Generating Multi-Sentence Questions (CNN)
+Step 1 Generating Multi-Sentence Questions (science)
+Step 2 Verifying Multi-sentence-ness for questions 14
+Step 3 Creating Answers Given Questions 23
+Step 4 Selecting good - bad answers to questions (short)
+Step 5 human performance 17
+Story Eval [Quality]
+Style Adaptaion - Subjective-Objective
+Style adaptation, pairwise, complex-simple
+Style adaptation, pairwise, subjective-objective
+Summarization (RLUE) 1
+ToTTo Evals (RLUE) 1
+Transcribe Meeting Speech for Extractive Summarization firstpass
+Transcribe Meeting Speech for Extractive Summarization secondpass
+TrecQA
+Triple Quality Eval -- Peter 8
+TuringAdvice_GPT3-instruct
+Typicality Judgements for Objects -disagreement run-
+Video MC Eval lsmdc_generative_finetune_mc_neg3
+Video MC Eval val_negatives_human_written_mc_neg_3_eval_1500
+video sentence evaluation neg 1
+video sentence evaluation pos 1
+Visual Comet Multiple Choice Test Verify
+VisualCOMET Selection test
+Vote for the best Spanish-English translation
+VQA Rationale Generation 5
+What breaks the flow - no categories 4
+wiki103_quality 7
+wikiHow Goal Membership
+wikiHow Step Membership
+wikiHow Step Ordering
+wikiHow step-goal linking pilot cleanse-url
+winogrande (object) batch_13a
+winogrande validation (grammar) additional_ph
+Word Formality Annotation
+word-alignment

@@ -13,18 +13,20 @@ from selenium.webdriver.support.ui import Select
 import requests
 from time import sleep
 from PIL import Image, ImageDraw
+import io
 from io import BytesIO
 import math
 import pandas as pd
 import random
 import configparser
+import json
 
 
 class Evaluation:
     def __init__(self, rouge):
         self.rouge = Rouge()
 
-    def calculate_rouge(self, project_name, index, input_name, baseline_answer):
+    def calculate_rouge(self, project_name, index, input_type, input_name, baseline_answer):
         baseline_answer = str(baseline_answer)
         df = pd.read_csv(f'../tasks/{project_name}/batch.csv')
         cols = [col for col in df.columns if not col.startswith("Answer.")]
@@ -35,9 +37,25 @@ class Evaluation:
             answers = result[f'Answer.{input_name}'].tolist()
         else:
             answers = []
-        scores = self.rouge.get_scores([str(answer) for answer in answers], [baseline_answer] * len(answers))
-        avg_score = sum([score['rouge-1']['f'] for score in scores]) / len(scores)
-        return avg_score
+        
+        if input_type in ['text', 'textarea']:
+            scores = self.rouge.get_scores([str(answer) for answer in answers], [baseline_answer] * len(answers))
+            if scores:
+                max_score = max([score['rouge-1']['f'] for score in scores])
+                return max_score
+            else:
+                return 0.0
+        else:
+            votes = {}
+            for answer in answers:
+                if answer in votes:
+                    votes[answer] += 1
+                else:
+                    votes[answer] = 1
+            majority_answer = max(votes, key=votes.get)
+            majority_answer_str = str(majority_answer)
+            scores = self.rouge.get_scores([majority_answer_str], [baseline_answer])
+            return scores[0]['rouge-1']['f']
 
 class Input:
     def __init__(self, url, input_name):
@@ -61,16 +79,20 @@ class Input:
                 action.click()
                 action.send_keys(input_value)
                 action.perform()
-                text_box.submit()
-            elif input_type in ['button', 'checkbox', 'color', 'date', 'datetime-local', 'email', 'file', 'hidden', 'image', 'month', 'number', 'password', 'radio', 'range', 'reset', 'search', 'submit', 'tel', 'time', 'url']:
+                #text_box.submit()
+            elif input_type in ['button', 'checkbox', 'color', 'date', 'datetime-local', 'email', 'file', 'hidden', 'image', 'month', 'number', 'password', 'radio', 'range', 'reset', 'search', 'select', 'submit', 'tel', 'text', 'textarea', 'time', 'url']:
                 WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, input_name)))
                 input_element = driver.find_element(By.NAME, input_name)
                 action = ActionChains(driver)
-                if input_type in ['button', 'checkbox', 'color', 'date', 'datetime-local', 'email', 'image', 'month', 'number', 'password', 'radio', 'range', 'reset', 'search', 'submit', 'tel', 'time']:
+                if input_type in ['button', 'checkbox', 'color', 'date', 'datetime-local', 'email', 'image', 'month', 'number', 'password', 'radio', 'range', 'reset', 'search', 'submit', 'tel', 'text', 'textarea', 'time', 'url']:
                     action.move_to_element(input_element)
                     action.click()
-                if input_type in ['color', 'date', 'datetime-local', 'email', 'file', 'hidden', 'month', 'number', 'password', 'search', 'tel']:
-                    action.send_keys(input_value)
+                if input_type in ['color', 'date', 'datetime-local', 'email', 'file', 'hidden', 'month', 'number', 'password', 'search', 'select', 'tel', 'text', 'textarea', 'time', 'url']:
+                    if input_type == 'select':
+                        select = Select(input_element)
+                        select.select_by_visible_text(input_value)
+                    else:
+                        action.send_keys(input_value)
                 action.perform()
         except:
             print(f"We have a problem with '{input_name}'")
@@ -126,7 +148,7 @@ class Input:
 
         # scroll to the element and wait for it to be visible
         driver.execute_script("arguments[0].scrollIntoView();", element)
-        time.sleep(1)
+        sleep(1)
 
         # take a screenshot of the entire page
         screenshot = driver.get_screenshot_as_png()
@@ -196,14 +218,21 @@ class Input:
             input_names = set(input_names)
             inputs=[]
             for name in input_names:
-                inputs.append(soup.find(attrs={'name': name}))
+                input = soup.find(attrs={'name': name})
+                if input and input.name in ['input', 'select']:
+                    inputs.append(input)
         else:
             input_names = set()
             inputs = soup.find_all(['input', 'textarea', 'select'])
         for input in inputs:
-            input_type = input.get('type')
-            if not input_type:
-                input_type = 'text'
+            if input.name in ['input', 'select']:
+                input_type = input.get('type')
+                if not input_type:
+                    input_type = 'text'
+            elif input.name == 'textarea':
+                input_type = 'textarea'
+            else:
+                continue
             input_name = input.get('name')
             if not input_name:
                 continue
@@ -314,53 +343,117 @@ def find_task_id(project_name, driver):
 
 def enumerate_tasks(tasks, batch, maximum, mode, html_type, input_format, image_format):
     base_url = "http://localhost:8000"
-    #driver = webdriver.Firefox()
-    driver = webdriver.Chrome()
+    driver = webdriver.Firefox()
+    #driver = webdriver.Chrome()
+    results = {}
     for project_name in tasks:
         driver.get(base_url)
         offset, instances = find_task_id(project_name, driver)
         random_numbers = [random.randint(1, instances) for _ in range(min(instances, maximum))]
         data = []
-        for num in random_numbers:
-            url = f'http://localhost:8000/task/{num+offset}/iframe/'
-            driver.get(url)
-            evaluation = Evaluation(driver)
-            if batch:
-                df = pd.read_csv(f'../tasks/{project_name}/batch.csv', nrows=0)
-                input_names = [col.replace('Answer.', '') for col in df.columns if col.startswith('Answer.')]
-                inputs = Input.extract_input_values_from_url(url,input_names)
-            else:
-                inputs = Input.extract_input_values_from_url(url)
-            for i in inputs:
-                if i['input_type'] != 'hidden':
-                    task = Input(url, i['input_name'])
-                    if input_format== 'image' or 'both':
-                        if image_format == 'full_page':
-                            task_image = Input.get_page_screenshots(driver)
-                        elif image_format == 'div':
-                            task_image = Input.get_element_screenshot(driver, i['input_name'], i['input_type'])
-                        elif image_format == 'bordered_div':
-                            task_image = Input.get_element_screenshot_with_border(driver, i['input_name'], i['input_type'])
-                    if mode =='test':
-                        baseline_answer = Baseline.solve_task(task, driver)
-                        #baseline_answer = Baseline.random_baseline(i['input_name'], i['input_type'], driver)
-                        Input.enter_input(i['input_type'], baseline_answer, i['input_name'], driver)
-                        score = evaluation.calculate_rouge(project_name, num, i['input_name'], baseline_answer)
-                    if mode =='train':
-                        baseline_answer = Baseline.oracle_baseline(project_name, num, i['input_name'])
-                        Input.enter_input(i['input_type'], baseline_answer, i['input_name'], driver)
-                    data.append({
-                        'input': [i['input_type'], i['input_name']],
-                        'output': baseline_answer
-                    })
-        if mode =='test':
-            directory = f'./{project_name}'
+        
+        if mode =='train':
+            directory = f'train/{project_name}'
             if not os.path.exists(directory):
                 os.makedirs(directory)
+
+            images_directory = f'{directory}/images'
+            if not os.path.exists(images_directory):
+                os.makedirs(images_directory)
+
+            html_directory = f'{directory}/HTML'
+            if not os.path.exists(html_directory):
+                os.makedirs(html_directory)
+
+            for num in random_numbers:
+                url = f'http://localhost:8000/task/{num+offset}/iframe/'
+                driver.get(url)
+                evaluation = Evaluation(driver)
+                if batch:
+                    df = pd.read_csv(f'../tasks/{project_name}/batch.csv', nrows=0)
+                    input_names = [col.replace('Answer.', '') for col in df.columns if col.startswith('Answer.')]
+                    inputs = Input.extract_input_values_from_url(url,input_names)
+                else:
+                    inputs = Input.extract_input_values_from_url(url)
+
+                print(inputs)
+                for i in inputs:
+                    if i['input_type'] != 'hidden':
+                        task = Input(url, i['input_name'])
+
+                        if input_format== 'image' or 'both':
+                            if image_format == 'full_page':
+                                task_image = Input.get_page_screenshots(driver)
+                            elif image_format == 'div':
+                                task_image = Input.get_element_screenshot(driver, i['input_name'], i['input_type'])
+                            elif image_format == 'bordered_div':
+                                task_image = Input.get_element_screenshot_with_border(driver, i['input_name'], i['input_type'])
+
+                            if isinstance(task_image, list):
+                                img_ids = []
+                                for j, image in enumerate(task_image):
+                                    image_id = f'{num}_{i["input_name"]}_{j}.png'
+                                    image.save(f'{images_directory}/{image_id}')
+                                    img_ids.append(image_id)
+                                image_id = img_ids
+                            else:
+                                image_id = f'{num}_{i["input_name"]}.png'
+                                task_image.save(f'{images_directory}/{image_id}')
+                        else:
+                            image_id = None
+
+                        html_id = f'{num}_{i["input_name"]}.html'
+                        with open(f'{html_directory}/{html_id}', 'w') as f:
+                            f.write(driver.page_source)
+
+                        baseline_answer = Baseline.oracle_baseline(project_name, num, i['input_name'])
+                        Input.enter_input(i['input_type'], baseline_answer, i['input_name'], driver)
+
+                        data.append({
+                            'input': [i['input_type'], i['input_name']],
+                            'image_id' : image_id,
+                            'html_id' : html_id,
+                            'output': baseline_answer
+                        })
+
             with open(f'{directory}/{project_name}.json', 'w') as f:
                 json.dump(data, f)
+
+        if mode =='test':
+            for num in random_numbers:
+                url = f'http://localhost:8000/task/{num+offset}/iframe/'
+                driver.get(url)
+                evaluation = Evaluation(driver)
+                if batch:
+                    df = pd.read_csv(f'../tasks/{project_name}/batch.csv', nrows=0)
+                    input_names = [col.replace('Answer.', '') for col in df.columns if col.startswith('Answer.')]
+                    inputs = Input.extract_input_values_from_url(url,input_names)
+                else:
+                    inputs = Input.extract_input_values_from_url(url)
+                for i in inputs:
+                    if i['input_type'] != 'hidden':
+                        task = Input(url, i['input_name'])
+                        #baseline_answer = Baseline.solve_task(task, driver)
+                        #baseline_answer = Baseline.random_baseline(i['input_name'], i['input_type'], driver)
+                        baseline_answer = Baseline.oracle_baseline(project_name, num, i['input_name'])
+                        Input.enter_input(i['input_type'], baseline_answer, i['input_name'], driver)
+                        score = evaluation.calculate_rouge(project_name, num, i['input_type'], i['input_name'], baseline_answer)
+                        if project_name not in results:
+                            results[project_name] = {}
+                        if i['input_type'] not in results[project_name]:
+                            results[project_name][i['input_type']] = []
+                        results[project_name][i['input_type']].append(score)
+    if mode =='test':
+        df = pd.DataFrame()
+        for project_name, inputs in results.items():
+            for input_type, scores in inputs.items():
+                avg_score = sum(scores) / len(scores)
+                df = df.append({'project': project_name, 'input_type': input_type, 'score': avg_score}, ignore_index=True)
+        df = df.pivot(index='project', columns='input_type', values='score')
+        df.to_csv('baseline_scores.csv', index=True)
+
 if __name__ == "__main__":
-    with open('../test.txt', 'r') as f:
+    with open('../folder_names.txt', 'r') as f:
         tasks = f.read().splitlines()
     config = read_config('config.ini')
     batch = config.getboolean('DEFAULT', 'batch')
