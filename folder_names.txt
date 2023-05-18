@@ -1,6 +1,7 @@
 Abductive Reasoning 11
 Aductive Pairwise Eval 9
 advice-qual-feb-13-2020 v0
+ANES 2008 open-ended survey
 ANLI Generation Eval - Reflective_ACL_1
 Annotate WaNLI 23
 Annotating Meeting Speech for Extractive Summarization
@@ -39,6 +40,7 @@ Commonsense Morality - Verify Action Comprehensible 2
 Commonsense Morality-Text Label Validate-Collect-Extended
 CommonsenseQAPlus_Scale_17
 Compile list of area chairs
+Compression HIT
 Congressional Bills 5 point
 Contextual Similarity -- Paraphrase Round
 Creating Sentence Paraphrases 8
