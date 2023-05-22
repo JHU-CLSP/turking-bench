@@ -70,32 +70,25 @@ class Input:
     @staticmethod
     def enter_input(input_type, input_value, input_name, driver):
         try:
-            driver.maximize_window()            
-            if input_type in ['text', 'textarea']:
-                text_box = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.NAME, input_name)))
-                driver.execute_script("arguments[0].scrollIntoView();", text_box)
-                action = ActionChains(driver)
-                action.move_to_element(text_box)
-                action.click()
+            driver.maximize_window()
+            input_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, input_name)))
+            driver.execute_script("arguments[0].scrollIntoView();", input_element)
+            action = ActionChains(driver).move_to_element(input_element).click()
+            if input_type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
                 action.send_keys(input_value)
-                action.perform()
-                #text_box.submit()
-            elif input_type in ['button', 'checkbox', 'color', 'date', 'datetime-local', 'email', 'file', 'hidden', 'image', 'month', 'number', 'password', 'radio', 'range', 'reset', 'search', 'select', 'submit', 'tel', 'text', 'textarea', 'time', 'url']:
-                WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, input_name)))
-                input_element = driver.find_element(By.NAME, input_name)
-                action = ActionChains(driver)
-                if input_type in ['button', 'checkbox', 'color', 'date', 'datetime-local', 'email', 'image', 'month', 'number', 'password', 'radio', 'range', 'reset', 'search', 'submit', 'tel', 'text', 'textarea', 'time', 'url']:
-                    action.move_to_element(input_element)
+            elif input_type in ['checkbox', 'radio']:
+                if not input_element.is_selected():
                     action.click()
-                if input_type in ['color', 'date', 'datetime-local', 'email', 'file', 'hidden', 'month', 'number', 'password', 'search', 'select', 'tel', 'text', 'textarea', 'time', 'url']:
-                    if input_type == 'select':
-                        select = Select(input_element)
-                        select.select_by_visible_text(input_value)
-                    else:
-                        action.send_keys(input_value)
-                action.perform()
-        except:
+            elif input_type == 'select':
+                select = Select(input_element)
+                select.select_by_visible_text(input_value)
+            elif input_type in ['button', 'color', 'date', 'datetime-local', 'file', 'hidden', 'image', 'month', 'range', 'reset', 'search', 'submit', 'time']:
+                pass 
+            action.perform()
+        except Exception as e:
+            print(f"An error occurred: {e}")
             print(f"We have a problem with '{input_name}'")
+            print(input_value)
 
     def take_screenshot(driver):
         # Get scroll height
@@ -219,18 +212,20 @@ class Input:
             inputs=[]
             for name in input_names:
                 input = soup.find(attrs={'name': name})
-                if input and input.name in ['input', 'select']:
+                if input and input.name in ['input', 'select','textarea']:
                     inputs.append(input)
         else:
             input_names = set()
             inputs = soup.find_all(['input', 'textarea', 'select'])
         for input in inputs:
-            if input.name in ['input', 'select']:
+            if input.name in ['input']:
                 input_type = input.get('type')
                 if not input_type:
                     input_type = 'text'
             elif input.name == 'textarea':
                 input_type = 'textarea'
+            elif input.name == 'select':
+                input_type = 'select'
             else:
                 continue
             input_name = input.get('name')
@@ -260,7 +255,7 @@ class Baseline:
             result = df[df[cols].isin(ith_row.to_dict('list')).all(axis=1)]            
             answers = result[f'Answer.{input_name}'].tolist()
             for answer in answers:
-                if answer and answer != {}:
+                if answer and answer != '{}':
                     return answer
         return None
 
@@ -341,12 +336,14 @@ def find_task_id(project_name, driver):
             sum_of_tasks += int(cells[3].text)
     return sum_of_tasks, instances
 
+
 def enumerate_tasks(tasks, batch, maximum, mode, html_type, input_format, image_format):
     base_url = "http://localhost:8000"
     driver = webdriver.Firefox()
     #driver = webdriver.Chrome()
     results = {}
     for project_name in tasks:
+        print(project_name)
         driver.get(base_url)
         offset, instances = find_task_id(project_name, driver)
         random_numbers = [random.randint(1, instances) for _ in range(min(instances, maximum))]
@@ -376,7 +373,6 @@ def enumerate_tasks(tasks, batch, maximum, mode, html_type, input_format, image_
                 else:
                     inputs = Input.extract_input_values_from_url(url)
 
-                print(inputs)
                 for i in inputs:
                     if i['input_type'] != 'hidden':
                         task = Input(url, i['input_name'])
@@ -431,7 +427,8 @@ def enumerate_tasks(tasks, batch, maximum, mode, html_type, input_format, image_
                 else:
                     inputs = Input.extract_input_values_from_url(url)
                 for i in inputs:
-                    if i['input_type'] != 'hidden':
+                    element = driver.find_element(By.NAME, i['input_name'])
+                    if element.is_displayed() and element.size['width'] > 0 and element.size['height'] > 0:
                         task = Input(url, i['input_name'])
                         #baseline_answer = Baseline.solve_task(task, driver)
                         #baseline_answer = Baseline.random_baseline(i['input_name'], i['input_type'], driver)
@@ -448,12 +445,20 @@ def enumerate_tasks(tasks, batch, maximum, mode, html_type, input_format, image_
         for project_name, inputs in results.items():
             for input_type, scores in inputs.items():
                 avg_score = sum(scores) / len(scores)
-                df = df.append({'project': project_name, 'input_type': input_type, 'score': avg_score}, ignore_index=True)
+                df = pd.concat([df, pd.DataFrame({'project': [project_name], 'input_type': [input_type], 'score': [avg_score]})], ignore_index=True)
+
+        if 'project' not in df.columns:
+            df.insert(0, 'project', '')
+        if 'input_type' not in df.columns:
+            df.insert(1, 'input_type', '')
+        if 'score' not in df.columns:
+            df.insert(1, 'score', '')
+
         df = df.pivot(index='project', columns='input_type', values='score')
         df.to_csv('baseline_scores.csv', index=True)
 
 if __name__ == "__main__":
-    with open('../folder_names.txt', 'r') as f:
+    with open('../test.txt', 'r') as f:
         tasks = f.read().splitlines()
     config = read_config('config.ini')
     batch = config.getboolean('DEFAULT', 'batch')
