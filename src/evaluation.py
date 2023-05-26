@@ -426,6 +426,7 @@ def enumerate_tasks(tasks, batch, maximum, mode, html_type, input_format, image_
                     inputs = Input.extract_input_values_from_url(url,input_names)
                 else:
                     inputs = Input.extract_input_values_from_url(url)
+                print(inputs)
                 for i in inputs:
                     element = driver.find_element(By.NAME, i['input_name'])
                     if element.is_displayed() and element.size['width'] > 0 and element.size['height'] > 0:
@@ -444,6 +445,7 @@ def enumerate_tasks(tasks, batch, maximum, mode, html_type, input_format, image_
         df = pd.DataFrame()
         for project_name, inputs in results.items():
             for input_type, scores in inputs.items():
+                print(scores)
                 avg_score = sum(scores) / len(scores)
                 df = pd.concat([df, pd.DataFrame({'project': [project_name], 'input_type': [input_type], 'score': [avg_score]})], ignore_index=True)
 
@@ -455,7 +457,7 @@ def enumerate_tasks(tasks, batch, maximum, mode, html_type, input_format, image_
             df.insert(1, 'score', '')
 
         df = df.pivot(index='project', columns='input_type', values='score')
-        df.to_csv('baseline_scores.csv', index=True)
+        df.to_csv('oracle_baseline_scores.csv', index=True)
 
 if __name__ == "__main__":
     with open('../test.txt', 'r') as f:
