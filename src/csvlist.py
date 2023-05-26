@@ -11,6 +11,7 @@ def get_parent_dir(filePath):
     parent_dir = os.path.split(os.path.dirname(filePath))[-1]
     return parent_dir
 
+
 if __name__ == '__main__':
     # create a dataframe
     df = pd.DataFrame(columns=['Title', 'Action'])
