@@ -4,11 +4,8 @@ advice-qual-feb-13-2020 v0
 ANES 2008 open-ended survey
 ANLI Generation Eval - Reflective_ACL_1
 Annotate WaNLI 23
-Annotating Meeting Speech for Extractive Summarization
 Annotation Rating
 Annotation subj_obj
-Arabic Nickname Collection
-Arabic Nickname Verification
 Arch - Rel Eval 3
 Associate countries and languages with Ethnologue
 ATOMIC - Event Sequences 9
@@ -82,9 +79,7 @@ HTER - 27 Sep 1859
 HTER - longer sentences -27 Sep 1129
 Human evaluation - gentle vs canary
 Human evaluation - quals
-HUSE - WebText — GPT-L — Unconditional — Pure Sampling
-Identify Ukrainian text
-Identify Urdu text
+HUSE-WebText-GPT-L-Unconditional-Pure Sampling
 IMDB Sentiment Completions (RLUE) 5
 InconsistentMiddles 3
 intuitive physics 01
