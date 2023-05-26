@@ -1,10 +1,16 @@
+"""
+This file creates a csv file of the tasks in the repository that is
+later used for visualizing the tasks in mturk.html
+"""
+
 import os
 import pandas as pd
 
-# return the name of parent directory of a file
+
 def get_parent_dir(filePath):
     parent_dir = os.path.split(os.path.dirname(filePath))[-1]
     return parent_dir
+
 
 if __name__ == '__main__':
     # create a dataframe
