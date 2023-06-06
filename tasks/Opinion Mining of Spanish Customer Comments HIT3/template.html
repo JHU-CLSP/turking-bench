@@ -1,14 +1,6 @@
-<p><input type="hidden" id="SENTENCEID" name="SENTENCEID" value="${NUMBER}" />  <input type="hidden" id="COORD_X" name="COORD_X" /> <input type="hidden" id="COORD_Y" name="COORD_Y" /><input type="hidden" id="userDisplayLanguage" name="userDisplayLanguage" /> <input type="hidden" id="browserInfo" name="browserInfo" /> <input type="hidden" id="country" name="country" />  <input type="hidden" id="city" name="city" /> <input type="hidden" id="region" name="region" /></p>
-<script language="Javascript" src="http://gd.geobytes.com/gd?after=-1&variables=GeobytesCountry,GeobytesCity,GeobytesRegion,GeobytesIpAddress"></script> <script language="Javascript">
+<p><input type="hidden" id="SENTENCEID" name="SENTENCEID" value="${NUMBER}" />  <input type="hidden" id="COORD_X" name="COORD_X" /> <input type="hidden" id="COORD_Y" name="COORD_Y" /></p>
+<script language="Javascript">
 <!--
-function getUserInfo() {
-document.mturk_form.userDisplayLanguage.value = navigator.language ? navigator.language : navigator.userDisplayLanguage;
-document.mturk_form.browserInfo.value = navigator.userAgent;
-document.mturk_form.country.value = sGeobytesCountry;
-document.mturk_form.city.value = sGeobytesCity;
-document.mturk_form.region.value = sGeobytesRegion;
-}
-
 function click_here(event)
 {
 	pos_x = event.offsetX?(event.offsetX):event.pageX-document.getElementById("triangle").offsetLeft;
@@ -53,9 +45,6 @@ function fCA()
 {
 	return (eval((pos_y-Cy)*(Ax-Cx)-(pos_x-Cx)*(Ay-Cy)))
 }
- 
-getUserInfo();
-
 // -->
 </script>
 <p><style type="text/css">

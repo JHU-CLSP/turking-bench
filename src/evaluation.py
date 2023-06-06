@@ -52,11 +52,14 @@ class Evaluation:
                     votes[answer] += 1
                 else:
                     votes[answer] = 1
-            majority_answer = max(votes, key=votes.get)
-            majority_answer_str = str(majority_answer)
-            scores = self.rouge.get_scores([majority_answer_str], [baseline_answer])
-            return scores[0]['rouge-1']['f']
-
+            if votes:
+                majority_answer = max(votes, key=votes.get)
+                majority_answer_str = str(majority_answer)
+                scores = self.rouge.get_scores([majority_answer_str], [baseline_answer])
+                return scores[0]['rouge-1']['f']
+            else:
+                return 0.0
+                
 class Input:
     def __init__(self, url, input_name):
         self.url = url
