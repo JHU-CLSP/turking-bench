@@ -52,7 +52,7 @@ To facilitate the evaluation of models on this data, we have included the script
 The scripts are in `src/` directory.
 Here are the steps you need to follow: 
  1. Install the dependencies: `pip install -r requirements.txt`
- 2. Create a server for visualizing the tasks `./run_server.sh` This will create a clone of [Turkle](https://github.com/hltcoe/turkle/) server at `http://localhost:8000` which is an engine for simulating Mechanical Turk locally. This will also ask you for a one-time username and password.  At this point you will see no tasks on Turkle; we will upload them in next step. 
+ 2. Create a server for visualizing the tasks `./run_website.sh` This will create a clone of [Turkle](https://github.com/hltcoe/turkle/) server at `http://localhost:8000` which is an engine for simulating Mechanical Turk locally. This will also ask you for a one-time username and password.  At this point you will see no tasks on Turkle; we will upload them in next step. 
  3. Now open another terminal tab and run the script for copying the tasks to the server `python upload_tasks.py -u <username> -p <password> -t <task_name> -d <task_dir>`. While this script is running, you can go back to Turkle to see that the tasks are indeed being uploaded.
  4. Run the script for evaluating the baseline by passing in the names of the tasks: `python evaluation.py --tasks <task_names>`. To use Chrome as your webdriver, you need to first download the ChromeDriver executable from the ChromeDriver website and make sure it’s in your system’s PATH.
 
