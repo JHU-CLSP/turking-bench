@@ -35,11 +35,15 @@ Additionally the templates contain variables to be filled in by input instances 
 
 Task schema  
 --- 
-TODO
+Each task consists of the following files: 
+ - `template.html`: This is the HTML template that is used to visualize the content of the task, including instructions, variables for visualizing the inputs, and HTML elements for collecting responses. 
+ - `batch.csv`: Contains the collection of inputs and outputs. The inputs are placed in the HTML template. The outputs are used to compute the performance of a model solving these tasks. 
+ - `input.csv`: This file contains all the unique inputs that were originally used for running each task. We don't use it currently, but we have it included it for completeness, in case anyone finds it useful. 
+
 
 How to contribute 
 ---
-TODO
+We welcome addition of more tasks too the collection! If intetested, please open a Pull-Request for your tasks. 
 
 License
 --- 
@@ -62,6 +66,7 @@ Here are the steps you need to follow:
 
 
 Citation 
+---
 If you fnd this data useful, please cite this repository. 
 
 <!-- 
