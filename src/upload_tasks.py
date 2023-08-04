@@ -51,6 +51,7 @@ for root, dirs, files in os.walk('../tasks'):
                 print("Success")
         except Exception as e:
             print(f"An error occurred: {e}")
-            unsuccessful_tasks.append(dir)
+            # unsuccessful_tasks.append(dir)
 
-print(f"Unsuccessful tasks: {unsuccessful_tasks}")
+# TODO: undefined variable to be fixed.
+# print(f"Unsuccessful tasks: {unsuccessful_tasks}")
