@@ -57,8 +57,9 @@ The scripts are in `src/` directory.
 Here are the steps you need to follow: 
  1. Install the dependencies: `pip install -r requirements.txt`
  2. Create a server for visualizing the tasks `./run_website.sh` This will create a clone of [Turkle](https://github.com/hltcoe/turkle/) server at `http://localhost:8000` which is an engine for simulating Mechanical Turk locally. This will also ask you for a one-time username and password.  At this point you will see no tasks on Turkle; we will upload them in next step. 
- 3. Now open another terminal tab and run the script for copying the tasks to the server `python upload_tasks.py -u <username> -p <password> -t <task_name> -d <task_dir>`. While this script is running, you can go back to Turkle to see that the tasks are indeed being uploaded.
- 4. Run the script for evaluating the baseline by passing in the names of the tasks: `python evaluation.py --tasks <task_names>`. To use Chrome as your webdriver, you need to first download the ChromeDriver executable from the ChromeDriver website and make sure it’s in your system’s PATH.
+ 3. Create input files for each task by running `python src/inputcsv.py`. This will create a `input.csv` file for each task which we will be used for uploading the tasks to Turkle.  
+ 4. Now open another terminal tab and run the script for copying the tasks to the server `python upload_tasks.py -u <username> -p <password> -t <task_name>`. While this script is running, you can go back to Turkle to see that the tasks are indeed being uploaded.
+ 5. Run the script for evaluating the baseline by passing in the names of the tasks: `python evaluation.py --tasks <task_names>`. To use Chrome as your webdriver, you need to first download the ChromeDriver executable from the ChromeDriver website and make sure it’s in your system’s PATH.
 
 
 ![Screen Shot 2023-02-20 at 12 22 37 PM](https://user-images.githubusercontent.com/2441454/220168960-9080b552-446b-4385-bca3-7f662ce95e20.png)

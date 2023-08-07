@@ -253,13 +253,13 @@
 
         //// closest parent first.
         //if (iter_depth >= 2){
-        //    var parent_img_url = '&nbsp; &nbsp; <img src="https://ai2-mosaic-mturk.s3-us-west-2.amazonaws.com/n-pop/dag-img/' + parents_img['2'] + '">';
+        //    var parent_img_url = '&nbsp; &nbsp; <img src="https://web-instruct.s3.amazonaws.com/neural-pop/dag-img/' + parents_img['2'] + '">';
         //    parents_html = parents_html + parent_img_url;
         //}
 
         //// if iter_depth==2, this is the grandparent (if ==1, it's parent.)
         //if (iter_depth >= 1){
-        //    var parent_img_url = '<img src="https://ai2-mosaic-mturk.s3-us-west-2.amazonaws.com/n-pop/dag-img/' + parents_img['1'] + '">';
+        //    var parent_img_url = '<img src="https://web-instruct.s3.amazonaws.com/neural-pop/dag-img/' + parents_img['1'] + '">';
         //    parents_html = parents_html + parent_img_url;
         //}
 
@@ -645,18 +645,18 @@
             validation_failed(alert_msg);
             return false;
         } else if (error_code == 3){
-            var alert_msg = 'The flow chart has a node that is unreachable to the goal node. Please make sure that all the paths can reach to the goal node. (See a bad flow chart example at https://ai2-mosaic-mturk.s3-us-west-2.amazonaws.com/n-pop/bad_flow.png")';
+            var alert_msg = 'The flow chart has a node that is unreachable to the goal node. Please make sure that all the paths can reach to the goal node. (See a bad flow chart example at https://web-instruct.s3.amazonaws.com/neural-pop/bad_flow.png")';
             validation_failed(alert_msg);
 
-            alert_msg = 'The flow chart has a node that is unreachable to the goal node. Please make sure that all the paths can reach to the goal node. (<a href="https://ai2-mosaic-mturk.s3-us-west-2.amazonaws.com/n-pop/bad_flow.png" target="_blank">See a bad flow chart example.</a>) ';
+            alert_msg = 'The flow chart has a node that is unreachable to the goal node. Please make sure that all the paths can reach to the goal node. (<a href="https://web-instruct.s3.amazonaws.com/neural-pop/bad_flow.png" target="_blank">See a bad flow chart example.</a>) ';
             var warnings = document.getElementById("warnings");
             warnings.innerHTML = '<span style="color:red;">' + alert_msg + '</span>';
             return false;
         } else if (error_code == 4){
-            var alert_msg = 'The flow chart has a node that is unreachable from the start node. Please make sure that all the paths can reach from the start node. (See a bad flow chart example at https://ai2-mosaic-mturk.s3-us-west-2.amazonaws.com/n-pop/bad_flow.png")';
+            var alert_msg = 'The flow chart has a node that is unreachable from the start node. Please make sure that all the paths can reach from the start node. (See a bad flow chart example at https://web-instruct.s3.amazonaws.com/neural-pop/bad_flow.png")';
             validation_failed(alert_msg);
 
-            alert_msg = 'The flow chart has a node that is unreachable from the start node. Please make sure that all the paths can reach from the start node. (<a href="https://ai2-mosaic-mturk.s3-us-west-2.amazonaws.com/n-pop/bad_flow.png" target="_blank">See a bad flow chart example.</a>) ';
+            alert_msg = 'The flow chart has a node that is unreachable from the start node. Please make sure that all the paths can reach from the start node. (<a href="https://web-instruct.s3.amazonaws.com/neural-pop/bad_flow.png" target="_blank">See a bad flow chart example.</a>) ';
             var warnings = document.getElementById("warnings");
             warnings.innerHTML = '<span style="color:red;">' + alert_msg + '</span>';
             return false;
@@ -974,7 +974,7 @@
             <ul>
                 <div id="emb_nsq2"></div>
                 <li>Shortcut links are <b style="color:red">NOT</b> allowed. For example, when there are links <b>A&rarr;B&rarr;C</b>, then <b style="color:red">you cannot add A&rarr;C</b> to it. </li>
-                <li>Please make sure that all the steps are reachable through the links FROM the start state and TO the goal state. (<a href="https://ai2-mosaic-mturk.s3-us-west-2.amazonaws.com/n-pop/bad_flow.png" target="_blank">See a bad flow chart example.</a>) </li>
+                <li>Please make sure that all the steps are reachable through the links FROM the start state and TO the goal state. (<a href="https://web-instruct.s3.amazonaws.com/neural-pop/bad_flow.png" target="_blank">See a bad flow chart example.</a>) </li>
                 <li>Mouse-down and drag on the steps to start drawing a new link.</li>
                 <li>If you want to delete a link, click the link and press the delete (backspace) key.</li>
                 <li>If you changed the step descriptions in <u>Question 1B (add necessary steps)</u>, please click <b style="background-color: gold">initialize the flow chart</b> (above) again to refresh the flow chart.</li>
@@ -987,12 +987,12 @@
 
             <p>Please take a look at a good example and bad example for reference. </p>
             <div align="center">
-                <img src="https://ai2-mosaic-mturk.s3-us-west-2.amazonaws.com/n-pop/eg.png" style="border-style: dotted" target="_blank">
+                <img src="https://web-instruct.s3.amazonaws.com/neural-pop/eg.png" style="border-style: dotted" target="_blank">
                 &nbsp;
                 &nbsp;
                 &nbsp;
                 &nbsp;
-                <img src="https://ai2-mosaic-mturk.s3-us-west-2.amazonaws.com/n-pop/bad_flow.png" style="border-style: dotted" target="_blank">
+                <img src="https://web-instruct.s3.amazonaws.com/neural-pop/bad_flow.png" style="border-style: dotted" target="_blank">
             </div>
             <br/>
 

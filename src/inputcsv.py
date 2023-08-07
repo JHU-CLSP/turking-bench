@@ -12,7 +12,12 @@ def create_input(csv_file):
 
 if __name__ == '__main__':
     for root, dirs, files in os.walk('tasks'):
+        # if files is empty then show an error
+        if not files or len(files) == 0:
+            raise Exception("No files in the specified directory. Make sure that you run this script in the root directory")
+
         for file in files:
             if file.endswith('batch.csv'):
-                print('Reading' + file)
-                create_input(os.path.join(root, file))
+                path = os.path.join(root, file)
+                print(' ** Reading: ' + path)
+                create_input(path)
