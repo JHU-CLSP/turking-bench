@@ -1,7 +1,13 @@
 import csv
 import argparse
+from datetime import datetime
+from datetime import timedelta
+from dateutil.relativedelta import relativedelta
+from datetime import date
+import string
 import os
-from rouge import Rouge
+import time
+from rouge_score import rouge_scorer
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
@@ -20,11 +26,89 @@ import pandas as pd
 import random
 import configparser
 import json
+from transformers import AutoTokenizer
+
+
+class GPTTokenizer:
+    gpt_tokenizer = AutoTokenizer.from_pretrained("gpt2", max_length=1e5)
+
+    def tokenize(self, s):
+        tokens = self.gpt_tokenizer.tokenize(s)
+        # GPT2 uses Byte-level BPE, which will include space as part of the word.
+        # But for the first word of a sentence, there is no space before it.
+        # So, we remove all the added spaces ("Ġ").
+        tokens = [t.lstrip("Ġ") for t in tokens]
+        return tokens
 
 
 class Evaluation:
-    def __init__(self, rouge):
-        self.rouge = Rouge()
+    def __init__(self):
+        self.default_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
+        self.xlingual_tokenizer = GPTTokenizer()
+        self.xlingual_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], tokenizer=self.xlingual_tokenizer)
+
+    @staticmethod
+    # adapted the flowing from Squad v1.1 evaluation, without removing the articles.
+    def normalize_answer(s):
+        """Lower text and remove punctuation, and extra whitespace."""
+
+        def white_space_fix(text):
+            return ' '.join(text.split())
+
+        def remove_punc(text):
+            exclude = set(string.punctuation)
+            return ''.join(ch for ch in text if ch not in exclude)
+
+        def lower(text):
+            return text.lower()
+
+        return white_space_fix(remove_punc(lower(s)))
+
+    def exact_match(self, prediction, references, xlingual=False):
+        return (Evaluation.normalize_answer(prediction) == Evaluation.normalize_answer(references))
+
+    def rouge(self, prediction, ground_truth, xlingual=False):
+        if xlingual:
+            scorer = self.xlingual_rouge_scorer
+        else:
+            scorer = self.default_rouge_scorer
+        scores = scorer.score(prediction=prediction, target=ground_truth)
+        return scores["rougeL"].fmeasure
+
+    @staticmethod
+    def metric_max_over_ground_truths(metric_fn, prediction, ground_truths, xlingual=False):
+        scores_for_ground_truths = []
+        for ground_truth in ground_truths:
+            score = metric_fn(prediction, ground_truth, xlingual=xlingual)
+            scores_for_ground_truths.append(score)
+        return max(scores_for_ground_truths)
+
+    def compute_metrics(self, predictions, references, xlingual=False):
+        """
+        :param predictions: list of strings
+        :param references: list of list of strings
+        :return: dict of metrics
+        """
+        print(" - - - - - - ")
+        print(f"predictions: {predictions}")
+        print(f"references: {references}")
+        assert len(predictions) == len(
+            references), f"# of predictions {len(predictions)} doesn't match # of references {len(references)}."
+        em, rougeL = 0, 0
+        for pred, gold in zip(predictions, references):
+            assert isinstance(gold, list)
+            em += Evaluation.metric_max_over_ground_truths(
+                self.exact_match, prediction=pred, ground_truths=gold, xlingual=xlingual
+            )
+            rougeL += Evaluation.metric_max_over_ground_truths(
+                self.rouge, prediction=pred, ground_truths=gold, xlingual=xlingual
+            )
+        em = 100.0 * em / len(references)
+        rougeL = 100.0 * rougeL / len(references)
+        print("scores: ", em, rougeL)
+        metrics = {"exact_match": em, "rougeL": rougeL}
+        metrics = {k: round(v, 4) for k, v in metrics.items()}
+        return metrics
 
     def calculate_rouge(self, project_name, index, input_type, input_name, baseline_answer):
         baseline_answer = str(baseline_answer)
@@ -32,19 +116,18 @@ class Evaluation:
         cols = [col for col in df.columns if not col.startswith("Answer.")]
         distinct_rows = df[cols].drop_duplicates()
         if index <= len(distinct_rows):
-            ith_row = distinct_rows.iloc[[index-1]]            
-            result = df[df[cols].isin(ith_row.to_dict('list')).all(axis=1)]            
+            ith_row = distinct_rows.iloc[[index - 1]]
+            result = df[df[cols].isin(ith_row.to_dict('list')).all(axis=1)]
             answers = result[f'Answer.{input_name}'].tolist()
         else:
             answers = []
-        
+
         if input_type in ['text', 'textarea']:
-            scores = self.rouge.get_scores([str(answer) for answer in answers], [baseline_answer] * len(answers))
-            if scores:
-                max_score = max([score['rouge-1']['f'] for score in scores])
-                return max_score
-            else:
-                return 0.0
+            scores = self.compute_metrics(
+                [str(answer) for answer in answers],
+                [[baseline_answer] * len(answers)]
+            )
+            return scores['rougeL']
         else:
             votes = {}
             for answer in answers:
@@ -55,11 +138,15 @@ class Evaluation:
             if votes:
                 majority_answer = max(votes, key=votes.get)
                 majority_answer_str = str(majority_answer)
-                scores = self.rouge.get_scores([majority_answer_str], [baseline_answer])
-                return scores[0]['rouge-1']['f']
+                scores = self.compute_metrics(
+                    [majority_answer_str],
+                    [[baseline_answer]]
+                )
+                return scores['rougeL']
             else:
                 return 0.0
-                
+
+
 class Input:
     def __init__(self, url, input_name):
         self.url = url
@@ -71,54 +158,226 @@ class Input:
         return html
 
     @staticmethod
-    def enter_input(input_type, input_value, input_name, driver):
+    def extract_input_values_from_url(url, input_names=None):
+        """
+        This utility function extracts the list of input fields that could be filled in.
+        Then for each input field, it identifies their type (text area, checkbox, etc.)
+        :param url: the url to extract the input fields from
+        :param input_names: a list of input names to extract
+        :return: a list of input names and their types
+        """
+        response = requests.get(url)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        input_fields = []
+
+        # if a list of input names are provided in the input, then extract the input fields with those names
+        # otherwise, look for inputs that may look like input fields
+        if input_names:
+            input_names = set(input_names)
+            inputs = []
+            for name in input_names:
+                input = soup.find(attrs={'name': name})
+                if input and input.name in ['input', 'select', 'textarea']:
+                    inputs.append(input)
+        else:
+            input_names = set()
+            inputs = soup.find_all(['input', 'textarea', 'select'])
+
+        # now for our list of inputs, indentify their types
+        for input in inputs:
+            if input.name in ['input']:
+                input_type = input.get('type')
+                if not input_type:
+                    input_type = 'text'
+            elif input.name == 'textarea':
+                input_type = 'textarea'
+            elif input.name == 'select':
+                input_type = 'select'
+            else:
+                continue
+
+            input_name = input.get('name')
+            if not input_name:
+                continue
+
+            input_fields.append({'input_type': input_type, 'input_name': input_name})
+
+        # before returning them, sort the input values based on their position in the HTML
+        return sorted(
+            input_fields,
+            key=lambda x: str(soup).index(str(soup.find(attrs={'name': x['input_name']})))
+        )
+
+
+class MyActions:
+    """
+    This class contains the actions that can be performed on an HTML page
+    """
+
+    def __init__(self, driver):
+        """
+        :param driver: selenium driver
+        """
+        self.driver = driver
+
+    def execute_js_command(self, command, *args):
+        """
+        Executes the javascript command and returns the result.
+        """
+        return self.driver.execute_script(command, *args)
+
+    def maximize_window(self):
+        """
+        This function maximizes the browser window to make sure we can see all the elements on the page.
+        """
+        self.driver.maximize_window()
+
+    def scroll_to_element(self, element_name):
+        """
+        This function scrolls to a given element on the page, after the page is fully loaded.
+        It then returns the element.
+        """
+        input_element = self.wait_for_element(element_name)
+        self.execute_js_command("arguments[0].scrollIntoView();", input_element)
+        return input_element
+
+    def wait_for_element(self, element_name):
+        """
+        This function waits for a given element to be loaded on the page, and then returns the element.
+        """
+        input_element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.NAME, element_name)))
+        return input_element
+
+    def modify_text(self, input_name, input_value):
+        """
+        For a given editable input field such as text box or text area, this function enters the input value into
+        the input field.
+        :param input_name: name of the input field
+        :param input_value: value to be entered into the input field
+        :return: None
+        """
+        input_element = self.scroll_to_element(input_name)
+        action = ActionChains(self.driver).move_to_element(input_element).click()
+        # now modify the text
+        action.send_keys(input_value)
+        action.perform()
+
+    def modify_checkbox(self, input_name, input_value):
+        """
+        For a given checkbox, this function clicks on the specified checks.
+        """
+
+        # if input value is not string, turn it into a string
+        if not isinstance(input_value, str):
+            input_value = str(input_value)
+
+        self.wait_for_element(input_name)
+        input_element = self.scroll_to_element(input_name)
+        action = ActionChains(self.driver).move_to_element(input_element).click()
+        # now modify the text
+        action.send_keys(input_value)
+        action.perform()
+
+    def modify_radio(self, input_name, input_value):
+        """
+        For a given radio button, this function clicks on the specified radio button.
+        """
+        # if input value is double/float, turn it into an integer
+        if isinstance(input_value, float):
+            input_value = int(input_value)
+
+        # if input value is not string, turn it into a string
+        if not isinstance(input_value, str):
+            input_value = str(input_value)
+
+        self.scroll_to_element(input_name)
+        element = self.driver.find_element(
+            By.XPATH, f"//input[@type='radio' and @name='{input_name}' and @value='{input_value}']"
+        )
+
+        # print element in HTML format
+        print("We are going to select this radio button:")
+        print(element.get_attribute('outerHTML'))
+
+        action = ActionChains(self.driver).move_to_element(element).click()
+        action.perform()
+
+    def modify_select(self, input_name, input_value):
+        """
+        For a given select field, this function selects the specified option.
+        """
+        input_element = self.scroll_to_element(input_name)
+        select = Select(input_element)
+        select.select_by_visible_text(input_value)
+
+    def execute_command(self, input_type, input_value, input_name):
+        """
+        For a given input field, this function enters the input value into the input field.
+        :param input_type: type of the input field
+        :param input_value: value to be entered into the input field
+        :param input_name: name of the input field
+        :return: None
+        """
         try:
-            driver.maximize_window()
-            input_element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, input_name)))
-            driver.execute_script("arguments[0].scrollIntoView();", input_element)
-            action = ActionChains(driver).move_to_element(input_element).click()
+            self.wait_for_element(input_name)
+            self.maximize_window()
+            input_element = self.scroll_to_element(input_name)
+
             if input_type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
-                action.send_keys(input_value)
-            elif input_type in ['checkbox', 'radio']:
+                self.modify_text(input_name, input_value)
+
+            elif input_type in ['checkbox']:
                 if not input_element.is_selected():
-                    action.click()
+                    self.modify_checkbox(input_name, input_value)
+
+            elif input_type in ['radio']:
+                if not input_element.is_selected():
+                    self.modify_radio(input_name, input_value)
+
             elif input_type == 'select':
-                select = Select(input_element)
-                select.select_by_visible_text(input_value)
-            elif input_type in ['button', 'color', 'date', 'datetime-local', 'file', 'hidden', 'image', 'month', 'range', 'reset', 'search', 'submit', 'time']:
-                pass 
-            action.perform()
+                self.modify_select(input_name, input_value)
+
+            elif input_type in ['button', 'color', 'date', 'datetime-local', 'file', 'hidden', 'image', 'month',
+                                'range', 'reset', 'search', 'submit', 'time']:
+                pass
+
         except Exception as e:
             print(f"An error occurred: {e}")
             print(f"We have a problem with '{input_name}'")
             print(input_value)
 
-    def take_screenshot(driver):
+    def take_screenshot(self):
+        """
+        This function takes a screenshot of the entire page that is currently visible. It then saves the screenshot.
+        """
         # Get scroll height
-        last_height = driver.execute_script("return document.body.scrollHeight")
+        last_height = self.execute_js_command("return document.body.scrollHeight")
         while True:
             # Scroll down to bottom
-            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             # Wait to load page
             sleep(2)
             # Calculate new scroll height and compare with last scroll height
-            new_height = driver.execute_script("return document.body.scrollHeight")
+            new_height = self.driver.execute_script("return document.body.scrollHeight")
             if new_height == last_height:
                 break
             last_height = new_height
         # Take screenshot
-        driver.save_screenshot('screenshot.png')
+        self.driver.save_screenshot('screenshot.png')
 
-    def get_element_screenshot(driver, input_name, input_type):
-    # find the element based on input name and type
+    def take_element_screenshot(self, driver, input_name, input_type):
+        """
+        This function takes a screenshot of a given element on the page.
+        """
+        # find the element based on input name and type
         if input_type in ['select', 'textarea']:
-            element = Select(driver.find_element(By.NAME, input_name)).first_selected_option
+            element = Select(self.driver.find_element(By.NAME, input_name)).first_selected_option
         else:
             element = driver.find_element(By.NAME, input_name)
         # get the location and size of the element
         location = element.location
         size = element.size
-        
+
         # take a screenshot of the entire page
         screenshot = driver.get_screenshot_as_png()
         image = Image.open(BytesIO(screenshot))
@@ -131,12 +390,16 @@ class Input:
         cropped_image = image.crop((left, top, right, bottom))
         return cropped_image
 
-    def get_element_screenshot_with_border(driver, input_name, input_type):
+    def take_element_screenshot_with_border(self, driver, input_name, input_type):
+        """
+        This function takes a screenshot of the entire page and draws a red border around the specified element.
+        """
+
         # find the element based on input name and type
         if input_type in ['select', 'textarea']:
-            element = Select(driver.find_element(By.NAME, input_name)).first_selected_option
+            element = Select(self.driver.find_element(By.NAME, input_name)).first_selected_option
         else:
-            element = driver.find_element(By.NAME, input_name)
+            element = self.driver.find_element(By.NAME, input_name)
 
         # get the location and size of the element
         location = element.location
@@ -152,40 +415,47 @@ class Input:
 
         # draw a red border around the element
         draw = ImageDraw.Draw(image)
-        draw.rectangle((location['x'], location['y'], location['x']+size['width'], location['y']+size['height']), outline='red')
+        draw.rectangle((location['x'], location['y'], location['x'] + size['width'], location['y'] + size['height']),
+                       outline='red')
 
         return image
 
-    def get_page_screenshots(driver):
+    def take_page_screenshots(self):
+        """
+        This function takes a screenshot of the entire page by scrolling down the page and taking a screenshot of each
+        """
         screenshots = []
 
         # get the size of the window
-        window_size = driver.execute_script("return [window.innerWidth, window.innerHeight];")
+        window_size = self.driver.execute_script("return [window.innerWidth, window.innerHeight];")
 
         # get the height of the entire page
-        page_height = driver.execute_script("return document.documentElement.scrollHeight")
+        page_height = self.driver.execute_script("return document.documentElement.scrollHeight")
 
         # set the initial scroll position to the top
         scroll_position = 0
 
         while scroll_position < page_height:
             # take a screenshot of the current view
-            screenshot = driver.get_screenshot_as_png()
+            screenshot = self.driver.get_screenshot_as_png()
             image = Image.open(io.BytesIO(screenshot))
             screenshots.append(image)
 
             # scroll down to the next view
             scroll_position += window_size[1]
-            driver.execute_script(f"window.scrollTo(0, {scroll_position});")
+            self.driver.execute_script(f"window.scrollTo(0, {scroll_position});")
 
         return screenshots
 
-    def take_full_screenshot(driver):
+    def take_full_screenshot(self):
+        """
+        This function takes a screenshot of the entire page by stitching together screenshots of each view.
+        """
         # Get dimensions of webpage
-        total_width = driver.execute_script("return document.body.offsetWidth")
-        total_height = driver.execute_script("return document.body.parentNode.scrollHeight")
-        viewport_width = driver.execute_script("return document.body.clientWidth")
-        viewport_height = driver.execute_script("return window.innerHeight")
+        total_width = self.driver.execute_script("return document.body.offsetWidth")
+        total_height = self.driver.execute_script("return document.body.parentNode.scrollHeight")
+        viewport_width = self.driver.execute_script("return document.body.clientWidth")
+        viewport_height = self.driver.execute_script("return window.innerHeight")
         # Calculate number of rows and columns needed to capture entire webpage
         rows = math.ceil(total_height / viewport_height)
         cols = math.ceil(total_width / viewport_width)
@@ -194,9 +464,9 @@ class Input:
         for row in range(rows):
             for col in range(cols):
                 # Scroll to current row and column
-                driver.execute_script(f"window.scrollTo({col * viewport_width}, {row * viewport_height})")
+                self.driver.execute_script(f"window.scrollTo({col * viewport_width}, {row * viewport_height})")
                 # Get screenshot as PIL image
-                screenshot = Image.open(BytesIO(driver.get_screenshot_as_png()))
+                screenshot = Image.open(BytesIO(self.driver.get_screenshot_as_png()))
                 # Calculate position to paste screenshot in stitched image
                 x = col * viewport_width
                 y = row * viewport_height
@@ -205,39 +475,32 @@ class Input:
         # Save stitched image
         stitched_image.save('full_screenshot.png')
 
-    @staticmethod
-    def extract_input_values_from_url(url, input_names=None):
-        response = requests.get(url)
-        soup = BeautifulSoup(response.text, 'html.parser')
-        input_values = []
-        if input_names:
-            input_names = set(input_names)
-            inputs=[]
-            for name in input_names:
-                input = soup.find(attrs={'name': name})
-                if input and input.name in ['input', 'select','textarea']:
-                    inputs.append(input)
-        else:
-            input_names = set()
-            inputs = soup.find_all(['input', 'textarea', 'select'])
-        for input in inputs:
-            if input.name in ['input']:
-                input_type = input.get('type')
-                if not input_type:
-                    input_type = 'text'
-            elif input.name == 'textarea':
-                input_type = 'textarea'
-            elif input.name == 'select':
-                input_type = 'select'
-            else:
-                continue
-            input_name = input.get('name')
-            if not input_name:
-                continue
-            input_values.append({'input_type': input_type, 'input_name': input_name})
-        return sorted(input_values, key=lambda x: str(soup).index(str(soup.find(attrs={'name': x['input_name']}))))
+    def load_jquery(self):
+        """
+        This function loads jQuery into the current page.
+        """
+        self.driver.execute_script(
+            """
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js';
+            document.head.appendChild(script);
+            """
+        )
+
 
 class Baseline:
+    def get_action_list(self):
+        """
+        This function returns the list of actions that can be performed on a HTML page as implemented in the Actions class.
+        This list is particularly useful for designing "tool" (actin)-augmented web-browsing agents.
+        """
+        # get the list of methods in the Actions class
+        action_list = [method for method in dir(MyActions) if not method.startswith('_')]
+        # include their docstrings as well
+        action_list = [(method, getattr(MyActions, method).__doc__) for method in action_list]
+        return action_list
+
     @staticmethod
     def solve_task(task, driver):
         screenshot = Input.take_screenshot(driver)
@@ -249,13 +512,14 @@ class Baseline:
         result = None
         return result
 
+    # TODO: inconsistent naming: project vs. task
     def oracle_baseline(project_name, index, input_name):
         df = pd.read_csv(f'../tasks/{project_name}/batch.csv')
         cols = [col for col in df.columns if not col.startswith("Answer.")]
         distinct_rows = df[cols].drop_duplicates()
         if index <= len(distinct_rows):
-            ith_row = distinct_rows.iloc[[index-1]]            
-            result = df[df[cols].isin(ith_row.to_dict('list')).all(axis=1)]            
+            ith_row = distinct_rows.iloc[[index - 1]]
+            result = df[df[cols].isin(ith_row.to_dict('list')).all(axis=1)]
             answers = result[f'Answer.{input_name}'].tolist()
             for answer in answers:
                 if answer and answer != '{}':
@@ -317,7 +581,8 @@ class Baseline:
                 end_datetime = datetime(2023, 12, 31, 23, 59)
                 delta_datetime = end_datetime - start_datetime
                 minutes_diff = delta_datetime.total_seconds() / 60.0
-                options = [(start_datetime + timedelta(minutes=i)).strftime('%Y-%m-%dT%H:%M') for i in range(int(minutes_diff) + 1)]
+                options = [(start_datetime + timedelta(minutes=i)).strftime('%Y-%m-%dT%H:%M') for i in
+                           range(int(minutes_diff) + 1)]
             return random.choice(options)
 
 
@@ -326,7 +591,20 @@ def read_config(file):
     config.read(file)
     return config
 
+
 def find_task_id(project_name, driver):
+    """
+    Here we find the task id of the instances of each task in Turkle. Turkle associates each HIT with an integer id. So,
+    all the HITS related to a task are associated with consecutive integers.
+    (see Turkle implementation for further details: https://github.com/hltcoe/turkle )
+    Parameters:
+        project_name (str): The name of the project in Turkle
+        driver (WebDriver): The Selenium WebDriver
+    Returns:
+        first_task_id (int): The first HIT id of the task
+        last_task_id (int): The last HIT id of the task
+        TODO: correct the variable names and their description
+    """
     table = driver.find_element(By.TAG_NAME, 'table')
     rows = table.find_elements(By.TAG_NAME, 'tr')
     sum_of_tasks = 0
@@ -340,10 +618,11 @@ def find_task_id(project_name, driver):
     return sum_of_tasks, instances
 
 
-def enumerate_tasks(tasks, batch, maximum, mode, html_type, input_format, image_format):
+def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
     base_url = "http://localhost:8000"
     driver = webdriver.Firefox()
-    #driver = webdriver.Chrome()
+    # driver = webdriver.Chrome()
+    actions = MyActions(driver)
     results = {}
     for project_name in tasks:
         print(project_name)
@@ -351,8 +630,9 @@ def enumerate_tasks(tasks, batch, maximum, mode, html_type, input_format, image_
         offset, instances = find_task_id(project_name, driver)
         random_numbers = [random.randint(1, instances) for _ in range(min(instances, maximum))]
         data = []
-        
-        if mode =='train':
+
+        # TODO: what is the purpose of this vs. test mode?
+        if mode == 'train':
             directory = f'train/{project_name}'
             if not os.path.exists(directory):
                 os.makedirs(directory)
@@ -365,92 +645,117 @@ def enumerate_tasks(tasks, batch, maximum, mode, html_type, input_format, image_
             if not os.path.exists(html_directory):
                 os.makedirs(html_directory)
 
+            # Sample random instances of each task
             for num in random_numbers:
-                url = f'http://localhost:8000/task/{num+offset}/iframe/'
+                url = f'http://localhost:8000/task/{offset + num}/iframe/'
                 driver.get(url)
-                evaluation = Evaluation(driver)
+                # evaluation = Evaluation(driver)
                 if batch:
                     df = pd.read_csv(f'../tasks/{project_name}/batch.csv', nrows=0)
                     input_names = [col.replace('Answer.', '') for col in df.columns if col.startswith('Answer.')]
-                    inputs = Input.extract_input_values_from_url(url,input_names)
+                    inputs = Input.extract_input_values_from_url(url, input_names)
                 else:
                     inputs = Input.extract_input_values_from_url(url)
 
-                for i in inputs:
-                    if i['input_type'] != 'hidden':
-                        task = Input(url, i['input_name'])
+                for input in inputs:
+                    if input['input_type'] != 'hidden':
+                        task = Input(url, input['input_name'])
 
-                        if input_format== 'image' or 'both':
+                        if input_format == 'image' or 'both':
                             if image_format == 'full_page':
                                 task_image = Input.get_page_screenshots(driver)
                             elif image_format == 'div':
-                                task_image = Input.get_element_screenshot(driver, i['input_name'], i['input_type'])
+                                task_image = Input.get_element_screenshot(driver, input['input_name'],
+                                                                          input['input_type'])
                             elif image_format == 'bordered_div':
-                                task_image = Input.get_element_screenshot_with_border(driver, i['input_name'], i['input_type'])
+                                task_image = Input.get_element_screenshot_with_border(driver, input['input_name'],
+                                                                                      input['input_type'])
 
                             if isinstance(task_image, list):
                                 img_ids = []
                                 for j, image in enumerate(task_image):
-                                    image_id = f'{num}_{i["input_name"]}_{j}.png'
+                                    image_id = f'{num}_{input["input_name"]}_{j}.png'
                                     image.save(f'{images_directory}/{image_id}')
                                     img_ids.append(image_id)
                                 image_id = img_ids
                             else:
-                                image_id = f'{num}_{i["input_name"]}.png'
+                                image_id = f'{num}_{input["input_name"]}.png'
                                 task_image.save(f'{images_directory}/{image_id}')
                         else:
                             image_id = None
 
-                        html_id = f'{num}_{i["input_name"]}.html'
+                        html_id = f'{num}_{input["input_name"]}.html'
                         with open(f'{html_directory}/{html_id}', 'w') as f:
                             f.write(driver.page_source)
 
-                        baseline_answer = Baseline.oracle_baseline(project_name, num, i['input_name'])
-                        Input.enter_input(i['input_type'], baseline_answer, i['input_name'], driver)
+                        baseline_answer = Baseline.oracle_baseline(project_name, num, input['input_name'])
+                        actions.execute_command(input['input_type'], baseline_answer, input['input_name'])
 
                         data.append({
-                            'input': [i['input_type'], i['input_name']],
-                            'image_id' : image_id,
-                            'html_id' : html_id,
+                            'input': [input['input_type'], input['input_name']],
+                            'image_id': image_id,
+                            'html_id': html_id,
                             'output': baseline_answer
                         })
 
             with open(f'{directory}/{project_name}.json', 'w') as f:
                 json.dump(data, f)
 
-        if mode =='test':
+        if mode == 'test':
+
+            # Sample random instances of each task
             for num in random_numbers:
-                url = f'http://localhost:8000/task/{num+offset}/iframe/'
+                url = f'http://localhost:8000/task/{offset + num}/iframe/'
                 driver.get(url)
-                evaluation = Evaluation(driver)
-                if batch:
+                evaluation = Evaluation()
+                if batch:  # TODO: better name? Batch here means that we use the field names from HTML file. Other names: Oracle, known fields, etc.
                     df = pd.read_csv(f'../tasks/{project_name}/batch.csv', nrows=0)
                     input_names = [col.replace('Answer.', '') for col in df.columns if col.startswith('Answer.')]
-                    inputs = Input.extract_input_values_from_url(url,input_names)
+                    inputs = Input.extract_input_values_from_url(url, input_names)
                 else:
                     inputs = Input.extract_input_values_from_url(url)
+
+                # TODO: write functionality to count the overall field stats.
+
                 print(inputs)
-                for i in inputs:
-                    element = driver.find_element(By.NAME, i['input_name'])
+
+                for input in inputs:
+                    element = driver.find_element(By.NAME, input['input_name'])
+                    # make sure that the element is visible
+                    print(" - - - - - - ")
                     if element.is_displayed() and element.size['width'] > 0 and element.size['height'] > 0:
-                        task = Input(url, i['input_name'])
-                        #baseline_answer = Baseline.solve_task(task, driver)
-                        #baseline_answer = Baseline.random_baseline(i['input_name'], i['input_type'], driver)
-                        baseline_answer = Baseline.oracle_baseline(project_name, num, i['input_name'])
-                        Input.enter_input(i['input_type'], baseline_answer, i['input_name'], driver)
-                        score = evaluation.calculate_rouge(project_name, num, i['input_type'], i['input_name'], baseline_answer)
+                        task = Input(url, input['input_name'])
+                        # baseline_answer = Baseline.solve_task(task, driver)
+                        # baseline_answer = Baseline.random_baseline(i['input_name'], i['input_type'], driver)
+                        baseline_answer = Baseline.oracle_baseline(
+                            project_name,
+                            num,
+                            input['input_name']
+                        )
+                        # actions.execute_command(input['input_type'], baseline_answer, input['input_name'])
+                        score = evaluation.calculate_rouge(
+                            project_name, num,
+                            input['input_type'],
+                            input['input_name'],
+                            baseline_answer
+                        )
                         if project_name not in results:
                             results[project_name] = {}
-                        if i['input_type'] not in results[project_name]:
-                            results[project_name][i['input_type']] = []
-                        results[project_name][i['input_type']].append(score)
-    if mode =='test':
+                        if input['input_type'] not in results[project_name]:
+                            results[project_name][input['input_type']] = []
+                        results[project_name][input['input_type']].append(score)
+                    else:
+                        print(f'Skipping element {input["input_name"]} since it is not visible.')
+
+    if mode == 'test':
         df = pd.DataFrame()
         for project_name, inputs in results.items():
             for input_type, scores in inputs.items():
                 print(scores)
                 avg_score = sum(scores) / len(scores)
-                df = pd.concat([df, pd.DataFrame({'project': [project_name], 'input_type': [input_type], 'score': [avg_score]})], ignore_index=True)
+                df = pd.concat(
+                    [df, pd.DataFrame({'project': [project_name], 'input_type': [input_type], 'score': [avg_score]})],
+                    ignore_index=True)
 
         if 'project' not in df.columns:
             df.insert(0, 'project', '')
@@ -462,14 +767,17 @@ def enumerate_tasks(tasks, batch, maximum, mode, html_type, input_format, image_
         df = df.pivot(index='project', columns='input_type', values='score')
         df.to_csv('oracle_baseline_scores.csv', index=True)
 
+    # Close the driver
+    driver.quit()
+
+
 if __name__ == "__main__":
-    with open('../test.txt', 'r') as f:
+    with open('../data/evaluation_tasks.txt', 'r') as f:
         tasks = f.read().splitlines()
     config = read_config('config.ini')
-    batch = config.getboolean('DEFAULT', 'batch')
-    maximum = config.getint('DEFAULT', 'num')
+    batch = config.getboolean('DEFAULT', 'batch')  # TODO: what is this?
+    maximum = config.getint('DEFAULT', 'num')  # TODO: what is this?
     mode = config.get('DEFAULT', 'mode')
-    html_type = config.get('DEFAULT', 'html_type')
     input_format = config.get('DEFAULT', 'input_format')
     image_format = config.get('DEFAULT', 'image_format', fallback='full_page')
-    enumerate_tasks(tasks, batch, maximum, mode, html_type, input_format, image_format)
+    enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format)

@@ -50,20 +50,40 @@ License
 This work is licensed under Apache License 2.0.
 
 
-Evaluation and Baselines 
+Setting up the evaluation tasks 
 --- 
-To facilitate the evaluation of models on this data, we have included the scripts needed to simulate interaction with the templates. 
-The scripts are in `src/` directory.
+To facilitate the evaluation of models on this data, we have included the scripts needed to simulate interaction with the templates.
 Here are the steps you need to follow: 
- 1. Install the dependencies: `pip install -r requirements.txt`
- 2. Create a server for visualizing the tasks `./run_website.sh` This will create a clone of [Turkle](https://github.com/hltcoe/turkle/) server at `http://localhost:8000` which is an engine for simulating Mechanical Turk locally. This will also ask you for a one-time username and password.  At this point you will see no tasks on Turkle; we will upload them in next step. 
- 3. Create input files for each task by running `python src/inputcsv.py`. This will create a `input.csv` file for each task which we will be used for uploading the tasks to Turkle.  
- 4. Now open another terminal tab and run the script for copying the tasks to the server `python upload_tasks.py -u <username> -p <password> -t <task_name>`. While this script is running, you can go back to Turkle to see that the tasks are indeed being uploaded.
- 5. Run the script for evaluating the baseline by passing in the names of the tasks: `python evaluation.py --tasks <task_names>`. To use Chrome as your webdriver, you need to first download the ChromeDriver executable from the ChromeDriver website and make sure it’s in your system’s PATH.
+ 1. Install the dependencies: `pip install -r requirements.txt`. Then enter the `src/` directory to for the rest of the steps. 
+ 2. Create a server for visualizing the tasks `./1.run_website.sh` This will create a clone of [Turkle](https://github.com/hltcoe/turkle/) server at `http://localhost:8000` which is an engine for simulating Mechanical Turk locally. This will also ask you for a one-time username and password.  At this point you will see no tasks on Turkle; we will upload them in next step. If you see an error message that "Directory Turkle exists." remove this directory `rm -rf Turkle` and retry this step.  If successful, you should be able to see the Turkle server running at `http://localhost:8000` and you should be able to login with the username and password you provided. At this point, Turkle will show "No Tasks available at this time". We will add the tasks in the next two steps. 
+ 3. Create input files for each task by running `python 2.generate_input_csv.py`. This will create a `input.csv` file for each task which we will be used for uploading the tasks to Turkle.  
+ 4. Now open another terminal tab and run the script for copying the tasks to the server `python 3.upload_tasks.py -u <username> -p <password>`. While this script is running, you can go back to Turkle to see that the tasks are indeed being uploaded.
+
+At this point, you should be able to see the tasks on Turkle. For example, if you open ... you should be able to see the following visualization: 
+
+![Screenshot](data/screenshot.png)
+
+
+# Obtaining Statistics 
+
+Overall, the repository contains about xx tasks. Of this, about 20 tasks are part of our evaluation. You can see the evaluation tasks [here](data/evaluation_tasks.txt). 
+
+The data contains a variety of input fields, though their distribution is not uniform. Here is the distribution of the input fields:
+
+TODO 
+
+Last but not least, the data contans various modalities of data. Here is the distribution of the modalities:
+
+TODO
+
+# Interacting with the tasks and evaluating the oracle baselines 
+
+[//]: # (You can now simulate the interaction with the tasks by running `python 4.simulate_interaction.py -u <username> -p <password> -t <task_name>`. This will simulate the interaction with the tasks and will save the responses in `responses/` directory.)
+
+Run the script for evaluating the baseline by passing in the names of the tasks: `python evaluation.py --tasks <task_names>`. To use Chrome as your webdriver, you need to first download the ChromeDriver executable from the ChromeDriver website and make sure it’s in your system’s PATH.
 
 
 ![Screen Shot 2023-02-20 at 12 22 37 PM](https://user-images.githubusercontent.com/2441454/220168960-9080b552-446b-4385-bca3-7f662ce95e20.png)
-
 
 
 Citation 
