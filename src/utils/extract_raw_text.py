@@ -1,3 +1,8 @@
+"""
+This file extracts raw text from instructions and saves them to disk.
+We used the raw text to compare the tasks and make sure that the eval. vs. train tasks are different from each other.
+"""
+
 from bs4 import BeautifulSoup
 import re
 import os

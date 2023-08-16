@@ -4,3 +4,4 @@ selenium==4.8.2
 beautifulsoup4
 requests
 pandas
+rouge-score
