@@ -625,7 +625,7 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
         # if maximum is less than the number of instances, we sample a random subset of instances
         if maximum < len(instance_ids):
             # random sample
-            instance_ids = random.sample(range(len(instance_ids)), maximum)
+            instance_ids = random.sample(instance_ids, maximum)
 
         data = []
 
@@ -718,7 +718,7 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
 
                 # TODO: write functionality to count the overall field stats.
 
-                print(inputs)
+                print("inputs: {}".format(inputs))
 
                 for input in inputs:
                     element = driver.find_element(By.NAME, input['input_name'])
