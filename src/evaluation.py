@@ -79,38 +79,17 @@ class Evaluation:
 
     @staticmethod
     def metric_max_over_ground_truths(metric_fn, prediction, ground_truths, xlingual=False):
+        print(" - - - inside rouge  - - - ")
+        print(f"predictions: {prediction}")
+        print(f"ground_truths: {ground_truths}")
+
         scores_for_ground_truths = []
         for ground_truth in ground_truths:
             score = metric_fn(prediction, ground_truth, xlingual=xlingual)
             scores_for_ground_truths.append(score)
-        return max(scores_for_ground_truths)
-
-    def compute_metrics(self, predictions, references, xlingual=False):
-        """
-        :param predictions: list of strings
-        :param references: list of list of strings
-        :return: dict of metrics
-        """
-        print(" - - - - - - ")
-        print(f"predictions: {predictions}")
-        print(f"references: {references}")
-        assert len(predictions) == len(
-            references), f"# of predictions {len(predictions)} doesn't match # of references {len(references)}."
-        em, rougeL = 0, 0
-        for pred, gold in zip(predictions, references):
-            assert isinstance(gold, list)
-            em += Evaluation.metric_max_over_ground_truths(
-                self.exact_match, prediction=pred, ground_truths=gold, xlingual=xlingual
-            )
-            rougeL += Evaluation.metric_max_over_ground_truths(
-                self.rouge, prediction=pred, ground_truths=gold, xlingual=xlingual
-            )
-        em = 100.0 * em / len(references)
-        rougeL = 100.0 * rougeL / len(references)
-        print("scores: ", em, rougeL)
-        metrics = {"exact_match": em, "rougeL": rougeL}
-        metrics = {k: round(v, 4) for k, v in metrics.items()}
-        return metrics
+        score = max(scores_for_ground_truths)
+        print("scores: ", score)
+        return score
 
     @staticmethod
     def retrieve_gold_labels(project_name, instance_index, input_name):
@@ -128,21 +107,21 @@ class Evaluation:
 
     def calculate_rouge(self, project_name, index, input_type, input_name, baseline_answer):
         baseline_answer = str(baseline_answer)
-
-        print("project_name, index inside calculate_rouge", project_name, index)
-
         answers = Evaluation.retrieve_gold_labels(project_name, index, input_name)
         print("answers", answers)
         print("baseline_answer", baseline_answer)
 
         if input_type in ['text', 'textarea']:
-            scores = self.compute_metrics(
-                [str(answer) for answer in answers],
-                [[baseline_answer] * len(answers)]
+            scores = Evaluation.metric_max_over_ground_truths(
+                self.rouge,
+                prediction=baseline_answer,
+                ground_truths=[str(answer) for answer in answers],
+                xlingual=False
             )
-            return scores['rougeL']
+            return scores
         elif input_type in ['radio']:
             # if the field type is radio button, then compute the majority vote among the options
+            print("Computing the majority vote")
             votes = {}
             for answer in answers:
                 if answer in votes:
@@ -152,11 +131,15 @@ class Evaluation:
             if votes:
                 majority_answer = max(votes, key=votes.get)
                 majority_answer_str = str(majority_answer)
-                scores = self.compute_metrics(
-                    [majority_answer_str],
-                    [[baseline_answer]]
+
+                scores = Evaluation.metric_max_over_ground_truths(
+                    self.rouge,
+                    prediction=majority_answer_str,
+                    ground_truths=[majority_answer_str],
+                    xlingual=False
                 )
-                return scores['rougeL']
+
+                return scores
             else:
                 return 0.0
         else:
@@ -294,6 +277,12 @@ class MyActions:
         action.send_keys(input_value)
         action.perform()
 
+    @staticmethod
+    def xpath_string_escape(input_str):
+        """ creates a concatenation of alternately-quoted strings that is always a valid XPath expression """
+        parts = input_str.split("'")
+        return "concat('" + "', \"'\" , '".join(parts) + "', '')"
+
     def modify_radio(self, input_name, input_value):
         """
         For a given radio button, this function clicks on the specified radio button.
@@ -307,8 +296,14 @@ class MyActions:
             input_value = str(input_value)
 
         self.scroll_to_element(input_name)
+        value = f"@value='{input_value}'"
+        if "'" in input_value:
+            value = f'@value="{input_value}"'
+        elif "'" in input_name and '"' in input_value:
+            value = value = f'@value=`{input_value}`'
+
         element = self.driver.find_element(
-            By.XPATH, f"//input[@type='radio' and @name='{input_name}' and @value='{input_value}']"
+            By.XPATH, f"//input[@type='radio' and @name='{input_name}' and {value}]"
         )
 
         # print element in HTML format
@@ -334,6 +329,8 @@ class MyActions:
         :param input_name: name of the input field
         :return: None
         """
+        print(f" ---> Input name: {input_name}")
+        print(f" ---> Input value: {input_value}")
         try:
             self.wait_for_element(input_name)
             self.maximize_window()
@@ -531,7 +528,6 @@ class Baseline:
     # TODO: inconsistent naming: project vs. task
     @staticmethod
     def oracle_baseline(project_name, index, input_name):
-        print("project_name, index inside oracle_baseline", project_name, index)
         answers = Evaluation.retrieve_gold_labels(project_name, index, input_name)
         for answer in answers:
             if answer and answer != '{}':
@@ -621,6 +617,7 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
     results = {}
     driver.get(TURKLE_URL)
     for project_name in tasks:
+        print(" = = = = = = = = ")
         print(project_name)
         instance_ids = task_ids[project_name]
         first_instance_id = min(instance_ids)
@@ -737,7 +734,11 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
                             row_number,
                             input['input_name']
                         )
-                        # actions.execute_command(input['input_type'], baseline_answer, input['input_name'])
+                        actions.execute_command(
+                            input['input_type'],
+                            baseline_answer,
+                            input['input_name']
+                        )
                         score = evaluation.calculate_rouge(
                             project_name,
                             row_number,
@@ -782,8 +783,8 @@ if __name__ == "__main__":
         tasks = f.read().splitlines()
     config = read_config('config.ini')
     batch = config.getboolean('DEFAULT', 'batch')  # TODO: what is this?
-    maximum = config.getint('DEFAULT', 'num')  # TODO: what is this?
+    max_instance_count = config.getint('DEFAULT', 'num')
     mode = config.get('DEFAULT', 'mode')
     input_format = config.get('DEFAULT', 'input_format')
     image_format = config.get('DEFAULT', 'image_format', fallback='full_page')
-    enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format)
+    enumerate_tasks(tasks, batch, max_instance_count, mode, input_format, image_format)
