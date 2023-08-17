@@ -66,7 +66,7 @@ At this point, you should be able to see the tasks on Turkle. For example, if yo
 
 # Obtaining Statistics 
 
-Overall, the repository contains about xx tasks. Of this, about 20 tasks are part of our evaluation. You can see the evaluation tasks [here](data/evaluation_tasks.txt). 
+Overall, the repository contains about xx tasks. Of this, about 20 tasks are part of our evaluation. You can see the evaluation tasks [here](data/splits/evaluation_tasks.txt). 
 
 The data contains a variety of input fields, though their distribution is not uniform. Here is the distribution of the input fields:
 

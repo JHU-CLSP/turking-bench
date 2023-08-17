@@ -101,7 +101,8 @@ class Evaluation:
             # select the row
             ith_row = distinct_rows.iloc[[instance_index - 1]]
             result = df[df[cols].isin(ith_row.to_dict('list')).all(axis=1)]
-            return result[f'Answer.{input_name}'].tolist()
+            result = result[f'Answer.{input_name}'].tolist()
+            return [r for r in result if r != 'nan' and r != None]
         else:
             return []
 
@@ -142,6 +143,14 @@ class Evaluation:
                 return scores
             else:
                 return 0.0
+        elif input_type in ['checkbox']:
+            scores = Evaluation.metric_max_over_ground_truths(
+                self.exact_match,
+                prediction=baseline_answer,
+                ground_truths=[str(answer) for answer in answers],
+                xlingual=False
+            )
+            return scores
         else:
             raise Exception("to be implemented")
 
@@ -599,8 +608,10 @@ def read_config(file):
     config.read(file)
     return config
 
+
 # as soon as the code is loaded, we look for alignnent between the task names and their ids
 task_ids = requests.get(f"{TURKLE_URL}/get_tasks/").json()
+
 
 def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
     """
@@ -618,7 +629,7 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
     driver.get(TURKLE_URL)
     for project_name in tasks:
         print(" = = = = = = = = ")
-        print(project_name)
+        print(f"project_name: {project_name}" )
         instance_ids = task_ids[project_name]
         first_instance_id = min(instance_ids)
 
@@ -627,6 +638,7 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
             # random sample
             instance_ids = random.sample(instance_ids, maximum)
 
+        instance_ids = [27809]
         data = []
 
         # TODO: what is the purpose of this vs. test mode?
@@ -706,6 +718,9 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
 
             # Sample random instances of each task
             for instance_id in instance_ids:
+
+                print(f"instance_id: {instance_id}")
+
                 url = f'{TURKLE_URL}/task/{instance_id}/iframe/'
                 driver.get(url)
                 evaluation = Evaluation()
@@ -779,7 +794,7 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
 
 
 if __name__ == "__main__":
-    with open('../data/evaluation_tasks.txt', 'r') as f:
+    with open('../data/splits/evaluation_tasks.txt', 'r') as f:
         tasks = f.read().splitlines()
     config = read_config('config.ini')
     batch = config.getboolean('DEFAULT', 'batch')  # TODO: what is this?
