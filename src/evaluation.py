@@ -28,6 +28,8 @@ import configparser
 import json
 from transformers import AutoTokenizer
 
+TURKLE_URL = "http://localhost:8001"
+
 
 class GPTTokenizer:
     gpt_tokenizer = AutoTokenizer.from_pretrained("gpt2", max_length=1e5)
@@ -110,17 +112,28 @@ class Evaluation:
         metrics = {k: round(v, 4) for k, v in metrics.items()}
         return metrics
 
-    def calculate_rouge(self, project_name, index, input_type, input_name, baseline_answer):
-        baseline_answer = str(baseline_answer)
+    @staticmethod
+    def retrieve_gold_labels(project_name, instance_index, input_name):
         df = pd.read_csv(f'../tasks/{project_name}/batch.csv')
+        # Keep the columns that are not answers and then combine the rows that are the same to find the distinct inputs
         cols = [col for col in df.columns if not col.startswith("Answer.")]
         distinct_rows = df[cols].drop_duplicates()
-        if index <= len(distinct_rows):
-            ith_row = distinct_rows.iloc[[index - 1]]
+        if instance_index <= len(distinct_rows):
+            # select the row
+            ith_row = distinct_rows.iloc[[instance_index - 1]]
             result = df[df[cols].isin(ith_row.to_dict('list')).all(axis=1)]
-            answers = result[f'Answer.{input_name}'].tolist()
+            return result[f'Answer.{input_name}'].tolist()
         else:
-            answers = []
+            return []
+
+    def calculate_rouge(self, project_name, index, input_type, input_name, baseline_answer):
+        baseline_answer = str(baseline_answer)
+
+        print("project_name, index inside calculate_rouge", project_name, index)
+
+        answers = Evaluation.retrieve_gold_labels(project_name, index, input_name)
+        print("answers", answers)
+        print("baseline_answer", baseline_answer)
 
         if input_type in ['text', 'textarea']:
             scores = self.compute_metrics(
@@ -128,7 +141,8 @@ class Evaluation:
                 [[baseline_answer] * len(answers)]
             )
             return scores['rougeL']
-        else:
+        elif input_type in ['radio']:
+            # if the field type is radio button, then compute the majority vote among the options
             votes = {}
             for answer in answers:
                 if answer in votes:
@@ -145,6 +159,8 @@ class Evaluation:
                 return scores['rougeL']
             else:
                 return 0.0
+        else:
+            raise Exception("to be implemented")
 
 
 class Input:
@@ -513,17 +529,13 @@ class Baseline:
         return result
 
     # TODO: inconsistent naming: project vs. task
+    @staticmethod
     def oracle_baseline(project_name, index, input_name):
-        df = pd.read_csv(f'../tasks/{project_name}/batch.csv')
-        cols = [col for col in df.columns if not col.startswith("Answer.")]
-        distinct_rows = df[cols].drop_duplicates()
-        if index <= len(distinct_rows):
-            ith_row = distinct_rows.iloc[[index - 1]]
-            result = df[df[cols].isin(ith_row.to_dict('list')).all(axis=1)]
-            answers = result[f'Answer.{input_name}'].tolist()
-            for answer in answers:
-                if answer and answer != '{}':
-                    return answer
+        print("project_name, index inside oracle_baseline", project_name, index)
+        answers = Evaluation.retrieve_gold_labels(project_name, index, input_name)
+        for answer in answers:
+            if answer and answer != '{}':
+                return answer
         return None
 
     def random_baseline(input_name, input_type, driver):
@@ -591,44 +603,33 @@ def read_config(file):
     config.read(file)
     return config
 
-
-def find_task_id(project_name, driver):
-    """
-    Here we find the task id of the instances of each task in Turkle. Turkle associates each HIT with an integer id. So,
-    all the HITS related to a task are associated with consecutive integers.
-    (see Turkle implementation for further details: https://github.com/hltcoe/turkle )
-    Parameters:
-        project_name (str): The name of the project in Turkle
-        driver (WebDriver): The Selenium WebDriver
-    Returns:
-        first_task_id (int): The first HIT id of the task
-        last_task_id (int): The last HIT id of the task
-        TODO: correct the variable names and their description
-    """
-    table = driver.find_element(By.TAG_NAME, 'table')
-    rows = table.find_elements(By.TAG_NAME, 'tr')
-    sum_of_tasks = 0
-    for row in rows:
-        cells = row.find_elements(By.TAG_NAME, 'td')
-        if len(cells) > 0:
-            if cells[0].text == project_name:
-                instances = int(cells[3].text)
-                break
-            sum_of_tasks += int(cells[3].text)
-    return sum_of_tasks, instances
-
+# as soon as the code is loaded, we look for alignnent between the task names and their ids
+task_ids = requests.get(f"{TURKLE_URL}/get_tasks/").json()
 
 def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
-    base_url = "http://localhost:8000"
+    """
+    Enumerate the tasks and their instances
+    :param tasks: list of tasks
+    :param batch: batch size TODO: what is this?
+    :param maximum: maximum number of instances per task
+    :param mode: train or test
+    :param input_format: text or image. This matters for "training" mode, where we need to save the inputs on disk.
+    """
     driver = webdriver.Firefox()
     # driver = webdriver.Chrome()
     actions = MyActions(driver)
     results = {}
+    driver.get(TURKLE_URL)
     for project_name in tasks:
         print(project_name)
-        driver.get(base_url)
-        offset, instances = find_task_id(project_name, driver)
-        random_numbers = [random.randint(1, instances) for _ in range(min(instances, maximum))]
+        instance_ids = task_ids[project_name]
+        first_instance_id = min(instance_ids)
+
+        # if maximum is less than the number of instances, we sample a random subset of instances
+        if maximum < len(instance_ids):
+            # random sample
+            instance_ids = random.sample(range(len(instance_ids)), maximum)
+
         data = []
 
         # TODO: what is the purpose of this vs. test mode?
@@ -646,8 +647,8 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
                 os.makedirs(html_directory)
 
             # Sample random instances of each task
-            for num in random_numbers:
-                url = f'http://localhost:8000/task/{offset + num}/iframe/'
+            for instance_id in instance_ids:
+                url = f'{TURKLE_URL}/task/{instance_id}/iframe/'
                 driver.get(url)
                 # evaluation = Evaluation(driver)
                 if batch:
@@ -674,21 +675,24 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
                             if isinstance(task_image, list):
                                 img_ids = []
                                 for j, image in enumerate(task_image):
-                                    image_id = f'{num}_{input["input_name"]}_{j}.png'
+                                    image_id = f'{instance_id}_{input["input_name"]}_{j}.png'
                                     image.save(f'{images_directory}/{image_id}')
                                     img_ids.append(image_id)
                                 image_id = img_ids
                             else:
-                                image_id = f'{num}_{input["input_name"]}.png'
+                                image_id = f'{instance_id}_{input["input_name"]}.png'
                                 task_image.save(f'{images_directory}/{image_id}')
                         else:
                             image_id = None
 
-                        html_id = f'{num}_{input["input_name"]}.html'
+                        html_id = f'{instance_id}_{input["input_name"]}.html'
                         with open(f'{html_directory}/{html_id}', 'w') as f:
                             f.write(driver.page_source)
 
-                        baseline_answer = Baseline.oracle_baseline(project_name, num, input['input_name'])
+                        row_number = instance_id - first_instance_id
+                        baseline_answer = Baseline.oracle_baseline(
+                            project_name, row_number, input['input_name']
+                        )
                         actions.execute_command(input['input_type'], baseline_answer, input['input_name'])
 
                         data.append({
@@ -704,8 +708,8 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
         if mode == 'test':
 
             # Sample random instances of each task
-            for num in random_numbers:
-                url = f'http://localhost:8000/task/{offset + num}/iframe/'
+            for instance_id in instance_ids:
+                url = f'{TURKLE_URL}/task/{instance_id}/iframe/'
                 driver.get(url)
                 evaluation = Evaluation()
                 if batch:  # TODO: better name? Batch here means that we use the field names from HTML file. Other names: Oracle, known fields, etc.
@@ -727,14 +731,16 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
                         task = Input(url, input['input_name'])
                         # baseline_answer = Baseline.solve_task(task, driver)
                         # baseline_answer = Baseline.random_baseline(i['input_name'], i['input_type'], driver)
+                        row_number = instance_id - first_instance_id
                         baseline_answer = Baseline.oracle_baseline(
                             project_name,
-                            num,
+                            row_number,
                             input['input_name']
                         )
                         # actions.execute_command(input['input_type'], baseline_answer, input['input_name'])
                         score = evaluation.calculate_rouge(
-                            project_name, num,
+                            project_name,
+                            row_number,
                             input['input_type'],
                             input['input_name'],
                             baseline_answer
