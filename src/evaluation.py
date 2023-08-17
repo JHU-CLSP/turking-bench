@@ -106,16 +106,20 @@ class Evaluation:
                                                                   f"not the same as the number of tasks in the batch: " \
                                                                   f"{len(task_ids[project_name])}."
 
-        if instance_index <= len(distinct_rows):
-            # select the row corresponding to instance_index
-            row = distinct_rows.iloc[instance_index]
-            # in the original dataframe "df", select all the rows that correspond to the selected "row"
-            # and then select the columns that start with "Answer."
-            df_subset = df[df[cols].eq(row).all(1)]
-            answers = df_subset[f"Answer.{input_name}"]
-            return answers.tolist()
-        else:
-            raise Exception(f"The instance index {instance_index} is out of range: {len(distinct_rows)}.")
+        assert instance_index <= len(
+            distinct_rows), f"The instance index {instance_index} is out of range: {len(distinct_rows)}."
+
+        # select the row corresponding to instance_index
+        row = distinct_rows.iloc[instance_index]
+        # in the original dataframe "df", select all the rows that correspond to the selected "row"
+        # and then select the columns that start with "Answer."
+        df_subset = df[df[cols].eq(row).all(1)]
+        answers = df_subset[f"Answer.{input_name}"]
+        # Note: we explicitly do not exclude "nan" values (empty cells) because sometimes the correct action is to leave
+        # the field empty. For example, not selecting a checkbox or leaving a text box empty. Of course there are also
+        # scenarios where this is not correct (hence, some "noise" in the evaluation).
+        # return [a for a in answers.tolist() if not (type(a) == float and np.isnan(a))]
+        return answers.tolist()
 
     def calculate_rouge(self, project_name, index, input_type, input_name, baseline_answer):
         baseline_answer = str(baseline_answer)
@@ -644,7 +648,7 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
     driver.get(TURKLE_URL)
     for project_name in tasks:
         print(" = = = = = = = = ")
-        print(f"project_name: {project_name}" )
+        print(f"project_name: {project_name}")
         instance_ids = task_ids[project_name]
         first_instance_id = min(instance_ids)
 
