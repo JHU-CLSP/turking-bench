@@ -1,5 +1,6 @@
 import csv
 import argparse
+import numpy as np
 from datetime import datetime
 from datetime import timedelta
 from dateutil.relativedelta import relativedelta
@@ -91,20 +92,30 @@ class Evaluation:
         print("scores: ", score)
         return score
 
+    # TODO: we can implement a "batch" version of this function to make it faster; currently we red the batch file for each input
     @staticmethod
     def retrieve_gold_labels(project_name, instance_index, input_name):
+        print(" ==> GOLD INDEX: ", instance_index)
         df = pd.read_csv(f'../tasks/{project_name}/batch.csv')
         # Keep the columns that are not answers and then combine the rows that are the same to find the distinct inputs
         cols = [col for col in df.columns if not col.startswith("Answer.")]
         distinct_rows = df[cols].drop_duplicates()
+
+        # ensure that the number of unique tasks is exactly the same as the number of tasks in the batch
+        assert len(distinct_rows) == len(task_ids[project_name]), f"The number of unique tasks {len(distinct_rows)} is " \
+                                                                  f"not the same as the number of tasks in the batch: " \
+                                                                  f"{len(task_ids[project_name])}."
+
         if instance_index <= len(distinct_rows):
-            # select the row
-            ith_row = distinct_rows.iloc[[instance_index - 1]]
-            result = df[df[cols].isin(ith_row.to_dict('list')).all(axis=1)]
-            result = result[f'Answer.{input_name}'].tolist()
-            return [r for r in result if r != 'nan' and r != None]
+            # select the row corresponding to instance_index
+            row = distinct_rows.iloc[instance_index]
+            # in the original dataframe "df", select all the rows that correspond to the selected "row"
+            # and then select the columns that start with "Answer."
+            df_subset = df[df[cols].eq(row).all(1)]
+            answers = df_subset[f"Answer.{input_name}"]
+            return answers.tolist()
         else:
-            return []
+            raise Exception(f"The instance index {instance_index} is out of range: {len(distinct_rows)}.")
 
     def calculate_rouge(self, project_name, index, input_type, input_name, baseline_answer):
         baseline_answer = str(baseline_answer)
@@ -279,6 +290,9 @@ class MyActions:
         if not isinstance(input_value, str):
             input_value = str(input_value)
 
+        if input_value == 'nan':
+            print(" ** Warning **: input value is nan")
+
         self.wait_for_element(input_name)
         input_element = self.scroll_to_element(input_name)
         action = ActionChains(self.driver).move_to_element(input_element).click()
@@ -349,8 +363,9 @@ class MyActions:
                 self.modify_text(input_name, input_value)
 
             elif input_type in ['checkbox']:
-                if not input_element.is_selected():
+                if not (input_element.is_selected() or np.isnan(input_value)):
                     self.modify_checkbox(input_name, input_value)
+
 
             elif input_type in ['radio']:
                 if not input_element.is_selected():
