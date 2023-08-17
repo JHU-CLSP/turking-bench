@@ -134,7 +134,7 @@ class Evaluation:
                 majority_answer_str = str(majority_answer)
 
                 scores = Evaluation.metric_max_over_ground_truths(
-                    self.rouge,
+                    self.exact_match,
                     prediction=majority_answer_str,
                     ground_truths=[majority_answer_str],
                     xlingual=False
@@ -638,7 +638,7 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
             # random sample
             instance_ids = random.sample(instance_ids, maximum)
 
-        instance_ids = [27809]
+        # instance_ids = [27809]
         data = []
 
         # TODO: what is the purpose of this vs. test mode?
