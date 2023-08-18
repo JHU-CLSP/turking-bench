@@ -353,14 +353,16 @@ class MyActions:
         if not isinstance(input_value, str):
             input_value = str(input_value)
 
+        if input_value in ['nan', 'None']:
+            print(f"{Fore.RED} ** Warning **: input value is {input_value}. So, we're not going to modify the radio button")
+            return
+
         self.scroll_to_element(input_name)
         value = f"@value='{input_value}'"
         if "'" in input_value and '"' in input_value:
             value = f'@value=`{input_value}`'
         elif "'" in input_value:
             value = f'@value="{input_value}"'
-        else:
-            raise Exception(f"{Fore.RED}Cannot encode input value {input_value}")
 
         element = self.driver.find_element(
             By.XPATH, f"//input[@type='radio' and @name='{input_name}' and {value}]"
