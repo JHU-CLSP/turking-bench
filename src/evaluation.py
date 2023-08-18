@@ -1,18 +1,22 @@
-import csv
 import argparse
-from typing import List
+from bs4 import BeautifulSoup
 from colorama import init as colorama_init
 from colorama import Fore, Back, Style
-import numpy as np
+import csv
+import configparser
 from datetime import datetime
 from datetime import timedelta
 from dateutil.relativedelta import relativedelta
 from datetime import date
-import string
+import io
+from io import BytesIO
+import json
 import os
-import time
+import pandas as pd
+from PIL import Image, ImageDraw
+import random
+import requests
 from rouge_score import rouge_scorer
-from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.action_chains import ActionChains
@@ -20,20 +24,16 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
-import requests
+import string
+import time
 from time import sleep
-from PIL import Image, ImageDraw
-import io
-from io import BytesIO
-import math
-import pandas as pd
-import random
-import configparser
-import json
 from transformers import AutoTokenizer
 from tqdm import tqdm
+from typing import List
+import math
+import numpy as np
 
-TURKLE_URL = "http://localhost:8001"
+TURKLE_URL = "http://localhost:8000"
 
 colorama_init(autoreset=True)
 
@@ -115,8 +115,8 @@ class Evaluation:
 
         # ensure that the number of unique tasks is exactly the same as the number of tasks in the batch
         assert len(distinct_rows) == len(task_ids[task_name]), f"The number of unique tasks {len(distinct_rows)} is " \
-                                                                  f"not the same as the number of tasks in the batch: " \
-                                                                  f"{len(task_ids[task_name])}."
+                                                               f"not the same as the number of tasks in the batch: " \
+                                                               f"{len(task_ids[task_name])}."
 
         assert instance_index <= len(
             distinct_rows), f"The instance index {instance_index} is out of range: {len(distinct_rows)}."
@@ -220,7 +220,7 @@ class Input:
 
         # exclude special inputs
         exclude_input_names = [
-            'csrfmiddlewaretoken' # hidden field automatically added external css files
+            'csrfmiddlewaretoken'  # hidden field automatically added external css files
         ]
         inputs = [input for input in inputs if input.get('name') not in exclude_input_names]
 
@@ -701,7 +701,7 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
     actions = MyActions(driver)
     results = {}
     driver.get(TURKLE_URL)
-    aggregate_field_statistics = {} # We store the stats related to the field types/frequency here
+    aggregate_field_statistics = {}  # We store the stats related to the field types/frequency here
     task_field_statistics = {}
     for task_name in tqdm(tasks):
         print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
@@ -813,7 +813,6 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
                 print(" --> inputs: {}".format(inputs))
                 print(" --> input labels: {}".format(answers_map))
 
-
                 # for counting overall statistics
                 if True:
                     if task_name not in task_field_statistics:
@@ -865,7 +864,6 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
                         results[task_name][input['input_type']].append(score)
                     else:
                         print(f'{Fore.RED}Skipping element {input["input_name"]} since it is not visible.')
-
 
             df = pd.DataFrame()
             for task_name, inputs in results.items():
