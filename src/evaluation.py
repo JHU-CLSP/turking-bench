@@ -1,5 +1,6 @@
 import csv
 import argparse
+from typing import List
 from colorama import init as colorama_init
 from colorama import Fore, Back, Style
 import numpy as np
@@ -30,6 +31,7 @@ import random
 import configparser
 import json
 from transformers import AutoTokenizer
+from tqdm import tqdm
 
 TURKLE_URL = "http://localhost:8001"
 
@@ -96,19 +98,25 @@ class Evaluation:
         print("scores: ", score)
         return score
 
-    # TODO: we can implement a "batch" version of this function to make it faster; currently we red the batch file for each input
     @staticmethod
-    def retrieve_gold_labels(project_name, instance_index, input_name):
-        print(" --> GOLD INDEX: ", instance_index)
-        df = pd.read_csv(f'../tasks/{project_name}/batch.csv')
+    def retrieve_gold_labels(task_name: str, instance_index: int, input_names: List[str]):
+        """
+        Retrieve the gold labels for a given instance index and input names.
+        :param task_name: the name of the task
+        :param instance_index: the index of the instance in the batch file
+        :param input_names: the names of the inputs
+        :return: a dictionary of input names and their corresponding gold labels
+        """
+        print(f" --> Looking up gold labels from row index {instance_index} of `input.csv` (unique inputs). ", )
+        df = pd.read_csv(f'../tasks/{task_name}/batch.csv')
         # Keep the columns that are not answers and then combine the rows that are the same to find the distinct inputs
         cols = [col for col in df.columns if not col.startswith("Answer.")]
         distinct_rows = df[cols].drop_duplicates()
 
         # ensure that the number of unique tasks is exactly the same as the number of tasks in the batch
-        assert len(distinct_rows) == len(task_ids[project_name]), f"The number of unique tasks {len(distinct_rows)} is " \
+        assert len(distinct_rows) == len(task_ids[task_name]), f"The number of unique tasks {len(distinct_rows)} is " \
                                                                   f"not the same as the number of tasks in the batch: " \
-                                                                  f"{len(task_ids[project_name])}."
+                                                                  f"{len(task_ids[task_name])}."
 
         assert instance_index <= len(
             distinct_rows), f"The instance index {instance_index} is out of range: {len(distinct_rows)}."
@@ -118,16 +126,16 @@ class Evaluation:
         # in the original dataframe "df", select all the rows that correspond to the selected "row"
         # and then select the columns that start with "Answer."
         df_subset = df[df[cols].eq(row).all(1)]
-        answers = df_subset[f"Answer.{input_name}"]
+        answers_map = {input_name: df_subset[f"Answer.{input_name}"].tolist() for input_name in input_names}
+
         # Note: we explicitly do not exclude "nan" values (empty cells) because sometimes the correct action is to leave
         # the field empty. For example, not selecting a checkbox or leaving a text box empty. Of course there are also
         # scenarios where this is not correct (hence, some "noise" in the evaluation).
         # return [a for a in answers.tolist() if not (type(a) == float and np.isnan(a))]
-        return answers.tolist()
+        return answers_map
 
-    def calculate_rouge(self, project_name, index, input_type, input_name, baseline_answer):
+    def calculate_rouge(self, answers: List[str], input_type: str, baseline_answer: str):
         baseline_answer = str(baseline_answer)
-        answers = Evaluation.retrieve_gold_labels(project_name, index, input_name)
         print("answers", answers)
         print("baseline_answer", baseline_answer)
 
@@ -210,6 +218,12 @@ class Input:
             input_names = set()
             inputs = soup.find_all(['input', 'textarea', 'select'])
 
+        # exclude special inputs
+        exclude_input_names = [
+            'csrfmiddlewaretoken' # hidden field automatically added external css files
+        ]
+        inputs = [input for input in inputs if input.get('name') not in exclude_input_names]
+
         # now for our list of inputs, indentify their types
         for input in inputs:
             if input.name in ['input']:
@@ -285,7 +299,7 @@ class MyActions:
         :return: None
         """
         if not input_value or input_value == 'nan':
-            print(f"{Fore.RED}Since the input value `{input_value}` is invalid, we are not going to modify the text.")
+            print(f"{Fore.RED}Since the input value is `{input_value}`, we are not going to modify the text.")
             return
 
         input_element = self.scroll_to_element(input_name)
@@ -316,13 +330,12 @@ class MyActions:
             print(f"{Fore.YELLOW} ** Warning **: Found input value is 'nan' and filtered it out")
             input_value = [v for v in input_value if v != 'nan']
             if len(input_value) == 0:
-                print(f"{Fore.RED} ** Warning **: Since the list of values `{input_value}` is empty, we're terminating the function")
+                print(
+                    f"{Fore.RED} ** Warning **: Since the list of values `{input_value}` is empty, we're terminating the function")
                 return
 
         self.wait_for_element(input_name)
         self.scroll_to_element(input_name)
-
-
 
         print(f"{Fore.YELLOW}Looking for checkboxes with `name`: {input_name}  the following values: {input_value}")
 
@@ -354,7 +367,8 @@ class MyActions:
             input_value = str(input_value)
 
         if input_value in ['nan', 'None']:
-            print(f"{Fore.RED} ** Warning **: input value is {input_value}. So, we're not going to modify the radio button")
+            print(
+                f"{Fore.RED} ** Warning **: input value is {input_value}. So, we're not going to modify the radio button")
             return
 
         self.scroll_to_element(input_name)
@@ -593,10 +607,11 @@ class Baseline:
         result = None
         return result
 
-    # TODO: inconsistent naming: project vs. task
+    # TODO: all baselines need to be instantiated from a parent class
     @staticmethod
-    def oracle_baseline(project_name, index, input_name):
-        answers = Evaluation.retrieve_gold_labels(project_name, index, input_name)
+    def oracle_baseline(task_name: str, index: int, input_name: str):
+        answers_map = Evaluation.retrieve_gold_labels(task_name, index, [input_name])
+        answers = answers_map[input_name]
         for answer in answers:
             if answer and answer != '{}':
                 return answer
@@ -686,10 +701,13 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
     actions = MyActions(driver)
     results = {}
     driver.get(TURKLE_URL)
-    for project_name in tasks:
-        print(f" = = = = = = starting new task: `{project_name}` = = = = = = = = = = ")
-        instance_ids = task_ids[project_name]
+    aggregate_field_statistics = {} # We store the stats related to the field types/frequency here
+    task_field_statistics = {}
+    for task_name in tqdm(tasks):
+        print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
+        instance_ids = task_ids[task_name]
         first_instance_id = min(instance_ids)
+        print("First instance id:", first_instance_id)
 
         # if maximum is less than the number of instances, we sample a random subset of instances
         if maximum < len(instance_ids):
@@ -701,7 +719,7 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
 
         # TODO: what is the purpose of this vs. test mode?
         if mode == 'train':
-            directory = f'train/{project_name}'
+            directory = f'train/{task_name}'
             if not os.path.exists(directory):
                 os.makedirs(directory)
 
@@ -719,7 +737,7 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
                 driver.get(url)
                 # evaluation = Evaluation(driver)
                 if batch:
-                    df = pd.read_csv(f'../tasks/{project_name}/batch.csv', nrows=0)
+                    df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
                     input_names = [col.replace('Answer.', '') for col in df.columns if col.startswith('Answer.')]
                     inputs = Input.extract_input_values_from_url(url, input_names)
                 else:
@@ -758,7 +776,7 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
 
                         row_number = instance_id - first_instance_id
                         baseline_answer = Baseline.oracle_baseline(
-                            project_name, row_number, input['input_name']
+                            task_name, row_number, input['input_name']
                         )
                         actions.execute_command(input['input_type'], baseline_answer, input['input_name'])
 
@@ -769,42 +787,64 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
                             'output': baseline_answer
                         })
 
-            with open(f'{directory}/{project_name}.json', 'w') as f:
+            with open(f'{directory}/{task_name}.json', 'w') as f:
                 json.dump(data, f)
 
         if mode == 'test':
-
             # Sample random instances of each task
             for instance_id in instance_ids:
-
-                print(f"instance_id: {instance_id}")
+                row_number = instance_id - first_instance_id
+                print(f"instance_id: {instance_id} <-> row_number: {row_number}")
 
                 url = f'{TURKLE_URL}/task/{instance_id}/iframe/'
                 driver.get(url)
                 evaluation = Evaluation()
                 if batch:  # TODO: better name? Batch here means that we use the field names from HTML file. Other names: Oracle, known fields, etc.
-                    df = pd.read_csv(f'../tasks/{project_name}/batch.csv', nrows=0)
+                    df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
                     input_names = [col.replace('Answer.', '') for col in df.columns if col.startswith('Answer.')]
                     inputs = Input.extract_input_values_from_url(url, input_names)
                 else:
                     inputs = Input.extract_input_values_from_url(url)
 
-                # TODO: write functionality to count the overall field stats.
+                answers_map = Evaluation.retrieve_gold_labels(
+                    task_name, row_number, [i['input_name'] for i in inputs]
+                )
 
                 print(" --> inputs: {}".format(inputs))
+                print(" --> input labels: {}".format(answers_map))
+
+
+                # for counting overall statistics
+                if True:
+                    if task_name not in task_field_statistics:
+                        task_field_statistics[task_name] = {}
+
+                    for i in inputs:
+                        type = i['input_type']
+
+                        if type not in aggregate_field_statistics:
+                            aggregate_field_statistics[type] = 0
+
+                        aggregate_field_statistics[type] += 1
+
+                        if type not in task_field_statistics[task_name]:
+                            task_field_statistics[task_name][type] = 0
+                        task_field_statistics[task_name][type] += 1
+
+                    continue
 
                 for input in inputs:
                     element = driver.find_element(By.NAME, input['input_name'])
                     # make sure that the element is visible
                     print(
-                        f" - - - - --  - - - - - - - - --  - - - - starting a new element: `{input}` - - - - - - - - - - --  - - - -  ")
+                        f"{Fore.GREEN} - - - - - - - - - - - -  starting a new element: `{input}` - - - - - - - - - - - -  ")
                     if element.is_displayed() and element.size['width'] > 0 and element.size['height'] > 0:
                         task = Input(url, input['input_name'])
                         # baseline_answer = Baseline.solve_task(task, driver)
                         # baseline_answer = Baseline.random_baseline(i['input_name'], i['input_type'], driver)
-                        row_number = instance_id - first_instance_id
+
                         baseline_answer = Baseline.oracle_baseline(
-                            project_name,
+                            task_name,
                             row_number,
                             input['input_name']
                         )
@@ -814,46 +854,47 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
                             input['input_name']
                         )
                         score = evaluation.calculate_rouge(
-                            project_name,
-                            row_number,
+                            answers_map[input['input_name']],
                             input['input_type'],
-                            input['input_name'],
                             baseline_answer
                         )
-                        if project_name not in results:
-                            results[project_name] = {}
-                        if input['input_type'] not in results[project_name]:
-                            results[project_name][input['input_type']] = []
-                        results[project_name][input['input_type']].append(score)
+                        if task_name not in results:
+                            results[task_name] = {}
+                        if input['input_type'] not in results[task_name]:
+                            results[task_name][input['input_type']] = []
+                        results[task_name][input['input_type']].append(score)
                     else:
                         print(f'{Fore.RED}Skipping element {input["input_name"]} since it is not visible.')
 
-    if mode == 'test':
-        df = pd.DataFrame()
-        for project_name, inputs in results.items():
-            for input_type, scores in inputs.items():
-                print(scores)
-                avg_score = sum(scores) / len(scores)
-                df = pd.concat(
-                    [df, pd.DataFrame({'project': [project_name], 'input_type': [input_type], 'score': [avg_score]})],
-                    ignore_index=True)
 
-        if 'project' not in df.columns:
-            df.insert(0, 'project', '')
-        if 'input_type' not in df.columns:
-            df.insert(1, 'input_type', '')
-        if 'score' not in df.columns:
-            df.insert(1, 'score', '')
+            df = pd.DataFrame()
+            for task_name, inputs in results.items():
+                for input_type, scores in inputs.items():
+                    print(scores)
+                    avg_score = sum(scores) / len(scores)
+                    # TODO: check if we can safely change the "projects" in the following lines to tasks
+                    df = pd.concat(
+                        [df, pd.DataFrame({'project': [task_name], 'input_type': [input_type], 'score': [avg_score]})],
+                        ignore_index=True)
 
-        df = df.pivot(index='project', columns='input_type', values='score')
-        df.to_csv('oracle_baseline_scores.csv', index=True)
+            if 'project' not in df.columns:
+                df.insert(0, 'project', '')
+            if 'input_type' not in df.columns:
+                df.insert(1, 'input_type', '')
+            if 'score' not in df.columns:
+                df.insert(1, 'score', '')
+
+            df = df.pivot(index='project', columns='input_type', values='score')
+            df.to_csv('oracle_baseline_scores.csv', index=True)
+
+    print("Now let's print the field statistics")
 
     # Close the driver
     driver.quit()
 
 
 if __name__ == "__main__":
-    with open('../data/splits/evaluation_tasks.txt', 'r') as f:
+    with open('../data/splits/evaluation_tasks_tmp.txt', 'r') as f:
         tasks = f.read().splitlines()
     config = read_config('config.ini')
     batch = config.getboolean('DEFAULT', 'batch')  # TODO: what is this?
