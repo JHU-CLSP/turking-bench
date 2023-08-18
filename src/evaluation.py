@@ -80,7 +80,7 @@ class Evaluation:
 
     @staticmethod
     def metric_max_over_ground_truths(metric_fn, prediction, ground_truths, xlingual=False):
-        print(" - - - inside rouge  - - - ")
+        print(" --> inside rouge  ")
         print(f"predictions: {prediction}")
         print(f"ground_truths: {ground_truths}")
 
@@ -95,7 +95,7 @@ class Evaluation:
     # TODO: we can implement a "batch" version of this function to make it faster; currently we red the batch file for each input
     @staticmethod
     def retrieve_gold_labels(project_name, instance_index, input_name):
-        print(" ==> GOLD INDEX: ", instance_index)
+        print(" --> GOLD INDEX: ", instance_index)
         df = pd.read_csv(f'../tasks/{project_name}/batch.csv')
         # Keep the columns that are not answers and then combine the rows that are the same to find the distinct inputs
         cols = [col for col in df.columns if not col.startswith("Answer.")]
@@ -135,9 +135,9 @@ class Evaluation:
                 xlingual=False
             )
             return scores
-        elif input_type in ['radio']:
+        elif input_type in ['radio', 'select']:
             # if the field type is radio button, then compute the majority vote among the options
-            print("Computing the majority vote")
+            print("--> Computing the majority vote")
             votes = {}
             for answer in answers:
                 if answer in votes:
@@ -324,10 +324,12 @@ class MyActions:
 
         self.scroll_to_element(input_name)
         value = f"@value='{input_value}'"
-        if "'" in input_value:
+        if "'" in input_value and '"' in input_value:
+            value = f'@value=`{input_value}`'
+        elif "'" in input_value:
             value = f'@value="{input_value}"'
-        elif "'" in input_name and '"' in input_value:
-            value = value = f'@value=`{input_value}`'
+        else:
+            raise Exception(f"Cannot encode input value {input_value}")
 
         element = self.driver.find_element(
             By.XPATH, f"//input[@type='radio' and @name='{input_name}' and {value}]"
@@ -344,9 +346,18 @@ class MyActions:
         """
         For a given select field, this function selects the specified option.
         """
-        input_element = self.scroll_to_element(input_name)
-        select = Select(input_element)
-        select.select_by_visible_text(input_value)
+        # input_element = self.scroll_to_element(input_name)
+        select = Select(self.driver.find_element(By.NAME, input_name))
+
+        assert len(select.options) > 0, f"Select field {input_name} has no options"
+
+        # get the values of the options
+        option_values = [option.get_attribute('value') for option in select.options]
+        assert input_value in option_values, \
+            f"Input value `{input_value}` is not among the available option values `{option_values}`"
+
+        # select by value
+        select.select_by_value(input_value)
 
     def execute_command(self, input_type, input_value, input_name):
         """
@@ -356,8 +367,8 @@ class MyActions:
         :param input_name: name of the input field
         :return: None
         """
-        print(f" ---> Input name: {input_name}")
-        print(f" ---> Input value: {input_value}")
+        print(f" --> Input name: {input_name}")
+        print(f" --> Input value: {input_value}")
         try:
             self.wait_for_element(input_name)
             self.maximize_window()
@@ -383,9 +394,7 @@ class MyActions:
                 pass
 
         except Exception as e:
-            print(f"An error occurred: {e}")
-            print(f"We have a problem with '{input_name}'")
-            print(input_value)
+            print(f"An error occurred when trying to place `{input_value}` in the input '{input_name}': {e}")
 
     def take_screenshot(self):
         """
@@ -647,8 +656,7 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
     results = {}
     driver.get(TURKLE_URL)
     for project_name in tasks:
-        print(" = = = = = = = = ")
-        print(f"project_name: {project_name}")
+        print(f" = = = = = = starting new task: `{project_name}` = = = = = = = = = = ")
         instance_ids = task_ids[project_name]
         first_instance_id = min(instance_ids)
 
@@ -752,12 +760,13 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
 
                 # TODO: write functionality to count the overall field stats.
 
-                print("inputs: {}".format(inputs))
+                print(" --> inputs: {}".format(inputs))
 
                 for input in inputs:
                     element = driver.find_element(By.NAME, input['input_name'])
                     # make sure that the element is visible
-                    print(" - - - - - - ")
+                    print(
+                        f" - - - - --  - - - - - - - - --  - - - - starting a new element: `{input}` - - - - - - - - - - --  - - - -  ")
                     if element.is_displayed() and element.size['width'] > 0 and element.size['height'] > 0:
                         task = Input(url, input['input_name'])
                         # baseline_answer = Baseline.solve_task(task, driver)
