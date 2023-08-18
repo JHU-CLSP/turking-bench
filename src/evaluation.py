@@ -301,20 +301,31 @@ class MyActions:
         if not isinstance(input_value, str):
             input_value = str(input_value)
 
+        if "|" in input_value:
+            input_value = input_value.split("|")
+            print(f"{Fore.YELLOW} There are multiple values. Splitting them! {input_value}")
+
         if input_value == 'nan':
-            print(f"{Fore.RED} ** Warning **: input value is nan")
+            print(f"{Fore.RED} ** Warning **: input value is 'nan'. So, we're terminating the function")
+            return
+        elif 'nan' in input_value:
+            print(f"{Fore.YELLOW} ** Warning **: Found input value is 'nan' and filtered it out")
+            input_value = [v for v in input_value if v != 'nan']
+            if len(input_value) == 0:
+                print(f"{Fore.RED} ** Warning **: Since the list of values `{input_value}` is empty, we're terminating the function")
+                return
 
         self.wait_for_element(input_name)
         self.scroll_to_element(input_name)
 
-        if "|" in input_value:
-            input_value = input_value.split("|")
+
 
         print(f"{Fore.YELLOW}Looking for checkboxes with `name`: {input_name}  the following values: {input_value}")
 
         # now we have to check the checkboxes that have the values we want
         for value in input_value:
             # Find the checkbox that has the given value and click on it
+            # TODO: need to escape the following parameters
             checkbox = self.driver.find_element(By.XPATH,
                                                 f"//input[@type='checkbox' and @name='{input_name}' and @value='{value}']")
             print(f"{Fore.YELLOW}About to check this checkbox: {checkbox.get_attribute('outerHTML')}")
