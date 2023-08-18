@@ -1,5 +1,7 @@
 import csv
 import argparse
+from colorama import init as colorama_init
+from colorama import Fore, Back, Style
 import numpy as np
 from datetime import datetime
 from datetime import timedelta
@@ -30,6 +32,8 @@ import json
 from transformers import AutoTokenizer
 
 TURKLE_URL = "http://localhost:8001"
+
+colorama_init(autoreset=True)
 
 
 class GPTTokenizer:
@@ -167,7 +171,7 @@ class Evaluation:
             )
             return scores
         else:
-            raise Exception("to be implemented")
+            raise Exception(f"{Fore.RED}to be implemented")
 
 
 class Input:
@@ -269,6 +273,7 @@ class MyActions:
         This function waits for a given element to be loaded on the page, and then returns the element.
         """
         input_element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.NAME, element_name)))
+
         return input_element
 
     def modify_text(self, input_name, input_value):
@@ -280,6 +285,8 @@ class MyActions:
         :return: None
         """
         input_element = self.scroll_to_element(input_name)
+        print(f"{Fore.YELLOW}We are going to add text to this text input: {input_element.get_attribute('outerHTML')}")
+
         action = ActionChains(self.driver).move_to_element(input_element).click()
         # now modify the text
         action.send_keys(input_value)
@@ -295,14 +302,23 @@ class MyActions:
             input_value = str(input_value)
 
         if input_value == 'nan':
-            print(" ** Warning **: input value is nan")
+            print(f"{Fore.RED} ** Warning **: input value is nan")
 
         self.wait_for_element(input_name)
-        input_element = self.scroll_to_element(input_name)
-        action = ActionChains(self.driver).move_to_element(input_element).click()
-        # now modify the text
-        action.send_keys(input_value)
-        action.perform()
+        self.scroll_to_element(input_name)
+
+        if "|" in input_value:
+            input_value = input_value.split("|")
+
+        print(f"{Fore.YELLOW}Looking for checkboxes with `name`: {input_name}  the following values: {input_value}")
+
+        # now we have to check the checkboxes that have the values we want
+        for value in input_value:
+            # Find the checkbox that has the given value and click on it
+            checkbox = self.driver.find_element(By.XPATH,
+                                                f"//input[@type='checkbox' and @name='{input_name}' and @value='{value}']")
+            print(f"{Fore.YELLOW}About to check this checkbox: {checkbox.get_attribute('outerHTML')}")
+            checkbox.click()
 
     @staticmethod
     def xpath_string_escape(input_str):
@@ -329,22 +345,21 @@ class MyActions:
         elif "'" in input_value:
             value = f'@value="{input_value}"'
         else:
-            raise Exception(f"Cannot encode input value {input_value}")
+            raise Exception(f"{Fore.RED}Cannot encode input value {input_value}")
 
         element = self.driver.find_element(
             By.XPATH, f"//input[@type='radio' and @name='{input_name}' and {value}]"
         )
 
         # print element in HTML format
-        print("We are going to select this radio button:")
-        print(element.get_attribute('outerHTML'))
+        print(f"{Fore.YELLOW}We are going to select this radio button: {element.get_attribute('outerHTML')}")
 
         action = ActionChains(self.driver).move_to_element(element).click()
         action.perform()
 
     def modify_select(self, input_name, input_value):
         """
-        For a given select field, this function selects the specified option.
+        For a given select field (dropdown menu), this function selects the specified option.
         """
         # input_element = self.scroll_to_element(input_name)
         select = Select(self.driver.find_element(By.NAME, input_name))
@@ -378,9 +393,8 @@ class MyActions:
                 self.modify_text(input_name, input_value)
 
             elif input_type in ['checkbox']:
-                if not (input_element.is_selected() or np.isnan(input_value)):
+                if not input_element.is_selected():
                     self.modify_checkbox(input_name, input_value)
-
 
             elif input_type in ['radio']:
                 if not input_element.is_selected():
@@ -394,7 +408,7 @@ class MyActions:
                 pass
 
         except Exception as e:
-            print(f"An error occurred when trying to place `{input_value}` in the input '{input_name}': {e}")
+            print(f"{Fore.RED}An error occurred when trying to place `{input_value}` in the input '{input_name}': {e}")
 
     def take_screenshot(self):
         """
@@ -795,7 +809,7 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
                             results[project_name][input['input_type']] = []
                         results[project_name][input['input_type']].append(score)
                     else:
-                        print(f'Skipping element {input["input_name"]} since it is not visible.')
+                        print(f'{Fore.RED}Skipping element {input["input_name"]} since it is not visible.')
 
     if mode == 'test':
         df = pd.DataFrame()
