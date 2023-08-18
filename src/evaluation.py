@@ -284,6 +284,10 @@ class MyActions:
         :param input_value: value to be entered into the input field
         :return: None
         """
+        if not input_value or input_value == 'nan':
+            print(f"{Fore.RED}Since the input value `{input_value}` is invalid, we are not going to modify the text.")
+            return
+
         input_element = self.scroll_to_element(input_name)
         print(f"{Fore.YELLOW}We are going to add text to this text input: {input_element.get_attribute('outerHTML')}")
 
