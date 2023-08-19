@@ -15,8 +15,8 @@ parser = argparse.ArgumentParser(
     epilog="Requires a template and the batch CSV",
     formatter_class=argparse.ArgumentDefaultsHelpFormatter
 )
-parser.add_argument("-u", help="admin username", required=True)
-parser.add_argument("-p", help="admin password")
+parser.add_argument("-u", help="admin username", default="admin")
+parser.add_argument("-p", help="admin password", default="123")
 parser.add_argument("--server", help="protocol://hostname:port", default="http://localhost:8000")
 args = parser.parse_args()
 
