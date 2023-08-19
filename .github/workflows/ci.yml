@@ -32,7 +32,7 @@ jobs:
           path: "requirements.txt"
 
       # Runs a set of commands using the runners shell
-      - name: test the task formats
+      - name: run Django/Turkle server
         run: |
           echo 'Moving to src directory'
           cd src
@@ -42,6 +42,8 @@ jobs:
           ls -l
           echo 'Clone Turkle'
           ./1.run_website.sh
+      - name: upload tasks to Django/Turkle
+        run: |
           echo 'Generate the input files'
           python 2.generate_input_csv.py
           echo 'Upload the tasks'
