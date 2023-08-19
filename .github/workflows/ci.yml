@@ -44,5 +44,5 @@ jobs:
           ./1.run_website.sh
           echo 'Generate the input files'
           python 2.generate_input_csv.py
-          echo 'Run the task formats'
-          python src/test_all.py
+          echo 'Upload the tasks'
+          python 3.upload_tasks.py
