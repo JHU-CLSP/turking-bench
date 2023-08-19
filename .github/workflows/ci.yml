@@ -41,9 +41,7 @@ jobs:
           echo 'List the files in the current directory'
           ls -l
           echo 'Clone Turkle'
-          ./1.run_website.sh & sleep 60
-      - name: upload tasks to Django/Turkle
-        run: |
+          ./1.run_website.sh & sleep 30
           echo 'Generate the input files'
           python 2.generate_input_csv.py
           echo 'Upload the tasks'
