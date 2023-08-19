@@ -34,6 +34,9 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: run Django/Turkle server
         run: |
+          echo 'Python version'
+          python --version
+          python3 --version
           echo 'Moving to src directory'
           cd src
           echo 'Print the current directory'
