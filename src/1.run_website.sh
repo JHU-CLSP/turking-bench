@@ -23,7 +23,12 @@ fi
 
 echo "Using $pip and $python"
 
+# Dummy username/password for the superuser
+export DJANGO_SUPERUSER_EMAIL=abcd@efg.com
+export DJANGO_SUPERUSER_USERNAME=admin
+export DJANGO_SUPERUSER_PASSWORD=123
+
 $pip install -r requirements.txt
 $python manage.py migrate
-$python manage.py createsuperuser
+$python manage.py createsuperuser --noinput
 $python manage.py runserver 0.0.0.0:8000
