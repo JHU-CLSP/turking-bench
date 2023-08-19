@@ -32,11 +32,8 @@ class Options:
 
 
 client = TurkleClient(args.server, args.u, args.p)
-limited_directoris = ["ATOMIC - NL Rephrase 16", "Number of sense"]
 for root, dirs, _ in os.walk('../tasks'):
     for dir in dirs:
-        if dir not in limited_directoris:
-            continue
         temp = ''
         csvpath = ''
         dir_path = os.path.join(root, dir)
