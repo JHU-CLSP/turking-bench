@@ -1,25 +1,33 @@
+"""
+We used this file to compute the distances between pairs of tasks.
+"""
+
 import csv
 import os
-import re
 import chardet
-from transformers import GPT2Tokenizer 
-import Levenshtein
+from transformers import GPT2Tokenizer
+from tqdm import tqdm
+from rouge_score import rouge_scorer
+
+tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
+
+default_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
 
 
 def token_distance(text1, text2):
-    tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
-    tokens1 = tokenizer.tokenize(text1)
-    tokens2 = tokenizer.tokenize(text2)
-    distance = Levenshtein.distance("".join(tokens1), "".join(tokens2))
-    return distance
+    # compute rouge distance between the two texts
+    scores = default_rouge_scorer.score(prediction=text1, target=text2)
+    return scores["rougeL"].fmeasure
 
 
 def main():
     root_folder = "tasks"
-    csv_file = "token_distance.csv"
     folders = os.listdir(root_folder)
+    # exclude hidden folders
+    folders = [folder for folder in folders if not folder.startswith(".")]
     distances = [[0 for _ in folders] for _ in folders]
-    for folder1 in folders:
+
+    for folder1 in tqdm(folders):
         path1 = os.path.join(root_folder, folder1, "htmltext.txt")
         encoding = chardet.detect(open(path1, "rb").read())["encoding"]
         with open(path1, "r", encoding=encoding) as file:
@@ -33,7 +41,7 @@ def main():
                 distance = token_distance(text1, text2)
                 distances[folders.index(folder1)][folders.index(folder2)] = distance
 
-    with open(csv_file, "w", newline="") as csvfile:
+    with open("../token_distance.csv", "w", newline="") as csvfile:
         writer = csv.writer(csvfile, delimiter=",")
         writer.writerow(["-"] + folders)
         for folder1 in folders:
@@ -41,6 +49,7 @@ def main():
             for folder2 in folders:
                 row.append(distances[folders.index(folder1)][folders.index(folder2)])
             writer.writerow(row)
+
 
 if __name__ == "__main__":
     main()

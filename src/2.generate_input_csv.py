@@ -11,10 +11,14 @@ def create_input(csv_file):
     df.to_csv(csv_file.replace('batch.csv', 'input.csv') , encoding='utf-8-sig', index=False)
 
 if __name__ == '__main__':
-    for root, dirs, files in os.walk('tasks'):
+    # ensure that ../tasks is available
+    if not os.path.exists('../tasks'):
+        raise Exception("No directory named `tasks` found. Make sure that you run this script in the `src/` directory")
+
+    for root, dirs, files in os.walk('../tasks'):
         # if files is empty then show an error
         if not files or len(files) == 0:
-            raise Exception("No files in the specified directory. Make sure that you run this script in the root directory")
+            raise Exception(f"No files in the specified directory: {dirs}")
 
         for file in files:
             if file.endswith('batch.csv'):
