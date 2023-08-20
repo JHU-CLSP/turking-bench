@@ -39,4 +39,4 @@ if __name__ == '__main__':
             raise Exception(f"File `{file}` does not exist")
 
         print(' ** Reading: ' + file)
-        create_input(path)
+        create_input(file)
