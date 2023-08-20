@@ -15,13 +15,18 @@ if __name__ == '__main__':
     if not os.path.exists('../tasks'):
         raise Exception("No directory named `tasks` found. Make sure that you run this script in the `src/` directory")
 
-    for root, dirs, files in os.walk('../tasks'):
+    for root, dirs, _ in os.walk('../tasks'):
         # if files is empty then show an error
-        if not files or len(files) == 0:
-            raise Exception(f"No files in the specified directory: {dirs}")
+        if not dirs or len(dirs) == 0:
+            raise Exception(f"No files in the specified directory `{root}`: {dirs}")
 
-        for file in files:
-            if file.endswith('batch.csv'):
-                path = os.path.join(root, file)
-                print(' ** Reading: ' + path)
-                create_input(path)
+        for dir in dirs:
+            file = os.path.join(root, dir, 'batch.csv')
+
+            # make sure the file exists
+            if not os.path.exists(file):
+                raise Exception(f"File `{file}` does not exist")
+
+            path = os.path.join(root, file)
+            print(' ** Reading: ' + path)
+            create_input(path)
