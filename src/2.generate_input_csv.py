@@ -12,6 +12,7 @@ def create_input(csv_file):
     df.drop_duplicates(inplace=True)
     df.to_csv(csv_file.replace('batch.csv', 'input.csv'), encoding='utf-8-sig', index=False)
 
+
 ROOT = '../tasks'
 
 if __name__ == '__main__':
