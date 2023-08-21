@@ -74,8 +74,8 @@ class Evaluation:
                 subjective_test = f.read().splitlines()
 
             # make sure that the splits are exclusive
-            assert len(set(test).intersection(
-                set(subjective_test))) == 0, f"{Fore.RED}The test and subjective test splits are not exclusive\n: test: {test}\nsubjective_test: {subjective_test}"
+            assert len(set(test).intersection(set(subjective_test))) == 0, f"{Fore.RED}The test and subjective test " \
+                                                                           f"splits are not exclusive\n: test: {test}\nsubjective_test: {subjective_test}"
 
             if setup == 'test':
                 return test
@@ -727,8 +727,8 @@ def enumerate_tasks(tasks: List[str], batch: bool, maximum: int, mode: str, inpu
     :param mode: train or test
     :param input_format: text or image. This matters for "training" mode, where we need to save the inputs on disk.
     """
-    driver = webdriver.Firefox()
-    # driver = webdriver.Chrome()
+    # driver = webdriver.Firefox()
+    driver = webdriver.Chrome()
     actions = MyActions(driver)
     results = {}
     driver.get(TURKLE_URL)
