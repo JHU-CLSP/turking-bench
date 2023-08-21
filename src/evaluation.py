@@ -56,6 +56,38 @@ class Evaluation:
         self.xlingual_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], tokenizer=self.xlingual_tokenizer)
 
     @staticmethod
+    def load_task_names(setup: str):
+        """
+        This function returns the list of tasks for a given setup.
+        """
+
+        # load all tasks
+        all_tasks = os.listdir("../tasks")
+
+        if setup == 'all':
+            return all_tasks
+        else:
+            with open('../data/splits/evaluation_tasks.txt', 'r') as f:
+                test = f.read().splitlines()
+
+            with open('../data/splits/subjective_evaluation_tasks.txt', 'r') as f:
+                subjective_test = f.read().splitlines()
+
+            # make sure that the splits are exclusive
+            assert len(set(test).intersection(
+                set(subjective_test))) == 0, f"{Fore.RED}The test and subjective test splits are not exclusive\n: test: {test}\nsubjective_test: {subjective_test}"
+
+            if setup == 'test':
+                return test
+            elif setup == 'subjective_test':
+                return subjective_test
+            elif setup == 'train':
+                # all tasks minue test and subjective test
+                return list(set(all_tasks) - set(test) - set(subjective_test))
+            else:
+                raise Exception(f"{Fore.RED}Invalid setup: {setup}")
+
+    @staticmethod
     # adapted the flowing from Squad v1.1 evaluation, without removing the articles.
     def normalize_answer(s):
         """Lower text and remove punctuation, and extra whitespace."""
@@ -686,7 +718,7 @@ def read_config(file):
 task_ids = requests.get(f"{TURKLE_URL}/get_tasks/").json()
 
 
-def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
+def enumerate_tasks(tasks: List[str], batch: bool, maximum: int, mode: str, input_format: str, image_format: str):
     """
     Enumerate the tasks and their instances
     :param tasks: list of tasks
@@ -734,6 +766,10 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
             for instance_id in instance_ids:
                 url = f'{TURKLE_URL}/task/{instance_id}/iframe/'
                 driver.get(url)
+
+                # TODO: check if all the files (images, videos, audio, css, etc.) in the HTML are accessible
+                # TODO: find all the URLS in the HTML and check if they are accessible
+
                 # evaluation = Evaluation(driver)
                 if batch:
                     df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
@@ -886,13 +922,18 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
 
     print("Now let's print the field statistics")
 
+    # save task_field_statistics (hashmap of hashmaps mapped to integers) as a csv file
+    # first turn this hashmap into data frame
+    # then save it as a csv file
+    results = pd.DataFrame.from_dict(task_field_statistics)
+    results.to_csv('task_field_statistics.csv', index=True)
+
     # Close the driver
     driver.quit()
 
 
 if __name__ == "__main__":
-    with open('../data/splits/evaluation_tasks_tmp.txt', 'r') as f:
-        tasks = f.read().splitlines()
+    tasks = Evaluation.load_task_names(setup='all')  # TODO: receive setup from input
     config = read_config('config.ini')
     batch = config.getboolean('DEFAULT', 'batch')  # TODO: what is this?
     max_instance_count = config.getint('DEFAULT', 'num')
