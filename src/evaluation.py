@@ -19,6 +19,7 @@ import requests
 from rouge_score import rouge_scorer
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
@@ -727,8 +728,16 @@ def enumerate_tasks(tasks: List[str], batch: bool, maximum: int, mode: str, inpu
     :param mode: train or test
     :param input_format: text or image. This matters for "training" mode, where we need to save the inputs on disk.
     """
+
+    # TODO: make the seleciton of headless (no visual browser for faster processing) a parameter
+    options = Options()
+    options.headless = True
+
+    # TODO: make the selection of driver a parameter
     # driver = webdriver.Firefox()
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(options=options)
+
+
     actions = MyActions(driver)
     results = {}
     driver.get(TURKLE_URL)
