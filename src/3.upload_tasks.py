@@ -46,7 +46,7 @@ for root, dirs, _ in os.walk('../tasks'):
                 output_encoding = 'utf8'
                 df = pd.read_csv(csvpath, encoding=input_encoding)
                 df.to_csv(csvpath, index=False, encoding=output_encoding)
-        print(dir)
+        print(f"{Fore.BLUE} -> {dir}")
         options = Options(batch_name=dir, project_name=dir,
                           template=temp,
                           csv=csvpath)
