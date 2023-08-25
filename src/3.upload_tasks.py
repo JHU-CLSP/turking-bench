@@ -47,7 +47,8 @@ for root, dirs, _ in os.walk('../tasks'):
                 df = pd.read_csv(csvpath, encoding=input_encoding)
                 df.to_csv(csvpath, index=False, encoding=output_encoding)
         print(f"{Fore.BLUE} -> {dir}")
-        options = Options(batch_name=dir, project_name=dir,
+        options = Options(batch_name=dir,
+                          project_name=dir,
                           template=temp,
                           csv=csvpath)
         result = client.upload(options)
