@@ -1,0 +1,9 @@
+{
+    "AutoApprovalDelayInSeconds": 86400,
+    "AssignmentDurationInSeconds": 3600,
+    "Reward": "0.01",
+    "Title": "NaN",
+    "Keywords": "NaN",
+    "Description": "NaN",
+    "QualificationRequirements": []
+}
