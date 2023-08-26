@@ -2,7 +2,6 @@ Associate countries and languages with Ethnologue
 atomic_event2event-effects 4
 Author In-Group Analysis Phrase Classification 2
 Compile list of area chairs
-Congressional Bills 5 point
 Elicitation obj
 Elicitation subj
 Full sentence style annotations
