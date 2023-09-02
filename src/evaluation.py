@@ -734,9 +734,14 @@ def enumerate_tasks(tasks: List[str], batch: bool, maximum: int, mode: str, inpu
     options.headless = True
 
     # TODO: make the selection of driver a parameter
-    # driver = webdriver.Firefox()
-    driver = webdriver.Chrome(options=options)
+    # check what the operator system is. If it is Linux, create chrome driver. Otherwise create a firefox driver
+    # import platform
 
+    import platform
+    if platform.system() == 'Linux':
+        driver = webdriver.Chrome(options=options)
+    else:
+        driver = webdriver.Firefox()
 
     actions = MyActions(driver)
     results = {}
@@ -745,6 +750,10 @@ def enumerate_tasks(tasks: List[str], batch: bool, maximum: int, mode: str, inpu
     task_field_statistics = {}
     for task_name in tqdm(tasks):
         print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
+        if task_name not in task_ids.keys():
+            print(f"{Fore.RED}Task `{task_name}` is not available on Turkle.")
+            print("Available tasks are:", task_ids.keys())
+            continue
         instance_ids = task_ids[task_name]
         first_instance_id = min(instance_ids)
         print("First instance id:", first_instance_id)
