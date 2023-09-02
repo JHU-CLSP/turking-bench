@@ -1,0 +1,1363 @@
+
+
+<!DOCTYPE html>
+<head>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Raleway:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+
+        .sidebarInstruction {
+            color: #333333;
+            font-family: 'Merriweather', serif;
+        }
+
+        .sidebarTitle {
+            margin-top: 16px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 1.2;
+        }
+
+        .sidebarContent {
+            margin-top: 16px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .question {
+            width: 100%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .questionTitle {
+            font-size: 20px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+
+        .questionDescription {
+            font-family: 'Merriweather', serif;
+        }
+
+        .questionVideos {
+            display: flex;
+            width: 100%;
+            margin: auto;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .videoContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .bubblesContainer {
+                width: 100%;
+                margin: auto;
+                display: flex;
+                justify-content: space-between;
+        }
+
+        @media screen and (max-width: 399px){
+            .root {
+                min-width: 640px;
+                max-width: 640px;
+            }
+
+            .videoContainer video {
+                width: auto;
+                height: 120px;
+            }
+        }
+
+        @media screen and (max-width: 1024px){
+            .root {
+                width: 80%;
+                margin: auto;
+            }
+
+            .videoContainer video {
+                width: 360px;
+                height: auto;
+            }
+        }
+
+        @media screen and (min-width: 1025px){
+            .root {
+                width: 80%;
+                margin: auto;
+            }
+
+            .videoContainer video {
+                width: auto;
+                height: 320px;
+            }
+        }
+
+        .flipped_video {
+            transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+            -moz-transform: rotateY(180deg);
+        }
+
+        fieldset {
+            width: 100%;
+            border: none;
+            margin: auto;
+        }
+
+
+
+        .radioLabel {
+            margin-top: 6px;
+            text-align: center;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+
+        .column_bubble {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 36px;
+            width: 36px;
+        }
+
+        .radioBubble:focus {
+            outline: none;
+        }
+
+        .bubble_button1 {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            border: 1px solid #1851a7;
+            margin: 0;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all .1s ease-in-out;
+            height: 90%;
+            width: 90%;
+        }
+
+        .bubble_button1:checked {
+            background-color: #1851a7;
+        }
+
+        .bubble_button2 {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            border: 1px solid #5178b3;
+            margin: 0;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all .1s ease-in-out;
+            height: 80%;
+            width: 80%;
+        }
+
+        .bubble_button2:checked {
+            background-color: #5178b3;
+        }
+
+        .bubble_button3 {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            border: 1px solid #8ba2c5;
+            margin: 0;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all .1s ease-in-out;
+            height: 70%;
+            width: 70%;
+        }
+
+        .bubble_button3:checked {
+            background-color: #8ba2c5;
+        }
+
+        .bubble_button4 {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            border: 1px solid #ccc;
+            margin: 0;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all .1s ease-in-out;
+            height: 60%;
+            width: 60%;
+        }
+
+        .bubble_button4:checked {
+            background-color: #ccc;
+        }
+
+        .bubble_button5 {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            border: 1px solid #dac584;
+            margin: 0;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all .1s ease-in-out;
+            height: 70%;
+            width: 70%;
+        }
+
+        .bubble_button5:checked {
+            background-color: #dac584;
+        }
+
+        .bubble_button6 {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            border: 1px solid #d3b44e;
+            margin: 0;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all .1s ease-in-out;
+            height: 80%;
+            width: 80%;
+        }
+
+        .bubble_button6:checked {
+            background-color: #d3b44e;
+        }
+
+        .bubble_button7 {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            border: 1px solid #cea008;
+            margin: 0;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all .1s ease-in-out;
+            height: 90%;
+            width: 90%;
+        }
+
+        .bubble_button7:checked {
+            background-color: #cea008;
+        }
+
+        .errorRadioContainer {
+            display: flex;
+            margin: auto;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+
+        .buttonContainer {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        crowd-button {
+            margin-top: 10px;
+        }
+
+        crowd-button span{
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+
+        .commentBox {
+            margin-top: 20px;
+        }
+
+        .commentBox label {
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        .commentBox textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="root">
+
+        <crowd-form style="width: 100%;">
+
+                <!-- <crowd-instructions link-text="View instructions" link-type="button">
+                    <short-instructions class="sidebarInstruction">
+                        <div class="sidebarTitle">Which cow is more lame? (12 questions)</div>
+                        <div class="sidebarContent">Read the task carefully and inspect the videos.</div>
+                        <div class="sidebarContent">There are 12 questions in this task. Please use the "Next" and "Previous" button to navigate between questions. Watch video pairs of two cows walking at the same time and label which cow walks with more difficulty. Use colored button to identify which cow looks more lame.
+                        </div>
+                    </short-instructions>
+
+                    <full-instructions>
+                        <div class="sidebarContent">
+                        </div>There are 12 questions in this task. Please use the "Next Question" and "Previous Question" buttons to navigate between questions. You would only be able to submit this HIT after all 12 questions are answered. Watch video pairs of two cows walking at the same time and label which cow walks with more difficulty. Use colored button to identify which cow looks more lame.
+
+                    </full-instructions>
+                </crowd-instructions> -->
+
+
+                <div class="question" id="Statement">
+                    <div class="questionTitle">Which cow is more lame, and by how much? (12 questions)</div>
+
+                    <div class="questionDescription" style="margin-top: 2%;">
+                            <p>
+                                <strong style="font-size: 1.2em;">Thank you</strong> so much for working on this task! We are a team of scientists from an animal welfare research lab,
+                                dedicated to improving the welfare of dairy cows. Your work is highly valuable in helping us identify a condition
+                                called lameness in dairy cows.
+                            </p>
+
+                            <p>
+                                <strong style="font-size: 1.2em;">Work approval and rejection criteria:</strong>
+                            </p>
+                        <ul>
+                            <li> Must work on a laptop, desktop computer, or a tablet.</li>
+                            <li> Failure to pass attention checks will result in rejection of your work. </li>
+                            <li> You will be granted qualification to future tasks of a similar nature if your work is of high quality.</li>
+                        </ul>
+                    </div>
+
+
+
+                </div>
+
+                <div class="question" id="question1">
+                    <div class="questionTitle">Which cow is more lame, and by how much? (12 questions)</div>
+
+
+                    <div class="questionDescription" style="margin-top: 2%;">
+                        <ul>
+                            <li>Use the "Next Question" and "Previous Question" buttons to navigate </li>
+                            <li>HIT can only be submitted after all 12 questions are answered </li>
+                            <li>Watch a pair of videos, use the bubble buttons to tell which of the two cows is more lame, and by how much </li>
+                            <li>Example: if the Left cow is much more lame then click the option to the far left of the colored buttons </li>
+                            <li>Example: If the two cows are about equally lame (or not lame) then click the option in the middle </li>
+                        </ul>
+                    </div>
+
+                    <div class="questionTitle" style="margin-top: 2%;" >Question 1 of 12</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class= "videoContainer" style="margin-right: 20px">
+                            <video class="flipped_video" loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_040621_pm_MVI_0187_short_11_6088.MP4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="videoContainer" style="margin-left: 20px">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_070521_pm_MVI_0159_short_22_5118.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+
+                        <span id="hiddenText" style="display:none;">Please fill in Cow: </span>
+                        <crowd-input id="bCheck" name="bCheck" style="display:none;"></crowd-input>
+
+                        <div class="bubblesContainer" style="margin-top: 2%;">
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="hidden" name="worker_ip" id="worker_ip" value="">
+                                    <input type="radio" class="radioBubble bubble_button1" id="radio1_00" name="q1" value="-3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #1851A7;">The left cow is<br>much more lame</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button2"  name="q1" value="-2" required >
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button3"  name="q1" value="-1" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button4"  name="q1" value="0" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px;">The two cows are<br>about the same</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button5"  name="q1" value="1" required>
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button6"  name="q1" value="2" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button7" name="q1" value="3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #CEA008;">The right cow is<br>much more lame</div>
+                            </div>
+
+                        </div>
+
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <input type="radio" name="q1" value="video not playing">
+                            <div style="margin-left: 0.5vw">The video(s) is not showing.</div>
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+                <div class="question" id="question2">
+                    <div class="questionTitle">Which cow is more lame, and by how much? (12 questions)</div>
+
+                    <div class="questionTitle" style="margin-top: 2%;" >Question 2 of 12</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer" style="margin-right: 20px">
+                            <video class="flipped_video" loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_280521_pm_MVI_0180_short_27_5087.MP4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="videoContainer" style="margin-left: 20px">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_280521_pm_MVI_0180_short_27_5087.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+
+                        <div class="bubblesContainer" style="margin-top: 2%;">
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button1" name="q2" value="-3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #1851A7;">The left cow is<br>much more lame</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button2"  name="q2" value="-2" required >
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button3"  name="q2" value="-1" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button4"  name="q2" value="0" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px;">The two cows are<br>about the same</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button5"  name="q2" value="1" required>
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button6"  name="q2" value="2" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button7" name="q2" value="3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #CEA008;">The right cow is<br>much more lame</div>
+                            </div>
+
+                        </div>
+
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <input type="radio" name="q2" value="video not playing">
+                            <div style="margin-left: 0.5vw">The video(s) is not showing.</div>
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+                <div class="question" id="question3">
+                    <div class="questionTitle">Which cow is more lame, and by how much? (12 questions)</div>
+
+                    <div class="questionTitle" style="margin-top: 2%;" >Question 3 of 12</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer" style="margin-right: 20px">
+                            <video class="flipped_video" loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_040621_pm_MVI_0188_short_20_6046.MP4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="videoContainer" style="margin-left: 20px">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_040621_pm_MVI_0187_short_11_6088.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+
+                        <div class="bubblesContainer" style="margin-top: 2%;">
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button1" name="q3" value="-3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #1851A7;">The left cow is<br>much more lame</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button2"  name="q3" value="-2" required >
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button3"  name="q3" value="-1" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button4"  name="q3" value="0" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px;">The two cows are<br>about the same</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button5"  name="q3" value="1" required>
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button6"  name="q3" value="2" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button7" name="q3" value="3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #CEA008;">The right cow is<br>much more lame</div>
+                            </div>
+
+                        </div>
+
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <input type="radio" name="q3" value="video not playing">
+                            <div style="margin-left: 0.5vw">The video(s) is not showing.</div>
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+                <div class="question" id="question4">
+                    <div class="questionTitle">Which cow is more lame, and by how much? (12 questions)</div>
+
+                    <div class="questionTitle" style="margin-top: 2%;" >Question 4 of 12</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer" style="margin-right: 20px">
+                            <video class="flipped_video" loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_110621_am_MVI_0193_short_23_7136.MP4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="videoContainer" style="margin-left: 20px">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_280521_am_MVI_0178_short_47_4035.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+
+                        <div class="bubblesContainer" style="margin-top: 2%;">
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button1" name="q4" value="-3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #1851A7;">The left cow is<br>much more lame</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button2"  name="q4" value="-2" required >
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button3"  name="q4" value="-1" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button4"  name="q4" value="0" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px;">The two cows are<br>about the same</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button5"  name="q4" value="1" required>
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button6"  name="q4" value="2" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button7" name="q4" value="3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #CEA008;">The right cow is<br>much more lame</div>
+                            </div>
+
+                        </div>
+
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <input type="radio" name="q4" value="video not playing">
+                            <div style="margin-left: 0.5vw">The video(s) is not showing.</div>
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+                <div class="question" id="question5">
+                    <div class="questionTitle">Which cow is more lame, and by how much? (12 questions)</div>
+
+                    <div class="questionTitle" style="margin-top: 2%;" >Question 5 of 12</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer" style="margin-right: 20px">
+                            <video class="flipped_video" loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_040621_pm_MVI_0187_short_11_6088.MP4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="videoContainer" style="margin-left: 20px">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_210521_pm_MVI_0174_short_24_7163.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+
+                        <div class="bubblesContainer" style="margin-top: 2%;">
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button1" name="q5" value="-3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #1851A7;">The left cow is<br>much more lame</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button2"  name="q5" value="-2" required >
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button3"  name="q5" value="-1" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button4"  name="q5" value="0" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px;">The two cows are<br>about the same</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button5"  name="q5" value="1" required>
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button6"  name="q5" value="2" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button7" name="q5" value="3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #CEA008;">The right cow is<br>much more lame</div>
+                            </div>
+
+                        </div>
+
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <input type="radio" name="q5" value="video not playing">
+                            <div style="margin-left: 0.5vw">The video(s) is not showing.</div>
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+                <div class="question" id="question6">
+                    <div class="questionTitle">Which cow is more lame, and by how much? (12 questions)</div>
+
+                    <div class="questionTitle" style="margin-top: 2%;" >Question 6 of 12</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer" style="margin-right: 20px">
+                            <video class="flipped_video" loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_130521_am_MVI_0162_short_30_7045.MP4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="videoContainer" style="margin-left: 20px">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_280521_pm_MVI_0180_short_27_5087.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+
+                        <div class="bubblesContainer" style="margin-top: 2%;">
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button1" name="q6" value="-3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #1851A7;">The left cow is<br>much more lame</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button2"  name="q6" value="-2" required >
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button3"  name="q6" value="-1" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button4"  name="q6" value="0" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px;">The two cows are<br>about the same</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button5"  name="q6" value="1" required>
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button6"  name="q6" value="2" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button7" name="q6" value="3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #CEA008;">The right cow is<br>much more lame</div>
+                            </div>
+
+                        </div>
+
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <input type="radio" name="q6" value="video not playing">
+                            <div style="margin-left: 0.5vw">The video(s) is not showing.</div>
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+                <div class="question" id="question7">
+                    <div class="questionTitle">Which cow is more lame, and by how much? (12 questions)</div>
+
+                    <div class="questionTitle" style="margin-top: 2%;" >Question 7 of 12</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer" style="margin-right: 20px">
+                            <video class="flipped_video" loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_280521_pm_MVI_0180_short_27_5087.MP4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="videoContainer" style="margin-left: 20px">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_300421_pm_MVI_0157_short_46_6096.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+
+                        <div class="bubblesContainer" style="margin-top: 2%;">
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button1" name="q7" value="-3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #1851A7;">The left cow is<br>much more lame</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button2"  name="q7" value="-2" required >
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button3"  name="q7" value="-1" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button4"  name="q7" value="0" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px;">The two cows are<br>about the same</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button5"  name="q7" value="1" required>
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button6"  name="q7" value="2" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button7" name="q7" value="3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #CEA008;">The right cow is<br>much more lame</div>
+                            </div>
+
+                        </div>
+
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <input type="radio" name="q7" value="video not playing">
+                            <div style="margin-left: 0.5vw">The video(s) is not showing.</div>
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+                <div class="question" id="question8">
+                    <div class="questionTitle">Which cow is more lame, and by how much? (12 questions)</div>
+
+                    <div class="questionTitle" style="margin-top: 2%;" >Question 8 of 12</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer" style="margin-right: 20px">
+                            <video class="flipped_video" loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_010421_MVI_0114_short_18_7128.MP4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="videoContainer" style="margin-left: 20px">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_280521_am_MVI_0178_short_47_4035.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+
+                        <div class="bubblesContainer" style="margin-top: 2%;">
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button1" name="q8" value="-3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #1851A7;">The left cow is<br>much more lame</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button2"  name="q8" value="-2" required >
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button3"  name="q8" value="-1" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button4"  name="q8" value="0" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px;">The two cows are<br>about the same</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button5"  name="q8" value="1" required>
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button6"  name="q8" value="2" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button7" name="q8" value="3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #CEA008;">The right cow is<br>much more lame</div>
+                            </div>
+
+                        </div>
+
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <input type="radio" name="q8" value="video not playing">
+                            <div style="margin-left: 0.5vw">The video(s) is not showing.</div>
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+                <div class="question" id="question9">
+                    <div class="questionTitle">Which cow is more lame, and by how much? (12 questions)</div>
+
+                    <div class="questionTitle" style="margin-top: 2%;" >Question 9 of 12</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer" style="margin-right: 20px">
+                            <video class="flipped_video" loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_010421_MVI_0114_short_12_6025.MP4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="videoContainer" style="margin-left: 20px">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_040621_pm_MVI_0187_short_11_6088.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+
+                        <div class="bubblesContainer" style="margin-top: 2%;">
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button1" name="q9" value="-3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #1851A7;">The left cow is<br>much more lame</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button2"  name="q9" value="-2" required >
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button3"  name="q9" value="-1" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button4"  name="q9" value="0" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px;">The two cows are<br>about the same</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button5"  name="q9" value="1" required>
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button6"  name="q9" value="2" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button7" name="q9" value="3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #CEA008;">The right cow is<br>much more lame</div>
+                            </div>
+
+                        </div>
+
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <input type="radio" name="q9" value="video not playing">
+                            <div style="margin-left: 0.5vw">The video(s) is not showing.</div>
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+                <div class="question" id="question10">
+                    <div class="questionTitle">Which cow is more lame, and by how much? (12 questions)</div>
+
+                    <div class="questionTitle" style="margin-top: 2%;" >Question 10 of 12</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer" style="margin-right: 20px">
+                            <video class="flipped_video" loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_010421_MVI_0114_short_18_7128.MP4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="videoContainer" style="margin-left: 20px">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_040621_pm_MVI_0187_short_11_6088.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+
+                        <div class="bubblesContainer" style="margin-top: 2%;">
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button1" name="q10" value="-3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #1851A7;">The left cow is<br>much more lame</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button2"  name="q10" value="-2" required >
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button3"  name="q10" value="-1" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button4"  name="q10" value="0" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px;">The two cows are<br>about the same</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button5"  name="q10" value="1" required>
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button6"  name="q10" value="2" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button7" name="q10" value="3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #CEA008;">The right cow is<br>much more lame</div>
+                            </div>
+
+                        </div>
+
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <input type="radio" name="q10" value="video not playing">
+                            <div style="margin-left: 0.5vw">The video(s) is not showing.</div>
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+                <div class="question" id="question11">
+                    <div class="questionTitle">Which cow is more lame, and by how much? (12 questions)</div>
+
+                    <div class="questionTitle" style="margin-top: 2%;" >Question 11 of 12</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer" style="margin-right: 20px">
+                            <video class="flipped_video" loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_280521_pm_MVI_0180_short_27_5087.MP4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="videoContainer" style="margin-left: 20px">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_040621_pm_MVI_0189_short_34_6094.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+
+                        <div class="bubblesContainer" style="margin-top: 2%;">
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button1" name="q11" value="-3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #1851A7;">The left cow is<br>much more lame</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button2"  name="q11" value="-2" required >
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button3"  name="q11" value="-1" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button4"  name="q11" value="0" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px;">The two cows are<br>about the same</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button5"  name="q11" value="1" required>
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button6"  name="q11" value="2" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button7" name="q11" value="3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #CEA008;">The right cow is<br>much more lame</div>
+                            </div>
+
+                        </div>
+
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <input type="radio" name="q11" value="video not playing">
+                            <div style="margin-left: 0.5vw">The video(s) is not showing.</div>
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+                <div class="question" id="question12">
+                    <div class="questionTitle">Which cow is more lame, and by how much? (12 questions)</div>
+
+                    <div class="questionTitle" style="margin-top: 2%;" >Question 12 of 12</div>
+
+                    <div class="questionVideos" style="margin-top: 2%;">
+                        <div class="videoContainer" style="margin-right: 20px">
+                            <video class="flipped_video" loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_280521_pm_MVI_0180_short_27_5087.MP4" type="video/mp4">
+                            </video>
+                        </div>
+
+                        <div class="videoContainer" style="margin-left: 20px">
+                            <video loop muted playsinline autoplay>
+                                <source src="https://web-instruct.s3.amazonaws.com/cows/ubc_phase2/compressed_040621_pm_MVI_0188_short_20_6046.MP4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <fieldset>
+
+                        <div class="bubblesContainer" style="margin-top: 2%;">
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button1" name="q12" value="-3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #1851A7;">The left cow is<br>much more lame</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button2"  name="q12" value="-2" required >
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button3"  name="q12" value="-1" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button4"  name="q12" value="0" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px;">The two cows are<br>about the same</div>
+                            </div>
+
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button5"  name="q12" value="1" required>
+                            </div>
+
+                            <div class="column_bubble">
+                                <input type="radio" class="radioBubble bubble_button6"  name="q12" value="2" required>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <div class="column_bubble">
+                                    <input type="radio" class="radioBubble bubble_button7" name="q12" value="3" required>
+                                </div>
+                                <div class="radioLabel" style="margin-top: 10px; color: #CEA008;">The right cow is<br>much more lame</div>
+                            </div>
+
+                        </div>
+
+                        <div class="errorRadioContainer" style="margin-top: 1%">
+                            <input type="radio" name="q12" value="video not playing">
+                            <div style="margin-left: 0.5vw">The video(s) is not showing.</div>
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+                <div class="question" id="feedback">
+                    <div class="questionDescription" style="margin-top: 2%;">
+                        <p><strong style="font-size: 1.2em;">Contact: </strong> You are welcome to contact us if you have any feedback
+                        and suggestions about this HIT. You are also encouraged to email us if your work is rejected but you paid close
+                        attention when completing this HIT and want to be paid. Email: <strong><u> skysheng0306@gmail.com</u> </strong> </p>
+
+                        <!-- Comments box -->
+                        <div class="commentBox">
+                            <label for="comment">Comments (optional):</label><br>
+                            <textarea id="comment" name="comment" rows="4" cols="50"></textarea>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+
+    <div class="buttonContainer" style="margin-top: 2%;">
+                    <crowd-button onclick="getPrevious()" class="controlBtn">
+                        <span>Previous Question</span>
+                    </crowd-button>
+                    <crowd-button onclick="getNext()" class="controlBtn">
+                        <span>Next Question</span>
+                    </crowd-button>
+                </div>
+
+
+        </crowd-form>
+    </div>
+
+    <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+    <script>
+        const statement = document.getElementById("Statement")
+        const question1 = document.getElementById("question1")
+const question2 = document.getElementById("question2")
+const question3 = document.getElementById("question3")
+const question4 = document.getElementById("question4")
+const question5 = document.getElementById("question5")
+const question6 = document.getElementById("question6")
+const question7 = document.getElementById("question7")
+const question8 = document.getElementById("question8")
+const question9 = document.getElementById("question9")
+const question10 = document.getElementById("question10")
+const question11 = document.getElementById("question11")
+const question12 = document.getElementById("question12")
+        const feedback = document.getElementById("feedback")
+
+        const questions = [
+            statement,
+            question1,
+question2,
+question3,
+question4,
+question5,
+question6,
+question7,
+question8,
+question9,
+question10,
+question11,
+question12,
+            feedback
+        ]
+
+        let counter = 0;
+        const numQuestions = 14;
+
+        for(let i = 0; i < numQuestions; i++){
+            questions[i].style.display = i === counter ? "flex" : "none"
+        }
+
+    function isMobileDevice() {
+        var isMobile = {
+            Android: function () { return navigator.userAgent.match(/Android/i); },
+            BlackBerry: function () { return navigator.userAgent.match(/BlackBerry/i); },
+            iOS: function () { return navigator.userAgent.match(/iPhone|iPad|iPod/i); },
+            Opera: function () { return navigator.userAgent.match(/Opera Mini/i); },
+            Windows: function () { return navigator.userAgent.match(/IEMobile/i); },
+            any: function () { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); }
+        };
+
+        return isMobile.any();
+    }
+
+    function isBot() {
+        const botCheckInput = document.getElementById("bCheck");
+        return botCheckInput.value;
+    }
+
+
+    function getNext() {
+
+        if (counter == 0 && isMobileDevice()) {
+            alert('This HIT must be accomplished on PC/tablet/laptop. Please quit this HIT now because you are using a mobile device.');
+            return;
+        } else {
+            if (counter < numQuestions - 1) {
+                counter++;
+                for (let i = 0; i < numQuestions; i++) {
+                    questions[i].style.display = i === counter ? "flex" : "none";
+                }
+            }
+        }
+    }
+
+    function getIpAddress() {
+        fetch('https://api.ipify.org?format=json')
+            .then((response) => response.json())
+            .then((data) => {
+                document.getElementById('worker_ip').value = data.ip + '-' + isBot();
+            })
+            .catch((error) => {
+                console.error('Error fetching IP address:', error);
+            });
+    }
+
+    window.addEventListener('load', getIpAddress);
+
+    function getPrevious() {
+            if (counter > 0) {
+                counter--;
+                for(let i = 0; i < numQuestions; i++){
+                    questions[i].style.display = i === counter ? "flex" : "none"
+                }
+            }
+    }
+
+    </script>
+
+</body>
+
+</html>

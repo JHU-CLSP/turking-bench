@@ -1,0 +1,448 @@
+
+<!-- Enable responsive behavior on smaller screens -->
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+
+<!--CSS -->
+<link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
+<style type="text/css">
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        color: #212529;
+        line-height: 1.5;
+    }
+
+    .container {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .card {
+        margin: 1rem;
+        background-color: #f8f9fa;
+        border: 1px solid #d9dadb;
+        border-radius: 4px;
+
+        max-width: 1140px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .shadowCard {
+        margin: 1rem;
+
+        max-width: 1140px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card-header {
+        width: 100%;
+        background-color: rgba(0, 0, 0, .03);
+        text-decoration: none;
+        padding: .75rem 1.25rem;
+        border-bottom: 1px solid #d9dadb;
+        display: flex;
+    }
+
+    a.card-header {
+        color: #157ffb
+    }
+
+    a.card-header:hover {
+        color: #0a4d99;
+        text-decoration: underline;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    input.text {
+        width: 700px;
+        max-width: calc(100% - 80px);
+    }
+
+    .mf-textarea {
+        width: 100%;
+        max-width: 500px;
+        height: 80px;
+        margin-top: 0px;
+    }
+
+    .inputs li {
+        /* float: left; */
+        list-style-type: none;
+        padding: 5px;
+        margin-right: 5px;
+    }
+
+    .f7 {
+        font-size: 0.5 rem;
+    }
+
+    hr {
+        border-top: 1px solid #dfe0e1;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+</style>
+
+<!-- NOTE: airplane styles could be here if needed -->
+
+<!-- JS -->
+<!-- Live reloading -->
+<!-- <script type="text/javascript" src="http://livejs.com/live.js"></script> -->
+<!-- Timeme (inject locally) -->
+<script>
+    (function () { var e, t; e = this, t = function () { var r = { startStopTimes: {}, idleTimeoutMs: 3e4, currentIdleTimeMs: 0, checkStateRateMs: 250, active: !1, idle: !1, currentPageName: "default-page-name", timeElapsedCallbacks: [], userLeftCallbacks: [], userReturnCallbacks: [], trackTimeOnElement: function (e) { var t = document.getElementById(e); t && (t.addEventListener("mouseover", function () { r.startTimer(e) }), t.addEventListener("mousemove", function () { r.startTimer(e) }), t.addEventListener("mouseleave", function () { r.stopTimer(e) }), t.addEventListener("keypress", function () { r.startTimer(e) }), t.addEventListener("focus", function () { r.startTimer(e) })) }, getTimeOnElementInSeconds: function (e) { var t = r.getTimeOnPageInSeconds(e); return t || 0 }, startTimer: function (e, t) { if (e || (e = r.currentPageName), void 0 === r.startStopTimes[e]) r.startStopTimes[e] = []; else { var n = r.startStopTimes[e], i = n[n.length - 1]; if (void 0 !== i && void 0 === i.stopTime) return } r.startStopTimes[e].push({ startTime: t || new Date, stopTime: void 0 }), r.active = !0, r.idle = !1 }, stopAllTimers: function () { for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++)r.stopTimer(e[t]) }, stopTimer: function (e, t) { e || (e = r.currentPageName); var n = r.startStopTimes[e]; void 0 !== n && 0 !== n.length && (void 0 === n[n.length - 1].stopTime && (n[n.length - 1].stopTime = t || new Date), r.active = !1) }, getTimeOnCurrentPageInSeconds: function () { return r.getTimeOnPageInSeconds(r.currentPageName) }, getTimeOnPageInSeconds: function (e) { var t = r.getTimeOnPageInMilliseconds(e); return void 0 === t ? void 0 : t / 1e3 }, getTimeOnCurrentPageInMilliseconds: function () { return r.getTimeOnPageInMilliseconds(r.currentPageName) }, getTimeOnPageInMilliseconds: function (e) { var t = r.startStopTimes[e]; if (void 0 !== t) { for (var n = 0, i = 0; i < t.length; i++) { var s = t[i].startTime, o = t[i].stopTime; void 0 === o && (o = new Date), n += o - s } return Number(n) } }, getTimeOnAllPagesInSeconds: function () { for (var e = [], t = Object.keys(r.startStopTimes), n = 0; n < t.length; n++) { var i = t[n], s = r.getTimeOnPageInSeconds(i); e.push({ pageName: i, timeOnPage: s }) } return e }, setIdleDurationInSeconds: function (e) { var t = parseFloat(e); if (!1 !== isNaN(t)) throw { name: "InvalidDurationException", message: "An invalid duration time (" + e + ") was provided." }; return r.idleTimeoutMs = 1e3 * e, this }, setCurrentPageName: function (e) { return r.currentPageName = e, this }, resetRecordedPageTime: function (e) { delete r.startStopTimes[e] }, resetAllRecordedPageTimes: function () { for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++)r.resetRecordedPageTime(e[t]) }, resetIdleCountdown: function () { r.idle && r.triggerUserHasReturned(), r.idle = !1, r.currentIdleTimeMs = 0 }, callWhenUserLeaves: function (e, t) { this.userLeftCallbacks.push({ callback: e, numberOfTimesToInvoke: t }) }, callWhenUserReturns: function (e, t) { this.userReturnCallbacks.push({ callback: e, numberOfTimesToInvoke: t }) }, triggerUserHasReturned: function () { if (!r.active) for (var e = 0; e < this.userReturnCallbacks.length; e++) { var t = this.userReturnCallbacks[e], n = t.numberOfTimesToInvoke; (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback()) } r.startTimer() }, triggerUserHasLeftPage: function () { if (r.active) for (var e = 0; e < this.userLeftCallbacks.length; e++) { var t = this.userLeftCallbacks[e], n = t.numberOfTimesToInvoke; (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback()) } r.stopAllTimers() }, callAfterTimeElapsedInSeconds: function (e, t) { r.timeElapsedCallbacks.push({ timeInSeconds: e, callback: t, pending: !0 }) }, checkState: function () { for (var e = 0; e < r.timeElapsedCallbacks.length; e++)r.timeElapsedCallbacks[e].pending && r.getTimeOnCurrentPageInSeconds() > r.timeElapsedCallbacks[e].timeInSeconds && (r.timeElapsedCallbacks[e].callback(), r.timeElapsedCallbacks[e].pending = !1); !1 === r.idle && r.currentIdleTimeMs > r.idleTimeoutMs ? (r.idle = !0, r.triggerUserHasLeftPage()) : r.currentIdleTimeMs += r.checkStateRateMs }, visibilityChangeEventName: void 0, hiddenPropName: void 0, listenForVisibilityEvents: function () { void 0 !== document.hidden ? (r.hiddenPropName = "hidden", r.visibilityChangeEventName = "visibilitychange") : void 0 !== document.mozHidden ? (r.hiddenPropName = "mozHidden", r.visibilityChangeEventName = "mozvisibilitychange") : void 0 !== document.msHidden ? (r.hiddenPropName = "msHidden", r.visibilityChangeEventName = "msvisibilitychange") : void 0 !== document.webkitHidden && (r.hiddenPropName = "webkitHidden", r.visibilityChangeEventName = "webkitvisibilitychange"), document.addEventListener(r.visibilityChangeEventName, function () { document[r.hiddenPropName] ? r.triggerUserHasLeftPage() : r.triggerUserHasReturned() }, !1), window.addEventListener("blur", function () { r.triggerUserHasLeftPage() }), window.addEventListener("focus", function () { r.triggerUserHasReturned() }), document.addEventListener("mousemove", function () { r.resetIdleCountdown() }), document.addEventListener("keyup", function () { r.resetIdleCountdown() }), document.addEventListener("touchstart", function () { r.resetIdleCountdown() }), window.addEventListener("scroll", function () { r.resetIdleCountdown() }), setInterval(function () { r.checkState() }, r.checkStateRateMs) }, websocket: void 0, websocketHost: void 0, setUpWebsocket: function (e) { if (window.WebSocket && e) { var t = e.websocketHost; try { r.websocket = new WebSocket(t), window.onbeforeunload = function () { r.sendCurrentTime(e.appId) }, r.websocket.onopen = function () { r.sendInitWsRequest(e.appId) }, r.websocket.onerror = function (e) { console && console.log("Error occurred in websocket connection: " + e) }, r.websocket.onmessage = function (e) { console && console.log(e.data) } } catch (e) { console && console.error("Failed to connect to websocket host.  Error:" + e) } } return this }, websocketSend: function (e) { r.websocket.send(JSON.stringify(e)) }, sendCurrentTime: function (e) { var t = { type: "INSERT_TIME", appId: e, timeOnPageMs: r.getTimeOnCurrentPageInMilliseconds(), pageName: r.currentPageName }; r.websocketSend(t) }, sendInitWsRequest: function (e) { var t = { type: "INIT", appId: e }; r.websocketSend(t) }, initialize: function (e) { var t = r.idleTimeoutMs || 30, n = r.currentPageName || "default-page-name", i = void 0, s = void 0; e && (t = e.idleTimeoutInSeconds || t, n = e.currentPageName || n, i = e.websocketOptions, s = e.initialStartTime), r.setIdleDurationInSeconds(t).setCurrentPageName(n).setUpWebsocket(i).listenForVisibilityEvents(), r.startTimer(void 0, s) } }; return r }, "undefined" != typeof module && module.exports ? module.exports = t() : "function" == typeof define && define.amd ? define([], function () { return e.TimeMe = t() }) : e.TimeMe = t() }).call(this);
+
+    TimeMe.initialize({
+        currentPageName: "task",
+        idleTimeoutInSeconds: 30
+    });
+</script>
+<!-- The ol big boy, jQ -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+<script>
+    function str2bool(s) {
+        return s === 'true';
+    }
+
+    $(document).ready(function () {
+        // settings
+        const MAX_CHARS = 6;
+
+        // Change action based on user input
+        $('#rot-rewrite').on('input', function (e) {
+            let txt = this.value;
+            $('.user-written-action').text(txt);
+        });
+
+        // Change action based on user input
+        $('#rot-judgment').on('input', function (e) {
+            let txt = this.value;
+            $('.user-written-judgment').text(txt);
+        });
+
+        // If the action is an experience (no agency), then we don't need much of the rest
+        // of the questions.
+        let agency_fwd_qs = [
+            'action-fwd-good',
+            'fwd-agree',
+            'fwd-legal',
+            'fwd-pressure',
+            'char-involved-fwd',
+            'fwd-hypothetical',
+        ]
+        $('input[name="agency-fwd"]').change(function () {
+            if ($('input[name="agency-fwd"]:checked').val() == 'agency') {
+                // agency
+                for (let fwd_q of agency_fwd_qs) {
+                    $('input[name="' + fwd_q + '"]').attr('required', 'true');
+                }
+                $('#has-agency-fwd').attr('style', 'display: block');
+            } else {
+                // experience
+                for (let fwd_q of agency_fwd_qs) {
+                    $('input[name="' + fwd_q + '"]').removeAttr('required');
+                }
+                $('#has-agency-fwd').attr('style', 'display: none');
+            }
+        });
+
+        let judgment_labels = {
+            '-2': 'very bad',
+            '-1': 'bad',
+            '0': 'expected / OK',
+            '1': 'good',
+            '2': 'very good',
+        }
+        let judgment_colors = {
+            '-2': 'dark-red',
+            '-1': 'red',
+            '0': 'black',
+            '1': 'green',
+            '2': 'dark-green',
+        }
+
+        // Update written descriptions of good/bad when the selection changes
+        $('input[name="action-fwd-good"]').change(function () {
+            let str_val = '' + $('input[name="action-fwd-good"]:checked').val();
+            let label = judgment_labels[str_val];
+            let color = judgment_colors[str_val];
+            let sel = $('span.user-judgment-fwd');
+            sel.removeClass().addClass('b user-judgment-fwd ' + color).text(label);
+        });
+
+        // Hide characters (list, checkbox) that don't exist.
+        let n_chars = parseInt($("input[name='n-characters']").val());
+        console.log(n_chars);
+        for (i = n_chars; i < MAX_CHARS; i++) {
+            // $('#char-list-char-' + i).attr('style', 'display: none');
+            $('#char-' + i + '-involved-general').attr('style', 'display: none');
+            $('#char-' + i + '-involved-fwd').attr('style', 'display: none');
+        }
+
+        // If "no one listed" is picked, hide the "hypothetical" question. Also,
+        // potentially display warning.
+        $('input[name="char-involved-fwd"]').change(function () {
+            let hide = $('input[name="char-involved-fwd"]:checked').val() == 'char-none';
+            if (hide) {
+                $('#section-hypothetical-fwd').attr('style', 'display: none');
+                $('input[name="fwd-hypothetical"]').removeAttr('required');
+            } else {
+                $('#section-hypothetical-fwd').attr('style', 'display: block');
+                $('input[name="fwd-hypothetical"]').attr('required', 'true');
+            }
+        });
+
+        // overall sections expand/collapse
+        let worklist = ['Instructions', 'Motivation', 'Examples', 'Feedback']
+        for (let w of worklist) {
+            var content = $('#body' + w);
+            var trigger = $('#collapseTrigger' + w);
+
+            if (content == null || trigger == null) {
+                continue;
+            }
+            if (str2bool(trigger.attr('start-hidden'))) {
+                content.hide();
+            }
+            trigger.click(function () {
+                $('#body' + w).toggle();
+                let isVisible = $('#body' + w).is(':visible');
+            });
+        }
+
+        $('#submitButton').click(function () {
+            try {
+                $('input[name=te]').attr('value', TimeMe.getTimeOnCurrentPageInSeconds());
+            } catch {
+
+            }
+
+            // NOTE: Can add validation here if desired.
+            return true;
+        });
+    });
+</script>
+
+<!-- HTML (finally!) -->
+
+<body>
+    <div class="container">
+
+        <!-- Debug element for displaying timing -->
+        <!-- <p id="timing-debug" style="position: absolute; top: 10; left: 10" class="f3 white bg-red">(unset)</p> -->
+
+        <!-- Instructions Card -->
+        <div class="card mb-3">
+
+            <!-- Card Heading -->
+            <a class="card-header" href="javascript:void(0);" id="collapseTriggerInstructions">
+                <strong>Instructions</strong>
+                <span class="ml1" id="collapseTextInstructions">(Click to expand/collapse) </span>
+                &nbsp;
+                (last modified: 3/26/20)
+            </a>
+
+            <!-- Card Content -->
+            <div class="card-body" id="bodyInstructions">
+
+                <p class="measure-wide f5">
+                    Welcome! In this task, we're dissecting <span class="b">rules-of-thumb (ROTs)</span>
+                    about social norms that other people have written.
+                </p>
+
+                <p class="measure-wide f3">
+                    Here's the big picture of what we're doing:
+                </p>
+
+                <object data="https://maxwellforbes.com/static/rot-details-diagram.svg" type="image/svg+xml"
+                    style="max-width: 100%; width: 800px;" class="mb4">
+                </object>
+
+                <p class="measure-wide f5 mb4">
+                    This task has many components. The instructions are written in
+                    several parts. I know it's a lot to remember, so I've included each
+                    section of the instructions in the main task. Wherever you
+                    see ►&nbsp;<span class="i">Help</span> in the main task, you can click it
+                    to check out that question's guide and examples.
+                </p>
+
+                <div class="br4 pa3 ma3 bg-light-yellow mw6">
+                    <p class="f4 ttu tracked navy mv0">information</p>
+                    <p class="f5 navy mt1 mb0">
+                        I've posted the
+                        <a href="https://maxwellforbes.com/static/rot-details-instructions.html" target="_blank">
+                            full instructions
+                        </a> on its own page. Some workers find it useful to keep all of
+                        the instructions open in another window to the side of the task.
+                        This way you can reference parts of the instructions without
+                        clicking "Help."
+                        <br /><br />
+                        I'm also posting
+                        <a href="https://maxwellforbes.com/static/rot-breakdown-feedback.html" target="_blank">
+                            all of my batch feedback messages
+                        </a> on a single page. If you're joining the task now or have
+                        missed any batches, feel free to check out that page. It's kind
+                        of like an "extended FAQ," continuously updated with feedback
+                        and questions!
+                    </p>
+                </div>
+
+                <div class="br4 pa3 ma3 bg-lightest-blue mw7">
+                    <p class="f4 ttu tracked mv0">updates</p>
+                    <p class="f5 navy mt1 mb0">
+                    <ul>
+                        <li class="mb2">
+                            3/26/20 &mdash; I posted three pieces of feedback, which you
+                            can read at the
+                            <a href="https://maxwellforbes.com/static/rot-breakdown-feedback.html#200326">
+                                ROT Breakdown: Batch feedback for March 26
+                            </a>. They cover the following topics:
+                            <ul>
+                                <li>
+                                    For the ACTION, making sure it's phrased as
+                                    something you can <span class="i">do.</span>
+                                </li>
+                                <li>
+                                    Remember that "if" often turns into "when" for
+                                    turning ROT into ACTION.
+                                </li>
+                                <li>
+                                    If you find yourself clicking the "> 99%"
+                                    agreement option all of the time, consider if
+                                    this is really <span class="i">totally</span>
+                                    universal!
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="mb2">
+                            3/24/20 &mdash; Small update and more questions answered!
+                            <ul>
+                                <li>
+                                    For power users: There is now an <span class="code">rot-input</span>
+                                    CSS class on all <span class="code"><div></span> HTML elements
+                                    that contain inputs for this HIT, except for the
+                                    "bad ROT" button (which is used rarely).
+                                </li>
+                                <li>
+                                    I answered several more questions like: <span class="i">The action is being done
+                                        by multiple
+                                        people. Who do I pick?</span> Check out my
+                                    answers in the
+                                    <a href="https://maxwellforbes.com/static/rot-breakdown-feedback.html#200324">ROT
+                                        Breakdown: Batch feedback for March 24</a>.
+                                </li>
+                                <li>
+                                    COMPLETELY OPTIONAL: If you'd like, you can mark
+                                    ROTs that you think are affected by the
+                                    Coronavirus by writing "coronavirus" (with no
+                                    quotes) in the feedback box for the ROT.
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="mb2">
+                            3/22/20 &mdash; More questions answered today! Read the full update here:
+                            <a href="https://maxwellforbes.com/static/rot-breakdown-feedback.html#200322">ROT
+                                Breakdown: Batch Feedback for March 22</a>. There's a
+                            new "probably not" button, but you probably won't need
+                            it much (check out the link for more). I answered these
+                            questions:
+                            <ul>
+                                <li>
+                                    Should I try to mark what I think other people will mark?
+                                </li>
+                                <li>
+                                    How do I know if the narrator is the one doing the action?
+                                </li>
+                                <li>
+                                    How do we pick the judgment for "it is what it is" ROTs?
+                                </li>
+                                <li>
+                                    A lot of the situations use the word "wanting" --- how do we mark whether the
+                                    person did the action?
+                                </li>
+                        </li>
+                    </ul>
+                    </li>
+                    <li class="mb2">
+                        3/20/20 &mdash; Another big update today! Read the full update here:
+                        <a href="https://maxwellforbes.com/static/rot-breakdown-feedback.html#200320">ROT
+                            Breakdown: Batch Feedback for March 20</a>. The key points are:
+                        <ul>
+                            <li>
+                                <span class="b">Transparency:</span>
+                                When possible, I'll send out group and
+                                individualized statistics, along with
+                                individualized examples, in your batch feedback
+                                email. This will include areas where you
+                                disagreed most with other workers, and a couple
+                                example questions from those areas.
+                            </li>
+                            <li>
+                                <span class="b">Moral Foundations examples for real-world ROTs:</span>
+                                I annotated a bunch of the ROTs from the last
+                                batch with my decisions for moral foundations. I
+                                also wrote out explanations for why I labeled
+                                them that way, and some common pitfalls I saw in
+                                how people labeled. Please check them out at the
+                                link above!
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb2">
+                        3/18/20 &mdash; Many updates today! I added a new page
+                        where I'll post all batch feedback messages that I send
+                        out! Check it out here:
+                        <a href="https://maxwellforbes.com/static/rot-breakdown-feedback.html">ROT
+                            Breakdown: Batch Feedback</a>. You can think of this
+                        like an extended FAQ. I answered all of these questions there:
+
+                        <ul>
+                            <li>What do I do about ROTs that don't have a judgment?</li>
+                            <li>What do I do about vague or confusing ROTs?</li>
+                            <li>How should I rate actions that affect the doer of the action positively?</li>
+                            <li>Some ROTs don't fit into any moral foundation categories!</li>
+                            <li>When rewriting the ROT, do we include the subject in the action?</li>
+                            <li>Can we disagree with the original ROT in picking our judgment?</li>
+                            <li>Should we be using the situation to help us answer the ROT categorization or
+                                Moral Foundations?</li>
+                            <li>How should we handle ROTs with "if" in them?</li>
+                            <li>Is there always a narrator?</li>
+                            <li>Will there be bonuses like there were with writing ROTs?</li>
+                        </ul>
+                    </li>
+                    <li class="mb2">
+                        3/13/20 &mdash; Please be thoughtful and take your time
+                        when just starting this task. <span class="b">I am
+                            planning to release tens or hundreds of thousands of
+                            these HITs</span>, and the pay rate is set at what I
+                        believe will make you > $15/hr once you're
+                        comfortable with the task. But early on, you'll need to
+                        refer back to instructions and think a bit more. If
+                        people start rushing immediately, I'll need to publish
+                        duplicate HITs to check quality even more carefully,
+                        re-publish make-up HITs for ones people rushed, lower
+                        the pay for the faster rate, and release fewer HITs in
+                        the long run, which ends up hurting everyone! <span class="i">Thank you</span> so much!
+                    </li>
+                    <li>
+                        3/13/20 &mdash; Just starting out this task! I'm still
+                        working out the kinks, so please expect the pay rate and
+                        instructions to be in flux for a while. Thank you for your
+                        patience!
+                    </li>
+                    </ul>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>

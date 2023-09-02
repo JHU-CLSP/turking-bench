@@ -2,9 +2,5 @@
 src/Turkle/
 /src/Turkle/*
 src/Turkle/*
-/tasks/*/batch.csv
-tasks/*/batch.csv
-*/tasks/*/batch.csv
-*/batch.csv
 /tasks/*/input.csv
 tasks/*/input.csv

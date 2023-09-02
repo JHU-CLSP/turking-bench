@@ -3,7 +3,7 @@
 
                     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
-                    <script type='text/javascript' src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script>
+
 
                     <!-- BOOTSTRAP CSS -->
                     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -396,7 +396,7 @@
 
 		    <!-- MTURK INPUT START -->
                     <div class="col-12 mt-5 mb-1 border-top">
-                      <form name='mturk_form' method='post' id='mturk_form' action='https://www.mturk.com/mturk/externalSubmit'>
+                      <form name='mturk_form' method='post' id='mturk_form' >
                         <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
                         <input type='hidden' name='ee' id='ee'/>
 
@@ -406,7 +406,7 @@
                             <div class="col-5 mt-3 offset-2">
                               <div class="col-12"><em>(Click on the image to view the original.)</em></div>
                               <a href="${image}" data-lightbox="image-reasonable" data-title="Full-size image">
-                                <img src="${image-boxed}" style="max-width:100%" class="source_image"/>
+                                <img src="${image_boxed}" style="max-width:100%" class="source_image"/>
                               </a>
                             </div>
                           </div>

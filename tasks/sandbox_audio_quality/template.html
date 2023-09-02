@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<body>
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<h1 align="center">Rate the quality of synthesized audio samples</h1>
+<p>Your task is to evaluate and compare the quality of the two given audio recordings on the scale between 1-100, where
+    100 is the best quality and 0 is the worst. In other words, which one sounds better?
+{#    Please read <a#}
+{#            href="https://dl.noahmt.com/codec/instructions/index.html" target="_blank">these instructions</a> before#}
+{#    starting the task. #}
+    This task typically requires approximately 120 seconds to complete.</p>
+<p><b>IMPORTANT:</b> do NOT work on this HIT without carefully reading the instructions first, even if you have worked
+    on our HITs in the past, as instructions often change between experiments.</p>
+</br>
+</br>
+</br>
+<crowd-form>
+    <div id="errorBox"></div>
+
+    <div>
+        <h3>Headphones</h3>
+        <p>I will listen to the files with...</p>
+        <crowd-radio-group>
+            <crowd-radio-button name="headphones1" value="over-the-ear">Over-the-ear headphones</crowd-radio-button>
+            <crowd-radio-button name="headphones2" value="in-ear">In-ear headphones</crowd-radio-button>
+            <crowd-radio-button name="headphones3" value="desktop">Desktop speakers</crowd-radio-button>
+            <crowd-radio-button name="headphones4" value="laptop">Laptop speakers</crowd-radio-button>
+        </crowd-radio-group>
+    </div>
+    <div>
+        <h3> Question 1 </h3>
+        <p>Please rate the following sound file.</p>
+        <audio controls>
+            <source src=https://web-instruct.s3.amazonaws.com/audio_quality_files/${audio1} type="audio/mpeg">
+        </audio>
+        <crowd-slider style="width: 800px; height: 20px;" name="slider1=" min="0" max="100" step="5" value="0"
+                      editable required pin/>
+    </div>
+    <div>
+        <h3> Question 2 </h3>
+        <p>Please rate the following sound file.</p>
+        <audio controls>
+            <source src=https://web-instruct.s3.amazonaws.com/audio_quality_files/${audio2} type="audio/mpeg">
+        </audio>
+        <crowd-slider style="width: 800px; height: 20px;" name="slider2" min="0" max="100" step="5" value="0"
+                      editable required pin/>
+    </div>
+    <div>
+        <h3> Question 3 </h3>
+        <p>Please rate the following sound file.</p>
+        <audio controls>
+            <source src=https://web-instruct.s3.amazonaws.com/audio_quality_files/${audio3} type="audio/mpeg">
+        </audio>
+        <crowd-slider style="width: 800px; height: 20px;" name="slider3" min="0" max="100" step="5"
+                      value="0" editable required pin/>
+    </div>
+    <div>
+        <h3> Question 4 </h3>
+        <p>Please rate the following sound file.</p>
+        <audio controls>
+            <source src=https://web-instruct.s3.amazonaws.com/audio_quality_files/${audio4} type="audio/mpeg">
+        </audio>
+        <crowd-slider style="width: 800px; height: 20px;" name="slider4" min="0" max="100" step="5"
+                      value="0" editable required pin/>
+    </div>
+    <div>
+        <h3> Question 5 </h3>
+        <p>Please rate the following sound file.</p>
+        <audio controls>
+            <source src=https://web-instruct.s3.amazonaws.com/audio_quality_files/${audio5} type="audio/mpeg">
+        </audio>
+        <crowd-slider style="width: 800px; height: 20px;" name="slider5" min="0" max="100" step="5"
+                      value="0" editable required pin/>
+    </div>
+    <div>
+        <h3> Question 6 </h3>
+        <p>Please rate the following sound file.</p>
+        <audio controls>
+            <source src=https://web-instruct.s3.amazonaws.com/audio_quality_files/${audio6} type="audio/mpeg">
+        </audio>
+        <crowd-slider style="width: 800px; height: 20px;" name="slider6" min="0" max="100" step="5" value="0"
+                      editable required pin/>
+    </div>
+    </br>
+    </br>
+    </br>
+    <div>
+        <p>Please help us improve this HIT by including any questions and/or comments (optional):</p>
+        <crowd-text-area name="comments" rows="10" placeholder="Write comments here."></crowd-text-area>
+    </div>
+
+      <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Submit">
+      </div>
+
+
+</crowd-form>
+
+<script>
+    document.querySelector('crowd-form').onsubmit = function (e) {
+        var sliders = document.getElementsByTagName("crowd-slider");
+
+        for (var i = 0; i < sliders.length; i++) {
+            if (sliders[i].value === 0) {
+                e.preventDefault();
+                errorBox.innerHTML = '<crowd-alert type="error" dismissible>You must choose a value between 1-100.</crowd-alert>';
+                errorBox.scrollIntoView();
+                return;
+            }
+        }
+
+        if (document.getElementsByTagName("crowd-radio-button")[0].ariaSelected == "false" &&
+            document.getElementsByTagName("crowd-radio-button")[1].ariaSelected == "false" &&
+            document.getElementsByTagName("crowd-radio-button")[2].ariaSelected == "false" &&
+            document.getElementsByTagName("crowd-radio-button")[3].ariaSelected == "false") {
+            e.preventDefault();
+            errorBox.innerHTML = '<crowd-alert type="error" dismissible>You must specify which headphones you are using.</crowd-alert>';
+            errorBox.scrollIntoView();
+            return;
+        }
+    };
+</script>
+
+</body>
+</html>

@@ -19,6 +19,7 @@ import requests
 from rouge_score import rouge_scorer
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
@@ -54,6 +55,38 @@ class Evaluation:
         self.default_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
         self.xlingual_tokenizer = GPTTokenizer()
         self.xlingual_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], tokenizer=self.xlingual_tokenizer)
+
+    @staticmethod
+    def load_task_names(setup: str):
+        """
+        This function returns the list of tasks for a given setup.
+        """
+
+        # load all tasks
+        all_tasks = os.listdir("../tasks")
+
+        if setup == 'all':
+            return all_tasks
+        else:
+            with open('../data/splits/evaluation_tasks.txt', 'r') as f:
+                test = f.read().splitlines()
+
+            with open('../data/splits/subjective_evaluation_tasks.txt', 'r') as f:
+                subjective_test = f.read().splitlines()
+
+            # make sure that the splits are exclusive
+            assert len(set(test).intersection(set(subjective_test))) == 0, f"{Fore.RED}The test and subjective test " \
+                                                                           f"splits are not exclusive\n: test: {test}\nsubjective_test: {subjective_test}"
+
+            if setup == 'test':
+                return test
+            elif setup == 'subjective_test':
+                return subjective_test
+            elif setup == 'train':
+                # all tasks minue test and subjective test
+                return list(set(all_tasks) - set(test) - set(subjective_test))
+            else:
+                raise Exception(f"{Fore.RED}Invalid setup: {setup}")
 
     @staticmethod
     # adapted the flowing from Squad v1.1 evaluation, without removing the articles.
@@ -219,7 +252,8 @@ class Input:
 
         # exclude special inputs
         exclude_input_names = [
-            'csrfmiddlewaretoken'  # hidden field automatically added external css files
+            'csrfmiddlewaretoken',  # hidden field automatically added external css files
+            'worker_ip'  # hidden field for bookkeeping
         ]
         inputs = [input for input in inputs if input.get('name') not in exclude_input_names]
 
@@ -686,7 +720,7 @@ def read_config(file):
 task_ids = requests.get(f"{TURKLE_URL}/get_tasks/").json()
 
 
-def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
+def enumerate_tasks(tasks: List[str], batch: bool, maximum: int, mode: str, input_format: str, image_format: str):
     """
     Enumerate the tasks and their instances
     :param tasks: list of tasks
@@ -695,8 +729,21 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
     :param mode: train or test
     :param input_format: text or image. This matters for "training" mode, where we need to save the inputs on disk.
     """
-    driver = webdriver.Firefox()
-    # driver = webdriver.Chrome()
+
+    # TODO: make the seleciton of headless (no visual browser for faster processing) a parameter
+    options = Options()
+    options.headless = True
+
+    # TODO: make the selection of driver a parameter
+    # check what the operator system is. If it is Linux, create chrome driver. Otherwise create a firefox driver
+    # import platform
+
+    import platform
+    if platform.system() == 'Linux':
+        driver = webdriver.Chrome(options=options)
+    else:
+        driver = webdriver.Firefox()
+
     actions = MyActions(driver)
     results = {}
     driver.get(TURKLE_URL)
@@ -704,6 +751,13 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
     task_field_statistics = {}
     for task_name in tqdm(tasks):
         print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
+        # TODO: we gotta drop this after adding gold labels to the sandbox tasks
+        if 'sandbox' in task_name:
+            continue
+        if task_name not in task_ids.keys():
+            print(f"{Fore.RED}Task `{task_name}` is not available on Turkle.")
+            print("Available tasks are:", task_ids.keys())
+            continue
         instance_ids = task_ids[task_name]
         first_instance_id = min(instance_ids)
         print("First instance id:", first_instance_id)
@@ -734,6 +788,10 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
             for instance_id in instance_ids:
                 url = f'{TURKLE_URL}/task/{instance_id}/iframe/'
                 driver.get(url)
+
+                # TODO: check if all the files (images, videos, audio, css, etc.) in the HTML are accessible
+                # TODO: find all the URLS in the HTML and check if they are accessible
+
                 # evaluation = Evaluation(driver)
                 if batch:
                     df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
@@ -805,11 +863,12 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
                 else:
                     inputs = Input.extract_input_values_from_url(url)
 
+                print(" --> inputs: {}".format(inputs))
+
                 answers_map = Evaluation.retrieve_gold_labels(
                     task_name, row_number, [i['input_name'] for i in inputs]
                 )
 
-                print(" --> inputs: {}".format(inputs))
                 print(" --> input labels: {}".format(answers_map))
 
                 # for counting overall statistics
@@ -886,13 +945,18 @@ def enumerate_tasks(tasks, batch, maximum, mode, input_format, image_format):
 
     print("Now let's print the field statistics")
 
+    # save task_field_statistics (hashmap of hashmaps mapped to integers) as a csv file
+    # first turn this hashmap into data frame
+    # then save it as a csv file
+    results = pd.DataFrame.from_dict(task_field_statistics)
+    results.to_csv('task_field_statistics.csv', index=True)
+
     # Close the driver
     driver.quit()
 
 
 if __name__ == "__main__":
-    with open('../data/splits/evaluation_tasks_tmp.txt', 'r') as f:
-        tasks = f.read().splitlines()
+    tasks = Evaluation.load_task_names(setup='all')  # TODO: receive setup from input
     config = read_config('config.ini')
     batch = config.getboolean('DEFAULT', 'batch')  # TODO: what is this?
     max_instance_count = config.getint('DEFAULT', 'num')

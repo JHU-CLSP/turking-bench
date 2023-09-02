@@ -1,0 +1,208 @@
+
+<html><head><title>HIT</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body><script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Classification</title>
+    <style>
+        /* Your styles here */
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .pdf-row {
+            display: flex;
+            justify-content: center;
+            /* Center the content horizontally */
+            width: 100%;
+            gap: 20px;
+            /* Create a gap between the PDF containers */
+            margin-bottom: 20px;
+        }
+
+        .pdf-container {
+            flex: 1;
+            /* Distribute available space equally */
+            padding: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            object-fit: contain;
+        }
+
+        .dropdowns {
+            display: flex;
+            flex-wrap: wrap;
+            /* Wrap items into multiple rows */
+            justify-content: space-between;
+            /* Distribute items evenly along the row */
+            width: 100%;
+            /* Make dropdowns take up the full width */
+            max-width: 800px;
+            /* Set a maximum width for dropdowns */
+            padding: 10px;
+        }
+
+        .dropdown-item {
+            width: 50%;
+            /* Each item occupies two columns in a single row */
+            box-sizing: border-box;
+            padding: 5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects">
+
+    <div class="container">
+        <short-instructions>
+            <p>Please select the corresponding values in the dropdown menus down below, given the following caption:</p>
+            <p><strong>${caption}</strong></p>
+            <p>You can zoom in and out of the pictures by hovering over them with the mouse and pressing the magnifying glass symbol.</p>
+        </short-instructions>
+
+
+        <div class="pdf-row">
+            <div class="pdf-container">
+                <p class="image-label">Image 1</p>
+                <iframe src="${fig1}"></iframe>
+            </div>
+            <div class="pdf-container">
+                <p class="image-label">Image 2</p>
+                <iframe src="${fig2}"></iframe>
+            </div>
+        </div>
+
+        <div class="pdf-row">
+            <div class="pdf-container">
+                <p class="image-label">Image 3</p>
+                <iframe src="${fig3}"></iframe>
+            </div>
+            <div class="pdf-container">
+                <p class="image-label">Image 4</p>
+                <iframe src="${fig4}"></iframe>
+            </div>
+        </div>
+
+        <div class="dropdowns">
+            <!-- Dropdowns for Group 1 -->
+            <div class="dropdown-item">
+                <p>Select the best image:</p>
+                <select name="group1-best">
+                    <option value="">Select best image</option>
+                    <option value="${fig1}">Image 1</option>
+                    <option value="${fig2}">Image 2</option>
+                    <option value="${fig3}">Image 3</option>
+                    <option value="${fig4}">Image 4</option>
+                    <!-- Add more options for best image -->
+                </select>
+            </div>
+
+            <!-- Dropdowns for Group 1 -->
+            <div class="dropdown-item">
+                <p>Select the worst image:</p>
+                <select name="group1-worst">
+                    <option value="">Select worst image</option>
+                    <option value="${fig1}">Image 1</option>
+                    <option value="${fig2}">Image 2</option>
+                    <option value="${fig3}">Image 3</option>
+                    <option value="${fig4}">Image 4</option>
+                    <!-- Add more options for worst image -->
+                </select>
+            </div>
+
+            <!-- Dropdowns for Group 1 -->
+            <div class="dropdown-item">
+                <p>Select the best image quality:</p>
+                <select name="group1-best-quality">
+                    <option value="">Select best image quality</option>
+                    <option value="${fig1}">Image 1</option>
+                    <option value="${fig2}">Image 2</option>
+                    <option value="${fig3}">Image 3</option>
+                    <option value="${fig4}">Image 4</option>
+                    <!-- Add more options for best image -->
+                </select>
+            </div>
+
+            <div class="dropdown-item">
+                <p>Select the worst image quality:</p>
+                <select name="group1-worst-quality">
+                    <option value="">Select worst image quality</option>
+                    <option value="${fig1}">Image 1</option>
+                    <option value="${fig2}">Image 2</option>
+                    <option value="${fig3}">Image 3</option>
+                    <option value="${fig4}">Image 4</option>
+                    <!-- Add more options for worst image -->
+                </select>
+            </div>
+            <!-- Add more dropdowns for other groups -->
+        </div>
+    </div>
+    </div>
+    </div>
+
+<input type="hidden" name="Images" id="answerInput">
+
+    </crowd-classifier>
+</crowd-form>
+
+<!-- check if all dropdown menus are filled out -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("crowd-form");
+        const selects = form.querySelectorAll("select");
+
+        form.addEventListener("submit", function (event) {
+            for (const select of selects) {
+                if (select.value === "") {
+                    event.preventDefault(); // Prevent form submission
+                    alert("Please fill out all dropdown menus.");
+                    return;
+                }
+            }
+        });
+    });
+</script>
+
+</body>
+
+</html></body></html>
