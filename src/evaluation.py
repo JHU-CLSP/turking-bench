@@ -252,7 +252,8 @@ class Input:
 
         # exclude special inputs
         exclude_input_names = [
-            'csrfmiddlewaretoken'  # hidden field automatically added external css files
+            'csrfmiddlewaretoken',  # hidden field automatically added external css files
+            'worker_ip'  # hidden field for bookkeeping
         ]
         inputs = [input for input in inputs if input.get('name') not in exclude_input_names]
 
@@ -859,11 +860,12 @@ def enumerate_tasks(tasks: List[str], batch: bool, maximum: int, mode: str, inpu
                 else:
                     inputs = Input.extract_input_values_from_url(url)
 
+                print(" --> inputs: {}".format(inputs))
+
                 answers_map = Evaluation.retrieve_gold_labels(
                     task_name, row_number, [i['input_name'] for i in inputs]
                 )
 
-                print(" --> inputs: {}".format(inputs))
                 print(" --> input labels: {}".format(answers_map))
 
                 # for counting overall statistics
