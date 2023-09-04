@@ -50,4 +50,4 @@ jobs:
           echo 'Upload the tasks'
           python 3.upload_tasks.py
           echo 'run evaluation'
-          python evaluation.py
+          python 4.run_evaluation.py
