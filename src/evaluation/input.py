@@ -6,6 +6,7 @@ class Input:
     def __init__(self, url, input_name):
         self.url = url
         self.input_name = input_name
+        self.task_name = task_name
 
     def get_html(self):
         response = requests.get(self.url)

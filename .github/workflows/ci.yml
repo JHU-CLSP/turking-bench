@@ -44,10 +44,10 @@ jobs:
           echo 'List the files in the current directory'
           ls -l
           echo 'Clone Turkle'
-          ./1.run_website.sh & sleep 30
+          ./1_run_website.sh & sleep 30
           echo 'Generate the input files'
-          python 2.generate_input_csv.py
+          python 2_generate_input_csv.py
           echo 'Upload the tasks'
-          python 3.upload_tasks.py
+          python 3_upload_tasks.py
           echo 'run evaluation'
           python test.py

@@ -240,7 +240,7 @@ class Evaluation:
         task_field_statistics = {}
         for task_name in tqdm(tasks):
             print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
-            # TODO: we gotta drop this after adding gold labels to the sandbox tasks
+            # TODO we gotta drop this after adding gold labels to the sandbox tasks
             if 'sandbox' in task_name:
                 continue
             if task_name not in Evaluation.task_ids.keys():

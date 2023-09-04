@@ -14,7 +14,7 @@ class Baseline:
     """
     This is the base class for all baselines.
     """
-    def solve(self, task_name: str, input: Input, driver, **kwargs):
+    def solve(self, input: Input, driver, **kwargs):
         """
         This function solves the task given the input name and type.
         """
@@ -43,7 +43,7 @@ class Baseline:
 
 class NewBaseline(Baseline):
 
-    def solve_task(self, task_name: str, input: Input, driver, **kwargs):
+    def solve_task(self, input: Input, driver, **kwargs):
         screenshot = Input.take_screenshot(driver)
         full_screenshot = Input.take_full_screenshot(driver)
         html = input.get_html()
@@ -58,11 +58,10 @@ class OracleBaseline(Baseline):
     This baseline uses the gold labels to solve the task.
     """
 
-    def solve(self, task_name: str, input: Input, driver, **kwargs):
+    def solve(self, input: Input, driver, **kwargs):
         # get the index of the input
         index = kwargs['index']
-
-        answers_map = evaluation.Evaluation.retrieve_gold_labels(task_name, index, [input.input_name])
+        answers_map = evaluation.Evaluation.retrieve_gold_labels(input.task_name, index, [input.input_name])
         answers = answers_map[input.input_name]
         for answer in answers:
             if answer and answer != '{}':
@@ -73,7 +72,7 @@ class RandomBaseline(Baseline):
     """
     This baseline randomly selects an action from the list of actions that can be performed on a HTML page.
     """
-    def solve(self, task_name: str, input: Input, driver, **kwargs):
+    def solve(self, input: Input, driver, **kwargs):
         input_element = driver.find_element(By.NAME, input.input_name)
         input_type = input.input_type
         input_name = input.input_name
