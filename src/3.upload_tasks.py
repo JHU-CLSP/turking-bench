@@ -37,6 +37,9 @@ for root, dirs, _ in os.walk('../tasks'):
         temp = ''
         csvpath = ''
         dir_path = os.path.join(root, dir)
+        if "batch-" in dir:
+            # skip because this is just a directory to store the results of human evaluation
+            continue
         for file in os.listdir(dir_path):
             if file.endswith('.html'):
                 temp = os.path.join(dir_path, file)

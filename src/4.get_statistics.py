@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 from collections import Counter
 import chardet
 
+# TODO: this should be merged into evaluation file
 
 def update_input_type_counts(html_file, input_names, input_type_counts):
     with open(html_file, 'rb') as f:
