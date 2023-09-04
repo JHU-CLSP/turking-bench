@@ -135,9 +135,10 @@ class Evaluation:
         distinct_rows = df[cols].drop_duplicates()
 
         # ensure that the number of unique tasks is exactly the same as the number of tasks in the batch
-        assert len(distinct_rows) == len(Evaluation.task_ids[task_name]), f"The number of unique tasks {len(distinct_rows)} is " \
-                                                               f"not the same as the number of tasks in the batch: " \
-                                                               f"{len(Evaluation.task_ids[task_name])}."
+        assert len(distinct_rows) == len(
+            Evaluation.task_ids[task_name]), f"The number of unique tasks {len(distinct_rows)} is " \
+                                             f"not the same as the number of tasks in the batch: " \
+                                             f"{len(Evaluation.task_ids[task_name])}."
 
         assert instance_index <= len(
             distinct_rows), f"The instance index {instance_index} is out of range: {len(distinct_rows)}."
@@ -201,9 +202,6 @@ class Evaluation:
             return scores
         else:
             raise Exception(f"{Fore.RED}to be implemented")
-
-
-
 
     @staticmethod
     def read_config(file):
@@ -422,7 +420,8 @@ class Evaluation:
                         avg_score = sum(scores) / len(scores)
                         # TODO: check if we can safely change the "projects" in the following lines to tasks
                         df = pd.concat(
-                            [df, pd.DataFrame({'project': [task_name], 'input_type': [input_type], 'score': [avg_score]})],
+                            [df,
+                             pd.DataFrame({'project': [task_name], 'input_type': [input_type], 'score': [avg_score]})],
                             ignore_index=True)
 
                 if 'project' not in df.columns:
@@ -435,6 +434,9 @@ class Evaluation:
                 df = df.pivot(index='project', columns='input_type', values='score')
                 df.to_csv('oracle_baseline_scores.csv', index=True)
 
+        # Close the driver
+        driver.quit()
+
         print("Now let's print the field statistics")
 
         # save task_field_statistics (hashmap of hashmaps mapped to integers) as a csv file
@@ -443,10 +445,14 @@ class Evaluation:
         results = pd.DataFrame.from_dict(task_field_statistics)
         results.to_csv('task_field_statistics.csv', index=True)
 
-        # Close the driver
-        driver.quit()
-
-
+        print("----------------------------------------------")
+        print(f'Number of tasks: {len(task_field_statistics.keys())}')
+        print("----------------------------------------------")
+        print(f'Number of fields: {len(aggregate_field_statistics.keys())}')
+        print("----------------------------------------------")
+        print(f'Overall field statistics: {aggregate_field_statistics}')
+        print("----------------------------------------------")
+        print(f'Field statistics per task: {task_field_statistics}')
 
 
 if __name__ == "__main__":
