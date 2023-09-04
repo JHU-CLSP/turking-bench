@@ -7,7 +7,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from evaluation.actions import MyActions
 from evaluation.input import Input
-from 4.run_evaluation import Evaluation
+# from 4.run_evaluation import Evaluation
+evaluation = __import__('4_run_evaluation')
 
 class Baseline:
     """
@@ -30,6 +31,16 @@ class Baseline:
         action_list = [(method, getattr(MyActions, method).__doc__) for method in action_list]
         return action_list
 
+    def get_encoded_action_list(self):
+        actions = self.get_action_list()
+        # encode the actions as a string
+        actions = '\n'.join([f"{action[0]}: {action[1]}" for action in actions])
+        return f"""
+        Our job is to solve a bunch of web-based tasks. 
+        Below is a list of actions that can be performed on a HTML page.
+        {actions}
+        """
+
 class NewBaseline(Baseline):
 
     def solve_task(self, task_name: str, input: Input, driver, **kwargs):
@@ -51,7 +62,7 @@ class OracleBaseline(Baseline):
         # get the index of the input
         index = kwargs['index']
 
-        answers_map = Evaluation.retrieve_gold_labels(task_name, index, [input.input_name])
+        answers_map = evaluation.Evaluation.retrieve_gold_labels(task_name, index, [input.input_name])
         answers = answers_map[input.input_name]
         for answer in answers:
             if answer and answer != '{}':

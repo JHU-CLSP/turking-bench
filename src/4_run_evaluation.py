@@ -41,11 +41,25 @@ class Evaluation:
         self.default_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
         self.xlingual_tokenizer = GPTTokenizer()
         self.xlingual_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], tokenizer=self.xlingual_tokenizer)
+        self.driver = self.create_driver()
+        self.actions = MyActions(self.driver)
 
     # as soon as the code is loaded, we look for alignnent between the task names and their ids
     task_ids = requests.get(f"{TURKLE_URL}/get_tasks/").json()
 
-    @staticmethod
+    def create_driver(self):
+        # TODO: make the seleciton of headless (no visual browser for faster processing) a parameter
+        options = Options()
+        options.headless = True
+
+        import platform
+        if platform.system() == 'Linux':
+            driver = webdriver.Chrome(options=options)
+        else:
+            driver = webdriver.Firefox()
+
+        return driver
+
     def load_task_names(setup: str):
         """
         This function returns the list of tasks for a given setup.
@@ -209,8 +223,7 @@ class Evaluation:
         config.read(file)
         return config
 
-    @staticmethod
-    def enumerate_tasks(tasks: List[str], batch: bool, maximum: int, mode: str, input_format: str, image_format: str):
+    def enumerate_tasks(self, tasks: List[str], batch: bool, maximum: int, mode: str, input_format: str, image_format: str):
         """
         Enumerate the tasks and their instances
         :param tasks: list of tasks
@@ -220,23 +233,9 @@ class Evaluation:
         :param input_format: text or image. This matters for "training" mode, where we need to save the inputs on disk.
         """
 
-        # TODO: make the seleciton of headless (no visual browser for faster processing) a parameter
-        options = Options()
-        options.headless = True
 
-        # TODO: make the selection of driver a parameter
-        # check what the operator system is. If it is Linux, create chrome driver. Otherwise create a firefox driver
-        # import platform
-
-        import platform
-        if platform.system() == 'Linux':
-            driver = webdriver.Chrome(options=options)
-        else:
-            driver = webdriver.Firefox()
-
-        actions = MyActions(driver)
         results = {}
-        driver.get(TURKLE_URL)
+        self.driver.get(TURKLE_URL)
         aggregate_field_statistics = {}  # We store the stats related to the field types/frequency here
         task_field_statistics = {}
         for task_name in tqdm(tasks):
@@ -456,11 +455,12 @@ class Evaluation:
 
 
 if __name__ == "__main__":
-    tasks = Evaluation.load_task_names(setup='all')  # TODO: receive setup from input
-    config = Evaluation.read_config('config.ini')
+    eval = Evaluation()
+    tasks = eval.load_task_names(setup='all')  # TODO: receive setup from input
+    config = eval.read_config('config.ini')
     batch = config.getboolean('DEFAULT', 'batch')  # TODO: what is this?
     max_instance_count = config.getint('DEFAULT', 'num')
     mode = config.get('DEFAULT', 'mode')
     input_format = config.get('DEFAULT', 'input_format')
     image_format = config.get('DEFAULT', 'image_format', fallback='full_page')
-    Evaluation.enumerate_tasks(tasks, batch, max_instance_count, mode, input_format, image_format)
+    eval.enumerate_tasks(tasks, batch, max_instance_count, mode, input_format, image_format)
