@@ -3,6 +3,9 @@ from bs4 import BeautifulSoup
 from colorama import init as colorama_init
 from colorama import Fore
 import configparser
+from evaluation.actions import MyActions
+from evaluation.input import Input
+from evaluation import baselines
 import json
 import os
 import pandas as pd
@@ -16,9 +19,7 @@ import string
 from transformers import AutoTokenizer
 from tqdm import tqdm
 from typing import List
-from evaluation.actions import MyActions
-from evaluation.input import Input
-from evaluation import baselines
+import numpy as np
 
 TURKLE_URL = "http://localhost:8000"
 
@@ -236,7 +237,8 @@ class Evaluation:
         # in the original dataframe "df", select all the rows that correspond to the selected "row"
         # and then select the columns that start with "Answer."
         df_subset = df[df[cols].eq(row).all(1)]
-        answers_map = {input_name: df_subset[f"Answer.{input_name}"].tolist() for input_name in input_names}
+        answers_map = {input_name: df_subset.get(f"Answer.{input_name}", np.array([])).tolist() for input_name in
+                       input_names}
 
         # Note: we explicitly do not exclude "nan" values (empty cells) because sometimes the correct action is to leave
         # the field empty. For example, not selecting a checkbox or leaving a text box empty. Of course there are also
@@ -376,28 +378,29 @@ class Evaluation:
                     if task_name not in task_field_statistics:
                         task_field_statistics[task_name] = {}
 
-                    for i in inputs:
-                        type = i['input_type']
+                    for input in inputs:
+                        if input.type not in aggregate_field_statistics:
+                            aggregate_field_statistics[input.type] = 0
 
-                        if type not in aggregate_field_statistics:
-                            aggregate_field_statistics[type] = 0
+                        aggregate_field_statistics[input.type] += 1
 
-                        aggregate_field_statistics[type] += 1
-
-                        if type not in task_field_statistics[task_name]:
-                            task_field_statistics[task_name][type] = 0
-                        task_field_statistics[task_name][type] += 1
+                        if input.type not in task_field_statistics[task_name]:
+                            task_field_statistics[task_name][input.type] = 0
+                        task_field_statistics[task_name][input.type] += 1
 
                 for input in inputs:
                     element = self.driver.find_element(By.NAME, input.name)
                     # make sure that the element is visible
-                    print(f"{Fore.GREEN} - - - - - -  starting a new element: `{input}` - - - - - -  ")
+                    print(f"{Fore.GREEN} - - - - - -  starting a new element: `{input.name}` - - - - - -  ")
+
+                    continue # TODO: drop this
                     if element.is_displayed() and element.size['width'] > 0 and element.size['height'] > 0:
                         baseline_answer = self.solver.solve(input, self.driver)
                         self.actions.execute_command(input, baseline_answer)
                         score = self.calculate_rouge(answers_map[input.name], input.type, baseline_answer)
+
                         data = []
-                        #.type features begin
+                        # type features begin
                         if self.dump_features:
                             if input_format == 'image' or 'both':
                                 if image_format == 'full_page':
