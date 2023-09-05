@@ -12,3 +12,9 @@ class Input:
         response = requests.get(self.url)
         html = response.text
         return html
+
+    def __repr__(self):
+        """
+        To make sure the objects are printable
+        """
+        return f"Input(name={self.name}, type={self.type}, task={self.task})"

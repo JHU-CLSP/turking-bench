@@ -39,7 +39,7 @@ class GPTTokenizer:
 
 
 class Evaluation:
-    def __init__(self, solver: str, tasks: str, do_eval: bool, dump_features: bool, report_field_stats: bool):
+    def __init__(self, solver_type: str, tasks: str, do_eval: bool, dump_features: bool, report_field_stats: bool):
         self.default_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
         self.xlingual_tokenizer = GPTTokenizer()
         self.xlingual_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], tokenizer=self.xlingual_tokenizer)
@@ -47,12 +47,13 @@ class Evaluation:
         self.actions = MyActions(self.driver)
         self.solver = None
         # ass more solvers that we implement, we can add them here:
-        if solver == "random":
+        self.solver_type = solver_type
+        if solver_type == "random":
             self.solver = baselines.RandomBaseline()
-        elif solver == "oracle":
+        elif solver_type == "oracle":
             self.solver = baselines.OracleBaseline()
         else:
-            raise Exception(f"{Fore.RED}Solver `{solver}` not implemented")
+            raise Exception(f"{Fore.RED}Solver `{solver_type}` not implemented")
         self.tasks = tasks
         assert tasks in ["test", "train", "all", "subjective_test"]
 
@@ -391,17 +392,35 @@ class Evaluation:
                 for input in inputs:
                     element = self.driver.find_element(By.NAME, input.name)
                     # make sure that the element is visible
-                    print(f"{Fore.GREEN} - - - - - -  starting a new element: `{input.name}` - - - - - -  ")
+                    print(f"{Fore.GREEN} - - - - - -  starting a new element: `{input}` - - - - - -  ")
 
-                    continue # TODO: drop this
-                    if element.is_displayed() and element.size['width'] > 0 and element.size['height'] > 0:
+                    if not element.is_displayed() or element.size['width'] <= 0 or element.size['height'] <= 0:
+                        print(f'{Fore.RED}Skipping element {input.name} since it is not visible.')
+                        continue
+
+                    if self.solver_type == 'oracle':
+                        kwargs = {'answers': answers_map[input.name]}
+                        baseline_answer = self.solver.solve(input, self.driver, **kwargs)
+                    else:
                         baseline_answer = self.solver.solve(input, self.driver)
-                        self.actions.execute_command(input, baseline_answer)
-                        score = self.calculate_rouge(answers_map[input.name], input.type, baseline_answer)
+                    self.actions.execute_command(input, baseline_answer)
+                    score = self.calculate_rouge(answers_map[input.name], input.type, baseline_answer)
 
-                        data = []
-                        # type features begin
-                        if self.dump_features:
+                    data = []
+                    # type features begin
+                    if self.dump_features:
+                        if input_format == 'image' or 'both':
+                            if image_format == 'full_page':
+                                task_image = self.actions.take_page_screenshots()
+                            elif image_format == 'div':
+                                task_image = self.actions.take_element_screenshot(input)
+                            elif image_format == 'bordered_div':
+                                task_image = self.actions.take_element_screenshot_with_border(input)
+                            else:
+                                raise Exception(f"{Fore.RED}Invalid image format: {image_format}")
+
+                        if input.type != 'hidden':
+
                             if input_format == 'image' or 'both':
                                 if image_format == 'full_page':
                                     task_image = self.actions.take_page_screenshots()
@@ -409,61 +428,47 @@ class Evaluation:
                                     task_image = self.actions.take_element_screenshot(input)
                                 elif image_format == 'bordered_div':
                                     task_image = self.actions.take_element_screenshot_with_border(input)
+
+                                if isinstance(task_image, list):
+                                    img_ids = []
+                                    for j, image in enumerate(task_image):
+                                        image_id = f'{instance_id}_{input.name}_{j}.png'
+                                        image.save(f'{images_directory}/{image_id}')
+                                        img_ids.append(image_id)
+                                    image_id = img_ids
                                 else:
-                                    raise Exception(f"{Fore.RED}Invalid image format: {image_format}")
+                                    image_id = f'{instance_id}_{input.name}.png'
+                                    task_image.save(f'{images_directory}/{image_id}')
+                            else:
+                                image_id = None
 
-                            if input.type != 'hidden':
+                            html_id = f'{instance_id}_{input.name}.html'
+                            with open(f'{html_directory}/{html_id}', 'w') as f:
+                                f.write(self.driver.page_source)
 
-                                if input_format == 'image' or 'both':
-                                    if image_format == 'full_page':
-                                        task_image = self.actions.take_page_screenshots()
-                                    elif image_format == 'div':
-                                        task_image = self.actions.take_element_screenshot(input)
-                                    elif image_format == 'bordered_div':
-                                        task_image = self.actions.take_element_screenshot_with_border(input)
+                            row_number = instance_id - first_instance_id
+                            gold_output = "tbd"
+                            self.actions.execute_command(input, baseline_answer)
 
-                                    if isinstance(task_image, list):
-                                        img_ids = []
-                                        for j, image in enumerate(task_image):
-                                            image_id = f'{instance_id}_{input.name}_{j}.png'
-                                            image.save(f'{images_directory}/{image_id}')
-                                            img_ids.append(image_id)
-                                        image_id = img_ids
-                                    else:
-                                        image_id = f'{instance_id}_{input.name}.png'
-                                        task_image.save(f'{images_directory}/{image_id}')
-                                else:
-                                    image_id = None
+                            data.append({
+                                'input_type': input.type,
+                                'input_name': input.name,
+                                'image_id': image_id,
+                                'html_id': html_id,
+                                'output': gold_output
+                            })
 
-                                html_id = f'{instance_id}_{input.name}.html'
-                                with open(f'{html_directory}/{html_id}', 'w') as f:
-                                    f.write(self.driver.page_source)
+                        with open(f'{directory}/{task_name}.json', 'w') as f:
+                            json.dump(data, f)
+                    # features end
 
-                                row_number = instance_id - first_instance_id
-                                gold_output = "tbd"
-                                self.actions.execute_command(input, baseline_answer)
+                    # collecting field statistics
+                    if task_name not in results:
+                        results[task_name] = {}
 
-                                data.append({
-                                    'input_type': input.type,
-                                    'input_name': input.name,
-                                    'image_id': image_id,
-                                    'html_id': html_id,
-                                    'output': gold_output
-                                })
-
-                            with open(f'{directory}/{task_name}.json', 'w') as f:
-                                json.dump(data, f)
-                        # features end
-
-                        # collecting field statistics
-                        if task_name not in results:
-                            results[task_name] = {}
-
-                        if input.type not in results[task_name]:
-                            results[task_name][input.type] = []
-                        results[task_name][input.type].append(score)
-                    else:
-                        print(f'{Fore.RED}Skipping element {input.name} since it is not visible.')
+                    if input.type not in results[task_name]:
+                        results[task_name][input.type] = []
+                    results[task_name][input.type].append(score)
 
                 df = pd.DataFrame()
                 for task_name, inputs in results.items():
@@ -510,7 +515,7 @@ class Evaluation:
 if __name__ == "__main__":
     # user argparser to recive he input parameter
     parser = argparse.ArgumentParser()
-    parser.add_argument("--solver", help="random or oracle", default="random")
+    parser.add_argument("--solver_type", help="random or oracle", default="random")
     parser.add_argument("--tasks", help="train, test, or subjective_test", default="test")
     parser.add_argument("--max_instance_count", help="maximum number of instances per task", default=10)
     parser.add_argument("--do_eval", help="whether to compute the quality aginst the gold data", default=True)
@@ -526,7 +531,7 @@ if __name__ == "__main__":
     report_field_stats = args['report_field_stats']
     assert type(do_eval) == bool
 
-    eval = Evaluation(solver=args.solver, tasks=args.tasks,
+    eval = Evaluation(solver_type=args.solver_type, tasks=args.tasks,
                       do_eval=do_eval, dump_features=dump_features, report_field_stats=report_field_stats)
 
     # input_format = config.get('DEFAULT', 'input_format')

@@ -15,8 +15,8 @@ def test_actions():
     assert len(encoded_actions_prompt) > 0, f"The encoded actions prompt should not be empty: {encoded_actions_prompt}"
 
 def test_evaluation():
-    evaluation = eval.Evaluation(solver="oracle", tasks="all",
-                      do_eval=True, dump_features=False, report_field_stats=True)
+    evaluation = eval.Evaluation(solver_type="oracle", tasks="test",
+                                 do_eval=True, dump_features=False, report_field_stats=True)
 
     evaluation.enumerate_tasks(20)
 

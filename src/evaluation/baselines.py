@@ -60,9 +60,8 @@ class OracleBaseline(Baseline):
 
     def solve(self, input: Input, driver, **kwargs):
         # get the index of the input
-        index = kwargs['index']
-        answers_map = evaluation.Evaluation.retrieve_gold_labels(input.task, index, [input.name])
-        answers = answers_map[input.name]
+        print(kwargs)
+        answers = kwargs['answers']
         for answer in answers:
             if answer and answer != '{}':
                 return answer
