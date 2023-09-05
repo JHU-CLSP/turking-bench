@@ -61,8 +61,8 @@ class OracleBaseline(Baseline):
     def solve(self, input: Input, driver, **kwargs):
         # get the index of the input
         index = kwargs['index']
-        answers_map = evaluation.Evaluation.retrieve_gold_labels(input.task_name, index, [input.input_name])
-        answers = answers_map[input.input_name]
+        answers_map = evaluation.Evaluation.retrieve_gold_labels(input.task, index, [input.name])
+        answers = answers_map[input.name]
         for answer in answers:
             if answer and answer != '{}':
                 return answer
@@ -73,9 +73,9 @@ class RandomBaseline(Baseline):
     This baseline randomly selects an action from the list of actions that can be performed on a HTML page.
     """
     def solve(self, input: Input, driver, **kwargs):
-        input_element = driver.find_element(By.NAME, input.input_name)
-        input_type = input.input_type
-        input_name = input.input_name
+        input_element = driver.find_element(By.NAME, input.name)
+        input_type = input.type
+        input_name = input.name
         if input_type == 'text':
             messages = ["Hello!", "How are you?", "What's up?", "Nice to meet you!"]
             return random.choice(messages)

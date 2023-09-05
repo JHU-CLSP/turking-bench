@@ -2,7 +2,7 @@ eval = __import__('4_run_evaluation')
 from evaluation.actions import MyActions
 from evaluation.baselines import Baseline
 
-eval = eval.Evaluation()
+
 
 def test_actions():
     baseline = Baseline()
@@ -15,22 +15,18 @@ def test_actions():
     assert len(encoded_actions_prompt) > 0, f"The encoded actions prompt should not be empty: {encoded_actions_prompt}"
 
 def test_evaluation():
-    tasks = eval.load_task_names(setup='all')  # TODO: receive setup from input
-    config = eval.read_config('config.ini')
-    batch = config.getboolean('DEFAULT', 'batch')  # TODO: what is this?
-    max_instance_count = config.getint('DEFAULT', 'num')
-    mode = config.get('DEFAULT', 'mode')
-    input_format = config.get('DEFAULT', 'input_format')
-    image_format = config.get('DEFAULT', 'image_format', fallback='full_page')
-    eval.enumerate_tasks(tasks, batch, max_instance_count, mode, input_format, image_format)
+    evaluation = eval.Evaluation(solver="oracle", tasks="all",
+                      do_eval=True, dump_features=False, report_field_stats=True)
+
+    evaluation.enumerate_tasks(20)
 
 if __name__ == "__main__":
 
     test_actions()
     test_evaluation()
 
-    # test that we can apply the gold labels on the tasks
+    # TODO: test that we can apply the gold labels on the tasks
 
-    # test the actions
+    # TODO: test the actions
 
-    # test the evaluation
+    # TODO: test the evaluation
