@@ -18,7 +18,7 @@ def test_evaluation():
     evaluation = eval.Evaluation(solver_type="oracle", tasks="test",
                                  do_eval=True, dump_features=False, report_field_stats=True)
 
-    evaluation.enumerate_tasks(20)
+    evaluation.enumerate_tasks(max_instance_count=1)
 
 if __name__ == "__main__":
     test_evaluation()

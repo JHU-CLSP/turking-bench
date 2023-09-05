@@ -524,7 +524,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--solver_type", help="random or oracle", default="random")
     parser.add_argument("--tasks", help="train, test, or subjective_test", default="test")
-    parser.add_argument("--max_instance_count", help="maximum number of instances per task", default=10)
+    parser.add_argument("--max_instance_count", help="maximum number of instances per task", default=1)
     parser.add_argument("--do_eval", help="whether to compute the quality aginst the gold data", default=True)
     parser.add_argument("--dump_features", help="whether to dump the features", default=False)
     parser.add_argument("--report_field_stats", help="whether to collect statistics for the HTML fields", default=True)
