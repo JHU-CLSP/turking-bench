@@ -389,13 +389,16 @@ class Evaluation:
                             task_field_statistics[task_name][input.type] = 0
                         task_field_statistics[task_name][input.type] += 1
 
+                if self.dump_features:
+                    data = []
+
                 for input in inputs:
                     element = self.driver.find_element(By.NAME, input.name)
                     # make sure that the element is visible
                     print(f"{Fore.GREEN} - - - - - -  starting a new element: `{input}` - - - - - -  ")
 
                     if not element.is_displayed() or element.size['width'] <= 0 or element.size['height'] <= 0:
-                        print(f'{Fore.RED}Skipping element {input.name} since it is not visible.')
+                        print(f'{Fore.RED}Skipping element `{input.name}` since it is not visible.')
                         continue
 
                     if self.solver_type == 'oracle':
@@ -403,11 +406,8 @@ class Evaluation:
                         baseline_answer = self.solver.solve(input, self.driver, **kwargs)
                     else:
                         baseline_answer = self.solver.solve(input, self.driver)
-                    self.actions.execute_command(input, baseline_answer)
-                    score = self.calculate_rouge(answers_map[input.name], input.type, baseline_answer)
+                    # self.actions.execute_command(input, baseline_answer)
 
-                    data = []
-                    # type features begin
                     if self.dump_features:
                         if input_format == 'image' or 'both':
                             if image_format == 'full_page':
@@ -420,7 +420,6 @@ class Evaluation:
                                 raise Exception(f"{Fore.RED}Invalid image format: {image_format}")
 
                         if input.type != 'hidden':
-
                             if input_format == 'image' or 'both':
                                 if image_format == 'full_page':
                                     task_image = self.actions.take_page_screenshots()
@@ -446,7 +445,6 @@ class Evaluation:
                             with open(f'{html_directory}/{html_id}', 'w') as f:
                                 f.write(self.driver.page_source)
 
-                            row_number = instance_id - first_instance_id
                             gold_output = "tbd"
                             self.actions.execute_command(input, baseline_answer)
 
@@ -458,9 +456,13 @@ class Evaluation:
                                 'output': gold_output
                             })
 
+                    if self.dump_features:
                         with open(f'{directory}/{task_name}.json', 'w') as f:
                             json.dump(data, f)
-                    # features end
+
+                    # TODO: scoring should be done after all the annotations are done
+                    # score = self.calculate_rouge(answers_map[input.name], input.type, baseline_answer)
+                    score = 0.0
 
                     # collecting field statistics
                     if task_name not in results:
@@ -473,12 +475,17 @@ class Evaluation:
                 df = pd.DataFrame()
                 for task_name, inputs in results.items():
                     for input_type, scores in inputs.items():
-                        print(scores)
+                        # print(scores)
                         avg_score = sum(scores) / len(scores)
                         # TODO: check if we can safely change the "projects" in the following lines to tasks
                         df = pd.concat(
-                            [df,
-                             pd.DataFrame({'project': [task_name], 'input_type': [input_type], 'score': [avg_score]})],
+                            [
+                                df, pd.DataFrame({
+                                'project': [task_name],
+                                'input_type': [input_type],
+                                'score': [avg_score]
+                            })
+                            ],
                             ignore_index=True)
 
                 if 'project' not in df.columns:
