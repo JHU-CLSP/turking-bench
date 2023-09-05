@@ -307,7 +307,7 @@ class Evaluation:
         input_format = "both"
         image_format = "full_page"
 
-        tasks = eval.load_task_names()
+        tasks = self.load_task_names()
 
         results = {}
         self.driver.get(TURKLE_URL)
@@ -347,7 +347,7 @@ class Evaluation:
                 input_names = [col.replace('Answer.', '') for col in df.columns if col.startswith('Answer.')]
                 inputs = Evaluation.extract_input_values_from_url(url, input_names)
 
-                print(" --> inputs: {}".format(inputs))
+                print(" --> inputs: {}".format([x.name for x in inputs]))
 
                 answers_map = self.retrieve_gold_labels(
                     task_name, row_number, [x.name for x in inputs]

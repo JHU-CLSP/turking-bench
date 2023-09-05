@@ -21,9 +21,8 @@ def test_evaluation():
     evaluation.enumerate_tasks(20)
 
 if __name__ == "__main__":
-
-    test_actions()
     test_evaluation()
+    test_actions()
 
     # TODO: test that we can apply the gold labels on the tasks
 
