@@ -2,6 +2,7 @@ from colorama import Fore
 import io
 from io import BytesIO
 from PIL import Image, ImageDraw
+import requests
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -104,7 +105,7 @@ class MyActions:
         action.perform()
         return Result(success=True, outcome=input_element, action=f"self.modify_text({input.name}, {input_value})")
 
-    def modify_checkbox(self, input: Input, input_value):
+    def modify_checkbox(self, input: Input, input_value) -> Result:
         """
         For a given checkbox, this function clicks on the specified checks.
         """
@@ -146,7 +147,7 @@ class MyActions:
 
         return Result(success=True, outcome=None, action=f"self.modify_checkbox({input.name}, {input_value})")
 
-    def modify_radio(self, input: Input, input_value):
+    def modify_radio(self, input: Input, input_value) -> Result:
         """
         For a given radio button, this function clicks on the specified radio button.
         """
@@ -181,7 +182,7 @@ class MyActions:
         action.perform()
         return Result(success=True, outcome=None, action=f"self.modify_radio({input.name}, {input_value})")
 
-    def modify_select(self, input: Input, input_value):
+    def modify_select(self, input: Input, input_value) -> Result:
         """
         For a given select field (dropdown menu), this function selects the specified option.
         """
@@ -208,12 +209,14 @@ class MyActions:
         :param input_name: name of the input field
         :return: None
         """
+        # TODO: I think this function can be folded inside the oracle baseline class
         print(f" --> Input name: {input.name}")
         print(f" --> Input value: {input_value}")
         try:
             self.wait_for_element(input.name)
             self.maximize_window()
-            input_element = self.scroll_to_element(input.name)
+            result = self.scroll_to_element(input.name)
+            input_element = result.outcome
 
             if input.type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
                 self.modify_text(input.name, input_value)
@@ -240,7 +243,7 @@ class MyActions:
     def take_screenshot(self) -> Result:
         """
         This function takes a screenshot of the entire page that is currently visible. It then saves the screenshot.
-        # TODO figure out how thsi function is different than other screenshot functions
+        # TODO figure out how this function is different than other screenshot functions
         """
         # Get scroll height
         last_height = self.execute_js_command("return document.body.scrollHeight")
@@ -385,4 +388,10 @@ class MyActions:
             """
         )
         return Result(success=True, outcome=None, action="self.load_jquery()")
+
+    def get_html(self, url):
+        response = requests.get(url)
+        html = response.text
+        return html
+
 

@@ -7,14 +7,21 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from evaluation.actions import MyActions
 from evaluation.input import Input
+
 # from 4.run_evaluation import Evaluation
 evaluation = __import__('4_run_evaluation')
+
 
 class Baseline:
     """
     This is the base class for all baselines.
     """
-    def solve(self, input: Input, driver, **kwargs):
+
+    def __init__(self, actions: MyActions, driver):
+        self.driver = driver
+        self.actions = actions
+
+    def solve(self, input: Input, **kwargs):
         """
         This function solves the task given the input name and type.
         """
@@ -41,24 +48,35 @@ class Baseline:
         {actions}
         """
 
+
 class NewBaseline(Baseline):
 
-    def solve_task(self, input: Input, driver, **kwargs):
-        screenshot = Input.take_screenshot(driver)
-        full_screenshot = Input.take_full_screenshot(driver)
-        html = input.get_html()
+    def solve_task(self, input: Input, **kwargs):
+        # list of ations that can be performed on a HTML page
+        action_list = self.get_action_list()
+        print("list of actions: ", action_list)
+
+        encoded_actions_prompt = self.get_encoded_action_list()
+        print("encoded actions: ", encoded_actions_prompt)
+
+        # for example, you can access the HTML code
+        html_result = self.actions.get_html()
+
+        # or you can take screenshots of the page
+        screenshot_result = self.actions.take_full_screenshot()
 
         # Add your code here to process the HTML data and generate a summary
 
         result = None
         return result
 
+
 class OracleBaseline(Baseline):
     """
     This baseline uses the gold labels to solve the task.
     """
 
-    def solve(self, input: Input, driver, **kwargs):
+    def solve(self, input: Input, **kwargs):
         # get the index of the input
         print(kwargs)
         answers = kwargs['answers']
@@ -67,12 +85,14 @@ class OracleBaseline(Baseline):
                 return answer
         return None
 
+
 class RandomBaseline(Baseline):
     """
     This baseline randomly selects an action from the list of actions that can be performed on a HTML page.
     """
-    def solve(self, input: Input, driver, **kwargs):
-        input_element = driver.find_element(By.NAME, input.name)
+
+    def solve(self, input: Input, **kwargs):
+        input_element = self.driver.find_element(By.NAME, input.name)
         input_type = input.type
         input_name = input.name
         if input_type == 'text':
@@ -81,7 +101,7 @@ class RandomBaseline(Baseline):
         else:
             options = []
             if input_type == 'radio' or input_type == 'checkbox':
-                options = [option.get_attribute('value') for option in driver.find_elements(By.NAME, input_name)]
+                options = [option.get_attribute('value') for option in self.driver.find_elements(By.NAME, input_name)]
             elif input_type == 'select-one':
                 select_element = Select(input_element)
                 options = [option.get_attribute('value') for option in select_element.options]
