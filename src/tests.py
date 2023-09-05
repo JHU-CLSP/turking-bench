@@ -1,19 +1,31 @@
-from src.evaluation import Evaluation
+eval = __import__('4_run_evaluation')
+from evaluation.actions import MyActions
+from evaluation.baselines import Baseline
+
+
+
+def test_actions():
+    baseline = Baseline()
+    action_list = baseline.get_action_list()
+    print(action_list)
+    assert len(action_list) > 0, f"The action list should not be empty: {action_list}"
+
+    encoded_actions_prompt = baseline.get_encoded_action_list()
+    print(encoded_actions_prompt)
+    assert len(encoded_actions_prompt) > 0, f"The encoded actions prompt should not be empty: {encoded_actions_prompt}"
+
+def test_evaluation():
+    evaluation = eval.Evaluation(solver_type="oracle", tasks="test",
+                                 do_eval=True, dump_features=False, report_field_stats=True)
+
+    evaluation.enumerate_tasks(max_instance_count=1)
 
 if __name__ == "__main__":
-    tasks = Evaluation.load_task_names(setup='all')  # TODO: receive setup from input
-    config = read_config('config.ini')
-    batch = config.getboolean('DEFAULT', 'batch')  # TODO: what is this?
-    max_instance_count = config.getint('DEFAULT', 'num')
-    mode = config.get('DEFAULT', 'mode')
-    input_format = config.get('DEFAULT', 'input_format')
-    image_format = config.get('DEFAULT', 'image_format', fallback='full_page')
+    test_evaluation()
+    test_actions()
 
-    # test that we can enumerate the tasks
-    Evaluation.enumerate_tasks(tasks, batch, max_instance_count, mode, input_format, image_format)
+    # TODO: test that we can apply the gold labels on the tasks
 
-    # test that we can apply the gold labels on the tasks
+    # TODO: test the actions
 
-    # test the actions
-
-    # test the evaluation
+    # TODO: test the evaluation

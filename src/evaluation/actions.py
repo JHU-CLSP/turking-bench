@@ -1,9 +1,6 @@
-from colorama import Fore, Back, Style
+from colorama import Fore
 import io
 from io import BytesIO
-import json
-import os
-import pandas as pd
 from PIL import Image, ImageDraw
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
@@ -12,6 +9,34 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from time import sleep
 import math
+from evaluation.input import Input
+
+class Result:
+    """
+    This class encodes the outcome of each action.
+    The result may contain the following fields:
+    - success: whether the action was successful
+    - message: a message to be displayed to the user
+    - action: the action that was performed, including the input
+    """
+    def __init__(self, success, outcome, action):
+        self.success = success
+        self.outcome = outcome
+        self.action = action
+
+    def __repr__(self):
+        return f"Result(success=`{self.success}`, outcome=`{self.outcome}`, action=`{self.action}`)"
+
+class ActionUtils:
+    """
+    This class contains utility functions for actions.
+    """
+    @staticmethod
+    def xpath_string_escape(input_str):
+        """ creates a concatenation of alternately-quoted strings that is always a valid XPath expression """
+        parts = input_str.split("'")
+        return "concat('" + "', \"'\" , '".join(parts) + "', '')"
+
 
 class MyActions:
     """
@@ -24,36 +49,40 @@ class MyActions:
         """
         self.driver = driver
 
-    def execute_js_command(self, command, *args):
+    def execute_js_command(self, command, *args) -> Result:
         """
         Executes the javascript command and returns the result.
         """
-        return self.driver.execute_script(command, *args)
+        self.driver.execute_script(command, *args)
 
-    def maximize_window(self):
+        return Result(success=True, outcome=None, action=f"self.execute_js_command({command})")
+
+    def maximize_window(self) -> Result:
         """
         This function maximizes the browser window to make sure we can see all the elements on the page.
         """
         self.driver.maximize_window()
 
-    def scroll_to_element(self, element_name):
+        return Result(success=True, outcome=None, action="self.maximize_window()")
+
+    def scroll_to_element(self, input: Input) -> Result:
         """
         This function scrolls to a given element on the page, after the page is fully loaded.
         It then returns the element.
         """
-        input_element = self.wait_for_element(element_name)
+        input_element = self.wait_for_element(input.name)
         self.execute_js_command("arguments[0].scrollIntoView();", input_element)
-        return input_element
+        return Result(success=True, outcome=input_element, action=f"self.scroll_to_element({input.name})")
 
-    def wait_for_element(self, element_name):
+    def wait_for_element(self, input: Input) -> Result:
         """
         This function waits for a given element to be loaded on the page, and then returns the element.
         """
-        input_element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.NAME, element_name)))
+        input_element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.NAME, input.name)))
 
-        return input_element
+        return Result(success=True, outcome=input_element, action=f"self.wait_for_element({input.name})")
 
-    def modify_text(self, input_name, input_value):
+    def modify_text(self, input: Input, input_value) -> Result:
         """
         For a given editable input field such as text box or text area, this function enters the input value into
         the input field.
@@ -63,17 +92,19 @@ class MyActions:
         """
         if not input_value or input_value == 'nan':
             print(f"{Fore.RED}Since the input value is `{input_value}`, we are not going to modify the text.")
-            return
+            return Result(success=False, outcome=None, action=f"self.modify_text({input.name}, {input_value})")
 
-        input_element = self.scroll_to_element(input_name)
+        result = self.scroll_to_element(input.name)
+        input_element = result.outcome
         print(f"{Fore.YELLOW}We are going to add text to this text input: {input_element.get_attribute('outerHTML')}")
 
         action = ActionChains(self.driver).move_to_element(input_element).click()
         # now modify the text
         action.send_keys(input_value)
         action.perform()
+        return Result(success=True, outcome=input_element, action=f"self.modify_text({input.name}, {input_value})")
 
-    def modify_checkbox(self, input_name, input_value):
+    def modify_checkbox(self, input: Input, input_value):
         """
         For a given checkbox, this function clicks on the specified checks.
         """
@@ -88,36 +119,34 @@ class MyActions:
 
         if input_value == 'nan':
             print(f"{Fore.RED} ** Warning **: input value is 'nan'. So, we're terminating the function")
-            return
+            return Result(success=False, outcome=None, action=f"self.modify_checkbox({input.name}, {input_value})")
         elif 'nan' in input_value:
             print(f"{Fore.YELLOW} ** Warning **: Found input value is 'nan' and filtered it out")
             input_value = [v for v in input_value if v != 'nan']
             if len(input_value) == 0:
-                print(
-                    f"{Fore.RED} ** Warning **: Since the list of values `{input_value}` is empty, we're terminating the function")
-                return
+                print(f"{Fore.RED} ** Warning **: Since the list of values `{input_value}` is empty, "
+                      f"and so, we're terminating the function")
+                return Result(success=False, outcome=None, action=f"self.modify_checkbox({input.name}, {input_value})")
 
-        self.wait_for_element(input_name)
-        self.scroll_to_element(input_name)
+        self.wait_for_element(input.name)
+        self.scroll_to_element(input.name)
 
-        print(f"{Fore.YELLOW}Looking for checkboxes with `name`: {input_name}  the following values: {input_value}")
+        print(f"{Fore.YELLOW}Looking for checkboxes with `name`: {input.name}  the following values: {input_value}")
 
         # now we have to check the checkboxes that have the values we want
         for value in input_value:
             # Find the checkbox that has the given value and click on it
             # TODO: need to escape the following parameters
-            checkbox = self.driver.find_element(By.XPATH,
-                                                f"//input[@type='checkbox' and @name='{input_name}' and @value='{value}']")
+            checkbox = self.driver.find_element(
+                By.XPATH,
+                f"//input[@type='checkbox' and @name='{input.name}' and @value='{value}']"
+            )
             print(f"{Fore.YELLOW}About to check this checkbox: {checkbox.get_attribute('outerHTML')}")
             checkbox.click()
 
-    @staticmethod
-    def xpath_string_escape(input_str):
-        """ creates a concatenation of alternately-quoted strings that is always a valid XPath expression """
-        parts = input_str.split("'")
-        return "concat('" + "', \"'\" , '".join(parts) + "', '')"
+        return Result(success=True, outcome=None, action=f"self.modify_checkbox({input.name}, {input_value})")
 
-    def modify_radio(self, input_name, input_value):
+    def modify_radio(self, input: Input, input_value):
         """
         For a given radio button, this function clicks on the specified radio button.
         """
@@ -130,11 +159,11 @@ class MyActions:
             input_value = str(input_value)
 
         if input_value in ['nan', 'None']:
-            print(
-                f"{Fore.RED} ** Warning **: input value is {input_value}. So, we're not going to modify the radio button")
+            print(f"{Fore.RED} ** Warning **: input value is {input_value}. "
+                  f"So, we're not going to modify the radio button.")
             return
 
-        self.scroll_to_element(input_name)
+        self.scroll_to_element(input.name)
         value = f"@value='{input_value}'"
         if "'" in input_value and '"' in input_value:
             value = f'@value=`{input_value}`'
@@ -142,7 +171,7 @@ class MyActions:
             value = f'@value="{input_value}"'
 
         element = self.driver.find_element(
-            By.XPATH, f"//input[@type='radio' and @name='{input_name}' and {value}]"
+            By.XPATH, f"//input[@type='radio' and @name='{input.name}' and {value}]"
         )
 
         # print element in HTML format
@@ -150,15 +179,16 @@ class MyActions:
 
         action = ActionChains(self.driver).move_to_element(element).click()
         action.perform()
+        return Result(success=True, outcome=None, action=f"self.modify_radio({input.name}, {input_value})")
 
-    def modify_select(self, input_name, input_value):
+    def modify_select(self, input: Input, input_value):
         """
         For a given select field (dropdown menu), this function selects the specified option.
         """
         # input_element = self.scroll_to_element(input_name)
-        select = Select(self.driver.find_element(By.NAME, input_name))
+        select = Select(self.driver.find_element(By.NAME, input.name))
 
-        assert len(select.options) > 0, f"Select field {input_name} has no options"
+        assert len(select.options) > 0, f"Select field {input.name} has no options"
 
         # get the values of the options
         option_values = [option.get_attribute('value') for option in select.options]
@@ -168,7 +198,9 @@ class MyActions:
         # select by value
         select.select_by_value(input_value)
 
-    def execute_command(self, input_type, input_value, input_name):
+        return Result(success=True, outcome=None, action=f"self.modify_select({input.name}, {input_value})")
+
+    def execute_command(self, input: Input, input_value) -> Result:
         """
         For a given input field, this function enters the input value into the input field.
         :param input_type: type of the input field
@@ -176,37 +208,39 @@ class MyActions:
         :param input_name: name of the input field
         :return: None
         """
-        print(f" --> Input name: {input_name}")
+        print(f" --> Input name: {input.name}")
         print(f" --> Input value: {input_value}")
         try:
-            self.wait_for_element(input_name)
+            self.wait_for_element(input.name)
             self.maximize_window()
-            input_element = self.scroll_to_element(input_name)
+            input_element = self.scroll_to_element(input.name)
 
-            if input_type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
-                self.modify_text(input_name, input_value)
+            if input.type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
+                self.modify_text(input.name, input_value)
 
-            elif input_type in ['checkbox']:
+            elif input.type in ['checkbox']:
                 if not input_element.is_selected():
-                    self.modify_checkbox(input_name, input_value)
+                    return self.modify_checkbox(input.name, input_value)
 
-            elif input_type in ['radio']:
+            elif input.type in ['radio']:
                 if not input_element.is_selected():
-                    self.modify_radio(input_name, input_value)
+                    return self.modify_radio(input.name, input_value)
 
-            elif input_type == 'select':
-                self.modify_select(input_name, input_value)
+            elif input.type == 'select':
+                return self.modify_select(input.name, input_value)
 
-            elif input_type in ['button', 'color', 'date', 'datetime-local', 'file', 'hidden', 'image', 'month',
-                                'range', 'reset', 'search', 'submit', 'time']:
-                pass
+            elif input.type in ['button', 'color', 'date', 'datetime-local', 'file', 'hidden', 'image',
+                                'month', 'range', 'reset', 'search', 'submit', 'time']:
+                return Result(success=False, outcome=None, action=None)
 
         except Exception as e:
-            print(f"{Fore.RED}An error occurred when trying to place `{input_value}` in the input '{input_name}': {e}")
+            print(f"{Fore.RED}An error occurred when trying to place `{input_value}` in the input '{input.name}': {e}")
+            return Result(success=False, outcome=None, action=None)
 
-    def take_screenshot(self):
+    def take_screenshot(self) -> Result:
         """
         This function takes a screenshot of the entire page that is currently visible. It then saves the screenshot.
+        # TODO figure out how thsi function is different than other screenshot functions
         """
         # Get scroll height
         last_height = self.execute_js_command("return document.body.scrollHeight")
@@ -220,24 +254,27 @@ class MyActions:
             if new_height == last_height:
                 break
             last_height = new_height
+
         # Take screenshot
         self.driver.save_screenshot('screenshot.png')
+        return Result(success=True, outcome=None, action="self.take_screenshot()")
 
-    def take_element_screenshot(self, driver, input_name, input_type):
+
+    def take_element_screenshot(self, input: Input) -> Result:
         """
         This function takes a screenshot of a given element on the page.
         """
         # find the element based on input name and type
-        if input_type in ['select', 'textarea']:
-            element = Select(self.driver.find_element(By.NAME, input_name)).first_selected_option
+        if input.type in ['select', 'textarea']:
+            element = Select(self.driver.find_element(By.NAME, input.name)).first_selected_option
         else:
-            element = driver.find_element(By.NAME, input_name)
+            element = self.driver.find_element(By.NAME, input.name)
         # get the location and size of the element
         location = element.location
         size = element.size
 
         # take a screenshot of the entire page
-        screenshot = driver.get_screenshot_as_png()
+        screenshot = self.driver.get_screenshot_as_png()
         image = Image.open(BytesIO(screenshot))
 
         # crop the image to the size of the element
@@ -246,39 +283,40 @@ class MyActions:
         right = location['x'] + size['width']
         bottom = location['y'] + size['height']
         cropped_image = image.crop((left, top, right, bottom))
-        return cropped_image
+        return Result(success=True, outcome=cropped_image, action=f"self.take_element_screenshot({input.name})")
 
-    def take_element_screenshot_with_border(self, driver, input_name, input_type):
+    def take_element_screenshot_with_border(self, input: Input) -> Result:
         """
         This function takes a screenshot of the entire page and draws a red border around the specified element.
         """
 
         # find the element based on input name and type
-        if input_type in ['select', 'textarea']:
-            element = Select(self.driver.find_element(By.NAME, input_name)).first_selected_option
+        if input.type in ['select', 'textarea']:
+            element = Select(self.driver.find_element(By.NAME, input.name)).first_selected_option
         else:
-            element = self.driver.find_element(By.NAME, input_name)
+            element = self.driver.find_element(By.NAME, input.name)
 
         # get the location and size of the element
         location = element.location
         size = element.size
 
         # scroll to the element and wait for it to be visible
-        driver.execute_script("arguments[0].scrollIntoView();", element)
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)
         sleep(1)
 
         # take a screenshot of the entire page
-        screenshot = driver.get_screenshot_as_png()
+        screenshot = self.driver.get_screenshot_as_png()
         image = Image.open(BytesIO(screenshot))
 
         # draw a red border around the element
         draw = ImageDraw.Draw(image)
-        draw.rectangle((location['x'], location['y'], location['x'] + size['width'], location['y'] + size['height']),
-                       outline='red')
+        draw.rectangle((location['x'], location['y'],
+                        location['x'] + size['width'],
+                        location['y'] + size['height']), outline='red')
 
-        return image
+        return Result(success=True, outcome=image, action=f"self.take_element_screenshot_with_border({input.name})")
 
-    def take_page_screenshots(self):
+    def take_page_screenshots(self) -> Result:
         """
         This function takes a screenshot of the entire page by scrolling down the page and taking a screenshot of each
         """
@@ -303,9 +341,9 @@ class MyActions:
             scroll_position += window_size[1]
             self.driver.execute_script(f"window.scrollTo(0, {scroll_position});")
 
-        return screenshots
+        return Result(success=True, outcome=screenshots, action="self.take_page_screenshots()")
 
-    def take_full_screenshot(self):
+    def take_full_screenshot(self) -> Result:
         """
         This function takes a screenshot of the entire page by stitching together screenshots of each view.
         """
@@ -332,8 +370,9 @@ class MyActions:
                 stitched_image.paste(screenshot, (x, y))
         # Save stitched image
         stitched_image.save('full_screenshot.png')
+        return Result(success=True, outcome=stitched_image, action="self.take_full_screenshot()")
 
-    def load_jquery(self):
+    def load_jquery(self) -> Result:
         """
         This function loads jQuery into the current page.
         """
@@ -345,3 +384,5 @@ class MyActions:
             document.head.appendChild(script);
             """
         )
+        return Result(success=True, outcome=None, action="self.load_jquery()")
+
