@@ -71,9 +71,10 @@ class MyActions:
         This function scrolls to a given element on the page, after the page is fully loaded.
         It then returns the element.
         """
-        input_element = self.wait_for_element(input.name)
+        result = self.wait_for_element(input)
+        input_element = result.outcome
         self.execute_js_command("arguments[0].scrollIntoView();", input_element)
-        return Result(success=True, outcome=input_element, action=f"self.scroll_to_element({input.name})")
+        return Result(success=True, outcome=input_element, action=f"self.scroll_to_element({input})")
 
     def wait_for_element(self, input: Input) -> Result:
         """
@@ -81,7 +82,7 @@ class MyActions:
         """
         input_element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.NAME, input.name)))
 
-        return Result(success=True, outcome=input_element, action=f"self.wait_for_element({input.name})")
+        return Result(success=True, outcome=input_element, action=f"self.wait_for_element({input})")
 
     def modify_text(self, input: Input, input_value) -> Result:
         """
@@ -93,9 +94,9 @@ class MyActions:
         """
         if not input_value or input_value == 'nan':
             print(f"{Fore.RED}Since the input value is `{input_value}`, we are not going to modify the text.")
-            return Result(success=False, outcome=None, action=f"self.modify_text({input.name}, {input_value})")
+            return Result(success=False, outcome=None, action=f"self.modify_text({input}, {input_value})")
 
-        result = self.scroll_to_element(input.name)
+        result = self.scroll_to_element(input)
         input_element = result.outcome
         print(f"{Fore.YELLOW}We are going to add text to this text input: {input_element.get_attribute('outerHTML')}")
 
@@ -103,7 +104,7 @@ class MyActions:
         # now modify the text
         action.send_keys(input_value)
         action.perform()
-        return Result(success=True, outcome=input_element, action=f"self.modify_text({input.name}, {input_value})")
+        return Result(success=True, outcome=input_element, action=f"self.modify_text({input}, {input_value})")
 
     def modify_checkbox(self, input: Input, input_value) -> Result:
         """
@@ -120,19 +121,19 @@ class MyActions:
 
         if input_value == 'nan':
             print(f"{Fore.RED} ** Warning **: input value is 'nan'. So, we're terminating the function")
-            return Result(success=False, outcome=None, action=f"self.modify_checkbox({input.name}, {input_value})")
+            return Result(success=False, outcome=None, action=f"self.modify_checkbox({input}, {input_value})")
         elif 'nan' in input_value:
             print(f"{Fore.YELLOW} ** Warning **: Found input value is 'nan' and filtered it out")
             input_value = [v for v in input_value if v != 'nan']
             if len(input_value) == 0:
                 print(f"{Fore.RED} ** Warning **: Since the list of values `{input_value}` is empty, "
                       f"and so, we're terminating the function")
-                return Result(success=False, outcome=None, action=f"self.modify_checkbox({input.name}, {input_value})")
+                return Result(success=False, outcome=None, action=f"self.modify_checkbox({input}, {input_value})")
 
-        self.wait_for_element(input.name)
-        self.scroll_to_element(input.name)
+        self.wait_for_element(input)
+        self.scroll_to_element(input)
 
-        print(f"{Fore.YELLOW}Looking for checkboxes with `name`: {input.name}  the following values: {input_value}")
+        print(f"{Fore.YELLOW}Looking for checkboxes with `name`: {input}  the following values: {input_value}")
 
         # now we have to check the checkboxes that have the values we want
         for value in input_value:
@@ -145,7 +146,7 @@ class MyActions:
             print(f"{Fore.YELLOW}About to check this checkbox: {checkbox.get_attribute('outerHTML')}")
             checkbox.click()
 
-        return Result(success=True, outcome=None, action=f"self.modify_checkbox({input.name}, {input_value})")
+        return Result(success=True, outcome=None, action=f"self.modify_checkbox({input}, {input_value})")
 
     def modify_radio(self, input: Input, input_value) -> Result:
         """
@@ -162,9 +163,9 @@ class MyActions:
         if input_value in ['nan', 'None']:
             print(f"{Fore.RED} ** Warning **: input value is {input_value}. "
                   f"So, we're not going to modify the radio button.")
-            return Result(success=False, outcome=None, action=f"self.modify_radio({input.name}, {input_value})")
+            return Result(success=False, outcome=None, action=f"self.modify_radio({input}, {input_value})")
 
-        self.scroll_to_element(input.name)
+        self.scroll_to_element(input)
         value = f"@value='{input_value}'"
         if "'" in input_value and '"' in input_value:
             value = f'@value=`{input_value}`'
@@ -200,7 +201,7 @@ class MyActions:
         # select by value
         select.select_by_value(input_value)
 
-        return Result(success=True, outcome=None, action=f"self.modify_select({input.name}, {input_value})")
+        return Result(success=True, outcome=None, action=f"self.modify_select({input}, {input_value})")
 
     def execute_command(self, input: Input, input_value) -> Result:
         """
@@ -213,33 +214,36 @@ class MyActions:
         # TODO: I think this function can be folded inside the oracle baseline class
         print(f" --> Input name: {input.name}")
         print(f" --> Input value: {input_value}")
-        try:
-            self.wait_for_element(input.name)
-            self.maximize_window()
-            result = self.scroll_to_element(input.name)
-            input_element = result.outcome
 
-            if input.type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
-                self.modify_text(input.name, input_value)
+        self.wait_for_element(input)
+        self.maximize_window()
+        result = self.scroll_to_element(input)
+        input_element = result.outcome
 
-            elif input.type in ['checkbox']:
-                if not input_element.is_selected():
-                    return self.modify_checkbox(input.name, input_value)
+        if input.type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
+            self.modify_text(input, input_value)
 
-            elif input.type in ['radio']:
-                if not input_element.is_selected():
-                    return self.modify_radio(input.name, input_value)
+        elif input.type in ['checkbox']:
+            if not input_element.is_selected():
+                return self.modify_checkbox(input, input_value)
 
-            elif input.type == 'select':
-                return self.modify_select(input.name, input_value)
+        elif input.type in ['radio']:
+            if not input_element.is_selected():
+                return self.modify_radio(input, input_value)
 
-            elif input.type in ['button', 'color', 'date', 'datetime-local', 'file', 'hidden', 'image',
-                                'month', 'range', 'reset', 'search', 'submit', 'time']:
-                return Result(success=False, outcome=None, action=None)
+        elif input.type == 'select':
+            return self.modify_select(input, input_value)
 
-        except Exception as e:
-            print(f"{Fore.RED}An error occurred when trying to place `{input_value}` in the input '{input.name}': {e}")
+        elif input.type in ['button', 'color', 'date', 'datetime-local', 'file', 'hidden', 'image',
+                            'month', 'range', 'reset', 'search', 'submit', 'time']:
             return Result(success=False, outcome=None, action=None)
+
+        # except Exception as e:
+        #     # print the full stack trace
+        #     # traceback.print_exc()
+        #
+        #     print(f"{Fore.RED}An error occurred when trying to place `{input_value}` in the input '{input.name}': {e}")
+        #     return Result(success=False, outcome=None, action=None)
 
     def take_screenshot(self) -> Result:
         """
@@ -287,7 +291,7 @@ class MyActions:
         right = location['x'] + size['width']
         bottom = location['y'] + size['height']
         cropped_image = image.crop((left, top, right, bottom))
-        return Result(success=True, outcome=cropped_image, action=f"self.take_element_screenshot({input.name})")
+        return Result(success=True, outcome=cropped_image, action=f"self.take_element_screenshot({input})")
 
     def take_element_screenshot_with_border(self, input: Input) -> Result:
         """
@@ -318,7 +322,7 @@ class MyActions:
                         location['x'] + size['width'],
                         location['y'] + size['height']), outline='red')
 
-        return Result(success=True, outcome=image, action=f"self.take_element_screenshot_with_border({input.name})")
+        return Result(success=True, outcome=image, action=f"self.take_element_screenshot_with_border({input})")
 
     def take_page_screenshots(self) -> Result:
         """
