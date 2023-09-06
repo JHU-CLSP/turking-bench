@@ -131,7 +131,6 @@ class Evaluation:
                 if input and input.name in ['input', 'select', 'textarea']:
                     inputs.append(input)
         else:
-            input_names = set()
             inputs = soup.find_all(['input', 'textarea', 'select'])
 
         # exclude special inputs
@@ -140,6 +139,9 @@ class Evaluation:
             'worker_ip'  # hidden field for bookkeeping
         ]
         inputs = [input for input in inputs if input.get('name') not in exclude_input_names]
+
+        # make sure "names" are unique. Convert to set and back to list
+        inputs = list(set(inputs))
 
         # now for our list of inputs, indentify their types
         for input in inputs:
@@ -339,6 +341,12 @@ class Evaluation:
 
             # Sample random instances of each task
             for instance_id in instance_ids:
+
+                # wait for a keyboard press before continuing
+                # input("Press Enter to continue...")
+
+                input("Press Enter to continue...")
+
                 row_number = instance_id - first_instance_id
                 print(f"instance_id: {instance_id} <-> row_number: {row_number}")
 
@@ -379,85 +387,82 @@ class Evaluation:
                     if task_name not in task_field_statistics:
                         task_field_statistics[task_name] = {}
 
-                    for input in inputs:
-                        if input.type not in aggregate_field_statistics:
-                            aggregate_field_statistics[input.type] = 0
+                    for i in inputs:
+                        if i.type not in aggregate_field_statistics:
+                            aggregate_field_statistics[i.type] = 0
 
-                        aggregate_field_statistics[input.type] += 1
+                        aggregate_field_statistics[i.type] += 1
 
-                        if input.type not in task_field_statistics[task_name]:
-                            task_field_statistics[task_name][input.type] = 0
-                        task_field_statistics[task_name][input.type] += 1
+                        if i.type not in task_field_statistics[task_name]:
+                            task_field_statistics[task_name][i.type] = 0
+                        task_field_statistics[task_name][i.type] += 1
 
                 if self.dump_features:
                     data = []
 
-                for input in inputs:
-                    element = self.driver.find_element(By.NAME, input.name)
+                for i in inputs:
+                    element = self.driver.find_element(By.NAME, i.name)
                     # make sure that the element is visible
-                    print(f"{Fore.GREEN} - - - - - -  starting a new element: `{input}` - - - - - -  ")
+                    print(f"{Fore.GREEN} - - - - - -  starting a new element: `{i}` - - - - - -  ")
 
                     if not element.is_displayed() or element.size['width'] <= 0 or element.size['height'] <= 0:
-                        print(f'{Fore.RED}Skipping element `{input.name}` since it is not visible.')
+                        print(f'{Fore.RED}Skipping element `{i.name}` since it is not visible.')
                         continue
 
                     if self.solver_type == 'oracle':
-                        kwargs = {'answers': answers_map[input.name]}
-                        baseline_answer = self.solver.solve(input, **kwargs)
+                        kwargs = {'answers': answers_map[i.name]}
+                        baseline_answer = self.solver.solve(i, **kwargs)
                     else:
-                        baseline_answer = self.solver.solve(input)
+                        baseline_answer = self.solver.solve(i)
 
                     if self.dump_features:
                         if input_format == 'image' or 'both':
                             if image_format == 'full_page':
                                 task_image = self.actions.take_page_screenshots()
                             elif image_format == 'div':
-                                task_image = self.actions.take_element_screenshot(input)
+                                task_image = self.actions.take_element_screenshot(i)
                             elif image_format == 'bordered_div':
-                                task_image = self.actions.take_element_screenshot_with_border(input)
+                                task_image = self.actions.take_element_screenshot_with_border(i)
                             else:
                                 raise Exception(f"{Fore.RED}Invalid image format: {image_format}")
 
-                        if input.type != 'hidden':
+                        if i.type != 'hidden':
                             if input_format == 'image' or 'both':
                                 if image_format == 'full_page':
                                     task_image = self.actions.take_page_screenshots()
                                 elif image_format == 'div':
-                                    task_image = self.actions.take_element_screenshot(input)
+                                    task_image = self.actions.take_element_screenshot(i)
                                 elif image_format == 'bordered_div':
-                                    task_image = self.actions.take_element_screenshot_with_border(input)
+                                    task_image = self.actions.take_element_screenshot_with_border(i)
 
                                 if isinstance(task_image, list):
                                     img_ids = []
                                     for j, image in enumerate(task_image):
-                                        image_id = f'{instance_id}_{input.name}_{j}.png'
+                                        image_id = f'{instance_id}_{i.name}_{j}.png'
                                         image.save(f'{images_directory}/{image_id}')
                                         img_ids.append(image_id)
                                     image_id = img_ids
                                 else:
-                                    image_id = f'{instance_id}_{input.name}.png'
+                                    image_id = f'{instance_id}_{i.name}.png'
                                     task_image.save(f'{images_directory}/{image_id}')
                             else:
                                 image_id = None
 
-                            html_id = f'{instance_id}_{input.name}.html'
+                            html_id = f'{instance_id}_{i.name}.html'
                             with open(f'{html_directory}/{html_id}', 'w') as f:
                                 f.write(self.driver.page_source)
 
                             gold_output = "tbd"
-                            self.actions.execute_command(input, baseline_answer)
+                            self.actions.execute_command(i, baseline_answer)
 
                             data.append({
-                                'input_type': input.type,
-                                'input_name': input.name,
+                                'input_type': i.type,
+                                'input_name': i.name,
                                 'image_id': image_id,
                                 'html_id': html_id,
                                 'output': gold_output
                             })
 
-                    if self.dump_features:
-                        with open(f'{directory}/{task_name}.json', 'w') as f:
-                            json.dump(data, f)
 
                     # TODO: scoring should be done after all the annotations are done
                     # score = self.calculate_rouge(answers_map[input.name], input.type, baseline_answer)
@@ -467,9 +472,13 @@ class Evaluation:
                     if task_name not in results:
                         results[task_name] = {}
 
-                    if input.type not in results[task_name]:
-                        results[task_name][input.type] = []
-                    results[task_name][input.type].append(score)
+                    if i.type not in results[task_name]:
+                        results[task_name][i.type] = []
+                    results[task_name][i.type].append(score)
+
+                if self.dump_features:
+                    with open(f'{directory}/{task_name}.json', 'w') as f:
+                        json.dump(data, f)
 
                 df = pd.DataFrame()
                 for task_name, inputs in results.items():
