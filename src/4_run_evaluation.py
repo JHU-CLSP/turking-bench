@@ -342,8 +342,6 @@ class Evaluation:
                 # wait for a keyboard press before continuing
                 # input("Press Enter to continue...")
 
-                input("Press Enter to continue...")
-
                 row_number = instance_id - first_instance_id
                 print(f"instance_id: {instance_id} <-> row_number: {row_number}")
 
