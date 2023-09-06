@@ -221,6 +221,8 @@ class MyActions:
         print(f" --> Input value: {input_value}")
 
         self.wait_for_element(input)
+        # wait 0.1 sec for the page to fully load
+        sleep(0.1)
         self.maximize_window()
         result = self.scroll_to_element(input)
         input_element = result.outcome
