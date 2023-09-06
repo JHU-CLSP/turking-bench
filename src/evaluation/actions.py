@@ -119,6 +119,9 @@ class MyActions:
             input_value = input_value.split("|")
             print(f"{Fore.YELLOW} There are multiple values. Splitting them! {input_value}")
 
+        if type(input_value) == str:
+            input_value = [input_value]
+
         if input_value == 'nan':
             print(f"{Fore.RED} ** Warning **: input value is 'nan'. So, we're terminating the function")
             return Result(success=False, outcome=None, action=f"self.modify_checkbox({input}, {input_value})")
@@ -134,6 +137,8 @@ class MyActions:
         self.scroll_to_element(input)
 
         print(f"{Fore.YELLOW}Looking for checkboxes with `name`: {input}  the following values: {input_value}")
+
+        assert type(input_value) == list, f"Input value `{input_value}` is not a list"
 
         # now we have to check the checkboxes that have the values we want
         for value in input_value:
