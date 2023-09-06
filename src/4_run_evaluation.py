@@ -119,10 +119,10 @@ class Evaluation:
         """
         response = requests.get(url)
         soup = BeautifulSoup(response.text, 'html.parser')
-        input_fields = []
 
         # if a list of input names are provided in the input, then extract the input fields with those names
         # otherwise, look for inputs that may look like input fields
+        input_fields = []
         if input_names:
             input_names = set(input_names)
             inputs = []
@@ -139,9 +139,6 @@ class Evaluation:
             'worker_ip'  # hidden field for bookkeeping
         ]
         inputs = [input for input in inputs if input.get('name') not in exclude_input_names]
-
-        # make sure "names" are unique. Convert to set and back to list
-        inputs = list(set(inputs))
 
         # now for our list of inputs, indentify their types
         for input in inputs:
@@ -356,7 +353,7 @@ class Evaluation:
                 # get the name of the fields
                 df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
                 input_names = [col.replace('Answer.', '') for col in df.columns if col.startswith('Answer.')]
-                inputs = Evaluation.extract_input_values_from_url(url, input_names)
+                inputs = Evaluation.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
 
                 print(" --> inputs: {}".format([x.name for x in inputs]))
 
