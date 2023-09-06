@@ -49,9 +49,9 @@ class Evaluation:
         # ass more solvers that we implement, we can add them here:
         self.solver_type = solver_type
         if solver_type == "random":
-            self.solver = baselines.RandomBaseline()
+            self.solver = baselines.RandomBaseline(driver=self.driver, actions=self.actions)
         elif solver_type == "oracle":
-            self.solver = baselines.OracleBaseline()
+            self.solver = baselines.OracleBaseline(driver=self.driver, actions=self.actions)
         else:
             raise Exception(f"{Fore.RED}Solver `{solver_type}` not implemented")
         self.tasks = tasks
@@ -403,10 +403,9 @@ class Evaluation:
 
                     if self.solver_type == 'oracle':
                         kwargs = {'answers': answers_map[input.name]}
-                        baseline_answer = self.solver.solve(input, self.driver, **kwargs)
+                        baseline_answer = self.solver.solve(input, **kwargs)
                     else:
-                        baseline_answer = self.solver.solve(input, self.driver)
-                    # self.actions.execute_command(input, baseline_answer)
+                        baseline_answer = self.solver.solve(input)
 
                     if self.dump_features:
                         if input_format == 'image' or 'both':

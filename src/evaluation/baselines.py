@@ -25,6 +25,7 @@ class Baseline:
         """
         This function solves the task given the input name and type.
         """
+        # TODO decide what the output of this function should be
         raise NotImplementedError("This method should be implemented by the subclass.")
 
     def get_action_list(self):
@@ -82,7 +83,8 @@ class OracleBaseline(Baseline):
         answers = kwargs['answers']
         for answer in answers:
             if answer and answer != '{}':
-                return answer
+                self.actions.execute_command(input, answer)
+                return
         return None
 
 

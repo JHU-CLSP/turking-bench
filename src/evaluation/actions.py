@@ -162,7 +162,7 @@ class MyActions:
         if input_value in ['nan', 'None']:
             print(f"{Fore.RED} ** Warning **: input value is {input_value}. "
                   f"So, we're not going to modify the radio button.")
-            return
+            return Result(success=False, outcome=None, action=f"self.modify_radio({input.name}, {input_value})")
 
         self.scroll_to_element(input.name)
         value = f"@value='{input_value}'"
@@ -180,6 +180,7 @@ class MyActions:
 
         action = ActionChains(self.driver).move_to_element(element).click()
         action.perform()
+
         return Result(success=True, outcome=None, action=f"self.modify_radio({input.name}, {input_value})")
 
     def modify_select(self, input: Input, input_value) -> Result:
@@ -394,4 +395,4 @@ class MyActions:
         html = response.text
         return html
 
-
+    # TOOD I think we need to create a function that reads strings (Python code) and executes them via Pythin interpretor
