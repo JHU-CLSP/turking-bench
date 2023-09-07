@@ -1,5 +1,4 @@
 import argparse
-from bs4 import BeautifulSoup
 from colorama import init as colorama_init
 from colorama import Fore
 import configparser
@@ -9,17 +8,18 @@ from evaluation import baselines
 import json
 import os
 import pandas as pd
+import numpy as np
 import random
 import requests
 from rouge_score import rouge_scorer
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+import shutil
 import string
 from transformers import AutoTokenizer
 from tqdm import tqdm
 from typing import List
-import numpy as np
 
 TURKLE_URL = "http://localhost:8000"
 
@@ -540,8 +540,9 @@ class Evaluation:
                     images_directory = f'{directory}/images'
                     html_directory = f'{directory}/HTML'
 
-                    if not os.path.exists(directory):
-                        os.makedirs(directory)
+                    if os.path.exists(directory):
+                        shutil.rmtree(directory)
+                    os.makedirs(directory)
 
                     if not os.path.exists(html_directory):
                         os.makedirs(html_directory)
@@ -573,15 +574,9 @@ class Evaluation:
                         print(f'{Fore.RED}Skipping element `{i.name}` since it is not visible.')
                         continue
 
-                    if self.solver_type == 'oracle':
-                        kwargs = {'answers': answers_map[i.name]}
-                        oracle_action_sequence = self.solver.solve(i, **kwargs)
-                    else:
-                        self.solver.solve(i)
-
                     if self.dump_features and i.type != 'hidden':
-                        image_format = "bordered_div" # the most reasonable option
-                        # create directory
+                        image_format = "bordered_div"  # the most reasonable option
+                        # create directory if needed
                         if not os.path.exists(f'{images_directory}_{image_format}'):
                             os.makedirs(f'{images_directory}_{image_format}')
                         if image_format == 'full_page':
@@ -602,13 +597,21 @@ class Evaluation:
                             image_id = f'{instance_id}_{i.name}.png'
                             task_image.save(f'{images_directory}_{image_format}/{image_id}')
 
-
                         html_id = f'{instance_id}_{i.name}.html'
                         with open(f'{html_directory}/{html_id}', 'w') as f:
                             # note, we can't use "driver.page_source" since it would return the default source without any changes
                             # TODO: double-check that this HTML code indeed contains the latest changes
                             f.write(self.driver.execute_script("return document.documentElement.outerHTML;"))
 
+                    # *after* we dump *input* features, we execute the action
+                    if self.solver_type == 'oracle':
+                        kwargs = {'answers': answers_map[i.name]}
+                        oracle_action_sequence = self.solver.solve(i, **kwargs)
+                    else:
+                        self.solver.solve(i)
+
+                    # *after* we execute the action, we dump the *output* features
+                    if self.dump_features:
                         data_to_be_dumped.append({
                             'input_type': i.type,
                             'input_name': i.name,
@@ -659,7 +662,6 @@ class Evaluation:
                 if self.dump_features:
                     with open(f'{directory}/{task_name}.json', 'w') as f:
                         json.dump(data_to_be_dumped, f, indent=4)
-
 
                 df = pd.DataFrame()
                 for task_name, inputs in results.items():
