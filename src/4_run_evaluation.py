@@ -436,7 +436,19 @@ class Evaluation:
                 # I think the only feasible fix is to merge the 3 text areas with the different names into one.
                 continue
 
+            if "Commonsense Morality-Text Label Validate-Collect-Extended" in task_name:
+                # one of the text boxes is not filled in properly (it's empty)
+                continue
+
+            if "What breaks the flow - no categories 4" in task_name:
+                # the oracle is not able to fully solve this task
+                break
+
             if "ROT Details [m=50] rocstories - 0 - 99" in task_name:
+                # the oracle is not able to fully solve this task
+                continue
+
+            if "Annotate WaNLI 23" in task_name:
                 # the oracle is not able to fully solve this task
                 continue
 

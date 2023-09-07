@@ -170,7 +170,12 @@ class MyActions:
         """
         # if input value is double/float, turn it into an integer
         if isinstance(input_value, float):
-            input_value = int(input_value)
+            if np.isnan(input_value):
+                print(f"{Fore.RED} ** Warning **: input value is {input_value}. "
+                      f"So, we're not going to modify the radio button.")
+                return Result(success=False, outcome=None, action=f"self.modify_radio({input}, {input_value})")
+            else:
+                input_value = int(input_value)
 
         # if input value is not string, turn it into a string
         if not isinstance(input_value, str):
