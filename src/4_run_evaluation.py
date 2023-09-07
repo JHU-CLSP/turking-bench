@@ -1,5 +1,4 @@
 import argparse
-from bs4 import BeautifulSoup
 from colorama import init as colorama_init
 from colorama import Fore
 import configparser
@@ -9,17 +8,18 @@ from evaluation import baselines
 import json
 import os
 import pandas as pd
+import numpy as np
 import random
 import requests
 from rouge_score import rouge_scorer
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+import shutil
 import string
 from transformers import AutoTokenizer
 from tqdm import tqdm
 from typing import List
-import numpy as np
 
 TURKLE_URL = "http://localhost:8000"
 
@@ -49,9 +49,9 @@ class Evaluation:
         # ass more solvers that we implement, we can add them here:
         self.solver_type = solver_type
         if solver_type == "random":
-            self.solver = baselines.RandomBaseline()
+            self.solver = baselines.RandomBaseline(driver=self.driver, actions=self.actions)
         elif solver_type == "oracle":
-            self.solver = baselines.OracleBaseline()
+            self.solver = baselines.OracleBaseline(driver=self.driver, actions=self.actions)
         else:
             raise Exception(f"{Fore.RED}Solver `{solver_type}` not implemented")
         self.tasks = tasks
@@ -63,6 +63,13 @@ class Evaluation:
 
         # as soon as the code is loaded, we look for alignnent between the task names and their ids
         self.task_ids = requests.get(f"{TURKLE_URL}/get_tasks/").json()
+
+        # exclude special inputs
+        self.excluded_input_names = [
+            'csrfmiddlewaretoken',  # hidden field automatically added external css files
+            'worker_ip',  # hidden field for bookkeeping
+            'ee'
+        ]
 
     def create_driver(self):
         # TODO: make the seleciton of headless (no visual browser for faster processing) a parameter
@@ -108,65 +115,105 @@ class Evaluation:
             else:
                 raise Exception(f"{Fore.RED}Invalid setup: {self.tasks}")
 
-    @staticmethod
-    def extract_input_values_from_url(url, task_name, input_names=None) -> List[Input]:
+    def extract_input_values_from_url(self, url, task_name, input_names=None) -> List[Input]:
         """
         This utility function extracts the list of input fields that could be filled in.
         Then for each input field, it identifies their type (text area, checkbox, etc.)
+        Note, for doing this we don't use BeautifulSoup because it does not capture the dynamic nature of the page.
         :param url: the url to extract the input fields from
         :param input_names: a list of input names to extract
         :return: a list of input names and their types
         """
-        response = requests.get(url)
-        soup = BeautifulSoup(response.text, 'html.parser')
-        input_fields = []
+        # TODO I think we can drop "url" parameter later.
 
         # if a list of input names are provided in the input, then extract the input fields with those names
         # otherwise, look for inputs that may look like input fields
         if input_names:
-            input_names = set(input_names)
             inputs = []
             for name in input_names:
-                input = soup.find(attrs={'name': name})
-                if input and input.name in ['input', 'select', 'textarea']:
-                    inputs.append(input)
+                # use selenium to find the input field
+                try:
+                    element = self.driver.find_element(By.NAME, name)
+                    # check if the element is of type input, select or textarea
+                    if element.tag_name in ['input', 'select', 'textarea']:
+                        inputs.append(element)
+                except:
+                    # the reason that we have try-catch here is becuase elements exists in CSV but they're not created
+                    # in HTML (they're created dynamically via JS). An exmaple task is "HTER - longer sentences -27 Sep 1129"
+                    print(f"{Fore.RED}Could not find input field with name `{name}`")
         else:
-            input_names = set()
-            inputs = soup.find_all(['input', 'textarea', 'select'])
+            inputs = self.driver.find_elements(By.XPATH, '//input | //textarea | //select')
 
-        # exclude special inputs
-        exclude_input_names = [
-            'csrfmiddlewaretoken',  # hidden field automatically added external css files
-            'worker_ip'  # hidden field for bookkeeping
-        ]
-        inputs = [input for input in inputs if input.get('name') not in exclude_input_names]
+        # filter out the elements if their name is in the excluded list
+        inputs = [input for input in inputs if input.get_attribute('name') not in self.excluded_input_names]
 
         # now for our list of inputs, indentify their types
+        input_fields = []
         for input in inputs:
-            if input.name in ['input']:
-                input_type = input.get('type')
+            if input.tag_name in ['input']:
+                input_type = input.get_attribute('type')
                 if not input_type:
                     input_type = 'text'
-            elif input.name == 'textarea':
+            elif input.tag_name == 'textarea':
                 input_type = 'textarea'
-            elif input.name == 'select':
+            elif input.tag_name == 'select':
                 input_type = 'select'
             else:
-                continue
+                raise Exception(f"{Fore.RED}to be implemented for tag name `{input.tag_name}`")
 
-            input_name = input.get('name')
+            input_name = input.get_attribute('name')
             if not input_name:
-                continue
+                raise Exception(f"{Fore.RED}to be implemented for tag name `{input.tag_name}`")
 
-            input_fields.append(
-                Input(url=url, input_name=input_name, input_type=input_type, task_name=task_name)
-            )
+            i = Input(url=url, input_name=input_name, input_type=input_type, task_name=task_name)
 
-        # before returning them, sort the input values based on their position in the HTML
-        return sorted(
-            input_fields,
-            key=lambda x: str(soup).index(str(soup.find(attrs={'name': x.name})))
-        )
+            # save the y-coordinate of the input field
+            i.y = input.location['y']
+
+            # save the x-coordinate of the input field
+            i.x = input.location['x']
+
+            # save the position in html source: self.driver.page_source
+            i.html_pos = self.driver.page_source.find(input_name)
+
+            input_fields.append(i)
+
+        # before returning them, sort the input values based on first based on their x-coordinate and then their y-coordinate
+        input_fields = sorted(input_fields, key=lambda i: (i.y, i.x))
+        return input_fields
+
+    def extract_values(self, inputs: List[Input]):
+        """
+        Given a set of values for the input fields, extract the values from the HTML.
+        We use this function for evaluation as well as unit testing.
+        """
+
+        for input in inputs:
+            if input.type in ['text', 'textarea', 'select', 'password', 'email', 'number', 'tel', 'url',
+                              'button', 'color', 'date', 'datetime-local', 'file', 'image', 'range', 'hidden']:
+
+                values = self.driver.execute_script(
+                    f"return Array.from(document.getElementsByName(`{input.name}`)).map((element) => element.value);"
+                )
+
+                # commenting out this asssrtion since there could be more than one text input with the same name.
+                # an example of this can be seen in "Dialogue safety (socialchemistry) 5" task.
+                # assert len(values) == 1, f"The number of values should be 1 but it is `{len(values)}` for {input}"
+
+            elif input.type in ['radio']:
+                values = self.driver.execute_script(
+                    f"return Array.from(document.getElementsByName(`{input.name}`)).filter(element => element.checked).map(element => element.value);"
+                )
+                assert len(values) <= 1, f"The number of values should be 1 or 0 but it is `{len(values)}` for {input}"
+            elif input.type in ['checkbox']:
+                command = f"""return Array.from(document.getElementsByName(`{input.name}`)).filter(element => element.checked).map(element => element.value);"""
+                values = self.driver.execute_script(command)
+            else:
+                raise Exception(f"{Fore.RED}to be implemented for type `{input.type}`")
+
+            input.values = values
+
+        return inputs
 
     @staticmethod
     # adapted the flowing from Squad v1.1 evaluation, without removing the articles.
@@ -189,6 +236,9 @@ class Evaluation:
         return (Evaluation.normalize_answer(prediction) == Evaluation.normalize_answer(references))
 
     def rouge(self, prediction, ground_truth, xlingual=False):
+        if prediction == ground_truth:
+            return 1.0
+
         if xlingual:
             scorer = self.xlingual_rouge_scorer
         else:
@@ -198,16 +248,12 @@ class Evaluation:
 
     @staticmethod
     def metric_max_over_ground_truths(metric_fn, prediction, ground_truths, xlingual=False):
-        print(" --> inside rouge  ")
-        print(f"predictions: {prediction}")
-        print(f"ground_truths: {ground_truths}")
-
         scores_for_ground_truths = []
         for ground_truth in ground_truths:
             score = metric_fn(prediction, ground_truth, xlingual=xlingual)
             scores_for_ground_truths.append(score)
-        score = max(scores_for_ground_truths)
-        print("scores: ", score)
+        score = float(max(scores_for_ground_truths))
+        print(f"{Fore.BLUE} --> scores: ", score)
         return score
 
     def retrieve_gold_labels(self, task_name: str, instance_index: int, input_names: List[str]):
@@ -238,8 +284,9 @@ class Evaluation:
         # in the original dataframe "df", select all the rows that correspond to the selected "row"
         # and then select the columns that start with "Answer."
         df_subset = df[df[cols].eq(row).all(1)]
-        answers_map = {input_name: df_subset.get(f"Answer.{input_name}", np.array([])).tolist() for input_name in
-                       input_names}
+        answers_map = {
+            input_name: df_subset.get(f"Answer.{input_name}", np.array([])).tolist() for input_name in input_names
+        }
 
         # Note: we explicitly do not exclude "nan" values (empty cells) because sometimes the correct action is to leave
         # the field empty. For example, not selecting a checkbox or leaving a text box empty. Of course there are also
@@ -249,10 +296,26 @@ class Evaluation:
 
     def calculate_rouge(self, answers: List[str], input_type: str, baseline_answer: str):
         baseline_answer = str(baseline_answer)
-        print("answers", answers)
-        print("baseline_answer", baseline_answer)
+        print(f"answers: `{answers}`")
+        print(f"baseline_answer: `{baseline_answer}` - type: `{type(baseline_answer)}`")
 
-        if input_type in ['text', 'textarea']:
+        # normalize responses: turn "nan", or "{}" into empty string
+        for idx in range(len(answers)):
+            a = answers[idx]
+            if a == "nan" or a == "{}" or a == "'{}'" or (type(a) == float and np.isnan(a)):
+                answers[idx] = ""
+
+        print("answers after mapping: ", answers)
+
+        # handle empty
+        if answers == []:
+            if baseline_answer == "" or baseline_answer == [
+                ""] or baseline_answer == [] or baseline_answer == "[]" or baseline_answer == "['']":
+                return 1.0
+            else:
+                return 0.0
+
+        if input_type in ['text', 'textarea', 'hidden']:
             scores = Evaluation.metric_max_over_ground_truths(
                 self.rouge,
                 prediction=baseline_answer,
@@ -291,8 +354,29 @@ class Evaluation:
                 xlingual=False
             )
             return scores
+        elif input_type in ['range']:
+            # if the gold labels are numericals, then we can compute the mean absolute error
+            # else, fall back to rouge
+            try:
+                # TODO: range values need to be normalized by their maximum
+                # https://github.com/JHU-CLSP/turk-instructions/issues/65
+                answers = [float(answer) for answer in answers]
+                baseline_answer = float(baseline_answer)
+                # "min" since we're happy as long as we're close to one human
+                denominator = np.max(answers)
+                scores = 1 - np.min(np.abs(np.array(answers) - baseline_answer)) / denominator
+                print(f"{Fore.BLUE} --> using numeric values of the range to compute their error: {scores}")
+                return scores
+            except:
+                scores = Evaluation.metric_max_over_ground_truths(
+                    self.exact_match,
+                    prediction=baseline_answer,
+                    ground_truths=[str(answer) for answer in answers],
+                    xlingual=False
+                )
+                return scores
         else:
-            raise Exception(f"{Fore.RED}to be implemented")
+            raise Exception(f"{Fore.RED}to be implemented for type `{input_type}`")
 
     @staticmethod
     def read_config(file):
@@ -305,10 +389,7 @@ class Evaluation:
         Enumerate the tasks and their instances
         :param max_instance_count: maximum number of instances per task
         """
-
-        # TODO: make these parameters
         input_format = "both"
-        image_format = "full_page"
 
         tasks = self.load_task_names()
 
@@ -319,14 +400,103 @@ class Evaluation:
         for task_name in tqdm(tasks):
             print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
 
+            if task_name not in [
+                "Dialogue rot annotation 2",
+                "Commonsense Morality-Text Label Validate-Collect-Extended",
+                "Question Typing 4",
+                "Sentiment_Negative 3",
+                "Pseudoword Dataset Creation PPDB",
+                "Coherence Evaluation",
+                "Simplification-Meaning-Grammar-Simplicity",
+                "Missing Adjective FITB",
+                "Script KD eval LONG V2 - disc result eval 1",
+                "Elicitation Generation",
+                "clarifyD Qualification 1",
+                "Evaluate the Quality of Explanations (Relative NLI) 7",
+                "ethics_sbic dialogue 2nd 0",
+                "ATOMIC Neg Discriminator Eval 25",
+                "Visual Comet Multiple Choice Test Verify",
+                "VisualCOMET Selection test",
+                "Evaluate the Quality of Explanations (Relative CommonsenseQA)",
+                "Step 1 Generating Multi-Sentence Questions (science)",
+                "Annotate WaNLI 23",
+                "Style adaptation, pairwise, complex-simple",
+                "Detox_pilot",
+                "Triple Quality Eval -- Peter 8",
+                "DnD Identify Guidance in DM Text 7",
+                "Human evaluation - gentle vs canary",
+                ".DS_Store",
+                "ATOMIC Validate gl",
+                "HTER - longer sentences -27 Sep 1129",
+                "Neurologic Recipe Eval 3",
+                "Creating Sentence Paraphrases 8",
+                "Relative CommonsenseQA Explanation Pairwise Judgements Collection 3",
+                "wikiHow Goal Membership",
+                "Human evaluation - quals",
+                "ATOMIC - Object Rationale 13",
+                "ToTTo Evals (RLUE) 1",
+                "Dialogue safety (socialchemistry) 5",
+                "InconsistentMiddles 3",
+                "drop_essential_0.4",
+            ]:
+                continue
+
             # TODO we gotta drop this after adding gold labels to the sandbox tasks
             if 'sandbox' in task_name:
+                continue
+
+            if "Author In-Group Analysis Phrase Classification 2" in task_name:
+                # https://github.com/JHU-CLSP/turk-instructions/issues/64
+                continue
+
+            if "HTER - longer sentences -27 Sep 1129" in task_name:
+                # https://github.com/JHU-CLSP/turk-instructions/issues/66
+                continue
+
+            if "wikiHow Goal Membership" in task_name:
+                # the inputs are not loaded properly
+                # I think it's becuase the batch file has ".on" in the header
+                continue
+
+            if "Human evaluation - quals" in task_name:
+                # inputs are not loaded properly
+                # I think it's because we don't have the right batch file, though I might be wrong.
                 continue
 
             if task_name not in self.task_ids.keys():
                 print(f"{Fore.RED}Task `{task_name}` is not available on Turkle.")
                 print("Available tasks are:", self.task_ids.keys())
                 continue
+
+            if "Dialogue safety (socialchemistry) 5" in task_name:
+                # we're not able to execute some of the text inputs.
+                # the page has multiple rationale inputs with the same name so it is not clear how to fill them in.
+                # I think the only feasible fix is to merge the 3 text areas with the different names into one.
+                continue
+
+            if "Commonsense Morality-Text Label Validate-Collect-Extended" in task_name:
+                # one of the text boxes is not filled in properly (it's empty)
+                continue
+
+            if "What breaks the flow - no categories 4" in task_name:
+                # the oracle is not able to fully solve this task
+                break
+
+            if "ROT Details [m=50] rocstories - 0 - 99" in task_name:
+                # the oracle is not able to fully solve this task
+                continue
+
+            if "Annotate WaNLI 23" in task_name:
+                # the oracle is not able to fully solve this task
+                continue
+
+            if "Reddit In-group Analysis Comment annotation 3" in task_name:
+                # we don't find the right inputs
+                continue
+
+            if "Chatbot Response Quality Evaluation" in task_name:
+                # I haven't checked any task after this.
+                break
 
             instance_ids = self.task_ids[task_name]
             first_instance_id = min(instance_ids)
@@ -339,6 +509,10 @@ class Evaluation:
 
             # Sample random instances of each task
             for instance_id in instance_ids:
+
+                # wait for a keyboard press before continuing
+                # input("Press Enter to continue...")
+
                 row_number = instance_id - first_instance_id
                 print(f"instance_id: {instance_id} <-> row_number: {row_number}")
 
@@ -348,7 +522,7 @@ class Evaluation:
                 # get the name of the fields
                 df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
                 input_names = [col.replace('Answer.', '') for col in df.columns if col.startswith('Answer.')]
-                inputs = Evaluation.extract_input_values_from_url(url, input_names)
+                inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
 
                 print(" --> inputs: {}".format([x.name for x in inputs]))
 
@@ -363,14 +537,13 @@ class Evaluation:
 
                 if self.dump_features:
                     directory = f'features/{task_name}'
-                    if not os.path.exists(directory):
-                        os.makedirs(directory)
-
                     images_directory = f'{directory}/images'
-                    if not os.path.exists(images_directory):
-                        os.makedirs(images_directory)
-
                     html_directory = f'{directory}/HTML'
+
+                    if os.path.exists(directory):
+                        shutil.rmtree(directory)
+                    os.makedirs(directory)
+
                     if not os.path.exists(html_directory):
                         os.makedirs(html_directory)
 
@@ -379,98 +552,116 @@ class Evaluation:
                     if task_name not in task_field_statistics:
                         task_field_statistics[task_name] = {}
 
-                    for input in inputs:
-                        if input.type not in aggregate_field_statistics:
-                            aggregate_field_statistics[input.type] = 0
+                    for i in inputs:
+                        if i.type not in aggregate_field_statistics:
+                            aggregate_field_statistics[i.type] = 0
 
-                        aggregate_field_statistics[input.type] += 1
+                        aggregate_field_statistics[i.type] += 1
 
-                        if input.type not in task_field_statistics[task_name]:
-                            task_field_statistics[task_name][input.type] = 0
-                        task_field_statistics[task_name][input.type] += 1
+                        if i.type not in task_field_statistics[task_name]:
+                            task_field_statistics[task_name][i.type] = 0
+                        task_field_statistics[task_name][i.type] += 1
 
                 if self.dump_features:
-                    data = []
+                    data_to_be_dumped = []
 
-                for input in inputs:
-                    element = self.driver.find_element(By.NAME, input.name)
+                for input_idx, i in enumerate(inputs):
+                    print(f"{Fore.GREEN} - - - - - -  starting a new element: `{i}` - - - - - -  ")
+
                     # make sure that the element is visible
-                    print(f"{Fore.GREEN} - - - - - -  starting a new element: `{input}` - - - - - -  ")
-
+                    element = self.driver.find_element(By.NAME, i.name)
                     if not element.is_displayed() or element.size['width'] <= 0 or element.size['height'] <= 0:
-                        print(f'{Fore.RED}Skipping element `{input.name}` since it is not visible.')
+                        print(f'{Fore.RED}Skipping element `{i.name}` since it is not visible.')
                         continue
 
+                    if self.dump_features and i.type != 'hidden':
+                        image_format = "bordered_div"  # the most reasonable option
+                        # create directory if needed
+                        if not os.path.exists(f'{images_directory}_{image_format}'):
+                            os.makedirs(f'{images_directory}_{image_format}')
+                        if image_format == 'full_page':
+                            task_image = self.actions.take_page_screenshots().outcome
+                        elif image_format == 'bordered_div':
+                            task_image = self.actions.take_element_screenshot_with_border(i).outcome
+                        else:
+                            raise Exception(f"{Fore.RED}to be implemented for image format `{image_format}`")
+
+                        if isinstance(task_image, list):
+                            img_ids = []
+                            for j, image in enumerate(task_image):
+                                image_id = f'{instance_id}_{input_idx}_{i.name}_{j}.png'
+                                image.save(f'{images_directory}_{image_format}/{image_id}')
+                                img_ids.append(image_id)
+                            image_id = img_ids
+                        else:
+                            image_id = f'{instance_id}_{input_idx}_{i.name}.png'
+                            task_image.save(f'{images_directory}_{image_format}/{image_id}')
+
+                        html_id = f'{instance_id}_{i.name}.html'
+                        with open(f'{html_directory}/{html_id}', 'w') as f:
+                            # note, we can't use "driver.page_source" since it would return the default source without any changes
+                            # TODO: double-check that this HTML code indeed contains the latest changes
+                            f.write(self.driver.execute_script("return document.documentElement.outerHTML;"))
+
+                    # *after* we dump *input* features, we execute the action
                     if self.solver_type == 'oracle':
-                        kwargs = {'answers': answers_map[input.name]}
-                        baseline_answer = self.solver.solve(input, self.driver, **kwargs)
+                        kwargs = {'answers': answers_map[i.name]}
+                        oracle_action_sequence = self.solver.solve(i, **kwargs)
                     else:
-                        baseline_answer = self.solver.solve(input, self.driver)
-                    # self.actions.execute_command(input, baseline_answer)
+                        self.solver.solve(i)
 
+                    # *after* we execute the action, we dump the *output* features
                     if self.dump_features:
-                        if input_format == 'image' or 'both':
-                            if image_format == 'full_page':
-                                task_image = self.actions.take_page_screenshots()
-                            elif image_format == 'div':
-                                task_image = self.actions.take_element_screenshot(input)
-                            elif image_format == 'bordered_div':
-                                task_image = self.actions.take_element_screenshot_with_border(input)
-                            else:
-                                raise Exception(f"{Fore.RED}Invalid image format: {image_format}")
+                        data_to_be_dumped.append({
+                            'input_type': i.type,
+                            'input_name': i.name,
+                            'image_id': image_id,
+                            'html_id': html_id,
+                            'output': oracle_action_sequence
+                        })
 
-                        if input.type != 'hidden':
-                            if input_format == 'image' or 'both':
-                                if image_format == 'full_page':
-                                    task_image = self.actions.take_page_screenshots()
-                                elif image_format == 'div':
-                                    task_image = self.actions.take_element_screenshot(input)
-                                elif image_format == 'bordered_div':
-                                    task_image = self.actions.take_element_screenshot_with_border(input)
+                # get the input values from the web page
+                inputs_with_values = self.extract_values(inputs)
 
-                                if isinstance(task_image, list):
-                                    img_ids = []
-                                    for j, image in enumerate(task_image):
-                                        image_id = f'{instance_id}_{input.name}_{j}.png'
-                                        image.save(f'{images_directory}/{image_id}')
-                                        img_ids.append(image_id)
-                                    image_id = img_ids
-                                else:
-                                    image_id = f'{instance_id}_{input.name}.png'
-                                    task_image.save(f'{images_directory}/{image_id}')
-                            else:
-                                image_id = None
+                # collecting field statistics
+                if task_name not in results:
+                    results[task_name] = {}
 
-                            html_id = f'{instance_id}_{input.name}.html'
-                            with open(f'{html_directory}/{html_id}', 'w') as f:
-                                f.write(self.driver.page_source)
+                # TODO: move this inside a evaluation function to keep here clean
+                score = 0.0
+                for i in inputs_with_values:
+                    if i.name in self.excluded_input_names:
+                        continue
+                    # if checkmarks, sort the values alphabetically
+                    if i.type == "checkbox":
+                        i.values = "|".join(sorted(i.values))
+                        for idx in range(len(answers_map[i.name])):
+                            x = answers_map[i.name][idx]
+                            if type(x) == str and "|" in x:
+                                answers_map[i.name][idx] = "|".join(sorted(x.split("|")))
+                    else:
+                        if len(i.values) > 0:
+                            i.values = i.values[0]
+                        else:
+                            i.values = ''
+                    score_per_field = self.calculate_rouge(answers_map[i.name], i.type, i.values)
 
-                            gold_output = "tbd"
-                            self.actions.execute_command(input, baseline_answer)
+                    if i.type not in results[task_name]:
+                        results[task_name][i.type] = []
 
-                            data.append({
-                                'input_type': input.type,
-                                'input_name': input.name,
-                                'image_id': image_id,
-                                'html_id': html_id,
-                                'output': gold_output
-                            })
+                    results[task_name][i.type].append(score_per_field)
 
-                    if self.dump_features:
-                        with open(f'{directory}/{task_name}.json', 'w') as f:
-                            json.dump(data, f)
+                    score += score_per_field
 
-                    # TODO: scoring should be done after all the annotations are done
-                    # score = self.calculate_rouge(answers_map[input.name], input.type, baseline_answer)
-                    score = 0.0
+                score /= len(inputs_with_values)
+                print(f"{Fore.CYAN} --> Overall score: {score}")
 
-                    # collecting field statistics
-                    if task_name not in results:
-                        results[task_name] = {}
+                if self.solver_type == 'oracle':
+                    assert score > 0.99, f"{Fore.RED}The oracle baseline should always get a score of 1.0"
 
-                    if input.type not in results[task_name]:
-                        results[task_name][input.type] = []
-                    results[task_name][input.type].append(score)
+                if self.dump_features:
+                    with open(f'{directory}/{task_name}.json', 'w') as f:
+                        json.dump(data_to_be_dumped, f, indent=4)
 
                 df = pd.DataFrame()
                 for task_name, inputs in results.items():
@@ -537,6 +728,9 @@ if __name__ == "__main__":
     dump_features = args['dump_features']
     report_field_stats = args['report_field_stats']
     assert type(do_eval) == bool
+
+    if dump_features and not args.solver_type != "oracle":
+        raise Exception(f"{Fore.RED}dump_features can only be used with oracle solver")
 
     eval = Evaluation(solver_type=args.solver_type, tasks=args.tasks,
                       do_eval=do_eval, dump_features=dump_features, report_field_stats=report_field_stats)

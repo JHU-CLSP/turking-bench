@@ -1,23 +1,33 @@
+from colorama import Fore
 from datetime import datetime
 from datetime import timedelta
 from dateutil.relativedelta import relativedelta
 from datetime import date
 import random
+from time import sleep
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from evaluation.actions import MyActions
 from evaluation.input import Input
+
 # from 4.run_evaluation import Evaluation
 evaluation = __import__('4_run_evaluation')
+
 
 class Baseline:
     """
     This is the base class for all baselines.
     """
-    def solve(self, input: Input, driver, **kwargs):
+
+    def __init__(self, actions: MyActions, driver):
+        self.driver = driver
+        self.actions = actions
+
+    def solve(self, input: Input, **kwargs):
         """
         This function solves the task given the input name and type.
         """
+        # TODO decide what the output of this function should be
         raise NotImplementedError("This method should be implemented by the subclass.")
 
     def get_action_list(self):
@@ -34,45 +44,95 @@ class Baseline:
     def get_encoded_action_list(self):
         actions = self.get_action_list()
         # encode the actions as a string
-        actions = '\n'.join([f"{action[0]}: {action[1]}" for action in actions])
-        return f"""
-        Our job is to solve a bunch of web-based tasks. 
-        Below is a list of actions that can be performed on a HTML page.
-        {actions}
-        """
+        actions = '\n\n'.join([f"{action[0]}: {action[1]}" for action in actions])
+        return f"""Given a web-based task, we'd like to solve it by executing actions. Below is a list of actions that 
+        can be performed on a HTML page. \n\n{actions}"""
+
 
 class NewBaseline(Baseline):
 
-    def solve_task(self, input: Input, driver, **kwargs):
-        screenshot = Input.take_screenshot(driver)
-        full_screenshot = Input.take_full_screenshot(driver)
-        html = input.get_html()
+    def solve_task(self, input: Input, **kwargs):
+        # list of ations that can be performed on a HTML page
+        encoded_actions_prompt = self.get_encoded_action_list()
+        print("encoded actions: ", encoded_actions_prompt)
 
         # Add your code here to process the HTML data and generate a summary
 
-        result = None
-        return result
+        # Youc can either make direct calls to the actions
+        # for example, you can access the HTML code
+        html_result = self.actions.get_html()
+
+        # or you can take screenshots of the page
+        screenshot_result = self.actions.take_full_screenshot()
+
+        # Or you can build a neural model that returns a bunch of commands in string format
+        commands = "self.actions.scroll_to_element(input)"
+
+        exec(commands)
+
+        return
+
 
 class OracleBaseline(Baseline):
     """
     This baseline uses the gold labels to solve the task.
     """
 
-    def solve(self, input: Input, driver, **kwargs):
+    def solve(self, input: Input, **kwargs):
         # get the index of the input
-        print(kwargs)
         answers = kwargs['answers']
+        actions_per_input = ""  # no action by default
         for answer in answers:
             if answer and answer != '{}':
-                return answer
-        return None
+                # self.actions.execute_command(input, answer)
+
+                print(f" --> Input name: {input.name}")
+                print(f" --> Input value: {answer}")
+
+                r1 = self.actions.wait_for_element(input)
+
+                # wait 0.1 sec for the page to fully load
+                sleep(0.1)
+                r2 = self.actions.maximize_window()
+                r3 = self.actions.scroll_to_element(input)
+                input_element = r3.outcome
+
+                action_sequence = [r1, r2, r3]
+
+                if input.type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
+                    action_sequence.append(self.actions.modify_text(input, answer))
+                elif input.type in ['checkbox']:
+                    if not input_element.is_selected():
+                        action_sequence.append(self.actions.modify_checkbox(input, answer))
+                elif input.type in ['radio']:
+                    if not input_element.is_selected():
+                        action_sequence.append(self.actions.modify_radio(input, answer))
+                elif input.type == 'select':
+                    action_sequence.append(self.actions.modify_select(input, answer))
+                elif input.type == 'range':
+                    action_sequence.append(self.actions.modify_range(input, answer))
+                elif input.type in ['button', 'color', 'date', 'datetime-local', 'file', 'hidden', 'image',
+                                    'month', 'reset', 'search', 'submit', 'time']:
+                    raise Exception(
+                        f"{Fore.RED} ** Warning **: We don't know how to handle this input type `{input.type}`")
+
+                action_sequence = "\n\n".join([r.action for r in action_sequence])
+                actions_per_input = {
+                    "input_name": input.name,
+                    "action_sequence": action_sequence,
+                }
+                break
+
+        return actions_per_input
+
 
 class RandomBaseline(Baseline):
     """
     This baseline randomly selects an action from the list of actions that can be performed on a HTML page.
     """
-    def solve(self, input: Input, driver, **kwargs):
-        input_element = driver.find_element(By.NAME, input.name)
+
+    def solve(self, input: Input, **kwargs):
+        input_element = self.driver.find_element(By.NAME, input.name)
         input_type = input.type
         input_name = input.name
         if input_type == 'text':
@@ -81,7 +141,7 @@ class RandomBaseline(Baseline):
         else:
             options = []
             if input_type == 'radio' or input_type == 'checkbox':
-                options = [option.get_attribute('value') for option in driver.find_elements(By.NAME, input_name)]
+                options = [option.get_attribute('value') for option in self.driver.find_elements(By.NAME, input_name)]
             elif input_type == 'select-one':
                 select_element = Select(input_element)
                 options = [option.get_attribute('value') for option in select_element.options]

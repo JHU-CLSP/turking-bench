@@ -57,4 +57,3 @@ for root, dirs, _ in os.walk('../tasks'):
         result = client.upload(options)
         if result:
             print(f"{Fore.GREEN}Success")
-
