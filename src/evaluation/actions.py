@@ -13,6 +13,7 @@ from time import sleep
 import math
 from evaluation.input import Input
 
+
 class Result:
     """
     This class encodes the outcome of each action.
@@ -21,6 +22,7 @@ class Result:
     - message: a message to be displayed to the user
     - action: the action that was performed, including the input
     """
+
     def __init__(self, success, outcome, action):
         self.success = success
         self.outcome = outcome
@@ -29,10 +31,12 @@ class Result:
     def __repr__(self):
         return f"Result(success=`{self.success}`, outcome=`{self.outcome}`, action=`{self.action}`)"
 
+
 class ActionUtils:
     """
     This class contains utility functions for actions.
     """
+
     @staticmethod
     def xpath_string_escape(input_str):
         """ creates a concatenation of alternately-quoted strings that is always a valid XPath expression """
@@ -266,42 +270,6 @@ class MyActions:
 
         return Result(success=True, outcome=None, action=f"self.modify_range({input}, {input_value})")
 
-    def execute_command(self, input: Input, input_value) -> Result:
-        """
-        For a given input field, this function enters the input value into the input field.
-        :param input_type: type of the input field
-        :param input_value: value to be entered into the input field
-        :param input_name: name of the input field
-        :return: None
-        """
-        # TODO: I think this function can be folded inside the oracle baseline class
-        print(f" --> Input name: {input.name}")
-        print(f" --> Input value: {input_value}")
-
-        self.wait_for_element(input)
-        # wait 0.1 sec for the page to fully load
-        sleep(0.1)
-        self.maximize_window()
-        result = self.scroll_to_element(input)
-        input_element = result.outcome
-
-        if input.type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
-            self.modify_text(input, input_value)
-        elif input.type in ['checkbox']:
-            if not input_element.is_selected():
-                return self.modify_checkbox(input, input_value)
-        elif input.type in ['radio']:
-            if not input_element.is_selected():
-                return self.modify_radio(input, input_value)
-        elif input.type == 'select':
-            return self.modify_select(input, input_value)
-        elif input.type == 'range':
-            return self.modify_range(input, input_value)
-
-        elif input.type in ['button', 'color', 'date', 'datetime-local', 'file', 'hidden', 'image',
-                            'month', 'reset', 'search', 'submit', 'time']:
-            raise Exception(f"{Fore.RED} ** Warning **: We don't know how to handle this input type `{input.type}`")
-
     def take_screenshot(self) -> Result:
         """
         This function takes a screenshot of the entire page that is currently visible. It then saves the screenshot.
@@ -323,7 +291,6 @@ class MyActions:
         # Take screenshot
         self.driver.save_screenshot('screenshot.png')
         return Result(success=True, outcome=None, action="self.take_screenshot()")
-
 
     def take_element_screenshot(self, input: Input) -> Result:
         """

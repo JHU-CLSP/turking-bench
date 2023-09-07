@@ -364,7 +364,7 @@ class Evaluation:
                 baseline_answer = float(baseline_answer)
                 # "min" since we're happy as long as we're close to one human
                 denominator = np.max(answers)
-                scores = 1- np.min(np.abs(np.array(answers) - baseline_answer)) / denominator
+                scores = 1 - np.min(np.abs(np.array(answers) - baseline_answer)) / denominator
                 print(f"{Fore.BLUE} --> using numeric values of the range to compute their error: {scores}")
                 return scores
             except:
@@ -402,6 +402,47 @@ class Evaluation:
         task_field_statistics = {}
         for task_name in tqdm(tasks):
             print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
+
+            if task_name not in [
+                "Dialogue rot annotation 2",
+                "Commonsense Morality-Text Label Validate-Collect-Extended",
+                "Question Typing 4",
+                "Sentiment_Negative 3",
+                "Pseudoword Dataset Creation PPDB",
+                "Coherence Evaluation",
+                "Simplification-Meaning-Grammar-Simplicity",
+                "Missing Adjective FITB",
+                "Script KD eval LONG V2 - disc result eval 1",
+                "Elicitation Generation",
+                "clarifyD Qualification 1",
+                "Evaluate the Quality of Explanations (Relative NLI) 7",
+                "ethics_sbic dialogue 2nd 0",
+                "ATOMIC Neg Discriminator Eval 25",
+                "Visual Comet Multiple Choice Test Verify",
+                "VisualCOMET Selection test",
+                "Evaluate the Quality of Explanations (Relative CommonsenseQA)",
+                "Step 1 Generating Multi-Sentence Questions (science)",
+                "Annotate WaNLI 23",
+                "Style adaptation, pairwise, complex-simple",
+                "Detox_pilot",
+                "Triple Quality Eval -- Peter 8",
+                "DnD Identify Guidance in DM Text 7",
+                "Human evaluation - gentle vs canary",
+                ".DS_Store",
+                "ATOMIC Validate gl",
+                "HTER - longer sentences -27 Sep 1129",
+                "Neurologic Recipe Eval 3",
+                "Creating Sentence Paraphrases 8",
+                "Relative CommonsenseQA Explanation Pairwise Judgements Collection 3",
+                "wikiHow Goal Membership",
+                "Human evaluation - quals",
+                "ATOMIC - Object Rationale 13",
+                "ToTTo Evals (RLUE) 1",
+                "Dialogue safety (socialchemistry) 5",
+                "InconsistentMiddles 3",
+                "drop_essential_0.4",
+            ]:
+                continue
 
             # TODO we gotta drop this after adding gold labels to the sandbox tasks
             if 'sandbox' in task_name:
@@ -526,7 +567,7 @@ class Evaluation:
                         task_field_statistics[task_name][i.type] += 1
 
                 if self.dump_features:
-                    data = []
+                    data_to_be_dumped = []
 
                 for i in inputs:
                     print(f"{Fore.GREEN} - - - - - -  starting a new element: `{i}` - - - - - -  ")
@@ -581,9 +622,8 @@ class Evaluation:
                                 f.write(self.driver.page_source)
 
                             gold_output = "tbd"
-                            self.actions.execute_command(i, baseline_answer)
 
-                            data.append({
+                            data_to_be_dumped.append({
                                 'input_type': i.type,
                                 'input_name': i.name,
                                 'image_id': image_id,
@@ -633,7 +673,7 @@ class Evaluation:
 
                 if self.dump_features:
                     with open(f'{directory}/{task_name}.json', 'w') as f:
-                        json.dump(data, f)
+                        json.dump(data_to_be_dumped, f)
 
                 df = pd.DataFrame()
                 for task_name, inputs in results.items():
@@ -700,6 +740,9 @@ if __name__ == "__main__":
     dump_features = args['dump_features']
     report_field_stats = args['report_field_stats']
     assert type(do_eval) == bool
+
+    if dump_features and not args.solver_type != "oracle":
+        raise Exception(f"{Fore.RED}dump_features can only be used with oracle solver")
 
     eval = Evaluation(solver_type=args.solver_type, tasks=args.tasks,
                       do_eval=do_eval, dump_features=dump_features, report_field_stats=report_field_stats)

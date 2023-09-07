@@ -1,8 +1,10 @@
+from colorama import Fore
 from datetime import datetime
 from datetime import timedelta
 from dateutil.relativedelta import relativedelta
 from datetime import date
 import random
+from time import sleep
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from evaluation.actions import MyActions
@@ -83,7 +85,36 @@ class OracleBaseline(Baseline):
         answers = kwargs['answers']
         for answer in answers:
             if answer and answer != '{}':
-                self.actions.execute_command(input, answer)
+                # self.actions.execute_command(input, answer)
+
+                print(f" --> Input name: {input.name}")
+                print(f" --> Input value: {answer}")
+
+                self.actions.wait_for_element(input)
+                # wait 0.1 sec for the page to fully load
+                sleep(0.1)
+                self.actions.maximize_window()
+                result = self.actions.scroll_to_element(input)
+                input_element = result.outcome
+
+                if input.type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
+                    self.actions.modify_text(input, answer)
+                elif input.type in ['checkbox']:
+                    if not input_element.is_selected():
+                        return self.actions.modify_checkbox(input, answer)
+                elif input.type in ['radio']:
+                    if not input_element.is_selected():
+                        return self.actions.modify_radio(input, answer)
+                elif input.type == 'select':
+                    return self.actions.modify_select(input, answer)
+                elif input.type == 'range':
+                    return self.actions.modify_range(input, answer)
+
+                elif input.type in ['button', 'color', 'date', 'datetime-local', 'file', 'hidden', 'image',
+                                    'month', 'reset', 'search', 'submit', 'time']:
+                    raise Exception(
+                        f"{Fore.RED} ** Warning **: We don't know how to handle this input type `{input.type}`")
+
                 return
         return None
 
