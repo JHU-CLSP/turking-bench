@@ -299,12 +299,8 @@ class MyActions:
         """
         This function takes a screenshot of a given element on the page.
         """
-        # find the element based on input name and type
-        # if input.type in ['select', 'textarea']:
-        #     element = Select(self.driver.find_element(By.NAME, input.name)).first_selected_option
-        # else:
-        #     element = self.driver.find_element(By.NAME, input.name)
 
+        # find the element based on input name
         element = self.driver.find_element(By.NAME, input.name)
 
         # get the location and size of the element
@@ -328,11 +324,7 @@ class MyActions:
         This function takes a screenshot of the entire page and draws a red border around the specified element.
         """
 
-        # find the element based on input name and type
-        # if input.type in ['select', 'textarea']:
-        #     element = Select(self.driver.find_element(By.NAME, input.name)).first_selected_option
-        # else:
-        #     element = self.driver.find_element(By.NAME, input.name)
+        # find the element based on input name
         element = self.driver.find_element(By.NAME, input.name)
 
         # get the location and size of the element
