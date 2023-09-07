@@ -2,7 +2,7 @@ eval = __import__('4_run_evaluation')
 from evaluation.actions import MyActions
 from evaluation.baselines import Baseline
 
-evaluation = eval.Evaluation(solver_type="oracle", tasks="test",
+evaluation = eval.Evaluation(solver_type="oracle", tasks="all",
                              do_eval=True, dump_features=False, report_field_stats=True)
 
 

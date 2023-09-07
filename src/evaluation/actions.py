@@ -1,6 +1,7 @@
 from colorama import Fore
 import io
 from io import BytesIO
+import numpy as np
 from PIL import Image, ImageDraw
 import requests
 from selenium.webdriver.common.action_chains import ActionChains
@@ -37,6 +38,17 @@ class ActionUtils:
         """ creates a concatenation of alternately-quoted strings that is always a valid XPath expression """
         parts = input_str.split("'")
         return "concat('" + "', \"'\" , '".join(parts) + "', '')"
+
+    @staticmethod
+    def is_float(element: any) -> bool:
+        # If you expect None to be passed:
+        if element is None:
+            return False
+        try:
+            float(element)
+            return True
+        except ValueError:
+            return False
 
 
 class MyActions:
@@ -92,7 +104,7 @@ class MyActions:
         :param input_value: value to be entered into the input field
         :return: None
         """
-        if not input_value or input_value == 'nan':
+        if not input_value or input_value == 'nan' or (type(input_value) == float and np.isnan(input_value)):
             print(f"{Fore.RED}Since the input value is `{input_value}`, we are not going to modify the text.")
             return Result(success=False, outcome=None, action=f"self.modify_text({input}, {input_value})")
 
@@ -141,15 +153,14 @@ class MyActions:
         assert type(input_value) == list, f"Input value `{input_value}` is not a list"
 
         # now we have to check the checkboxes that have the values we want
-        for value in input_value:
-            # Find the checkbox that has the given value and click on it
-            # TODO: need to escape the following parameters
-            checkbox = self.driver.find_element(
-                By.XPATH,
-                f"//input[@type='checkbox' and @name='{input.name}' and @value='{value}']"
-            )
-            print(f"{Fore.YELLOW}About to check this checkbox: {checkbox.get_attribute('outerHTML')}")
-            checkbox.click()
+        # TODO: need to escape the following parameters
+        checkboxs = self.driver.find_elements(
+            By.XPATH, f"//input[@type='checkbox' and @name='{input.name}']"
+        )
+        for checkbox in checkboxs:
+            if checkbox.get_attribute("value") in input_value:
+                print(f"{Fore.YELLOW}About to check this checkbox: {checkbox.get_attribute('outerHTML')}")
+                checkbox.click()
 
         return Result(success=True, outcome=None, action=f"self.modify_checkbox({input}, {input_value})")
 
@@ -200,13 +211,55 @@ class MyActions:
 
         # get the values of the options
         option_values = [option.get_attribute('value') for option in select.options]
-        assert input_value in option_values, \
-            f"Input value `{input_value}` is not among the available option values `{option_values}`"
+        if input_value in option_values:
+            # great ... continue!
+            pass
+        elif ActionUtils.is_float(input_value) and str(int(input_value)) in option_values:
+            # input value is a float, but the option values are integers
+            input_value = str(int(input_value))
+        else:
+            raise Exception(f"Input value `{input_value}` is not among the available option values `{option_values}`")
 
         # select by value
         select.select_by_value(input_value)
 
         return Result(success=True, outcome=None, action=f"self.modify_select({input}, {input_value})")
+
+    def modify_range(self, input: Input, input_value) -> Result:
+        """
+        For a given "range" input, this function clicks on the specified range value.
+        """
+        # if input value is double/float, turn it into an integer
+        # if isinstance(input_value, float):
+        #     input_value = int(input_value)
+
+        # if input value is not string, turn it into a string
+        # if not isinstance(input_value, str):
+        #     input_value = str(input_value)
+
+        if input_value in ['nan', 'None']:
+            print(f"{Fore.RED} ** Warning **: input value is {input_value}. "
+                  f"So, we're not going to modify the range.")
+            return Result(success=False, outcome=None, action=f"self.modify_range({input}, {input_value})")
+
+        self.scroll_to_element(input)
+        # value = f"@value='{input_value}'"
+        # if "'" in input_value and '"' in input_value:
+        #     value = f'@value=`{input_value}`'
+        # elif "'" in input_value:
+        #     value = f'@value="{input_value}"'
+
+        element = self.driver.find_element(
+            By.XPATH, f"//input[@type='range' and @name='{input.name}']"
+        )
+
+        # print element in HTML format
+        print(f"{Fore.YELLOW}We are going to set the value of {element.get_attribute('outerHTML')} to {input_value}")
+
+        # set the value to the input value
+        self.driver.execute_script(f"arguments[0].value = {input_value};", element)
+
+        return Result(success=True, outcome=None, action=f"self.modify_range({input}, {input_value})")
 
     def execute_command(self, input: Input, input_value) -> Result:
         """
@@ -229,22 +282,20 @@ class MyActions:
 
         if input.type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
             self.modify_text(input, input_value)
-
         elif input.type in ['checkbox']:
             if not input_element.is_selected():
                 return self.modify_checkbox(input, input_value)
-
         elif input.type in ['radio']:
             if not input_element.is_selected():
                 return self.modify_radio(input, input_value)
-
         elif input.type == 'select':
             return self.modify_select(input, input_value)
+        elif input.type == 'range':
+            return self.modify_range(input, input_value)
 
         elif input.type in ['button', 'color', 'date', 'datetime-local', 'file', 'hidden', 'image',
-                            'month', 'range', 'reset', 'search', 'submit', 'time']:
-            print(f"{Fore.RED} ** Warning **: We don't know how to handle this input type `{input.type}`")
-            return Result(success=False, outcome=None, action=None)
+                            'month', 'reset', 'search', 'submit', 'time']:
+            raise Exception(f"{Fore.RED} ** Warning **: We don't know how to handle this input type `{input.type}`")
 
     def take_screenshot(self) -> Result:
         """
