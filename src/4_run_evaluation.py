@@ -279,7 +279,7 @@ class Evaluation:
 
         # handle empty
         if answers == []:
-            if baseline_answer == [""] or baseline_answer == [] or baseline_answer == "[]":
+            if baseline_answer == [""] or baseline_answer == [] or baseline_answer == "[]" or baseline_answer == "['']":
                 return 1.0
             else:
                 return 0.0
