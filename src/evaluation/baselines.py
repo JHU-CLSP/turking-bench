@@ -44,34 +44,33 @@ class Baseline:
     def get_encoded_action_list(self):
         actions = self.get_action_list()
         # encode the actions as a string
-        actions = '\n'.join([f"{action[0]}: {action[1]}" for action in actions])
-        return f"""
-        Our job is to solve a bunch of web-based tasks. 
-        Below is a list of actions that can be performed on a HTML page.
-        {actions}
-        """
+        actions = '\n\n'.join([f"{action[0]}: {action[1]}" for action in actions])
+        return f"""Given a web-based task, we'd like to solve it by executing actions. Below is a list of actions that 
+        can be performed on a HTML page. \n\n{actions}"""
 
 
 class NewBaseline(Baseline):
 
     def solve_task(self, input: Input, **kwargs):
         # list of ations that can be performed on a HTML page
-        action_list = self.get_action_list()
-        print("list of actions: ", action_list)
-
         encoded_actions_prompt = self.get_encoded_action_list()
         print("encoded actions: ", encoded_actions_prompt)
 
+        # Add your code here to process the HTML data and generate a summary
+
+        # Youc can either make direct calls to the actions
         # for example, you can access the HTML code
         html_result = self.actions.get_html()
 
         # or you can take screenshots of the page
         screenshot_result = self.actions.take_full_screenshot()
 
-        # Add your code here to process the HTML data and generate a summary
+        # Or you can build a neural model that returns a bunch of commands in string format
+        commands = "self.actions.scroll_to_element(input)"
 
-        result = None
-        return result
+        exec(commands)
+
+        return
 
 
 class OracleBaseline(Baseline):
@@ -82,7 +81,7 @@ class OracleBaseline(Baseline):
     def solve(self, input: Input, **kwargs):
         # get the index of the input
         answers = kwargs['answers']
-        actions_per_input = "" # no action by default
+        actions_per_input = ""  # no action by default
         for answer in answers:
             if answer and answer != '{}':
                 # self.actions.execute_command(input, answer)
