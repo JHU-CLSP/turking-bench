@@ -565,7 +565,7 @@ class Evaluation:
                 if self.dump_features:
                     data_to_be_dumped = []
 
-                for i in inputs:
+                for input_idx, i in enumerate(inputs):
                     print(f"{Fore.GREEN} - - - - - -  starting a new element: `{i}` - - - - - -  ")
 
                     # make sure that the element is visible
@@ -589,12 +589,12 @@ class Evaluation:
                         if isinstance(task_image, list):
                             img_ids = []
                             for j, image in enumerate(task_image):
-                                image_id = f'{instance_id}_{i.name}_{j}.png'
+                                image_id = f'{instance_id}_{input_idx}_{i.name}_{j}.png'
                                 image.save(f'{images_directory}_{image_format}/{image_id}')
                                 img_ids.append(image_id)
                             image_id = img_ids
                         else:
-                            image_id = f'{instance_id}_{i.name}.png'
+                            image_id = f'{instance_id}_{input_idx}_{i.name}.png'
                             task_image.save(f'{images_directory}_{image_format}/{image_id}')
 
                         html_id = f'{instance_id}_{i.name}.html'
