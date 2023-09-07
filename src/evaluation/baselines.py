@@ -81,8 +81,8 @@ class OracleBaseline(Baseline):
 
     def solve(self, input: Input, **kwargs):
         # get the index of the input
-        print(kwargs)
         answers = kwargs['answers']
+        actions_per_input = "" # no action by default
         for answer in answers:
             if answer and answer != '{}':
                 # self.actions.execute_command(input, answer)
@@ -90,33 +90,41 @@ class OracleBaseline(Baseline):
                 print(f" --> Input name: {input.name}")
                 print(f" --> Input value: {answer}")
 
-                self.actions.wait_for_element(input)
+                r1 = self.actions.wait_for_element(input)
+
                 # wait 0.1 sec for the page to fully load
                 sleep(0.1)
-                self.actions.maximize_window()
-                result = self.actions.scroll_to_element(input)
-                input_element = result.outcome
+                r2 = self.actions.maximize_window()
+                r3 = self.actions.scroll_to_element(input)
+                input_element = r3.outcome
+
+                action_sequence = [r1, r2, r3]
 
                 if input.type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
-                    self.actions.modify_text(input, answer)
+                    action_sequence.append(self.actions.modify_text(input, answer))
                 elif input.type in ['checkbox']:
                     if not input_element.is_selected():
-                        return self.actions.modify_checkbox(input, answer)
+                        action_sequence.append(self.actions.modify_checkbox(input, answer))
                 elif input.type in ['radio']:
                     if not input_element.is_selected():
-                        return self.actions.modify_radio(input, answer)
+                        action_sequence.append(self.actions.modify_radio(input, answer))
                 elif input.type == 'select':
-                    return self.actions.modify_select(input, answer)
+                    action_sequence.append(self.actions.modify_select(input, answer))
                 elif input.type == 'range':
-                    return self.actions.modify_range(input, answer)
-
+                    action_sequence.append(self.actions.modify_range(input, answer))
                 elif input.type in ['button', 'color', 'date', 'datetime-local', 'file', 'hidden', 'image',
                                     'month', 'reset', 'search', 'submit', 'time']:
                     raise Exception(
                         f"{Fore.RED} ** Warning **: We don't know how to handle this input type `{input.type}`")
 
-                return
-        return None
+                action_sequence = "\n\n".join([r.action for r in action_sequence])
+                actions_per_input = {
+                    "input_name": input.name,
+                    "action_sequence": action_sequence,
+                }
+                break
+
+        return actions_per_input
 
 
 class RandomBaseline(Baseline):

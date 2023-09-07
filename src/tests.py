@@ -3,7 +3,7 @@ from evaluation.actions import MyActions
 from evaluation.baselines import Baseline
 
 evaluation = eval.Evaluation(solver_type="oracle", tasks="all",
-                             do_eval=True, dump_features=False, report_field_stats=True)
+                             do_eval=True, dump_features=True, report_field_stats=True)
 
 
 def test_actions():

@@ -11,4 +11,4 @@ class Input:
         """
         To make sure the objects are printable
         """
-        return f"Input(name={self.name}, type={self.type}, task={self.task})"
+        return f"Input(name=`{self.name}`, type=`{self.type}`, task=`{self.task}`)"

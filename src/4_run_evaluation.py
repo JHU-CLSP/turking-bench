@@ -389,10 +389,7 @@ class Evaluation:
         Enumerate the tasks and their instances
         :param max_instance_count: maximum number of instances per task
         """
-
-        # TODO: make these parameters
         input_format = "both"
-        image_format = "full_page"
 
         tasks = self.load_task_names()
 
@@ -540,14 +537,12 @@ class Evaluation:
 
                 if self.dump_features:
                     directory = f'features/{task_name}'
+                    images_directory = f'{directory}/images'
+                    html_directory = f'{directory}/HTML'
+
                     if not os.path.exists(directory):
                         os.makedirs(directory)
 
-                    images_directory = f'{directory}/images'
-                    if not os.path.exists(images_directory):
-                        os.makedirs(images_directory)
-
-                    html_directory = f'{directory}/HTML'
                     if not os.path.exists(html_directory):
                         os.makedirs(html_directory)
 
@@ -580,67 +575,57 @@ class Evaluation:
 
                     if self.solver_type == 'oracle':
                         kwargs = {'answers': answers_map[i.name]}
-                        baseline_answer = self.solver.solve(i, **kwargs)
+                        oracle_action_sequence = self.solver.solve(i, **kwargs)
                     else:
-                        baseline_answer = self.solver.solve(i)
+                        self.solver.solve(i)
 
-                    if self.dump_features:
-                        if input_format == 'image' or 'both':
-                            if image_format == 'full_page':
-                                task_image = self.actions.take_page_screenshots()
-                            elif image_format == 'div':
-                                task_image = self.actions.take_element_screenshot(i)
-                            elif image_format == 'bordered_div':
-                                task_image = self.actions.take_element_screenshot_with_border(i)
-                            else:
-                                raise Exception(f"{Fore.RED}Invalid image format: {image_format}")
+                    if self.dump_features and i.type != 'hidden':
+                        image_format = "bordered_div" # the most reasonable option
+                        # create directory
+                        if not os.path.exists(f'{images_directory}_{image_format}'):
+                            os.makedirs(f'{images_directory}_{image_format}')
+                        if image_format == 'full_page':
+                            task_image = self.actions.take_page_screenshots().outcome
+                        elif image_format == 'bordered_div':
+                            task_image = self.actions.take_element_screenshot_with_border(i).outcome
+                        else:
+                            raise Exception(f"{Fore.RED}to be implemented for image format `{image_format}`")
 
-                        if i.type != 'hidden':
-                            if input_format == 'image' or 'both':
-                                if image_format == 'full_page':
-                                    task_image = self.actions.take_page_screenshots()
-                                elif image_format == 'div':
-                                    task_image = self.actions.take_element_screenshot(i)
-                                elif image_format == 'bordered_div':
-                                    task_image = self.actions.take_element_screenshot_with_border(i)
+                        if isinstance(task_image, list):
+                            img_ids = []
+                            for j, image in enumerate(task_image):
+                                image_id = f'{instance_id}_{i.name}_{j}.png'
+                                image.save(f'{images_directory}_{image_format}/{image_id}')
+                                img_ids.append(image_id)
+                            image_id = img_ids
+                        else:
+                            image_id = f'{instance_id}_{i.name}.png'
+                            task_image.save(f'{images_directory}_{image_format}/{image_id}')
 
-                                if isinstance(task_image, list):
-                                    img_ids = []
-                                    for j, image in enumerate(task_image):
-                                        image_id = f'{instance_id}_{i.name}_{j}.png'
-                                        image.save(f'{images_directory}/{image_id}')
-                                        img_ids.append(image_id)
-                                    image_id = img_ids
-                                else:
-                                    image_id = f'{instance_id}_{i.name}.png'
-                                    task_image.save(f'{images_directory}/{image_id}')
-                            else:
-                                image_id = None
 
-                            html_id = f'{instance_id}_{i.name}.html'
-                            with open(f'{html_directory}/{html_id}', 'w') as f:
-                                f.write(self.driver.page_source)
+                        html_id = f'{instance_id}_{i.name}.html'
+                        with open(f'{html_directory}/{html_id}', 'w') as f:
+                            # note, we can't use "driver.page_source" since it would return the default source without any changes
+                            # TODO: double-check that this HTML code indeed contains the latest changes
+                            f.write(self.driver.execute_script("return document.documentElement.outerHTML;"))
 
-                            gold_output = "tbd"
+                        data_to_be_dumped.append({
+                            'input_type': i.type,
+                            'input_name': i.name,
+                            'image_id': image_id,
+                            'html_id': html_id,
+                            'output': oracle_action_sequence
+                        })
 
-                            data_to_be_dumped.append({
-                                'input_type': i.type,
-                                'input_name': i.name,
-                                'image_id': image_id,
-                                'html_id': html_id,
-                                'output': gold_output
-                            })
-
-                # TODO: scoring should be done after all the annotations are done
-                # score = self.calculate_rouge(answers_map[input.name], input.type, baseline_answer)
-                score = 0.0
+                # get the input values from the web page
                 inputs_with_values = self.extract_values(inputs)
 
                 # collecting field statistics
                 if task_name not in results:
                     results[task_name] = {}
 
-                # TODO: move this inside the evaluation function to keep here clean
+                # TODO: move this inside a evaluation function to keep here clean
+                score = 0.0
                 for i in inputs_with_values:
                     if i.name in self.excluded_input_names:
                         continue
@@ -673,7 +658,8 @@ class Evaluation:
 
                 if self.dump_features:
                     with open(f'{directory}/{task_name}.json', 'w') as f:
-                        json.dump(data_to_be_dumped, f)
+                        json.dump(data_to_be_dumped, f, indent=4)
+
 
                 df = pd.DataFrame()
                 for task_name, inputs in results.items():

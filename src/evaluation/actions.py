@@ -66,13 +66,16 @@ class MyActions:
         """
         self.driver = driver
 
+        # scrolss to the element but keeps it in the center of the screen
+        self.scroll_to_command = "arguments[0].scrollIntoView({ behavior: 'auto', block: 'center', inline: 'center' });"
+
     def execute_js_command(self, command, *args) -> Result:
         """
         Executes the javascript command and returns the result.
         """
-        self.driver.execute_script(command, *args)
+        outcome = self.driver.execute_script(command, *args)
 
-        return Result(success=True, outcome=None, action=f"self.execute_js_command({command})")
+        return Result(success=True, outcome=outcome, action=f"self.execute_js_command({command})")
 
     def maximize_window(self) -> Result:
         """
@@ -89,7 +92,7 @@ class MyActions:
         """
         result = self.wait_for_element(input)
         input_element = result.outcome
-        self.execute_js_command("arguments[0].scrollIntoView();", input_element)
+        self.execute_js_command(self.scroll_to_command, input_element)
         return Result(success=True, outcome=input_element, action=f"self.scroll_to_element({input})")
 
     def wait_for_element(self, input: Input) -> Result:
@@ -281,7 +284,7 @@ class MyActions:
             # Scroll down to bottom
             self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             # Wait to load page
-            sleep(2)
+            sleep(0.2)
             # Calculate new scroll height and compare with last scroll height
             new_height = self.driver.execute_script("return document.body.scrollHeight")
             if new_height == last_height:
@@ -297,10 +300,13 @@ class MyActions:
         This function takes a screenshot of a given element on the page.
         """
         # find the element based on input name and type
-        if input.type in ['select', 'textarea']:
-            element = Select(self.driver.find_element(By.NAME, input.name)).first_selected_option
-        else:
-            element = self.driver.find_element(By.NAME, input.name)
+        # if input.type in ['select', 'textarea']:
+        #     element = Select(self.driver.find_element(By.NAME, input.name)).first_selected_option
+        # else:
+        #     element = self.driver.find_element(By.NAME, input.name)
+
+        element = self.driver.find_element(By.NAME, input.name)
+
         # get the location and size of the element
         location = element.location
         size = element.size
@@ -323,18 +329,19 @@ class MyActions:
         """
 
         # find the element based on input name and type
-        if input.type in ['select', 'textarea']:
-            element = Select(self.driver.find_element(By.NAME, input.name)).first_selected_option
-        else:
-            element = self.driver.find_element(By.NAME, input.name)
+        # if input.type in ['select', 'textarea']:
+        #     element = Select(self.driver.find_element(By.NAME, input.name)).first_selected_option
+        # else:
+        #     element = self.driver.find_element(By.NAME, input.name)
+        element = self.driver.find_element(By.NAME, input.name)
 
         # get the location and size of the element
         location = element.location
         size = element.size
 
         # scroll to the element and wait for it to be visible
-        self.driver.execute_script("arguments[0].scrollIntoView();", element)
-        sleep(1)
+        self.driver.execute_script(self.scroll_to_command, element)
+        sleep(0.2)
 
         # take a screenshot of the entire page
         screenshot = self.driver.get_screenshot_as_png()
