@@ -167,6 +167,36 @@ class Evaluation:
             key=lambda x: str(soup).index(str(soup.find(attrs={'name': x.name})))
         )
 
+    def extract_values(self, url, inputs: List[Input]):
+        """
+        Given a set of values for the input fields, extract the values from the HTML.
+        We use this function for evaluation as well as unit testing.
+        """
+
+        for input in inputs:
+            if input.type in ['text', 'textarea', 'select', 'password', 'email', 'number', 'tel', 'url',
+                              'button', 'color', 'date', 'datetime-local', 'file', 'image']:
+
+                values = self.driver.execute_script(
+                    f"return Array.from(document.getElementsByName('{input.name}')).map((element) => element.value);"
+                )
+                assert len(values) == 1, f"The number of values should be 1 but it is `{len(values)}` for {input}"
+            elif input.type in ['radio']:
+                values = self.driver.execute_script(
+                    f"return Array.from(document.getElementsByName('{input.name}')).filter(element => element.checked).map(element => element.value);"
+                )
+                assert len(values) <= 1, f"The number of values should be 1 or 0 but it is `{len(values)}` for {input}"
+            elif input.type in ['checkbox']:
+                values = self.driver.execute_script(
+                    f"return Array.from(document.getElementsByName('{input.name}')).filter(element => element.checked).map(element => element.value);"
+                )
+            else:
+                raise Exception(f"{Fore.RED}to be implemented for type `{input.type}`")
+
+            input.values = values
+
+        return inputs
+
     @staticmethod
     # adapted the flowing from Squad v1.1 evaluation, without removing the articles.
     def normalize_answer(s):
@@ -197,16 +227,12 @@ class Evaluation:
 
     @staticmethod
     def metric_max_over_ground_truths(metric_fn, prediction, ground_truths, xlingual=False):
-        print(" --> inside rouge  ")
-        print(f"predictions: {prediction}")
-        print(f"ground_truths: {ground_truths}")
-
         scores_for_ground_truths = []
         for ground_truth in ground_truths:
             score = metric_fn(prediction, ground_truth, xlingual=xlingual)
             scores_for_ground_truths.append(score)
-        score = max(scores_for_ground_truths)
-        print("scores: ", score)
+        score = float(max(scores_for_ground_truths))
+        print(f"{Fore.BLUE} --> scores: ", score)
         return score
 
     def retrieve_gold_labels(self, task_name: str, instance_index: int, input_names: List[str]):
@@ -250,6 +276,13 @@ class Evaluation:
         baseline_answer = str(baseline_answer)
         print("answers", answers)
         print("baseline_answer", baseline_answer)
+
+        # handle empty
+        if answers == []:
+            if baseline_answer == [""] or baseline_answer == [] or baseline_answer == "[]":
+                return 1.0
+            else:
+                return 0.0
 
         if input_type in ['text', 'textarea']:
             scores = Evaluation.metric_max_over_ground_truths(
@@ -396,10 +429,10 @@ class Evaluation:
                     data = []
 
                 for i in inputs:
-                    element = self.driver.find_element(By.NAME, i.name)
-                    # make sure that the element is visible
                     print(f"{Fore.GREEN} - - - - - -  starting a new element: `{i}` - - - - - -  ")
 
+                    # make sure that the element is visible
+                    element = self.driver.find_element(By.NAME, i.name)
                     if not element.is_displayed() or element.size['width'] <= 0 or element.size['height'] <= 0:
                         print(f'{Fore.RED}Skipping element `{i.name}` since it is not visible.')
                         continue
@@ -458,18 +491,34 @@ class Evaluation:
                                 'output': gold_output
                             })
 
+                # TODO: scoring should be done after all the annotations are done
+                # score = self.calculate_rouge(answers_map[input.name], input.type, baseline_answer)
+                score = 0.0
+                inputs_with_values = self.extract_values(url, inputs)
 
-                    # TODO: scoring should be done after all the annotations are done
-                    # score = self.calculate_rouge(answers_map[input.name], input.type, baseline_answer)
-                    score = 0.0
+                # collecting field statistics
+                if task_name not in results:
+                    results[task_name] = {}
 
-                    # collecting field statistics
-                    if task_name not in results:
-                        results[task_name] = {}
+                for i in inputs_with_values:
+                    # if checkmarks, sort the values alphabetically
+                    if i.type == "checkbox":
+                        i.values = "|".join(sorted(i.values))
+                        answers_map[i.name] = ["|".join(sorted(x.split("|"))) for x in answers_map[i.name]]
+                    score_per_field = self.calculate_rouge(answers_map[i.name], i.type, i.values)
 
                     if i.type not in results[task_name]:
                         results[task_name][i.type] = []
-                    results[task_name][i.type].append(score)
+
+                    results[task_name][i.type].append(score_per_field)
+
+                    score += score_per_field
+
+                score /= len(inputs_with_values)
+                print(f"{Fore.CYAN} --> Overall score: {score}")
+
+                if self.solver_type == 'oracle':
+                    assert score > 0.99, f"{Fore.RED}The oracle baseline should always get a score of 1.0"
 
                 if self.dump_features:
                     with open(f'{directory}/{task_name}.json', 'w') as f:

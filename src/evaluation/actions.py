@@ -243,14 +243,8 @@ class MyActions:
 
         elif input.type in ['button', 'color', 'date', 'datetime-local', 'file', 'hidden', 'image',
                             'month', 'range', 'reset', 'search', 'submit', 'time']:
+            print(f"{Fore.RED} ** Warning **: We don't know how to handle this input type `{input.type}`")
             return Result(success=False, outcome=None, action=None)
-
-        # except Exception as e:
-        #     # print the full stack trace
-        #     # traceback.print_exc()
-        #
-        #     print(f"{Fore.RED}An error occurred when trying to place `{input_value}` in the input '{input.name}': {e}")
-        #     return Result(success=False, outcome=None, action=None)
 
     def take_screenshot(self) -> Result:
         """
