@@ -4,3 +4,4 @@ src/Turkle/
 src/Turkle/*
 /tasks/*/input.csv
 tasks/*/input.csv
+.idea

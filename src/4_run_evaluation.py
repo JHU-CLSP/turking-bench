@@ -77,7 +77,7 @@ class Evaluation:
         options.headless = True
 
         import platform
-        if platform.system() == 'Linux':
+        if platform.system() == 'Linux' or platform.system() == "Darwin":
             driver = webdriver.Chrome(options=options)
         else:
             driver = webdriver.Firefox()
@@ -721,12 +721,12 @@ if __name__ == "__main__":
     parser.add_argument("--report_field_stats", help="whether to collect statistics for the HTML fields", default=True)
 
     args = parser.parse_args()
-    print(f"{Fore.BLUE}Solver: {args.solver}")
+    print(f"{Fore.BLUE}Solver: {args.solver_type}")
     max_instance_count = int(args.max_instance_count)
 
-    do_eval = args['do_eval']
-    dump_features = args['dump_features']
-    report_field_stats = args['report_field_stats']
+    do_eval = args.do_eval
+    dump_features = args.dump_features
+    report_field_stats = args.report_field_stats
     assert type(do_eval) == bool
 
     if dump_features and not args.solver_type != "oracle":
