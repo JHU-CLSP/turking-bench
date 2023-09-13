@@ -74,10 +74,12 @@ class Evaluation:
     def create_driver(self):
         # TODO: make the seleciton of headless (no visual browser for faster processing) a parameter
         options = Options()
-        options.headless = True
 
         import platform
-        if platform.system() == 'Linux' or platform.system() == "Darwin":
+        if platform.system() == 'Linux':
+            options.headless = True
+            driver = webdriver.Chrome(options=options)
+        elif platform.system() == "Darwin":
             driver = webdriver.Chrome(options=options)
         else:
             driver = webdriver.Firefox()
