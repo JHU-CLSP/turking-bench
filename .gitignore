@@ -5,3 +5,7 @@ src/Turkle/*
 /tasks/*/input.csv
 tasks/*/input.csv
 .idea
+/src/__pycache__/
+/src/evaluation/__pycache__/
+/src/oracle_baseline_scores.csv
+/src/task_field_statistics.csv
