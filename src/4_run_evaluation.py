@@ -270,7 +270,10 @@ class Evaluation:
         df = pd.read_csv(f'../tasks/{task_name}/batch.csv')
         # Keep the columns that are not answers and then combine the rows that are the same to find the distinct inputs
         cols = [col for col in df.columns if not col.startswith("Answer.")]
+        print("cols:", cols)
+        # TODO: This is not always good, in HTER - longer sentences case there are many duplicate tasks of same inputs but different outputs
         distinct_rows = df[cols].drop_duplicates()
+        print("distinct_rows:", distinct_rows)
 
         # ensure that the number of unique tasks is exactly the same as the number of tasks in the batch
         assert len(distinct_rows) == len(
@@ -403,6 +406,7 @@ class Evaluation:
             print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
 
             if task_name not in [
+                "Author In-Group Analysis Phrase Classification 2",
                 "Dialogue rot annotation 2",
                 "Commonsense Morality-Text Label Validate-Collect-Extended",
                 "Question Typing 4",
@@ -445,10 +449,6 @@ class Evaluation:
 
             # TODO we gotta drop this after adding gold labels to the sandbox tasks
             if 'sandbox' in task_name:
-                continue
-
-            if "Author In-Group Analysis Phrase Classification 2" in task_name:
-                # https://github.com/JHU-CLSP/turk-instructions/issues/64
                 continue
 
             if "HTER - longer sentences -27 Sep 1129" in task_name:
