@@ -226,10 +226,11 @@ class MyActions:
         if input_value in option_values:
             # great ... continue!
             pass
-        elif ActionUtils.is_float(input_value) and str(int(input_value)) in option_values:
+        elif ActionUtils.is_float(input_value) and not math.isnan(float(input_value)) and str(int(input_value)) in option_values:
             # input value is a float, but the option values are integers
             input_value = str(int(input_value))
         else:
+            print("input:", input, "input_value:", input_value)
             raise Exception(f"Input value `{input_value}` is not among the available option values `{option_values}`")
 
         # select by value

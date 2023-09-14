@@ -80,6 +80,7 @@ class Evaluation:
             options.headless = True
             driver = webdriver.Chrome(options=options)
         elif platform.system() == "Darwin":
+            # options.headless = True
             driver = webdriver.Chrome(options=options)
         else:
             driver = webdriver.Firefox()
