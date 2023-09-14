@@ -353,6 +353,7 @@ class Evaluation:
             else:
                 return 0.0
         elif input_type in ['checkbox']:
+            print("baseline", baseline_answer, "answers:", answers)
             scores = Evaluation.metric_max_over_ground_truths(
                 self.exact_match,
                 prediction=baseline_answer,

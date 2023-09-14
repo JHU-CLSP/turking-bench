@@ -161,10 +161,11 @@ class MyActions:
 
         # now we have to check the checkboxes that have the values we want
         # TODO: need to escape the following parameters
-        checkboxs = self.driver.find_elements(
+        checkboxes = self.driver.find_elements(
             By.XPATH, f"//input[@type='checkbox' and @name='{input.name}']"
         )
-        for checkbox in checkboxs:
+
+        for checkbox in checkboxes:
             if checkbox.get_attribute("value") in input_value:
                 print(f"{Fore.YELLOW}About to check this checkbox: {checkbox.get_attribute('outerHTML')}")
                 checkbox.click()
