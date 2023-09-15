@@ -79,8 +79,10 @@ class OracleBaseline(Baseline):
     """
 
     def solve(self, input: Input, **kwargs):
+        print("Called solve, input:", input)
         # get the index of the input
         answers = kwargs['answers']
+        print("answers", answers)
         actions_per_input = ""  # no action by default
         for answer in answers:
             if answer and answer != '{}':
@@ -100,6 +102,7 @@ class OracleBaseline(Baseline):
                 action_sequence = [r1, r2, r3]
 
                 if input.type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
+                    print("doing a text action")
                     action_sequence.append(self.actions.modify_text(input, answer))
                 elif input.type in ['checkbox']:
                     if not input_element.is_selected():
@@ -135,7 +138,8 @@ class RandomBaseline(Baseline):
         input_element = self.driver.find_element(By.NAME, input.name)
         input_type = input.type
         input_name = input.name
-        if input_type == 'text':
+        print("Input:", input)
+        if input.type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
             messages = ["Hello!", "How are you?", "What's up?", "Nice to meet you!"]
             return random.choice(messages)
         else:
@@ -190,4 +194,10 @@ class RandomBaseline(Baseline):
                 minutes_diff = delta_datetime.total_seconds() / 60.0
                 options = [(start_datetime + timedelta(minutes=i)).strftime('%Y-%m-%dT%H:%M') for i in
                            range(int(minutes_diff) + 1)]
+            elif input.type in ['button', 'color', 'date', 'datetime-local', 'file', 'hidden', 'image',
+                                'month', 'reset', 'search', 'submit', 'time']:
+                raise Exception(
+                    f"{Fore.RED} ** Warning **: We don't know how to handle this input type `{input.type}`")
+
+            print("random choices options:", options)
             return random.choice(options)

@@ -9,3 +9,6 @@ tasks/*/input.csv
 /src/evaluation/__pycache__/
 /src/oracle_baseline_scores.csv
 /src/task_field_statistics.csv
+/src/utils/__pycache__/
+/src/features/
+**/.DS_Store

@@ -9,7 +9,9 @@ import json
 run_eval = __import__('4_run_evaluation')
 
 TURKLE_URL = "http://localhost:8000"
-TEST_NAME = "Script KD eval LONG V2 - disc result eval 1"
+# TEST_NAME = "Script KD eval LONG V2 - disc result eval 1"
+# TEST_NAME = "HTER - longer sentences -27 Sep 1129"
+TEST_NAME = "Author In-Group Analysis Phrase Classification 2"
 
 class Run(run_eval.Evaluation):
     def run_task(self, task_name: str, max_instance_count: int):
@@ -30,6 +32,8 @@ class Run(run_eval.Evaluation):
 
         # Sample random instances of each task
         for instance_id in instance_ids:
+            # remove the randomness of which sample we choose
+            instance_id = first_instance_id
 
             # wait for a keyboard press before continuing
             # input("Press Enter to continue...")
@@ -242,7 +246,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     args.solver_type = "oracle"
-    args.max_instance_count = 5
+    args.max_instance_count = 1
     print(f"{Fore.BLUE}Solver: {args.solver_type}")
     max_instance_count = int(args.max_instance_count)
 
