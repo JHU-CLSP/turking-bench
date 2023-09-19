@@ -74,10 +74,13 @@ class Evaluation:
     def create_driver(self):
         # TODO: make the seleciton of headless (no visual browser for faster processing) a parameter
         options = Options()
-        options.headless = True
 
         import platform
         if platform.system() == 'Linux':
+            options.headless = True
+            driver = webdriver.Chrome(options=options)
+        elif platform.system() == "Darwin":
+            # options.headless = True
             driver = webdriver.Chrome(options=options)
         else:
             driver = webdriver.Firefox()
@@ -268,7 +271,10 @@ class Evaluation:
         df = pd.read_csv(f'../tasks/{task_name}/batch.csv')
         # Keep the columns that are not answers and then combine the rows that are the same to find the distinct inputs
         cols = [col for col in df.columns if not col.startswith("Answer.")]
+        print("cols:", cols)
+        # TODO: This is not always good, in HTER - longer sentences case there are many duplicate tasks of same inputs but different outputs
         distinct_rows = df[cols].drop_duplicates()
+        print("distinct_rows:", distinct_rows)
 
         # ensure that the number of unique tasks is exactly the same as the number of tasks in the batch
         assert len(distinct_rows) == len(
@@ -347,6 +353,7 @@ class Evaluation:
             else:
                 return 0.0
         elif input_type in ['checkbox']:
+            print("baseline", baseline_answer, "answers:", answers)
             scores = Evaluation.metric_max_over_ground_truths(
                 self.exact_match,
                 prediction=baseline_answer,
@@ -392,8 +399,6 @@ class Evaluation:
         input_format = "both"
 
         tasks = self.load_task_names()
-
-        failed = []
         results = {}
         self.driver.get(TURKLE_URL)
         aggregate_field_statistics = {}  # We store the stats related to the field types/frequency here
@@ -441,10 +446,6 @@ class Evaluation:
 
             # TODO we gotta drop this after adding gold labels to the sandbox tasks
             if 'sandbox' in task_name:
-                continue
-
-            if "Author In-Group Analysis Phrase Classification 2" in task_name:
-                # https://github.com/JHU-CLSP/turk-instructions/issues/64
                 continue
 
             if "HTER - longer sentences -27 Sep 1129" in task_name:
@@ -720,12 +721,12 @@ if __name__ == "__main__":
     parser.add_argument("--report_field_stats", help="whether to collect statistics for the HTML fields", default=True)
 
     args = parser.parse_args()
-    print(f"{Fore.BLUE}Solver: {args.solver}")
+    print(f"{Fore.BLUE}Solver: {args.solver_type}")
     max_instance_count = int(args.max_instance_count)
 
-    do_eval = args['do_eval']
-    dump_features = args['dump_features']
-    report_field_stats = args['report_field_stats']
+    do_eval = args.do_eval
+    dump_features = args.dump_features
+    report_field_stats = args.report_field_stats
     assert type(do_eval) == bool
 
     if dump_features and not args.solver_type != "oracle":

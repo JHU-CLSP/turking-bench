@@ -1,6 +1,7 @@
 eval = __import__('4_run_evaluation')
 from evaluation.actions import MyActions
 from evaluation.baselines import Baseline
+from utils.hidden_prints import HiddenPrints
 
 evaluation = eval.Evaluation(solver_type="oracle", tasks="all",
                              do_eval=True, dump_features=True, report_field_stats=True)
@@ -22,8 +23,16 @@ def test_evaluation():
 
 
 if __name__ == "__main__":
-    test_evaluation()
-    test_actions()
+    print("Running initial pass on tests without logs")
+    try:
+        with HiddenPrints():
+            test_evaluation()
+            test_actions()
+    except Exception as error:
+        print("An error occurred:", error)
+        print("Rerunning tests with logs now")
+        test_evaluation()
+        test_actions()
 
     # TODO: test that we can apply the gold labels on the tasks
 

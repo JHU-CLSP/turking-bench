@@ -161,10 +161,11 @@ class MyActions:
 
         # now we have to check the checkboxes that have the values we want
         # TODO: need to escape the following parameters
-        checkboxs = self.driver.find_elements(
+        checkboxes = self.driver.find_elements(
             By.XPATH, f"//input[@type='checkbox' and @name='{input.name}']"
         )
-        for checkbox in checkboxs:
+
+        for checkbox in checkboxes:
             if checkbox.get_attribute("value") in input_value:
                 print(f"{Fore.YELLOW}About to check this checkbox: {checkbox.get_attribute('outerHTML')}")
                 checkbox.click()
@@ -226,10 +227,11 @@ class MyActions:
         if input_value in option_values:
             # great ... continue!
             pass
-        elif ActionUtils.is_float(input_value) and str(int(input_value)) in option_values:
+        elif ActionUtils.is_float(input_value) and not math.isnan(float(input_value)) and str(int(input_value)) in option_values:
             # input value is a float, but the option values are integers
             input_value = str(int(input_value))
         else:
+            print("input:", input, "input_value:", input_value)
             raise Exception(f"Input value `{input_value}` is not among the available option values `{option_values}`")
 
         # select by value
