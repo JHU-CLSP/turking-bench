@@ -506,187 +506,187 @@ class Evaluation:
                 # random sample
                 instance_ids = random.sample(instance_ids, max_instance_count)
 
-                # Sample random instances of each task
-                for instance_id in instance_ids:
+            # Sample random instances of each task
+            for instance_id in instance_ids:
 
-                    # wait for a keyboard press before continuing
-                    # input("Press Enter to continue...")
+                # wait for a keyboard press before continuing
+                # input("Press Enter to continue...")
 
-                    row_number = instance_id - first_instance_id
-                    print(f"instance_id: {instance_id} <-> row_number: {row_number}")
+                row_number = instance_id - first_instance_id
+                print(f"instance_id: {instance_id} <-> row_number: {row_number}")
 
-                    url = f'{TURKLE_URL}/task/{instance_id}/iframe/'
-                    self.driver.get(url)
+                url = f'{TURKLE_URL}/task/{instance_id}/iframe/'
+                self.driver.get(url)
 
-                    # get the name of the fields
-                    df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
-                    input_names = [col.replace('Answer.', '') for col in df.columns if col.startswith('Answer.')]
-                    inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
+                # get the name of the fields
+                df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
+                input_names = [col.replace('Answer.', '') for col in df.columns if col.startswith('Answer.')]
+                inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
 
-                    print(" --> inputs: {}".format([x.name for x in inputs]))
+                print(" --> inputs: {}".format([x.name for x in inputs]))
 
-                    answers_map = self.retrieve_gold_labels(
-                        task_name, row_number, [x.name for x in inputs]
-                    )
+                answers_map = self.retrieve_gold_labels(
+                    task_name, row_number, [x.name for x in inputs]
+                )
 
-                    print(" --> input labels: {}".format(answers_map))
+                print(" --> input labels: {}".format(answers_map))
 
-                    # TODO: check if all the files (images, videos, audio, css, etc.) in the HTML are accessible
-                    # TODO: find all the URLS in the HTML and check if they are accessible
+                # TODO: check if all the files (images, videos, audio, css, etc.) in the HTML are accessible
+                # TODO: find all the URLS in the HTML and check if they are accessible
 
-                    if self.dump_features:
-                        directory = f'features/{task_name}'
-                        images_directory = f'{directory}/images'
-                        html_directory = f'{directory}/HTML'
+                if self.dump_features:
+                    directory = f'features/{task_name}'
+                    images_directory = f'{directory}/images'
+                    html_directory = f'{directory}/HTML'
 
-                        if os.path.exists(directory):
-                            shutil.rmtree(directory)
-                        os.makedirs(directory)
+                    if os.path.exists(directory):
+                        shutil.rmtree(directory)
+                    os.makedirs(directory)
 
-                        if not os.path.exists(html_directory):
-                            os.makedirs(html_directory)
+                    if not os.path.exists(html_directory):
+                        os.makedirs(html_directory)
 
-                    # for counting overall statistics
-                    if self.report_field_stats:
-                        if task_name not in task_field_statistics:
-                            task_field_statistics[task_name] = {}
+                # for counting overall statistics
+                if self.report_field_stats:
+                    if task_name not in task_field_statistics:
+                        task_field_statistics[task_name] = {}
 
-                        for i in inputs:
-                            if i.type not in aggregate_field_statistics:
-                                aggregate_field_statistics[i.type] = 0
+                    for i in inputs:
+                        if i.type not in aggregate_field_statistics:
+                            aggregate_field_statistics[i.type] = 0
 
-                            aggregate_field_statistics[i.type] += 1
+                        aggregate_field_statistics[i.type] += 1
 
-                            if i.type not in task_field_statistics[task_name]:
-                                task_field_statistics[task_name][i.type] = 0
-                            task_field_statistics[task_name][i.type] += 1
+                        if i.type not in task_field_statistics[task_name]:
+                            task_field_statistics[task_name][i.type] = 0
+                        task_field_statistics[task_name][i.type] += 1
 
-                    if self.dump_features:
-                        data_to_be_dumped = []
+                if self.dump_features:
+                    data_to_be_dumped = []
 
-                    for input_idx, i in enumerate(inputs):
-                        print(f"{Fore.GREEN} - - - - - -  starting a new element: `{i}` - - - - - -  ")
+                for input_idx, i in enumerate(inputs):
+                    print(f"{Fore.GREEN} - - - - - -  starting a new element: `{i}` - - - - - -  ")
 
-                        # make sure that the element is visible
-                        element = self.driver.find_element(By.NAME, i.name)
-                        if not element.is_displayed() or element.size['width'] <= 0 or element.size['height'] <= 0:
-                            print(f'{Fore.RED}Skipping element `{i.name}` since it is not visible.')
-                            continue
+                    # make sure that the element is visible
+                    element = self.driver.find_element(By.NAME, i.name)
+                    if not element.is_displayed() or element.size['width'] <= 0 or element.size['height'] <= 0:
+                        print(f'{Fore.RED}Skipping element `{i.name}` since it is not visible.')
+                        continue
 
-                        if self.dump_features and i.type != 'hidden':
-                            image_format = "bordered_div"  # the most reasonable option
-                            # create directory if needed
-                            if not os.path.exists(f'{images_directory}_{image_format}'):
-                                os.makedirs(f'{images_directory}_{image_format}')
-                            if image_format == 'full_page':
-                                task_image = self.actions.take_page_screenshots().outcome
-                            elif image_format == 'bordered_div':
-                                task_image = self.actions.take_element_screenshot_with_border(i).outcome
-                            else:
-                                raise Exception(f"{Fore.RED}to be implemented for image format `{image_format}`")
-
-                            if isinstance(task_image, list):
-                                img_ids = []
-                                for j, image in enumerate(task_image):
-                                    image_id = f'{instance_id}_{input_idx}_{i.name}_{j}.png'
-                                    image.save(f'{images_directory}_{image_format}/{image_id}')
-                                    img_ids.append(image_id)
-                                image_id = img_ids
-                            else:
-                                image_id = f'{instance_id}_{input_idx}_{i.name}.png'
-                                task_image.save(f'{images_directory}_{image_format}/{image_id}')
-
-                            html_id = f'{instance_id}_{i.name}.html'
-                            with open(f'{html_directory}/{html_id}', 'w') as f:
-                                # note, we can't use "driver.page_source" since it would return the default source without any changes
-                                # TODO: double-check that this HTML code indeed contains the latest changes
-                                f.write(self.driver.execute_script("return document.documentElement.outerHTML;"))
-
-                        # *after* we dump *input* features, we execute the action
-                        if self.solver_type == 'oracle':
-                            kwargs = {'answers': answers_map[i.name]}
-                            oracle_action_sequence = self.solver.solve(i, **kwargs)
+                    if self.dump_features and i.type != 'hidden':
+                        image_format = "bordered_div"  # the most reasonable option
+                        # create directory if needed
+                        if not os.path.exists(f'{images_directory}_{image_format}'):
+                            os.makedirs(f'{images_directory}_{image_format}')
+                        if image_format == 'full_page':
+                            task_image = self.actions.take_page_screenshots().outcome
+                        elif image_format == 'bordered_div':
+                            task_image = self.actions.take_element_screenshot_with_border(i).outcome
                         else:
-                            self.solver.solve(i)
+                            raise Exception(f"{Fore.RED}to be implemented for image format `{image_format}`")
 
-                        # *after* we execute the action, we dump the *output* features
-                        if self.dump_features:
-                            data_to_be_dumped.append({
-                                'input_type': i.type,
-                                'input_name': i.name,
-                                'image_id': image_id,
-                                'html_id': html_id,
-                                'output': oracle_action_sequence
-                            })
-
-                    # get the input values from the web page
-                    inputs_with_values = self.extract_values(inputs)
-
-                    # collecting field statistics
-                    if task_name not in results:
-                        results[task_name] = {}
-
-                    # TODO: move this inside a evaluation function to keep here clean
-                    score = 0.0
-                    for i in inputs_with_values:
-                        if i.name in self.excluded_input_names:
-                            continue
-                        # if checkmarks, sort the values alphabetically
-                        if i.type == "checkbox":
-                            i.values = "|".join(sorted(i.values))
-                            for idx in range(len(answers_map[i.name])):
-                                x = answers_map[i.name][idx]
-                                if type(x) == str and "|" in x:
-                                    answers_map[i.name][idx] = "|".join(sorted(x.split("|")))
+                        if isinstance(task_image, list):
+                            img_ids = []
+                            for j, image in enumerate(task_image):
+                                image_id = f'{instance_id}_{input_idx}_{i.name}_{j}.png'
+                                image.save(f'{images_directory}_{image_format}/{image_id}')
+                                img_ids.append(image_id)
+                            image_id = img_ids
                         else:
-                            if len(i.values) > 0:
-                                i.values = i.values[0]
-                            else:
-                                i.values = ''
-                        score_per_field = self.calculate_rouge(answers_map[i.name], i.type, i.values)
+                            image_id = f'{instance_id}_{input_idx}_{i.name}.png'
+                            task_image.save(f'{images_directory}_{image_format}/{image_id}')
 
-                        if i.type not in results[task_name]:
-                            results[task_name][i.type] = []
+                        html_id = f'{instance_id}_{i.name}.html'
+                        with open(f'{html_directory}/{html_id}', 'w') as f:
+                            # note, we can't use "driver.page_source" since it would return the default source without any changes
+                            # TODO: double-check that this HTML code indeed contains the latest changes
+                            f.write(self.driver.execute_script("return document.documentElement.outerHTML;"))
 
-                        results[task_name][i.type].append(score_per_field)
-
-                        score += score_per_field
-
-                    score /= len(inputs_with_values)
-                    print(f"{Fore.CYAN} --> Overall score: {score}")
-
+                    # *after* we dump *input* features, we execute the action
                     if self.solver_type == 'oracle':
-                        assert score > 0.99, f"{Fore.RED}The oracle baseline should always get a score of 1.0"
+                        kwargs = {'answers': answers_map[i.name]}
+                        oracle_action_sequence = self.solver.solve(i, **kwargs)
+                    else:
+                        self.solver.solve(i)
 
+                    # *after* we execute the action, we dump the *output* features
                     if self.dump_features:
-                        with open(f'{directory}/{task_name}.json', 'w') as f:
-                            json.dump(data_to_be_dumped, f, indent=4)
+                        data_to_be_dumped.append({
+                            'input_type': i.type,
+                            'input_name': i.name,
+                            'image_id': image_id,
+                            'html_id': html_id,
+                            'output': oracle_action_sequence
+                        })
 
-                    df = pd.DataFrame()
-                    for task_name, inputs in results.items():
-                        for input_type, scores in inputs.items():
-                            # print(scores)
-                            avg_score = sum(scores) / len(scores)
-                            # TODO: check if we can safely change the "projects" in the following lines to tasks
-                            df = pd.concat(
-                                [
-                                    df, pd.DataFrame({
-                                    'project': [task_name],
-                                    'input_type': [input_type],
-                                    'score': [avg_score]
-                                })
-                                ],
-                                ignore_index=True)
+                # get the input values from the web page
+                inputs_with_values = self.extract_values(inputs)
 
-                    if 'project' not in df.columns:
-                        df.insert(0, 'project', '')
-                    if 'input_type' not in df.columns:
-                        df.insert(1, 'input_type', '')
-                    if 'score' not in df.columns:
-                        df.insert(1, 'score', '')
+                # collecting field statistics
+                if task_name not in results:
+                    results[task_name] = {}
 
-                    df = df.pivot(index='project', columns='input_type', values='score')
-                    df.to_csv('oracle_baseline_scores.csv', index=True)
+                # TODO: move this inside a evaluation function to keep here clean
+                score = 0.0
+                for i in inputs_with_values:
+                    if i.name in self.excluded_input_names:
+                        continue
+                    # if checkmarks, sort the values alphabetically
+                    if i.type == "checkbox":
+                        i.values = "|".join(sorted(i.values))
+                        for idx in range(len(answers_map[i.name])):
+                            x = answers_map[i.name][idx]
+                            if type(x) == str and "|" in x:
+                                answers_map[i.name][idx] = "|".join(sorted(x.split("|")))
+                    else:
+                        if len(i.values) > 0:
+                            i.values = i.values[0]
+                        else:
+                            i.values = ''
+                    score_per_field = self.calculate_rouge(answers_map[i.name], i.type, i.values)
+
+                    if i.type not in results[task_name]:
+                        results[task_name][i.type] = []
+
+                    results[task_name][i.type].append(score_per_field)
+
+                    score += score_per_field
+
+                score /= len(inputs_with_values)
+                print(f"{Fore.CYAN} --> Overall score: {score}")
+
+                if self.solver_type == 'oracle':
+                    assert score > 0.99, f"{Fore.RED}The oracle baseline should always get a score of 1.0"
+
+                if self.dump_features:
+                    with open(f'{directory}/{task_name}.json', 'w') as f:
+                        json.dump(data_to_be_dumped, f, indent=4)
+
+                df = pd.DataFrame()
+                for task_name, inputs in results.items():
+                    for input_type, scores in inputs.items():
+                        # print(scores)
+                        avg_score = sum(scores) / len(scores)
+                        # TODO: check if we can safely change the "projects" in the following lines to tasks
+                        df = pd.concat(
+                            [
+                                df, pd.DataFrame({
+                                'project': [task_name],
+                                'input_type': [input_type],
+                                'score': [avg_score]
+                            })
+                            ],
+                            ignore_index=True)
+
+                if 'project' not in df.columns:
+                    df.insert(0, 'project', '')
+                if 'input_type' not in df.columns:
+                    df.insert(1, 'input_type', '')
+                if 'score' not in df.columns:
+                    df.insert(1, 'score', '')
+
+                df = df.pivot(index='project', columns='input_type', values='score')
+                df.to_csv('oracle_baseline_scores.csv', index=True)
 
         # Close the driver
         self.driver.quit()
