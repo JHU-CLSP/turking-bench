@@ -445,7 +445,6 @@ class Evaluation:
                 "ToTTo Evals (RLUE) 1",
                 "Dialogue safety (socialchemistry) 5",
                 "InconsistentMiddles 3",
-                "drop_essential_0.4",
             ]:
                 continue
 
