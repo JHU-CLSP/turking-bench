@@ -399,7 +399,6 @@ class Evaluation:
         input_format = "both"
 
         tasks = self.load_task_names()
-
         results = {}
         self.driver.get(TURKLE_URL)
         aggregate_field_statistics = {}  # We store the stats related to the field types/frequency here
@@ -407,47 +406,43 @@ class Evaluation:
         for task_name in tqdm(tasks):
             print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
 
-            if task_name not in [
-                "Author In-Group Analysis Phrase Classification 2",
-                "Dialogue rot annotation 2",
-                "Commonsense Morality-Text Label Validate-Collect-Extended",
-                "Question Typing 4",
-                "Sentiment_Negative 3",
-                "Pseudoword Dataset Creation PPDB",
-                "Coherence Evaluation",
-                "Simplification-Meaning-Grammar-Simplicity",
-                "Missing Adjective FITB",
-                "Script KD eval LONG V2 - disc result eval 1",
-                "Elicitation Generation",
-                "clarifyD Qualification 1",
-                "Evaluate the Quality of Explanations (Relative NLI) 7",
-                "ethics_sbic dialogue 2nd 0",
-                "ATOMIC Neg Discriminator Eval 25",
-                "Visual Comet Multiple Choice Test Verify",
-                "VisualCOMET Selection test",
-                "Evaluate the Quality of Explanations (Relative CommonsenseQA)",
-                "Step 1 Generating Multi-Sentence Questions (science)",
-                "Annotate WaNLI 23",
+            if task_name in [
                 "Style adaptation, pairwise, complex-simple",
-                "Detox_pilot",
-                "Triple Quality Eval -- Peter 8",
-                "DnD Identify Guidance in DM Text 7",
-                "Human evaluation - gentle vs canary",
-                ".DS_Store",
-                "ATOMIC Validate gl",
-                "HTER - longer sentences -27 Sep 1129",
-                "Neurologic Recipe Eval 3",
-                "Creating Sentence Paraphrases 8",
-                "Relative CommonsenseQA Explanation Pairwise Judgements Collection 3",
-                "wikiHow Goal Membership",
-                "Human evaluation - quals",
-                "ATOMIC - Object Rationale 13",
-                "ToTTo Evals (RLUE) 1",
-                "Dialogue safety (socialchemistry) 5",
-                "InconsistentMiddles 3",
-                "drop_essential_0.4",
+                "Spanish Word Alignment",
+                "BiSECT Human Evaluation II (2)",
+                "NER - Task scruples 26,200 - 30,922",
+                "neural-pop (PLAN evaluation) t5-human-test b",
+                "Commongen Evals (RLUE) 2",
+                "Opinion Mining of Spanish Customer Comments HIT2",
+                "ESNLI Rationale Generation 4",
+                "COMET2020 ATOMIC Inference Vp 5",
+                "Step 2 Verifying Multi-sentence-ness for questions 14",
+                "Lattice",
+                "wikiHow step-goal linking pilot cleanse-url",
+                "mars human eval (a-b testing) 3",
+                "Annotation subj_obj",
+                "Email Formality Annotation",
+                "Photo Collection GVDB",
+                "Scalar Adjective Ordering",
+                "Rationale Generation 5",
+                "ATOMIC - Required Objects 5",
+                "Arch - Rel Eval 3",
+                "VQA Rationale Generation 5",
+                "wikiHow Step Membership",
+                "JJ-NN HIT",
+                "Commonsense Morality - Text Label Validate-Collect 17",
+                "HTER - 27 Sep 1859",
+                "Gun violence structured extraction",
+                "Summarization (RLUE) 1",
+                "Explanation Acceptability (CommonsenseQA)",
+                "Sentence Formality Annotation",
+                "Congressional Bills 5 point" ,
+                "Passive voice Parents 1st-2nd Person Persuasiveness Comparison",
+                "BiSECT Multilingual Evaluation",
+                "Commonsense Misinformation Tracking Pilot [cancer data setup] 10"
             ]:
                 continue
+
 
             # TODO we gotta drop this after adding gold labels to the sandbox tasks
             if 'sandbox' in task_name:
@@ -484,7 +479,7 @@ class Evaluation:
 
             if "What breaks the flow - no categories 4" in task_name:
                 # the oracle is not able to fully solve this task
-                break
+                continue
 
             if "ROT Details [m=50] rocstories - 0 - 99" in task_name:
                 # the oracle is not able to fully solve this task
@@ -500,7 +495,7 @@ class Evaluation:
 
             if "Chatbot Response Quality Evaluation" in task_name:
                 # I haven't checked any task after this.
-                break
+                continue
 
             instance_ids = self.task_ids[task_name]
             first_instance_id = min(instance_ids)
