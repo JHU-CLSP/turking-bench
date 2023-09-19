@@ -691,7 +691,6 @@ class Evaluation:
         # Close the driver
         self.driver.quit()
 
-        print("\n".join(failed))
         print("Now let's print the field statistics")
 
         # save task_field_statistics (hashmap of hashmaps mapped to integers) as a csv file
