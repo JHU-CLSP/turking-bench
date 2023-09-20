@@ -82,6 +82,7 @@ class OracleBaseline(Baseline):
         print("Called solve, input:", input)
         # get the index of the input
         answers = kwargs['answers']
+        print("kwargs", kwargs) # answers should not be empty since you rely on answers to do things
         print("answers", answers)
         actions_per_input = ""  # no action by default
         for answer in answers:

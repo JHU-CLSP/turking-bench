@@ -10,8 +10,7 @@ run_eval = __import__('4_run_evaluation')
 
 TURKLE_URL = "http://localhost:8000"
 # TEST_NAME = "Script KD eval LONG V2 - disc result eval 1"
-# TEST_NAME = "HTER - longer sentences -27 Sep 1129"
-TEST_NAME = "Author In-Group Analysis Phrase Classification 2"
+TEST_NAME = "HTER - longer sentences -27 Sep 1129"
 
 class Run(run_eval.Evaluation):
     def run_task(self, task_name: str, max_instance_count: int):
@@ -90,6 +89,7 @@ class Run(run_eval.Evaluation):
             if self.dump_features:
                 data_to_be_dumped = []
 
+            print("inputs:", inputs)
             for input_idx, i in enumerate(inputs):
                 print(f"{Fore.GREEN} - - - - - -  starting a new element: `{i}` - - - - - -  ")
 
@@ -131,6 +131,8 @@ class Run(run_eval.Evaluation):
                 # *after* we dump *input* features, we execute the action
                 if self.solver_type == 'oracle':
                     kwargs = {'answers': answers_map[i.name]}
+                    print("i: ", i)
+                    print("answers_map[i]", answers_map[i.name])
                     oracle_action_sequence = self.solver.solve(i, **kwargs)
                 else:
                     self.solver.solve(i)

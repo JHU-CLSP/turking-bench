@@ -77,7 +77,7 @@ class Evaluation:
 
         import platform
         if platform.system() == 'Linux':
-            options.headless = True
+            # options.headless = True
             driver = webdriver.Chrome(options=options)
         elif platform.system() == "Darwin":
             # options.headless = True
@@ -287,9 +287,39 @@ class Evaluation:
 
         # select the row corresponding to instance_index
         row = distinct_rows.iloc[instance_index]
+        print("selected row", row)
         # in the original dataframe "df", select all the rows that correspond to the selected "row"
         # and then select the columns that start with "Answer."
         df_subset = df[df[cols].eq(row).all(1)]
+        print("=======================================================")
+        first_row = df[cols].iloc[0]
+        print("=======================================================")
+        print("=======================================================")
+        print("df[cols] shape", first_row.shape)
+        print("df[cols] dtypes", first_row.dtypes)
+        print("first value type", type(first_row[cols[0]]))
+        for res in first_row:
+            print("res:", res)
+
+        print("=======================================================")
+
+        print("row shape", row.astype(str).shape)
+        print("row dtypes", row.astype(str).dtypes)
+        for res in row.astype(str):
+            print("res:", res)
+
+        print("=======================================================")
+        # diff is only for int types
+        differences = row.equals(first_row)
+        print("differences:", differences)
+        # how is this differences literally true, yet its pure false right afterwards when its printing out the all
+        print(df[cols].iloc[0].eq(row))
+        print("=======================================================")
+        print("=======================================================")
+        print("=======================================================")
+        print(df[cols].eq(row).all(1))
+        print("df_sub", df_subset)
+        print("input_names:", input_names)
         answers_map = {
             input_name: df_subset.get(f"Answer.{input_name}", np.array([])).tolist() for input_name in input_names
         }
