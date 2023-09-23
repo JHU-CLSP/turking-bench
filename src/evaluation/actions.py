@@ -9,6 +9,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.common.keys import Keys
 from time import sleep
 import math
 from evaluation.input import Input
@@ -103,6 +104,12 @@ class MyActions:
 
         return Result(success=True, outcome=input_element, action=f"self.wait_for_element({input})")
 
+    def clear_text(self, action: ActionChains):
+        # Perform Ctrl+A (select all)
+        action.key_down(Keys.CONTROL).send_keys('a').key_up(Keys.CONTROL)
+        # Perform Delete
+        action.send_keys(Keys.DELETE)
+
     def modify_text(self, input: Input, input_value) -> Result:
         """
         For a given editable input field such as text box or text area, this function enters the input value into
@@ -121,6 +128,8 @@ class MyActions:
 
         action = ActionChains(self.driver).move_to_element(input_element).click()
         # now modify the text
+        self.clear_text(action)
+        print("input_value", input_value)
         action.send_keys(input_value)
         action.perform()
         return Result(success=True, outcome=input_element, action=f"self.modify_text({input}, {input_value})")

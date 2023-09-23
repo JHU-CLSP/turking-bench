@@ -276,11 +276,12 @@ class Evaluation:
         distinct_rows = df[cols].drop_duplicates()
         print("distinct_rows:", distinct_rows)
 
+        # TODO: Turn off this assert while developing since this prohibits non-uniform editing of batch.csv for files that have duplicate inputs but different outputs
         # ensure that the number of unique tasks is exactly the same as the number of tasks in the batch
-        assert len(distinct_rows) == len(
-            self.task_ids[task_name]), f"The number of unique tasks {len(distinct_rows)} is " \
-                                       f"not the same as the number of tasks in the batch: " \
-                                       f"{len(self.task_ids[task_name])}."
+        # assert len(distinct_rows) == len(
+        #     self.task_ids[task_name]), f"The number of unique tasks {len(distinct_rows)} is " \
+        #                                f"not the same as the number of tasks in the batch: " \
+        #                                f"{len(self.task_ids[task_name])}."
 
         assert instance_index <= len(
             distinct_rows), f"The instance index {instance_index} is out of range: {len(distinct_rows)}."
@@ -291,6 +292,7 @@ class Evaluation:
         # in the original dataframe "df", select all the rows that correspond to the selected "row"
         # and then select the columns that start with "Answer."
         df_subset = df[df[cols].eq(row).all(1)]
+
         print("=======================================================")
         first_row = df[cols].iloc[0]
         print("=======================================================")
@@ -303,10 +305,10 @@ class Evaluation:
 
         print("=======================================================")
 
-        print("row shape", row.astype(str).shape)
-        print("row dtypes", row.astype(str).dtypes)
-        for res in row.astype(str):
-            print("res:", res)
+        print("row shape", row.shape)
+        print("row dtypes", row.dtypes)
+        for res in row:
+            print("row:", res)
 
         print("=======================================================")
         # diff is only for int types
