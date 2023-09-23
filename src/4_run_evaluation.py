@@ -77,7 +77,7 @@ class Evaluation:
 
         import platform
         if platform.system() == 'Linux':
-            options.headless = True
+            # options.headless = True
             driver = webdriver.Chrome(options=options)
         elif platform.system() == "Darwin":
             # options.headless = True
@@ -301,7 +301,7 @@ class Evaluation:
 
     def calculate_rouge(self, answers: List[str], input_type: str, baseline_answer: str):
         baseline_answer = str(baseline_answer)
-        print(f"answers: `{answers}`")
+        # print(f"answers: `{answers}`")
         print(f"baseline_answer: `{baseline_answer}` - type: `{type(baseline_answer)}`")
 
         # normalize responses: turn "nan", or "{}" into empty string
@@ -310,7 +310,7 @@ class Evaluation:
             if a == "nan" or a == "{}" or a == "'{}'" or (type(a) == float and np.isnan(a)):
                 answers[idx] = ""
 
-        print(f"answers after mapping: `{answers}`")
+        # print(f"answers after mapping: `{answers}`")
 
         # handle empty
         if answers == []:
