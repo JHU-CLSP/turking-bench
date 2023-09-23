@@ -451,6 +451,10 @@ class Evaluation:
                 # https://github.com/JHU-CLSP/turk-instructions/issues/66
                 continue
 
+            if "Simplicity HIT - rank simplicity" in task_name:
+                # flaky only fails in certain tasks like the very first one
+                continue
+
             if "wikiHow Goal Membership" in task_name:
                 # the inputs are not loaded properly
                 # I think it's becuase the batch file has ".on" in the header
