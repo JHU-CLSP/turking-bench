@@ -55,6 +55,13 @@ class ActionUtils:
         except ValueError:
             return False
 
+    @staticmethod
+    def clear_text(action: ActionChains):
+        # Perform Ctrl+A (select all)
+        action.key_down(Keys.CONTROL).send_keys('a').key_up(Keys.CONTROL)
+        # Perform Delete
+        action.send_keys(Keys.DELETE)
+
 
 class MyActions:
     """
@@ -104,12 +111,6 @@ class MyActions:
 
         return Result(success=True, outcome=input_element, action=f"self.wait_for_element({input})")
 
-    def clear_text(self, action: ActionChains):
-        # Perform Ctrl+A (select all)
-        action.key_down(Keys.CONTROL).send_keys('a').key_up(Keys.CONTROL)
-        # Perform Delete
-        action.send_keys(Keys.DELETE)
-
     def modify_text(self, input: Input, input_value) -> Result:
         """
         For a given editable input field such as text box or text area, this function enters the input value into
@@ -128,7 +129,7 @@ class MyActions:
 
         action = ActionChains(self.driver).move_to_element(input_element).click()
         # now modify the text
-        self.clear_text(action)
+        ActionUtils.clear_text(action)
         action.send_keys(input_value)
         action.perform()
         return Result(success=True, outcome=input_element, action=f"self.modify_text({input}, {input_value})")

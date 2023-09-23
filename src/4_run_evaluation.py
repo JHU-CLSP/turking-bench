@@ -77,7 +77,7 @@ class Evaluation:
 
         import platform
         if platform.system() == 'Linux':
-            # options.headless = True
+            options.headless = True
             driver = webdriver.Chrome(options=options)
         elif platform.system() == "Darwin":
             # options.headless = True
