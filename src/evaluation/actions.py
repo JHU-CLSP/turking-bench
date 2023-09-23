@@ -129,7 +129,6 @@ class MyActions:
         action = ActionChains(self.driver).move_to_element(input_element).click()
         # now modify the text
         self.clear_text(action)
-        print("input_value", input_value)
         action.send_keys(input_value)
         action.perform()
         return Result(success=True, outcome=input_element, action=f"self.modify_text({input}, {input_value})")
@@ -240,7 +239,6 @@ class MyActions:
             # input value is a float, but the option values are integers
             input_value = str(int(input_value))
         else:
-            print("input:", input, "input_value:", input_value)
             raise Exception(f"Input value `{input_value}` is not among the available option values `{option_values}`")
 
         # select by value

@@ -89,7 +89,6 @@ class Run(run_eval.Evaluation):
             if self.dump_features:
                 data_to_be_dumped = []
 
-            print("inputs:", inputs)
             for input_idx, i in enumerate(inputs):
                 print(f"{Fore.GREEN} - - - - - -  starting a new element: `{i}` - - - - - -  ")
 
@@ -131,8 +130,6 @@ class Run(run_eval.Evaluation):
                 # *after* we dump *input* features, we execute the action
                 if self.solver_type == 'oracle':
                     kwargs = {'answers': answers_map[i.name]}
-                    print("i: ", i)
-                    print("answers_map[i]", answers_map[i.name])
                     oracle_action_sequence = self.solver.solve(i, **kwargs)
                 else:
                     self.solver.solve(i)

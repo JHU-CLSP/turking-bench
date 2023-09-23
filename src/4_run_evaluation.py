@@ -271,57 +271,24 @@ class Evaluation:
         df = pd.read_csv(f'../tasks/{task_name}/batch.csv')
         # Keep the columns that are not answers and then combine the rows that are the same to find the distinct inputs
         cols = [col for col in df.columns if not col.startswith("Answer.")]
-        print("cols:", cols)
         # TODO: This is not always good, in HTER - longer sentences case there are many duplicate tasks of same inputs but different outputs
         distinct_rows = df[cols].drop_duplicates()
-        print("distinct_rows:", distinct_rows)
 
         # TODO: Turn off this assert while developing since this prohibits non-uniform editing of batch.csv for files that have duplicate inputs but different outputs
         # ensure that the number of unique tasks is exactly the same as the number of tasks in the batch
-        # assert len(distinct_rows) == len(
-        #     self.task_ids[task_name]), f"The number of unique tasks {len(distinct_rows)} is " \
-        #                                f"not the same as the number of tasks in the batch: " \
-        #                                f"{len(self.task_ids[task_name])}."
+        assert len(distinct_rows) == len(
+            self.task_ids[task_name]), f"The number of unique tasks {len(distinct_rows)} is " \
+                                       f"not the same as the number of tasks in the batch: " \
+                                       f"{len(self.task_ids[task_name])}."
 
         assert instance_index <= len(
             distinct_rows), f"The instance index {instance_index} is out of range: {len(distinct_rows)}."
 
         # select the row corresponding to instance_index
         row = distinct_rows.iloc[instance_index]
-        print("selected row", row)
         # in the original dataframe "df", select all the rows that correspond to the selected "row"
         # and then select the columns that start with "Answer."
         df_subset = df[df[cols].eq(row).all(1)]
-
-        print("=======================================================")
-        first_row = df[cols].iloc[0]
-        print("=======================================================")
-        print("=======================================================")
-        print("df[cols] shape", first_row.shape)
-        print("df[cols] dtypes", first_row.dtypes)
-        print("first value type", type(first_row[cols[0]]))
-        for res in first_row:
-            print("res:", res)
-
-        print("=======================================================")
-
-        print("row shape", row.shape)
-        print("row dtypes", row.dtypes)
-        for res in row:
-            print("row:", res)
-
-        print("=======================================================")
-        # diff is only for int types
-        differences = row.equals(first_row)
-        print("differences:", differences)
-        # how is this differences literally true, yet its pure false right afterwards when its printing out the all
-        print(df[cols].iloc[0].eq(row))
-        print("=======================================================")
-        print("=======================================================")
-        print("=======================================================")
-        print(df[cols].eq(row).all(1))
-        print("df_sub", df_subset)
-        print("input_names:", input_names)
         answers_map = {
             input_name: df_subset.get(f"Answer.{input_name}", np.array([])).tolist() for input_name in input_names
         }
@@ -343,7 +310,7 @@ class Evaluation:
             if a == "nan" or a == "{}" or a == "'{}'" or (type(a) == float and np.isnan(a)):
                 answers[idx] = ""
 
-        print("answers after mapping: ", answers)
+        print(f"answers after mapping: `{answers}`")
 
         # handle empty
         if answers == []:
