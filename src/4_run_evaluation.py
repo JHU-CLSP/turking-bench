@@ -20,6 +20,7 @@ import string
 from transformers import AutoTokenizer
 from tqdm import tqdm
 from typing import List
+import logging
 
 TURKLE_URL = "http://localhost:8000"
 
@@ -451,7 +452,7 @@ class Evaluation:
                 # https://github.com/JHU-CLSP/turk-instructions/issues/66
                 continue
 
-            if "Simplicity HIT - rank simplicity" in task_name:
+            if "Simplicity HIT - rank simplicity" in task_name or "Goal Distractor - ATOMIC base events 1" in task_name:
                 # flaky only fails in certain tasks like the very first one
                 continue
 
@@ -532,7 +533,7 @@ class Evaluation:
                     task_name, row_number, [x.name for x in inputs]
                 )
 
-                print(" --> input labels: {}".format(answers_map))
+                logging.info(" --> input labels: {}".format(answers_map))
 
                 # TODO: check if all the files (images, videos, audio, css, etc.) in the HTML are accessible
                 # TODO: find all the URLS in the HTML and check if they are accessible
