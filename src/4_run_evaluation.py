@@ -302,8 +302,8 @@ class Evaluation:
 
     def calculate_rouge(self, answers: List[str], input_type: str, baseline_answer: str):
         baseline_answer = str(baseline_answer)
-        # print(f"answers: `{answers}`")
-        print(f"baseline_answer: `{baseline_answer}` - type: `{type(baseline_answer)}`")
+        logging.info(f"answers: `{answers}`")
+        logging.info(f"baseline_answer: `{baseline_answer}` - type: `{type(baseline_answer)}`")
 
         # normalize responses: turn "nan", or "{}" into empty string
         for idx in range(len(answers)):
@@ -311,7 +311,7 @@ class Evaluation:
             if a == "nan" or a == "{}" or a == "'{}'" or (type(a) == float and np.isnan(a)):
                 answers[idx] = ""
 
-        # print(f"answers after mapping: `{answers}`")
+        logging.info(f"answers after mapping: `{answers}`")
 
         # handle empty
         if answers == []:
