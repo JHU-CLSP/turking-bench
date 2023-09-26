@@ -20,6 +20,7 @@ import string
 from transformers import AutoTokenizer
 from tqdm import tqdm
 from typing import List
+import logging
 
 TURKLE_URL = "http://localhost:8000"
 
@@ -271,11 +272,10 @@ class Evaluation:
         df = pd.read_csv(f'../tasks/{task_name}/batch.csv')
         # Keep the columns that are not answers and then combine the rows that are the same to find the distinct inputs
         cols = [col for col in df.columns if not col.startswith("Answer.")]
-        print("cols:", cols)
         # TODO: This is not always good, in HTER - longer sentences case there are many duplicate tasks of same inputs but different outputs
         distinct_rows = df[cols].drop_duplicates()
-        print("distinct_rows:", distinct_rows)
 
+        # TODO: Turn off this assert while developing since this prohibits non-uniform editing of batch.csv for files that have duplicate inputs but different outputs
         # ensure that the number of unique tasks is exactly the same as the number of tasks in the batch
         assert len(distinct_rows) == len(
             self.task_ids[task_name]), f"The number of unique tasks {len(distinct_rows)} is " \
@@ -302,8 +302,8 @@ class Evaluation:
 
     def calculate_rouge(self, answers: List[str], input_type: str, baseline_answer: str):
         baseline_answer = str(baseline_answer)
-        print(f"answers: `{answers}`")
-        print(f"baseline_answer: `{baseline_answer}` - type: `{type(baseline_answer)}`")
+        logging.info(f"answers: `{answers}`")
+        logging.info(f"baseline_answer: `{baseline_answer}` - type: `{type(baseline_answer)}`")
 
         # normalize responses: turn "nan", or "{}" into empty string
         for idx in range(len(answers)):
@@ -311,7 +311,7 @@ class Evaluation:
             if a == "nan" or a == "{}" or a == "'{}'" or (type(a) == float and np.isnan(a)):
                 answers[idx] = ""
 
-        print("answers after mapping: ", answers)
+        logging.info(f"answers after mapping: `{answers}`")
 
         # handle empty
         if answers == []:
@@ -448,8 +448,8 @@ class Evaluation:
             if 'sandbox' in task_name:
                 continue
 
-            if "HTER - longer sentences -27 Sep 1129" in task_name:
-                # https://github.com/JHU-CLSP/turk-instructions/issues/66
+            if "Simplicity HIT - rank simplicity" in task_name or "Goal Distractor - ATOMIC base events 1" in task_name or "ATOMIC - Required Objects (Sequence) 9" in task_name:
+                # flaky only fails in certain tasks like the very first one
                 continue
 
             if "wikiHow Goal Membership" in task_name:
@@ -529,7 +529,7 @@ class Evaluation:
                     task_name, row_number, [x.name for x in inputs]
                 )
 
-                print(" --> input labels: {}".format(answers_map))
+                logging.info(" --> input labels: {}".format(answers_map))
 
                 # TODO: check if all the files (images, videos, audio, css, etc.) in the HTML are accessible
                 # TODO: find all the URLS in the HTML and check if they are accessible
