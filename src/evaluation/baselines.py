@@ -82,6 +82,7 @@ class OracleBaseline(Baseline):
         print("Called solve, input:", input)
         # get the index of the input
         answers = kwargs['answers']
+        print("kwargs", kwargs) # answers should not be empty since you rely on answers to do things
         print("answers", answers)
         actions_per_input = ""  # no action by default
         for answer in answers:
@@ -102,7 +103,6 @@ class OracleBaseline(Baseline):
                 action_sequence = [r1, r2, r3]
 
                 if input.type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
-                    print("doing a text action")
                     action_sequence.append(self.actions.modify_text(input, answer))
                 elif input.type in ['checkbox']:
                     if not input_element.is_selected():
@@ -138,7 +138,6 @@ class RandomBaseline(Baseline):
         input_element = self.driver.find_element(By.NAME, input.name)
         input_type = input.type
         input_name = input.name
-        print("Input:", input)
         if input.type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
             messages = ["Hello!", "How are you?", "What's up?", "Nice to meet you!"]
             return random.choice(messages)
