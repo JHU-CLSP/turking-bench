@@ -25,11 +25,17 @@ def clean_checkboxes(csv_file):
                     df.loc[i, col] = ""
     df.to_csv(csv_file, index=False)
 
+def clean_empty(csv_file):
+    df = pd.read_csv(csv_file, low_memory=False)
+    df.fillna(value="None", inplace=True)
+    df.replace("", "None", inplace=True) # undo the previous line
+    df.to_csv(csv_file , encoding='utf-8-sig', index=False)
+
 if __name__ == '__main__':
-    files_with_checkboxes = ["Author In-Group Analysis Phrase Classification 2"]
+    files_to_edit = ["HTER - longer sentences -27 Sep 1129"]
     for root, dirs, files in os.walk('tasks'):
         for file in files:
-            if file.endswith('.csv') and root.split("/")[1] in files_with_checkboxes and file.startswith('batch'):
+            if file.endswith('.csv') and root.split("/")[1] in files_to_edit and file.startswith('batch'):
                 print('Cleaning ' + file)
                 # remove_columns(os.path.join(root, file))
-                clean_checkboxes(os.path.join(root, file))
+                clean_empty(os.path.join(root, file))
