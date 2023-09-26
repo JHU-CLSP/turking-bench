@@ -130,10 +130,10 @@ class Evaluation:
         """
         # TODO I think we can drop "url" parameter later.
 
+        inputs = []
         # if a list of input names are provided in the input, then extract the input fields with those names
         # otherwise, look for inputs that may look like input fields
         if input_names:
-            inputs = []
             for name in input_names:
                 # use selenium to find the input field
                 try:
@@ -735,6 +735,11 @@ class Evaluation:
 
                 url = f'{TURKLE_URL}/task/{instance_id}/iframe/'
                 self.driver.get(url)
+
+                # get the name of the fields
+                df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
+                input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
+                inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
 
         return
 
