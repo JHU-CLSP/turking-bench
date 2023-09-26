@@ -437,7 +437,6 @@ class Evaluation:
                 "Explanation Acceptability (CommonsenseQA)",
                 "Sentence Formality Annotation",
                 "Congressional Bills 5 point" ,
-                "Passive voice Parents 1st-2nd Person Persuasiveness Comparison",
                 "BiSECT Multilingual Evaluation",
                 "Commonsense Misinformation Tracking Pilot [cancer data setup] 10"
             ]:
