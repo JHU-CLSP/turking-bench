@@ -437,7 +437,6 @@ class Evaluation:
                 "Explanation Acceptability (CommonsenseQA)",
                 "Sentence Formality Annotation",
                 "Congressional Bills 5 point" ,
-                "Commonsense Misinformation Tracking Pilot [cancer data setup] 10"
             ]:
                 continue
 
