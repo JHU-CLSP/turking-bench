@@ -11,7 +11,7 @@ run_eval = __import__('4_run_evaluation')
 TURKLE_URL = "http://localhost:8000"
 # TEST_NAME = "Script KD eval LONG V2 - disc result eval 1"
 # TEST_NAME = "HTER - longer sentences -27 Sep 1129"
-TEST_NAME = "Author In-Group Analysis Phrase Classification 2"
+TEST_NAME = "Passive voice Parents 1st-2nd Person Persuasiveness Comparison"
 
 class Run(run_eval.Evaluation):
     def run_task(self, task_name: str, max_instance_count: int):
@@ -46,7 +46,7 @@ class Run(run_eval.Evaluation):
 
             # get the name of the fields
             df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
-            input_names = [col.replace('Answer.', '') for col in df.columns if col.startswith('Answer.')]
+            input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
             inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
 
             print(" --> inputs: {}".format([x.name for x in inputs]))
