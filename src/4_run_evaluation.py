@@ -448,10 +448,6 @@ class Evaluation:
             if 'sandbox' in task_name:
                 continue
 
-            if "HTER - longer sentences -27 Sep 1129" in task_name:
-                # https://github.com/JHU-CLSP/turk-instructions/issues/66
-                continue
-
             if "Simplicity HIT - rank simplicity" in task_name or "Goal Distractor - ATOMIC base events 1" in task_name or "ATOMIC - Required Objects (Sequence) 9" in task_name:
                 # flaky only fails in certain tasks like the very first one
                 continue
