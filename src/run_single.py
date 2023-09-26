@@ -46,7 +46,7 @@ class Run(run_eval.Evaluation):
 
             # get the name of the fields
             df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
-            input_names = [col.replace('Answer.', '') for col in df.columns if col.startswith('Answer.')]
+            input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
             inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
 
             print(" --> inputs: {}".format([x.name for x in inputs]))
