@@ -438,7 +438,6 @@ class Evaluation:
                 "Explanation Acceptability (CommonsenseQA)",
                 "Sentence Formality Annotation",
                 "Congressional Bills 5 point" ,
-                "BiSECT Multilingual Evaluation"
             ]:
                 continue
 
