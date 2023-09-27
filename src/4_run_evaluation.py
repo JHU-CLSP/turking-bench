@@ -294,6 +294,7 @@ class Evaluation:
             input_name: df_subset.get(f"Answer.{input_name}", np.array([])).tolist() for input_name in input_names
         }
 
+        # Note Note: Should be careful with nan values since their equality is tricky in Python
         # Note: we explicitly do not exclude "nan" values (empty cells) because sometimes the correct action is to leave
         # the field empty. For example, not selecting a checkbox or leaving a text box empty. Of course there are also
         # scenarios where this is not correct (hence, some "noise" in the evaluation).
