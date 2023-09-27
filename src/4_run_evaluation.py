@@ -741,6 +741,10 @@ class Evaluation:
                 input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
                 inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
 
+                answers_map = self.retrieve_gold_labels(
+                    task_name, row_number, [x.name for x in inputs]
+                )
+
         return
 
 

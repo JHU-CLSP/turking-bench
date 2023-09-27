@@ -9,9 +9,7 @@ import json
 run_eval = __import__('4_run_evaluation')
 
 TURKLE_URL = "http://localhost:8000"
-# TEST_NAME = "Script KD eval LONG V2 - disc result eval 1"
-TEST_NAME = "HTER - longer sentences -27 Sep 1129"
-# TEST_NAME = "Simplicity HIT - rank simplicity"
+TEST_NAME = "Author In-Group Analysis Phrase Classification 2"
 
 class Run(run_eval.Evaluation):
     def run_task(self, task_name: str, max_instance_count: int):
