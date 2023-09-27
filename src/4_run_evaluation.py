@@ -252,6 +252,9 @@ class Evaluation:
 
     @staticmethod
     def metric_max_over_ground_truths(metric_fn, prediction, ground_truths, xlingual=False):
+        """
+        Returns the max score comparing model predicted output to over the ground truth labels that we have received from the gold labels
+        """
         scores_for_ground_truths = []
         for ground_truth in ground_truths:
             score = metric_fn(prediction, ground_truth, xlingual=xlingual)
@@ -287,13 +290,15 @@ class Evaluation:
 
         # select the row corresponding to instance_index
         row = distinct_rows.iloc[instance_index]
-        # in the original dataframe "df", select all the rows that correspond to the selected "row"
-        # and then select the columns that start with "Answer."
+        # in the original df, go choose all the rows that have the same inputs as the selected row instance and return all of the answers
+        # this will be a df with multiple rows iff there are multiple answers to the same question instance
         df_subset = df[df[cols].eq(row).all(1)]
+        # create a map for each Answer (input_name) to its corresponding answers of the instance
         answers_map = {
             input_name: df_subset.get(f"Answer.{input_name}", np.array([])).tolist() for input_name in input_names
         }
 
+        # Note Note: Should be careful with nan values since their equality is tricky in Python
         # Note: we explicitly do not exclude "nan" values (empty cells) because sometimes the correct action is to leave
         # the field empty. For example, not selecting a checkbox or leaving a text box empty. Of course there are also
         # scenarios where this is not correct (hence, some "noise" in the evaluation).
@@ -703,7 +708,7 @@ class Evaluation:
         print("----------------------------------------------")
         print(f'Field statistics per task: {task_field_statistics}')
 
-    def enumerate_comprehensive_tests(self, max_instance_count: int):
+    def enumerate_comprehensive_tasks(self, max_instance_count: int):
         """
         Enumerate all the tasks comprehensively, so going upto max_instance_count which should be high
         It will keep going despite failures and errors (and not skip any available tasks)
@@ -722,25 +727,102 @@ class Evaluation:
         ret = []
         self.driver.get(TURKLE_URL)
 
+        task_results = {} # dictionary mapping {task_name, {num_successes, success_percentage, num_errors, avg_failing_score}}
+        # note in calculating average failing score, only tasks that did not have an error when trying to answer are considered
+
         for task_name in tqdm(tasks):
             print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
-            instance_ids = self.tasks_ids[task_name]
+            instance_ids = self.task_ids[task_name]
             first_instance_id = min(instance_ids) # TODO: Check if this is also just the first one, might be with how the JSON is formatted
 
             instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
 
-            for instance_id in instance_ids:
-                row_num = instance_id - first_instance_id
+            num_successes = 0
+            num_errors = 0
+            sum_failing_scores = 0.0
+            from utils.hidden_prints import HiddenPrints
 
-                url = f'{TURKLE_URL}/task/{instance_id}/iframe/'
-                self.driver.get(url)
+            with HiddenPrints():
+                for instance_id in instance_ids:
+                    row_num = instance_id - first_instance_id
 
-                # get the name of the fields
-                df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
-                input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
-                inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
+                    url = f'{TURKLE_URL}/task/{instance_id}/iframe/'
+                    self.driver.get(url)
 
-        return
+                    # get the name of the fields
+                    df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
+                    input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
+                    inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
+
+                    answers_map = self.retrieve_gold_labels(
+                        task_name, row_num, [x.name for x in inputs]
+                    )
+
+                    # Same TODO as above, file (images videos audio, css etc. are html accessible and find all URLs)
+
+                    # TODO copy over dump_features 
+                    # TODO copy over report_field_stats so task_field_statistics 
+
+                    error_flag = False
+                    # for each input, now go ahead and answer it with oracle
+                    for input_idx, i in enumerate(inputs):
+                        element = self.driver.find_element(By.NAME, i.name)
+
+                        if not element.is_displayed() or element.size['width'] <= 0 or element.size['height'] <= 0:
+                            continue
+
+                        # TODO dump_featuers
+
+                        # assuming solver is oracle
+                        kwargs = {'answers': answers_map[i.name]}
+                        try:
+                            self.solver.solve(i, **kwargs) # before would store the action sequence of oracle, not needed here
+                        except Exception as error:
+                            error_flag = True
+                            continue
+
+                        # TODO dump output features and collect field statistics
+
+                    # get the resulting answers after our model outputs
+                    model_outputs = self.extract_values(inputs)
+
+                    if error_flag:
+                        num_errors += 1
+                        continue
+
+                    # go calculate the score of this instance 
+                    score = 0.0 # instance score
+                    for i in model_outputs:
+                        if i.name in self.excluded_input_names:
+                            continue
+
+                        # checkboxes are weird, purely copied over
+                        if i.type == "checkbox":
+                            i.values = "|".join(sorted(i.values))
+                            for idx in range(len(answers_map[i.name])):
+                                x = answers_map[i.name][idx]
+                                if type(x) == str and "|" in x:
+                                    answers_map[i.name][idx] = "|".join(sorted(x.split("|")))
+                        else:
+                            i.values = i.values[0] if len(i.values) > 0 else ''
+
+                        # the score for this specific model input/output
+                        score_per_field = self.calculate_rouge(answers_map[i.name], i.type, i.values)
+
+                        score += score_per_field
+                    
+                    # TODO could do more fancy things with statistics if wanted
+                    score /= len(model_outputs) # average score for this instance
+
+                    if score > 0.99:
+                        num_successes += 1
+                    else:
+                        sum_failing_scores += score
+
+            task_results[task_name] = {"num_successes": num_successes, "success_percentage": num_successes / len(instance_ids), "num_errors": num_errors, "avg_failing_score": sum_failing_scores / (len(instance_ids) - num_successes - num_errors)}
+            print("task result", task_name, task_results[task_name])
+
+        return task_results
 
 
 
