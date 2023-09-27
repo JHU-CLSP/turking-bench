@@ -130,10 +130,10 @@ class Evaluation:
         """
         # TODO I think we can drop "url" parameter later.
 
+        inputs = []
         # if a list of input names are provided in the input, then extract the input fields with those names
         # otherwise, look for inputs that may look like input fields
         if input_names:
-            inputs = []
             for name in input_names:
                 # use selenium to find the input field
                 try:
@@ -498,12 +498,10 @@ class Evaluation:
             first_instance_id = min(instance_ids)
             print("First instance id:", first_instance_id)
 
-            # if maximum is less than the number of instances, we sample a random subset of instances
-            if max_instance_count < len(instance_ids):
-                # random sample
-                instance_ids = random.sample(instance_ids, max_instance_count)
+            # Create a random sample
+            instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
 
-            # Sample random instances of each task
+            # Go through the instances of each task in this random sample
             for instance_id in instance_ids:
 
                 # wait for a keyboard press before continuing
@@ -704,6 +702,46 @@ class Evaluation:
         print(f'Overall field statistics: {aggregate_field_statistics}')
         print("----------------------------------------------")
         print(f'Field statistics per task: {task_field_statistics}')
+
+    def enumerate_comprehensive_tests(self, max_instance_count: int):
+        """
+        Enumerate all the tasks comprehensively, so going upto max_instance_count which should be high
+        It will keep going despite failures and errors (and not skip any available tasks)
+
+        :param max_instance_count 
+
+        returns:
+        a list of tasks tuple (task name, % completed, avg score)
+        - % completed will be what percentage of the instances completed with a score of 1
+        - avg score is a running mean of their score
+        """
+
+        input_format = "both"
+
+        tasks = self.load_task_names()
+        ret = []
+        self.driver.get(TURKLE_URL)
+
+        for task_name in tqdm(tasks):
+            print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
+            instance_ids = self.tasks_ids[task_name]
+            first_instance_id = min(instance_ids) # TODO: Check if this is also just the first one, might be with how the JSON is formatted
+
+            instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
+
+            for instance_id in instance_ids:
+                row_num = instance_id - first_instance_id
+
+                url = f'{TURKLE_URL}/task/{instance_id}/iframe/'
+                self.driver.get(url)
+
+                # get the name of the fields
+                df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
+                input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
+                inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
+
+        return
+
 
 
 if __name__ == "__main__":

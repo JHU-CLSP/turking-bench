@@ -4,6 +4,7 @@ from io import BytesIO
 import numpy as np
 from PIL import Image, ImageDraw
 import requests
+import platform
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -57,11 +58,12 @@ class ActionUtils:
 
     @staticmethod
     def clear_text(action: ActionChains):
-        # Perform Ctrl+A (select all)
-        action.key_down(Keys.CONTROL).send_keys('a').key_up(Keys.CONTROL)
-        # Perform Delete
-        action.send_keys(Keys.DELETE)
+        key = Keys.COMMAND if platform.system() == "Darwin" else Keys.CONTROL
 
+        # Perform Ctrl+A (select all)
+        action.key_down(key).send_keys('a').key_up(key)
+        # Perform Delete
+        action.send_keys(Keys.BACKSPACE)
 
 class MyActions:
     """
