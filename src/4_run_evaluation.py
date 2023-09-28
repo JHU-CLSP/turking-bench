@@ -727,8 +727,7 @@ class Evaluation:
         ret = []
         self.driver.get(TURKLE_URL)
 
-        task_results = {} # dictionary mapping {task_name, {num_successes, success_percentage, num_errors, avg_failing_score}}
-        # note in calculating average failing score, only tasks that did not have an error when trying to answer are considered
+        task_results = {} # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores} }
 
         for task_name in tqdm(tasks):
             print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
@@ -819,7 +818,7 @@ class Evaluation:
                     else:
                         sum_failing_scores += score
 
-            task_results[task_name] = {"num_successes": num_successes, "success_percentage": num_successes / len(instance_ids), "num_errors": num_errors, "avg_failing_score": sum_failing_scores / (len(instance_ids) - num_successes - num_errors)}
+            task_results[task_name] = {"num_successes": num_successes, "num_errors": num_errors, "num_failing": len(instance_ids) - num_successes - num_errors, "sum_failing_scores": sum_failing_scores} 
             print("task result", task_name, task_results[task_name])
 
         return task_results

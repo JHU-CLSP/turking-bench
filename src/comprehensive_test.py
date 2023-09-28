@@ -8,7 +8,7 @@ evaluation = eval.Evaluation(solver_type="oracle", tasks="all",
 
 
 def test_evaluation():
-    # dictionary mapping {task_name, {num_successes, success_percentage, num_errors, avg_failing_score}}
+    # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores} }
     results = evaluation.enumerate_comprehensive_tasks(max_instance_count=1000) # dictionary of results
 
     # Global statistics
@@ -18,14 +18,15 @@ def test_evaluation():
 
     for task in results:
         result = results[task]
-        if result["success_percentage"] > 0.99:
+        if result["num_errors"] == 0 and result["num_failing"] == 0:
             tasks_succeeded += 1 
         elif result["num_errors"] > 0:
             tasks_with_errors += 1
         else:
             tasks_failed += 1
 
-        print(f"Task: {task} | Successes: {result['num_successes']} | Success Percentage: {result['success_percentage']} | Errors: {result['num_errors']} | Avg Failing Score: {result['avg_failing_score']}")
+        print(f"task: {task} | num_successes: {result['num_successes']} | num_errors: {result['num_errors']} | num_failing: {result['num_failing']} | sum_failing_scores: {result['sum_failing_scores']}")
+        print(f"result: {result}")
 
 if __name__ == "__main__":
     print("Running comprehensive tests")
