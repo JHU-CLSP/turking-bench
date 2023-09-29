@@ -56,7 +56,7 @@ class Evaluation:
         else:
             raise Exception(f"{Fore.RED}Solver `{solver_type}` not implemented")
         self.tasks = tasks
-        assert tasks in ["test", "train", "all", "subjective_test"]
+        assert tasks in ["test", "train", "all", "subjective_test"] or tasks.startswith("tap")
 
         self.do_eval = do_eval
         self.dump_features = dump_features
@@ -87,6 +87,20 @@ class Evaluation:
             driver = webdriver.Firefox()
 
         return driver
+
+    def load_tap_task_names(self):
+        # load all tasks into a list of strings
+        all_tasks = os.listdir("../tasks")
+
+        partitions = 19 # number of partitions
+        num_per_partition = -(len(all_tasks) // -partitions) # ceil division 
+        split_tasks = [all_tasks[i * num_per_partition : (i + 1) * num_per_partition] for i in range(partitions)] 
+
+        ind = int(self.tasks[len("tap"):])
+        print("ind", ind)
+
+        print("tap tasks", split_tasks[ind])
+        return split_tasks[ind]
 
     def load_task_names(self):
         """
@@ -708,7 +722,7 @@ class Evaluation:
         print("----------------------------------------------")
         print(f'Field statistics per task: {task_field_statistics}')
 
-    def enumerate_comprehensive_tasks(self, max_instance_count: int):
+    def enumerate_tap_tasks(self, max_instance_count: int):
         """
         Enumerate all the tasks comprehensively, so going upto max_instance_count which should be high
         It will keep going despite failures and errors (and not skip any available tasks)
@@ -723,7 +737,7 @@ class Evaluation:
 
         input_format = "both"
 
-        tasks = self.load_task_names()
+        tasks = self.load_tap_task_names()
         ret = []
         self.driver.get(TURKLE_URL)
 

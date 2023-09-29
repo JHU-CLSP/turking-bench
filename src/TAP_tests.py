@@ -2,6 +2,7 @@ eval = __import__('4_run_evaluation')
 from evaluation.actions import MyActions
 from evaluation.baselines import Baseline
 from utils.hidden_prints import HiddenPrints
+import sys
 
 evaluation = eval.Evaluation(solver_type="oracle", tasks="all",
                              do_eval=True, dump_features=True, report_field_stats=True)
@@ -9,7 +10,7 @@ evaluation = eval.Evaluation(solver_type="oracle", tasks="all",
 
 def test_evaluation():
     # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores} }
-    results = evaluation.enumerate_comprehensive_tasks(max_instance_count=1000) # dictionary of results
+    results = evaluation.enumerate_tap_tasks(max_instance_count=1000) # dictionary of results
 
     # Global statistics
     tasks_succeeded = 0
@@ -30,4 +31,5 @@ def test_evaluation():
 
 if __name__ == "__main__":
     print("Running comprehensive tests")
+    evaluation.tasks = sys.argv[1]
     test_evaluation()
