@@ -739,9 +739,9 @@ class Evaluation:
             num_successes = 0
             num_errors = 0
             sum_failing_scores = 0.0
-            from utils.hidden_prints import HiddenPrints
+            from utils.hidden_prints import HiddenPrintsHiddenErrors
 
-            with HiddenPrints():
+            with HiddenPrintsHiddenErrors():
                 for instance_id in instance_ids:
                     row_num = instance_id - first_instance_id
 
@@ -784,6 +784,10 @@ class Evaluation:
 
                     # get the resulting answers after our model outputs
                     model_outputs = self.extract_values(inputs)
+
+                    # Hack in case model_outputs is zero, treat this as an error so don't divide by zero later
+                    if len(model_outputs) == 0:
+                        error_flag = True
 
                     if error_flag:
                         num_errors += 1
