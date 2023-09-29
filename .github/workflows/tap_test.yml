@@ -1,4 +1,4 @@
-name: Comprehensive testing of all tasks
+name: TAP tests
 
 on:
   workflow_dispatch:
