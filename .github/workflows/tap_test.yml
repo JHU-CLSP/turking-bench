@@ -48,5 +48,6 @@ jobs:
       # Run the TAP tests
       - name: run TAP tests
         run: |
+          cd src
           echo 'run TAP tests ${{ matrix.tap }}'
-          python src/TAP_tests.py ${{ matrix.tap }}
+          python TAP_tests.py ${{ matrix.tap }}
