@@ -1,4 +1,4 @@
-GIT_URL="https://github.com/yeganehkordi/turkle.git"
+GIT_URL="https://github.com/klxu03/turkle.git"
 repo_dir="Turkle"
 
 # choose the right pip/python
