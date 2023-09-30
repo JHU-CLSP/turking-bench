@@ -26,8 +26,7 @@ def test_evaluation():
         else:
             tasks_failed += 1
 
-        print(f"task: {task} | num_successes: {result['num_successes']} | num_errors: {result['num_errors']} | num_failing: {result['num_failing']} | sum_failing_scores: {result['sum_failing_scores']}")
-        print(f"result: {result}")
+        print(f"task: {task} | result: {result}")
 
 if __name__ == "__main__":
     print("Running comprehensive tests")
