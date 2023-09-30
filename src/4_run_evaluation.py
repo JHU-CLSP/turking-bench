@@ -403,10 +403,13 @@ class Evaluation:
                 baseline_answer = float(baseline_answer)
                 # "min" since we're happy as long as we're close to one human
                 denominator = np.max(answers)
-                scores = 1 - np.min(np.abs(np.array(answers) - baseline_answer)) / denominator
+                scores = np.min(np.abs(np.array(answers) - baseline_answer))
+                if denominator > 0:
+                    scores /= denominator
+                scores = 1 - scores
                 print(f"{Fore.BLUE} --> using numeric values of the range to compute their error: {scores}")
                 return scores
-            except:
+            except Exception:
                 scores = Evaluation.metric_max_over_ground_truths(
                     self.exact_match,
                     prediction=baseline_answer,
@@ -445,7 +448,6 @@ class Evaluation:
                 "NER - Task scruples 26,200 - 30,922",
                 "neural-pop (PLAN evaluation) t5-human-test b",
                 "Commongen Evals (RLUE) 2",
-                "Opinion Mining of Spanish Customer Comments HIT2",
                 "ESNLI Rationale Generation 4",
                 "COMET2020 ATOMIC Inference Vp 5",
                 "Step 2 Verifying Multi-sentence-ness for questions 14",

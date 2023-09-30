@@ -7,10 +7,12 @@ import shutil
 from selenium.webdriver.common.by import By
 import json
 run_eval = __import__('4_run_evaluation')
+from utils.hidden_prints import HiddenPrints
 
 TURKLE_URL = "http://localhost:8000"
-TEST_NAME = "Opinion Mining of Spanish Customer Comments HIT2"
-SPECIFIED_INDEX = 16
+TEST_NAME = "intuitive physics 01"
+SPECIFIED_INDEX = 92
+RUN_ALL = True
 
 class Run(run_eval.Evaluation):
     def run_task(self, task_name: str, max_instance_count: int, index: int = 0):
@@ -21,6 +23,10 @@ class Run(run_eval.Evaluation):
         print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
 
         instance_ids = self.task_ids[task_name]
+
+        if max_instance_count == 1 and len(instance_ids) - 1 < index:
+            raise Exception(f"{Fore.RED}The index {index} is out of bounds for task {task_name} with {len(instance_ids)} instances.")
+
         first_instance_id = min(instance_ids)
 
         # if maximum is less than the number of instances, we sample a random subset of instances
@@ -165,6 +171,7 @@ class Run(run_eval.Evaluation):
                         i.values = i.values[0]
                     else:
                         i.values = ''
+                print("score_per_field", answers_map[i.name], i.type, i.values)
                 score_per_field = self.calculate_rouge(answers_map[i.name], i.type, i.values)
 
                 if i.type not in results[task_name]:
@@ -172,8 +179,11 @@ class Run(run_eval.Evaluation):
 
                 results[task_name][i.type].append(score_per_field)
 
+                print("i", i)
+                print("score per field", score_per_field)
                 score += score_per_field
 
+            print("length:", len(inputs_with_values), "score: ", score)
             score /= len(inputs_with_values)
             print(f"{Fore.CYAN} --> Overall score: {score}")
 
@@ -242,7 +252,11 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     args.solver_type = "oracle"
-    args.max_instance_count = 1
+
+    if RUN_ALL:
+        args.max_instance_count = 1000
+    else:
+        args.max_instance_count = 1
     print(f"{Fore.BLUE}Solver: {args.solver_type}")
     max_instance_count = int(args.max_instance_count)
 
@@ -254,6 +268,11 @@ if __name__ == "__main__":
         raise Exception(f"{Fore.RED}dump_features can only be used with oracle solver")
 
     eval = Run(solver_type=args.solver_type, tasks=args.tasks,
-                      do_eval=do_eval, dump_features=dump_features, report_field_stats=report_field_stats)
+                      do_eval=do_eval, dump_features=dump_features, report_field_stats=report_field_stats, headless = RUN_ALL)
 
-    eval.run_task(TEST_NAME, args.max_instance_count, SPECIFIED_INDEX)
+    if RUN_ALL:
+        # Note if everything runs smoothly, nothing will be printed since it all succeeds
+        with HiddenPrints():
+            eval.run_task(TEST_NAME, args.max_instance_count, SPECIFIED_INDEX)
+    else:
+        eval.run_task(TEST_NAME, args.max_instance_count, SPECIFIED_INDEX)
