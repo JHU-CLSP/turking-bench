@@ -38,6 +38,15 @@ class GPTTokenizer:
         tokens = [t.lstrip("Ġ") for t in tokens]
         return tokens
 
+def filter_TAP_tasks(task_name):
+    if "sandbox" in task_name:
+        return False
+    
+    if "COMET2020 ATOMIC Inference Vp 5" == task_name:
+        # input.type submit hasn't been coded for thus self.extract_values is erroring
+        return False
+    
+    return True
 
 class Evaluation:
     def __init__(self, solver_type: str, tasks: str, do_eval: bool, dump_features: bool, report_field_stats: bool):
@@ -91,7 +100,7 @@ class Evaluation:
     def load_tap_task_names(self):
         # load all tasks into a list of strings
         all_tasks = os.listdir("../tasks")
-        all_tasks = list(filter(lambda task: "sandbox" not in task, all_tasks))
+        all_tasks = list(filter(filter_TAP_tasks, all_tasks))
         print("all_tasks len:", len(all_tasks))
 
         partitions = 19 # number of partitions
