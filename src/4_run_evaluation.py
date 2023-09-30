@@ -102,7 +102,6 @@ class Evaluation:
         split_tasks = [all_tasks[i * num_per_partition : (i + 1) * num_per_partition] for i in range(partitions)] 
 
         ind = int(self.tasks[len("tap"):]) - 1
-        print("ind", ind)
 
         print("tap tasks", split_tasks[ind])
         return split_tasks[ind]
