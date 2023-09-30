@@ -95,6 +95,9 @@ class Evaluation:
 
         partitions = 19 # number of partitions
         num_per_partition = -(len(all_tasks) // -partitions) # ceil division 
+        
+        # Can optimize this with greedy and DP to minimize difference between largest and smallest partition
+        # Start with # of instances * # tasks, then can go # inputs * # instances * # tasks
         split_tasks = [all_tasks[i * num_per_partition : (i + 1) * num_per_partition] for i in range(partitions)] 
 
         ind = int(self.tasks[len("tap"):])
