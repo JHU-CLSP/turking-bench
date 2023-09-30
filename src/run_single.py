@@ -242,7 +242,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     args.solver_type = "oracle"
-    args.max_instance_count = 1
+    args.max_instance_count = 1000
     print(f"{Fore.BLUE}Solver: {args.solver_type}")
     max_instance_count = int(args.max_instance_count)
 
