@@ -100,7 +100,7 @@ class Evaluation:
         # Start with # of instances * # tasks, then can go # inputs * # instances * # tasks
         split_tasks = [all_tasks[i * num_per_partition : (i + 1) * num_per_partition] for i in range(partitions)] 
 
-        ind = int(self.tasks[len("tap"):])
+        ind = int(self.tasks[len("tap"):]) - 1
         print("ind", ind)
 
         print("tap tasks", split_tasks[ind])
@@ -745,7 +745,7 @@ class Evaluation:
         ret = []
         self.driver.get(TURKLE_URL)
 
-        task_results = {} # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores} }
+        task_results = {} # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores, failing_tasks} }
 
         for task_name in tqdm(tasks):
             print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
@@ -757,6 +757,7 @@ class Evaluation:
             num_successes = 0
             num_errors = 0
             sum_failing_scores = 0.0
+            failing_tasks = []
             from utils.hidden_prints import HiddenPrintsHiddenErrors
 
             with HiddenPrintsHiddenErrors():
@@ -809,6 +810,7 @@ class Evaluation:
 
                     if error_flag:
                         num_errors += 1
+                        failing_tasks.append(row_num)
                         continue
 
                     # go calculate the score of this instance 
@@ -838,9 +840,11 @@ class Evaluation:
                     if score > 0.99:
                         num_successes += 1
                     else:
+                        failing_tasks.append(row_num)
                         sum_failing_scores += score
 
-            task_results[task_name] = {"num_successes": num_successes, "num_errors": num_errors, "num_failing": len(instance_ids) - num_successes - num_errors, "sum_failing_scores": sum_failing_scores} 
+            failing_tasks = failing_tasks[:10] # only keep the first 10 failing tasks
+            task_results[task_name] = {"num_successes": num_successes, "num_errors": num_errors, "num_failing": len(instance_ids) - num_successes - num_errors, "sum_failing_scores": sum_failing_scores, "failing_tasks": failing_tasks} 
             print("task result", task_name, task_results[task_name])
 
         return task_results
