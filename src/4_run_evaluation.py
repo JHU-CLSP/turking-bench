@@ -91,6 +91,7 @@ class Evaluation:
     def load_tap_task_names(self):
         # load all tasks into a list of strings
         all_tasks = os.listdir("../tasks")
+        all_tasks = filter(lambda task: "sandbox" not in task, all_tasks)
 
         partitions = 19 # number of partitions
         num_per_partition = -(len(all_tasks) // -partitions) # ceil division 
