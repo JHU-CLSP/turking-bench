@@ -445,7 +445,6 @@ class Evaluation:
                 "NER - Task scruples 26,200 - 30,922",
                 "neural-pop (PLAN evaluation) t5-human-test b",
                 "Commongen Evals (RLUE) 2",
-                "Opinion Mining of Spanish Customer Comments HIT2",
                 "ESNLI Rationale Generation 4",
                 "COMET2020 ATOMIC Inference Vp 5",
                 "Step 2 Verifying Multi-sentence-ness for questions 14",
