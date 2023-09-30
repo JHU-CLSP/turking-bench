@@ -49,11 +49,11 @@ def filter_TAP_tasks(task_name):
     return True
 
 class Evaluation:
-    def __init__(self, solver_type: str, tasks: str, do_eval: bool, dump_features: bool, report_field_stats: bool):
+    def __init__(self, solver_type: str, tasks: str, do_eval: bool, dump_features: bool, report_field_stats: bool, headless: bool = False):
         self.default_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
         self.xlingual_tokenizer = GPTTokenizer()
         self.xlingual_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], tokenizer=self.xlingual_tokenizer)
-        self.driver = self.create_driver()
+        self.driver = self.create_driver(headless)
         self.actions = MyActions(self.driver)
         self.solver = None
         # ass more solvers that we implement, we can add them here:
@@ -81,16 +81,16 @@ class Evaluation:
             'ee'
         ]
 
-    def create_driver(self):
+    def create_driver(self, headless: bool):
         # TODO: make the seleciton of headless (no visual browser for faster processing) a parameter
         options = Options()
+        if headless:
+            options.add_argument("--headless=new")
 
         import platform
         if platform.system() == 'Linux':
-            options.headless = True
             driver = webdriver.Chrome(options=options)
         elif platform.system() == "Darwin":
-            # options.headless = True
             driver = webdriver.Chrome(options=options)
         else:
             driver = webdriver.Firefox()

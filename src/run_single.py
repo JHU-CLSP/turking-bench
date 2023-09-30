@@ -9,11 +9,11 @@ import json
 run_eval = __import__('4_run_evaluation')
 
 TURKLE_URL = "http://localhost:8000"
-# TEST_NAME = "Author In-Group Analysis Phrase Classification 2"
-TEST_NAME = "HTER - longer sentences -27 Sep 1129"
+TEST_NAME = "Opinion Mining of Spanish Customer Comments HIT2"
+SPECIFIED_INDEX = 16
 
 class Run(run_eval.Evaluation):
-    def run_task(self, task_name: str, max_instance_count: int):
+    def run_task(self, task_name: str, max_instance_count: int, index: int = 0):
         results = {}
         self.driver.get(TURKLE_URL)
         aggregate_field_statistics = {}  # We store the stats related to the field types/frequency here
@@ -22,7 +22,6 @@ class Run(run_eval.Evaluation):
 
         instance_ids = self.task_ids[task_name]
         first_instance_id = min(instance_ids)
-        print("First instance id:", first_instance_id)
 
         # if maximum is less than the number of instances, we sample a random subset of instances
         if max_instance_count < len(instance_ids):
@@ -31,11 +30,9 @@ class Run(run_eval.Evaluation):
 
         # Sample random instances of each task
         for instance_id in instance_ids:
-            # remove the randomness of which sample we choose
-            instance_id = first_instance_id
-
-            # wait for a keyboard press before continuing
-            # input("Press Enter to continue...")
+            # remove the randomness of which index we choose 
+            if max_instance_count == 1:
+                instance_id = first_instance_id + index
 
             row_number = instance_id - first_instance_id
             print(f"instance_id: {instance_id} <-> row_number: {row_number}")
@@ -259,6 +256,4 @@ if __name__ == "__main__":
     eval = Run(solver_type=args.solver_type, tasks=args.tasks,
                       do_eval=do_eval, dump_features=dump_features, report_field_stats=report_field_stats)
 
-    # input_format = config.get('DEFAULT', 'input_format')
-    # image_format = config.get('DEFAULT', 'image_format', fallback='full_page')
-    eval.run_task(TEST_NAME, args.max_instance_count)
+    eval.run_task(TEST_NAME, args.max_instance_count, SPECIFIED_INDEX)

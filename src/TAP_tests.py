@@ -5,7 +5,7 @@ from utils.hidden_prints import HiddenPrints
 import sys
 
 evaluation = eval.Evaluation(solver_type="oracle", tasks="all",
-                             do_eval=True, dump_features=True, report_field_stats=True)
+                             do_eval=True, dump_features=False, report_field_stats=False, headless=True)
 
 
 def test_evaluation():
