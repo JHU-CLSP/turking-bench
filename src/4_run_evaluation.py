@@ -21,6 +21,7 @@ from transformers import AutoTokenizer
 from tqdm import tqdm
 from typing import List
 import logging
+import bisect
 
 TURKLE_URL = "http://localhost:8000"
 
@@ -108,11 +109,47 @@ class Evaluation:
         print("all_tasks len:", len(all_tasks))
 
         partitions = 19 # number of partitions
-        num_per_partition = -(len(all_tasks) // -partitions) # ceil division 
-        
+        split_tasks = []
+
+        # Greedy optimized way to split evenly 
+        s = set() # was originally a set, but python sets aren't as robust as C++ std
+        sum = 0
+        for task in all_tasks:
+            df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
+            input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
+            val = min(1000, len(self.task_ids[task])) * len(input_names) # num_tasks * # num_inputs_per_task
+            sum += val
+            s.add((val, task)) # (val, task name)
+
+        s = sorted(s)
+        for partition in range(partitions):
+            curr = []
+            goal = sum // partitions
+            while goal > 0 and len(s) > 0:
+                ind = min(bisect.bisect_right(s, (goal, "a")), len(s) - 1)
+                curr.append(s[ind][1])
+                goal -= s[ind][0]
+                s.remove(s[ind])
+            split_tasks.append(curr)
+
+        split_sums = []
+        for i in range(partitions):
+            temp_sum = 0
+            for task in split_tasks[i]:
+                df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
+                input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
+                val = min(1000, len(self.task_ids[task])) * len(input_names) # num_tasks * # num_inputs_per_task
+                temp_sum += val 
+            split_sums.append(temp_sum)
+
+        print("sum:", sum, "split_sums:", split_sums)
+
+        # Naive way to split up the tasks by evenly number per
+        # num_per_partition = -(len(all_tasks) // -partitions) # ceil division 
+        # split_tasks = [all_tasks[i * num_per_partition : (i + 1) * num_per_partition] for i in range(partitions)] 
+
         # Can optimize this with greedy and DP to minimize difference between largest and smallest partition
         # Start with # of instances * # tasks, then can go # inputs * # instances * # tasks
-        split_tasks = [all_tasks[i * num_per_partition : (i + 1) * num_per_partition] for i in range(partitions)] 
 
         ind = int(self.tasks[len("tap"):]) - 1
 

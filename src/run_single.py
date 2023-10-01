@@ -13,7 +13,7 @@ import logging
 TURKLE_URL = "http://localhost:8000"
 TEST_NAME = "Abductive Reasoning 11"
 SPECIFIED_INDEX = 74
-RUN_ALL = False
+RUN_ALL = True
 
 class Run(run_eval.Evaluation):
     def run_task(self, task_name: str, max_instance_count: int, index: int = 0):
