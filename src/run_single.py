@@ -8,11 +8,12 @@ from selenium.webdriver.common.by import By
 import json
 run_eval = __import__('4_run_evaluation')
 from utils.hidden_prints import HiddenPrints
+import logging
 
 TURKLE_URL = "http://localhost:8000"
-TEST_NAME = "intuitive physics 01"
-SPECIFIED_INDEX = 92
-RUN_ALL = True
+TEST_NAME = "Rationale Generation 5"
+SPECIFIED_INDEX = 0
+RUN_ALL = False
 
 class Run(run_eval.Evaluation):
     def run_task(self, task_name: str, max_instance_count: int, index: int = 0):
@@ -171,7 +172,6 @@ class Run(run_eval.Evaluation):
                         i.values = i.values[0]
                     else:
                         i.values = ''
-                print("score_per_field", answers_map[i.name], i.type, i.values)
                 score_per_field = self.calculate_rouge(answers_map[i.name], i.type, i.values)
 
                 if i.type not in results[task_name]:
@@ -241,6 +241,7 @@ class Run(run_eval.Evaluation):
         print(f'Field statistics per task: {task_field_statistics}')
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)  # Set the logging level to INFO
     # user argparser to recive he input parameter
     parser = argparse.ArgumentParser()
     parser.add_argument("--solver_type", help="random or oracle", default="random")

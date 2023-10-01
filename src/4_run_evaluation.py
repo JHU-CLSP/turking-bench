@@ -45,6 +45,10 @@ def filter_TAP_tasks(task_name):
     if "COMET2020 ATOMIC Inference Vp 5" == task_name:
         # input.type submit hasn't been coded for thus self.extract_values is erroring
         return False
+
+    if task_name == "Rationale Generation 5":
+        # skip this task since it requires to click "show questions"
+        return False
     
     return True
 
