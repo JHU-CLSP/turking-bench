@@ -533,6 +533,10 @@ class Evaluation:
                 # flaky only fails in certain tasks like the very first one
                 continue
 
+            if "DI Rationale Gen. evaluation - single 2" in task_name:
+                # flaky column name probably, or possibly a re-order will fix it
+                continue
+
             if "wikiHow Goal Membership" in task_name:
                 # the inputs are not loaded properly
                 # I think it's becuase the batch file has ".on" in the header
