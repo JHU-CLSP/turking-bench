@@ -28,6 +28,9 @@ def test_evaluation():
 
         print(f"task: {task} | result: {result}")
 
+    print(f"tasks_succeeded: ${tasks_succeeded} | tasks_with_errors: ${tasks_with_errors} | tasks_failed: ${tasks_failed}")
+    assert tasks_with_errors == 0 and tasks_failed == 0, f"There were ${tasks_with_errors} errors and ${tasks_failed} failures"
+
 if __name__ == "__main__":
     print("Running comprehensive tests")
     evaluation.tasks = sys.argv[1]
