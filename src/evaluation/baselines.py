@@ -96,7 +96,7 @@ class OracleBaseline(Baseline):
                 r1 = self.actions.wait_for_element(input)
 
                 # wait 0.1 sec for the page to fully load
-                sleep(0.1)
+                sleep(3)
                 r2 = self.actions.maximize_window()
                 r3 = self.actions.scroll_to_element(input)
                 input_element = r3.outcome
@@ -119,6 +119,8 @@ class OracleBaseline(Baseline):
                                     'month', 'reset', 'search', 'submit', 'time']:
                     raise Exception(
                         f"{Fore.RED} ** Warning **: We don't know how to handle this input type `{input.type}`")
+
+                sleep(3)
 
                 action_sequence = "\n\n".join([r.action for r in action_sequence])
                 actions_per_input = {

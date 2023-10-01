@@ -11,8 +11,8 @@ from utils.hidden_prints import HiddenPrints
 import logging
 
 TURKLE_URL = "http://localhost:8000"
-TEST_NAME = "Rationale Generation 5"
-SPECIFIED_INDEX = 0
+TEST_NAME = "Abductive Reasoning 11"
+SPECIFIED_INDEX = 74
 RUN_ALL = False
 
 class Run(run_eval.Evaluation):

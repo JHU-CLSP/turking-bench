@@ -214,7 +214,7 @@ class Evaluation:
             input_fields.append(i)
 
         # before returning them, sort the input values based on first based on their x-coordinate and then their y-coordinate
-        input_fields = sorted(input_fields, key=lambda i: (i.y, i.x))
+        # input_fields = sorted(input_fields, key=lambda i: (i.y, i.x))
         return input_fields
 
     def extract_values(self, inputs: List[Input]):
