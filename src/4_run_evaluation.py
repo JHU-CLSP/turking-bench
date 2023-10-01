@@ -108,7 +108,7 @@ class Evaluation:
         all_tasks = list(filter(filter_TAP_tasks, all_tasks))
         print("all_tasks len:", len(all_tasks))
 
-        partitions = 20 # number of partitions
+        partitions = 19 # number of partitions
         split_tasks = []
 
         # Greedy optimized way to split evenly 
@@ -117,11 +117,20 @@ class Evaluation:
         for task in all_tasks:
             df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
             input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
-            val = min(1000, len(self.task_ids[task])) * len(input_names) # num_tasks * # num_inputs_per_task
+            val = min(1000, len(self.task_ids[task])) * (10 + len(input_names)) # num_tasks * num_inputs_per_task + 10 * num_tasks
             sum += val
             s.add((val, task)) # (val, task name)
 
         s = sorted(s)
+
+        # allow for even distribution at end by taking out beginning and re-distributing
+        last = len(s) - 1
+        while s[last][0] > sum // partitions:
+            split_tasks.append([s[last][1]])
+            sum -= s[last][0]
+            partitions -= 1
+            last -= 1
+        
         for partition in range(partitions):
             curr = []
             goal = sum // partitions
@@ -138,11 +147,11 @@ class Evaluation:
             for task in split_tasks[i]:
                 df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
                 input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
-                val = min(1000, len(self.task_ids[task])) * len(input_names) # num_tasks * # num_inputs_per_task
+                val = min(1000, len(self.task_ids[task])) * (10 + len(input_names))
                 temp_sum += val 
             split_sums.append(temp_sum)
 
-        print("sum:", sum, "split_sums:", split_sums)
+        print("split_sums:", split_sums)
 
         # Naive way to split up the tasks by evenly number per
         # num_per_partition = -(len(all_tasks) // -partitions) # ceil division 
