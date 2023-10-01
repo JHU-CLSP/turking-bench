@@ -108,7 +108,7 @@ class Evaluation:
         all_tasks = list(filter(filter_TAP_tasks, all_tasks))
         print("all_tasks len:", len(all_tasks))
 
-        partitions = 19 # number of partitions
+        partitions = 20 # number of partitions
         split_tasks = []
 
         # Greedy optimized way to split evenly 
