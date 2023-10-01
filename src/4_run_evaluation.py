@@ -213,8 +213,8 @@ class Evaluation:
 
             input_fields.append(i)
 
-        # before returning them, sort the input values based on first based on their x-coordinate and then their y-coordinate
-        # input_fields = sorted(input_fields, key=lambda i: (i.y, i.x))
+        # could think about sorting input_fields, but breaks certain tasks like Abductive Reasoning 11
+        # instead changed the code base to just use the order in which the Answer columns are given. We can rearrange it to the order of which inputs to fill in first
         return input_fields
 
     def extract_values(self, inputs: List[Input]):
