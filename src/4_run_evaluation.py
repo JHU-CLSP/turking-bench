@@ -131,7 +131,7 @@ class Evaluation:
             partitions -= 1
             last -= 1
         
-        for partition in range(partitions):
+        for partition in range(19):
             curr = []
             goal = sum // partitions
             while goal > 0 and len(s) > 0:
