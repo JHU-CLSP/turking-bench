@@ -131,7 +131,7 @@ class Evaluation:
             partitions -= 1
             last -= 1
         
-        for partition in range(19):
+        for partition in range(partitions):
             curr = []
             goal = sum // partitions
             while goal > 0 and len(s) > 0:
@@ -142,7 +142,7 @@ class Evaluation:
             split_tasks.append(curr)
 
         split_sums = []
-        for i in range(partitions):
+        for i in range(19):
             temp_sum = 0
             for task in split_tasks[i]:
                 df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
@@ -163,7 +163,7 @@ class Evaluation:
         ind = int(self.tasks[len("tap"):]) - 1
 
         if ind == 0:
-            for i in range(partitions):
+            for i in range(19):
                 print(f"partition: {i} | {split_tasks[i]}")
 
         print("tap tasks", split_tasks[ind])
