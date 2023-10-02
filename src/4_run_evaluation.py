@@ -162,6 +162,9 @@ class Evaluation:
 
         ind = int(self.tasks[len("tap"):]) - 1
 
+        if ind == 2:
+            print("split_sums", split_sums)
+
         print("tap tasks", split_tasks[ind])
         return split_tasks[ind]
 
