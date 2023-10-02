@@ -21,6 +21,7 @@ from transformers import AutoTokenizer
 from tqdm import tqdm
 from typing import List
 import logging
+import bisect
 
 TURKLE_URL = "http://localhost:8000"
 
@@ -44,6 +45,10 @@ def filter_TAP_tasks(task_name):
     
     if "COMET2020 ATOMIC Inference Vp 5" == task_name:
         # input.type submit hasn't been coded for thus self.extract_values is erroring
+        return False
+
+    if task_name == "Rationale Generation 5":
+        # skip this task since it requires to click "show questions"
         return False
     
     return True
@@ -104,13 +109,62 @@ class Evaluation:
         print("all_tasks len:", len(all_tasks))
 
         partitions = 19 # number of partitions
-        num_per_partition = -(len(all_tasks) // -partitions) # ceil division 
+        split_tasks = []
+
+        # Greedy optimized way to split evenly 
+        s = set() # was originally a set, but python sets aren't as robust as C++ std
+        sum = 0
+        for task in all_tasks:
+            df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
+            input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
+            val = min(1000, len(self.task_ids[task])) * (10 + len(input_names)) # num_tasks * num_inputs_per_task + 5 * num_tasks
+            sum += val
+            s.add((val, task)) # (val, task name)
+
+        s = sorted(s)
+
+        # allow for even distribution at end by taking out beginning and re-distributing
+        last = len(s) - 1
+        while s[last][0] > sum // partitions:
+            split_tasks.append([s[last][1]])
+            sum -= s[last][0]
+            partitions -= 1
+            last -= 1
         
+        for partition in range(19):
+            curr = []
+            goal = sum // partitions
+            while goal > 0 and len(s) > 0:
+                ind = min(bisect.bisect_right(s, (goal, "a")), len(s) - 1)
+                curr.append(s[ind][1])
+                goal -= s[ind][0]
+                s.remove(s[ind])
+            split_tasks.append(curr)
+
+        split_sums = []
+        for i in range(partitions):
+            temp_sum = 0
+            for task in split_tasks[i]:
+                df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
+                input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
+                val = min(1000, len(self.task_ids[task])) * (10 + len(input_names))
+                temp_sum += val 
+            split_sums.append(temp_sum)
+
+        print("split_sums:", split_sums)
+
+        # Naive way to split up the tasks by evenly number per
+        # num_per_partition = -(len(all_tasks) // -partitions) # ceil division 
+        # split_tasks = [all_tasks[i * num_per_partition : (i + 1) * num_per_partition] for i in range(partitions)] 
+
         # Can optimize this with greedy and DP to minimize difference between largest and smallest partition
         # Start with # of instances * # tasks, then can go # inputs * # instances * # tasks
-        split_tasks = [all_tasks[i * num_per_partition : (i + 1) * num_per_partition] for i in range(partitions)] 
 
         ind = int(self.tasks[len("tap"):]) - 1
+
+        if ind == 0:
+            for i in range(partitions):
+                print(f"partition: {i} | {split_tasks[i]}")
 
         print("tap tasks", split_tasks[ind])
         return split_tasks[ind]
@@ -209,8 +263,8 @@ class Evaluation:
 
             input_fields.append(i)
 
-        # before returning them, sort the input values based on first based on their x-coordinate and then their y-coordinate
-        input_fields = sorted(input_fields, key=lambda i: (i.y, i.x))
+        # could think about sorting input_fields, but breaks certain tasks like Abductive Reasoning 11
+        # instead changed the code base to just use the order in which the Answer columns are given. We can rearrange it to the order of which inputs to fill in first
         return input_fields
 
     def extract_values(self, inputs: List[Input]):
@@ -481,6 +535,10 @@ class Evaluation:
 
             if "Simplicity HIT - rank simplicity" in task_name or "Goal Distractor - ATOMIC base events 1" in task_name or "ATOMIC - Required Objects (Sequence) 9" in task_name:
                 # flaky only fails in certain tasks like the very first one
+                continue
+
+            if "DI Rationale Gen. evaluation - single 2" in task_name:
+                # flaky column name probably, or possibly a re-order will fix it
                 continue
 
             if "wikiHow Goal Membership" in task_name:

@@ -9,6 +9,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from evaluation.actions import MyActions
 from evaluation.input import Input
+import logging
 
 # from 4.run_evaluation import Evaluation
 evaluation = __import__('4_run_evaluation')

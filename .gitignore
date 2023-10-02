@@ -13,3 +13,4 @@ tasks/*/input.csv
 /src/features/
 **/.DS_Store
 /venv/
+.vscode/
