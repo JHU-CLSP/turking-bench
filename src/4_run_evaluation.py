@@ -162,7 +162,7 @@ class Evaluation:
 
         ind = int(self.tasks[len("tap"):]) - 1
 
-        if ind == 2:
+        if ind == 0:
             for i in range(partitions):
                 print(f"partition: {i} | {split_tasks[i]}")
 
