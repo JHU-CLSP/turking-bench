@@ -117,7 +117,7 @@ class Evaluation:
         for task in all_tasks:
             df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
             input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
-            val = min(1000, len(self.task_ids[task])) * (5 + len(input_names)) # num_tasks * num_inputs_per_task + 5 * num_tasks
+            val = min(1000, len(self.task_ids[task])) * (10 + len(input_names)) # num_tasks * num_inputs_per_task + 5 * num_tasks
             sum += val
             s.add((val, task)) # (val, task name)
 
@@ -147,7 +147,7 @@ class Evaluation:
             for task in split_tasks[i]:
                 df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
                 input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
-                val = min(1000, len(self.task_ids[task])) * (5 + len(input_names))
+                val = min(1000, len(self.task_ids[task])) * (10 + len(input_names))
                 temp_sum += val 
             split_sums.append(temp_sum)
 
@@ -163,7 +163,8 @@ class Evaluation:
         ind = int(self.tasks[len("tap"):]) - 1
 
         if ind == 2:
-            print("split_sums", split_sums)
+            for i in range(partitions):
+                print(f"partition: {i} | {split_tasks[i]}")
 
         print("tap tasks", split_tasks[ind])
         return split_tasks[ind]
