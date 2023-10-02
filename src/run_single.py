@@ -189,6 +189,8 @@ class Run(run_eval.Evaluation):
             print(f"{Fore.CYAN} --> Overall score: {score}")
 
             if self.solver_type == 'oracle':
+                if score <= 0.99:
+                    print(f"input_idx of failure {input_idx}")
                 assert score > 0.99, f"{Fore.RED}The oracle baseline should always get a score of 1.0"
 
             if self.dump_features:
