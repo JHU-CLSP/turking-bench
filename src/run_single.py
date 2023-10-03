@@ -12,8 +12,8 @@ import logging
 
 TURKLE_URL = "http://localhost:8000"
 # TEST_NAME = "Abductive Reasoning 11"
-TEST_NAME = "DI Rationale Gen. evaluation - single 2"
-SPECIFIED_INDEX = 0
+TEST_NAME = "Step 5 human performance 17"
+SPECIFIED_INDEX = 294
 RUN_ALL = True
 
 class Run(run_eval.Evaluation):
