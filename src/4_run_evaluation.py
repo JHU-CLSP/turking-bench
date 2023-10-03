@@ -47,8 +47,8 @@ def filter_TAP_tasks(task_name):
         # input.type submit hasn't been coded for thus self.extract_values is erroring
         return False
 
-    show_questions_tasks = ["Rationale Generation 5", "Gun violence structured extraction"]
-    # skip these task since it requires an extra click to "show questions"
+    show_questions_tasks = ["Rationale Generation 5", "Gun violence structured extraction", "ESNLI Rationale Generation 4"]
+    # skip these task since it requires an extra click to show the available questions
     if task_name in show_questions_tasks:
         return False
     
