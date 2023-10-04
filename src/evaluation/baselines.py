@@ -96,7 +96,7 @@ class OracleBaseline(Baseline):
                 r1 = self.actions.wait_for_element(input)
 
                 # wait 0.1 sec for the page to fully load
-                sleep(3)
+                sleep(0.1)
                 r2 = self.actions.maximize_window()
                 r3 = self.actions.scroll_to_element(input)
                 input_element = r3.outcome
