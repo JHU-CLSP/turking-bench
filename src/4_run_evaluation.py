@@ -343,6 +343,7 @@ class Evaluation:
             score = metric_fn(prediction, ground_truth, xlingual=xlingual)
             scores_for_ground_truths.append(score)
         score = float(max(scores_for_ground_truths))
+        print(f"prediction {prediction} ground_truths {ground_truths}")
         print(f"{Fore.BLUE} --> scores: ", score)
         return score
 
