@@ -45,6 +45,9 @@ def filter_TAP_tasks(task_name):
     
     # Should be doable tasks, just seemed like it would take a little more time so skipped in that interest
     skipped_cuz_hard = ["Sentence Formality Annotation"]
+    # Sentence Formality skipped since inputs could be slightly wrong, like '2_ instead of 2_
+    # Also sometimes it's in the wrong column, select answer in checkbox?
+    # Also not grabbing inputs, some some equality mismatching in retrieve_gold_label possibly
     if task_name in skipped_cuz_hard:
         return False
     
