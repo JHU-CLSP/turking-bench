@@ -11,7 +11,7 @@ from utils.hidden_prints import HiddenPrints
 import logging
 
 TURKLE_URL = "http://localhost:8000"
-TEST_NAME = "Sentence Formality Annotation"
+TEST_NAME = "Arch - Rel Eval 3"
 SPECIFIED_INDEX = 0
 RUN_ALL = False
 
