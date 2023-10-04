@@ -67,7 +67,7 @@ def filter_TAP_tasks(task_name):
     
     tasks_should_skip = ["Photo Collection GVDB"]
     # tasks I don't think the model is capable of solving
-    if task_name in show_questions_tasks:
+    if task_name in tasks_should_skip:
         return False
 
 
