@@ -65,6 +65,12 @@ def filter_TAP_tasks(task_name):
     if task_name == "What breaks the flow - no categories 4":
         return False
     
+    tasks_should_skip = ["Photo Collection GVDB"]
+    # tasks I don't think the model is capable of solving
+    if task_name in show_questions_tasks:
+        return False
+
+
     return True
 
 class Evaluation:
