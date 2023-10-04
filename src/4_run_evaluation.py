@@ -363,10 +363,10 @@ class Evaluation:
 
         # TODO: Turn off this assert while developing since this prohibits non-uniform editing of batch.csv for files that have duplicate inputs but different outputs
         # ensure that the number of unique tasks is exactly the same as the number of tasks in the batch
-        # assert len(distinct_rows) == len(
-        #     self.task_ids[task_name]), f"The number of unique tasks {len(distinct_rows)} is " \
-        #                                f"not the same as the number of tasks in the batch: " \
-        #                                f"{len(self.task_ids[task_name])}."
+        assert len(distinct_rows) == len(
+            self.task_ids[task_name]), f"The number of unique tasks {len(distinct_rows)} is " \
+                                       f"not the same as the number of tasks in the batch: " \
+                                       f"{len(self.task_ids[task_name])}."
 
         assert instance_index <= len(
             distinct_rows), f"The instance index {instance_index} is out of range: {len(distinct_rows)}."
