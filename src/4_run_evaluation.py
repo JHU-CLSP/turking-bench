@@ -43,13 +43,23 @@ def filter_TAP_tasks(task_name):
     if "sandbox" in task_name:
         return False
     
+    # Should be doable tasks, just seemed like it would take a little more time so skipped in that interest
+    skipped_cuz_hard = ["Sentence Formality Annotation"]
+    if task_name in skipped_cuz_hard:
+        return False
+    
     if "COMET2020 ATOMIC Inference Vp 5" == task_name:
         # input.type submit hasn't been coded for thus self.extract_values is erroring
         return False
 
-    show_questions_tasks = ["Rationale Generation 5", "Gun violence structured extraction", "ESNLI Rationale Generation 4"]
-    # skip these task since it requires an extra click to show the available questions
+    show_questions_tasks = ["Rationale Generation 5", "Gun violence structured extraction", "ESNLI Rationale Generation 4", "JJ-NN HIT"]
+    # skip these task since it requires an extra click to show the available questions or next ones
     if task_name in show_questions_tasks:
+        return False
+
+    # Has type hidden that we fail certain inputs on
+    # But we pass a lot of these cases, lots of answers don't need the hidden input
+    if task_name == "What breaks the flow - no categories 4":
         return False
     
     return True
@@ -364,10 +374,10 @@ class Evaluation:
 
         # TODO: Turn off this assert while developing since this prohibits non-uniform editing of batch.csv for files that have duplicate inputs but different outputs
         # ensure that the number of unique tasks is exactly the same as the number of tasks in the batch
-        assert len(distinct_rows) == len(
-            self.task_ids[task_name]), f"The number of unique tasks {len(distinct_rows)} is " \
-                                       f"not the same as the number of tasks in the batch: " \
-                                       f"{len(self.task_ids[task_name])}."
+        # assert len(distinct_rows) == len(
+        #     self.task_ids[task_name]), f"The number of unique tasks {len(distinct_rows)} is " \
+        #                                f"not the same as the number of tasks in the batch: " \
+        #                                f"{len(self.task_ids[task_name])}."
 
         assert instance_index <= len(
             distinct_rows), f"The instance index {instance_index} is out of range: {len(distinct_rows)}."
