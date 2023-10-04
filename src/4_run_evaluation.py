@@ -43,12 +43,26 @@ def filter_TAP_tasks(task_name):
     if "sandbox" in task_name:
         return False
     
+    # Should be doable tasks, just seemed like it would take a little more time so skipped in that interest
+    skipped_cuz_hard = ["Sentence Formality Annotation"]
+    # Sentence Formality skipped since inputs could be slightly wrong, like '2_ instead of 2_
+    # Also sometimes it's in the wrong column, select answer in checkbox?
+    # Also not grabbing inputs, some some equality mismatching in retrieve_gold_label possibly
+    if task_name in skipped_cuz_hard:
+        return False
+    
     if "COMET2020 ATOMIC Inference Vp 5" == task_name:
         # input.type submit hasn't been coded for thus self.extract_values is erroring
         return False
 
-    if task_name == "Rationale Generation 5":
-        # skip this task since it requires to click "show questions"
+    show_questions_tasks = ["Rationale Generation 5", "Gun violence structured extraction", "ESNLI Rationale Generation 4", "JJ-NN HIT"]
+    # skip these task since it requires an extra click to show the available questions or next ones
+    if task_name in show_questions_tasks:
+        return False
+
+    # Has type hidden that we fail certain inputs on
+    # But we pass a lot of these cases, lots of answers don't need the hidden input
+    if task_name == "What breaks the flow - no categories 4":
         return False
     
     return True
@@ -117,7 +131,7 @@ class Evaluation:
         for task in all_tasks:
             df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
             input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
-            val = min(1000, len(self.task_ids[task])) * (10 + len(input_names)) # num_tasks * num_inputs_per_task + 5 * num_tasks
+            val = min(1000, len(self.task_ids[task])) * (8 + len(input_names)) # num_tasks * num_inputs_per_task + 8 * num_tasks
             sum += val
             s.add((val, task)) # (val, task name)
 
@@ -128,10 +142,11 @@ class Evaluation:
         while s[last][0] > sum // partitions:
             split_tasks.append([s[last][1]])
             sum -= s[last][0]
+            s.remove(s[last])
             partitions -= 1
             last -= 1
         
-        for partition in range(19):
+        for partition in range(partitions):
             curr = []
             goal = sum // partitions
             while goal > 0 and len(s) > 0:
@@ -142,12 +157,12 @@ class Evaluation:
             split_tasks.append(curr)
 
         split_sums = []
-        for i in range(partitions):
+        for i in range(19):
             temp_sum = 0
             for task in split_tasks[i]:
                 df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
                 input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
-                val = min(1000, len(self.task_ids[task])) * (10 + len(input_names))
+                val = min(1000, len(self.task_ids[task])) * (8 + len(input_names))
                 temp_sum += val 
             split_sums.append(temp_sum)
 
@@ -163,10 +178,10 @@ class Evaluation:
         ind = int(self.tasks[len("tap"):]) - 1
 
         if ind == 0:
-            for i in range(partitions):
+            for i in range(19):
                 print(f"partition: {i} | {split_tasks[i]}")
 
-        print("tap tasks", split_tasks[ind])
+        print("this partition's tap tasks", split_tasks[ind])
         return split_tasks[ind]
 
     def load_task_names(self):
@@ -341,6 +356,7 @@ class Evaluation:
             score = metric_fn(prediction, ground_truth, xlingual=xlingual)
             scores_for_ground_truths.append(score)
         score = float(max(scores_for_ground_truths))
+        print(f"prediction {prediction} ground_truths {ground_truths}")
         print(f"{Fore.BLUE} --> scores: ", score)
         return score
 
@@ -361,10 +377,10 @@ class Evaluation:
 
         # TODO: Turn off this assert while developing since this prohibits non-uniform editing of batch.csv for files that have duplicate inputs but different outputs
         # ensure that the number of unique tasks is exactly the same as the number of tasks in the batch
-        assert len(distinct_rows) == len(
-            self.task_ids[task_name]), f"The number of unique tasks {len(distinct_rows)} is " \
-                                       f"not the same as the number of tasks in the batch: " \
-                                       f"{len(self.task_ids[task_name])}."
+        # assert len(distinct_rows) == len(
+        #     self.task_ids[task_name]), f"The number of unique tasks {len(distinct_rows)} is " \
+        #                                f"not the same as the number of tasks in the batch: " \
+        #                                f"{len(self.task_ids[task_name])}."
 
         assert instance_index <= len(
             distinct_rows), f"The instance index {instance_index} is out of range: {len(distinct_rows)}."

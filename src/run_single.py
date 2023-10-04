@@ -11,10 +11,9 @@ from utils.hidden_prints import HiddenPrints
 import logging
 
 TURKLE_URL = "http://localhost:8000"
-# TEST_NAME = "Abductive Reasoning 11"
-TEST_NAME = "DI Rationale Gen. evaluation - single 2"
+TEST_NAME = "Sentence Formality Annotation"
 SPECIFIED_INDEX = 0
-RUN_ALL = True
+RUN_ALL = False
 
 class Run(run_eval.Evaluation):
     def run_task(self, task_name: str, max_instance_count: int, index: int = 0):
@@ -135,6 +134,7 @@ class Run(run_eval.Evaluation):
                 # *after* we dump *input* features, we execute the action
                 if self.solver_type == 'oracle':
                     kwargs = {'answers': answers_map[i.name]}
+                    print(f"oracle go solve, input: {i}, kwargs: {kwargs}")
                     oracle_action_sequence = self.solver.solve(i, **kwargs)
                 else:
                     self.solver.solve(i)
@@ -189,6 +189,8 @@ class Run(run_eval.Evaluation):
             print(f"{Fore.CYAN} --> Overall score: {score}")
 
             if self.solver_type == 'oracle':
+                if score <= 0.99:
+                    print(f"input_idx of failure {input_idx}")
                 assert score > 0.99, f"{Fore.RED}The oracle baseline should always get a score of 1.0"
 
             if self.dump_features:
