@@ -12,9 +12,9 @@ import logging
 
 TURKLE_URL = "http://localhost:8000"
 # TEST_NAME = "Abductive Reasoning 11"
-TEST_NAME = "wikiHow Step Membership"
+TEST_NAME = "Step 2 Verifying Multi-sentence-ness for questions 14"
 SPECIFIED_INDEX = 0
-RUN_ALL = True
+RUN_ALL = False
 
 class Run(run_eval.Evaluation):
     def run_task(self, task_name: str, max_instance_count: int, index: int = 0):
