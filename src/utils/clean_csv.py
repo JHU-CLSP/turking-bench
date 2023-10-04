@@ -25,6 +25,31 @@ def clean_checkboxes(csv_file):
                     df.loc[i, col] = ""
     df.to_csv(csv_file, index=False)
 
+# cleaning cases where the checkbox solutions are like q1.1 q1.2 q1.3 where these are question 1 answer 1 answer 2 answer 3 etc.
+# and there is False in all the ones except a True in the right answer, like True in answer 2
+# Replace with q1 value of 2
+# This was used to get the answers (last few columns) for the wikiHow Step Membership Task
+def clean_checkboxes_true(csv_file):
+    true = [True, "True"]
+    df = pd.read_csv(csv_file, low_memory=False)
+    answers_df = pd.DataFrame()
+    # new answer column names
+    column_names = ['Answer.candidate' + str(i) for i in range(1, 16)]
+
+    # Add the columns to the DataFrame
+    for col_name in column_names:
+        answers_df[col_name] = ""
+
+    for i, row in df.iterrows():
+        for col in df.columns:
+            if col.startswith('Answer.candidate'):
+                if row[col] in true:
+                    answers_df.at[i, col[:-2]] = col[-1]
+
+    # Append the new DataFrame to the original DataFrame
+    df = pd.concat([df, answers_df], axis=1)
+    df.to_csv(csv_file, index=False)
+
 def clean_empty(csv_file):
     df = pd.read_csv(csv_file, low_memory=False)
     df.fillna(value="None", inplace=True)
@@ -32,10 +57,9 @@ def clean_empty(csv_file):
     df.to_csv(csv_file , encoding='utf-8-sig', index=False)
 
 if __name__ == '__main__':
-    files_to_edit = ["HTER - longer sentences -27 Sep 1129"]
+    files_to_edit = ["wikiHow Step Membership"]
     for root, dirs, files in os.walk('tasks'):
         for file in files:
             if file.endswith('.csv') and root.split("/")[1] in files_to_edit and file.startswith('batch'):
                 print('Cleaning ' + file)
-                # remove_columns(os.path.join(root, file))
-                clean_empty(os.path.join(root, file))
+                # clean_checkboxes_true(os.path.join(root, file))

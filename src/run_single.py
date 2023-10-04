@@ -12,8 +12,8 @@ import logging
 
 TURKLE_URL = "http://localhost:8000"
 # TEST_NAME = "Abductive Reasoning 11"
-TEST_NAME = "Step 5 human performance 17"
-SPECIFIED_INDEX = 294
+TEST_NAME = "wikiHow Step Membership"
+SPECIFIED_INDEX = 0
 RUN_ALL = True
 
 class Run(run_eval.Evaluation):
@@ -135,6 +135,7 @@ class Run(run_eval.Evaluation):
                 # *after* we dump *input* features, we execute the action
                 if self.solver_type == 'oracle':
                     kwargs = {'answers': answers_map[i.name]}
+                    print(f"oracle go solve, input: {i}, kwargs: {kwargs}")
                     oracle_action_sequence = self.solver.solve(i, **kwargs)
                 else:
                     self.solver.solve(i)
