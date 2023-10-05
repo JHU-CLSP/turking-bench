@@ -36,7 +36,7 @@ def clean_checkboxes_true(csv_file):
     # new answer column names
     column_names = ['Answer.candidate' + str(i) for i in range(1, 16)]
 
-    # Add the columns to the DataFrame
+    # Add the columns to the answers DataFrame
     for col_name in column_names:
         answers_df[col_name] = ""
 
@@ -50,16 +50,51 @@ def clean_checkboxes_true(csv_file):
     df = pd.concat([df, answers_df], axis=1)
     df.to_csv(csv_file, index=False)
 
+def clean_arch(csv_file):
+    true = [True, "True"]
+    df = pd.read_csv(csv_file, low_memory=False)
+    answers_df = pd.DataFrame()
+    column_names = []
+    for col in df.columns:
+        if col.startswith('Answer'):
+            column_names.append(col[:-2]) # substring off last two characters
+
+    # Add the columns to the answers DataFrame
+    for col_name in column_names:
+        answers_df[col_name] = ""
+
+    for i, row in df.iterrows():
+        for col in df.columns:
+            if col.startswith('Answer'):
+                if row[col] in true:
+                    answers_df.at[i, col[:-2]] = col[-1]
+
+    # Append the new DataFrame to the original DataFrame
+    df = pd.concat([df, answers_df], axis=1)
+    df.to_csv(csv_file, index=False)
+
+def convert_on_to_yes(csv_file):
+    df = pd.read_csv(csv_file, low_memory=False)
+    for i, row in df.iterrows():
+        for col in df.columns:
+            if col.startswith('Answer.optradio'):
+                if row[col] == "on":
+                    df.loc[i, col] = "yes"
+    df.to_csv(csv_file , encoding='utf-8-sig', index=False)
+
 def clean_empty(csv_file):
     df = pd.read_csv(csv_file, low_memory=False)
-    df.fillna(value="None", inplace=True)
-    df.replace("", "None", inplace=True) # undo the previous line
+    for i, row in df.iterrows():
+        for col in df.columns:
+            if col.startswith('Answer.'):
+                if pd.isnull(row[col]) or row[col] == "":
+                    df.loc[i, col] = "0_Neither"
     df.to_csv(csv_file , encoding='utf-8-sig', index=False)
 
 if __name__ == '__main__':
-    files_to_edit = ["wikiHow Step Membership"]
+    files_to_edit = ["Word Formality Annotation"]
     for root, dirs, files in os.walk('tasks'):
         for file in files:
             if file.endswith('.csv') and root.split("/")[1] in files_to_edit and file.startswith('batch'):
                 print('Cleaning ' + file)
-                # clean_checkboxes_true(os.path.join(root, file))
+                clean_empty(os.path.join(root, file))

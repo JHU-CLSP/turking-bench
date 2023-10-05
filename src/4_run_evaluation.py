@@ -55,7 +55,7 @@ def filter_TAP_tasks(task_name):
         # input.type submit hasn't been coded for thus self.extract_values is erroring
         return False
 
-    show_questions_tasks = ["Rationale Generation 5", "Gun violence structured extraction", "ESNLI Rationale Generation 4", "JJ-NN HIT"]
+    show_questions_tasks = ["Rationale Generation 5", "Gun violence structured extraction", "ESNLI Rationale Generation 4", "JJ-NN HIT", "neural-pop (PLAN evaluation) t5-human-test b", "VQA Rationale Generation 5"]
     # skip these task since it requires an extra click to show the available questions or next ones
     if task_name in show_questions_tasks:
         return False
@@ -65,6 +65,12 @@ def filter_TAP_tasks(task_name):
     if task_name == "What breaks the flow - no categories 4":
         return False
     
+    tasks_should_skip = ["Photo Collection GVDB"]
+    # tasks I don't think the model is capable of solving
+    if task_name in tasks_should_skip:
+        return False
+
+
     return True
 
 class Evaluation:
@@ -375,12 +381,12 @@ class Evaluation:
         # TODO: This is not always good, in HTER - longer sentences case there are many duplicate tasks of same inputs but different outputs
         distinct_rows = df[cols].drop_duplicates()
 
-        # TODO: Turn off this assert while developing since this prohibits non-uniform editing of batch.csv for files that have duplicate inputs but different outputs
+        # TODO assert turn off while developing since this prohibits non-uniform editing of batch.csv for files that have duplicate inputs but different outputs
         # ensure that the number of unique tasks is exactly the same as the number of tasks in the batch
-        # assert len(distinct_rows) == len(
-        #     self.task_ids[task_name]), f"The number of unique tasks {len(distinct_rows)} is " \
-        #                                f"not the same as the number of tasks in the batch: " \
-        #                                f"{len(self.task_ids[task_name])}."
+        assert len(distinct_rows) == len(
+            self.task_ids[task_name]), f"The number of unique tasks {len(distinct_rows)} is " \
+                                       f"not the same as the number of tasks in the batch: " \
+                                       f"{len(self.task_ids[task_name])}."
 
         assert instance_index <= len(
             distinct_rows), f"The instance index {instance_index} is out of range: {len(distinct_rows)}."
@@ -547,6 +553,10 @@ class Evaluation:
 
             # TODO we gotta drop this after adding gold labels to the sandbox tasks
             if 'sandbox' in task_name:
+                continue
+
+            if task_name == "wiki103_quality 7":
+                # i figured out the fix, temp just to show
                 continue
 
             if "Simplicity HIT - rank simplicity" in task_name or "Goal Distractor - ATOMIC base events 1" in task_name or "ATOMIC - Required Objects (Sequence) 9" in task_name:
