@@ -11,8 +11,8 @@ from utils.hidden_prints import HiddenPrints
 import logging
 
 TURKLE_URL = "http://localhost:8000"
-TEST_NAME = "ATOMIC - Required Objects (Sequence) 9"
-SPECIFIED_INDEX = 3
+TEST_NAME = "wiki103_quality 7"
+SPECIFIED_INDEX = 500
 RUN_ALL = False
 
 class Run(run_eval.Evaluation):
