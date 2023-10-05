@@ -73,6 +73,15 @@ def clean_arch(csv_file):
     df = pd.concat([df, answers_df], axis=1)
     df.to_csv(csv_file, index=False)
 
+def convert_on_to_yes(csv_file):
+    df = pd.read_csv(csv_file, low_memory=False)
+    for i, row in df.iterrows():
+        for col in df.columns:
+            if col.startswith('Answer.optradio'):
+                if row[col] == "on":
+                    df.loc[i, col] = "yes"
+    df.to_csv(csv_file , encoding='utf-8-sig', index=False)
+
 def clean_empty(csv_file):
     df = pd.read_csv(csv_file, low_memory=False)
     df.fillna(value="None", inplace=True)
@@ -80,9 +89,9 @@ def clean_empty(csv_file):
     df.to_csv(csv_file , encoding='utf-8-sig', index=False)
 
 if __name__ == '__main__':
-    files_to_edit = ["Arch - Rel Eval 3"]
+    files_to_edit = ["Step 2 Verifying Multi-sentence-ness for questions 14"]
     for root, dirs, files in os.walk('tasks'):
         for file in files:
             if file.endswith('.csv') and root.split("/")[1] in files_to_edit and file.startswith('batch'):
                 print('Cleaning ' + file)
-                # clean_arch(os.path.join(root, file))
+                # convert_on_to_yes(os.path.join(root, file))
