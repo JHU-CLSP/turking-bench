@@ -11,8 +11,8 @@ from utils.hidden_prints import HiddenPrints
 import logging
 
 TURKLE_URL = "http://localhost:8000"
-TEST_NAME = "Step 2 Verifying Multi-sentence-ness for questions 14"
-SPECIFIED_INDEX = 1
+TEST_NAME = "Word Formality Annotation"
+SPECIFIED_INDEX = 69
 RUN_ALL = False
 
 class Run(run_eval.Evaluation):
