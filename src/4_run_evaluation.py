@@ -381,7 +381,7 @@ class Evaluation:
         # TODO: This is not always good, in HTER - longer sentences case there are many duplicate tasks of same inputs but different outputs
         distinct_rows = df[cols].drop_duplicates()
 
-        # TODO: Turn off this assert while developing since this prohibits non-uniform editing of batch.csv for files that have duplicate inputs but different outputs
+        # TODO assert turn off while developing since this prohibits non-uniform editing of batch.csv for files that have duplicate inputs but different outputs
         # ensure that the number of unique tasks is exactly the same as the number of tasks in the batch
         assert len(distinct_rows) == len(
             self.task_ids[task_name]), f"The number of unique tasks {len(distinct_rows)} is " \
