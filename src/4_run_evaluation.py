@@ -64,6 +64,10 @@ def filter_TAP_tasks(task_name):
     # But we pass a lot of these cases, lots of answers don't need the hidden input
     if task_name == "What breaks the flow - no categories 4":
         return False
+
+    # Skip since there is a 15 second delay before showing the available questions
+    if task_name == "Summarization (RLUE) 1":
+        return False
     
     tasks_should_skip = ["Photo Collection GVDB"]
     # tasks I don't think the model is capable of solving
@@ -383,10 +387,10 @@ class Evaluation:
 
         # TODO assert turn off while developing since this prohibits non-uniform editing of batch.csv for files that have duplicate inputs but different outputs
         # ensure that the number of unique tasks is exactly the same as the number of tasks in the batch
-        assert len(distinct_rows) == len(
-            self.task_ids[task_name]), f"The number of unique tasks {len(distinct_rows)} is " \
-                                       f"not the same as the number of tasks in the batch: " \
-                                       f"{len(self.task_ids[task_name])}."
+        # assert len(distinct_rows) == len(
+        #     self.task_ids[task_name]), f"The number of unique tasks {len(distinct_rows)} is " \
+        #                                f"not the same as the number of tasks in the batch: " \
+        #                                f"{len(self.task_ids[task_name])}."
 
         assert instance_index <= len(
             distinct_rows), f"The instance index {instance_index} is out of range: {len(distinct_rows)}."
