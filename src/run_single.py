@@ -11,8 +11,8 @@ from utils.hidden_prints import HiddenPrints
 import logging
 
 TURKLE_URL = "http://localhost:8000"
-TEST_NAME = "Word Formality Annotation"
-SPECIFIED_INDEX = 28
+TEST_NAME = "wikiHow step-goal linking pilot cleanse-url"
+SPECIFIED_INDEX = 0
 RUN_ALL = False
 
 class Run(run_eval.Evaluation):
