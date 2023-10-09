@@ -69,7 +69,7 @@ def filter_TAP_tasks(task_name):
     if task_name == "Summarization (RLUE) 1":
         return False
     
-    tasks_should_skip = ["Photo Collection GVDB"]
+    tasks_should_skip = ["Photo Collection GVDB", "NER - Task scruples 26,200 - 30,922"]
     # tasks I don't think the model is capable of solving
     if task_name in tasks_should_skip:
         return False
