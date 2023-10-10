@@ -50,7 +50,9 @@ def clean_checkboxes_true(csv_file):
     df = pd.concat([df, answers_df], axis=1)
     df.to_csv(csv_file, index=False)
 
-def clean_arch(csv_file):
+# This is to solve cases when answer is like Answer.candidate_3.1 Answer.candidate_3.2 has True/False when answer should just be
+# in Answer.candidate_3 and the value like 1 or 2
+def clean_split_up_radio(csv_file):
     true = [True, "True"]
     df = pd.read_csv(csv_file, low_memory=False)
     answers_df = pd.DataFrame()
@@ -86,9 +88,10 @@ def clean_empty(csv_file):
     df = pd.read_csv(csv_file, low_memory=False)
     for i, row in df.iterrows():
         for col in df.columns:
-            if col.startswith('Answer.'):
-                if pd.isnull(row[col]) or row[col] == "":
-                    df.loc[i, col] = "0_Neither"
+            if col.startswith("Answer."):
+                continue
+            if pd.isnull(row[col]) or row[col] == "":
+                df.loc[i, col] = "Empty"
     df.to_csv(csv_file , encoding='utf-8-sig', index=False)
 
 if __name__ == '__main__':
@@ -97,4 +100,4 @@ if __name__ == '__main__':
         for file in files:
             if file.endswith('.csv') and root.split("/")[1] in files_to_edit and file.startswith('batch'):
                 print('Cleaning ' + file)
-                clean_empty(os.path.join(root, file))
+                # clean_empty(os.path.join(root, file))

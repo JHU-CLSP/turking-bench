@@ -64,8 +64,12 @@ def filter_TAP_tasks(task_name):
     # But we pass a lot of these cases, lots of answers don't need the hidden input
     if task_name == "What breaks the flow - no categories 4":
         return False
+
+    # Skip since there is a 15 second delay before showing the available questions
+    if task_name == "Summarization (RLUE) 1":
+        return False
     
-    tasks_should_skip = ["Photo Collection GVDB"]
+    tasks_should_skip = ["Photo Collection GVDB", "NER - Task scruples 26,200 - 30,922"]
     # tasks I don't think the model is capable of solving
     if task_name in tasks_should_skip:
         return False
