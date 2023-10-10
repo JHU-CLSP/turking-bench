@@ -88,12 +88,14 @@ def clean_empty(csv_file):
     df = pd.read_csv(csv_file, low_memory=False)
     for i, row in df.iterrows():
         for col in df.columns:
+            if col.startswith("Answer."):
+                continue
             if pd.isnull(row[col]) or row[col] == "":
                 df.loc[i, col] = "Empty"
     df.to_csv(csv_file , encoding='utf-8-sig', index=False)
 
 if __name__ == '__main__':
-    files_to_edit = ["wikiHow step-goal linking pilot cleanse-url"]
+    files_to_edit = ["Word Formality Annotation"]
     for root, dirs, files in os.walk('tasks'):
         for file in files:
             if file.endswith('.csv') and root.split("/")[1] in files_to_edit and file.startswith('batch'):
