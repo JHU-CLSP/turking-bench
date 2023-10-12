@@ -9,6 +9,7 @@ import json
 import os
 import pandas as pd
 import numpy as np
+import platform
 import random
 import requests
 from rouge_score import rouge_scorer
@@ -39,11 +40,11 @@ class GPTTokenizer:
 
 
 class Evaluation:
-    def __init__(self, solver_type: str, tasks: str, do_eval: bool, dump_features: bool, report_field_stats: bool):
+    def __init__(self, solver_type: str, tasks: str, do_eval: bool, dump_features: bool, report_field_stats: bool, headless: bool):
         self.default_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
         self.xlingual_tokenizer = GPTTokenizer()
         self.xlingual_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], tokenizer=self.xlingual_tokenizer)
-        self.driver = self.create_driver()
+        self.driver = self.create_driver(headless=headless)
         self.actions = MyActions(self.driver)
         self.solver = None
         # ass more solvers that we implement, we can add them here:
@@ -71,19 +72,20 @@ class Evaluation:
             'ee'
         ]
 
-    def create_driver(self):
-        # TODO: make the seleciton of headless (no visual browser for faster processing) a parameter
+    def create_driver(self, headless=None):
         options = Options()
-
-        import platform
         if platform.system() == 'Linux':
-            options.headless = True
+            if not headless:
+                options.headless = True
             driver = webdriver.Chrome(options=options)
         elif platform.system() == "Darwin":
             # options.headless = True
             driver = webdriver.Chrome(options=options)
         else:
             driver = webdriver.Firefox()
+
+        if headless:
+            options.headless = headless
 
         return driver
 
@@ -715,7 +717,8 @@ if __name__ == "__main__":
     parser.add_argument("--solver_type", help="random or oracle", default="random")
     parser.add_argument("--tasks", help="train, test, or subjective_test", default="test")
     parser.add_argument("--max_instance_count", help="maximum number of instances per task", default=1)
-    parser.add_argument("--do_eval", help="whether to compute the quality aginst the gold data", default=True)
+    parser.add_argument("--do_eval", help="whether to compute the quality against the gold data", default=True)
+    parser.add_argument("--headless", help="whether to run the browser `headless` (no visual interface).", default=None)
     parser.add_argument("--dump_features", help="whether to dump the features", default=False)
     parser.add_argument("--report_field_stats", help="whether to collect statistics for the HTML fields", default=True)
 
@@ -727,12 +730,15 @@ if __name__ == "__main__":
     dump_features = args.dump_features
     report_field_stats = args.report_field_stats
     assert type(do_eval) == bool
+    assert type(args.headless) == bool
 
     if dump_features and not args.solver_type != "oracle":
         raise Exception(f"{Fore.RED}dump_features can only be used with oracle solver")
 
     eval = Evaluation(solver_type=args.solver_type, tasks=args.tasks,
-                      do_eval=do_eval, dump_features=dump_features, report_field_stats=report_field_stats)
+                      do_eval=do_eval, dump_features=dump_features,
+                      report_field_stats=report_field_stats,
+                      headless=args.headless)
 
     # input_format = config.get('DEFAULT', 'input_format')
     # image_format = config.get('DEFAULT', 'image_format', fallback='full_page')

@@ -34,7 +34,7 @@ and grounded in the visual information.
 We have collected about XX tasks that were originally created for crowdworkers.
 Each task comes with an HTML template `template.html` that contains the visual information and a natural language
 instruction.
-Additionally the templates contain variables to be filled in by input instances maintained in `batch.csv` files.
+Additionally, the templates contain variables to be filled in by input instances maintained in `batch.csv` files.
 
 
 
@@ -46,16 +46,10 @@ Each task consists of the following files:
   variables for visualizing the inputs, and HTML elements for collecting responses.
 - `batch.csv`: Contains the collection of inputs and outputs. The inputs are placed in the HTML template. The outputs
   are used to compute the performance of a model solving these tasks.
-- `input.csv`: This file contains all the unique inputs that were originally used for running each task. We don't use it
-  currently, but we have it included it for completeness, in case anyone finds it useful.
 
 How to contribute
 ---
 We welcome addition of more tasks too the collection! If intetested, please open a Pull-Request for your tasks.
-
-License
---- 
-This work is licensed under Apache License 2.0.
 
 
 Setting up the evaluation tasks
@@ -82,7 +76,7 @@ Here are the steps you need to follow:
    server `python 3_upload_tasks.py`. While this script is running, you can go back to Turkle to see that the tasks are 
    indeed being uploaded.
 
-At this point, you should be able to see the tasks on Turkle. For example, if you open ... you should be able to see the
+At this point, you should be able to see the tasks on Turkle. For example, if you open http://localhost:8000/task/4427/assignment/1/ you should be able to see the
 following visualization:
 
 ![Screenshot](data/screenshot.png)
@@ -94,29 +88,68 @@ evaluation tasks [here](data/splits/evaluation_tasks.txt).
 
 The data contains a variety of input fields, though their distribution is not uniform. Here is the distribution of the
 input fields:
+![field-dist.png](data%2Ffield-dist.png)
+Last but not least, the data contains various modalities of data. Take a look at our paper (bottom of the page) for the details. 
 
-TODO
-
-Last but not least, the data contans various modalities of data. Here is the distribution of the modalities:
-
-TODO
 
 # Interacting with the tasks and evaluating the oracle baselines
+<img style="float: right;" src="data/llm-python-browser-interaction.png" width="30%">
+Here we brief description the interaction protocols. 
+Specifically, this Python library here is meant to act as an intermediary between 
+an AI system and AI system (see the picture). 
+Every time that the AI system needs to interact with the task, it will make call the Python library, which is then executed on 
+the browser. The Python library will then return the results back to the AI system.
 
-[//]: # (You can now simulate the interaction with the tasks by running `python 4.simulate_interaction.py -u <username> -p <password> -t <task_name>`. This will simulate the interaction with the tasks and will save the responses in `responses/` directory.)
 
+
+## Running the oracle model: 
+A quick way to see how the model execution is expected to look like is to run our oracle baseline which has access to the ground-truth labels. 
 Run the script for evaluating the baseline by passing in the names of the
-tasks: `python evaluation.py --tasks <task_names>`. To use Chrome as your webdriver, you need to first download the
-ChromeDriver executable from the ChromeDriver website and make sure it’s in your system’s PATH.
+tasks: 
+```python
+# prepare the evaluation 
+eval = __import__('4_run_evaluation')
+
+evaluation = eval.Evaluation(
+    solver_type="oracle", # the choice of the model 
+    tasks="all", # whether to look over all tasks 
+    do_eval=True, # whether to evaluate the model
+    dump_features=False, # whether to dump input-output features that will be used for training models  
+    report_field_stats=True, # whether to report the field statistics after the run is finished 
+    headless=False # whether to show the browser 
+)
+
+# execute 
+evaluation.enumerate_tasks(max_instance_count=1)
+```
+Under the hood, the oracle model is generate a sequence of commands (Python commands from our action library) that ultimately get executed on each task (web page). The picture below shows this idea: 
 
 ![Screen Shot 2023-02-20 at 12 22 37 PM](https://user-images.githubusercontent.com/2441454/220168960-9080b552-446b-4385-bca3-7f662ce95e20.png)
 
+**Note:** To use Chrome as your webdriver, you need to first download the ChromeDriver executable from the ChromeDriver website and make sure it’s in your system’s `PATH`.
 
-Citation
----
+## Dumping the training features 
+The oracle model can be used to dump the training features that can be used for training other models.
+All need to be done is to set `dump_features=True` in the above script.
+You can find our script in `src/5_dump_features.py` that dumps the features for all tasks.
+
+## Training models
+The dumped features contain both visual content as well as the HTML content of the tasks.
+One can basically use either source of signals depending on the model.
+
+The output of these models will be strings (sequence of Python actions) that will be executed on the browser.
+
+## Evaluating the preditions of a model 
+TODO 
+
+# Citation
 If you fnd this data useful, please cite this repository.
 
 <!-- 
 Publication 
 --- 
 Feel free to cite us.  -->
+
+License
+--- 
+This work is licensed under Apache License 2.0.
