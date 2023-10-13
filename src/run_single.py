@@ -11,8 +11,8 @@ from utils.hidden_prints import HiddenPrints
 import logging
 
 TURKLE_URL = "http://localhost:8000"
-TEST_NAME = "Congressional Bills 5 point"
-SPECIFIED_INDEX = 1
+TEST_NAME = "Annotation subj_obj"
+SPECIFIED_INDEX = 0
 RUN_ALL = False
 
 class Run(run_eval.Evaluation):
