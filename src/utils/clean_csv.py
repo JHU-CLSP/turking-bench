@@ -101,7 +101,7 @@ def clean_empty(csv_file):
     df.to_csv(csv_file , encoding='utf-8-sig', index=False)
 
 if __name__ == '__main__':
-    files_to_edit = ["Reddit In-group Analysis Comment annotation 3"]
+    files_to_edit = ["mars human eval (a-b testing) 3"]
     for root, dirs, files in os.walk('tasks'):
         for file in files:
             if file.endswith('.csv') and root.split("/")[1] in files_to_edit and file.startswith('batch'):
