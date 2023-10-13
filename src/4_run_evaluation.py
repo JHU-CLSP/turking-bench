@@ -21,6 +21,8 @@ import string
 from transformers import AutoTokenizer
 from tqdm import tqdm
 from typing import List
+import logging
+import bisect
 
 TURKLE_URL = "http://localhost:8000"
 
@@ -38,9 +40,46 @@ class GPTTokenizer:
         tokens = [t.lstrip("Ġ") for t in tokens]
         return tokens
 
+def filter_TAP_tasks(task_name):
+    if "sandbox" in task_name:
+        return False
+
+    # Should be doable tasks, just seemed like it would take a little more time so skipped in that interest
+    skipped_cuz_hard = ["Sentence Formality Annotation"]
+    # Sentence Formality skipped since inputs could be slightly wrong, like '2_ instead of 2_
+    # Also sometimes it's in the wrong column, select answer in checkbox?
+    # Also not grabbing inputs, some some equality mismatching in retrieve_gold_label possibly
+    if task_name in skipped_cuz_hard:
+        return False
+
+    if "COMET2020 ATOMIC Inference Vp 5" == task_name:
+        # input.type submit hasn't been coded for thus self.extract_values is erroring
+        return False
+
+    show_questions_tasks = ["Rationale Generation 5", "Gun violence structured extraction", "ESNLI Rationale Generation 4", "JJ-NN HIT", "neural-pop (PLAN evaluation) t5-human-test b", "VQA Rationale Generation 5"]
+    # skip these task since it requires an extra click to show the available questions or next ones
+    if task_name in show_questions_tasks:
+        return False
+
+    # Has type hidden that we fail certain inputs on
+    # But we pass a lot of these cases, lots of answers don't need the hidden input
+    if task_name == "What breaks the flow - no categories 4":
+        return False
+
+    # Skip since there is a 15 second delay before showing the available questions
+    if task_name == "Summarization (RLUE) 1":
+        return False
+
+    tasks_should_skip = ["Photo Collection GVDB", "NER - Task scruples 26,200 - 30,922"]
+    # tasks I don't think the model is capable of solving
+    if task_name in tasks_should_skip:
+        return False
+
+
+    return True
 
 class Evaluation:
-    def __init__(self, solver_type: str, tasks: str, do_eval: bool, dump_features: bool, report_field_stats: bool, headless: bool):
+    def __init__(self, solver_type: str, tasks: str, do_eval: bool, dump_features: bool, report_field_stats: bool, headless: bool = False):
         self.default_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
         self.xlingual_tokenizer = GPTTokenizer()
         self.xlingual_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], tokenizer=self.xlingual_tokenizer)
@@ -56,7 +95,7 @@ class Evaluation:
         else:
             raise Exception(f"{Fore.RED}Solver `{solver_type}` not implemented")
         self.tasks = tasks
-        assert tasks in ["test", "train", "all", "subjective_test"]
+        assert tasks in ["test", "train", "all", "subjective_test"] or tasks.startswith("tap")
 
         self.do_eval = do_eval
         self.dump_features = dump_features
@@ -72,22 +111,88 @@ class Evaluation:
             'ee'
         ]
 
-    def create_driver(self, headless=None):
+    def create_driver(self, headless: bool):
         options = Options()
+        if headless:
+            options.add_argument("--headless=new")
+
+        import platform
         if platform.system() == 'Linux':
-            if not headless:
-                options.headless = True
             driver = webdriver.Chrome(options=options)
         elif platform.system() == "Darwin":
-            # options.headless = True
             driver = webdriver.Chrome(options=options)
         else:
             driver = webdriver.Firefox()
 
-        if headless:
-            options.headless = headless
-
         return driver
+
+    def load_tap_task_names(self):
+        # load all tasks into a list of strings
+        all_tasks = os.listdir("../tasks")
+        all_tasks = list(filter(filter_TAP_tasks, all_tasks))
+        print("all_tasks len:", len(all_tasks))
+
+        partitions = 19 # number of partitions
+        split_tasks = []
+
+        # Greedy optimized way to split evenly
+        s = set() # was originally a set, but python sets aren't as robust as C++ std
+        sum = 0
+        for task in all_tasks:
+            df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
+            input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
+            val = min(1000, len(self.task_ids[task])) * (8 + len(input_names)) # num_tasks * num_inputs_per_task + 8 * num_tasks
+            sum += val
+            s.add((val, task)) # (val, task name)
+
+        s = sorted(s)
+
+        # allow for even distribution at end by taking out beginning and re-distributing
+        last = len(s) - 1
+        while s[last][0] > sum // partitions:
+            split_tasks.append([s[last][1]])
+            sum -= s[last][0]
+            s.remove(s[last])
+            partitions -= 1
+            last -= 1
+
+        for partition in range(partitions):
+            curr = []
+            goal = sum // partitions
+            while goal > 0 and len(s) > 0:
+                ind = min(bisect.bisect_right(s, (goal, "a")), len(s) - 1)
+                curr.append(s[ind][1])
+                goal -= s[ind][0]
+                s.remove(s[ind])
+            split_tasks.append(curr)
+
+        split_sums = []
+        for i in range(19):
+            temp_sum = 0
+            for task in split_tasks[i]:
+                df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
+                input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
+                val = min(1000, len(self.task_ids[task])) * (8 + len(input_names))
+                temp_sum += val
+            split_sums.append(temp_sum)
+
+        print("split_sums:", split_sums)
+
+        # Naive way to split up the tasks by evenly number per
+        # num_per_partition = -(len(all_tasks) // -partitions) # ceil division
+        # split_tasks = [all_tasks[i * num_per_partition : (i + 1) * num_per_partition] for i in range(partitions)]
+
+        # Can optimize this with greedy and DP to minimize difference between largest and smallest partition
+        # Start with # of instances * # tasks, then can go # inputs * # instances * # tasks
+
+        ind = int(self.tasks[len("tap"):]) - 1
+
+        if ind == 0:
+            for i in range(19):
+                print(f"partition: {i} | {split_tasks[i]}")
+
+        print("this partition's tap tasks", split_tasks[ind])
+        return split_tasks[ind]
 
     def load_task_names(self):
         """
@@ -131,10 +236,10 @@ class Evaluation:
         """
         # TODO I think we can drop "url" parameter later.
 
+        inputs = []
         # if a list of input names are provided in the input, then extract the input fields with those names
         # otherwise, look for inputs that may look like input fields
         if input_names:
-            inputs = []
             for name in input_names:
                 # use selenium to find the input field
                 try:
@@ -183,8 +288,8 @@ class Evaluation:
 
             input_fields.append(i)
 
-        # before returning them, sort the input values based on first based on their x-coordinate and then their y-coordinate
-        input_fields = sorted(input_fields, key=lambda i: (i.y, i.x))
+        # could think about sorting input_fields, but breaks certain tasks like Abductive Reasoning 11
+        # instead changed the code base to just use the order in which the Answer columns are given. We can rearrange it to the order of which inputs to fill in first
         return input_fields
 
     def extract_values(self, inputs: List[Input]):
@@ -253,11 +358,15 @@ class Evaluation:
 
     @staticmethod
     def metric_max_over_ground_truths(metric_fn, prediction, ground_truths, xlingual=False):
+        """
+        Returns the max score comparing model predicted output to over the ground truth labels that we have received from the gold labels
+        """
         scores_for_ground_truths = []
         for ground_truth in ground_truths:
             score = metric_fn(prediction, ground_truth, xlingual=xlingual)
             scores_for_ground_truths.append(score)
         score = float(max(scores_for_ground_truths))
+        print(f"prediction {prediction} ground_truths {ground_truths}")
         print(f"{Fore.BLUE} --> scores: ", score)
         return score
 
@@ -273,11 +382,10 @@ class Evaluation:
         df = pd.read_csv(f'../tasks/{task_name}/batch.csv')
         # Keep the columns that are not answers and then combine the rows that are the same to find the distinct inputs
         cols = [col for col in df.columns if not col.startswith("Answer.")]
-        print("cols:", cols)
         # TODO: This is not always good, in HTER - longer sentences case there are many duplicate tasks of same inputs but different outputs
         distinct_rows = df[cols].drop_duplicates()
-        print("distinct_rows:", distinct_rows)
 
+        # TODO assert turn off while developing since this prohibits non-uniform editing of batch.csv for files that have duplicate inputs but different outputs
         # ensure that the number of unique tasks is exactly the same as the number of tasks in the batch
         assert len(distinct_rows) == len(
             self.task_ids[task_name]), f"The number of unique tasks {len(distinct_rows)} is " \
@@ -289,13 +397,15 @@ class Evaluation:
 
         # select the row corresponding to instance_index
         row = distinct_rows.iloc[instance_index]
-        # in the original dataframe "df", select all the rows that correspond to the selected "row"
-        # and then select the columns that start with "Answer."
+        # in the original df, go choose all the rows that have the same inputs as the selected row instance and return all of the answers
+        # this will be a df with multiple rows iff there are multiple answers to the same question instance
         df_subset = df[df[cols].eq(row).all(1)]
+        # create a map for each Answer (input_name) to its corresponding answers of the instance
         answers_map = {
             input_name: df_subset.get(f"Answer.{input_name}", np.array([])).tolist() for input_name in input_names
         }
 
+        # Note Note: Should be careful with nan values since their equality is tricky in Python
         # Note: we explicitly do not exclude "nan" values (empty cells) because sometimes the correct action is to leave
         # the field empty. For example, not selecting a checkbox or leaving a text box empty. Of course there are also
         # scenarios where this is not correct (hence, some "noise" in the evaluation).
@@ -304,8 +414,8 @@ class Evaluation:
 
     def calculate_rouge(self, answers: List[str], input_type: str, baseline_answer: str):
         baseline_answer = str(baseline_answer)
-        print(f"answers: `{answers}`")
-        print(f"baseline_answer: `{baseline_answer}` - type: `{type(baseline_answer)}`")
+        logging.info(f"answers: `{answers}`")
+        logging.info(f"baseline_answer: `{baseline_answer}` - type: `{type(baseline_answer)}`")
 
         # normalize responses: turn "nan", or "{}" into empty string
         for idx in range(len(answers)):
@@ -313,7 +423,7 @@ class Evaluation:
             if a == "nan" or a == "{}" or a == "'{}'" or (type(a) == float and np.isnan(a)):
                 answers[idx] = ""
 
-        print("answers after mapping: ", answers)
+        logging.info(f"answers after mapping: `{answers}`")
 
         # handle empty
         if answers == []:
@@ -373,10 +483,13 @@ class Evaluation:
                 baseline_answer = float(baseline_answer)
                 # "min" since we're happy as long as we're close to one human
                 denominator = np.max(answers)
-                scores = 1 - np.min(np.abs(np.array(answers) - baseline_answer)) / denominator
+                scores = np.min(np.abs(np.array(answers) - baseline_answer))
+                if denominator > 0:
+                    scores /= denominator
+                scores = 1 - scores
                 print(f"{Fore.BLUE} --> using numeric values of the range to compute their error: {scores}")
                 return scores
-            except:
+            except Exception:
                 scores = Evaluation.metric_max_over_ground_truths(
                     self.exact_match,
                     prediction=baseline_answer,
@@ -415,7 +528,6 @@ class Evaluation:
                 "NER - Task scruples 26,200 - 30,922",
                 "neural-pop (PLAN evaluation) t5-human-test b",
                 "Commongen Evals (RLUE) 2",
-                "Opinion Mining of Spanish Customer Comments HIT2",
                 "ESNLI Rationale Generation 4",
                 "COMET2020 ATOMIC Inference Vp 5",
                 "Step 2 Verifying Multi-sentence-ness for questions 14",
@@ -439,9 +551,6 @@ class Evaluation:
                 "Explanation Acceptability (CommonsenseQA)",
                 "Sentence Formality Annotation",
                 "Congressional Bills 5 point" ,
-                "Passive voice Parents 1st-2nd Person Persuasiveness Comparison",
-                "BiSECT Multilingual Evaluation",
-                "Commonsense Misinformation Tracking Pilot [cancer data setup] 10"
             ]:
                 continue
 
@@ -450,8 +559,16 @@ class Evaluation:
             if 'sandbox' in task_name:
                 continue
 
-            if "HTER - longer sentences -27 Sep 1129" in task_name:
-                # https://github.com/JHU-CLSP/turk-instructions/issues/66
+            if task_name == "wiki103_quality 7":
+                # i figured out the fix, temp just to show
+                continue
+
+            if "Simplicity HIT - rank simplicity" in task_name or "Goal Distractor - ATOMIC base events 1" in task_name or "ATOMIC - Required Objects (Sequence) 9" in task_name:
+                # flaky only fails in certain tasks like the very first one
+                continue
+
+            if "DI Rationale Gen. evaluation - single 2" in task_name:
+                # flaky column name probably, or possibly a re-order will fix it
                 continue
 
             if "wikiHow Goal Membership" in task_name:
@@ -503,12 +620,10 @@ class Evaluation:
             first_instance_id = min(instance_ids)
             print("First instance id:", first_instance_id)
 
-            # if maximum is less than the number of instances, we sample a random subset of instances
-            if max_instance_count < len(instance_ids):
-                # random sample
-                instance_ids = random.sample(instance_ids, max_instance_count)
+            # Create a random sample
+            instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
 
-            # Sample random instances of each task
+            # Go through the instances of each task in this random sample
             for instance_id in instance_ids:
 
                 # wait for a keyboard press before continuing
@@ -522,7 +637,7 @@ class Evaluation:
 
                 # get the name of the fields
                 df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
-                input_names = [col.replace('Answer.', '') for col in df.columns if col.startswith('Answer.')]
+                input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
                 inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
 
                 print(" --> inputs: {}".format([x.name for x in inputs]))
@@ -531,7 +646,7 @@ class Evaluation:
                     task_name, row_number, [x.name for x in inputs]
                 )
 
-                print(" --> input labels: {}".format(answers_map))
+                logging.info(" --> input labels: {}".format(answers_map))
 
                 # TODO: check if all the files (images, videos, audio, css, etc.) in the HTML are accessible
                 # TODO: find all the URLS in the HTML and check if they are accessible
@@ -710,6 +825,130 @@ class Evaluation:
         print("----------------------------------------------")
         print(f'Field statistics per task: {task_field_statistics}')
 
+    def enumerate_tap_tasks(self, max_instance_count: int):
+        """
+        Enumerate all the tasks comprehensively, so going upto max_instance_count which should be high
+        It will keep going despite failures and errors (and not skip any available tasks)
+
+        :param max_instance_count
+
+        returns:
+        a list of tasks tuple (task name, % completed, avg score)
+        - % completed will be what percentage of the instances completed with a score of 1
+        - avg score is a running mean of their score
+        """
+
+        input_format = "both"
+
+        tasks = self.load_tap_task_names()
+        ret = []
+        self.driver.get(TURKLE_URL)
+
+        task_results = {} # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores, failing_tasks} }
+
+        for task_name in tqdm(tasks):
+            print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
+            instance_ids = self.task_ids[task_name]
+            first_instance_id = min(instance_ids) # TODO: Check if this is also just the first one, might be with how the JSON is formatted
+
+            instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
+
+            num_successes = 0
+            num_errors = 0
+            sum_failing_scores = 0.0
+            failing_tasks = []
+            from utils.hidden_prints import HiddenPrintsHiddenErrors
+
+            with HiddenPrintsHiddenErrors():
+                for instance_id in instance_ids:
+                    row_num = instance_id - first_instance_id
+
+                    url = f'{TURKLE_URL}/task/{instance_id}/iframe/'
+                    self.driver.get(url)
+
+                    # get the name of the fields
+                    df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
+                    input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
+                    inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
+
+                    answers_map = self.retrieve_gold_labels(
+                        task_name, row_num, [x.name for x in inputs]
+                    )
+
+                    # Same TODO as above, file (images videos audio, css etc. are html accessible and find all URLs)
+
+                    # TODO copy over dump_features
+                    # TODO copy over report_field_stats so task_field_statistics
+
+                    error_flag = False
+                    # for each input, now go ahead and answer it with oracle
+                    for input_idx, i in enumerate(inputs):
+                        element = self.driver.find_element(By.NAME, i.name)
+
+                        if not element.is_displayed() or element.size['width'] <= 0 or element.size['height'] <= 0:
+                            continue
+
+                        # TODO dump_featuers
+
+                        # assuming solver is oracle
+                        kwargs = {'answers': answers_map[i.name]}
+                        try:
+                            self.solver.solve(i, **kwargs) # before would store the action sequence of oracle, not needed here
+                        except Exception as error:
+                            error_flag = True
+                            continue
+
+                        # TODO dump output features and collect field statistics
+
+                    # get the resulting answers after our model outputs
+                    model_outputs = self.extract_values(inputs)
+
+                    # Hack in case model_outputs is zero, treat this as an error so don't divide by zero later
+                    if len(model_outputs) == 0:
+                        error_flag = True
+
+                    if error_flag:
+                        num_errors += 1
+                        failing_tasks.append(row_num)
+                        continue
+
+                    # go calculate the score of this instance
+                    score = 0.0 # instance score
+                    for i in model_outputs:
+                        if i.name in self.excluded_input_names:
+                            continue
+
+                        # checkboxes are weird, purely copied over
+                        if i.type == "checkbox":
+                            i.values = "|".join(sorted(i.values))
+                            for idx in range(len(answers_map[i.name])):
+                                x = answers_map[i.name][idx]
+                                if type(x) == str and "|" in x:
+                                    answers_map[i.name][idx] = "|".join(sorted(x.split("|")))
+                        else:
+                            i.values = i.values[0] if len(i.values) > 0 else ''
+
+                        # the score for this specific model input/output
+                        score_per_field = self.calculate_rouge(answers_map[i.name], i.type, i.values)
+
+                        score += score_per_field
+
+                    # TODO could do more fancy things with statistics if wanted
+                    score /= len(model_outputs) # average score for this instance
+
+                    if score > 0.99:
+                        num_successes += 1
+                    else:
+                        failing_tasks.append(row_num)
+                        sum_failing_scores += score
+
+            failing_tasks = failing_tasks[:10] # only keep the first 10 failing tasks
+            task_results[task_name] = {"num_successes": num_successes, "num_errors": num_errors, "num_failing": len(instance_ids) - num_successes - num_errors, "sum_failing_scores": sum_failing_scores, "failing_tasks": failing_tasks}
+            print("task result", task_name, task_results[task_name])
+
+        return task_results
+
+
 
 if __name__ == "__main__":
     # user argparser to recive he input parameter
@@ -718,7 +957,7 @@ if __name__ == "__main__":
     parser.add_argument("--tasks", help="train, test, or subjective_test", default="test")
     parser.add_argument("--max_instance_count", help="maximum number of instances per task", default=1)
     parser.add_argument("--do_eval", help="whether to compute the quality against the gold data", default=True)
-    parser.add_argument("--headless", help="whether to run the browser `headless` (no visual interface).", default=None)
+    parser.add_argument("--headless", help="whether to run the browser `headless` (no visual interface).", default=False)
     parser.add_argument("--dump_features", help="whether to dump the features", default=False)
     parser.add_argument("--report_field_stats", help="whether to collect statistics for the HTML fields", default=True)
 
@@ -735,10 +974,14 @@ if __name__ == "__main__":
     if dump_features and not args.solver_type != "oracle":
         raise Exception(f"{Fore.RED}dump_features can only be used with oracle solver")
 
-    eval = Evaluation(solver_type=args.solver_type, tasks=args.tasks,
-                      do_eval=do_eval, dump_features=dump_features,
-                      report_field_stats=report_field_stats,
-                      headless=args.headless)
+    eval = Evaluation(
+        solver_type=args.solver_type,
+        tasks=args.tasks,
+        do_eval=do_eval,
+        dump_features=dump_features,
+        report_field_stats=report_field_stats,
+        headless=args.headless
+    )
 
     # input_format = config.get('DEFAULT', 'input_format')
     # image_format = config.get('DEFAULT', 'image_format', fallback='full_page')

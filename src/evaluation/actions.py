@@ -4,11 +4,13 @@ from io import BytesIO
 import numpy as np
 from PIL import Image, ImageDraw
 import requests
+import platform
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.common.keys import Keys
 from time import sleep
 import math
 from evaluation.input import Input
@@ -54,6 +56,14 @@ class ActionUtils:
         except ValueError:
             return False
 
+    @staticmethod
+    def clear_text(action: ActionChains):
+        key = Keys.COMMAND if platform.system() == "Darwin" else Keys.CONTROL
+
+        # Perform Ctrl+A (select all)
+        action.key_down(key).send_keys('a').key_up(key)
+        # Perform Delete
+        action.send_keys(Keys.BACKSPACE)
 
 class MyActions:
     """
@@ -121,6 +131,7 @@ class MyActions:
 
         action = ActionChains(self.driver).move_to_element(input_element).click()
         # now modify the text
+        ActionUtils.clear_text(action)
         action.send_keys(input_value)
         action.perform()
         return Result(success=True, outcome=input_element, action=f"self.modify_text({input}, {input_value})")
@@ -231,7 +242,6 @@ class MyActions:
             # input value is a float, but the option values are integers
             input_value = str(int(input_value))
         else:
-            print("input:", input, "input_value:", input_value)
             raise Exception(f"Input value `{input_value}` is not among the available option values `{option_values}`")
 
         # select by value

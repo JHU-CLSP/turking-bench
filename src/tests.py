@@ -4,7 +4,7 @@ from evaluation.baselines import Baseline
 from utils.hidden_prints import HiddenPrints
 
 evaluation = eval.Evaluation(solver_type="oracle", tasks="all",
-                             do_eval=True, dump_features=True, report_field_stats=True)
+                             do_eval=True, dump_features=True, report_field_stats=True, headless=True)
 
 
 def test_actions():
