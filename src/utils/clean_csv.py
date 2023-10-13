@@ -90,14 +90,12 @@ def clean_empty(csv_file):
     for i, row in df.iterrows():
         for col in df.columns:
             if col.startswith("Answer."):
-                if col.startswith("Answer.na"):
-                    continue
                 if pd.isnull(row[col]) or row[col] == "":
-                    df.loc[i, col] = 0
+                    df.loc[i, col] = "Empty"
     df.to_csv(csv_file , encoding='utf-8-sig', index=False)
 
 if __name__ == '__main__':
-    files_to_edit = ["Congressional Bills 5 point"]
+    files_to_edit = ["Annotation subj_obj"]
     for root, dirs, files in os.walk('tasks'):
         for file in files:
             if file.endswith('.csv') and root.split("/")[1] in files_to_edit and file.startswith('batch'):
