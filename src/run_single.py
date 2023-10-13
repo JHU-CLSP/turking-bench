@@ -11,7 +11,7 @@ from utils.hidden_prints import HiddenPrints
 import logging
 
 TURKLE_URL = "http://localhost:8000"
-TEST_NAME = "mars human eval (a-b testing) 3"
+TEST_NAME = "wikiHow Goal Membership"
 SPECIFIED_INDEX = 0
 RUN_ALL = False
 
