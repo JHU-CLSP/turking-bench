@@ -84,18 +84,20 @@ def convert_on_to_yes(csv_file):
                     df.loc[i, col] = "yes"
     df.to_csv(csv_file , encoding='utf-8-sig', index=False)
 
+# Clean an empty cell with certain properties (in certain col) into a specified value
 def clean_empty(csv_file):
     df = pd.read_csv(csv_file, low_memory=False)
     for i, row in df.iterrows():
         for col in df.columns:
             if col.startswith("Answer."):
-                continue
-            if pd.isnull(row[col]) or row[col] == "":
-                df.loc[i, col] = "Empty"
+                if col.startswith("Answer.na"):
+                    continue
+                if pd.isnull(row[col]) or row[col] == "":
+                    df.loc[i, col] = 0
     df.to_csv(csv_file , encoding='utf-8-sig', index=False)
 
 if __name__ == '__main__':
-    files_to_edit = ["ROT Details [m=50] rocstories - 0 - 99"]
+    files_to_edit = ["Congressional Bills 5 point"]
     for root, dirs, files in os.walk('tasks'):
         for file in files:
             if file.endswith('.csv') and root.split("/")[1] in files_to_edit and file.startswith('batch'):
