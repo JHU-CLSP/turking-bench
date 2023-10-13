@@ -17,8 +17,10 @@ echo "Using $pip and $python"
 
 # check if the directory exists
 if [ -d "$repo_dir" ]; then
-        echo "Directory $repo_dir exists. Please remove it and try again."
-    exit 1
+    echo "Directory $repo_dir exists, running pre-existing server"
+    cd $repo_dir
+    $python manage.py runserver 0.0.0.0:8000
+    exit 0
 fi
 
 # clone the repo to the directory
