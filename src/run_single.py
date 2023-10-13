@@ -11,7 +11,7 @@ from utils.hidden_prints import HiddenPrints
 import logging
 
 TURKLE_URL = "http://localhost:8000"
-TEST_NAME = "Annotation subj_obj"
+TEST_NAME = "HTER - 27 Sep 1859"
 SPECIFIED_INDEX = 0
 RUN_ALL = False
 
