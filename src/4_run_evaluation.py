@@ -89,8 +89,10 @@ def filter_TAP_tasks(task_name):
     if task_name in tasks_should_skip:
         return False
 
-    if task_name == "Email Formality Annotation":
-        # throwing Email Formality Annotation into the mix, seems like the answers r pretty unusable. questionably empty, floating in the abyss to the right of answers. tried some data processing but then realized it was just oof data. could maybe recover in future by looking at each answer to the right of the answers and sticking them inside Answer. if we want (that could be right, maybe same num of "missing ans" but also some X need answers that are found in Xsrc and junk is filled in X, so lots of work
+    # throwing Email Formality Annotation into the mix, seems like the answers r pretty unusable. questionably empty, floating in the abyss to the right of answers. tried some data processing but then realized it was just oof data. could maybe recover in future by looking at each answer to the right of the answers and sticking them inside Answer. if we want (that could be right, maybe same num of "missing ans" but also some X need answers that are found in Xsrc and junk is filled in X, so lots of work
+    # same with Simplicity HIT - rank simplicity, the answers r unusable as well (full text strings for MOST of the responses when they should be numbers between 0 - 5, and weird numbs at the end
+    weird_data_in_batch_csv = ["Simplicity HIT - rank simplicity", "Email Formality Annotation"]
+    if task_name in weird_data_in_batch_csv:
         return False
 
     return True
