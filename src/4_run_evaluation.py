@@ -56,7 +56,8 @@ def filter_TAP_tasks(task_name):
         # input.type submit hasn't been coded for thus self.extract_values is erroring
         return False
 
-    show_questions_tasks = ["Rationale Generation 5", "Gun violence structured extraction", "ESNLI Rationale Generation 4", "JJ-NN HIT", "neural-pop (PLAN evaluation) t5-human-test b", "VQA Rationale Generation 5"]
+    show_questions_tasks = ["Rationale Generation 5", "Gun violence structured extraction", "ESNLI Rationale Generation 4", "JJ-NN HIT", 
+                            "neural-pop (PLAN evaluation) t5-human-test b", "VQA Rationale Generation 5", "Lattice"]
     # skip these task since it requires an extra click to show the available questions or next ones
     if task_name in show_questions_tasks:
         return False
@@ -69,12 +70,28 @@ def filter_TAP_tasks(task_name):
     # Skip since there is a 15 second delay before showing the available questions
     if task_name == "Summarization (RLUE) 1":
         return False
+    
+    # Skip since funky HTML input, multiple radios of same name
+    if task_name == "Explanation Acceptability (CommonsenseQA) poor HTML":
+        return False
+    
+    weird_input_formats = ["BiSECT Human Evaluation II (2)", "Spanish Word Alignment"]
+    # Skip since these tasks have a weird input format the model cannot interact with
+    if task_name in weird_input_formats:
+        return False
+    
+    # Wrong col name and has 1 set of questions when should be 4
+    if task_name == "Human evaluation - quals":
+        return False
 
     tasks_should_skip = ["Photo Collection GVDB", "NER - Task scruples 26,200 - 30,922"]
     # tasks I don't think the model is capable of solving
     if task_name in tasks_should_skip:
         return False
 
+    if task_name == "Email Formality Annotation":
+        # throwing Email Formality Annotation into the mix, seems like the answers r pretty unusable. questionably empty, floating in the abyss to the right of answers. tried some data processing but then realized it was just oof data. could maybe recover in future by looking at each answer to the right of the answers and sticking them inside Answer. if we want (that could be right, maybe same num of "missing ans" but also some X need answers that are found in Xsrc and junk is filled in X, so lots of work
+        return False
 
     return True
 

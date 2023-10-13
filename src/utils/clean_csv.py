@@ -95,7 +95,7 @@ def clean_empty(csv_file):
     df.to_csv(csv_file , encoding='utf-8-sig', index=False)
 
 if __name__ == '__main__':
-    files_to_edit = ["Word Formality Annotation"]
+    files_to_edit = ["ROT Details [m=50] rocstories - 0 - 99"]
     for root, dirs, files in os.walk('tasks'):
         for file in files:
             if file.endswith('.csv') and root.split("/")[1] in files_to_edit and file.startswith('batch'):
