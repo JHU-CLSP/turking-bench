@@ -9,6 +9,7 @@ import json
 import os
 import pandas as pd
 import numpy as np
+import platform
 import random
 import requests
 from rouge_score import rouge_scorer
@@ -42,7 +43,7 @@ class GPTTokenizer:
 def filter_TAP_tasks(task_name):
     if "sandbox" in task_name:
         return False
-    
+
     # Should be doable tasks, just seemed like it would take a little more time so skipped in that interest
     skipped_cuz_hard = ["Sentence Formality Annotation"]
     # Sentence Formality skipped since inputs could be slightly wrong, like '2_ instead of 2_
@@ -50,7 +51,7 @@ def filter_TAP_tasks(task_name):
     # Also not grabbing inputs, some some equality mismatching in retrieve_gold_label possibly
     if task_name in skipped_cuz_hard:
         return False
-    
+
     if "COMET2020 ATOMIC Inference Vp 5" == task_name:
         # input.type submit hasn't been coded for thus self.extract_values is erroring
         return False
@@ -68,7 +69,7 @@ def filter_TAP_tasks(task_name):
     # Skip since there is a 15 second delay before showing the available questions
     if task_name == "Summarization (RLUE) 1":
         return False
-    
+
     tasks_should_skip = ["Photo Collection GVDB", "NER - Task scruples 26,200 - 30,922"]
     # tasks I don't think the model is capable of solving
     if task_name in tasks_should_skip:
@@ -82,7 +83,7 @@ class Evaluation:
         self.default_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
         self.xlingual_tokenizer = GPTTokenizer()
         self.xlingual_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], tokenizer=self.xlingual_tokenizer)
-        self.driver = self.create_driver(headless)
+        self.driver = self.create_driver(headless=headless)
         self.actions = MyActions(self.driver)
         self.solver = None
         # ass more solvers that we implement, we can add them here:
@@ -111,7 +112,6 @@ class Evaluation:
         ]
 
     def create_driver(self, headless: bool):
-        # TODO: make the seleciton of headless (no visual browser for faster processing) a parameter
         options = Options()
         if headless:
             options.add_argument("--headless=new")
@@ -135,7 +135,7 @@ class Evaluation:
         partitions = 19 # number of partitions
         split_tasks = []
 
-        # Greedy optimized way to split evenly 
+        # Greedy optimized way to split evenly
         s = set() # was originally a set, but python sets aren't as robust as C++ std
         sum = 0
         for task in all_tasks:
@@ -155,7 +155,7 @@ class Evaluation:
             s.remove(s[last])
             partitions -= 1
             last -= 1
-        
+
         for partition in range(partitions):
             curr = []
             goal = sum // partitions
@@ -173,14 +173,14 @@ class Evaluation:
                 df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
                 input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
                 val = min(1000, len(self.task_ids[task])) * (8 + len(input_names))
-                temp_sum += val 
+                temp_sum += val
             split_sums.append(temp_sum)
 
         print("split_sums:", split_sums)
 
         # Naive way to split up the tasks by evenly number per
-        # num_per_partition = -(len(all_tasks) // -partitions) # ceil division 
-        # split_tasks = [all_tasks[i * num_per_partition : (i + 1) * num_per_partition] for i in range(partitions)] 
+        # num_per_partition = -(len(all_tasks) // -partitions) # ceil division
+        # split_tasks = [all_tasks[i * num_per_partition : (i + 1) * num_per_partition] for i in range(partitions)]
 
         # Can optimize this with greedy and DP to minimize difference between largest and smallest partition
         # Start with # of instances * # tasks, then can go # inputs * # instances * # tasks
@@ -830,7 +830,7 @@ class Evaluation:
         Enumerate all the tasks comprehensively, so going upto max_instance_count which should be high
         It will keep going despite failures and errors (and not skip any available tasks)
 
-        :param max_instance_count 
+        :param max_instance_count
 
         returns:
         a list of tasks tuple (task name, % completed, avg score)
@@ -877,8 +877,8 @@ class Evaluation:
 
                     # Same TODO as above, file (images videos audio, css etc. are html accessible and find all URLs)
 
-                    # TODO copy over dump_features 
-                    # TODO copy over report_field_stats so task_field_statistics 
+                    # TODO copy over dump_features
+                    # TODO copy over report_field_stats so task_field_statistics
 
                     error_flag = False
                     # for each input, now go ahead and answer it with oracle
@@ -912,7 +912,7 @@ class Evaluation:
                         failing_tasks.append(row_num)
                         continue
 
-                    # go calculate the score of this instance 
+                    # go calculate the score of this instance
                     score = 0.0 # instance score
                     for i in model_outputs:
                         if i.name in self.excluded_input_names:
@@ -932,7 +932,7 @@ class Evaluation:
                         score_per_field = self.calculate_rouge(answers_map[i.name], i.type, i.values)
 
                         score += score_per_field
-                    
+
                     # TODO could do more fancy things with statistics if wanted
                     score /= len(model_outputs) # average score for this instance
 
@@ -943,7 +943,7 @@ class Evaluation:
                         sum_failing_scores += score
 
             failing_tasks = failing_tasks[:10] # only keep the first 10 failing tasks
-            task_results[task_name] = {"num_successes": num_successes, "num_errors": num_errors, "num_failing": len(instance_ids) - num_successes - num_errors, "sum_failing_scores": sum_failing_scores, "failing_tasks": failing_tasks} 
+            task_results[task_name] = {"num_successes": num_successes, "num_errors": num_errors, "num_failing": len(instance_ids) - num_successes - num_errors, "sum_failing_scores": sum_failing_scores, "failing_tasks": failing_tasks}
             print("task result", task_name, task_results[task_name])
 
         return task_results
@@ -956,7 +956,8 @@ if __name__ == "__main__":
     parser.add_argument("--solver_type", help="random or oracle", default="random")
     parser.add_argument("--tasks", help="train, test, or subjective_test", default="test")
     parser.add_argument("--max_instance_count", help="maximum number of instances per task", default=1)
-    parser.add_argument("--do_eval", help="whether to compute the quality aginst the gold data", default=True)
+    parser.add_argument("--do_eval", help="whether to compute the quality against the gold data", default=True)
+    parser.add_argument("--headless", help="whether to run the browser `headless` (no visual interface).", default=False)
     parser.add_argument("--dump_features", help="whether to dump the features", default=False)
     parser.add_argument("--report_field_stats", help="whether to collect statistics for the HTML fields", default=True)
 
@@ -968,12 +969,19 @@ if __name__ == "__main__":
     dump_features = args.dump_features
     report_field_stats = args.report_field_stats
     assert type(do_eval) == bool
+    assert type(args.headless) == bool
 
     if dump_features and not args.solver_type != "oracle":
         raise Exception(f"{Fore.RED}dump_features can only be used with oracle solver")
 
-    eval = Evaluation(solver_type=args.solver_type, tasks=args.tasks,
-                      do_eval=do_eval, dump_features=dump_features, report_field_stats=report_field_stats)
+    eval = Evaluation(
+        solver_type=args.solver_type,
+        tasks=args.tasks,
+        do_eval=do_eval,
+        dump_features=dump_features,
+        report_field_stats=report_field_stats,
+        headless=args.headless
+    )
 
     # input_format = config.get('DEFAULT', 'input_format')
     # image_format = config.get('DEFAULT', 'image_format', fallback='full_page')
