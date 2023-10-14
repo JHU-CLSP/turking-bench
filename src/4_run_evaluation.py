@@ -71,8 +71,8 @@ def filter_TAP_tasks(task_name):
     if task_name == "Summarization (RLUE) 1":
         return False
     
-    # Skip since funky HTML input, multiple radios of same name
-    if task_name == "Explanation Acceptability (CommonsenseQA) poor HTML":
+    # Skip since funky HTML input, multiple radios of same name, and should have more answers
+    if task_name == "Explanation Acceptability (CommonsenseQA)":
         return False
     
     weird_input_formats = ["BiSECT Human Evaluation II (2)", "Spanish Word Alignment"]
