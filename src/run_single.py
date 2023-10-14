@@ -11,7 +11,7 @@ from utils.hidden_prints import HiddenPrints
 import logging
 
 TURKLE_URL = "http://localhost:8000"
-TEST_NAME = "ROT Details [m=50] rocstories - 0 - 99"
+TEST_NAME = "Explanation Acceptability (CommonsenseQA)"
 SPECIFIED_INDEX = 0
 RUN_ALL = False
 
