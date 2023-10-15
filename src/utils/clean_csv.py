@@ -59,7 +59,9 @@ def clean_split_up_radio(csv_file):
     column_names = []
     for col in df.columns:
         if col.startswith('Answer'):
-            column_names.append(col[:-2]) # substring off last two characters
+            # Split the column name at the last period
+            beginning, value = col.rsplit(".", 1)
+            column_names.append(beginning) # substring off last answer bit after the last period
 
     # Add the columns to the answers DataFrame
     for col_name in column_names:
@@ -69,7 +71,10 @@ def clean_split_up_radio(csv_file):
         for col in df.columns:
             if col.startswith('Answer'):
                 if row[col] in true:
-                    answers_df.at[i, col[:-2]] = col[-1]
+                    # Split the column name at the last period
+                    beginning, value = col.rsplit(".", 1)
+                    column_names.append(beginning) # substring off last answer bit after the last period
+                    answers_df.at[i, beginning] = value
 
     # Append the new DataFrame to the original DataFrame
     df = pd.concat([df, answers_df], axis=1)
@@ -84,6 +89,7 @@ def convert_on_to_yes(csv_file):
                     df.loc[i, col] = "yes"
     df.to_csv(csv_file , encoding='utf-8-sig', index=False)
 
+# Clean an empty cell with certain properties (in certain col) into a specified value
 def clean_empty(csv_file):
     df = pd.read_csv(csv_file, low_memory=False)
     for i, row in df.iterrows():
@@ -95,9 +101,9 @@ def clean_empty(csv_file):
     df.to_csv(csv_file , encoding='utf-8-sig', index=False)
 
 if __name__ == '__main__':
-    files_to_edit = ["JiminyCricket-HumanVal-b1"]
+    files_to_edit = ["wikiHow Goal Membership"]
     for root, dirs, files in os.walk('tasks'):
         for file in files:
             if file.endswith('.csv') and root.split("/")[1] in files_to_edit and file.startswith('batch'):
                 print('Cleaning ' + file)
-                # clean_empty(os.path.join(root, file))
+                clean_split_up_radio(os.path.join(root, file))
