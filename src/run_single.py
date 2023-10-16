@@ -11,8 +11,8 @@ from utils.hidden_prints import HiddenPrints
 import logging
 
 TURKLE_URL = "http://localhost:8000"
-TEST_NAME = "Explanation Acceptability (CommonsenseQA)"
-SPECIFIED_INDEX = 0
+TEST_NAME = "JiminyCricket-HumanVal-b10"
+SPECIFIED_INDEX = 19
 RUN_ALL = False
 
 class Run(run_eval.Evaluation):
