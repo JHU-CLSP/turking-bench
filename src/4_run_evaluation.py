@@ -9,6 +9,7 @@ import json
 import os
 import pandas as pd
 import numpy as np
+import platform
 import random
 import requests
 from rouge_score import rouge_scorer
@@ -39,50 +40,12 @@ class GPTTokenizer:
         tokens = [t.lstrip("Ġ") for t in tokens]
         return tokens
 
-def filter_TAP_tasks(task_name):
-    if "sandbox" in task_name:
-        return False
-    
-    # Should be doable tasks, just seemed like it would take a little more time so skipped in that interest
-    skipped_cuz_hard = ["Sentence Formality Annotation"]
-    # Sentence Formality skipped since inputs could be slightly wrong, like '2_ instead of 2_
-    # Also sometimes it's in the wrong column, select answer in checkbox?
-    # Also not grabbing inputs, some some equality mismatching in retrieve_gold_label possibly
-    if task_name in skipped_cuz_hard:
-        return False
-    
-    if "COMET2020 ATOMIC Inference Vp 5" == task_name:
-        # input.type submit hasn't been coded for thus self.extract_values is erroring
-        return False
-
-    show_questions_tasks = ["Rationale Generation 5", "Gun violence structured extraction", "ESNLI Rationale Generation 4", "JJ-NN HIT", "neural-pop (PLAN evaluation) t5-human-test b", "VQA Rationale Generation 5"]
-    # skip these task since it requires an extra click to show the available questions or next ones
-    if task_name in show_questions_tasks:
-        return False
-
-    # Has type hidden that we fail certain inputs on
-    # But we pass a lot of these cases, lots of answers don't need the hidden input
-    if task_name == "What breaks the flow - no categories 4":
-        return False
-
-    # Skip since there is a 15 second delay before showing the available questions
-    if task_name == "Summarization (RLUE) 1":
-        return False
-    
-    tasks_should_skip = ["Photo Collection GVDB", "NER - Task scruples 26,200 - 30,922"]
-    # tasks I don't think the model is capable of solving
-    if task_name in tasks_should_skip:
-        return False
-
-
-    return True
-
 class Evaluation:
     def __init__(self, solver_type: str, tasks: str, do_eval: bool, dump_features: bool, report_field_stats: bool, headless: bool = False):
         self.default_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
         self.xlingual_tokenizer = GPTTokenizer()
         self.xlingual_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], tokenizer=self.xlingual_tokenizer)
-        self.driver = self.create_driver(headless)
+        self.driver = self.create_driver(headless=headless)
         self.actions = MyActions(self.driver)
         self.solver = None
         # ass more solvers that we implement, we can add them here:
@@ -110,8 +73,69 @@ class Evaluation:
             'ee'
         ]
 
+    def filter_TAP_tasks(self, task_name):
+        if "sandbox" in task_name:
+            return False
+
+        # Should be doable tasks, just seemed like it would take a little more time so skipped in that interest
+        skipped_cuz_hard = ["Sentence Formality Annotation"]
+        # Sentence Formality skipped since inputs could be slightly wrong, like '2_ instead of 2_
+        # Also sometimes it's in the wrong column, select answer in checkbox?
+        # Also not grabbing inputs, some some equality mismatching in retrieve_gold_label possibly
+        if task_name in skipped_cuz_hard:
+            return False
+
+        if "COMET2020 ATOMIC Inference Vp 5" == task_name:
+            # input.type submit hasn't been coded for thus self.extract_values is erroring
+            return False
+
+        show_questions_tasks = ["Rationale Generation 5", "Gun violence structured extraction", "ESNLI Rationale Generation 4", "JJ-NN HIT", 
+                                "neural-pop (PLAN evaluation) t5-human-test b", "VQA Rationale Generation 5", "Lattice"]
+        # skip these task since it requires an extra click to show the available questions or next ones
+        if task_name in show_questions_tasks:
+            return False
+
+        # Has type hidden that we fail certain inputs on
+        # But we pass a lot of these cases, lots of answers don't need the hidden input
+        if task_name == "What breaks the flow - no categories 4":
+            return False
+
+        # Skip since there is a 15 second delay before showing the available questions
+        if task_name == "Summarization (RLUE) 1":
+            return False
+        
+        # Skip since funky HTML input, multiple radios of same name, and should have more answers
+        if task_name == "Explanation Acceptability (CommonsenseQA)":
+            return False
+        
+        weird_input_formats = ["BiSECT Human Evaluation II (2)", "Spanish Word Alignment"]
+        # Skip since these tasks have a weird input format the model cannot interact with
+        if task_name in weird_input_formats:
+            return False
+        
+        # Wrong col name and has 1 set of questions when should be 4
+        if task_name == "Human evaluation - quals":
+            return False
+
+        tasks_should_skip = ["Photo Collection GVDB", "NER - Task scruples 26,200 - 30,922"]
+        # tasks I don't think the model is capable of solving
+        if task_name in tasks_should_skip:
+            return False
+
+        # throwing Email Formality Annotation into the mix, seems like the answers r pretty unusable. questionably empty, floating in the abyss to the right of answers. tried some data processing but then realized it was just oof data. could maybe recover in future by looking at each answer to the right of the answers and sticking them inside Answer. if we want (that could be right, maybe same num of "missing ans" but also some X need answers that are found in Xsrc and junk is filled in X, so lots of work
+        # same with Simplicity HIT - rank simplicity, the answers r unusable as well (full text strings for MOST of the responses when they should be numbers between 0 - 5, and weird numbs at the end
+        weird_data_in_batch_csv = ["Simplicity HIT - rank simplicity", "Email Formality Annotation"]
+        if task_name in weird_data_in_batch_csv:
+            return False
+
+        if task_name not in self.task_ids.keys():
+            print(f"{Fore.RED}Task `{task_name}` is not available on Turkle.")
+            print("Available tasks are:", self.task_ids.keys())
+            return False
+
+        return True
+
     def create_driver(self, headless: bool):
-        # TODO: make the seleciton of headless (no visual browser for faster processing) a parameter
         options = Options()
         if headless:
             options.add_argument("--headless=new")
@@ -129,13 +153,13 @@ class Evaluation:
     def load_tap_task_names(self):
         # load all tasks into a list of strings
         all_tasks = os.listdir("../tasks")
-        all_tasks = list(filter(filter_TAP_tasks, all_tasks))
+        all_tasks = list(filter(self.filter_TAP_tasks, all_tasks))
         print("all_tasks len:", len(all_tasks))
 
         partitions = 19 # number of partitions
         split_tasks = []
 
-        # Greedy optimized way to split evenly 
+        # Greedy optimized way to split evenly
         s = set() # was originally a set, but python sets aren't as robust as C++ std
         sum = 0
         for task in all_tasks:
@@ -155,7 +179,7 @@ class Evaluation:
             s.remove(s[last])
             partitions -= 1
             last -= 1
-        
+
         for partition in range(partitions):
             curr = []
             goal = sum // partitions
@@ -173,14 +197,14 @@ class Evaluation:
                 df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
                 input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
                 val = min(1000, len(self.task_ids[task])) * (8 + len(input_names))
-                temp_sum += val 
+                temp_sum += val
             split_sums.append(temp_sum)
 
         print("split_sums:", split_sums)
 
         # Naive way to split up the tasks by evenly number per
-        # num_per_partition = -(len(all_tasks) // -partitions) # ceil division 
-        # split_tasks = [all_tasks[i * num_per_partition : (i + 1) * num_per_partition] for i in range(partitions)] 
+        # num_per_partition = -(len(all_tasks) // -partitions) # ceil division
+        # split_tasks = [all_tasks[i * num_per_partition : (i + 1) * num_per_partition] for i in range(partitions)]
 
         # Can optimize this with greedy and DP to minimize difference between largest and smallest partition
         # Start with # of instances * # tasks, then can go # inputs * # instances * # tasks
@@ -521,99 +545,7 @@ class Evaluation:
         for task_name in tqdm(tasks):
             print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
 
-            if task_name in [
-                "Style adaptation, pairwise, complex-simple",
-                "Spanish Word Alignment",
-                "BiSECT Human Evaluation II (2)",
-                "NER - Task scruples 26,200 - 30,922",
-                "neural-pop (PLAN evaluation) t5-human-test b",
-                "Commongen Evals (RLUE) 2",
-                "ESNLI Rationale Generation 4",
-                "COMET2020 ATOMIC Inference Vp 5",
-                "Step 2 Verifying Multi-sentence-ness for questions 14",
-                "Lattice",
-                "wikiHow step-goal linking pilot cleanse-url",
-                "mars human eval (a-b testing) 3",
-                "Annotation subj_obj",
-                "Email Formality Annotation",
-                "Photo Collection GVDB",
-                "Scalar Adjective Ordering",
-                "Rationale Generation 5",
-                "ATOMIC - Required Objects 5",
-                "Arch - Rel Eval 3",
-                "VQA Rationale Generation 5",
-                "wikiHow Step Membership",
-                "JJ-NN HIT",
-                "Commonsense Morality - Text Label Validate-Collect 17",
-                "HTER - 27 Sep 1859",
-                "Gun violence structured extraction",
-                "Summarization (RLUE) 1",
-                "Explanation Acceptability (CommonsenseQA)",
-                "Sentence Formality Annotation",
-                "Congressional Bills 5 point" ,
-            ]:
-                continue
-
-
-            # TODO we gotta drop this after adding gold labels to the sandbox tasks
-            if 'sandbox' in task_name:
-                continue
-
-            if task_name == "wiki103_quality 7":
-                # i figured out the fix, temp just to show
-                continue
-
-            if "Simplicity HIT - rank simplicity" in task_name or "Goal Distractor - ATOMIC base events 1" in task_name or "ATOMIC - Required Objects (Sequence) 9" in task_name:
-                # flaky only fails in certain tasks like the very first one
-                continue
-
-            if "DI Rationale Gen. evaluation - single 2" in task_name:
-                # flaky column name probably, or possibly a re-order will fix it
-                continue
-
-            if "wikiHow Goal Membership" in task_name:
-                # the inputs are not loaded properly
-                # I think it's becuase the batch file has ".on" in the header
-                continue
-
-            if "Human evaluation - quals" in task_name:
-                # inputs are not loaded properly
-                # I think it's because we don't have the right batch file, though I might be wrong.
-                continue
-
-            if task_name not in self.task_ids.keys():
-                print(f"{Fore.RED}Task `{task_name}` is not available on Turkle.")
-                print("Available tasks are:", self.task_ids.keys())
-                continue
-
-            if "Dialogue safety (socialchemistry) 5" in task_name:
-                # we're not able to execute some of the text inputs.
-                # the page has multiple rationale inputs with the same name so it is not clear how to fill them in.
-                # I think the only feasible fix is to merge the 3 text areas with the different names into one.
-                continue
-
-            if "Commonsense Morality-Text Label Validate-Collect-Extended" in task_name:
-                # one of the text boxes is not filled in properly (it's empty)
-                continue
-
-            if "What breaks the flow - no categories 4" in task_name:
-                # the oracle is not able to fully solve this task
-                continue
-
-            if "ROT Details [m=50] rocstories - 0 - 99" in task_name:
-                # the oracle is not able to fully solve this task
-                continue
-
-            if "Annotate WaNLI 23" in task_name:
-                # the oracle is not able to fully solve this task
-                continue
-
-            if "Reddit In-group Analysis Comment annotation 3" in task_name:
-                # we don't find the right inputs
-                continue
-
-            if "Chatbot Response Quality Evaluation" in task_name:
-                # I haven't checked any task after this.
+            if self.filter_TAP_tasks(task_name) == False:
                 continue
 
             instance_ids = self.task_ids[task_name]
@@ -830,7 +762,7 @@ class Evaluation:
         Enumerate all the tasks comprehensively, so going upto max_instance_count which should be high
         It will keep going despite failures and errors (and not skip any available tasks)
 
-        :param max_instance_count 
+        :param max_instance_count
 
         returns:
         a list of tasks tuple (task name, % completed, avg score)
@@ -877,8 +809,8 @@ class Evaluation:
 
                     # Same TODO as above, file (images videos audio, css etc. are html accessible and find all URLs)
 
-                    # TODO copy over dump_features 
-                    # TODO copy over report_field_stats so task_field_statistics 
+                    # TODO copy over dump_features
+                    # TODO copy over report_field_stats so task_field_statistics
 
                     error_flag = False
                     # for each input, now go ahead and answer it with oracle
@@ -912,7 +844,7 @@ class Evaluation:
                         failing_tasks.append(row_num)
                         continue
 
-                    # go calculate the score of this instance 
+                    # go calculate the score of this instance
                     score = 0.0 # instance score
                     for i in model_outputs:
                         if i.name in self.excluded_input_names:
@@ -932,7 +864,7 @@ class Evaluation:
                         score_per_field = self.calculate_rouge(answers_map[i.name], i.type, i.values)
 
                         score += score_per_field
-                    
+
                     # TODO could do more fancy things with statistics if wanted
                     score /= len(model_outputs) # average score for this instance
 
@@ -943,7 +875,7 @@ class Evaluation:
                         sum_failing_scores += score
 
             failing_tasks = failing_tasks[:10] # only keep the first 10 failing tasks
-            task_results[task_name] = {"num_successes": num_successes, "num_errors": num_errors, "num_failing": len(instance_ids) - num_successes - num_errors, "sum_failing_scores": sum_failing_scores, "failing_tasks": failing_tasks} 
+            task_results[task_name] = {"num_successes": num_successes, "num_errors": num_errors, "num_failing": len(instance_ids) - num_successes - num_errors, "sum_failing_scores": sum_failing_scores, "failing_tasks": failing_tasks}
             print("task result", task_name, task_results[task_name])
 
         return task_results
@@ -956,7 +888,8 @@ if __name__ == "__main__":
     parser.add_argument("--solver_type", help="random or oracle", default="random")
     parser.add_argument("--tasks", help="train, test, or subjective_test", default="test")
     parser.add_argument("--max_instance_count", help="maximum number of instances per task", default=1)
-    parser.add_argument("--do_eval", help="whether to compute the quality aginst the gold data", default=True)
+    parser.add_argument("--do_eval", help="whether to compute the quality against the gold data", default=True)
+    parser.add_argument("--headless", help="whether to run the browser `headless` (no visual interface).", default=False)
     parser.add_argument("--dump_features", help="whether to dump the features", default=False)
     parser.add_argument("--report_field_stats", help="whether to collect statistics for the HTML fields", default=True)
 
@@ -968,12 +901,19 @@ if __name__ == "__main__":
     dump_features = args.dump_features
     report_field_stats = args.report_field_stats
     assert type(do_eval) == bool
+    assert type(args.headless) == bool
 
     if dump_features and args.solver_type != "oracle":
         raise Exception(f"{Fore.RED}dump_features can only be used with oracle solver")
 
-    eval = Evaluation(solver_type=args.solver_type, tasks=args.tasks,
-                      do_eval=do_eval, dump_features=dump_features, report_field_stats=report_field_stats)
+    eval = Evaluation(
+        solver_type=args.solver_type,
+        tasks=args.tasks,
+        do_eval=do_eval,
+        dump_features=dump_features,
+        report_field_stats=report_field_stats,
+        headless=args.headless
+    )
 
     # input_format = config.get('DEFAULT', 'input_format')
     # image_format = config.get('DEFAULT', 'image_format', fallback='full_page')

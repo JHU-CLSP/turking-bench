@@ -11,7 +11,7 @@ from utils.hidden_prints import HiddenPrints
 import logging
 
 TURKLE_URL = "http://localhost:8000"
-TEST_NAME = "Associate countries and languages with Ethnologue"
+TEST_NAME = "Explanation Acceptability (CommonsenseQA)"
 SPECIFIED_INDEX = 0
 RUN_ALL = False
 
@@ -37,7 +37,7 @@ class Run(run_eval.Evaluation):
 
         # Sample random instances of each task
         for instance_id in instance_ids:
-            # remove the randomness of which index we choose 
+            # remove the randomness of which index we choose
             if max_instance_count == 1:
                 instance_id = first_instance_id + index
 

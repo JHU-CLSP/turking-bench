@@ -21,7 +21,6 @@ if [ -d "$repo_dir" ]; then
     cd $repo_dir
     $python manage.py runserver 0.0.0.0:8000
     exit 0
-#    exit 1
 fi
 
 # clone the repo to the directory
