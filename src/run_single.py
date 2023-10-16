@@ -11,7 +11,7 @@ from utils.hidden_prints import HiddenPrints
 import logging
 
 TURKLE_URL = "http://localhost:8000"
-TEST_NAME = "Word Formality Annotation"
+TEST_NAME = "Associate countries and languages with Ethnologue"
 SPECIFIED_INDEX = 0
 RUN_ALL = False
 
@@ -268,7 +268,7 @@ if __name__ == "__main__":
     dump_features = args.dump_features
     report_field_stats = args.report_field_stats
 
-    if dump_features and not args.solver_type != "oracle":
+    if dump_features and args.solver_type != "oracle":
         raise Exception(f"{Fore.RED}dump_features can only be used with oracle solver")
 
     eval = Run(solver_type=args.solver_type, tasks=args.tasks,

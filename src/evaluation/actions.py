@@ -134,6 +134,8 @@ class MyActions:
         ActionUtils.clear_text(action)
         action.send_keys(input_value)
         action.perform()
+        self.execute_js_command('arguments[0].innerHTML = arguments[1]', input_element, input_value)
+
         return Result(success=True, outcome=input_element, action=f"self.modify_text({input}, {input_value})")
 
     def modify_checkbox(self, input: Input, input_value) -> Result:
@@ -179,7 +181,7 @@ class MyActions:
         for checkbox in checkboxes:
             if checkbox.get_attribute("value") in input_value:
                 print(f"{Fore.YELLOW}About to check this checkbox: {checkbox.get_attribute('outerHTML')}")
-                checkbox.click()
+                self.execute_js_command('arguments[0].setAttribute("checked", "");', checkbox)
 
         return Result(success=True, outcome=None, action=f"self.modify_checkbox({input}, {input_value})")
 
@@ -221,6 +223,7 @@ class MyActions:
 
         action = ActionChains(self.driver).move_to_element(element).click()
         action.perform()
+        self.execute_js_command('arguments[0].setAttribute("checked", "");', element)
 
         return Result(success=True, outcome=None, action=f"self.modify_radio({input.name}, {input_value})")
 
@@ -229,7 +232,8 @@ class MyActions:
         For a given select field (dropdown menu), this function selects the specified option.
         """
         # input_element = self.scroll_to_element(input_name)
-        select = Select(self.driver.find_element(By.NAME, input.name))
+        select_element = self.driver.find_element(By.NAME, input.name)
+        select = Select(select_element)
 
         assert len(select.options) > 0, f"Select field {input.name} has no options"
 
@@ -246,6 +250,7 @@ class MyActions:
 
         # select by value
         select.select_by_value(input_value)
+        self.execute_js_command('arguments[0].setAttribute("selected", "");', select.first_selected_option)
 
         return Result(success=True, outcome=None, action=f"self.modify_select({input}, {input_value})")
 

@@ -969,7 +969,7 @@ if __name__ == "__main__":
     report_field_stats = args.report_field_stats
     assert type(do_eval) == bool
 
-    if dump_features and not args.solver_type != "oracle":
+    if dump_features and args.solver_type != "oracle":
         raise Exception(f"{Fore.RED}dump_features can only be used with oracle solver")
 
     eval = Evaluation(solver_type=args.solver_type, tasks=args.tasks,
