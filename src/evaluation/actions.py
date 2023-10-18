@@ -181,6 +181,7 @@ class MyActions:
         for checkbox in checkboxes:
             if checkbox.get_attribute("value") in input_value:
                 print(f"{Fore.YELLOW}About to check this checkbox: {checkbox.get_attribute('outerHTML')}")
+                checkbox.click()
                 self.execute_js_command('arguments[0].setAttribute("checked", "");', checkbox)
 
         return Result(success=True, outcome=None, action=f"self.modify_checkbox({input}, {input_value})")
