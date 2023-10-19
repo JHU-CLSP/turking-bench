@@ -215,7 +215,7 @@ class Evaluation:
         ind = int(self.tasks[len("tap"):]) - 1
 
         if ind == 0:
-            for i in range(19):
+            for i in range(18):
                 print(f"partition: {i} | {split_tasks[i]}")
 
         print("this partition's tap tasks", split_tasks[ind])
