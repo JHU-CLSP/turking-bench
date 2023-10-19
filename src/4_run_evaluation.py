@@ -825,7 +825,7 @@ class Evaluation:
                         # assuming solver is oracle
                         kwargs = {'answers': answers_map[i.name]}
                         try:
-                            self.solver.solve(i, **kwargs) 
+                            self.solver.solve(i, **kwargs) # before would store the action sequence of oracle, not needed here
                         except Exception as error:
                             error_flag = True
                             continue
@@ -949,7 +949,7 @@ class Evaluation:
                         # assuming solver is oracle
                         kwargs = {'answers': answers_map[i.name]}
                         try:
-                            self.solver.solve(i, **kwargs) # before would store the action sequence of oracle, not needed here
+                            self.solver.solve(i, **kwargs) 
                         except Exception as error:
                             error_flag = True
                             continue
