@@ -156,7 +156,10 @@ class Evaluation:
         all_tasks = list(filter(self.filter_TAP_tasks, all_tasks))
         print("all_tasks len:", len(all_tasks))
 
-        partitions = 19 # number of partitions
+        if self.tasks == 'all':
+            return all_tasks
+
+        partitions = 18 # number of partitions
         split_tasks = []
 
         # Greedy optimized way to split evenly
@@ -191,7 +194,7 @@ class Evaluation:
             split_tasks.append(curr)
 
         split_sums = []
-        for i in range(19):
+        for i in range(18):
             temp_sum = 0
             for task in split_tasks[i]:
                 df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
