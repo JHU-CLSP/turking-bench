@@ -1,4 +1,4 @@
-name: TAP tests
+name: TAP tests random
 
 on:
   workflow_dispatch:
