@@ -38,7 +38,7 @@ source .env
 export TRANSFORMERS_CACHE="/scratch4/danielk/kxu39/huggingface_cache/transformers"
 
 # Run the Python script
-python -m llava.serve.cli \
+~/miniconda3/envs/llava-1.5/bin/python -m llava.serve.cli \
     --model-path liuhaotian/llava-v1.5-7b \
     --image-file "https://llava-vl.github.io/static/images/view.jpg" \
     --load-4bit
