@@ -36,6 +36,7 @@ which python
 source .env
 
 export TRANSFORMERS_CACHE="/scratch4/danielk/kxu39/huggingface_cache/transformers"
+export BNB_CUDA_VERSION=118
 
 # Run the Python script
 ~/miniconda3/envs/llava-1.5/bin/python -m llava.serve.cli \
