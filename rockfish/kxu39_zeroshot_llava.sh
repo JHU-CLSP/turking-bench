@@ -39,7 +39,7 @@ export TRANSFORMERS_CACHE="/scratch4/danielk/kxu39/huggingface_cache/transformer
 export BNB_CUDA_VERSION=118
 
 # Run the Python script
-echo "What are things I should be cautious about visiting this place?" | ~/miniconda3/envs/llava-1.5/bin/python -m llava.serve.cli \
+echo "Can you please describe what this place looks like and if you would recommend me going to vacation here?\nWhat are things I should be cautious about visiting this place?" | ~/miniconda3/envs/llava-1.5/bin/python -m llava.serve.cli \
     --model-path liuhaotian/llava-v1.5-7b \
     --image-file "https://llava-vl.github.io/static/images/view.jpg" \
     --load-4bit
