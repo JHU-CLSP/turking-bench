@@ -89,7 +89,7 @@ class Evaluation:
             # input.type submit hasn't been coded for thus self.extract_values is erroring
             return False
 
-        show_questions_tasks = ["Rationale Generation 5", "Gun violence structured extraction", "ESNLI Rationale Generation 4", "JJ-NN HIT", 
+        show_questions_tasks = ["Rationale Generation 5", "Gun violence structured extraction", "ESNLI Rationale Generation 4", "JJ-NN HIT",
                                 "neural-pop (PLAN evaluation) t5-human-test b", "VQA Rationale Generation 5", "Lattice"]
         # skip these task since it requires an extra click to show the available questions or next ones
         if task_name in show_questions_tasks:
@@ -103,16 +103,16 @@ class Evaluation:
         # Skip since there is a 15 second delay before showing the available questions
         if task_name == "Summarization (RLUE) 1":
             return False
-        
+
         # Skip since funky HTML input, multiple radios of same name, and should have more answers
         if task_name == "Explanation Acceptability (CommonsenseQA)":
             return False
-        
+
         weird_input_formats = ["BiSECT Human Evaluation II (2)", "Spanish Word Alignment"]
         # Skip since these tasks have a weird input format the model cannot interact with
         if task_name in weird_input_formats:
             return False
-        
+
         # Wrong col name and has 1 set of questions when should be 4
         if task_name == "Human evaluation - quals":
             return False

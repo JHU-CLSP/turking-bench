@@ -134,7 +134,10 @@ class MyActions:
         ActionUtils.clear_text(action)
         action.send_keys(input_value)
         action.perform()
-        self.execute_js_command('arguments[0].innerHTML = arguments[1]', input_element, input_value)
+        if input_element.tag_name == 'textarea':
+            self.execute_js_command('arguments[0].innerHTML = arguments[1]', input_element, input_value)
+        elif input_element.tag_name == 'input':
+            self.execute_js_command('arguments[0].setAttribute("value", arguments[1])', input_element, input_value)
 
         return Result(success=True, outcome=input_element, action=f"self.modify_text({input}, {input_value})")
 
