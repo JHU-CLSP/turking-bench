@@ -40,8 +40,10 @@ class GPTTokenizer:
         tokens = [t.lstrip("Ġ") for t in tokens]
         return tokens
 
+
 class Evaluation:
-    def __init__(self, solver_type: str, tasks: str, do_eval: bool, dump_features: bool, report_field_stats: bool, headless: bool = False):
+    def __init__(self, solver_type: str, tasks: str, do_eval: bool, dump_features: bool, report_field_stats: bool,
+                 headless: bool = False):
         self.default_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
         self.xlingual_tokenizer = GPTTokenizer()
         self.xlingual_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], tokenizer=self.xlingual_tokenizer)
@@ -89,7 +91,8 @@ class Evaluation:
             # input.type submit hasn't been coded for thus self.extract_values is erroring
             return False
 
-        show_questions_tasks = ["Rationale Generation 5", "Gun violence structured extraction", "ESNLI Rationale Generation 4", "JJ-NN HIT",
+        show_questions_tasks = ["Rationale Generation 5", "Gun violence structured extraction",
+                                "ESNLI Rationale Generation 4", "JJ-NN HIT",
                                 "neural-pop (PLAN evaluation) t5-human-test b", "VQA Rationale Generation 5", "Lattice"]
         # skip these task since it requires an extra click to show the available questions or next ones
         if task_name in show_questions_tasks:
@@ -156,18 +159,19 @@ class Evaluation:
         all_tasks = list(filter(self.filter_TAP_tasks, all_tasks))
         print("all_tasks len:", len(all_tasks))
 
-        partitions = 19 # number of partitions
+        partitions = 19  # number of partitions
         split_tasks = []
 
         # Greedy optimized way to split evenly
-        s = set() # was originally a set, but python sets aren't as robust as C++ std
+        s = set()  # was originally a set, but python sets aren't as robust as C++ std
         sum = 0
         for task in all_tasks:
             df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
             input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
-            val = min(1000, len(self.task_ids[task])) * (8 + len(input_names)) # num_tasks * num_inputs_per_task + 8 * num_tasks
+            val = min(1000, len(self.task_ids[task])) * (
+                    8 + len(input_names))  # num_tasks * num_inputs_per_task + 8 * num_tasks
             sum += val
-            s.add((val, task)) # (val, task name)
+            s.add((val, task))  # (val, task name)
 
         s = sorted(s)
 
@@ -330,7 +334,16 @@ class Evaluation:
                     f"return Array.from(document.getElementsByName(`{input.name}`)).map((element) => element.value);"
                 )
 
-                # commenting out this asssrtion since there could be more than one text input with the same name.
+                if input.type in ['textarea']:
+                    visible_values = self.driver.execute_script(
+                        f"return Array.from(document.getElementsByName(`{input.name}`)).map((element) => element.innerHTML;"
+                    )
+                else:
+                    visible_values = self.driver.execute_script(
+                        f"return Array.from(document.getElementsByName(`{input.name}`)).map((element) => element.getAttribute('value');"
+                    )
+
+                # commenting out this assertion since there could be more than one text input with the same name.
                 # an example of this can be seen in "Dialogue safety (socialchemistry) 5" task.
                 # assert len(values) == 1, f"The number of values should be 1 but it is `{len(values)}` for {input}"
 
@@ -338,14 +351,23 @@ class Evaluation:
                 values = self.driver.execute_script(
                     f"return Array.from(document.getElementsByName(`{input.name}`)).filter(element => element.checked).map(element => element.value);"
                 )
+                visible_values = self.driver.execute_script(
+                    f"return Array.from(document.getElementsByName(`{input.name}`)).filter(element => element.checked).map(element => element.getAttribute('value'));"
+                )
                 assert len(values) <= 1, f"The number of values should be 1 or 0 but it is `{len(values)}` for {input}"
+                assert len(
+                    visible_values) <= 1, f"The number of visible values should be 1 or 0 but it is `{len(visible_values)}` for {input}"
             elif input.type in ['checkbox']:
                 command = f"""return Array.from(document.getElementsByName(`{input.name}`)).filter(element => element.checked).map(element => element.value);"""
                 values = self.driver.execute_script(command)
+
+                command = f"""return Array.from(document.getElementsByName(`{input.name}`)).filter(element => element.checked).map(element => element.getAttribute('value'));"""
+                visible_values = self.driver.execute_script(command)
             else:
-                raise Exception(f"{Fore.RED}to be implemented for type `{input.type}`")
+                raise Exception(f"{Fore.RED}To be implemented for type `{input.type}`")
 
             input.values = values
+            input.visible_values = visible_values
 
         return inputs
 
@@ -680,6 +702,10 @@ class Evaluation:
                 for i in inputs_with_values:
                     if i.name in self.excluded_input_names:
                         continue
+
+                    if i.values != i.visible_values:
+                        raise Exception(f"The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`")
+
                     # if checkmarks, sort the values alphabetically
                     if i.type == "checkbox":
                         i.values = "|".join(sorted(i.values))
@@ -776,12 +802,13 @@ class Evaluation:
         ret = []
         self.driver.get(TURKLE_URL)
 
-        task_results = {} # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores, failing_tasks} }
+        task_results = {}  # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores, failing_tasks} }
 
         for task_name in tqdm(tasks):
             print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
             instance_ids = self.task_ids[task_name]
-            first_instance_id = min(instance_ids) # TODO: Check if this is also just the first one, might be with how the JSON is formatted
+            first_instance_id = min(
+                instance_ids)  # TODO: Check if this is also just the first one, might be with how the JSON is formatted
 
             instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
 
@@ -825,7 +852,8 @@ class Evaluation:
                         # assuming solver is oracle
                         kwargs = {'answers': answers_map[i.name]}
                         try:
-                            self.solver.solve(i, **kwargs) # before would store the action sequence of oracle, not needed here
+                            self.solver.solve(i,
+                                              **kwargs)  # before would store the action sequence of oracle, not needed here
                         except Exception as error:
                             error_flag = True
                             continue
@@ -845,10 +873,13 @@ class Evaluation:
                         continue
 
                     # go calculate the score of this instance
-                    score = 0.0 # instance score
+                    score = 0.0  # instance score
                     for i in model_outputs:
                         if i.name in self.excluded_input_names:
                             continue
+                        if i.values != i.visible_values:
+                            error_flag = True
+                            print(f"{Fore.RED}The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`")
 
                         # checkboxes are weird, purely copied over
                         if i.type == "checkbox":
@@ -865,8 +896,13 @@ class Evaluation:
 
                         score += score_per_field
 
+                    if error_flag:
+                        num_errors += 1
+                        failing_tasks.append(row_num)
+                        continue
+
                     # TODO could do more fancy things with statistics if wanted
-                    score /= len(model_outputs) # average score for this instance
+                    score /= len(model_outputs)  # average score for this instance
 
                     if score > 0.99:
                         num_successes += 1
@@ -874,12 +910,13 @@ class Evaluation:
                         failing_tasks.append(row_num)
                         sum_failing_scores += score
 
-            failing_tasks = failing_tasks[:10] # only keep the first 10 failing tasks
-            task_results[task_name] = {"num_successes": num_successes, "num_errors": num_errors, "num_failing": len(instance_ids) - num_successes - num_errors, "sum_failing_scores": sum_failing_scores, "failing_tasks": failing_tasks}
+            failing_tasks = failing_tasks[:10]  # only keep the first 10 failing tasks
+            task_results[task_name] = {"num_successes": num_successes, "num_errors": num_errors,
+                                       "num_failing": len(instance_ids) - num_successes - num_errors,
+                                       "sum_failing_scores": sum_failing_scores, "failing_tasks": failing_tasks}
             print("task result", task_name, task_results[task_name])
 
         return task_results
-
 
 
 if __name__ == "__main__":
@@ -889,7 +926,8 @@ if __name__ == "__main__":
     parser.add_argument("--tasks", help="train, test, or subjective_test", default="test")
     parser.add_argument("--max_instance_count", help="maximum number of instances per task", default=1)
     parser.add_argument("--do_eval", help="whether to compute the quality against the gold data", default=True)
-    parser.add_argument("--headless", help="whether to run the browser `headless` (no visual interface).", default=False)
+    parser.add_argument("--headless", help="whether to run the browser `headless` (no visual interface).",
+                        default=False)
     parser.add_argument("--dump_features", help="whether to dump the features", default=False)
     parser.add_argument("--report_field_stats", help="whether to collect statistics for the HTML fields", default=True)
 
