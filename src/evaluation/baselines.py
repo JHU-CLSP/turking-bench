@@ -42,12 +42,17 @@ class Baseline:
         action_list = [(method, getattr(MyActions, method).__doc__) for method in action_list]
         return action_list
 
-    def get_encoded_action_list(self):
+    def get_encoded_input_prompt(self, input: Input):
         actions = self.get_action_list()
         # encode the actions as a string
         actions = '\n\n'.join([f"{action[0]}: {action[1]}" for action in actions])
-        return f"""Given a web-based task, we'd like to solve it by executing actions. Below is a list of actions that 
-        can be performed on a HTML page. \n\n{actions}"""
+        return f"""
+        Given a web-based task, we'd like to solve it by executing actions. Below is a list of actions that 
+        can be performed on a HTML page. \n\n{actions} \n\n 
+        
+        Now, given the following input `{input}`, decide what set of actions need to be executed.         
+        """
+
 
 
 class NewBaseline(Baseline):
@@ -97,11 +102,11 @@ class OracleBaseline(Baseline):
 
                 # wait 0.1 sec for the page to fully load
                 sleep(0.1)
-                r2 = self.actions.maximize_window()
-                r3 = self.actions.scroll_to_element(input)
-                input_element = r3.outcome
+                self.actions.maximize_window()
+                response = self.actions.scroll_to_element(input)
+                input_element = response.outcome
 
-                action_sequence = [r1, r2, r3]
+                action_sequence = []
 
                 if input.type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
                     action_sequence.append(self.actions.modify_text(input, answer))
