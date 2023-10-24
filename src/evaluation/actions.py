@@ -120,6 +120,9 @@ class MyActions:
         :param input_name: name of the input field
         :param input_value: value to be entered into the input field
         :return: None
+
+        For example, if the input name is `name` and the input value is `John`, then we would need to run the following to enter `John` inside this input:
+        > self.modify_text("name", "John")
         """
         if not input_value or input_value == 'nan' or (type(input_value) == float and np.isnan(input_value)):
             print(f"{Fore.RED}Since the input value is `{input_value}`, we are not going to modify the text.")
@@ -198,7 +201,7 @@ class MyActions:
             if np.isnan(input_value):
                 print(f"{Fore.RED} ** Warning **: input value is {input_value}. "
                       f"So, we're not going to modify the radio button.")
-                return Result(success=False, outcome=None, action=f"self.modify_radio({input}, {input_value})")
+                return Result(success=False, outcome=None, action=f"self.modify_radio('{input.name}, {input_value})")
             else:
                 input_value = int(input_value)
 
@@ -209,7 +212,7 @@ class MyActions:
         if input_value in ['nan', 'None']:
             print(f"{Fore.RED} ** Warning **: input value is {input_value}. "
                   f"So, we're not going to modify the radio button.")
-            return Result(success=False, outcome=None, action=f"self.modify_radio({input}, {input_value})")
+            return Result(success=False, outcome=None, action=f"self.modify_radio('{input.name}', {input_value})")
 
         self.scroll_to_element(input)
         value = f"@value='{input_value}'"
@@ -229,7 +232,7 @@ class MyActions:
         action.perform()
         self.execute_js_command('arguments[0].setAttribute("checked", "");', element)
 
-        return Result(success=True, outcome=None, action=f"self.modify_radio({input.name}, {input_value})")
+        return Result(success=True, outcome=None, action=f"self.modify_radio('{input.name}', {input_value})")
 
     def modify_select(self, input: Input, input_value) -> Result:
         """
@@ -256,7 +259,7 @@ class MyActions:
         select.select_by_value(input_value)
         self.execute_js_command('arguments[0].setAttribute("selected", "");', select.first_selected_option)
 
-        return Result(success=True, outcome=None, action=f"self.modify_select({input}, {input_value})")
+        return Result(success=True, outcome=None, action=f"self.modify_select('{input.name}', {input_value})")
 
     def modify_range(self, input: Input, input_value) -> Result:
         """
@@ -273,7 +276,7 @@ class MyActions:
         if input_value in ['nan', 'None']:
             print(f"{Fore.RED} ** Warning **: input value is {input_value}. "
                   f"So, we're not going to modify the range.")
-            return Result(success=False, outcome=None, action=f"self.modify_range({input}, {input_value})")
+            return Result(success=False, outcome=None, action=f"self.modify_range('{input.name}', {input_value})")
 
         self.scroll_to_element(input)
         # value = f"@value='{input_value}'"
@@ -292,7 +295,7 @@ class MyActions:
         # set the value to the input value
         self.driver.execute_script(f"arguments[0].value = {input_value};", element)
 
-        return Result(success=True, outcome=None, action=f"self.modify_range({input}, {input_value})")
+        return Result(success=True, outcome=None, action=f"self.modify_range('{input.name}', {input_value})")
 
     def take_screenshot(self) -> Result:
         """
@@ -338,7 +341,7 @@ class MyActions:
         right = location['x'] + size['width']
         bottom = location['y'] + size['height']
         cropped_image = image.crop((left, top, right, bottom))
-        return Result(success=True, outcome=cropped_image, action=f"self.take_element_screenshot({input})")
+        return Result(success=True, outcome=cropped_image, action=f"self.take_element_screenshot('{input.name}')")
 
     def take_element_screenshot_with_border(self, input: Input) -> Result:
         """
@@ -366,7 +369,7 @@ class MyActions:
                         location['x'] + size['width'],
                         location['y'] + size['height']), outline='red')
 
-        return Result(success=True, outcome=image, action=f"self.take_element_screenshot_with_border({input})")
+        return Result(success=True, outcome=image, action=f"self.take_element_screenshot_with_border('{input.name}')")
 
     def take_page_screenshots(self) -> Result:
         """
