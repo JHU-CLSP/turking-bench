@@ -336,11 +336,11 @@ class Evaluation:
 
                 if input.type in ['textarea']:
                     visible_values = self.driver.execute_script(
-                        f"return Array.from(document.getElementsByName(`{input.name}`)).map((element) => element.innerHTML;"
+                        f"return Array.from(document.getElementsByName(`{input.name}`)).map((element) => element.innerHTML);"
                     )
                 else:
                     visible_values = self.driver.execute_script(
-                        f"return Array.from(document.getElementsByName(`{input.name}`)).map((element) => element.getAttribute('value');"
+                        f"return Array.from(document.getElementsByName(`{input.name}`)).map((element) => element.getAttribute('value'));"
                     )
 
                 # commenting out this assertion since there could be more than one text input with the same name.
