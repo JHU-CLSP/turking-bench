@@ -704,7 +704,10 @@ class Evaluation:
                         continue
 
                     if i.values != i.visible_values:
-                        raise Exception(f"The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`")
+                        if (i.values == [None] and i.visible_values == ['']) or (i.values == [''] and i.visible_values == [None]):
+                            pass
+                        else:
+                            raise Exception(f"The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`")
 
                     # if checkmarks, sort the values alphabetically
                     if i.type == "checkbox":
