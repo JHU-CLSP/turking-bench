@@ -338,6 +338,10 @@ class Evaluation:
                     visible_values = self.driver.execute_script(
                         f"return Array.from(document.getElementsByName(`{input.name}`)).map((element) => element.innerHTML);"
                     )
+                elif input.type == 'select':
+                    visible_values = self.driver.execute_script(
+                        f"return Array.from(document.getElementsByName(`{input.name}`)[0].children).filter((el) => el.selected == true).map((el) => el.value);"
+                    )
                 else:
                     visible_values = self.driver.execute_script(
                         f"return Array.from(document.getElementsByName(`{input.name}`)).map((element) => element.getAttribute('value'));"
@@ -358,10 +362,10 @@ class Evaluation:
                 assert len(
                     visible_values) <= 1, f"The number of visible values should be 1 or 0 but it is `{len(visible_values)}` for {input}"
             elif input.type in ['checkbox']:
-                command = f"""return Array.from(document.getElementsByName(`{input.name}`)).filter(element => element.checked).map(element => element.value);"""
+                command = f"""return Array.from(document.querySelectorAll(`input[name='{input.name}']:checked`)).map(element => element.value);"""
                 values = self.driver.execute_script(command)
 
-                command = f"""return Array.from(document.getElementsByName(`{input.name}`)).filter(element => element.checked).map(element => element.getAttribute('value'));"""
+                command = f"""return Array.from(document.getElementsByName(`{input.name}`)).filter(element => element.checked).map(element => element.value);"""
                 visible_values = self.driver.execute_script(command)
             else:
                 raise Exception(f"{Fore.RED}To be implemented for type `{input.type}`")
@@ -551,6 +555,29 @@ class Evaluation:
         config = configparser.ConfigParser()
         config.read(file)
         return config
+
+    def get_relevant_html(self, input: Input):
+        """
+        This function returns an array of the the relevant HTML lines for a given input field.
+        If you want it to be a string of HTML, just to_string this list concatenating one after another
+        """
+
+        print("input", input)
+        target_element = self.driver.execute_script(f"return document.getElementsByName('{input.name}')[0].outerHTML")
+        unfiltered_HTML = self.driver.execute_script(f"return document.getElementsByName('{input.name}')[0].parentElement.parentElement.outerHTML")
+        HTML_arr = unfiltered_HTML.split(">")
+        mid_idx = -1
+        for idx, i in enumerate(HTML_arr):
+            HTML_arr[idx] = i + ">"
+            if HTML_arr[idx] == target_element:
+                mid_idx = idx
+
+        relevant_html = []
+        for i in range(max(0, mid_idx - 10), min(len(HTML_arr), mid_idx + 10)):
+            relevant_html.append(HTML_arr[i])
+
+        return relevant_html
+
 
     def enumerate_tasks(self, max_instance_count: int):
         """
