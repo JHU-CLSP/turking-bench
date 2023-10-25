@@ -533,6 +533,28 @@ class Evaluation:
         config.read(file)
         return config
 
+    def get_relevant_html(self, input: Input):
+        """
+        This function returns an array of the the relevant HTML lines for a given input field.
+        If you want it to be a string of HTML, just to_string this list concatenating one after another
+        """
+
+        print("input", input)
+        target_element = self.driver.execute_script(f"return document.getElementsByName('{input.name}')[0].outerHTML")
+        unfiltered_HTML = self.driver.execute_script(f"return document.getElementsByName('{input.name}')[0].parentElement.parentElement.outerHTML")
+        HTML_arr = unfiltered_HTML.split(">")
+        mid_idx = -1
+        for idx, i in enumerate(HTML_arr):
+            HTML_arr[idx] = i + ">"
+            if HTML_arr[idx] == target_element:
+                mid_idx = idx
+
+        relevant_html = []
+        for i in range(max(0, mid_idx - 10), min(len(HTML_arr), mid_idx + 10)):
+            relevant_html.append(HTML_arr[i])
+
+        return relevant_html
+
     def enumerate_tasks(self, max_instance_count: int):
         """
         Enumerate the tasks and their instances
