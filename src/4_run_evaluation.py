@@ -158,8 +158,10 @@ class Evaluation:
         all_tasks = os.listdir("../tasks")
         all_tasks = list(filter(self.filter_TAP_tasks, all_tasks))
         print("all_tasks len:", len(all_tasks))
+        if self.tasks == 'all':
+            return all_tasks
 
-        partitions = 19  # number of partitions
+        partitions = 18 # number of partitions
         split_tasks = []
 
         # Greedy optimized way to split evenly
@@ -195,7 +197,7 @@ class Evaluation:
             split_tasks.append(curr)
 
         split_sums = []
-        for i in range(19):
+        for i in range(18):
             temp_sum = 0
             for task in split_tasks[i]:
                 df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
@@ -216,7 +218,7 @@ class Evaluation:
         ind = int(self.tasks[len("tap"):]) - 1
 
         if ind == 0:
-            for i in range(19):
+            for i in range(18):
                 print(f"partition: {i} | {split_tasks[i]}")
 
         print("this partition's tap tasks", split_tasks[ind])
@@ -951,6 +953,99 @@ class Evaluation:
 
         return task_results
 
+    
+    def enumerate_tap_tasks_random(self, max_instance_count: int):
+        """
+        Enumerate all the tasks comprehensively, so going upto max_instance_count which should be high
+        It will keep going despite failures and errors (and not skip any available tasks)
+
+        :param max_instance_count
+
+        returns:
+        a list of tasks tuple (task name, % completed, avg score)
+        - % completed will be what percentage of the instances completed with a score of 1
+        - avg score is a running mean of their score
+        """
+
+        input_format = "both"
+
+        tasks = self.load_tap_task_names()
+        ret = []
+        self.driver.get(TURKLE_URL)
+
+        task_results = {} # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores, failing_tasks} }
+
+        for task_name in tqdm(tasks):
+            print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
+            instance_ids = self.task_ids[task_name]
+            first_instance_id = min(instance_ids) # TODO: Check if this is also just the first one, might be with how the JSON is formatted
+
+            instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
+
+            num_successes = 0
+            num_errors = 0
+            sum_failing_scores = 0.0
+            failing_tasks = []
+            from utils.hidden_prints import HiddenPrintsHiddenErrors
+
+            with HiddenPrintsHiddenErrors():
+                for instance_id in instance_ids:
+                    row_num = instance_id - first_instance_id
+
+                    url = f'{TURKLE_URL}/task/{instance_id}/iframe/'
+                    self.driver.get(url)
+
+                    # get the name of the fields
+                    df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
+                    input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
+                    inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
+
+                    answers_map = self.retrieve_gold_labels(
+                        task_name, row_num, [x.name for x in inputs]
+                    )
+
+                    # Same TODO as above, file (images videos audio, css etc. are html accessible and find all URLs)
+
+                    # TODO copy over dump_features
+                    # TODO copy over report_field_stats so task_field_statistics
+
+                    error_flag = False
+                    # for each input, now go ahead and answer it with oracle
+                    for input_idx, i in enumerate(inputs):
+                        element = self.driver.find_element(By.NAME, i.name)
+
+                        if not element.is_displayed() or element.size['width'] <= 0 or element.size['height'] <= 0:
+                            continue
+
+                        # TODO dump_featuers
+
+                        # assuming solver is oracle
+                        kwargs = {'answers': answers_map[i.name]}
+                        try:
+                            self.solver.solve(i, **kwargs) 
+                        except Exception as error:
+                            error_flag = True
+                            continue
+
+                        # TODO dump output features and collect field statistics
+
+                    # get the resulting answers after our model outputs
+                    model_outputs = self.extract_values(inputs)
+
+                    # Hack in case model_outputs is zero, treat this as an error so don't divide by zero later
+                    if len(model_outputs) == 0:
+                        error_flag = True
+
+                    if error_flag:
+                        num_errors += 1
+                        failing_tasks.append(row_num)
+                        continue
+
+            failing_tasks = failing_tasks[:10] # only keep the first 10 failing tasks
+            task_results[task_name] = {"num_successes": num_successes, "num_errors": num_errors, "num_failing": len(instance_ids) - num_successes - num_errors, "sum_failing_scores": sum_failing_scores, "failing_tasks": failing_tasks}
+            print("task result", task_name, task_results[task_name])
+
+        return task_results
 
 if __name__ == "__main__":
     # user argparser to recive he input parameter
