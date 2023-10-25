@@ -580,7 +580,6 @@ class Evaluation:
 
         return relevant_html
 
-
     def enumerate_tasks(self, max_instance_count: int):
         """
         Enumerate the tasks and their instances
