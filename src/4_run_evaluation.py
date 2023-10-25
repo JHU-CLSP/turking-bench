@@ -706,8 +706,9 @@ class Evaluation:
                     if i.values != i.visible_values:
                         if (i.values == [None] and i.visible_values == ['']) or (i.values == [''] and i.visible_values == [None]):
                             pass
-                        elif float(i.values[0]) == float(i.visible_values[0]):
-                            pass
+                        elif type(i.values[0]) == str and type(i.visible_values[0]) == str:
+                            if i.values[0] == i.visible_values[0]:
+                                pass
                         else:
                             raise Exception(f"The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`")
 
