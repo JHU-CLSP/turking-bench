@@ -139,6 +139,8 @@ class Run(run_eval.Evaluation):
                 else:
                     self.solver.solve(i)
 
+                self.get_relevant_html(i)
+
                 # *after* we execute the action, we dump the *output* features
                 if self.dump_features:
                     data_to_be_dumped.append({
