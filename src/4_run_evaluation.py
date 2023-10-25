@@ -550,7 +550,9 @@ class Evaluation:
                 mid_idx = idx
 
         relevant_html = []
-        for i in range(max(0, mid_idx - 10), min(len(HTML_arr), mid_idx + 10)):
+        upper_bound = 15;
+        lower_bound = 30;
+        for i in range(max(0, mid_idx - upper_bound), min(len(HTML_arr), mid_idx + lower_bound)):
             relevant_html.append(HTML_arr[i])
 
         return relevant_html
