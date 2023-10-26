@@ -1,10 +1,10 @@
-eval = __import__('4_run_evaluation')
+import evaluation_class
 from evaluation.actions import MyActions
 from evaluation.baselines import Baseline
 from utils.hidden_prints import HiddenPrints
 import sys
 
-evaluation = eval.Evaluation(solver_type="random", tasks="all",
+evaluation = evaluation_class.Evaluation(solver_type="random", tasks="all",
                              do_eval=True, dump_features=False, report_field_stats=False, headless=True)
 
 

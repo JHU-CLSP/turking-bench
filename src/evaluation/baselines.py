@@ -10,10 +10,7 @@ from selenium.webdriver.support.ui import Select
 from evaluation.actions import MyActions
 from evaluation.input import Input
 import logging
-
-# from 4.run_evaluation import Evaluation
-evaluation = __import__('4_run_evaluation')
-
+from typing import List
 
 class Baseline:
     """
@@ -201,3 +198,23 @@ class RandomBaseline(Baseline):
 
             print("random choices options:", options)
             return random.choice(options)
+
+class ModelBaseline(Baseline):
+    """
+    This baseline is used to execute the outputs of our ML models
+    """
+
+    def solve(self, inputs: List[Input], outputs, url, task_name, row_number, **kwargs):
+        """
+        Executes the outputs of our ML models from outputs of string code and returns the score
+        """
+        for idx, output in enumerate(outputs):
+            input = inputs[idx]
+            self.actions.wait_for_element(input)
+
+            # wait 0.1 sec for the page to fully load
+            sleep(0.1)
+            self.actions.maximize_window()
+            self.actions.scroll_to_element(input)
+
+            exec(output)
