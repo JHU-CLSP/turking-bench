@@ -355,10 +355,10 @@ class Evaluation:
 
             elif input.type in ['radio']:
                 values = self.driver.execute_script(
-                    f"return Array.from(document.getElementsByName(`{input.name}`)).filter(element => element.checked).map(element => element.value);"
+                    f"return Array.from(document.querySelectorAll(`input[name='{input.name}']:checked`)).map(element => element.value);"
                 )
                 visible_values = self.driver.execute_script(
-                    f"return Array.from(document.getElementsByName(`{input.name}`)).filter(element => element.checked).map(element => element.getAttribute('value'));"
+                    f"return Array.from(document.getElementsByName(`{input.name}`)).filter(element => element.checked).map(element => element.value);"
                 )
                 assert len(values) <= 1, f"The number of values should be 1 or 0 but it is `{len(values)}` for {input}"
                 assert len(
@@ -953,7 +953,7 @@ class Evaluation:
 
         return task_results
 
-    
+
     def enumerate_tap_tasks_random(self, max_instance_count: int):
         """
         Enumerate all the tasks comprehensively, so going upto max_instance_count which should be high
@@ -1022,7 +1022,7 @@ class Evaluation:
                         # assuming solver is oracle
                         kwargs = {'answers': answers_map[i.name]}
                         try:
-                            self.solver.solve(i, **kwargs) 
+                            self.solver.solve(i, **kwargs)
                         except Exception as error:
                             error_flag = True
                             continue
