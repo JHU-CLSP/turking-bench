@@ -11,7 +11,7 @@ evaluation = evaluation_class.Evaluation(solver_type="oracle", tasks="all",
 def test_evaluation():
     if evaluation.tasks == "all":
         evaluation.solver_type = "random"
-        results = evaluation.enumerate_tap_tasks(max_instance_count=2) # dictionary of results
+        results = evaluation.enumerate_tap_tasks_random(max_instance_count=2) # dictionary of results
     else:
         # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores} }
         results = evaluation.enumerate_tap_tasks(max_instance_count=1000) # dictionary of results
