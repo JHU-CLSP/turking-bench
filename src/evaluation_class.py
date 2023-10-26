@@ -53,6 +53,8 @@ class Evaluation:
             self.solver = baselines.RandomBaseline(driver=self.driver, actions=self.actions)
         elif solver_type == "oracle":
             self.solver = baselines.OracleBaseline(driver=self.driver, actions=self.actions)
+        elif solver_type == "model":
+            self.solver = baselines.ModelBaseline(driver=self.driver, actions=self.actions)
         else:
             raise Exception(f"{Fore.RED}Solver `{solver_type}` not implemented")
         self.tasks = tasks
@@ -1018,6 +1020,9 @@ class Evaluation:
         return task_results
 
     def score_model(self, task_name: str, row_num: int, model_outputs: List[str]):
+        """
+        Function that scores how the model is doing based on the model outputs
+        """
         instance_ids = self.task_ids[task_name]
         first_instance_id = min(instance_ids) # TODO: Check if this is also just the first one, might be with how the JSON is formatted
         instance_id = first_instance_id + row_num

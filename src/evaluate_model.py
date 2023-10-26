@@ -12,4 +12,8 @@ if __name__ == "__main__":
     parser.add_argument("--report_field_stats", help="whether to collect statistics for the HTML fields", default=True)
 
     args = parser.parse_args()
-    args.solver_type = "oracle"
+    args.solver_type = "model"
+
+    # call a helper function to go ahead and run evaluation_class evaluate model with appropriate inputs
+    # def score_model(self, task_name: str, row_num: int, model_outputs: List[str]):
+    # remember to test invalid model outputs that dont compile

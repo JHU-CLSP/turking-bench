@@ -1,9 +1,9 @@
-eval = __import__('4_run_evaluation')
+import evaluation_class
 from evaluation.actions import MyActions
 from evaluation.baselines import Baseline
 from utils.hidden_prints import HiddenPrints
 
-evaluation = eval.Evaluation(solver_type="oracle", tasks="all",
+evaluation = evaluation_class.Evaluation(solver_type="oracle", tasks="all",
                              do_eval=True, dump_features=True, report_field_stats=True, headless=True)
 
 
