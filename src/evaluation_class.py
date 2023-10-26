@@ -606,7 +606,6 @@ class Evaluation:
 
         tasks = self.load_task_names()
         results = {}
-        self.driver.get(TURKLE_URL)
         aggregate_field_statistics = {}  # We store the stats related to the field types/frequency here
         task_field_statistics = {}
         for task_name in tqdm(tasks):
@@ -841,7 +840,6 @@ class Evaluation:
 
         tasks = self.load_tap_task_names()
         ret = []
-        self.driver.get(TURKLE_URL)
 
         task_results = {} # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores, failing_tasks} }
 
@@ -943,7 +941,6 @@ class Evaluation:
 
         tasks = self.load_tap_task_names()
         ret = []
-        self.driver.get(TURKLE_URL)
 
         task_results = {} # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores, failing_tasks} }
 
@@ -1037,7 +1034,7 @@ class Evaluation:
         input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
         inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
 
-        self.solver.solve(inputs, model_outputs, url, task_name, row_num)
+        self.solver.solve(inputs, model_outputs)
 
         score = self.score_outputs(inputs, task_name, row_num)
         print("Model Score:", score)

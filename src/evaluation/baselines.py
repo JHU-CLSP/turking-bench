@@ -204,11 +204,13 @@ class ModelBaseline(Baseline):
     This baseline is used to execute the outputs of our ML models
     """
 
-    def solve(self, inputs: List[Input], outputs, url, task_name, row_number, **kwargs):
+    def solve(self, inputs: List[Input], outputs, **kwargs) -> bool:
         """
         Executes the outputs of our ML models from outputs of string code and returns the score
         """
-        for idx, output in enumerate(outputs):
+
+        error_flag = False
+        for idx, output in enumerate(inputs):
             input = inputs[idx]
             self.actions.wait_for_element(input)
 
@@ -217,4 +219,9 @@ class ModelBaseline(Baseline):
             self.actions.maximize_window()
             self.actions.scroll_to_element(input)
 
-            exec(output)
+            try:
+                exec(output[idx])
+            except Exception as error:
+                error_flag = True
+
+        return error_flag
