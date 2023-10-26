@@ -1034,9 +1034,12 @@ class Evaluation:
         input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
         inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
 
-        self.solver.solve(inputs, model_outputs)
+        err_flag = self.solver.solve(inputs, model_outputs)
 
+        # if a runtime occurred while executing the model outputs, returning a score of -1
+        if err_flag:
+            return -1
+        
         score = self.score_outputs(inputs, task_name, row_num)
-        print("Model Score:", score)
 
         return score

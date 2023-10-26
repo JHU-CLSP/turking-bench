@@ -3,7 +3,7 @@ import argparse
 from typing import List
 
 def call_score_model(eval: evaluation_class.Evaluation, task_name: str, row_num: int, model_outputs: List[str]):
-    eval.score_model(task_name, row_num, model_outputs)
+    return eval.score_model(task_name, row_num, model_outputs)
 
 if __name__ == "__main__":
     # user argparser to recive he input parameter
@@ -29,6 +29,7 @@ if __name__ == "__main__":
     # TODO: remember to test invalid model outputs that dont compile
     task_name = "ATOMIC Validate gl"
     row_num = 0
-    model_outputs = ['self.modify_radio("q1_valid", 1)', 'self.modify_radio("q2_valid", 1)', 'self.modify_radio("q3_valid", 1)',
+    model_outputs = ['pritn(13")', 'self.modify_radio("q1_valid", 1)', 'self.modify_radio("q2_valid", 1)', 'self.modify_radio("q3_valid", 1)',
                      'self.modify_radio("q4_valid", 1)', 'self.modify_radio("q5_valid", 1)']
-    call_score_model(eval, task_name, row_num, model_outputs)
+    score = call_score_model(eval, task_name, row_num, model_outputs)
+    print(f"Model Score: {score}")
