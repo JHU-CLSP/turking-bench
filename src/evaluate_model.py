@@ -26,10 +26,9 @@ if __name__ == "__main__":
         headless=args.headless
     )
 
-    # TODO: remember to test invalid model outputs that dont compile
     task_name = "ATOMIC Validate gl"
     row_num = 0
-    model_outputs = ['pritn(13")', 'self.modify_radio("q1_valid", 1)', 'self.modify_radio("q2_valid", 1)', 'self.modify_radio("q3_valid", 1)',
+    model_outputs = ['self.modify_radio("q1_valid", 1)', 'self.modify_radio("q2_valid", 1)', 'self.modify_radio("q3_valid", 1)',
                      'self.modify_radio("q4_valid", 1)', 'self.modify_radio("q5_valid", 1)']
     score = call_score_model(eval, task_name, row_num, model_outputs)
     print(f"Model Score: {score}")
