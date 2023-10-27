@@ -13,7 +13,7 @@ def test_actions():
     print(action_list)
     assert len(action_list) > 0, f"The action list should not be empty: {action_list}"
 
-    encoded_actions_prompt = baseline.get_encoded_action_list()
+    encoded_actions_prompt = baseline.get_encoded_input_prompt("")
     print(encoded_actions_prompt)
     assert len(encoded_actions_prompt) > 0, f"The encoded actions prompt should not be empty: {encoded_actions_prompt}"
 

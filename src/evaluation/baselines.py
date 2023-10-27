@@ -47,10 +47,10 @@ class Baseline:
         # encode the actions as a string
         actions = '\n\n'.join([f"{action[0]}: {action[1]}" for action in actions])
         return f"""
-        Given a web-based task, we'd like to solve it by executing actions. Below is a list of actions that 
-        can be performed on a HTML page. \n\n{actions} \n\n 
-        
-        Now, given the following input `{input}`, decide what set of actions need to be executed.         
+        Given a web-based task, we'd like to solve it by executing actions. Below is a list of actions that
+        can be performed on a HTML page. \n\n{actions} \n\n
+
+        Now, given the following input `{input}`, decide what set of actions need to be executed.
         """
 
 
@@ -59,7 +59,7 @@ class NewBaseline(Baseline):
 
     def solve_task(self, input: Input, **kwargs):
         # list of ations that can be performed on a HTML page
-        encoded_actions_prompt = self.get_encoded_action_list()
+        encoded_actions_prompt = self.get_encoded_input_prompt()
         print("encoded actions: ", encoded_actions_prompt)
 
         # Add your code here to process the HTML data and generate a summary
