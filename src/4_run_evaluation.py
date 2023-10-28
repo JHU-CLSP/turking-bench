@@ -887,7 +887,7 @@ class Evaluation:
                         kwargs = {'answers': answers_map[i.name]}
                         try:
                             self.solver.solve(i,
-                                              **kwargs)  # before would store the action sequence of oracle, not needed here
+                                                **kwargs)  # before would store the action sequence of oracle, not needed here
                         except Exception as error:
                             error_flag = True
                             continue
@@ -912,8 +912,14 @@ class Evaluation:
                         if i.name in self.excluded_input_names:
                             continue
                         if i.values != i.visible_values:
-                            error_flag = True
-                            print(f"{Fore.RED}The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`")
+                            if (i.values == [None] and i.visible_values == ['']) or (i.values == [''] and i.visible_values == [None]):
+                                pass
+                            elif type(i.values[0]) == str and type(i.visible_values[0]) == str:
+                                if i.values[0] == i.visible_values[0]:
+                                    pass
+                            else:
+                                error_flag = True
+                                print(f"{Fore.RED}The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`")
 
                         # checkboxes are weird, purely copied over
                         if i.type == "checkbox":
@@ -946,8 +952,8 @@ class Evaluation:
 
             failing_tasks = failing_tasks[:10]  # only keep the first 10 failing tasks
             task_results[task_name] = {"num_successes": num_successes, "num_errors": num_errors,
-                                       "num_failing": len(instance_ids) - num_successes - num_errors,
-                                       "sum_failing_scores": sum_failing_scores, "failing_tasks": failing_tasks}
+                                        "num_failing": len(instance_ids) - num_successes - num_errors,
+                                        "sum_failing_scores": sum_failing_scores, "failing_tasks": failing_tasks}
             print("task result", task_name, task_results[task_name])
 
         return task_results
@@ -1051,7 +1057,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--solver_type", help="random or oracle", default="random")
     parser.add_argument("--tasks", help="train, test, or subjective_test", default="test")
-    parser.add_argument("--max_instance_count", help="maximum number of instances per task", default=1)
+    parser.add_argument("--max_instance_count", help="maximum number of instances per task", type=int, default=1)
     parser.add_argument("--do_eval", help="whether to compute the quality against the gold data", default=True)
     parser.add_argument("--headless", help="whether to run the browser `headless` (no visual interface).",
                         default=False)
