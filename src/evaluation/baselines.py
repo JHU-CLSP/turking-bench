@@ -59,7 +59,12 @@ class NewBaseline(Baseline):
 
     def solve_task(self, input: Input, **kwargs):
         # list of ations that can be performed on a HTML page
-        encoded_actions_prompt = self.get_encoded_input_prompt()
+        dummy_input = Input(
+            url="https://www.google.com",
+            input_name="dummy",
+            input_type="textarea",
+            task_name="dummy")
+        encoded_actions_prompt = self.get_encoded_input_prompt(dummy_input)
         print("encoded actions: ", encoded_actions_prompt)
 
         # Add your code here to process the HTML data and generate a summary

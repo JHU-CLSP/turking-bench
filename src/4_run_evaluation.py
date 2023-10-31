@@ -328,6 +328,12 @@ class Evaluation:
         We use this function for evaluation as well as unit testing.
         """
 
+        def clean_values(values: List[str]):
+            """
+            This function cleans the values by removing empty strings and "nan" values.
+            """
+            return [value if value is not None else '' for value in values]
+
         for input in inputs:
             if input.type in ['text', 'textarea', 'select', 'password', 'email', 'number', 'tel', 'url',
                               'button', 'color', 'date', 'datetime-local', 'file', 'image', 'range', 'hidden']:
@@ -361,8 +367,7 @@ class Evaluation:
                     f"return Array.from(document.getElementsByName(`{input.name}`)).filter(element => element.checked).map(element => element.value);"
                 )
                 assert len(values) <= 1, f"The number of values should be 1 or 0 but it is `{len(values)}` for {input}"
-                assert len(
-                    visible_values) <= 1, f"The number of visible values should be 1 or 0 but it is `{len(visible_values)}` for {input}"
+                assert len(visible_values) <= 1, f"The number of visible values should be 1 or 0 but it is `{len(visible_values)}` for {input}"
             elif input.type in ['checkbox']:
                 command = f"""return Array.from(document.querySelectorAll(`input[name='{input.name}']:checked`)).map(element => element.value);"""
                 values = self.driver.execute_script(command)
@@ -372,8 +377,8 @@ class Evaluation:
             else:
                 raise Exception(f"{Fore.RED}To be implemented for type `{input.type}`")
 
-            input.values = values
-            input.visible_values = visible_values
+            input.values = clean_values(values)
+            input.visible_values = clean_values(visible_values)
 
         return inputs
 
@@ -732,13 +737,7 @@ class Evaluation:
                         continue
 
                     if i.values != i.visible_values:
-                        if (i.values == [None] and i.visible_values == ['']) or (i.values == [''] and i.visible_values == [None]):
-                            pass
-                        elif type(i.values[0]) == str and type(i.visible_values[0]) == str:
-                            if i.values[0] == i.visible_values[0]:
-                                pass
-                        else:
-                            raise Exception(f"The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`")
+                        raise Exception(f"The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`")
 
                     # if checkmarks, sort the values alphabetically
                     if i.type == "checkbox":
@@ -886,8 +885,7 @@ class Evaluation:
                         # assuming solver is oracle
                         kwargs = {'answers': answers_map[i.name]}
                         try:
-                            self.solver.solve(i,
-                                                **kwargs)  # before would store the action sequence of oracle, not needed here
+                            self.solver.solve(i, **kwargs)  # before would store the action sequence of oracle, not needed here
                         except Exception as error:
                             error_flag = True
                             continue
@@ -912,14 +910,8 @@ class Evaluation:
                         if i.name in self.excluded_input_names:
                             continue
                         if i.values != i.visible_values:
-                            if (i.values == [None] and i.visible_values == ['']) or (i.values == [''] and i.visible_values == [None]):
-                                pass
-                            elif type(i.values[0]) == str and type(i.visible_values[0]) == str:
-                                if i.values[0] == i.visible_values[0]:
-                                    pass
-                            else:
-                                error_flag = True
-                                print(f"{Fore.RED}The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`")
+                            error_flag = True
+                            print(f"{Fore.RED}The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`")
 
                         # checkboxes are weird, purely copied over
                         if i.type == "checkbox":
