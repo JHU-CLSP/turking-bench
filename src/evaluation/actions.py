@@ -293,7 +293,9 @@ class MyActions:
         print(f"{Fore.YELLOW}We are going to set the value of {element.get_attribute('outerHTML')} to {input_value}")
 
         # set the value to the input value
-        self.driver.execute_script(f"arguments[0].value = {input_value};", element)
+        self.driver.execute_script(f"""
+            arguments[0].value = {input_value};
+            arguments[0].setAttribute('value', {input_value});""", element)
 
         return Result(success=True, outcome=None, action=f"self.modify_range('{input.name}', {input_value})")
 
