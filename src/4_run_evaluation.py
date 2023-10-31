@@ -42,24 +42,45 @@ class GPTTokenizer:
 
 
 class Evaluation:
-    def __init__(self, solver_type: str, tasks: str, do_eval: bool, dump_features: bool, report_field_stats: bool,
-                 headless: bool = False):
-        self.default_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
+
+    def __init__(
+        self,
+        solver_type: str,
+        tasks: str,
+        do_eval: bool,
+        dump_features: bool,
+        report_field_stats: bool,
+        headless: bool = False,
+    ):
+        self.default_rouge_scorer = rouge_scorer.RougeScorer(
+            ['rougeL'],
+            use_stemmer=True,
+        )
         self.xlingual_tokenizer = GPTTokenizer()
-        self.xlingual_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], tokenizer=self.xlingual_tokenizer)
+        self.xlingual_rouge_scorer = rouge_scorer.RougeScorer(
+            ['rougeL'],
+            tokenizer=self.xlingual_tokenizer,
+        )
         self.driver = self.create_driver(headless=headless)
         self.actions = MyActions(self.driver)
         self.solver = None
         # ass more solvers that we implement, we can add them here:
         self.solver_type = solver_type
         if solver_type == "random":
-            self.solver = baselines.RandomBaseline(driver=self.driver, actions=self.actions)
+            self.solver = baselines.RandomBaseline(driver=self.driver,
+                                                   actions=self.actions)
         elif solver_type == "oracle":
-            self.solver = baselines.OracleBaseline(driver=self.driver, actions=self.actions)
+            self.solver = baselines.OracleBaseline(driver=self.driver,
+                                                   actions=self.actions)
         else:
             raise Exception(f"{Fore.RED}Solver `{solver_type}` not implemented")
         self.tasks = tasks
-        assert tasks in ["test", "train", "all", "subjective_test"] or tasks.startswith("tap")
+        assert tasks in [
+            "test",
+            "train",
+            "all",
+            "subjective_test",
+        ] or tasks.startswith("tap")
 
         self.do_eval = do_eval
         self.dump_features = dump_features
@@ -91,9 +112,12 @@ class Evaluation:
             # input.type submit hasn't been coded for thus self.extract_values is erroring
             return False
 
-        show_questions_tasks = ["Rationale Generation 5", "Gun violence structured extraction",
-                                "ESNLI Rationale Generation 4", "JJ-NN HIT",
-                                "neural-pop (PLAN evaluation) t5-human-test b", "VQA Rationale Generation 5", "Lattice"]
+        show_questions_tasks = [
+            "Rationale Generation 5", "Gun violence structured extraction",
+            "ESNLI Rationale Generation 4", "JJ-NN HIT",
+            "neural-pop (PLAN evaluation) t5-human-test b",
+            "VQA Rationale Generation 5", "Lattice"
+        ]
         # skip these task since it requires an extra click to show the available questions or next ones
         if task_name in show_questions_tasks:
             return False
@@ -111,7 +135,9 @@ class Evaluation:
         if task_name == "Explanation Acceptability (CommonsenseQA)":
             return False
 
-        weird_input_formats = ["BiSECT Human Evaluation II (2)", "Spanish Word Alignment"]
+        weird_input_formats = [
+            "BiSECT Human Evaluation II (2)", "Spanish Word Alignment"
+        ]
         # Skip since these tasks have a weird input format the model cannot interact with
         if task_name in weird_input_formats:
             return False
@@ -120,14 +146,18 @@ class Evaluation:
         if task_name == "Human evaluation - quals":
             return False
 
-        tasks_should_skip = ["Photo Collection GVDB", "NER - Task scruples 26,200 - 30,922"]
+        tasks_should_skip = [
+            "Photo Collection GVDB", "NER - Task scruples 26,200 - 30,922"
+        ]
         # tasks I don't think the model is capable of solving
         if task_name in tasks_should_skip:
             return False
 
         # throwing Email Formality Annotation into the mix, seems like the answers r pretty unusable. questionably empty, floating in the abyss to the right of answers. tried some data processing but then realized it was just oof data. could maybe recover in future by looking at each answer to the right of the answers and sticking them inside Answer. if we want (that could be right, maybe same num of "missing ans" but also some X need answers that are found in Xsrc and junk is filled in X, so lots of work
         # same with Simplicity HIT - rank simplicity, the answers r unusable as well (full text strings for MOST of the responses when they should be numbers between 0 - 5, and weird numbs at the end
-        weird_data_in_batch_csv = ["Simplicity HIT - rank simplicity", "Email Formality Annotation"]
+        weird_data_in_batch_csv = [
+            "Simplicity HIT - rank simplicity", "Email Formality Annotation"
+        ]
         if task_name in weird_data_in_batch_csv:
             return False
 
@@ -161,17 +191,23 @@ class Evaluation:
         if self.tasks == 'all':
             return all_tasks
 
-        partitions = 18 # number of partitions
+        partitions = 18  # number of partitions
         split_tasks = []
 
         # Greedy optimized way to split evenly
-        s = set()  # was originally a set, but python sets aren't as robust as C++ std
+        s = set(
+        )  # was originally a set, but python sets aren't as robust as C++ std
         sum = 0
         for task in all_tasks:
             df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
-            input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
+            input_names = [
+                col[len('Answer.'):]
+                for col in df.columns
+                if col.startswith('Answer.')
+            ]
             val = min(1000, len(self.task_ids[task])) * (
-                    8 + len(input_names))  # num_tasks * num_inputs_per_task + 8 * num_tasks
+                8 + len(input_names)
+            )  # num_tasks * num_inputs_per_task + 8 * num_tasks
             sum += val
             s.add((val, task))  # (val, task name)
 
@@ -201,8 +237,13 @@ class Evaluation:
             temp_sum = 0
             for task in split_tasks[i]:
                 df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
-                input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
-                val = min(1000, len(self.task_ids[task])) * (8 + len(input_names))
+                input_names = [
+                    col[len('Answer.'):]
+                    for col in df.columns
+                    if col.startswith('Answer.')
+                ]
+                val = min(1000, len(
+                    self.task_ids[task])) * (8 + len(input_names))
                 temp_sum += val
             split_sums.append(temp_sum)
 
@@ -238,7 +279,8 @@ class Evaluation:
             with open('../data/splits/evaluation_tasks.txt', 'r') as f:
                 test = f.read().splitlines()
 
-            with open('../data/splits/subjective_evaluation_tasks.txt', 'r') as f:
+            with open('../data/splits/subjective_evaluation_tasks.txt',
+                      'r') as f:
                 subjective_test = f.read().splitlines()
 
             # make sure that the splits are exclusive
@@ -255,7 +297,10 @@ class Evaluation:
             else:
                 raise Exception(f"{Fore.RED}Invalid setup: {self.tasks}")
 
-    def extract_input_values_from_url(self, url, task_name, input_names=None) -> List[Input]:
+    def extract_input_values_from_url(self,
+                                      url,
+                                      task_name,
+                                      input_names=None) -> List[Input]:
         """
         This utility function extracts the list of input fields that could be filled in.
         Then for each input field, it identifies their type (text area, checkbox, etc.)
@@ -280,12 +325,18 @@ class Evaluation:
                 except:
                     # the reason that we have try-catch here is becuase elements exists in CSV but they're not created
                     # in HTML (they're created dynamically via JS). An exmaple task is "HTER - longer sentences -27 Sep 1129"
-                    print(f"{Fore.RED}Could not find input field with name `{name}`")
+                    print(
+                        f"{Fore.RED}Could not find input field with name `{name}`"
+                    )
         else:
-            inputs = self.driver.find_elements(By.XPATH, '//input | //textarea | //select')
+            inputs = self.driver.find_elements(
+                By.XPATH, '//input | //textarea | //select')
 
         # filter out the elements if their name is in the excluded list
-        inputs = [input for input in inputs if input.get_attribute('name') not in self.excluded_input_names]
+        inputs = [
+            input for input in inputs
+            if input.get_attribute('name') not in self.excluded_input_names
+        ]
 
         # now for our list of inputs, indentify their types
         input_fields = []
@@ -299,13 +350,20 @@ class Evaluation:
             elif input.tag_name == 'select':
                 input_type = 'select'
             else:
-                raise Exception(f"{Fore.RED}to be implemented for tag name `{input.tag_name}`")
+                raise Exception(
+                    f"{Fore.RED}to be implemented for tag name `{input.tag_name}`"
+                )
 
             input_name = input.get_attribute('name')
             if not input_name:
-                raise Exception(f"{Fore.RED}to be implemented for tag name `{input.tag_name}`")
+                raise Exception(
+                    f"{Fore.RED}to be implemented for tag name `{input.tag_name}`"
+                )
 
-            i = Input(url=url, input_name=input_name, input_type=input_type, task_name=task_name)
+            i = Input(url=url,
+                      input_name=input_name,
+                      input_type=input_type,
+                      task_name=task_name)
 
             # save the y-coordinate of the input field
             i.y = input.location['y']
@@ -335,8 +393,11 @@ class Evaluation:
             return [value if value is not None else '' for value in values]
 
         for input in inputs:
-            if input.type in ['text', 'textarea', 'select', 'password', 'email', 'number', 'tel', 'url',
-                              'button', 'color', 'date', 'datetime-local', 'file', 'image', 'range', 'hidden']:
+            if input.type in [
+                    'text', 'textarea', 'select', 'password', 'email', 'number',
+                    'tel', 'url', 'button', 'color', 'date', 'datetime-local',
+                    'file', 'image', 'range', 'hidden'
+            ]:
 
                 values = self.driver.execute_script(
                     f"return Array.from(document.getElementsByName(`{input.name}`)).map((element) => element.value);"
@@ -375,7 +436,8 @@ class Evaluation:
                 command = f"""return Array.from(document.getElementsByName(`{input.name}`)).filter(element => element.checked).map(element => element.value);"""
                 visible_values = self.driver.execute_script(command)
             else:
-                raise Exception(f"{Fore.RED}To be implemented for type `{input.type}`")
+                raise Exception(
+                    f"{Fore.RED}To be implemented for type `{input.type}`")
 
             input.values = clean_values(values)
             input.visible_values = clean_values(visible_values)
@@ -400,7 +462,8 @@ class Evaluation:
         return white_space_fix(remove_punc(lower(s)))
 
     def exact_match(self, prediction, references, xlingual=False):
-        return (Evaluation.normalize_answer(prediction) == Evaluation.normalize_answer(references))
+        return (Evaluation.normalize_answer(prediction) ==
+                Evaluation.normalize_answer(references))
 
     def rouge(self, prediction, ground_truth, xlingual=False):
         if prediction == ground_truth:
@@ -414,7 +477,10 @@ class Evaluation:
         return scores["rougeL"].fmeasure
 
     @staticmethod
-    def metric_max_over_ground_truths(metric_fn, prediction, ground_truths, xlingual=False):
+    def metric_max_over_ground_truths(metric_fn,
+                                      prediction,
+                                      ground_truths,
+                                      xlingual=False):
         """
         Returns the max score comparing model predicted output to over the ground truth labels that we have received from the gold labels
         """
@@ -427,7 +493,8 @@ class Evaluation:
         print(f"{Fore.BLUE} --> scores: ", score)
         return score
 
-    def retrieve_gold_labels(self, task_name: str, instance_index: int, input_names: List[str]):
+    def retrieve_gold_labels(self, task_name: str, instance_index: int,
+                             input_names: List[str]):
         """
         Retrieve the gold labels for a given instance index and input names.
         :param task_name: the name of the task
@@ -435,7 +502,9 @@ class Evaluation:
         :param input_names: the names of the inputs
         :return: a dictionary of input names and their corresponding gold labels
         """
-        print(f" --> Looking up gold labels from row index {instance_index} of `input.csv` (unique inputs). ", )
+        print(
+            f" --> Looking up gold labels from row index {instance_index} of `input.csv` (unique inputs). ",
+        )
         df = pd.read_csv(f'../tasks/{task_name}/batch.csv')
         # Keep the columns that are not answers and then combine the rows that are the same to find the distinct inputs
         cols = [col for col in df.columns if not col.startswith("Answer.")]
@@ -450,7 +519,8 @@ class Evaluation:
                                        f"{len(self.task_ids[task_name])}."
 
         assert instance_index <= len(
-            distinct_rows), f"The instance index {instance_index} is out of range: {len(distinct_rows)}."
+            distinct_rows
+        ), f"The instance index {instance_index} is out of range: {len(distinct_rows)}."
 
         # select the row corresponding to instance_index
         row = distinct_rows.iloc[instance_index]
@@ -459,7 +529,9 @@ class Evaluation:
         df_subset = df[df[cols].eq(row).all(1)]
         # create a map for each Answer (input_name) to its corresponding answers of the instance
         answers_map = {
-            input_name: df_subset.get(f"Answer.{input_name}", np.array([])).tolist() for input_name in input_names
+            input_name:
+                df_subset.get(f"Answer.{input_name}", np.array([])).tolist()
+            for input_name in input_names
         }
 
         # Note Note: Should be careful with nan values since their equality is tricky in Python
@@ -469,15 +541,19 @@ class Evaluation:
         # return [a for a in answers.tolist() if not (type(a) == float and np.isnan(a))]
         return answers_map
 
-    def calculate_rouge(self, answers: List[str], input_type: str, baseline_answer: str):
+    def calculate_rouge(self, answers: List[str], input_type: str,
+                        baseline_answer: str):
         baseline_answer = str(baseline_answer)
         logging.info(f"answers: `{answers}`")
-        logging.info(f"baseline_answer: `{baseline_answer}` - type: `{type(baseline_answer)}`")
+        logging.info(
+            f"baseline_answer: `{baseline_answer}` - type: `{type(baseline_answer)}`"
+        )
 
         # normalize responses: turn "nan", or "{}" into empty string
         for idx in range(len(answers)):
             a = answers[idx]
-            if a == "nan" or a == "{}" or a == "'{}'" or (type(a) == float and np.isnan(a)):
+            if a == "nan" or a == "{}" or a == "'{}'" or (type(a) == float and
+                                                          np.isnan(a)):
                 answers[idx] = ""
 
         logging.info(f"answers after mapping: `{answers}`")
@@ -485,7 +561,8 @@ class Evaluation:
         # handle empty
         if answers == []:
             if baseline_answer == "" or baseline_answer == [
-                ""] or baseline_answer == [] or baseline_answer == "[]" or baseline_answer == "['']":
+                    ""
+            ] or baseline_answer == [] or baseline_answer == "[]" or baseline_answer == "['']":
                 return 1.0
             else:
                 return 0.0
@@ -495,8 +572,7 @@ class Evaluation:
                 self.rouge,
                 prediction=baseline_answer,
                 ground_truths=[str(answer) for answer in answers],
-                xlingual=False
-            )
+                xlingual=False)
             return scores
         elif input_type in ['radio', 'select']:
             # if the field type is radio button, then compute the majority vote among the options
@@ -515,8 +591,7 @@ class Evaluation:
                     self.exact_match,
                     prediction=majority_answer_str,
                     ground_truths=[majority_answer_str],
-                    xlingual=False
-                )
+                    xlingual=False)
 
                 return scores
             else:
@@ -527,8 +602,7 @@ class Evaluation:
                 self.exact_match,
                 prediction=baseline_answer,
                 ground_truths=[str(answer) for answer in answers],
-                xlingual=False
-            )
+                xlingual=False)
             return scores
         elif input_type in ['range']:
             # if the gold labels are numericals, then we can compute the mean absolute error
@@ -544,18 +618,20 @@ class Evaluation:
                 if denominator > 0:
                     scores /= denominator
                 scores = 1 - scores
-                print(f"{Fore.BLUE} --> using numeric values of the range to compute their error: {scores}")
+                print(
+                    f"{Fore.BLUE} --> using numeric values of the range to compute their error: {scores}"
+                )
                 return scores
             except Exception:
                 scores = Evaluation.metric_max_over_ground_truths(
                     self.exact_match,
                     prediction=baseline_answer,
                     ground_truths=[str(answer) for answer in answers],
-                    xlingual=False
-                )
+                    xlingual=False)
                 return scores
         else:
-            raise Exception(f"{Fore.RED}to be implemented for type `{input_type}`")
+            raise Exception(
+                f"{Fore.RED}to be implemented for type `{input_type}`")
 
     @staticmethod
     def read_config(file):
@@ -570,8 +646,11 @@ class Evaluation:
         """
 
         print("input", input)
-        target_element = self.driver.execute_script(f"return document.getElementsByName('{input.name}')[0].outerHTML")
-        unfiltered_HTML = self.driver.execute_script(f"return document.getElementsByName('{input.name}')[0].parentElement.parentElement.outerHTML")
+        target_element = self.driver.execute_script(
+            f"return document.getElementsByName('{input.name}')[0].outerHTML")
+        unfiltered_HTML = self.driver.execute_script(
+            f"return document.getElementsByName('{input.name}')[0].parentElement.parentElement.outerHTML"
+        )
         HTML_arr = unfiltered_HTML.split(">")
         mid_idx = -1
         for idx, i in enumerate(HTML_arr):
@@ -595,10 +674,13 @@ class Evaluation:
         tasks = self.load_task_names()
         results = {}
         self.driver.get(TURKLE_URL)
-        aggregate_field_statistics = {}  # We store the stats related to the field types/frequency here
+        # We store the stats related to the field types/frequency here
+        aggregate_field_statistics = {}
         task_field_statistics = {}
         for task_name in tqdm(tasks):
-            print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
+            print(
+                f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = "
+            )
 
             if self.filter_TAP_tasks(task_name) == False:
                 continue
@@ -608,7 +690,10 @@ class Evaluation:
             print("First instance id:", first_instance_id)
 
             # Create a random sample
-            instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
+            instance_ids = random.sample(
+                instance_ids,
+                min(max_instance_count, len(instance_ids)),
+            )
 
             # Go through the instances of each task in this random sample
             for instance_id in instance_ids:
@@ -617,20 +702,31 @@ class Evaluation:
                 # input("Press Enter to continue...")
 
                 row_number = instance_id - first_instance_id
-                print(f"instance_id: {instance_id} <-> row_number: {row_number}")
+                print(
+                    f"instance_id: {instance_id} <-> row_number: {row_number}")
 
                 url = f'{TURKLE_URL}/task/{instance_id}/iframe/'
                 self.driver.get(url)
 
                 # get the name of the fields
                 df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
-                input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
-                inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
+                input_names = [
+                    col[len('Answer.'):]
+                    for col in df.columns
+                    if col.startswith('Answer.')
+                ]
+                inputs = self.extract_input_values_from_url(
+                    url=url,
+                    task_name=task_name,
+                    input_names=input_names,
+                )
 
                 print(" --> inputs: {}".format([x.name for x in inputs]))
 
                 answers_map = self.retrieve_gold_labels(
-                    task_name, row_number, [x.name for x in inputs]
+                    task_name,
+                    row_number,
+                    [x.name for x in inputs],
                 )
 
                 logging.info(" --> input labels: {}".format(answers_map))
@@ -669,42 +765,58 @@ class Evaluation:
                     data_to_be_dumped = []
 
                 for input_idx, i in enumerate(inputs):
-                    print(f"{Fore.GREEN} - - - - - -  starting a new element: `{i}` - - - - - -  ")
+                    print(
+                        f"{Fore.GREEN} - - - - - -  starting a new element: `{i}` - - - - - -  "
+                    )
 
                     # make sure that the element is visible
                     element = self.driver.find_element(By.NAME, i.name)
-                    if not element.is_displayed() or element.size['width'] <= 0 or element.size['height'] <= 0:
-                        print(f'{Fore.RED}Skipping element `{i.name}` since it is not visible.')
+                    if not element.is_displayed() or element.size[
+                            'width'] <= 0 or element.size['height'] <= 0:
+                        print(
+                            f'{Fore.RED}Skipping element `{i.name}` since it is not visible.'
+                        )
                         continue
 
                     if self.dump_features and i.type != 'hidden':
                         image_format = "bordered_div"  # the most reasonable option
                         # create directory if needed
-                        if not os.path.exists(f'{images_directory}_{image_format}'):
+                        if not os.path.exists(
+                                f'{images_directory}_{image_format}'):
                             os.makedirs(f'{images_directory}_{image_format}')
                         if image_format == 'full_page':
-                            task_image = self.actions.take_page_screenshots().outcome
+                            task_image = self.actions.take_page_screenshots(
+                            ).outcome
                         elif image_format == 'bordered_div':
-                            task_image = self.actions.take_element_screenshot_with_border(i).outcome
+                            task_image = self.actions.take_element_screenshot_with_border(
+                                i).outcome
                         else:
-                            raise Exception(f"{Fore.RED}to be implemented for image format `{image_format}`")
+                            raise Exception(
+                                f"{Fore.RED}to be implemented for image format `{image_format}`"
+                            )
 
                         if isinstance(task_image, list):
                             img_ids = []
                             for j, image in enumerate(task_image):
                                 image_id = f'{instance_id}_{input_idx}_{i.name}_{j}.png'
-                                image.save(f'{images_directory}_{image_format}/{image_id}')
+                                image.save(
+                                    f'{images_directory}_{image_format}/{image_id}'
+                                )
                                 img_ids.append(image_id)
                             image_id = img_ids
                         else:
                             image_id = f'{instance_id}_{input_idx}_{i.name}.png'
-                            task_image.save(f'{images_directory}_{image_format}/{image_id}')
+                            task_image.save(
+                                f'{images_directory}_{image_format}/{image_id}')
 
                         html_id = f'{instance_id}_{i.name}.html'
                         with open(f'{html_directory}/{html_id}', 'w') as f:
                             # note, we can't use "driver.page_source" since it would return the default source without any changes
                             # TODO: double-check that this HTML code indeed contains the latest changes
-                            f.write(self.driver.execute_script("return document.documentElement.outerHTML;"))
+                            f.write(
+                                self.driver.execute_script(
+                                    "return document.documentElement.outerHTML;"
+                                ))
 
                     # *after* we dump *input* features, we execute the action
                     if self.solver_type == 'oracle':
@@ -737,7 +849,9 @@ class Evaluation:
                         continue
 
                     if i.values != i.visible_values:
-                        raise Exception(f"The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`")
+                        raise Exception(
+                            f"The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`"
+                        )
 
                     # if checkmarks, sort the values alphabetically
                     if i.type == "checkbox":
@@ -745,13 +859,18 @@ class Evaluation:
                         for idx in range(len(answers_map[i.name])):
                             x = answers_map[i.name][idx]
                             if type(x) == str and "|" in x:
-                                answers_map[i.name][idx] = "|".join(sorted(x.split("|")))
+                                answers_map[i.name][idx] = "|".join(
+                                    sorted(x.split("|")))
                     else:
                         if len(i.values) > 0:
                             i.values = i.values[0]
                         else:
                             i.values = ''
-                    score_per_field = self.calculate_rouge(answers_map[i.name], i.type, i.values)
+                    score_per_field = self.calculate_rouge(
+                        answers_map[i.name],
+                        i.type,
+                        i.values,
+                    )
 
                     if i.type not in results[task_name]:
                         results[task_name][i.type] = []
@@ -776,15 +895,15 @@ class Evaluation:
                         # print(scores)
                         avg_score = sum(scores) / len(scores)
                         # TODO: check if we can safely change the "projects" in the following lines to tasks
-                        df = pd.concat(
-                            [
-                                df, pd.DataFrame({
+                        df = pd.concat([
+                            df,
+                            pd.DataFrame({
                                 'project': [task_name],
                                 'input_type': [input_type],
                                 'score': [avg_score]
                             })
-                            ],
-                            ignore_index=True)
+                        ],
+                                       ignore_index=True)
 
                 if 'project' not in df.columns:
                     df.insert(0, 'project', '')
@@ -793,7 +912,11 @@ class Evaluation:
                 if 'score' not in df.columns:
                     df.insert(1, 'score', '')
 
-                df = df.pivot(index='project', columns='input_type', values='score')
+                df = df.pivot(
+                    index='project',
+                    columns='input_type',
+                    values='score',
+                )
                 df.to_csv('oracle_baseline_scores.csv', index=True)
 
         # Close the driver
@@ -835,15 +958,19 @@ class Evaluation:
         ret = []
         self.driver.get(TURKLE_URL)
 
-        task_results = {}  # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores, failing_tasks} }
+        # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores, failing_tasks} }
+        task_results = {}
 
         for task_name in tqdm(tasks):
-            print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
+            print(
+                f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = "
+            )
             instance_ids = self.task_ids[task_name]
-            first_instance_id = min(
-                instance_ids)  # TODO: Check if this is also just the first one, might be with how the JSON is formatted
+            # TODO: Check if this is also just the first one, might be with how the JSON is formatted
+            first_instance_id = min(instance_ids)
 
-            instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
+            instance_ids = random.sample(
+                instance_ids, min(max_instance_count, len(instance_ids)))
 
             num_successes = 0
             num_errors = 0
@@ -860,12 +987,16 @@ class Evaluation:
 
                     # get the name of the fields
                     df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
-                    input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
-                    inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
+                    input_names = [
+                        col[len('Answer.'):]
+                        for col in df.columns
+                        if col.startswith('Answer.')
+                    ]
+                    inputs = self.extract_input_values_from_url(
+                        url=url, task_name=task_name, input_names=input_names)
 
                     answers_map = self.retrieve_gold_labels(
-                        task_name, row_num, [x.name for x in inputs]
-                    )
+                        task_name, row_num, [x.name for x in inputs])
 
                     # Same TODO as above, file (images videos audio, css etc. are html accessible and find all URLs)
 
@@ -877,7 +1008,8 @@ class Evaluation:
                     for input_idx, i in enumerate(inputs):
                         element = self.driver.find_element(By.NAME, i.name)
 
-                        if not element.is_displayed() or element.size['width'] <= 0 or element.size['height'] <= 0:
+                        if (not element.is_displayed() or element.size['width']
+                                <= 0) or (element.size['height'] <= 0):
                             continue
 
                         # TODO dump_featuers
@@ -885,7 +1017,8 @@ class Evaluation:
                         # assuming solver is oracle
                         kwargs = {'answers': answers_map[i.name]}
                         try:
-                            self.solver.solve(i, **kwargs)  # before would store the action sequence of oracle, not needed here
+                            self.solver.solve(i, **kwargs)
+                            # before would store the action sequence of oracle, not needed here
                         except Exception as error:
                             error_flag = True
                             continue
@@ -911,7 +1044,9 @@ class Evaluation:
                             continue
                         if i.values != i.visible_values:
                             error_flag = True
-                            print(f"{Fore.RED}The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`")
+                            print(
+                                f"{Fore.RED}The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`"
+                            )
 
                         # checkboxes are weird, purely copied over
                         if i.type == "checkbox":
@@ -919,12 +1054,14 @@ class Evaluation:
                             for idx in range(len(answers_map[i.name])):
                                 x = answers_map[i.name][idx]
                                 if type(x) == str and "|" in x:
-                                    answers_map[i.name][idx] = "|".join(sorted(x.split("|")))
+                                    answers_map[i.name][idx] = "|".join(
+                                        sorted(x.split("|")))
                         else:
                             i.values = i.values[0] if len(i.values) > 0 else ''
 
                         # the score for this specific model input/output
-                        score_per_field = self.calculate_rouge(answers_map[i.name], i.type, i.values)
+                        score_per_field = self.calculate_rouge(
+                            answers_map[i.name], i.type, i.values)
 
                         score += score_per_field
 
@@ -933,8 +1070,9 @@ class Evaluation:
                         failing_tasks.append(row_num)
                         continue
 
-                    # TODO could do more fancy things with statistics if wanted
-                    score /= len(model_outputs)  # average score for this instance
+                    # TODO could do more fancy things with statistics if wanted.
+                    # average score for this instance
+                    score /= len(model_outputs)
 
                     if score > 0.99:
                         num_successes += 1
@@ -942,14 +1080,18 @@ class Evaluation:
                         failing_tasks.append(row_num)
                         sum_failing_scores += score
 
-            failing_tasks = failing_tasks[:10]  # only keep the first 10 failing tasks
-            task_results[task_name] = {"num_successes": num_successes, "num_errors": num_errors,
-                                        "num_failing": len(instance_ids) - num_successes - num_errors,
-                                        "sum_failing_scores": sum_failing_scores, "failing_tasks": failing_tasks}
+            failing_tasks = failing_tasks[:
+                                          10]  # only keep the first 10 failing tasks
+            task_results[task_name] = {
+                "num_successes": num_successes,
+                "num_errors": num_errors,
+                "num_failing": len(instance_ids) - num_successes - num_errors,
+                "sum_failing_scores": sum_failing_scores,
+                "failing_tasks": failing_tasks
+            }
             print("task result", task_name, task_results[task_name])
 
         return task_results
-
 
     def enumerate_tap_tasks_random(self, max_instance_count: int):
         """
@@ -970,14 +1112,21 @@ class Evaluation:
         ret = []
         self.driver.get(TURKLE_URL)
 
-        task_results = {} # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores, failing_tasks} }
+        # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores, failing_tasks} }
+        task_results = {}
 
         for task_name in tqdm(tasks):
-            print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
+            print(
+                f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = "
+            )
             instance_ids = self.task_ids[task_name]
-            first_instance_id = min(instance_ids) # TODO: Check if this is also just the first one, might be with how the JSON is formatted
+            # TODO: Check if this is also just the first one, might be with how the JSON is formatted
+            first_instance_id = min(instance_ids)
 
-            instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
+            instance_ids = random.sample(
+                instance_ids,
+                min(max_instance_count, len(instance_ids)),
+            )
 
             num_successes = 0
             num_errors = 0
@@ -994,12 +1143,19 @@ class Evaluation:
 
                     # get the name of the fields
                     df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
-                    input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
-                    inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
+                    input_names = [
+                        col[len('Answer.'):]
+                        for col in df.columns
+                        if col.startswith('Answer.')
+                    ]
+                    inputs = self.extract_input_values_from_url(
+                        url=url,
+                        task_name=task_name,
+                        input_names=input_names,
+                    )
 
                     answers_map = self.retrieve_gold_labels(
-                        task_name, row_num, [x.name for x in inputs]
-                    )
+                        task_name, row_num, [x.name for x in inputs])
 
                     # Same TODO as above, file (images videos audio, css etc. are html accessible and find all URLs)
 
@@ -1011,7 +1167,8 @@ class Evaluation:
                     for input_idx, i in enumerate(inputs):
                         element = self.driver.find_element(By.NAME, i.name)
 
-                        if not element.is_displayed() or element.size['width'] <= 0 or element.size['height'] <= 0:
+                        if (not element.is_displayed() or element.size['width']
+                                <= 0) or (element.size['height'] <= 0):
                             continue
 
                         # TODO dump_featuers
@@ -1038,23 +1195,48 @@ class Evaluation:
                         failing_tasks.append(row_num)
                         continue
 
-            failing_tasks = failing_tasks[:10] # only keep the first 10 failing tasks
-            task_results[task_name] = {"num_successes": num_successes, "num_errors": num_errors, "num_failing": len(instance_ids) - num_successes - num_errors, "sum_failing_scores": sum_failing_scores, "failing_tasks": failing_tasks}
+            failing_tasks = failing_tasks[:
+                                          10]  # only keep the first 10 failing tasks
+            task_results[task_name] = {
+                "num_successes": num_successes,
+                "num_errors": num_errors,
+                "num_failing": len(instance_ids) - num_successes - num_errors,
+                "sum_failing_scores": sum_failing_scores,
+                "failing_tasks": failing_tasks
+            }
             print("task result", task_name, task_results[task_name])
 
         return task_results
 
+
 if __name__ == "__main__":
     # user argparser to recive he input parameter
     parser = argparse.ArgumentParser()
-    parser.add_argument("--solver_type", help="random or oracle", default="random")
-    parser.add_argument("--tasks", help="train, test, or subjective_test", default="test")
-    parser.add_argument("--max_instance_count", help="maximum number of instances per task", type=int, default=1)
-    parser.add_argument("--do_eval", help="whether to compute the quality against the gold data", default=True)
-    parser.add_argument("--headless", help="whether to run the browser `headless` (no visual interface).",
+    parser.add_argument("--solver_type",
+                        help="random or oracle",
+                        default="random")
+    parser.add_argument("--tasks",
+                        help="train, test, or subjective_test",
+                        default="test")
+    parser.add_argument("--max_instance_count",
+                        help="maximum number of instances per task",
+                        type=int,
+                        default=1)
+    parser.add_argument(
+        "--do_eval",
+        help="whether to compute the quality against the gold data",
+        default=True)
+    parser.add_argument(
+        "--headless",
+        help="whether to run the browser `headless` (no visual interface).",
+        default=False)
+    parser.add_argument("--dump_features",
+                        help="whether to dump the features",
                         default=False)
-    parser.add_argument("--dump_features", help="whether to dump the features", default=False)
-    parser.add_argument("--report_field_stats", help="whether to collect statistics for the HTML fields", default=True)
+    parser.add_argument(
+        "--report_field_stats",
+        help="whether to collect statistics for the HTML fields",
+        default=True)
 
     args = parser.parse_args()
     print(f"{Fore.BLUE}Solver: {args.solver_type}")
@@ -1067,16 +1249,15 @@ if __name__ == "__main__":
     assert type(args.headless) == bool
 
     if dump_features and args.solver_type != "oracle":
-        raise Exception(f"{Fore.RED}dump_features can only be used with oracle solver")
+        raise Exception(
+            f"{Fore.RED}dump_features can only be used with oracle solver")
 
-    eval = Evaluation(
-        solver_type=args.solver_type,
-        tasks=args.tasks,
-        do_eval=do_eval,
-        dump_features=dump_features,
-        report_field_stats=report_field_stats,
-        headless=args.headless
-    )
+    eval = Evaluation(solver_type=args.solver_type,
+                      tasks=args.tasks,
+                      do_eval=do_eval,
+                      dump_features=dump_features,
+                      report_field_stats=report_field_stats,
+                      headless=args.headless)
 
     # input_format = config.get('DEFAULT', 'input_format')
     # image_format = config.get('DEFAULT', 'image_format', fallback='full_page')
