@@ -393,7 +393,7 @@ class Evaluation:
             def try_float(x: str):
                 try:
                     return float(x)
-                except OverflowError:
+                except:
                     return x
 
             return [try_float(value) if value is not None else '' for value in values]
