@@ -390,7 +390,13 @@ class Evaluation:
             """
             This function cleans the values by removing empty strings and "nan" values.
             """
-            return [value if value is not None else '' for value in values]
+            def try_float(x: str):
+                try:
+                    return float(x)
+                except OverflowError:
+                    return x
+
+            return [try_float(value) if value is not None else '' for value in values]
 
         for input in inputs:
             if input.type in [
