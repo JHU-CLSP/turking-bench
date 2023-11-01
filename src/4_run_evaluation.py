@@ -36,7 +36,7 @@ def clean_values(values: List[str]) -> List[Union[str, int, float]]:
     """
     def try_float(x: str):
         try:
-            return float(x)
+            return str(float(x))
         except:
             return x
 
