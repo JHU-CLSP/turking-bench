@@ -1,6 +1,7 @@
 eval = __import__('4_run_evaluation')
 from evaluation.actions import MyActions
 from evaluation.baselines import Baseline
+from evaluation.input import Input
 from utils.hidden_prints import HiddenPrints
 
 evaluation = eval.Evaluation(solver_type="oracle", tasks="all",
