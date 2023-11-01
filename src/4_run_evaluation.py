@@ -20,7 +20,7 @@ import shutil
 import string
 from transformers import AutoTokenizer
 from tqdm import tqdm
-from typing import List
+from typing import List, Union
 import logging
 import bisect
 
@@ -28,6 +28,19 @@ TURKLE_URL = "http://localhost:8000"
 
 colorama_init(autoreset=True)
 
+
+
+def clean_values(values: List[str]) -> List[Union[str, int, float]]:
+    """
+    This function cleans the values by removing empty strings and "nan" values.
+    """
+    def try_float(x: str):
+        try:
+            return float(x)
+        except:
+            return x
+
+    return [try_float(value) if value is not None else '' for value in values]
 
 class GPTTokenizer:
     gpt_tokenizer = AutoTokenizer.from_pretrained("gpt2", max_length=1e5)
@@ -386,18 +399,6 @@ class Evaluation:
         We use this function for evaluation as well as unit testing.
         """
 
-        def clean_values(values: List[str]):
-            """
-            This function cleans the values by removing empty strings and "nan" values.
-            """
-            def try_float(x: str):
-                try:
-                    return float(x)
-                except:
-                    return x
-
-            return [try_float(value) if value is not None else '' for value in values]
-
         for input in inputs:
             if input.type in [
                     'text', 'textarea', 'select', 'password', 'email', 'number',
@@ -491,6 +492,7 @@ class Evaluation:
         Returns the max score comparing model predicted output to over the ground truth labels that we have received from the gold labels
         """
         scores_for_ground_truths = []
+        ground_truths = clean_values(ground_truths)
         for ground_truth in ground_truths:
             score = metric_fn(prediction, ground_truth, xlingual=xlingual)
             scores_for_ground_truths.append(score)
