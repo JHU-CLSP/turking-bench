@@ -414,7 +414,7 @@ class Evaluation:
 
                 if input.type in ['textarea']:
                     visible_values = self.driver.execute_script(
-                        f"return Array.from(document.getElementsByName(`{input.name}`)).map((element) => element.innerText);"
+                        f"return Array.from(document.getElementsByName(`{input.name}`)).map((element) => element.innerHTML);"
                     )
                 elif input.type == 'select':
                     visible_values = self.driver.execute_script(
