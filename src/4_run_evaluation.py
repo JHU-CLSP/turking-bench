@@ -30,15 +30,17 @@ colorama_init(autoreset=True)
 
 
 
+def try_float(x: str) -> str:
+    """Helper function to convert a string to float representation if possible."""
+    try:
+        return str(float(x))
+    except:
+        return x
+
 def clean_values(values: List[str]) -> List[Union[str, int, float]]:
     """
     This function cleans the values by removing empty strings and "nan" values.
     """
-    def try_float(x: str):
-        try:
-            return str(float(x))
-        except:
-            return x
 
     return [try_float(value) if value is not None else '' for value in values]
 
@@ -491,6 +493,7 @@ class Evaluation:
         """
         Returns the max score comparing model predicted output to over the ground truth labels that we have received from the gold labels
         """
+        prediction = try_float(prediction)
         scores_for_ground_truths = []
         ground_truths = clean_values(ground_truths)
         for ground_truth in ground_truths:
