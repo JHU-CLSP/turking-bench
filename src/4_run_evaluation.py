@@ -35,7 +35,7 @@ def try_numeric(x: str) -> str:
     try:
         float_value = float(x)
         int_value = int(x)
-        if int_value == float_value:
+        if str(int_value) == str(float_value):
             return str(int_value)
         else:
             return str(float_value)
