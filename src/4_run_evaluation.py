@@ -35,18 +35,16 @@ def try_float(x: str) -> str:
     try:
         return str(float(x))
     except:
-        return str(x)
+        return x
 
 
 def clean_values(values: List[str]) -> List[Union[str, int, float]]:
     """
     This function cleans the values by removing empty strings and "nan" values.
     """
-    def remove_return_carriage(text: str) -> str:
-        return text.replace("\r", " ")
 
     return [
-        remove_return_carriage(try_float(value)) if value is not None else ''
+        try_float(value) if value is not None else ''
         for value in values
     ]
 
