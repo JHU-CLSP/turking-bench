@@ -3,49 +3,7 @@ from colorama import init as colorama_init
 from colorama import Fore
 import evaluation_class
 
-TURKLE_URL = "http://localhost:8000"
-
-colorama_init(autoreset=True)
-
-
-def try_numeric(x: str) -> str:
-    """Helper function to convert a string to float representation if possible."""
-    try:
-        float_value = float(x)
-        int_value = int(float_value)
-        if int_value == float_value:
-            return str(int_value)
-        else:
-            return str(float_value)
-    except:
-        return x
-
-
-def clean_values(values: List[str]) -> List[Union[str, int, float]]:
-    """
-    This function cleans the values by removing empty strings and "nan" values.
-    """
-
-    return [
-        try_numeric(value) if value is not None else ''
-        for value in values
-    ]
-
-
-class GPTTokenizer:
-    gpt_tokenizer = AutoTokenizer.from_pretrained("gpt2", max_length=1e5)
-
-    def tokenize(self, s):
-        tokens = self.gpt_tokenizer.tokenize(s)
-        # GPT2 uses Byte-level BPE, which will include space as part of the word.
-        # But for the first word of a sentence, there is no space before it.
-        # So, we remove all the added spaces ("Ġ").
-        tokens = [t.lstrip("Ġ") for t in tokens]
-        return tokens
-
-
 class Evaluation:
-
     def __init__(
         self,
         solver_type: str,
