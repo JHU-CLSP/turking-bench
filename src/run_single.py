@@ -11,8 +11,8 @@ from utils.hidden_prints import HiddenPrints
 import logging
 
 TURKLE_URL = "http://localhost:8000"
-TEST_NAME = "BiSECT Multilingual Evaluation"
-SPECIFIED_INDEX = 5
+TEST_NAME = "Goal Distractor - ATOMIC base events 1"
+SPECIFIED_INDEX = 73
 RUN_ALL = False
 
 class Run(run_eval.Evaluation):
@@ -37,7 +37,7 @@ class Run(run_eval.Evaluation):
 
         # Sample random instances of each task
         for instance_id in instance_ids:
-            # remove the randomness of which index we choose 
+            # remove the randomness of which index we choose
             if max_instance_count == 1:
                 instance_id = first_instance_id + index
 
@@ -161,6 +161,19 @@ class Run(run_eval.Evaluation):
             for i in inputs_with_values:
                 if i.name in self.excluded_input_names:
                     continue
+
+                if i.values != i.visible_values:
+                    if (i.values == [None] and i.visible_values == ['']) or (i.values == [''] and i.visible_values == [None]):
+                        pass
+                    elif type(i.values[0]) == str and type(i.visible_values[0]) == str:
+                        if i.values[0] == i.visible_values[0]:
+                            pass
+                    else:
+                        raise Exception(f"The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`")
+
+
+
+
                 # if checkmarks, sort the values alphabetically
                 if i.type == "checkbox":
                     i.values = "|".join(sorted(i.values))
@@ -268,7 +281,7 @@ if __name__ == "__main__":
     dump_features = args.dump_features
     report_field_stats = args.report_field_stats
 
-    if dump_features and not args.solver_type != "oracle":
+    if dump_features and args.solver_type != "oracle":
         raise Exception(f"{Fore.RED}dump_features can only be used with oracle solver")
 
     eval = Run(solver_type=args.solver_type, tasks=args.tasks,

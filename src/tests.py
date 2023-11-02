@@ -1,6 +1,7 @@
 eval = __import__('4_run_evaluation')
 from evaluation.actions import MyActions
 from evaluation.baselines import Baseline
+from evaluation.input import Input
 from utils.hidden_prints import HiddenPrints
 
 evaluation = eval.Evaluation(solver_type="oracle", tasks="all",
@@ -13,7 +14,13 @@ def test_actions():
     print(action_list)
     assert len(action_list) > 0, f"The action list should not be empty: {action_list}"
 
-    encoded_actions_prompt = baseline.get_encoded_action_list()
+    # Dummy input
+    dummy_input = Input(
+        url="https://www.google.com",
+        input_name="dummy",
+        input_type="text",
+        task_name="dummy")
+    encoded_actions_prompt = baseline.get_encoded_input_prompt(dummy_input)
     print(encoded_actions_prompt)
     assert len(encoded_actions_prompt) > 0, f"The encoded actions prompt should not be empty: {encoded_actions_prompt}"
 
