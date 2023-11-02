@@ -24,7 +24,7 @@ def test_evaluation():
     for task in results:
         result = results[task]
         if result["num_errors"] == 0 and result["num_failing"] == 0:
-            tasks_succeeded += 1 
+            tasks_succeeded += 1
         elif result["num_errors"] > 0:
             tasks_with_errors += 1
         else:
