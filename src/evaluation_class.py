@@ -4,6 +4,7 @@ import configparser
 from evaluation.actions import MyActions
 from evaluation.input import Input
 from evaluation import baselines
+import html
 import json
 import os
 import pandas as pd
@@ -19,7 +20,7 @@ import shutil
 import string
 from transformers import AutoTokenizer
 from tqdm import tqdm
-from typing import List
+from typing import List, Union
 import logging
 import bisect
 
@@ -343,7 +344,7 @@ class Evaluation:
         # could think about sorting input_fields, but breaks certain tasks like Abductive Reasoning 11
         # instead changed the code base to just use the order in which the Answer columns are given. We can rearrange it to the order of which inputs to fill in first
         return input_fields
-
+    
     def extract_values(self, inputs: List[Input]):
         """
         Given a set of values for the input fields, extract the values from the HTML.
@@ -351,29 +352,58 @@ class Evaluation:
         """
 
         for input in inputs:
-            if input.type in ['text', 'textarea', 'select', 'password', 'email', 'number', 'tel', 'url',
-                              'button', 'color', 'date', 'datetime-local', 'file', 'image', 'range', 'hidden']:
+            if input.type in [
+                    'text', 'textarea', 'select', 'password', 'email', 'number',
+                    'tel', 'url', 'button', 'color', 'date', 'datetime-local',
+                    'file', 'image', 'range', 'hidden'
+            ]:
 
                 values = self.driver.execute_script(
                     f"return Array.from(document.getElementsByName(`{input.name}`)).map((element) => element.value);"
                 )
 
-                # commenting out this asssrtion since there could be more than one text input with the same name.
+                if input.type in ['textarea']:
+                    visible_values = self.driver.execute_script(
+                        f"return Array.from(document.getElementsByName(`{input.name}`)).map((element) => element.innerHTML);"
+                    )
+                elif input.type == 'select':
+                    visible_values = self.driver.execute_script(
+                        f"return Array.from(document.getElementsByName(`{input.name}`)[0].children).filter((el) => el.selected == true).map((el) => el.value);"
+                    )
+                else:
+                    visible_values = self.driver.execute_script(
+                        f"return Array.from(document.getElementsByName(`{input.name}`)).map((element) => element.getAttribute('value'));"
+                    )
+
+                # commenting out this assertion since there could be more than one text input with the same name.
                 # an example of this can be seen in "Dialogue safety (socialchemistry) 5" task.
                 # assert len(values) == 1, f"The number of values should be 1 but it is `{len(values)}` for {input}"
 
             elif input.type in ['radio']:
                 values = self.driver.execute_script(
+                    f"return Array.from(document.querySelectorAll(`input[name='{input.name}']:checked`)).map(element => element.value);"
+                )
+                visible_values = self.driver.execute_script(
                     f"return Array.from(document.getElementsByName(`{input.name}`)).filter(element => element.checked).map(element => element.value);"
                 )
                 assert len(values) <= 1, f"The number of values should be 1 or 0 but it is `{len(values)}` for {input}"
+                assert len(visible_values) <= 1, f"The number of visible values should be 1 or 0 but it is `{len(visible_values)}` for {input}"
             elif input.type in ['checkbox']:
-                command = f"""return Array.from(document.getElementsByName(`{input.name}`)).filter(element => element.checked).map(element => element.value);"""
+                command = f"""return Array.from(document.querySelectorAll(`input[name='{input.name}']:checked`)).map(element => element.value);"""
                 values = self.driver.execute_script(command)
-            else:
-                raise Exception(f"{Fore.RED}to be implemented for type `{input.type}`")
 
-            input.values = values
+                command = f"""return Array.from(document.getElementsByName(`{input.name}`)).filter(element => element.checked).map(element => element.value);"""
+                visible_values = self.driver.execute_script(command)
+            else:
+                raise Exception(
+                    f"{Fore.RED}To be implemented for type `{input.type}`")
+            clean_visible_values = clean_values(visible_values)
+            clean_visible_values = [
+                html.unescape(v) for v in clean_visible_values
+            ]
+
+            input.values = clean_values(values)
+            input.visible_values = clean_visible_values
 
         return inputs
 
@@ -598,6 +628,12 @@ class Evaluation:
         for i in model_outputs:
             if i.name in self.excluded_input_names:
                 continue
+
+            if i.values != i.visible_values:
+                raise Exception(
+                    f"The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`"
+                )
+            
             # if checkmarks, sort the values alphabetically
             if i.type == "checkbox":
                 i.values = "|".join(sorted(i.values))
@@ -770,6 +806,13 @@ class Evaluation:
                 for i in inputs_with_values:
                     if i.name in self.excluded_input_names:
                         continue
+
+                    if i.values != i.visible_values:
+                        error_flag = True
+                        print(
+                            f"{Fore.RED}The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`"
+                        )
+
                     # if checkmarks, sort the values alphabetically
                     if i.type == "checkbox":
                         i.values = "|".join(sorted(i.values))
