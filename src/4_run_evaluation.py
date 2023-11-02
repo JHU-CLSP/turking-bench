@@ -5,6 +5,7 @@ import configparser
 from evaluation.actions import MyActions
 from evaluation.input import Input
 from evaluation import baselines
+import html
 import json
 import os
 import pandas as pd
@@ -89,8 +90,7 @@ class Evaluation:
             self.solver = baselines.OracleBaseline(driver=self.driver,
                                                    actions=self.actions)
         else:
-            raise Exception(
-                f"{Fore.RED}Solver `{solver_type}` not implemented")
+            raise Exception(f"{Fore.RED}Solver `{solver_type}` not implemented")
         self.tasks = tasks
         assert tasks in [
             "test",
@@ -218,7 +218,8 @@ class Evaluation:
         for task in all_tasks:
             df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
             input_names = [
-                col[len('Answer.'):] for col in df.columns
+                col[len('Answer.'):]
+                for col in df.columns
                 if col.startswith('Answer.')
             ]
             val = min(1000, len(self.task_ids[task])) * (
@@ -254,7 +255,8 @@ class Evaluation:
             for task in split_tasks[i]:
                 df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
                 input_names = [
-                    col[len('Answer.'):] for col in df.columns
+                    col[len('Answer.'):]
+                    for col in df.columns
                     if col.startswith('Answer.')
                 ]
                 val = min(1000, len(
@@ -403,9 +405,9 @@ class Evaluation:
 
         for input in inputs:
             if input.type in [
-                    'text', 'textarea', 'select', 'password', 'email',
-                    'number', 'tel', 'url', 'button', 'color', 'date',
-                    'datetime-local', 'file', 'image', 'range', 'hidden'
+                    'text', 'textarea', 'select', 'password', 'email', 'number',
+                    'tel', 'url', 'button', 'color', 'date', 'datetime-local',
+                    'file', 'image', 'range', 'hidden'
             ]:
 
                 values = self.driver.execute_script(
@@ -447,9 +449,13 @@ class Evaluation:
             else:
                 raise Exception(
                     f"{Fore.RED}To be implemented for type `{input.type}`")
+            clean_visible_values = clean_values(visible_values)
+            clean_visible_values = [
+                html.unescape(v) for v in clean_visible_values
+            ]
 
             input.values = clean_values(values)
-            input.visible_values = clean_values(visible_values)
+            input.visible_values = clean_visible_values
 
         return inputs
 
@@ -541,7 +547,7 @@ class Evaluation:
         # create a map for each Answer (input_name) to its corresponding answers of the instance
         answers_map = {
             input_name:
-            df_subset.get(f"Answer.{input_name}", np.array([])).tolist()
+                df_subset.get(f"Answer.{input_name}", np.array([])).tolist()
             for input_name in input_names
         }
 
@@ -563,8 +569,8 @@ class Evaluation:
         # normalize responses: turn "nan", or "{}" into empty string
         for idx in range(len(answers)):
             a = answers[idx]
-            if a == "nan" or a == "{}" or a == "'{}'" or (type(a) == float
-                                                          and np.isnan(a)):
+            if a == "nan" or a == "{}" or a == "'{}'" or (type(a) == float and
+                                                          np.isnan(a)):
                 answers[idx] = ""
 
         logging.info(f"answers after mapping: `{answers}`")
@@ -722,7 +728,8 @@ class Evaluation:
                 # get the name of the fields
                 df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
                 input_names = [
-                    col[len('Answer.'):] for col in df.columns
+                    col[len('Answer.'):]
+                    for col in df.columns
                     if col.startswith('Answer.')
                 ]
                 inputs = self.extract_input_values_from_url(
@@ -817,8 +824,7 @@ class Evaluation:
                         else:
                             image_id = f'{instance_id}_{input_idx}_{i.name}.png'
                             task_image.save(
-                                f'{images_directory}_{image_format}/{image_id}'
-                            )
+                                f'{images_directory}_{image_format}/{image_id}')
 
                         html_id = f'{instance_id}_{i.name}.html'
                         with open(f'{html_directory}/{html_id}', 'w') as f:
@@ -839,16 +845,11 @@ class Evaluation:
                     # *after* we execute the action, we dump the *output* features
                     if self.dump_features:
                         data_to_be_dumped.append({
-                            'input_type':
-                            i.type,
-                            'input_name':
-                            i.name,
-                            'image_id':
-                            image_id,
-                            'html_id':
-                            html_id,
-                            'output':
-                            oracle_action_sequence
+                            'input_type': i.type,
+                            'input_name': i.name,
+                            'image_id': image_id,
+                            'html_id': html_id,
+                            'output': oracle_action_sequence
                         })
 
                 # get the input values from the web page
@@ -1004,10 +1005,10 @@ class Evaluation:
                     self.driver.get(url)
 
                     # get the name of the fields
-                    df = pd.read_csv(f'../tasks/{task_name}/batch.csv',
-                                     nrows=0)
+                    df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
                     input_names = [
-                        col[len('Answer.'):] for col in df.columns
+                        col[len('Answer.'):]
+                        for col in df.columns
                         if col.startswith('Answer.')
                     ]
                     inputs = self.extract_input_values_from_url(
@@ -1160,10 +1161,10 @@ class Evaluation:
                     self.driver.get(url)
 
                     # get the name of the fields
-                    df = pd.read_csv(f'../tasks/{task_name}/batch.csv',
-                                     nrows=0)
+                    df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
                     input_names = [
-                        col[len('Answer.'):] for col in df.columns
+                        col[len('Answer.'):]
+                        for col in df.columns
                         if col.startswith('Answer.')
                     ]
                     inputs = self.extract_input_values_from_url(
