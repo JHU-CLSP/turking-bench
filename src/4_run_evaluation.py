@@ -35,15 +35,20 @@ def try_float(x: str) -> str:
     try:
         return str(float(x))
     except:
-        return x
+        return str(x)
 
 
 def clean_values(values: List[str]) -> List[Union[str, int, float]]:
     """
     This function cleans the values by removing empty strings and "nan" values.
     """
+    def remove_return_carriage(text: str) -> str:
+        return text.replace("\r", " ")
 
-    return [try_float(value) if value is not None else '' for value in values]
+    return [
+        remove_return_carriage(try_float(value)) if value is not None else ''
+        for value in values
+    ]
 
 
 class GPTTokenizer:
@@ -1100,7 +1105,7 @@ class Evaluation:
                         sum_failing_scores += score
 
             failing_tasks = failing_tasks[:
-                                          10]  # only keep the first 10 failing tasks
+                                            10]  # only keep the first 10 failing tasks
             task_results[task_name] = {
                 "num_successes": num_successes,
                 "num_errors": num_errors,

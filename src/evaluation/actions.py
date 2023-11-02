@@ -3,6 +3,7 @@ import io
 from io import BytesIO
 import numpy as np
 from PIL import Image, ImageDraw
+import re
 import requests
 import platform
 from selenium.webdriver.common.action_chains import ActionChains
@@ -153,11 +154,10 @@ class MyActions:
             self.driver).move_to_element(input_element).click()
         # now modify the text
         ActionUtils.clear_text(action)
-        for i, text in enumerate(str(input_value).split("\n")):
+        for i, text in enumerate(re.split(r'[\n\r]', str(input_value))):
             if i:
-                action.key_down(Keys.SHIFT).send_keys(Keys.ENTER).key_up(
-                    Keys.SHIFT)
-            action.send_keys(text)
+                action = action.send_keys(Keys.ENTER)
+            action = action.send_keys(text)
         action.perform()
 
         if input_element.tag_name == 'textarea':
