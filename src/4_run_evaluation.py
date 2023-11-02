@@ -34,8 +34,8 @@ def try_numeric(x: str) -> str:
     """Helper function to convert a string to float representation if possible."""
     try:
         float_value = float(x)
-        int_value = int(x)
-        if str(int_value) == str(float_value):
+        int_value = int(float_value)
+        if int_value == float_value:
             return str(int_value)
         else:
             return str(float_value)
