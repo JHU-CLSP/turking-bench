@@ -3,6 +3,7 @@ import io
 from io import BytesIO
 import numpy as np
 from PIL import Image, ImageDraw
+import re
 import requests
 import platform
 from selenium.webdriver.common.action_chains import ActionChains
