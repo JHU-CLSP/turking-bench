@@ -1,17 +1,17 @@
-eval = __import__('4_run_evaluation')
+import evaluation_class
 from evaluation.actions import MyActions
 from evaluation.baselines import Baseline
 from utils.hidden_prints import HiddenPrints
 import sys
 
-evaluation = eval.Evaluation(solver_type="oracle", tasks="all",
+evaluation = evaluation_class.Evaluation(solver_type="oracle", tasks="all",
                              do_eval=True, dump_features=False, report_field_stats=False, headless=True)
 
 
 def test_evaluation():
     if evaluation.tasks == "all":
         evaluation.solver_type = "random"
-        results = evaluation.enumerate_tap_tasks(max_instance_count=2) # dictionary of results
+        results = evaluation.enumerate_tap_tasks_random(max_instance_count=2) # dictionary of results
     else:
         # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores} }
         results = evaluation.enumerate_tap_tasks(max_instance_count=1000) # dictionary of results

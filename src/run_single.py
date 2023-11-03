@@ -6,7 +6,7 @@ import os
 import shutil
 from selenium.webdriver.common.by import By
 import json
-run_eval = __import__('4_run_evaluation')
+import evaluation_class
 from utils.hidden_prints import HiddenPrints
 import logging
 
@@ -15,7 +15,7 @@ TEST_NAME = "Goal Distractor - ATOMIC base events 1"
 SPECIFIED_INDEX = 73
 RUN_ALL = False
 
-class Run(run_eval.Evaluation):
+class Run(evaluation_class.Evaluation):
     def run_task(self, task_name: str, max_instance_count: int, index: int = 0):
         results = {}
         self.driver.get(TURKLE_URL)
