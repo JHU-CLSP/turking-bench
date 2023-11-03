@@ -443,7 +443,9 @@ class Evaluation:
         """
         Returns the max score comparing model predicted output to over the ground truth labels that we have received from the gold labels
         """
+        prediction = try_numeric(prediction)
         scores_for_ground_truths = []
+        ground_truths = clean_values(ground_truths)
         for ground_truth in ground_truths:
             score = metric_fn(prediction, ground_truth, xlingual=xlingual)
             scores_for_ground_truths.append(score)
