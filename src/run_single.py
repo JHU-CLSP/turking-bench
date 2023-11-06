@@ -11,8 +11,8 @@ from utils.hidden_prints import HiddenPrints
 import logging
 
 TURKLE_URL = "http://localhost:8000"
-TEST_NAME = "Goal Distractor - ATOMIC base events 1"
-SPECIFIED_INDEX = 73
+TEST_NAME = "Sentence Formality Annotation"
+SPECIFIED_INDEX = 0
 RUN_ALL = False
 
 class Run(evaluation_class.Evaluation):
