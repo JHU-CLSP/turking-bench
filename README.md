@@ -139,7 +139,7 @@ One can basically use either source of signals depending on the model.
 
 The output of these models will be strings (sequence of Python actions) that will be executed on the browser.
 
-## Evaluating the preditions of a model 
+## Evaluating the predictions of a model 
 TODO 
 
 # Citation
