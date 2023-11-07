@@ -23,9 +23,11 @@ if __name__ == "__main__":
     parser.add_argument(
         "--headless",
         help="whether to run the browser `headless` (no visual interface).",
+        action='store_true',
         default=False)
     parser.add_argument("--dump_features",
                         help="whether to dump the features",
+                        action='store_true',
                         default=False)
     parser.add_argument(
         "--report_field_stats",

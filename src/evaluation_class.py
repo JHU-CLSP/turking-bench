@@ -70,6 +70,7 @@ class Evaluation:
         self.xlingual_tokenizer = GPTTokenizer()
         self.xlingual_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], tokenizer=self.xlingual_tokenizer)
         self.driver = self.create_driver(headless=headless)
+
         self.actions = MyActions(self.driver)
         self.solver = None
         # ass more solvers that we implement, we can add them here:
@@ -115,7 +116,7 @@ class Evaluation:
             # input.type submit hasn't been coded for thus self.extract_values is erroring
             return False
 
-        show_questions_tasks = ["Rationale Generation 5", "Gun violence structured extraction", "ESNLI Rationale Generation 4", "JJ-NN HIT", 
+        show_questions_tasks = ["Rationale Generation 5", "Gun violence structured extraction", "ESNLI Rationale Generation 4", "JJ-NN HIT",
                                 "neural-pop (PLAN evaluation) t5-human-test b", "VQA Rationale Generation 5", "Lattice"]
         # skip these task since it requires an extra click to show the available questions or next ones
         if task_name in show_questions_tasks:
@@ -129,16 +130,16 @@ class Evaluation:
         # Skip since there is a 15 second delay before showing the available questions
         if task_name == "Summarization (RLUE) 1":
             return False
-        
+
         # Skip since funky HTML input, multiple radios of same name, and should have more answers
         if task_name == "Explanation Acceptability (CommonsenseQA)":
             return False
-        
+
         weird_input_formats = ["BiSECT Human Evaluation II (2)", "Spanish Word Alignment"]
         # Skip since these tasks have a weird input format the model cannot interact with
         if task_name in weird_input_formats:
             return False
-        
+
         # Wrong col name and has 1 set of questions when should be 4
         if task_name == "Human evaluation - quals":
             return False
@@ -165,6 +166,8 @@ class Evaluation:
         options = Options()
         if headless:
             options.add_argument("--headless=new")
+            options.add_argument("--window-size=1920,1080")
+            options.add_argument("--disable-gpu")
 
         import platform
         if platform.system() == 'Linux':
@@ -173,6 +176,10 @@ class Evaluation:
             driver = webdriver.Chrome(options=options)
         else:
             driver = webdriver.Firefox()
+
+        driver.set_page_load_timeout(30)
+        driver.set_script_timeout(30)
+        driver.implicitly_wait(30)
 
         return driver
 
@@ -344,7 +351,7 @@ class Evaluation:
         # could think about sorting input_fields, but breaks certain tasks like Abductive Reasoning 11
         # instead changed the code base to just use the order in which the Answer columns are given. We can rearrange it to the order of which inputs to fill in first
         return input_fields
-    
+
     def extract_values(self, inputs: List[Input]):
         """
         Given a set of values for the input fields, extract the values from the HTML.
@@ -620,7 +627,7 @@ class Evaluation:
         """
         # get the input values from the web page
         model_outputs = self.extract_values(inputs)
-        
+
         # get the right answers
         answers_map = self.retrieve_gold_labels(
             task_name, row_number, [x.name for x in inputs]
@@ -635,7 +642,7 @@ class Evaluation:
                 raise Exception(
                     f"The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`"
                 )
-            
+
             # if checkmarks, sort the values alphabetically
             if i.type == "checkbox":
                 i.values = "|".join(sorted(i.values))
@@ -992,7 +999,7 @@ class Evaluation:
 
         return task_results
 
-    
+
     def enumerate_tap_tasks_random(self, max_instance_count: int):
         """
         Enumerate all the tasks comprehensively, so going upto max_instance_count which should be high
@@ -1060,7 +1067,7 @@ class Evaluation:
                         # assuming solver is oracle
                         kwargs = {'answers': answers_map[i.name]}
                         try:
-                            self.solver.solve(i, **kwargs) 
+                            self.solver.solve(i, **kwargs)
                         except Exception as error:
                             error_flag = True
                             continue
@@ -1108,7 +1115,7 @@ class Evaluation:
         # if a runtime occurred while executing the model outputs, returning a score of -1
         if err_flag:
             return -1
-        
+
         score = self.score_outputs(inputs, task_name, row_num)
 
         return score

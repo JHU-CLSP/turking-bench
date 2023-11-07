@@ -117,7 +117,7 @@ class MyActions:
         """
         This function waits for a given element to be loaded on the page, and then returns the element.
         """
-        input_element = WebDriverWait(self.driver, 10).until(
+        input_element = WebDriverWait(self.driver, 30).until(
             EC.presence_of_element_located((By.NAME, input.name)))
 
         return Result(success=True,
