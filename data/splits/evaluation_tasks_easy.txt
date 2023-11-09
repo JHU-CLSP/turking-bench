@@ -24,6 +24,3 @@ sandbox_audio_quality
 sandbox_figure_descriptions
 sandbox_lamecows
 sandbox_scambaiting
-Sentence Formality Annotation (extensive data cleaning)
-Explanation Acceptability (CommonsenseQA)
-Human evaluation - quals
