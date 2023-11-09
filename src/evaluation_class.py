@@ -258,18 +258,27 @@ class Evaluation:
         if self.tasks == 'all':
             return all_tasks
         else:
-            with open('../data/splits/evaluation_tasks.txt', 'r') as f:
+            with open('../data/splits/evaluation_tasks_easy.txt', 'r') as f:
                 test = f.read().splitlines()
+
+            with open('../data/splits/evaluation_tasks_hard.txt', 'r') as f:
+                test_hard = f.read().splitlines()
 
             with open('../data/splits/subjective_evaluation_tasks.txt', 'r') as f:
                 subjective_test = f.read().splitlines()
 
             # make sure that the splits are exclusive
-            assert len(set(test).intersection(set(subjective_test))) == 0, f"{Fore.RED}The test and subjective test " \
+            all_test_splits = [test, test_hard, subjective_test]
+            for test1 in all_test_splits:
+                for test2 in all_test_splits:
+                    if test != test2:
+                        assert len(set(test1).intersection(set(test2))) == 0, f"{Fore.RED}The test and subjective test " \
                                                                            f"splits are not exclusive\n: test: {test}\nsubjective_test: {subjective_test}"
 
-            if self.tasks == 'test':
+            if self.tasks == 'test_easy':
                 return test
+            elif self.tasks == 'test_hard':
+                return test_hard
             elif self.tasks == 'subjective_test':
                 return subjective_test
             elif self.tasks == 'train':
