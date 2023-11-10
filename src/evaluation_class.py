@@ -786,6 +786,7 @@ class Evaluation:
                             'input_name': i.name,
                             'image_id': image_id,
                             'html_id': html_id,
+                            'relevant_html': self.get_relevant_html(i),
                             'output': oracle_action_sequence
                         })
 
