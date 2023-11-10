@@ -103,14 +103,6 @@ class Evaluation:
         if "sandbox" in task_name:
             return False
 
-        # Should be doable tasks, just seemed like it would take a little more time so skipped in that interest
-        skipped_cuz_hard = ["Sentence Formality Annotation"]
-        # Sentence Formality skipped since inputs could be slightly wrong, like '2_ instead of 2_
-        # Also sometimes it's in the wrong column, select answer in checkbox?
-        # Also not grabbing inputs, some some equality mismatching in retrieve_gold_label possibly
-        if task_name in skipped_cuz_hard:
-            return False
-
         if "COMET2020 ATOMIC Inference Vp 5" == task_name:
             # input.type submit hasn't been coded for thus self.extract_values is erroring
             return False
@@ -130,19 +122,11 @@ class Evaluation:
         if task_name == "Summarization (RLUE) 1":
             return False
         
-        # Skip since funky HTML input, multiple radios of same name, and should have more answers
-        if task_name == "Explanation Acceptability (CommonsenseQA)":
-            return False
-        
         weird_input_formats = ["BiSECT Human Evaluation II (2)", "Spanish Word Alignment"]
         # Skip since these tasks have a weird input format the model cannot interact with
         if task_name in weird_input_formats:
             return False
         
-        # Wrong col name and has 1 set of questions when should be 4
-        if task_name == "Human evaluation - quals":
-            return False
-
         tasks_should_skip = ["Photo Collection GVDB", "NER - Task scruples 26,200 - 30,922"]
         # tasks I don't think the model is capable of solving
         if task_name in tasks_should_skip:
