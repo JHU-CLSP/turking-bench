@@ -111,7 +111,7 @@ class MyActions:
         self.execute_js_command(self.scroll_to_command, input_element)
         return Result(success=True,
                       outcome=input_element,
-                      action=f"self.scroll_to_element({input})")
+                      action=f"self.scroll_to_element({input.name})")
 
     def wait_for_element(self, input: Input) -> Result:
         """
@@ -122,7 +122,7 @@ class MyActions:
 
         return Result(success=True,
                       outcome=input_element,
-                      action=f"self.wait_for_element({input})")
+                      action=f"self.wait_for_element({input.name})")
 
     def modify_text(self, input: Input, input_value) -> Result:
         """
@@ -142,7 +142,7 @@ class MyActions:
             )
             return Result(success=False,
                           outcome=None,
-                          action=f"self.modify_text({input}, {input_value})")
+                          action=f"self.modify_text({input.name}, {input_value})")
 
         result = self.scroll_to_element(input)
         input_element = result.outcome
@@ -170,7 +170,7 @@ class MyActions:
 
         return Result(success=True,
                       outcome=input_element,
-                      action=f"self.modify_text({input}, {input_value})")
+                      action=f"self.modify_text({input.name}, {input_value})")
 
     def modify_checkbox(self, input: Input, input_value) -> Result:
         """
@@ -197,7 +197,7 @@ class MyActions:
             return Result(
                 success=False,
                 outcome=None,
-                action=f"self.modify_checkbox({input}, {input_value})")
+                action=f"self.modify_checkbox({input.name}, {input_value})")
         elif 'nan' in input_value:
             print(
                 f"{Fore.YELLOW} ** Warning **: Found input value is 'nan' and filtered it out"
@@ -210,7 +210,7 @@ class MyActions:
                 return Result(
                     success=False,
                     outcome=None,
-                    action=f"self.modify_checkbox({input}, {input_value})")
+                    action=f"self.modify_checkbox({input.name}, {input_value})")
 
         self.wait_for_element(input)
         self.scroll_to_element(input)
@@ -238,7 +238,7 @@ class MyActions:
 
         return Result(success=True,
                       outcome=None,
-                      action=f"self.modify_checkbox({input}, {input_value})")
+                      action=f"self.modify_checkbox({input.name}, {input_value})")
 
     def modify_radio(self, input: Input, input_value) -> Result:
         """
