@@ -5,10 +5,6 @@ Compile list of area chairs
 Elicitation obj
 Elicitation subj
 Full sentence style annotations
-Gun violence structured extraction
-Lattice
-NER - Task scruples 26,200 - 30,922
-neural-pop (PLAN evaluation) t5-human-test b
 Paraphrase Clustering with Merge
 Photo Collection GVDB
 Radiology Report Sentence Classification
@@ -17,7 +13,6 @@ ROT Details [m=50] rocstories - 0 - 99
 Scalar Adjectives Identification
 Script KD eval LONG V2 - disc result eval 1
 Sherlock IMG 2 TXT Eval 15
-Spanish Word Alignment
 wikiHow step-goal linking pilot cleanse-url
 winogrande validation (grammar) additional_ph
 sandbox_audio_quality

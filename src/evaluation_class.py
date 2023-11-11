@@ -83,7 +83,7 @@ class Evaluation:
         else:
             raise Exception(f"{Fore.RED}Solver `{solver_type}` not implemented")
         self.tasks = tasks
-        assert tasks in ["test", "train", "all", "subjective_test"] or tasks.startswith("tap")
+        assert tasks in ["test", "train", "all", "subjective_test"] or tasks.startswith("tap") or tasks.startswith("dmp")
 
         self.do_eval = do_eval
         self.dump_features = dump_features
@@ -160,16 +160,16 @@ class Evaluation:
 
         return driver
 
-    def load_tap_task_names(self):
+    def load_split_tasks(self, partitions: int):
+        """
+        args: partitions: number of partitions to split the tasks into
+        """
         # load all tasks into a list of strings
         all_tasks = os.listdir("../tasks")
         all_tasks = list(filter(self.filter_TAP_tasks, all_tasks))
         print("all_tasks len:", len(all_tasks))
 
-        if self.tasks == 'all':
-            return all_tasks
-
-        partitions = 18 # number of partitions
+        og_partitions = partitions
         split_tasks = []
 
         # Greedy optimized way to split evenly
@@ -204,7 +204,7 @@ class Evaluation:
             split_tasks.append(curr)
 
         split_sums = []
-        for i in range(18):
+        for i in range(og_partitions):
             temp_sum = 0
             for task in split_tasks[i]:
                 df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
@@ -225,7 +225,7 @@ class Evaluation:
         ind = int(self.tasks[len("tap"):]) - 1
 
         if ind == 0:
-            for i in range(18):
+            for i in range(og_partitions):
                 print(f"partition: {i} | {split_tasks[i]}")
 
         print("this partition's tap tasks", split_tasks[ind])
@@ -253,11 +253,12 @@ class Evaluation:
 
             # make sure that the splits are exclusive
             all_test_splits = [test, test_hard, subjective_test]
-            for test1 in all_test_splits:
-                for test2 in all_test_splits:
-                    if test != test2:
-                        assert len(set(test1).intersection(set(test2))) == 0, f"{Fore.RED}The test and subjective test " \
-                                                                           f"splits are not exclusive\n: test: {test}\nsubjective_test: {subjective_test}"
+            for i, test1 in enumerate(all_test_splits):
+                for j, test2 in enumerate(all_test_splits):
+                    if i != j:
+                        assert len(set(test1).intersection(set(test2))) == 0, f"{Fore.RED}The tests are not mutually exclusive" \
+                                                                           f"splits are not exclusive\n: test1: {test1}\ntest2: {test2}" \
+                                                                           f"\nintersection: {set(test1).intersection(set(test2))}"
 
             if self.tasks == 'test_easy':
                 return test
@@ -334,7 +335,6 @@ class Evaluation:
 
             input_fields.append(i)
 
-        # could think about sorting input_fields, but breaks certain tasks like Abductive Reasoning 11
         # instead changed the code base to just use the order in which the Answer columns are given. We can rearrange it to the order of which inputs to fill in first
         return input_fields
     
@@ -652,14 +652,18 @@ class Evaluation:
 
         return score
 
-    def enumerate_tasks(self, max_instance_count: int):
+    def enumerate_tasks(self, max_instance_count: int, dump_partitions: int = 1):
         """
         Enumerate the tasks and their instances
         :param max_instance_count: maximum number of instances per task
         """
         input_format = "both"
 
-        tasks = self.load_task_names()
+        if self.tasks.startswith("dmp"):
+            tasks = self.load_split_tasks(dump_partitions)
+            tasks = ["Abductive Reasoning 11"]
+        else:
+            tasks = self.load_task_names()
         results = {}
         aggregate_field_statistics = {}  # We store the stats related to the field types/frequency here
         task_field_statistics = {}
@@ -901,7 +905,7 @@ class Evaluation:
 
         input_format = "both"
 
-        tasks = self.load_tap_task_names()
+        tasks = self.load_split_tasks(18)
         ret = []
 
         task_results = {} # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores, failing_tasks} }
@@ -1002,7 +1006,7 @@ class Evaluation:
 
         input_format = "both"
 
-        tasks = self.load_tap_task_names()
+        tasks = self.load_task_names()
         ret = []
 
         task_results = {} # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores, failing_tasks} }
