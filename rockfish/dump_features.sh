@@ -21,7 +21,7 @@
 #SBATCH --mail-user=kxu39@jhu.edu
 #
 # Create a job array of all the parttions
-#SBATCH --array=1-40
+#SBATCH --array=1-80
 
 # Load necessary modules
 module load anaconda
