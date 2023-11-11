@@ -11,7 +11,7 @@ def run_dump(total_partitions):
     evaluation.enumerate_tasks(max_instance_count=1, dump_partitions=int(total_partitions))
 
 if __name__ == "__main__":
-    print("Running dump features")
+    print("Running dump features", sys.argv)
     evaluation.tasks = sys.argv[1]
     total_partitions = sys.argv[2]
     run_dump(total_partitions)
