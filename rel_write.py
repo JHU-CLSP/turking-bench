@@ -1,7 +1,6 @@
 import os
 from pathlib import Path
 
-
 scratch4 = "/scratch4/danielk/kxu39/turk_data"
 task_name = "task1"
 
