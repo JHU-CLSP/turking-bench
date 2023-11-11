@@ -43,4 +43,4 @@ which $python
 
 
 cd turk-instructions/src
-$python 1_run_website.py & sleep 10 && $python dump_features.py dmp$SLURM_ARRAY_TASK_ID $SLURM_TASK_MAX
+./1_run_website.sh & sleep 10 && $python dump_features.py dmp$SLURM_ARRAY_TASK_ID $SLURM_TASK_MAX
