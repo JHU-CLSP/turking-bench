@@ -7,6 +7,7 @@ from evaluation import baselines
 import html
 import json
 import os
+from pathlib import Path
 import pandas as pd
 import numpy as np
 import platform
@@ -679,6 +680,16 @@ class Evaluation:
             # Create a random sample
             instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
 
+            if self.dump_features:
+                directory = f'/scratch4/danielk/kxu39/turk_data/{task_name}'
+                images_directory = f'{directory}/images'
+                html_directory = f'{directory}/HTML'
+
+                Path(directory).mkdir(parents=True, exist_ok=True)
+                Path(html_directory).mkdir(parents=True, exist_ok=True)
+
+                data_to_be_dumped = []
+
             # Go through the instances of each task in this random sample
             for instance_id in instance_ids:
 
@@ -707,18 +718,6 @@ class Evaluation:
                 # TODO: check if all the files (images, videos, audio, css, etc.) in the HTML are accessible
                 # TODO: find all the URLS in the HTML and check if they are accessible
 
-                if self.dump_features:
-                    directory = f'/scratch4/danielk/kxu39/turk_data/{task_name}'
-                    images_directory = f'{directory}/images'
-                    html_directory = f'{directory}/HTML'
-
-                    if os.path.exists(directory):
-                        shutil.rmtree(directory)
-                    os.makedirs(directory)
-
-                    if not os.path.exists(html_directory):
-                        os.makedirs(html_directory)
-
                 # for counting overall statistics
                 if self.report_field_stats:
                     if task_name not in task_field_statistics:
@@ -735,7 +734,11 @@ class Evaluation:
                         task_field_statistics[task_name][i.type] += 1
 
                 if self.dump_features:
-                    data_to_be_dumped = []
+                    data_to_be_dumped.append({
+                        "task_name": task_name,
+                        "instance_id": instance_id,
+                        "row_num": row_number
+                    })
 
                 for input_idx, i in enumerate(inputs):
                     print(f"{Fore.GREEN} - - - - - -  starting a new element: `{i}` - - - - - -  ")
@@ -749,8 +752,7 @@ class Evaluation:
                     if self.dump_features and i.type != 'hidden':
                         image_format = "bordered_div"  # the most reasonable option
                         # create directory if needed
-                        if not os.path.exists(f'{images_directory}_{image_format}'):
-                            os.makedirs(f'{images_directory}_{image_format}')
+                        Path(f"{images_directory}_{image_format}").mkdir(parents=True, exist_ok=True)
                         if image_format == 'full_page':
                             task_image = self.actions.take_page_screenshots().outcome
                         elif image_format == 'bordered_div':
