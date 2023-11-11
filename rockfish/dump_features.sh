@@ -18,6 +18,9 @@
 # Send mail to the email address when the job fails
 #SBATCH --mail-type=FAIL
 #SBATCH --mail-user=kxu39@jhu.edu
+#
+# Create a job array of all the parttions
+#SBATCH --array=1-1
 
 # Load necessary modules
 module load anaconda
@@ -39,4 +42,4 @@ bash="/bin/bash"
 
 cd turk-instructions/src
 $bash 1_run_website.sh &
-$python dump_features.py dmp1
+$python dump_features.py dmp$SLURM_ARRAY_TASK_ID $SLURM_TASK_MAX
