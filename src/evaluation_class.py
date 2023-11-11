@@ -661,7 +661,6 @@ class Evaluation:
 
         if self.tasks.startswith("dmp"):
             tasks = self.load_split_tasks(dump_partitions)
-            tasks = ["Abductive Reasoning 11"]
         else:
             tasks = self.load_task_names()
         results = {}
