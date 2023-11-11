@@ -15,8 +15,6 @@ fi
 # pick the right version of python
 if [ -f "~/miniconda3/envs/turk/bin/python" ]; then
     # Rockfish specified conda python
-    conda activate turk
-    python --version
     python=~/miniconda3/envs/turk/bin/python
 elif [ -f "/Users/${USER}/.tea/tea.xyz/v*/bin/tea" ]; then
     python="tea python"
