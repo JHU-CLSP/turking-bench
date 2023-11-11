@@ -41,4 +41,4 @@ python="~/miniconda3/envs/turk/bin/python"
 bash="/bin/bash"
 
 cd turk-instructions/src
-$bash 1_run_website.sh && $python dump_features.py dmp$SLURM_ARRAY_TASK_ID $SLURM_TASK_MAX
+$bash 1_run_website.sh & sleep 10 && $python dump_features.py dmp$SLURM_ARRAY_TASK_ID $SLURM_TASK_MAX
