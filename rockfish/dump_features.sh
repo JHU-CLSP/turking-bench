@@ -13,6 +13,7 @@
 #
 # Minimum memory required per allocated  CPU  in  MegaBytes.
 #SBATCH --mem-per-cpu=48000
+#SBATCH --cpus-per-task=2
 #SBATCH -A danielk
 #
 # Send mail to the email address when the job fails
