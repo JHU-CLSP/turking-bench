@@ -708,7 +708,7 @@ class Evaluation:
                 # TODO: find all the URLS in the HTML and check if they are accessible
 
                 if self.dump_features:
-                    directory = f'features/{task_name}'
+                    directory = f'/scratch4/danielk/kxu39/turk_data/{task_name}'
                     images_directory = f'{directory}/images'
                     html_directory = f'{directory}/HTML'
 
