@@ -5,7 +5,7 @@ repo_dir="Turkle"
 if command -v poetry >/dev/null 2>&1; then
     installer="poetry"
 else
-    elif [ -f "/usr/bin/pip3" ]; then
+    if [ -f "/usr/bin/pip3" ]; then
         installer="pip3"
     else
         installer="pip"
