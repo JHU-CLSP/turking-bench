@@ -197,7 +197,7 @@ class MyActions:
             return Result(
                 success=False,
                 outcome=None,
-                action=f"self.modify_checkbox({input.name}, {input_value})")
+                action=f"self.modify_checkbox('{input.name}', '{input_value}')")
         elif 'nan' in input_value:
             print(
                 f"{Fore.YELLOW} ** Warning **: Found input value is 'nan' and filtered it out"
@@ -210,7 +210,7 @@ class MyActions:
                 return Result(
                     success=False,
                     outcome=None,
-                    action=f"self.modify_checkbox({input.name}, {input_value})")
+                    action=f"self.modify_checkbox('{input.name}', '{input_value}')")
 
         self.wait_for_element(input)
         self.scroll_to_element(input)
@@ -253,7 +253,7 @@ class MyActions:
                 return Result(
                     success=False,
                     outcome=None,
-                    action=f"self.modify_radio('{input.name}, {input_value})")
+                    action=f"self.modify_radio('{input.name}, '{input_value}')")
             else:
                 input_value = int(input_value)
 
@@ -267,7 +267,7 @@ class MyActions:
             return Result(
                 success=False,
                 outcome=None,
-                action=f"self.modify_radio('{input.name}', {input_value})")
+                action=f"self.modify_radio('{input.name}', '{input_value}')")
 
         self.scroll_to_element(input)
         value = f"@value='{input_value}'"
@@ -293,7 +293,7 @@ class MyActions:
         return Result(
             success=True,
             outcome=None,
-            action=f"self.modify_radio('{input.name}', {input_value})")
+            action=f"self.modify_radio('{input.name}', '{input_value}')")
 
     def modify_select(self, input: Input, input_value) -> Result:
         """
@@ -330,7 +330,7 @@ class MyActions:
         return Result(
             success=True,
             outcome=None,
-            action=f"self.modify_select('{input.name}', {input_value})")
+            action=f"self.modify_select('{input.name}', '{input_value}')")
 
     def modify_range(self, input: Input, input_value) -> Result:
         """
@@ -350,7 +350,7 @@ class MyActions:
             return Result(
                 success=False,
                 outcome=None,
-                action=f"self.modify_range('{input.name}', {input_value})")
+                action=f"self.modify_range('{input.name}', '{input_value}')")
 
         self.scroll_to_element(input)
         # value = f"@value='{input_value}'"
@@ -376,7 +376,7 @@ class MyActions:
         return Result(
             success=True,
             outcome=None,
-            action=f"self.modify_range('{input.name}', {input_value})")
+            action=f"self.modify_range('{input.name}', '{input_value}')")
 
     def take_screenshot(self) -> Result:
         """
