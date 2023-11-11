@@ -35,7 +35,7 @@ module list
 source .env
 
 # Run the Python script
-python="~/miniconda3/envs/turk/bin/python"
+python=~/miniconda3/envs/turk/bin/python
 bash="/bin/bash"
 
 $python --version
