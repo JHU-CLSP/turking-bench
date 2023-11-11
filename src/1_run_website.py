@@ -2,7 +2,7 @@ import subprocess
 import os
 
 def run_web_server():
-    subprocess.run('bash -c "source activate root; python -V"', shell=True)
+    subprocess.run('bash -c "conda activate turk; python -V"', shell=True)
     subprocess.Popen(["python", "Turkle/manage.py", "runserver", "0.0.0.0:8000"])
 
 if __name__ == "__main__":
