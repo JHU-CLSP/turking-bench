@@ -264,7 +264,7 @@ class MyActions:
                 return Result(
                     success=False,
                     outcome=None,
-                    action=f"self.modify_radio('{input.name}, '{input_value}')")
+                    action=f"self.modify_radio('{input.name}', '{input_value}')")
             else:
                 input_value = int(input_value)
 
