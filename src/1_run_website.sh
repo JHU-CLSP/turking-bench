@@ -5,7 +5,7 @@ repo_dir="Turkle"
 if command -v poetry >/dev/null 2>&1; then
     installer="poetry"
 else
-    if [ -f "/usr/bin/pip3" ]; then
+    elif [ -f "/usr/bin/pip3" ]; then
         installer="pip3"
     else
         installer="pip"
@@ -13,7 +13,10 @@ else
 fi
 
 # pick the right version of python
-if [ -f "/Users/${USER}/.tea/tea.xyz/v*/bin/tea" ]; then
+if [ -f "~/miniconda3/envs/turk/bin/python" ]; then
+    # Rockfish specified conda python
+    python="~/miniconda3/envs/turk/bin/python"
+elif [ -f "/Users/${USER}/.tea/tea.xyz/v*/bin/tea" ]; then
     python="tea python"
 elif [ -f "/usr/bin/pip3" ]; then
     python="python3"
