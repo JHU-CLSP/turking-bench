@@ -89,7 +89,7 @@ class MyActions:
 
         return Result(success=True,
                       outcome=outcome,
-                      action=f"self.execute_js_command({command})")
+                      action=f"self.execute_js_command('{command}')")
 
     def maximize_window(self) -> Result:
         """
@@ -111,7 +111,7 @@ class MyActions:
         self.execute_js_command(self.scroll_to_command, input_element)
         return Result(success=True,
                       outcome=input_element,
-                      action=f"self.scroll_to_element({input.name})")
+                      action=f"self.scroll_to_element('{input.name}')")
 
     def wait_for_element(self, input: Input) -> Result:
         """
@@ -122,7 +122,7 @@ class MyActions:
 
         return Result(success=True,
                       outcome=input_element,
-                      action=f"self.wait_for_element({input.name})")
+                      action=f"self.wait_for_element('{input.name}')")
 
     def modify_text(self, input: Input, input_value) -> Result:
         """
@@ -142,7 +142,7 @@ class MyActions:
             )
             return Result(success=False,
                           outcome=None,
-                          action=f"self.modify_text({input.name}, {input_value})")
+                          action=f"self.modify_text('{input.name}', '{input_value}')")
 
         result = self.scroll_to_element(input)
         input_element = result.outcome
@@ -170,7 +170,7 @@ class MyActions:
 
         return Result(success=True,
                       outcome=input_element,
-                      action=f"self.modify_text({input.name}, {input_value})")
+                      action=f"self.modify_text('{input.name}', '{input_value}')")
 
     def modify_checkbox(self, input: Input, input_value) -> Result:
         """
@@ -238,7 +238,7 @@ class MyActions:
 
         return Result(success=True,
                       outcome=None,
-                      action=f"self.modify_checkbox({input.name}, {input_value})")
+                      action=f"self.modify_checkbox('{input.name}', '{input_value}')")
 
     def modify_radio(self, input: Input, input_value) -> Result:
         """
