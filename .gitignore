@@ -11,6 +11,7 @@ tasks/*/input.csv
 /src/task_field_statistics.csv
 /src/utils/__pycache__/
 /src/features/
+/src/db.sqlite3
 **/.DS_Store
 /venv/
 .vscode/

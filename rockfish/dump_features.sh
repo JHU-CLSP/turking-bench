@@ -21,7 +21,7 @@
 #SBATCH --mail-user=kxu39@jhu.edu
 #
 # Create a job array of all the parttions
-#SBATCH --array=1-1
+#SBATCH --array=1-80
 
 # Load necessary modules
 module load anaconda
@@ -32,14 +32,14 @@ conda activate turk
 
 module list
 
-python --version
-which python
-
 source .env
 
 # Run the Python script
-python="~/miniconda3/envs/turk/bin/python"
+python=~/miniconda3/envs/turk/bin/python
 bash="/bin/bash"
 
+$python --version
+which $python
+
 cd turk-instructions/src
-$bash 1_run_website.sh & sleep 10 && $python dump_features.py dmp$SLURM_ARRAY_TASK_ID $SLURM_TASK_MAX
+./1_rockfish_run_website.sh & sleep 10 && $python dump_partition.py dmp$SLURM_ARRAY_TASK_ID $SLURM_ARRAY_TASK_MAX
