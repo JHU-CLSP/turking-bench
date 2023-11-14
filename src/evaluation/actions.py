@@ -89,7 +89,7 @@ class MyActions:
 
         return Result(success=True,
                       outcome=outcome,
-                      action=f"self.execute_js_command('{command}')")
+                      action=f"self.actions.execute_js_command('{command}')")
 
     def maximize_window(self) -> Result:
         """
@@ -111,7 +111,7 @@ class MyActions:
         self.execute_js_command(self.scroll_to_command, input_element)
         return Result(success=True,
                       outcome=input_element,
-                      action=f"self.scroll_to_element('{input_name}')")
+                      action=f"self.actions.scroll_to_element('{input_name}')")
 
     def wait_for_element(self, input_name: Input) -> Result:
         """
@@ -122,7 +122,7 @@ class MyActions:
 
         return Result(success=True,
                       outcome=input_element,
-                      action=f"self.wait_for_element('{input_name}')")
+                      action=f"self.actions.wait_for_element('{input_name}')")
 
     def modify_text(self, input_name: str, input_value) -> Result:
         """
@@ -141,7 +141,7 @@ class MyActions:
             )
             return Result(success=False,
                           outcome=None,
-                          action=f"self.modify_text('{input_name}', '{input_value}')")
+                          action=f"self.actions.modify_text('{input_name}', '{input_value}')")
 
         result = self.scroll_to_element(input_name)
         input_element = result.outcome
@@ -169,7 +169,7 @@ class MyActions:
 
         return Result(success=True,
                       outcome=input_element,
-                      action=f"self.modify_text('{input_name}', '{input_value}')")
+                      action=f"self.actions.modify_text('{input_name}', '{input_value}')")
 
     def modify_checkbox(self, input_name: str, input_value) -> Result:
         """
@@ -203,7 +203,7 @@ class MyActions:
             return Result(
                 success=False,
                 outcome=None,
-                action=f"self.modify_checkbox('{input_name}', '{original_input_value}')")
+                action=f"self.actions.modify_checkbox('{input_name}', '{original_input_value}')")
         elif 'nan' in input_value:
             print(
                 f"{Fore.YELLOW} ** Warning **: Found input value is 'nan' and filtered it out"
@@ -216,7 +216,7 @@ class MyActions:
                 return Result(
                     success=False,
                     outcome=None,
-                    action=f"self.modify_checkbox('{input_name}', '{original_input_value}')")
+                    action=f"self.actions.modify_checkbox('{input_name}', '{original_input_value}')")
 
         self.wait_for_element(input_name)
         self.scroll_to_element(input_name)
@@ -244,7 +244,7 @@ class MyActions:
 
         return Result(success=True,
                       outcome=None,
-                      action=f"self.modify_checkbox('{input_name}', '{original_input_value}')")
+                      action=f"self.actions.modify_checkbox('{input_name}', '{original_input_value}')")
 
     def modify_radio(self, input_name: str, input_value) -> Result:
         """
@@ -264,7 +264,7 @@ class MyActions:
                 return Result(
                     success=False,
                     outcome=None,
-                    action=f"self.modify_radio('{input_name}', '{input_value}')")
+                    action=f"self.actions.modify_radio('{input_name}', '{input_value}')")
             else:
                 input_value = int(input_value)
 
@@ -278,7 +278,7 @@ class MyActions:
             return Result(
                 success=False,
                 outcome=None,
-                action=f"self.modify_radio('{input_name}', '{input_value}')")
+                action=f"self.actions.modify_radio('{input_name}', '{input_value}')")
 
         self.scroll_to_element(input)
         value = f"@value='{input_value}'"
@@ -304,7 +304,7 @@ class MyActions:
         return Result(
             success=True,
             outcome=None,
-            action=f"self.modify_radio('{input_name}', '{input_value}')")
+            action=f"self.actions.modify_radio('{input_name}', '{input_value}')")
 
     def modify_select(self, input_name: str, input_value) -> Result:
         """
@@ -346,7 +346,7 @@ class MyActions:
         return Result(
             success=True,
             outcome=None,
-            action=f"self.modify_select('{input_name}', '{input_value}')")
+            action=f"self.actions.modify_select('{input_name}', '{input_value}')")
 
     def modify_range(self, input_name: str, input_value) -> Result:
         """
@@ -371,7 +371,7 @@ class MyActions:
             return Result(
                 success=False,
                 outcome=None,
-                action=f"self.modify_range('{input_name}', '{input_value}')")
+                action=f"self.actions.modify_range('{input_name}', '{input_value}')")
 
         self.scroll_to_element(input)
         # value = f"@value='{input_value}'"
@@ -397,7 +397,7 @@ class MyActions:
         return Result(
             success=True,
             outcome=None,
-            action=f"self.modify_range('{input_name}', '{input_value}')")
+            action=f"self.actions.modify_range('{input_name}', '{input_value}')")
 
     def take_screenshot(self) -> Result:
         """
@@ -450,7 +450,7 @@ class MyActions:
         cropped_image = image.crop((left, top, right, bottom))
         return Result(success=True,
                       outcome=cropped_image,
-                      action=f"self.take_element_screenshot('{input_name}')")
+                      action=f"self.actions.take_element_screenshot('{input_name}')")
 
     def take_element_screenshot_with_border(self, input_name: str) -> Result:
         """
@@ -482,7 +482,7 @@ class MyActions:
         return Result(
             success=True,
             outcome=image,
-            action=f"self.take_element_screenshot_with_border('{input_name}')")
+            action=f"self.actions.take_element_screenshot_with_border('{input_name}')")
 
     def take_page_screenshots(self) -> Result:
         """
