@@ -100,12 +100,12 @@ class OracleBaseline(Baseline):
                 print(f" --> Input name: {input.name}")
                 print(f" --> Input value: {answer}")
 
-                r1 = self.actions.wait_for_element(input)
+                r1 = self.actions.wait_for_element(input.name)
 
                 # wait 0.1 sec for the page to fully load
                 sleep(0.1)
                 self.actions.maximize_window()
-                response = self.actions.scroll_to_element(input)
+                response = self.actions.scroll_to_element(input.name)
                 input_element = response.outcome
 
                 action_sequence = []
