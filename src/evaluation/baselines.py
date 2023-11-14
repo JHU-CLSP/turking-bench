@@ -111,17 +111,17 @@ class OracleBaseline(Baseline):
                 action_sequence = []
 
                 if input.type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
-                    action_sequence.append(self.actions.modify_text(input, answer))
+                    action_sequence.append(self.actions.modify_text(input.name, answer))
                 elif input.type in ['checkbox']:
                     if not input_element.is_selected():
-                        action_sequence.append(self.actions.modify_checkbox(input, answer))
+                        action_sequence.append(self.actions.modify_checkbox(input.name, answer))
                 elif input.type in ['radio']:
                     if not input_element.is_selected():
-                        action_sequence.append(self.actions.modify_radio(input, answer))
+                        action_sequence.append(self.actions.modify_radio(input.name, answer))
                 elif input.type == 'select':
-                    action_sequence.append(self.actions.modify_select(input, answer))
+                    action_sequence.append(self.actions.modify_select(input.name, answer))
                 elif input.type == 'range':
-                    action_sequence.append(self.actions.modify_range(input, answer))
+                    action_sequence.append(self.actions.modify_range(input.name, answer))
                 elif input.type in ['button', 'color', 'date', 'datetime-local', 'file', 'hidden', 'image',
                                     'month', 'reset', 'search', 'submit', 'time']:
                     raise Exception(
