@@ -1,4 +1,5 @@
 import json
+import os
 import evaluation_class
 import argparse
 from typing import List
@@ -26,6 +27,11 @@ if __name__ == "__main__":
         report_field_stats=args.report_field_stats,
         headless=args.headless
     )
+
+    dir = "model_output"
+    for folder in os.listdir(dir):
+        print(f"folder name: {folder}")
+        file = f"{dir}/{folder}/{folder}.json"
 
     fp = open("model_output/ex1/ex1.json", "r")
     json_data = json.load(fp)

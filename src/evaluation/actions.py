@@ -280,7 +280,7 @@ class MyActions:
                 outcome=None,
                 action=f"self.actions.modify_radio('{input_name}', '{input_value}')")
 
-        self.scroll_to_element(input)
+        self.scroll_to_element(input_name)
         value = f"@value='{input_value}'"
         if "'" in input_value and '"' in input_value:
             value = f'@value=`{input_value}`'
@@ -373,7 +373,7 @@ class MyActions:
                 outcome=None,
                 action=f"self.actions.modify_range('{input_name}', '{input_value}')")
 
-        self.scroll_to_element(input)
+        self.scroll_to_element(input_name)
         # value = f"@value='{input_value}'"
         # if "'" in input_value and '"' in input_value:
         #     value = f'@value=`{input_value}`'
