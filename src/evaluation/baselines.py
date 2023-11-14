@@ -220,18 +220,22 @@ class ModelBaseline(Baseline):
         """
 
         error_flag = False
-        for idx, output in enumerate(inputs):
+        for idx, output in enumerate(outputs):
             input = inputs[idx]
-            self.actions.wait_for_element(input)
+            print("input:", input)
+            self.actions.wait_for_element(input.name)
 
             # wait 0.1 sec for the page to fully load
             sleep(0.1)
             self.actions.maximize_window()
-            self.actions.scroll_to_element(input)
+            self.actions.scroll_to_element(input.name)
+            print("about to try executing one action, output:", output)
 
             try:
-                exec(output[idx])
+                exec(output)
+                print("executed one action")
             except Exception as error:
                 error_flag = True
+                print(f"failed to execute an action {output}, error: {error}")
 
         return error_flag
