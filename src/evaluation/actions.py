@@ -175,6 +175,12 @@ class MyActions:
     def modify_checkbox(self, input: Input, input_value) -> Result:
         """
         For a given checkbox, this function clicks on the specified checks.
+        :param input_name: name of the input field
+        :param input_value: value to be entered into the input field, if we have more than one value, we separate them with `|`
+        :return: None
+
+        For example, if the input name is `countries` and possible input values are `Italy` and `Canada`, then we would need to run the following to click on the `Italy` and `Canada` inside this input:
+        > self.modify_checkbox("countries", "Italy | Canada")
         """
 
         # if input value is not string, turn it into a string
@@ -243,6 +249,12 @@ class MyActions:
     def modify_radio(self, input: Input, input_value) -> Result:
         """
         For a given radio button, this function clicks on the specified radio button.
+        :param input_name: name of the input field
+        :param input_value: value to be entered into the input field
+        :return: None
+
+        For example, if the input name is `reasonability` and the desired input value is `yes`, then we would need to run the following to click on the `yes` radio button:
+        > self.modify_radio("reasonability", "yes")
         """
         # if input value is double/float, turn it into an integer
         if isinstance(input_value, float):
@@ -298,6 +310,12 @@ class MyActions:
     def modify_select(self, input: Input, input_value) -> Result:
         """
         For a given select field (dropdown menu), this function selects the specified option.
+        :param input_name: name of the input field
+        :param input_value: value to be selected in the input field
+        :return: None
+
+        For example, if the input name is `question1` and the desired input value is `option2`, then we would need to run the following to select the `option2`:
+        > self.modify_select("question1", "option2")
         """
         # input_element = self.scroll_to_element(input_name)
         select_element = self.driver.find_element(By.NAME, input.name)
@@ -335,6 +353,12 @@ class MyActions:
     def modify_range(self, input: Input, input_value) -> Result:
         """
         For a given "range" input, this function clicks on the specified range value.
+        :param input_name: name of the input field
+        :param input_value: value to be clicked in the input field
+        :return: None
+
+        For example, if the input name is `satisfactory` and the desired input value is `12`, then we would need to run the following to click on the `12`:
+        > self.modify_range("satisfactory", "12")
         """
         # if input value is double/float, turn it into an integer
         # if isinstance(input_value, float):
