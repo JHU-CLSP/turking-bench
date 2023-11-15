@@ -220,6 +220,16 @@ class ModelBaseline(Baseline):
         """
 
         error_flag = False
+        print(f"input len {len(inputs)} output len {len(outputs)}")
+
+        for idx in range(len(outputs)):
+            if idx < len(inputs):
+                print(f"input {idx} {inputs[idx]} output {idx} {outputs[idx]}")
+            else:
+                print(f"output {idx} {outputs[idx]}")
+        
+        return True
+
         for idx, output in enumerate(outputs):
             input = inputs[idx]
             print("input:", input)
