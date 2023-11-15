@@ -756,7 +756,7 @@ class Evaluation:
                         if image_format == 'full_page':
                             task_image = self.actions.take_page_screenshots().outcome
                         elif image_format == 'bordered_div':
-                            task_image = self.actions.take_element_screenshot_with_border(i).outcome
+                            task_image = self.actions.take_element_screenshot_with_border(i.name).outcome
                         else:
                             raise Exception(f"{Fore.RED}to be implemented for image format `{image_format}`")
 

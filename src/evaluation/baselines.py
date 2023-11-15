@@ -100,28 +100,28 @@ class OracleBaseline(Baseline):
                 print(f" --> Input name: {input.name}")
                 print(f" --> Input value: {answer}")
 
-                r1 = self.actions.wait_for_element(input)
+                r1 = self.actions.wait_for_element(input.name)
 
                 # wait 0.1 sec for the page to fully load
                 sleep(0.1)
                 self.actions.maximize_window()
-                response = self.actions.scroll_to_element(input)
+                response = self.actions.scroll_to_element(input.name)
                 input_element = response.outcome
 
                 action_sequence = []
 
                 if input.type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
-                    action_sequence.append(self.actions.modify_text(input, answer))
+                    action_sequence.append(self.actions.modify_text(input.name, answer))
                 elif input.type in ['checkbox']:
                     if not input_element.is_selected():
-                        action_sequence.append(self.actions.modify_checkbox(input, answer))
+                        action_sequence.append(self.actions.modify_checkbox(input.name, answer))
                 elif input.type in ['radio']:
                     if not input_element.is_selected():
-                        action_sequence.append(self.actions.modify_radio(input, answer))
+                        action_sequence.append(self.actions.modify_radio(input.name, answer))
                 elif input.type == 'select':
-                    action_sequence.append(self.actions.modify_select(input, answer))
+                    action_sequence.append(self.actions.modify_select(input.name, answer))
                 elif input.type == 'range':
-                    action_sequence.append(self.actions.modify_range(input, answer))
+                    action_sequence.append(self.actions.modify_range(input.name, answer))
                 elif input.type in ['button', 'color', 'date', 'datetime-local', 'file', 'hidden', 'image',
                                     'month', 'reset', 'search', 'submit', 'time']:
                     raise Exception(
@@ -220,18 +220,22 @@ class ModelBaseline(Baseline):
         """
 
         error_flag = False
-        for idx, output in enumerate(inputs):
+        for idx, output in enumerate(outputs):
             input = inputs[idx]
-            self.actions.wait_for_element(input)
+            print("input:", input)
+            self.actions.wait_for_element(input.name)
 
             # wait 0.1 sec for the page to fully load
             sleep(0.1)
             self.actions.maximize_window()
-            self.actions.scroll_to_element(input)
+            self.actions.scroll_to_element(input.name)
+            print("about to try executing one action, output:", output)
 
             try:
-                exec(output[idx])
+                exec(output)
+                print("executed one action")
             except Exception as error:
                 error_flag = True
+                print(f"failed to execute an action {output}, error: {error}")
 
         return error_flag

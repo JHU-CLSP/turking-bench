@@ -89,7 +89,7 @@ class MyActions:
 
         return Result(success=True,
                       outcome=outcome,
-                      action=f"self.execute_js_command('{command}')")
+                      action=f"self.actions.execute_js_command('{command}')")
 
     def maximize_window(self) -> Result:
         """
@@ -101,30 +101,30 @@ class MyActions:
                       outcome=None,
                       action="self.maximize_window()")
 
-    def scroll_to_element(self, input: Input) -> Result:
+    def scroll_to_element(self, input_name: str) -> Result:
         """
         This function scrolls to a given element on the page, after the page is fully loaded.
         It then returns the element.
         """
-        result = self.wait_for_element(input)
+        result = self.wait_for_element(input_name)
         input_element = result.outcome
         self.execute_js_command(self.scroll_to_command, input_element)
         return Result(success=True,
                       outcome=input_element,
-                      action=f"self.scroll_to_element('{input.name}')")
+                      action=f"self.actions.scroll_to_element('{input_name}')")
 
-    def wait_for_element(self, input: Input) -> Result:
+    def wait_for_element(self, input_name: Input) -> Result:
         """
         This function waits for a given element to be loaded on the page, and then returns the element.
         """
         input_element = WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located((By.NAME, input.name)))
+            EC.presence_of_element_located((By.NAME, input_name)))
 
         return Result(success=True,
                       outcome=input_element,
-                      action=f"self.wait_for_element('{input.name}')")
+                      action=f"self.actions.wait_for_element('{input_name}')")
 
-    def modify_text(self, input: Input, input_value) -> Result:
+    def modify_text(self, input_name: str, input_value) -> Result:
         """
         For a given editable input field such as text box or text area, this function enters the input value into
         the input field.
@@ -141,9 +141,9 @@ class MyActions:
             )
             return Result(success=False,
                           outcome=None,
-                          action=f"self.modify_text('{input.name}', '{input_value}')")
+                          action=f"self.actions.modify_text('{input_name}', '{input_value}')")
 
-        result = self.scroll_to_element(input)
+        result = self.scroll_to_element(input_name)
         input_element = result.outcome
         print(
             f"{Fore.YELLOW}We are going to add text to this text input: {input_element.get_attribute('outerHTML')}"
@@ -169,9 +169,9 @@ class MyActions:
 
         return Result(success=True,
                       outcome=input_element,
-                      action=f"self.modify_text('{input.name}', '{input_value}')")
+                      action=f"self.actions.modify_text('{input_name}', '{input_value}')")
 
-    def modify_checkbox(self, input: Input, input_value) -> Result:
+    def modify_checkbox(self, input_name: str, input_value) -> Result:
         """
         For a given checkbox group, this function clicks on all the values listed in input_value.
         :param input_name: name of the input field
@@ -203,7 +203,7 @@ class MyActions:
             return Result(
                 success=False,
                 outcome=None,
-                action=f"self.modify_checkbox('{input.name}', '{original_input_value}')")
+                action=f"self.actions.modify_checkbox('{input_name}', '{original_input_value}')")
         elif 'nan' in input_value:
             print(
                 f"{Fore.YELLOW} ** Warning **: Found input value is 'nan' and filtered it out"
@@ -216,13 +216,13 @@ class MyActions:
                 return Result(
                     success=False,
                     outcome=None,
-                    action=f"self.modify_checkbox('{input.name}', '{original_input_value}')")
+                    action=f"self.actions.modify_checkbox('{input_name}', '{original_input_value}')")
 
-        self.wait_for_element(input)
-        self.scroll_to_element(input)
+        self.wait_for_element(input_name)
+        self.scroll_to_element(input_name)
 
         print(
-            f"{Fore.YELLOW}Looking for checkboxes with `name`: {input}  the following values: {input_value}"
+            f"{Fore.YELLOW}Looking for checkboxes with `name`: {input_name}  the following values: {input_value}"
         )
 
         assert type(
@@ -231,7 +231,7 @@ class MyActions:
         # now we have to check the checkboxes that have the values we want
         # TODO: need to escape the following parameters
         checkboxes = self.driver.find_elements(
-            By.XPATH, f"//input[@type='checkbox' and @name='{input.name}']")
+            By.XPATH, f"//input[@type='checkbox' and @name='{input_name}']")
 
         for checkbox in checkboxes:
             if checkbox.get_attribute("value") in input_value:
@@ -244,9 +244,9 @@ class MyActions:
 
         return Result(success=True,
                       outcome=None,
-                      action=f"self.modify_checkbox('{input.name}', '{original_input_value}')")
+                      action=f"self.actions.modify_checkbox('{input_name}', '{original_input_value}')")
 
-    def modify_radio(self, input: Input, input_value) -> Result:
+    def modify_radio(self, input_name: str, input_value) -> Result:
         """
         For a given radio button, this function clicks on the correct radio answer.
         :param input_name: name of the input field
@@ -264,7 +264,7 @@ class MyActions:
                 return Result(
                     success=False,
                     outcome=None,
-                    action=f"self.modify_radio('{input.name}', '{input_value}')")
+                    action=f"self.actions.modify_radio('{input_name}', '{input_value}')")
             else:
                 input_value = int(input_value)
 
@@ -278,9 +278,9 @@ class MyActions:
             return Result(
                 success=False,
                 outcome=None,
-                action=f"self.modify_radio('{input.name}', '{input_value}')")
+                action=f"self.actions.modify_radio('{input_name}', '{input_value}')")
 
-        self.scroll_to_element(input)
+        self.scroll_to_element(input_name)
         value = f"@value='{input_value}'"
         if "'" in input_value and '"' in input_value:
             value = f'@value=`{input_value}`'
@@ -289,7 +289,7 @@ class MyActions:
 
         element = self.driver.find_element(
             By.XPATH,
-            f"//input[@type='radio' and @name='{input.name}' and {value}]")
+            f"//input[@type='radio' and @name='{input_name}' and {value}]")
 
         # print element in HTML format
         print(
@@ -304,9 +304,9 @@ class MyActions:
         return Result(
             success=True,
             outcome=None,
-            action=f"self.modify_radio('{input.name}', '{input_value}')")
+            action=f"self.actions.modify_radio('{input_name}', '{input_value}')")
 
-    def modify_select(self, input: Input, input_value) -> Result:
+    def modify_select(self, input_name: str, input_value) -> Result:
         """
         For a given select field (dropdown menu), this function selects the specified option.
         :param input_name: name of the input field
@@ -316,11 +316,11 @@ class MyActions:
         > self.modify_select("cars", "Audi")
         """
         # input_element = self.scroll_to_element(input_name)
-        select_element = self.driver.find_element(By.NAME, input.name)
+        select_element = self.driver.find_element(By.NAME, input_name)
         select = Select(select_element)
 
         assert len(
-            select.options) > 0, f"Select field {input.name} has no options"
+            select.options) > 0, f"Select field {input_name} has no options"
 
         # get the values of the options
         option_values = [
@@ -346,9 +346,9 @@ class MyActions:
         return Result(
             success=True,
             outcome=None,
-            action=f"self.modify_select('{input.name}', '{input_value}')")
+            action=f"self.actions.modify_select('{input_name}', '{input_value}')")
 
-    def modify_range(self, input: Input, input_value) -> Result:
+    def modify_range(self, input_name: str, input_value) -> Result:
         """
         For a given "range" input, this function clicks on the specified range value.
         :param input_name: name of the input field
@@ -371,9 +371,9 @@ class MyActions:
             return Result(
                 success=False,
                 outcome=None,
-                action=f"self.modify_range('{input.name}', '{input_value}')")
+                action=f"self.actions.modify_range('{input_name}', '{input_value}')")
 
-        self.scroll_to_element(input)
+        self.scroll_to_element(input_name)
         # value = f"@value='{input_value}'"
         # if "'" in input_value and '"' in input_value:
         #     value = f'@value=`{input_value}`'
@@ -381,7 +381,7 @@ class MyActions:
         #     value = f'@value="{input_value}"'
 
         element = self.driver.find_element(
-            By.XPATH, f"//input[@type='range' and @name='{input.name}']")
+            By.XPATH, f"//input[@type='range' and @name='{input_name}']")
 
         # print element in HTML format
         print(
@@ -397,7 +397,7 @@ class MyActions:
         return Result(
             success=True,
             outcome=None,
-            action=f"self.modify_range('{input.name}', '{input_value}')")
+            action=f"self.actions.modify_range('{input_name}', '{input_value}')")
 
     def take_screenshot(self) -> Result:
         """
@@ -426,13 +426,13 @@ class MyActions:
                       outcome=None,
                       action="self.take_screenshot()")
 
-    def take_element_screenshot(self, input: Input) -> Result:
+    def take_element_screenshot(self, input_name: str) -> Result:
         """
         This function takes a screenshot of a given element on the page.
         """
 
         # find the element based on input name
-        element = self.driver.find_element(By.NAME, input.name)
+        element = self.driver.find_element(By.NAME, input_name)
 
         # get the location and size of the element
         location = element.location
@@ -450,15 +450,15 @@ class MyActions:
         cropped_image = image.crop((left, top, right, bottom))
         return Result(success=True,
                       outcome=cropped_image,
-                      action=f"self.take_element_screenshot('{input.name}')")
+                      action=f"self.actions.take_element_screenshot('{input_name}')")
 
-    def take_element_screenshot_with_border(self, input: Input) -> Result:
+    def take_element_screenshot_with_border(self, input_name: str) -> Result:
         """
         This function takes a screenshot of the entire page and draws a red border around the specified element.
         """
 
         # find the element based on input name
-        element = self.driver.find_element(By.NAME, input.name)
+        element = self.driver.find_element(By.NAME, input_name)
 
         # get the location and size of the element
         location = element.location
@@ -482,7 +482,7 @@ class MyActions:
         return Result(
             success=True,
             outcome=image,
-            action=f"self.take_element_screenshot_with_border('{input.name}')")
+            action=f"self.actions.take_element_screenshot_with_border('{input_name}')")
 
     def take_page_screenshots(self) -> Result:
         """

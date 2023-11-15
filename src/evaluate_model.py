@@ -1,3 +1,5 @@
+import json
+import os
 import evaluation_class
 import argparse
 from typing import List
@@ -26,9 +28,31 @@ if __name__ == "__main__":
         headless=args.headless
     )
 
-    task_name = "ATOMIC Validate gl"
-    row_num = 0
-    model_outputs = ['self.modify_radio("q1_valid", 1)', 'self.modify_radio("q2_valid", 1)', 'self.modify_radio("q3_valid", 1)',
-                     'self.modify_radio("q4_valid", 1)', 'self.modify_radio("q5_valid", 1)']
-    score = call_score_model(eval, task_name, row_num, model_outputs)
-    print(f"Model Score: {score}")
+    dir = "model_output"
+    for folder in os.listdir(dir):
+        print(f"folder name: {folder}")
+        file = f"{dir}/{folder}/{folder}.json"
+
+    fp = open("model_output/ex1/ex1.json", "r")
+    json_data = json.load(fp)
+
+    evaluated_tasks = []
+
+    curr_task = {"model_outputs": []}
+    for block in json_data:
+        if "task_name" in block:
+            evaluated_tasks.append(curr_task)
+            curr_task["task_name"] = block["task_name"]
+            curr_task["row_num"] = block["row_num"]
+        else:
+            curr_task["model_outputs"].append(block["output"]["action_sequence"])
+    
+    evaluated_tasks.pop(0)
+
+    for task in evaluated_tasks:
+        task_name = task["task_name"]
+        row_num = task["row_num"]
+        model_outputs = task["model_outputs"]
+        print(f"Task Name: {task_name} Row Num: {row_num} Model Outputs: {model_outputs}")
+        score = call_score_model(eval, task_name, row_num, model_outputs)
+        print(f"Model Score: {score}")
