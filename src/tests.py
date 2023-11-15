@@ -5,7 +5,7 @@ from evaluation.input import Input
 from utils.hidden_prints import HiddenPrints
 
 evaluation = evaluation_class.Evaluation(solver_type="oracle", tasks="all",
-                             do_eval=True, dump_features=True, report_field_stats=True, headless=True)
+                             do_eval=True, dump_features=False, report_field_stats=True, headless=True)
 
 
 def test_actions():

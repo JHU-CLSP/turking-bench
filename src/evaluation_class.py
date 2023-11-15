@@ -7,6 +7,7 @@ from evaluation import baselines
 import html
 import json
 import os
+from pathlib import Path
 import pandas as pd
 import numpy as np
 import platform
@@ -83,7 +84,7 @@ class Evaluation:
         else:
             raise Exception(f"{Fore.RED}Solver `{solver_type}` not implemented")
         self.tasks = tasks
-        assert tasks in ["test", "train", "all", "subjective_test"] or tasks.startswith("tap")
+        assert tasks in ["test", "train", "all", "subjective_test"] or tasks.startswith("tap") or tasks.startswith("dmp")
 
         self.do_eval = do_eval
         self.dump_features = dump_features
@@ -101,14 +102,6 @@ class Evaluation:
 
     def filter_TAP_tasks(self, task_name):
         if "sandbox" in task_name:
-            return False
-
-        # Should be doable tasks, just seemed like it would take a little more time so skipped in that interest
-        skipped_cuz_hard = ["Sentence Formality Annotation"]
-        # Sentence Formality skipped since inputs could be slightly wrong, like '2_ instead of 2_
-        # Also sometimes it's in the wrong column, select answer in checkbox?
-        # Also not grabbing inputs, some some equality mismatching in retrieve_gold_label possibly
-        if task_name in skipped_cuz_hard:
             return False
 
         if "COMET2020 ATOMIC Inference Vp 5" == task_name:
@@ -130,19 +123,11 @@ class Evaluation:
         if task_name == "Summarization (RLUE) 1":
             return False
         
-        # Skip since funky HTML input, multiple radios of same name, and should have more answers
-        if task_name == "Explanation Acceptability (CommonsenseQA)":
-            return False
-        
         weird_input_formats = ["BiSECT Human Evaluation II (2)", "Spanish Word Alignment"]
         # Skip since these tasks have a weird input format the model cannot interact with
         if task_name in weird_input_formats:
             return False
         
-        # Wrong col name and has 1 set of questions when should be 4
-        if task_name == "Human evaluation - quals":
-            return False
-
         tasks_should_skip = ["Photo Collection GVDB", "NER - Task scruples 26,200 - 30,922"]
         # tasks I don't think the model is capable of solving
         if task_name in tasks_should_skip:
@@ -176,16 +161,16 @@ class Evaluation:
 
         return driver
 
-    def load_tap_task_names(self):
+    def load_split_tasks(self, partitions: int):
+        """
+        args: partitions: number of partitions to split the tasks into
+        """
         # load all tasks into a list of strings
         all_tasks = os.listdir("../tasks")
         all_tasks = list(filter(self.filter_TAP_tasks, all_tasks))
         print("all_tasks len:", len(all_tasks))
 
-        if self.tasks == 'all':
-            return all_tasks
-
-        partitions = 18 # number of partitions
+        og_partitions = partitions
         split_tasks = []
 
         # Greedy optimized way to split evenly
@@ -220,7 +205,7 @@ class Evaluation:
             split_tasks.append(curr)
 
         split_sums = []
-        for i in range(18):
+        for i in range(og_partitions):
             temp_sum = 0
             for task in split_tasks[i]:
                 df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
@@ -241,7 +226,7 @@ class Evaluation:
         ind = int(self.tasks[len("tap"):]) - 1
 
         if ind == 0:
-            for i in range(18):
+            for i in range(og_partitions):
                 print(f"partition: {i} | {split_tasks[i]}")
 
         print("this partition's tap tasks", split_tasks[ind])
@@ -258,18 +243,28 @@ class Evaluation:
         if self.tasks == 'all':
             return all_tasks
         else:
-            with open('../data/splits/evaluation_tasks.txt', 'r') as f:
+            with open('../data/splits/evaluation_tasks_easy.txt', 'r') as f:
                 test = f.read().splitlines()
+
+            with open('../data/splits/evaluation_tasks_hard.txt', 'r') as f:
+                test_hard = f.read().splitlines()
 
             with open('../data/splits/subjective_evaluation_tasks.txt', 'r') as f:
                 subjective_test = f.read().splitlines()
 
             # make sure that the splits are exclusive
-            assert len(set(test).intersection(set(subjective_test))) == 0, f"{Fore.RED}The test and subjective test " \
-                                                                           f"splits are not exclusive\n: test: {test}\nsubjective_test: {subjective_test}"
+            all_test_splits = [test, test_hard, subjective_test]
+            for i, test1 in enumerate(all_test_splits):
+                for j, test2 in enumerate(all_test_splits):
+                    if i != j:
+                        assert len(set(test1).intersection(set(test2))) == 0, f"{Fore.RED}The tests are not mutually exclusive" \
+                                                                           f"splits are not exclusive\n: test1: {test1}\ntest2: {test2}" \
+                                                                           f"\nintersection: {set(test1).intersection(set(test2))}"
 
-            if self.tasks == 'test':
+            if self.tasks == 'test_easy':
                 return test
+            elif self.tasks == 'test_hard':
+                return test_hard
             elif self.tasks == 'subjective_test':
                 return subjective_test
             elif self.tasks == 'train':
@@ -341,7 +336,6 @@ class Evaluation:
 
             input_fields.append(i)
 
-        # could think about sorting input_fields, but breaks certain tasks like Abductive Reasoning 11
         # instead changed the code base to just use the order in which the Answer columns are given. We can rearrange it to the order of which inputs to fill in first
         return input_fields
     
@@ -659,14 +653,17 @@ class Evaluation:
 
         return score
 
-    def enumerate_tasks(self, max_instance_count: int):
+    def enumerate_tasks(self, max_instance_count: int, dump_partitions: int = 1):
         """
         Enumerate the tasks and their instances
         :param max_instance_count: maximum number of instances per task
         """
         input_format = "both"
 
-        tasks = self.load_task_names()
+        if self.tasks.startswith("dmp"):
+            tasks = self.load_split_tasks(dump_partitions)
+        else:
+            tasks = self.load_task_names()
         results = {}
         aggregate_field_statistics = {}  # We store the stats related to the field types/frequency here
         task_field_statistics = {}
@@ -682,6 +679,16 @@ class Evaluation:
 
             # Create a random sample
             instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
+
+            if self.dump_features:
+                directory = f'/scratch4/danielk/kxu39/turk_data/{task_name}'
+                images_directory = f'{directory}/images'
+                html_directory = f'{directory}/HTML'
+
+                Path(directory).mkdir(parents=True, exist_ok=True)
+                Path(html_directory).mkdir(parents=True, exist_ok=True)
+
+                data_to_be_dumped = []
 
             # Go through the instances of each task in this random sample
             for instance_id in instance_ids:
@@ -711,18 +718,6 @@ class Evaluation:
                 # TODO: check if all the files (images, videos, audio, css, etc.) in the HTML are accessible
                 # TODO: find all the URLS in the HTML and check if they are accessible
 
-                if self.dump_features:
-                    directory = f'features/{task_name}'
-                    images_directory = f'{directory}/images'
-                    html_directory = f'{directory}/HTML'
-
-                    if os.path.exists(directory):
-                        shutil.rmtree(directory)
-                    os.makedirs(directory)
-
-                    if not os.path.exists(html_directory):
-                        os.makedirs(html_directory)
-
                 # for counting overall statistics
                 if self.report_field_stats:
                     if task_name not in task_field_statistics:
@@ -739,7 +734,11 @@ class Evaluation:
                         task_field_statistics[task_name][i.type] += 1
 
                 if self.dump_features:
-                    data_to_be_dumped = []
+                    data_to_be_dumped.append({
+                        "task_name": task_name,
+                        "instance_id": instance_id,
+                        "row_num": row_number
+                    })
 
                 for input_idx, i in enumerate(inputs):
                     print(f"{Fore.GREEN} - - - - - -  starting a new element: `{i}` - - - - - -  ")
@@ -753,8 +752,7 @@ class Evaluation:
                     if self.dump_features and i.type != 'hidden':
                         image_format = "bordered_div"  # the most reasonable option
                         # create directory if needed
-                        if not os.path.exists(f'{images_directory}_{image_format}'):
-                            os.makedirs(f'{images_directory}_{image_format}')
+                        Path(f"{images_directory}_{image_format}").mkdir(parents=True, exist_ok=True)
                         if image_format == 'full_page':
                             task_image = self.actions.take_page_screenshots().outcome
                         elif image_format == 'bordered_div':
@@ -793,6 +791,7 @@ class Evaluation:
                             'input_name': i.name,
                             'image_id': image_id,
                             'html_id': html_id,
+                            'relevant_html': self.get_relevant_html(i),
                             'output': oracle_action_sequence
                         })
 
@@ -907,7 +906,7 @@ class Evaluation:
 
         input_format = "both"
 
-        tasks = self.load_tap_task_names()
+        tasks = self.load_split_tasks(18)
         ret = []
 
         task_results = {} # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores, failing_tasks} }
@@ -1008,7 +1007,7 @@ class Evaluation:
 
         input_format = "both"
 
-        tasks = self.load_tap_task_names()
+        tasks = self.load_task_names()
         ret = []
 
         task_results = {} # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores, failing_tasks} }

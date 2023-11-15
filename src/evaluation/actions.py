@@ -89,7 +89,7 @@ class MyActions:
 
         return Result(success=True,
                       outcome=outcome,
-                      action=f"self.execute_js_command({command})")
+                      action=f"self.execute_js_command('{command}')")
 
     def maximize_window(self) -> Result:
         """
@@ -111,7 +111,7 @@ class MyActions:
         self.execute_js_command(self.scroll_to_command, input_element)
         return Result(success=True,
                       outcome=input_element,
-                      action=f"self.scroll_to_element({input})")
+                      action=f"self.scroll_to_element('{input.name}')")
 
     def wait_for_element(self, input: Input) -> Result:
         """
@@ -122,7 +122,7 @@ class MyActions:
 
         return Result(success=True,
                       outcome=input_element,
-                      action=f"self.wait_for_element({input})")
+                      action=f"self.wait_for_element('{input.name}')")
 
     def modify_text(self, input: Input, input_value) -> Result:
         """
@@ -130,7 +130,6 @@ class MyActions:
         the input field.
         :param input_name: name of the input field
         :param input_value: value to be entered into the input field
-        :return: None
 
         For example, if the input name is `name` and the input value is `John`, then we would need to run the following to enter `John` inside this input:
         > self.modify_text("name", "John")
@@ -142,7 +141,7 @@ class MyActions:
             )
             return Result(success=False,
                           outcome=None,
-                          action=f"self.modify_text({input}, {input_value})")
+                          action=f"self.modify_text('{input.name}', '{input_value}')")
 
         result = self.scroll_to_element(input)
         input_element = result.outcome
@@ -170,18 +169,21 @@ class MyActions:
 
         return Result(success=True,
                       outcome=input_element,
-                      action=f"self.modify_text({input}, {input_value})")
+                      action=f"self.modify_text('{input.name}', '{input_value}')")
 
     def modify_checkbox(self, input: Input, input_value) -> Result:
         """
-        For a given checkbox, this function clicks on the specified checks.
+        For a given checkbox, this function clicks on the all the correct values.
         :param input_name: name of the input field
         :param input_value: value to be entered into the input field, if we have more than one value, we separate them with `|`
-        :return: None
 
-        For example, if the input name is `countries` and possible input values are `Italy` and `Canada`, then we would need to run the following to click on the `Italy` and `Canada` inside this input:
-        > self.modify_checkbox("countries", "Italy | Canada")
+        Example1: if the input name is `colors` and possible input values are `red` and `blue`, then we would need to run the following to click on the `red` and `blue` inside this input:
+        > self.modify_checkbox("colors", "red|blue")
+        Example2: if the input name is `visited` and the input value is `USA|Europe`, then we would click the following checkboxes USA and Europe by running the following:
+        > self.modify_checkbox("visited", "USA|Europe")
         """
+
+        original_input_value = input_value
 
         # if input value is not string, turn it into a string
         if not isinstance(input_value, str):
@@ -203,7 +205,7 @@ class MyActions:
             return Result(
                 success=False,
                 outcome=None,
-                action=f"self.modify_checkbox({input}, {input_value})")
+                action=f"self.modify_checkbox('{input.name}', '{original_input_value}')")
         elif 'nan' in input_value:
             print(
                 f"{Fore.YELLOW} ** Warning **: Found input value is 'nan' and filtered it out"
@@ -216,7 +218,7 @@ class MyActions:
                 return Result(
                     success=False,
                     outcome=None,
-                    action=f"self.modify_checkbox({input}, {input_value})")
+                    action=f"self.modify_checkbox('{input.name}', '{original_input_value}')")
 
         self.wait_for_element(input)
         self.scroll_to_element(input)
@@ -244,17 +246,18 @@ class MyActions:
 
         return Result(success=True,
                       outcome=None,
-                      action=f"self.modify_checkbox({input}, {input_value})")
+                      action=f"self.modify_checkbox('{input.name}', '{original_input_value}')")
 
     def modify_radio(self, input: Input, input_value) -> Result:
         """
-        For a given radio button, this function clicks on the specified radio button.
+        For a given radio button, this function clicks on the correct radio button.
         :param input_name: name of the input field
-        :param input_value: value to be entered into the input field
-        :return: None
-
-        For example, if the input name is `reasonability` and the desired input value is `yes`, then we would need to run the following to click on the `yes` radio button:
+        :param input_value: which radio button based on the value of the radio button
+        
+        Example1: if the input name is `reasonability` and the desired input value is `yes`, then we would need to run the following to click on the `yes` radio button:
         > self.modify_radio("reasonability", "yes")
+        Example2: if the input name is `year` and the input value is `2025`, then we select the radio button with value `2025` by running the following:
+        > self.modify_radio("year", "2025")
         """
         # if input value is double/float, turn it into an integer
         if isinstance(input_value, float):
@@ -265,7 +268,7 @@ class MyActions:
                 return Result(
                     success=False,
                     outcome=None,
-                    action=f"self.modify_radio('{input.name}, {input_value})")
+                    action=f"self.modify_radio('{input.name}', '{input_value}')")
             else:
                 input_value = int(input_value)
 
@@ -279,7 +282,7 @@ class MyActions:
             return Result(
                 success=False,
                 outcome=None,
-                action=f"self.modify_radio('{input.name}', {input_value})")
+                action=f"self.modify_radio('{input.name}', '{input_value}')")
 
         self.scroll_to_element(input)
         value = f"@value='{input_value}'"
@@ -305,17 +308,18 @@ class MyActions:
         return Result(
             success=True,
             outcome=None,
-            action=f"self.modify_radio('{input.name}', {input_value})")
+            action=f"self.modify_radio('{input.name}', '{input_value}')")
 
     def modify_select(self, input: Input, input_value) -> Result:
         """
         For a given select field (dropdown menu), this function selects the specified option.
         :param input_name: name of the input field
-        :param input_value: value to be selected in the input field
-        :return: None
+        :param input_value: which select option to choose based on the value of the select
 
-        For example, if the input name is `question1` and the desired input value is `option2`, then we would need to run the following to select the `option2`:
-        > self.modify_select("question1", "option2")
+        Example1: if the input name is `question1` and the desired input value is `option2`, then we would need to run the following to select the `option2`:
+        > self.modify_select("question1", "option2")        
+        Example2: if the input name is `cars` and the input value is `Audi`, then we select the option with value `Audi` by running the following:
+        > self.modify_select("cars", "Audi")
         """
         # input_element = self.scroll_to_element(input_name)
         select_element = self.driver.find_element(By.NAME, input.name)
@@ -348,17 +352,18 @@ class MyActions:
         return Result(
             success=True,
             outcome=None,
-            action=f"self.modify_select('{input.name}', {input_value})")
+            action=f"self.modify_select('{input.name}', '{input_value}')")
 
     def modify_range(self, input: Input, input_value) -> Result:
         """
         For a given "range" input, this function clicks on the specified range value.
         :param input_name: name of the input field
-        :param input_value: value to be clicked in the input field
-        :return: None
+        :param input_value: which range value to end up on 
 
-        For example, if the input name is `satisfactory` and the desired input value is `12`, then we would need to run the following to click on the `12`:
+        Example1: if the input name is `satisfactory` and the desired input value is `12`, then we would need to run the following to click on the `12`:
         > self.modify_range("satisfactory", "12")
+        Example2: if the input name is `volume` and the input value is `20`, then we get the range to `20` by running the following:
+        > self.modify_range("volume", "20")
         """
         # if input value is double/float, turn it into an integer
         # if isinstance(input_value, float):
@@ -374,7 +379,7 @@ class MyActions:
             return Result(
                 success=False,
                 outcome=None,
-                action=f"self.modify_range('{input.name}', {input_value})")
+                action=f"self.modify_range('{input.name}', '{input_value}')")
 
         self.scroll_to_element(input)
         # value = f"@value='{input_value}'"
@@ -400,7 +405,7 @@ class MyActions:
         return Result(
             success=True,
             outcome=None,
-            action=f"self.modify_range('{input.name}', {input_value})")
+            action=f"self.modify_range('{input.name}', '{input_value}')")
 
     def take_screenshot(self) -> Result:
         """
