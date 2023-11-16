@@ -214,10 +214,12 @@ class ModelBaseline(Baseline):
     This baseline is used to execute the outputs of our ML models
     """
 
-    def solve(self, inputs: List[Input], outputs, **kwargs) -> bool:
+    def solve(self, inputs: List[Input], **kwargs) -> bool:
         """
         Executes the outputs of our ML models from outputs of string code and returns the score
         """
+
+        outputs = kwargs['outputs']
 
         error_flag = False
         print(f"input len {len(inputs)} output len {len(outputs)}")

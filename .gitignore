@@ -16,3 +16,4 @@ tasks/*/input.csv
 **/.DS_Store
 /venv/
 .vscode/
+.env
