@@ -214,40 +214,29 @@ class ModelBaseline(Baseline):
     This baseline is used to execute the outputs of our ML models
     """
 
-    def solve(self, inputs: List[Input], **kwargs) -> bool:
+    def solve(self, input: Input, **kwargs) -> bool:
         """
         Executes the outputs of our ML models from outputs of string code and returns the score
         """
 
-        outputs = kwargs['outputs']
+        output = kwargs['output']
 
         error_flag = False
-        print(f"input len {len(inputs)} output len {len(outputs)}")
 
-        for idx in range(len(outputs)):
-            if idx < len(inputs):
-                print(f"input {idx} {inputs[idx]} output {idx} {outputs[idx]}")
-            else:
-                print(f"output {idx} {outputs[idx]}")
-        
-        return True
+        print("input:", input)
+        self.actions.wait_for_element(input.name)
 
-        for idx, output in enumerate(outputs):
-            input = inputs[idx]
-            print("input:", input)
-            self.actions.wait_for_element(input.name)
+        # wait 0.1 sec for the page to fully load
+        sleep(0.1)
+        self.actions.maximize_window()
+        self.actions.scroll_to_element(input.name)
+        print("about to try executing one action, output:", output)
 
-            # wait 0.1 sec for the page to fully load
-            sleep(0.1)
-            self.actions.maximize_window()
-            self.actions.scroll_to_element(input.name)
-            print("about to try executing one action, output:", output)
-
-            try:
-                exec(output)
-                print("executed one action")
-            except Exception as error:
-                error_flag = True
-                print(f"failed to execute an action {output}, error: {error}")
+        try:
+            exec(output)
+            print("executed one action")
+        except Exception as error:
+            error_flag = True
+            print(f"failed to execute an action {output}, error: {error}")
 
         return error_flag
