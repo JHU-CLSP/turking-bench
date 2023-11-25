@@ -23,14 +23,14 @@ if __name__ == "__main__":
     parser.add_argument("--headless", help="whether to run the browser `headless` (no visual interface).", default=False)
 
     args = parser.parse_args()
-    eval = evaluation_class.Evaluation(
-        solver_type=args.solver_type,
-        tasks=args.tasks,
-        do_eval=args.do_eval,
-        dump_features=args.dump_features,
-        report_field_stats=args.report_field_stats,
-        headless=args.headless
-    )
+    # eval = evaluation_class.Evaluation(
+    #     solver_type=args.solver_type,
+    #     tasks=args.tasks,
+    #     do_eval=args.do_eval,
+    #     dump_features=args.dump_features,
+    #     report_field_stats=args.report_field_stats,
+    #     headless=args.headless
+    # )
 
     dir = "model_output"
     for folder in os.listdir(dir):
@@ -60,6 +60,15 @@ if __name__ == "__main__":
             row_num = task["row_num"]
             model_outputs = task["model_outputs"]
             kwargs[str(row_num)] = model_outputs
+
+        eval = evaluation_class.Evaluation(
+            solver_type=args.solver_type,
+            tasks=args.tasks,
+            do_eval=args.do_eval,
+            dump_features=args.dump_features,
+            report_field_stats=args.report_field_stats,
+            headless=args.headless
+        )
 
         scores = call_score_model(eval, folder, **kwargs)
         print(f"Task name {folder} Model Scores: {scores}")
