@@ -173,11 +173,13 @@ class MyActions:
 
     def modify_checkbox(self, input_name: str, input_value) -> Result:
         """
-        For a given checkbox group, this function clicks on all the values listed in input_value.
+        For a given checkbox, this function clicks on the all the correct values.
         :param input_name: name of the input field
-        :param input_value: which of the following checkbox items to select based on their value, if there are multiple values they are separated by `|`
+        :param input_value: value to be entered into the input field, if we have more than one value, we separate them with `|`
 
-        For example, if the input name is `visited` and the input value is `USA|Europe`, then we would click the following checkboxes USA and Europe by running the following:
+        Example1: if the input name is `colors` and possible input values are `red` and `blue`, then we would need to run the following to click on the `red` and `blue` inside this input:
+        > self.modify_checkbox("colors", "red|blue")
+        Example2: if the input name is `visited` and the input value is `USA|Europe`, then we would click the following checkboxes USA and Europe by running the following:
         > self.modify_checkbox("visited", "USA|Europe")
         """
 
@@ -248,11 +250,13 @@ class MyActions:
 
     def modify_radio(self, input_name: str, input_value) -> Result:
         """
-        For a given radio button, this function clicks on the correct radio answer.
+        For a given radio button, this function clicks on the correct radio button.
         :param input_name: name of the input field
         :param input_value: which radio button based on the value of the radio button
-
-        For example, if the input name is `year` and the input value is `2025`, then we select the radio button with value `2025` by running the following:
+        
+        Example1: if the input name is `reasonability` and the desired input value is `yes`, then we would need to run the following to click on the `yes` radio button:
+        > self.modify_radio("reasonability", "yes")
+        Example2: if the input name is `year` and the input value is `2025`, then we select the radio button with value `2025` by running the following:
         > self.modify_radio("year", "2025")
         """
         # if input value is double/float, turn it into an integer
@@ -310,9 +314,11 @@ class MyActions:
         """
         For a given select field (dropdown menu), this function selects the specified option.
         :param input_name: name of the input field
-        :param input_value: which select option to choose based on the value of the radio button
+        :param input_value: which select option to choose based on the value of the select
 
-        For example, if the input name is `cars` and the input value is `Audi`, then we select the option with value `Audi` by running the following:
+        Example1: if the input name is `question1` and the desired input value is `option2`, then we would need to run the following to select the `option2`:
+        > self.modify_select("question1", "option2")        
+        Example2: if the input name is `cars` and the input value is `Audi`, then we select the option with value `Audi` by running the following:
         > self.modify_select("cars", "Audi")
         """
         # input_element = self.scroll_to_element(input_name)
@@ -354,7 +360,9 @@ class MyActions:
         :param input_name: name of the input field
         :param input_value: which range value to end up on 
 
-        For example, if the input name is `volume` and the input value is `20`, then we get the range to `20` by running the following:
+        Example1: if the input name is `satisfactory` and the desired input value is `12`, then we would need to run the following to click on the `12`:
+        > self.modify_range("satisfactory", "12")
+        Example2: if the input name is `volume` and the input value is `20`, then we get the range to `20` by running the following:
         > self.modify_range("volume", "20")
         """
         # if input value is double/float, turn it into an integer
