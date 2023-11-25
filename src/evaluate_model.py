@@ -34,8 +34,10 @@ if __name__ == "__main__":
 
     dir = "model_output"
     scores = []
+    folders = []
     for folder in os.listdir(dir):
         print(f"folder name: {folder}")
+        folders.append(folder)
         file = f"{dir}/{folder}/{folder}.json"
 
         fp = open(f"model_output/{folder}/{folder}.json", "r")
@@ -66,4 +68,5 @@ if __name__ == "__main__":
     
     # Close the driver
     eval.driver.quit()
-    print(f"Task name {folder} Model Scores: {scores}")
+    print(f"Tasks: {folders}")
+    print(f"Model Scores: {scores}")
