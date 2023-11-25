@@ -33,36 +33,33 @@ if __name__ == "__main__":
     )
 
     dir = "model_output"
-    ex_dir = "Question Typing 4" # example dir
     for folder in os.listdir(dir):
         print(f"folder name: {folder}")
         file = f"{dir}/{folder}/{folder}.json"
 
-    fp = open(f"model_output/{ex_dir}/{ex_dir}.json", "r")
-    json_data = json.load(fp)
+        fp = open(f"model_output/{folder}/{folder}.json", "r")
+        json_data = json.load(fp)
 
-    evaluated_tasks = []
-    task_name = ex_dir
+        evaluated_tasks = []
 
-    curr_task = {}
-    for block in json_data:
-        if "task_name" in block:
-            evaluated_tasks.append(copy.deepcopy(curr_task))
-            task_name = block["task_name"]
-            curr_task["row_num"] = block["row_num"]
-            curr_task["model_outputs"] = []
-        else:
-            curr_task["model_outputs"].append(block["output"])
+        curr_task = {}
+        for block in json_data:
+            if "task_name" in block:
+                evaluated_tasks.append(copy.deepcopy(curr_task))
+                curr_task["row_num"] = block["row_num"]
+                curr_task["model_outputs"] = []
+            else:
+                curr_task["model_outputs"].append(block["output"])
 
-    evaluated_tasks.append(copy.deepcopy(curr_task)) # add the last block 
-    evaluated_tasks.pop(0) # pop out the first empty {} curr_task
+        evaluated_tasks.append(copy.deepcopy(curr_task)) # add the last block 
+        evaluated_tasks.pop(0) # pop out the first empty {} curr_task
 
-    kwargs = {}
+        kwargs = {}
 
-    for task in evaluated_tasks:
-        row_num = task["row_num"]
-        model_outputs = task["model_outputs"]
-        kwargs[str(row_num)] = model_outputs
+        for task in evaluated_tasks:
+            row_num = task["row_num"]
+            model_outputs = task["model_outputs"]
+            kwargs[str(row_num)] = model_outputs
 
-    scores = call_score_model(eval, task_name, **kwargs)
-    print(f"Model Scores: {scores}")
+        scores = call_score_model(eval, folder, **kwargs)
+        print(f"Task name {folder} Model Scores: {scores}")
