@@ -891,9 +891,6 @@ class Evaluation:
                 df = df.pivot(index='project', columns='input_type', values='score')
                 df.to_csv('oracle_baseline_scores.csv', index=True)
 
-        # Close the driver
-        self.driver.quit()
-
         print("Now let's print the field statistics")
 
         # save task_field_statistics (hashmap of hashmaps mapped to integers) as a csv file
