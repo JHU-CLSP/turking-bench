@@ -5,11 +5,11 @@ import argparse
 from typing import List
 import copy
 
-def call_score_model(eval: evaluation_class.Evaluation, task_name: str, row_num: int, model_outputs: List[str]):
+def call_score_model(eval: evaluation_class.Evaluation, task_name: str, **kwargs):
     # print("call_score_model", task_name, row_num, model_outputs)
-    score = []
-    eval.enumerate_tasks(1, task=task_name, row_num=row_num, model_outputs=model_outputs, score=score)
-    return score
+    scores = []
+    eval.enumerate_tasks(1, task=task_name, scores=scores, params=kwargs)
+    return scores
 
 if __name__ == "__main__":
     # user argparser to recive he input parameter
@@ -42,12 +42,13 @@ if __name__ == "__main__":
     json_data = json.load(fp)
 
     evaluated_tasks = []
+    task_name = ex_dir
 
     curr_task = {}
     for block in json_data:
         if "task_name" in block:
             evaluated_tasks.append(copy.deepcopy(curr_task))
-            curr_task["task_name"] = block["task_name"]
+            task_name = block["task_name"]
             curr_task["row_num"] = block["row_num"]
             curr_task["model_outputs"] = []
         else:
@@ -56,11 +57,12 @@ if __name__ == "__main__":
     evaluated_tasks.append(copy.deepcopy(curr_task)) # add the last block 
     evaluated_tasks.pop(0) # pop out the first empty {} curr_task
 
+    kwargs = {}
+
     for task in evaluated_tasks:
-        task_name = task["task_name"]
         row_num = task["row_num"]
         model_outputs = task["model_outputs"]
-        print(f"Task Name: {task_name} Row Num: {row_num}")
-        score = call_score_model(eval, task_name, row_num, model_outputs)
-        print(f"Model Score: {score}")
-        break
+        kwargs[str(row_num)] = model_outputs
+
+    scores = call_score_model(eval, task_name, **kwargs)
+    print(f"Model Scores: {scores}")

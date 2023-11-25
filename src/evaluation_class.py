@@ -696,13 +696,16 @@ class Evaluation:
                 data_to_be_dumped = []
 
             # Override instance_ids if specified the row_num
-            if "row_num" in kwargs:
-                instance_ids = [first_instance_id + kwargs["row_num"]]
+            if self.solver_type == "model":
                 answer_map = {}
-
-                # Create an answers_map
-                for model_output in kwargs["model_outputs"]:
-                    answer_map[model_output["input_name"]] = model_output["action_sequence"]
+                instance_ids = []
+                for key, value in kwargs["params"].items():
+                    instance_id = first_instance_id + int(key)
+                    instance_ids.append(instance_id)
+                    answer_map[instance_id] = {}
+                    for row in value:
+                        print("row", row)
+                        answer_map[instance_id][row["input_name"]] = row["action_sequence"]
 
             # Go through the instances of each task in this random sample
             for instance_id in instance_ids:
@@ -795,7 +798,7 @@ class Evaluation:
                         kwargs = {'answers': answers_map[i.name]}
                         oracle_action_sequence = self.solver.solve(i, **kwargs)
                     elif self.solver_type == 'model':
-                        self.solver.solve(i, output = answer_map[i.name])
+                        self.solver.solve(i, output = answer_map[instance_id][i.name])
                     else:
                         self.solver.solve(i)
 
@@ -856,7 +859,7 @@ class Evaluation:
                 if self.solver_type == 'oracle':
                     assert score > 0.99, f"{Fore.RED}The oracle baseline should always get a score of 1.0"
                 elif self.solver_type == 'model':
-                    kwargs["score"].append(score)
+                    kwargs["scores"].append(score)
 
                 if self.dump_features:
                     with open(f'{directory}/{task_name}.json', 'w') as f:
