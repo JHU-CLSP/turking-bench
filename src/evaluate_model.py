@@ -3,15 +3,19 @@ import os
 import evaluation_class
 import argparse
 from typing import List
+import copy
 
-def call_score_model(eval: evaluation_class.Evaluation, task_name: str, row_num: int, model_outputs: List[str]):
-    return eval.score_model(task_name, row_num, model_outputs)
+def call_score_model(eval: evaluation_class.Evaluation, task_name: str, **kwargs):
+    # print("call_score_model", task_name, row_num, model_outputs)
+    scores = []
+    eval.enumerate_tasks(1, task=task_name, scores=scores, params=kwargs)
+    return scores
 
 if __name__ == "__main__":
     # user argparser to recive he input parameter
     parser = argparse.ArgumentParser()
     parser.add_argument("--solver_type", help="random or oracle", default="model")
-    parser.add_argument("--tasks", help="train, test, or subjective_test", default="test")
+    parser.add_argument("--tasks", help="train, test, or subjective_test", default="test_easy")
     parser.add_argument("--max_instance_count", help="maximum number of instances per task", default=1)
     parser.add_argument("--do_eval", help="whether to compute the quality aginst the gold data", default=True)
     parser.add_argument("--dump_features", help="whether to dump the features", default=False)
@@ -29,30 +33,40 @@ if __name__ == "__main__":
     )
 
     dir = "model_output"
+    scores = []
+    folders = []
     for folder in os.listdir(dir):
         print(f"folder name: {folder}")
+        folders.append(folder)
         file = f"{dir}/{folder}/{folder}.json"
 
-    fp = open("model_output/ex1/ex1.json", "r")
-    json_data = json.load(fp)
+        fp = open(f"model_output/{folder}/{folder}.json", "r")
+        json_data = json.load(fp)
 
-    evaluated_tasks = []
+        evaluated_tasks = []
 
-    curr_task = {"model_outputs": []}
-    for block in json_data:
-        if "task_name" in block:
-            evaluated_tasks.append(curr_task)
-            curr_task["task_name"] = block["task_name"]
-            curr_task["row_num"] = block["row_num"]
-        else:
-            curr_task["model_outputs"].append(block["output"]["action_sequence"])
+        curr_task = {}
+        for block in json_data:
+            if "task_name" in block:
+                evaluated_tasks.append(copy.deepcopy(curr_task))
+                curr_task["row_num"] = block["row_num"]
+                curr_task["model_outputs"] = []
+            else:
+                curr_task["model_outputs"].append(block["output"])
+
+        evaluated_tasks.append(copy.deepcopy(curr_task)) # add the last block 
+        evaluated_tasks.pop(0) # pop out the first empty {} curr_task
+
+        kwargs = {}
+
+        for task in evaluated_tasks:
+            row_num = task["row_num"]
+            model_outputs = task["model_outputs"]
+            kwargs[str(row_num)] = model_outputs
+
+        scores.append(call_score_model(eval, folder, **kwargs))
     
-    evaluated_tasks.pop(0)
-
-    for task in evaluated_tasks:
-        task_name = task["task_name"]
-        row_num = task["row_num"]
-        model_outputs = task["model_outputs"]
-        print(f"Task Name: {task_name} Row Num: {row_num} Model Outputs: {model_outputs}")
-        score = call_score_model(eval, task_name, row_num, model_outputs)
-        print(f"Model Score: {score}")
+    # Close the driver
+    eval.driver.quit()
+    print(f"Tasks: {folders}")
+    print(f"Model Scores: {scores}")
