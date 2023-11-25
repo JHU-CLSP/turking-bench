@@ -84,7 +84,7 @@ class Evaluation:
         else:
             raise Exception(f"{Fore.RED}Solver `{solver_type}` not implemented")
         self.tasks = tasks
-        assert tasks in ["test", "train", "all", "subjective_test"] or tasks.startswith("tap") or tasks.startswith("dmp")
+        assert tasks in ["test_easy", "test_hard", "train", "all", "subjective_test"] or tasks.startswith("tap") or tasks.startswith("dmp")
 
         self.do_eval = do_eval
         self.dump_features = dump_features
@@ -653,7 +653,7 @@ class Evaluation:
 
         return score
 
-    def enumerate_tasks(self, max_instance_count: int, dump_partitions: int = 1):
+    def enumerate_tasks(self, max_instance_count: int, **kwargs):
         """
         Enumerate the tasks and their instances
         :param max_instance_count: maximum number of instances per task
@@ -661,9 +661,14 @@ class Evaluation:
         input_format = "both"
 
         if self.tasks.startswith("dmp"):
-            tasks = self.load_split_tasks(dump_partitions)
+            tasks = self.load_split_tasks(kwargs.get("dump_partitions"))
         else:
             tasks = self.load_task_names()
+
+        # Override the task of tasks if a specific task is specified
+        if "task" in kwargs:
+            tasks = [kwargs["task"]]
+            print("tasks", tasks)
         results = {}
         aggregate_field_statistics = {}  # We store the stats related to the field types/frequency here
         task_field_statistics = {}
@@ -690,9 +695,17 @@ class Evaluation:
 
                 data_to_be_dumped = []
 
+            # Override instance_ids if specified the row_num
+            if "row_num" in kwargs:
+                instance_ids = [first_instance_id + kwargs["row_num"]]
+                answer_map = {}
+
+                # Create an answers_map
+                for model_output in kwargs["model_outputs"]:
+                    answer_map[model_output["input_name"]] = model_output["action_sequence"]
+
             # Go through the instances of each task in this random sample
             for instance_id in instance_ids:
-
                 # wait for a keyboard press before continuing
                 # input("Press Enter to continue...")
 
@@ -781,6 +794,8 @@ class Evaluation:
                     if self.solver_type == 'oracle':
                         kwargs = {'answers': answers_map[i.name]}
                         oracle_action_sequence = self.solver.solve(i, **kwargs)
+                    elif self.solver_type == 'model':
+                        self.solver.solve(i, output = answer_map[i.name])
                     else:
                         self.solver.solve(i)
 
@@ -840,6 +855,8 @@ class Evaluation:
 
                 if self.solver_type == 'oracle':
                     assert score > 0.99, f"{Fore.RED}The oracle baseline should always get a score of 1.0"
+                elif self.solver_type == 'model':
+                    kwargs["score"].append(score)
 
                 if self.dump_features:
                     with open(f'{directory}/{task_name}.json', 'w') as f:
@@ -1083,31 +1100,3 @@ class Evaluation:
             print("task result", task_name, task_results[task_name])
 
         return task_results
-
-    def score_model(self, task_name: str, row_num: int, model_outputs: List[str]):
-        """
-        Function that scores how the model is doing based on the model outputs
-        """
-        instance_ids = self.task_ids[task_name]
-        first_instance_id = min(instance_ids) # TODO: Check if this is also just the first one, might be with how the JSON is formatted
-        instance_id = first_instance_id + row_num
-
-        self.driver.get(TURKLE_URL)
-
-        url = f'{TURKLE_URL}/task/{instance_id}/iframe/'
-        self.driver.get(url)
-
-        # get the name of the fields
-        df = pd.read_csv(f'../tasks/{task_name}/batch.csv', nrows=0)
-        input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
-        inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
-
-        err_flag = self.solver.solve(inputs, model_outputs)
-
-        # if a runtime occurred while executing the model outputs, returning a score of -1
-        if err_flag:
-            return -1
-        
-        score = self.score_outputs(inputs, task_name, row_num)
-
-        return score

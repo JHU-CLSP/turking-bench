@@ -223,7 +223,7 @@ class ModelBaseline(Baseline):
 
         error_flag = False
 
-        print("input:", input)
+        print("input:", input, "output:", output)
         self.actions.wait_for_element(input.name)
 
         # wait 0.1 sec for the page to fully load
