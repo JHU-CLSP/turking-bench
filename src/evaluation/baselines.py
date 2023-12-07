@@ -8,6 +8,7 @@ from time import sleep
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from evaluation.actions import MyActions
+from evaluation.actions import ActionUtils
 from evaluation.input import Input
 import logging
 from typing import List
@@ -39,7 +40,7 @@ class Baseline:
         action_list = [(method, getattr(MyActions, method).__doc__) for method in action_list]
         return action_list
 
-    def get_encoded_input_prompt(self, input: Input):
+    def get_encoded_input_prompt(self, input: Input, html_code: str = None):
         actions = self.get_action_list()
         # encode the actions as a string
         actions = '\n\n'.join([f"{action[0]}: {action[1]}" for action in actions])
@@ -240,3 +241,38 @@ class ModelBaseline(Baseline):
             print(f"failed to execute an action {output}, error: {error}")
 
         return error_flag
+
+class GPT4TextBaseline(Baseline):
+    """
+    Interactive calls to GPT4 to solve the task
+    """
+
+    def solve(self, input: Input, **kwargs) -> bool:
+        """
+        Communicate with GPT4 to solve the task
+        """
+
+        print("input:", input)
+        self.actions.wait_for_element(input.name)
+
+        # wait 0.1 sec for the page to fully load
+        sleep(0.1)
+        self.actions.maximize_window()
+        self.actions.scroll_to_element(input.name)
+        print("about to try executing one action, on the following input:", input.name)
+
+        # extract HTML
+        html = self.actions.get_html()
+
+        # simplify HTML
+        simplified_html = ActionUtils.simplify_html(html)
+
+        text_prompt = Baseline.get_encoded_input_prompt(input, simplified_html)
+
+        try:
+            command = ActionUtils.open_ai_call(text_prompt)
+
+            exec(command)
+            print("executed one action")
+        except Exception as error:
+            print(f"failed to execute an action {command}, error: {error}")

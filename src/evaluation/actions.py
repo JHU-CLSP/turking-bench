@@ -1,6 +1,8 @@
 from colorama import Fore
 import io
 from io import BytesIO
+from openai import OpenAI
+import os
 import numpy as np
 from PIL import Image, ImageDraw
 import re
@@ -65,6 +67,33 @@ class ActionUtils:
         action.key_down(key).send_keys('a').key_up(key)
         # Perform Delete
         action.send_keys(Keys.BACKSPACE)
+
+
+    client = None
+
+    @staticmethod
+    def open_ai_call(prompt):
+
+        if not ActionUtils.client:
+            # read it from environment variable
+            key = os.environ.get('OPENAI_API_KEY')
+            client = OpenAI(api_key=key)
+
+        response = client.chat.completions.create(
+            model="gpt-4",
+            messages=[
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            temperature=1,
+            max_tokens=256,
+            top_p=1,
+            frequency_penalty=0,
+            presence_penalty=0
+        )
+        return response
 
 
 class MyActions:
