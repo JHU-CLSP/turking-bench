@@ -45,24 +45,29 @@ if __name__ == "__main__":
 
         evaluated_tasks = []
 
-        curr_task = {}
-        for block in json_data:
-            if "task_name" in block:
-                evaluated_tasks.append(copy.deepcopy(curr_task))
-                curr_task["row_num"] = block["row_num"]
-                curr_task["model_outputs"] = []
-            else:
-                curr_task["model_outputs"].append(block["output"])
+        # curr_task = {}
+        # for block in json_data:
+        #     if "task_name" in block:
+        #         evaluated_tasks.append(copy.deepcopy(curr_task))
+        #         curr_task["row_num"] = block["row_num"]
+        #         curr_task["model_outputs"] = []
+        #     else:
+        #         curr_task["model_outputs"].append(block["output"])
 
-        evaluated_tasks.append(copy.deepcopy(curr_task)) # add the last block 
-        evaluated_tasks.pop(0) # pop out the first empty {} curr_task
+        # evaluated_tasks.append(copy.deepcopy(curr_task)) # add the last block 
+        # evaluated_tasks.pop(0) # pop out the first empty {} curr_task
 
-        kwargs = {}
+        # kwargs = {}
 
-        for task in evaluated_tasks:
+        # for task in evaluated_tasks:
+        #     row_num = task["row_num"]
+        #     model_outputs = task["model_outputs"]
+        #     kwargs[str(row_num)] = model_outputs
+
+        for task in json_data:
             row_num = task["row_num"]
             model_outputs = task["model_outputs"]
-            kwargs[str(row_num)] = model_outputs
+            kwargs = {}
 
         scores.append(call_score_model(eval, folder, **kwargs))
     

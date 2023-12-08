@@ -693,7 +693,8 @@ class Evaluation:
                 Path(directory).mkdir(parents=True, exist_ok=True)
                 Path(html_directory).mkdir(parents=True, exist_ok=True)
 
-                data_to_be_dumped = {}
+                data_to_be_dumped = []
+                curr_data_to_be_dumped = {}
 
             # Override instance_ids if specified the row_num
             if self.solver_type == "model":
@@ -750,10 +751,10 @@ class Evaluation:
                         task_field_statistics[task_name][i.type] += 1
 
                 if self.dump_features:
-                    data_to_be_dumped["task_name"] = task_name
-                    data_to_be_dumped["instance_id"] = instance_id
-                    data_to_be_dumped["row_num"] = row_number
-                    data_to_be_dumped["fields"] = []
+                    curr_data_to_be_dumped["task_name"] = task_name
+                    curr_data_to_be_dumped["instance_id"] = instance_id
+                    curr_data_to_be_dumped["row_num"] = row_number
+                    curr_data_to_be_dumped["fields"] = []
 
                 for input_idx, i in enumerate(inputs):
                     print(f"{Fore.GREEN} - - - - - -  starting a new element: `{i}` - - - - - -  ")
@@ -803,7 +804,7 @@ class Evaluation:
 
                     # *after* we execute the action, we dump the *output* features
                     if self.dump_features:
-                        data_to_be_dumped["fields"].append({
+                        curr_data_to_be_dumped["fields"].append({
                             'input_type': i.type,
                             'input_name': i.name,
                             'image_id': image_id,
