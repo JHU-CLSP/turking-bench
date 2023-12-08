@@ -2,6 +2,7 @@ import evaluation_class
 from evaluation.actions import MyActions
 from evaluation.baselines import Baseline
 from evaluation.input import Input
+from evaluation.prompts import get_encoded_input_prompt
 from utils.hidden_prints import HiddenPrints
 
 evaluation = evaluation_class.Evaluation(solver_type="oracle", tasks="all",
@@ -20,7 +21,7 @@ def test_actions():
         input_name="dummy",
         input_type="text",
         task_name="dummy")
-    encoded_actions_prompt = baseline.get_encoded_input_prompt(dummy_input)
+    encoded_actions_prompt = get_encoded_input_prompt(dummy_input, "")
     print(encoded_actions_prompt)
     assert len(encoded_actions_prompt) > 0, f"The encoded actions prompt should not be empty: {encoded_actions_prompt}"
 
