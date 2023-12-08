@@ -813,6 +813,9 @@ class Evaluation:
                             'output': oracle_action_sequence
                         })
 
+                if self.dump_features:
+                    data_to_be_dumped.append(curr_data_to_be_dumped)
+
                 # get the input values from the web page
                 inputs_with_values = self.extract_values(inputs)
 
@@ -861,10 +864,6 @@ class Evaluation:
                 elif self.solver_type == 'model':
                     kwargs["scores"].append(score)
 
-                if self.dump_features:
-                    with open(f'{directory}/{task_name}.json', 'w') as f:
-                        json.dump(data_to_be_dumped, f, indent=4)
-
                 df = pd.DataFrame()
                 for task_name, inputs in results.items():
                     for input_type, scores in inputs.items():
@@ -890,6 +889,10 @@ class Evaluation:
 
                 df = df.pivot(index='project', columns='input_type', values='score')
                 df.to_csv('oracle_baseline_scores.csv', index=True)
+
+        if self.dump_features:
+            with open(f'{directory}/{task_name}.json', 'w') as f:
+                json.dump(data_to_be_dumped, f, indent=4)
 
         print("Now let's print the field statistics")
 
