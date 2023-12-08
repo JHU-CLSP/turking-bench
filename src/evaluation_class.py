@@ -24,6 +24,7 @@ from tqdm import tqdm
 from typing import List, Union
 import logging
 import bisect
+import copy
 
 TURKLE_URL = "http://localhost:8000"
 
@@ -694,6 +695,7 @@ class Evaluation:
                 Path(html_directory).mkdir(parents=True, exist_ok=True)
 
                 data_to_be_dumped = []
+                curr_data_to_be_dumped = {}
 
             # Override instance_ids if specified the row_num
             if self.solver_type == "model":
@@ -704,7 +706,6 @@ class Evaluation:
                     instance_ids.append(instance_id)
                     answer_map[instance_id] = {}
                     for row in value:
-                        print("row", row)
                         answer_map[instance_id][row["input_name"]] = row["action_sequence"]
 
             # Go through the instances of each task in this random sample
@@ -750,11 +751,10 @@ class Evaluation:
                         task_field_statistics[task_name][i.type] += 1
 
                 if self.dump_features:
-                    data_to_be_dumped.append({
-                        "task_name": task_name,
-                        "instance_id": instance_id,
-                        "row_num": row_number
-                    })
+                    curr_data_to_be_dumped["task_name"] = task_name
+                    curr_data_to_be_dumped["instance_id"] = instance_id
+                    curr_data_to_be_dumped["row_num"] = row_number
+                    curr_data_to_be_dumped["fields"] = []
 
                 for input_idx, i in enumerate(inputs):
                     print(f"{Fore.GREEN} - - - - - -  starting a new element: `{i}` - - - - - -  ")
@@ -804,7 +804,7 @@ class Evaluation:
 
                     # *after* we execute the action, we dump the *output* features
                     if self.dump_features:
-                        data_to_be_dumped.append({
+                        curr_data_to_be_dumped["fields"].append({
                             'input_type': i.type,
                             'input_name': i.name,
                             'image_id': image_id,
@@ -812,6 +812,9 @@ class Evaluation:
                             'relevant_html': self.get_relevant_html(i),
                             'output': oracle_action_sequence
                         })
+
+                if self.dump_features:
+                    data_to_be_dumped.append(copy.deepcopy(curr_data_to_be_dumped))
 
                 # get the input values from the web page
                 inputs_with_values = self.extract_values(inputs)
@@ -861,10 +864,6 @@ class Evaluation:
                 elif self.solver_type == 'model':
                     kwargs["scores"].append(score)
 
-                if self.dump_features:
-                    with open(f'{directory}/{task_name}.json', 'w') as f:
-                        json.dump(data_to_be_dumped, f, indent=4)
-
                 df = pd.DataFrame()
                 for task_name, inputs in results.items():
                     for input_type, scores in inputs.items():
@@ -890,6 +889,10 @@ class Evaluation:
 
                 df = df.pivot(index='project', columns='input_type', values='score')
                 df.to_csv('oracle_baseline_scores.csv', index=True)
+
+        if self.dump_features:
+            with open(f'{directory}/{task_name}.json', 'w') as f:
+                json.dump(data_to_be_dumped, f, indent=4)
 
         print("Now let's print the field statistics")
 
