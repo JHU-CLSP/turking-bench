@@ -16,12 +16,12 @@ Input name: q1-quant
 HTML: <html><head>
     <title>Task</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+    
   </head>
   <body>
     <form name="mturk_form" method="post" id="mturk_form" target="_parent" action="#">
 
-      <input type="hidden" name="csrfmiddlewaretoken" value="VQsIVOwhpLRp0XrEHwKCMrMtU2aYzxctoFqwygv1LRc63csjYgwZjiMY1cFhWfiE">
+      <input type="hidden" name="csrfmiddlewaretoken" value="4A65J4dKTRgvAhdZNYd1oZB4RV60Tq9aS8X6Jk5yEdvxvMub3oCaZRwdVgkLYVo3">
       <meta content="width=device-width,initial-scale=1" name="viewport">
 <section class="container" id="SurveyLink"><!-- Instructions -->
 <div class="row">
@@ -31,15 +31,15 @@ HTML: <html><head>
 <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 8pt;"><span id="docs-internal-guid-f2f08346-7fff-f178-9f88-b169b26eb03c"><span style="font-size: 10pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Given a few English questions, we ask you to annotate each question with their corresponding type(s):</span></span></p>
 
 <ul dir="ltr">
-    <li style="line-height: 1.38; margin-top: 0pt; margin-bottom: 8pt;"><strong>Question:</strong>&nbsp;When was the Dormition church destroyed?&nbsp; (Answer:&nbsp;1922)&nbsp;</li>
-    <li style="line-height: 1.38; margin-top: 0pt; margin-bottom: 8pt;"><strong>Label:</strong>&nbsp;Date&nbsp;</li>
+	<li style="line-height: 1.38; margin-top: 0pt; margin-bottom: 8pt;"><strong>Question:</strong>&nbsp;When was the Dormition church destroyed?&nbsp; (Answer:&nbsp;1922)&nbsp;</li>
+	<li style="line-height: 1.38; margin-top: 0pt; margin-bottom: 8pt;"><strong>Label:</strong>&nbsp;Date&nbsp;</li>
 </ul>
 
 <p style="line-height: 1.38; margin-top: 0pt; margin-bottom: 8pt;">Another example:&nbsp;</p>
 
 <ul>
-    <li style="line-height: 1.38; margin-top: 0pt; margin-bottom: 8pt;"><strong>Question:&nbsp;</strong>&nbsp;Melbourne has sustained the highest population increase and economic growth rate in any Australian city according to what organization? (Answer:&nbsp;Australian Bureau of Statistics)&nbsp;</li>
-    <li style="line-height: 1.38; margin-top: 0pt; margin-bottom: 8pt;"><strong>Label:</strong>&nbsp; Organization&nbsp;</li>
+	<li style="line-height: 1.38; margin-top: 0pt; margin-bottom: 8pt;"><strong>Question:&nbsp;</strong>&nbsp;Melbourne has sustained the highest population increase and economic growth rate in any Australian city according to what organization? (Answer:&nbsp;Australian Bureau of Statistics)&nbsp;</li>
+	<li style="line-height: 1.38; margin-top: 0pt; margin-bottom: 8pt;"><strong>Label:</strong>&nbsp; Organization&nbsp;</li>
 </ul>
 
 <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 8pt;">&nbsp;</p>
@@ -47,43 +47,43 @@ HTML: <html><head>
 <p dir="ltr" style="line-height: 1.38; margin-top: 0pt; margin-bottom: 8pt;"><span id="docs-internal-guid-f2f08346-7fff-f178-9f88-b169b26eb03c"><span style="font-size: 10pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Below we define and give examples for each label: </span></span></p>
 
 <ul>
-    <li dir="ltr">
-    <p dir="ltr"><strong>Humans:</strong> Any individual or group of humans, including fictional ones. Examples are: a group or organization of persons , an individual, title of a person, description of a person</p>
-    </li>
-    <li dir="ltr">
-    <p dir="ltr"><strong>Event:</strong> &nbsp;Examples are: Named hurricanes, Battles, Wars, Sports events, Terrorist attacks</p>
-    </li>
-    <li dir="ltr">
-    <p dir="ltr"><strong>Entity:</strong> &nbsp;A thing with distinct and independent existence. Examples are: Animals, Organs of body, Colors, Inventions, books and other creative pieces, Currency name, Diseases, and medicine, Food, Musical instrument, Languages, Plants, Products, Religions, Sports, Elements and substances, Symbols and signs, Techniques and methods, Equivalent terms, Vehicles</p>
-    </li>
-    <li dir="ltr">
-    <p dir="ltr"><strong>Facility:</strong> Buildings, Airports, Highways, Bridges</p>
-    </li>
-    <li dir="ltr">
-    <p dir="ltr"><strong>Location:</strong> Examples are: Cities, Countries, Mountains, States</p>
-    </li>
-    <li dir="ltr">
-    <p dir="ltr"><strong>Law:</strong> Named documents made into laws; for example “the first amendment”</p>
-    </li>
-    <li dir="ltr">
-    <p dir="ltr"><strong>Organization:</strong> an organized body of people with a particular purpose; examples are Company names (e.g. Google), Cults or terrorist groups (e.g. Al Qaeda),</p>
-    </li>
-    <li dir="ltr">
-    <p dir="ltr"><strong>Date:</strong> Absolute or relative dates or periods, bigger than 1 day. Examples are Year (e.g. 1991), Range (e.g. from Monday to Tuesday, or during the 20th century), Approximate time (around 1880, or in the 70s)</p>
-    </li>
-    <li dir="ltr">
-    <p dir="ltr"><strong>Time:</strong>&nbsp;Any temporal range/unit that is shorter than a day&nbsp;&nbsp;(e.g. 2 o'clock).&nbsp;</p>
-    </li>
-    <li dir="ltr">
-    <p dir="ltr"><strong>Money:</strong> Monetary values, including unit; for example “$26”.</p>
-    </li>
-    <li dir="ltr">
-    <p dir="ltr"><strong>Quantity:</strong> postcodes or other codes, the number of sth, Ranks, fractions, speed, temperature, size, area, and volume, weight</p>
-    </li>
-    <li dir="ltr">
-    <p dir="ltr"><strong>Description:</strong> description and abstract concepts. Examples are: description and abstract concepts, the definition of sth., the manner of an action, reasons</p>
-    </li>
-    <li><strong>Abbreviation:</strong> expression abbreviated</li>
+	<li dir="ltr">
+	<p dir="ltr"><strong>Humans:</strong> Any individual or group of humans, including fictional ones. Examples are: a group or organization of persons , an individual, title of a person, description of a person</p>
+	</li>
+	<li dir="ltr">
+	<p dir="ltr"><strong>Event:</strong> &nbsp;Examples are: Named hurricanes, Battles, Wars, Sports events, Terrorist attacks</p>
+	</li>
+	<li dir="ltr">
+	<p dir="ltr"><strong>Entity:</strong> &nbsp;A thing with distinct and independent existence. Examples are: Animals, Organs of body, Colors, Inventions, books and other creative pieces, Currency name, Diseases, and medicine, Food, Musical instrument, Languages, Plants, Products, Religions, Sports, Elements and substances, Symbols and signs, Techniques and methods, Equivalent terms, Vehicles</p>
+	</li>
+	<li dir="ltr">
+	<p dir="ltr"><strong>Facility:</strong> Buildings, Airports, Highways, Bridges</p>
+	</li>
+	<li dir="ltr">
+	<p dir="ltr"><strong>Location:</strong> Examples are: Cities, Countries, Mountains, States</p>
+	</li>
+	<li dir="ltr">
+	<p dir="ltr"><strong>Law:</strong> Named documents made into laws; for example “the first amendment”</p>
+	</li>
+	<li dir="ltr">
+	<p dir="ltr"><strong>Organization:</strong> an organized body of people with a particular purpose; examples are Company names (e.g. Google), Cults or terrorist groups (e.g. Al Qaeda),</p>
+	</li>
+	<li dir="ltr">
+	<p dir="ltr"><strong>Date:</strong> Absolute or relative dates or periods, bigger than 1 day. Examples are Year (e.g. 1991), Range (e.g. from Monday to Tuesday, or during the 20th century), Approximate time (around 1880, or in the 70s)</p>
+	</li>
+	<li dir="ltr">
+	<p dir="ltr"><strong>Time:</strong>&nbsp;Any temporal range/unit that is shorter than a day&nbsp;&nbsp;(e.g. 2 o'clock).&nbsp;</p>
+	</li>
+	<li dir="ltr">
+	<p dir="ltr"><strong>Money:</strong> Monetary values, including unit; for example “$26”.</p>
+	</li>
+	<li dir="ltr">
+	<p dir="ltr"><strong>Quantity:</strong> postcodes or other codes, the number of sth, Ranks, fractions, speed, temperature, size, area, and volume, weight</p>
+	</li>
+	<li dir="ltr">
+	<p dir="ltr"><strong>Description:</strong> description and abstract concepts. Examples are: description and abstract concepts, the definition of sth., the manner of an action, reasons</p>
+	</li>
+	<li><strong>Abbreviation:</strong> expression abbreviated</li>
 </ul>
 </div>
 </div>
@@ -95,49 +95,49 @@ HTML: <html><head>
 <div class="form-group">&nbsp;
 <div dir="ltr" style="margin-left:0pt;">
 <table style="border: none; width: 468pt;">
-    <colgroup>
-        <col width="*">
-    </colgroup>
-    <tbody>
-        <tr style="height:0pt">
-            <td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;">
-            <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:8pt;"><span id="docs-internal-guid-21b65afa-7fff-c2ce-e480-3ba277b3295f"><span style="font-size: 10pt; font-family: Arial; background-color: transparent; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Question 1: </span><span style="font-size: 10pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">What is its rank in popularion? (Answer: 44th) </span></span></p>
+	<colgroup>
+		<col width="*">
+	</colgroup>
+	<tbody>
+		<tr style="height:0pt">
+			<td style="border-left:solid #000000 1pt;border-right:solid #000000 1pt;border-bottom:solid #000000 1pt;border-top:solid #000000 1pt;vertical-align:top;padding:5pt 5pt 5pt 5pt;">
+			<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:8pt;"><span id="docs-internal-guid-21b65afa-7fff-c2ce-e480-3ba277b3295f"><span style="font-size: 10pt; font-family: Arial; background-color: transparent; font-weight: 700; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Question 1: </span><span style="font-size: 10pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">What are Kanye's religious beliefs? (Answer: Christian) </span></span></p>
 
-            <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:8pt;"><span id="docs-internal-guid-21b65afa-7fff-c2ce-e480-3ba277b3295f"><span style="font-size: 10pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Use your best judgment to select the "type"(s) that best describe the question: </span></span></p>
-            <input name="q1-humans" type="checkbox" value="q1-humans"> Humans<br>
-            <input name="q1-events" type="checkbox" value="q1-events"> Event<br>
-            <input name="q1-entity" type="checkbox" value="q1-entity"> Entity<br>
-            <input name="q1-facility" type="checkbox" value="q1-facility"> Facility<br>
-            <input name="q1-location" type="checkbox" value="q1-location"> Location<br>
-            <input name="q1-law" type="checkbox" value="q1-law"> Law<br>
-            <input name="q1-org" type="checkbox" value="q1-org"> Organization<br>
-            <input name="q1-date" type="checkbox" value="q1-date"> Date<br>
-            <input name="q1-time" type="checkbox" value="q1-time"> Time<br>
-            <input name="q1-money" type="checkbox" value="q1-money"> Money<br>
-            <input name="q1-quant" type="checkbox" value="q1-quant"> Quantity<br>
-            <input name="q1-desc" type="checkbox" value="1-desc"> Description<br>
-            <input name="q1-abbrv" type="checkbox" value="q1-abbrv"> Abbreviation<br>
-            <input name="q1-other" type="checkbox" value="q1-other"> Other</td>
-        </tr>
-    </tbody>
+			<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:8pt;"><span id="docs-internal-guid-21b65afa-7fff-c2ce-e480-3ba277b3295f"><span style="font-size: 10pt; font-family: Arial; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;">Use your best judgment to select the "type"(s) that best describe the question: </span></span></p>
+			<input name="q1-humans" type="checkbox" value="q1-humans"> Humans<br>
+			<input name="q1-events" type="checkbox" value="q1-events"> Event<br>
+			<input name="q1-entity" type="checkbox" value="q1-entity"> Entity<br>
+			<input name="q1-facility" type="checkbox" value="q1-facility"> Facility<br>
+			<input name="q1-location" type="checkbox" value="q1-location"> Location<br>
+			<input name="q1-law" type="checkbox" value="q1-law"> Law<br>
+			<input name="q1-org" type="checkbox" value="q1-org"> Organization<br>
+			<input name="q1-date" type="checkbox" value="q1-date"> Date<br>
+			<input name="q1-time" type="checkbox" value="q1-time"> Time<br>
+			<input name="q1-money" type="checkbox" value="q1-money"> Money<br>
+			<input name="q1-quant" type="checkbox" value="q1-quant"> Quantity<br>
+			<input name="q1-desc" type="checkbox" value="1-desc" checked=""> Description<br>
+			<input name="q1-abbrv" type="checkbox" value="q1-abbrv"> Abbreviation<br>
+			<input name="q1-other" type="checkbox" value="q1-other"> Other</td>
+		</tr>
+	</tbody>
 </table>
-</div>
-</div>
-</div>
-</div>
+
 </section>
 <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" integrity="sha384-IS73LIqjtYesmURkDE9MXKbXqYA8rvKEp/ghicjem7Vc3mGRdQRptJSz60tvrB6+" rel="stylesheet">
+<style type="text/css">#collapseTrigger{ color:#fff; display: block; text-decoration: none; } #submitButton{ white-space: normal; } .image{ margin-bottom: 15px; } /* CSS for breaking long words/urls */ .dont-break-out { overflow-wrap: break-word; word-wrap: break-word; -ms-word-break: break-all; word-break: break-all; word-break: break-word; -ms-hyphens: auto; -moz-hyphens: auto; -webkit-hyphens: auto; hyphens: auto; }
 </style>
 
-
+      
       <p class="text-center">
         <input type="submit" id="submitButton" class="btn btn-primary" disabled="" value="You must ACCEPT the Task before you can submit the results.">
       </p>
-
+      
     </form>
-  </body></html>
+  
 
-Output command: self.actions.modify_checkbox('q1-quant', 'q1-quant')
+</body></html>
+
+Output command: self.actions.modify_checkbox('q1-quant', 'nan')
 ======
 Instance 2:
 Input name: 0-0

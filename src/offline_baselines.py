@@ -28,7 +28,7 @@ def evaluate():
 
                 text_prompt = get_encoded_input_prompt(input_name, html)
 
-                # call the open ai api
+                # call the open the api
                 response = ActionUtils.open_ai_call(text_prompt)
 
                 gold_action = field["output"]["action_sequence"]

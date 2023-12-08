@@ -68,7 +68,6 @@ class ActionUtils:
         # Perform Delete
         action.send_keys(Keys.BACKSPACE)
 
-
     client = None
 
     @staticmethod
@@ -93,7 +92,7 @@ class ActionUtils:
             frequency_penalty=0,
             presence_penalty=0
         )
-        return response
+        return response.choices[0].message.content
 
 
 class MyActions:
