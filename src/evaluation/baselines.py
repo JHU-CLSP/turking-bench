@@ -7,6 +7,7 @@ import random
 from time import sleep
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
+from src.evaluation.prompts import get_encoded_input_prompt
 from evaluation.actions import MyActions
 from evaluation.actions import ActionUtils
 from evaluation.input import Input
@@ -40,16 +41,7 @@ class Baseline:
         action_list = [(method, getattr(MyActions, method).__doc__) for method in action_list]
         return action_list
 
-    def get_encoded_input_prompt(self, input: Input, html_code: str = None):
-        actions = self.get_action_list()
-        # encode the actions as a string
-        actions = '\n\n'.join([f"{action[0]}: {action[1]}" for action in actions])
-        return f"""
-        Given a web-based task, we'd like to solve it by executing actions. Below is a list of actions that
-        can be performed on a HTML page. \n\n{actions} \n\n
 
-        Now, given the following input `{input}`, decide what set of actions need to be executed.
-        """
 
 
 
@@ -247,7 +239,7 @@ class GPT4TextBaseline(Baseline):
     Interactive calls to GPT4 to solve the task
     """
 
-    def solve(self, input: Input, **kwargs) -> bool:
+    def solve(self, input: Input, **kwargs) -> None:
         """
         Communicate with GPT4 to solve the task
         """
@@ -265,14 +257,13 @@ class GPT4TextBaseline(Baseline):
         html = self.actions.get_html()
 
         # simplify HTML
-        simplified_html = ActionUtils.simplify_html(html)
-
-        text_prompt = Baseline.get_encoded_input_prompt(input, simplified_html)
+        # simplified_html = ActionUtils.simplify_html(html)
+        simplified_html = html
+        text_prompt = get_encoded_input_prompt(input, simplified_html)
 
         try:
             command = ActionUtils.open_ai_call(text_prompt)
-
             exec(command)
-            print("executed one action")
+            print(f"executed one action: {command}")
         except Exception as error:
             print(f"failed to execute an action {command}, error: {error}")
