@@ -706,11 +706,9 @@ class Evaluation:
                     instance_ids.append(instance_id)
                     answer_map[instance_id] = {}
                     for row in value:
-                        print("row", row)
                         answer_map[instance_id][row["input_name"]] = row["action_sequence"]
 
             # Go through the instances of each task in this random sample
-            print(f"len(instance_ids): {len(instance_ids)}")
             for instance_id in instance_ids:
                 # wait for a keyboard press before continuing
                 # input("Press Enter to continue...")
