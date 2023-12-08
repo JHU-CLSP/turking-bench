@@ -11,7 +11,7 @@ from utils.hidden_prints import HiddenPrints
 import logging
 
 TURKLE_URL = "http://localhost:8000"
-TEST_NAME = "Abductive Reasoning 11"
+TEST_NAME = "COMET2020 ATOMIC Inference Vp 5"
 SPECIFIED_INDEX = 0
 RUN_ALL = False
 
@@ -261,7 +261,7 @@ if __name__ == "__main__":
     # user argparser to recive he input parameter
     parser = argparse.ArgumentParser()
     parser.add_argument("--solver_type", help="random or oracle", default="random")
-    parser.add_argument("--tasks", help="train, test, or subjective_test", default="test")
+    parser.add_argument("--tasks", help="train, test, or subjective_test", default="test_easy")
     parser.add_argument("--max_instance_count", help="maximum number of instances per task", default=1)
     parser.add_argument("--do_eval", help="whether to compute the quality aginst the gold data", default=True)
     parser.add_argument("--dump_features", help="whether to dump the features", default=False)
