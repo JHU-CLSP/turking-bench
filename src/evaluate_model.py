@@ -64,10 +64,11 @@ if __name__ == "__main__":
         #     model_outputs = task["model_outputs"]
         #     kwargs[str(row_num)] = model_outputs
 
+        kwargs = {}
         for task in json_data:
             row_num = task["row_num"]
             model_outputs = task["model_outputs"]
-            kwargs = {}
+            kwargs[str(row_num)] = model_outputs
 
         scores.append(call_score_model(eval, folder, **kwargs))
     
