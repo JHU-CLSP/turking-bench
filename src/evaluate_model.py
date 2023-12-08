@@ -67,8 +67,15 @@ if __name__ == "__main__":
         kwargs = {}
         for task in json_data:
             row_num = task["row_num"]
-            model_outputs = task["model_outputs"]
+            print(f"row_num {row_num}")
+            # model_outputs = []
+            model_outputs = [field["output"] for field in task["fields"]]
+            # fields = task["fields"]
+            # for field in fields:
+            #     model_outputs.append(field["output"])
             kwargs[str(row_num)] = model_outputs
+
+        print(f"len jsondata {len(json_data)}")
 
         scores.append(call_score_model(eval, folder, **kwargs))
     

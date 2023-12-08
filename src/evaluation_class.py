@@ -24,6 +24,7 @@ from tqdm import tqdm
 from typing import List, Union
 import logging
 import bisect
+import copy
 
 TURKLE_URL = "http://localhost:8000"
 
@@ -709,6 +710,7 @@ class Evaluation:
                         answer_map[instance_id][row["input_name"]] = row["action_sequence"]
 
             # Go through the instances of each task in this random sample
+            print(f"len(instance_ids): {len(instance_ids)}")
             for instance_id in instance_ids:
                 # wait for a keyboard press before continuing
                 # input("Press Enter to continue...")
@@ -814,7 +816,7 @@ class Evaluation:
                         })
 
                 if self.dump_features:
-                    data_to_be_dumped.append(curr_data_to_be_dumped)
+                    data_to_be_dumped.append(copy.deepcopy(curr_data_to_be_dumped))
 
                 # get the input values from the web page
                 inputs_with_values = self.extract_values(inputs)
