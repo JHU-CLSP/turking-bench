@@ -7,10 +7,10 @@ if __name__ == "__main__":
     # user argparser to recive he input parameter
     parser = argparse.ArgumentParser()
     parser.add_argument("--solver_type",
-                        help="random or oracle",
-                        default="random")
+                        help="random or oracle or model",
+                        default="oracle")
     parser.add_argument("--tasks",
-                        help="train, test, or subjective_test",
+                        help="train, test_easy, test_hard, all, or subjective_test",
                         default="test")
     parser.add_argument("--max_instance_count",
                         help="maximum number of instances per task",

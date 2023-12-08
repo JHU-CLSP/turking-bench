@@ -1,6 +1,5 @@
-from evaluation.input import Input
 
-def get_encoded_input_prompt(input: Input, html_code: str = None):
+def get_encoded_input_prompt(input_name: str, html_code: str = None):
     return f"""We would like to generate a command to modify a HTML page. Here are the list of valid commands:
 
 self.modify_text(input_name: str, input_value)
@@ -231,7 +230,7 @@ Output command: self.actions.modify_checkbox('0-0', 'on')
 Given the above examples, generate a command that solves the following instance. Note, generate only a single command, without any explanations.
 
 
-Input name: {input.name}
+Input name: {input_name}
 HTML: {html_code}
 Output command:
 """

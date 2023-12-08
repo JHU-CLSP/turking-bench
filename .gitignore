@@ -17,3 +17,4 @@ tasks/*/input.csv
 /venv/
 .vscode/
 .env
+/openaikey.sh

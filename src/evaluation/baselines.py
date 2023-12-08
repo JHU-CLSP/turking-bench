@@ -7,10 +7,10 @@ import random
 from time import sleep
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
-from src.evaluation.prompts import get_encoded_input_prompt
 from evaluation.actions import MyActions
 from evaluation.actions import ActionUtils
 from evaluation.input import Input
+from evaluation.prompts import get_encoded_input_prompt
 import logging
 from typing import List
 
@@ -54,7 +54,7 @@ class NewBaseline(Baseline):
             input_name="dummy",
             input_type="textarea",
             task_name="dummy")
-        encoded_actions_prompt = self.get_encoded_input_prompt(dummy_input)
+        encoded_actions_prompt = get_encoded_input_prompt(dummy_input, "")
         print("encoded actions: ", encoded_actions_prompt)
 
         # Add your code here to process the HTML data and generate a summary
@@ -259,7 +259,7 @@ class GPT4TextBaseline(Baseline):
         # simplify HTML
         # simplified_html = ActionUtils.simplify_html(html)
         simplified_html = html
-        text_prompt = get_encoded_input_prompt(input, simplified_html)
+        text_prompt = get_encoded_input_prompt(input.name, simplified_html)
 
         try:
             command = ActionUtils.open_ai_call(text_prompt)
