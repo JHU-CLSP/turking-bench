@@ -1,6 +1,6 @@
 
 def get_encoded_input_prompt(input_name: str, html_code: str = None):
-    return f"""We would like to generate a command to modify a HTML page. Here are the list of valid commands:
+    return """We would like to generate a command to modify a HTML page. Here are the list of valid commands:
 
 self.modify_text(input_name: str, input_value)
 self.modify_checkbox(input_name: str, input_value)
@@ -225,10 +225,191 @@ He is the only President to have been born in Hawaii. He was born to a white mot
 </body></html>
 
 Output command: self.actions.modify_checkbox('0-0', 'on')
+======
+Instance 3:
+Input name: candidate2
+HTML: 
+
+<html><head>
+    <title>Task</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+  <body>
+    <form name="mturk_form" method="post" id="mturk_form" target="_parent" action="#">
+
+      <input type="hidden" name="csrfmiddlewaretoken" value="PFhmO0bjOyyQHeDmq9u1QyEPaQBBXbgp0qs8SO4mQ1vPssyo18IOLMilnq5XpizB">
+      <!-- You must include this JavaScript file -->
+<script data-loader="crowd-html-elements" src="https://assets.crowd.aws/vendor/webcomponentsjs/custom-elements-es5-adapter.js"></script><script data-loader="crowd-html-elements" src="https://assets.crowd.aws/vendor/web-animations-js/web-animations-next-lite.min.js"></script><script data-loader="crowd-html-elements" src="https://assets.crowd.aws/vendor/webcomponentsjs/webcomponents-bundle.js"></script><link href="https://assets.crowd.aws/css/crowd.css" rel="stylesheet"><script data-loader="crowd-html-elements" src="https://assets.crowd.aws/crowd-html-elements-without-ce-polyfill.js"></script><script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects"><form method="" action="">
+  <h1>Infer actions to accomplish a goal</h1>
+  <p>
+      In this task, we ask you to infer actions to accomplish a given goal.
+      We will provide a <b>goal</b>, and some <b>actions</b> that may or may not help accomplish this goal.
+      Your task is to choose <b>the most likely action that helps accomplish this goal</b>.
+      </p><ul>
+        <li>If multiple options seem equally likely, you have to choose one, but don't worry too much about it.</li>
+        <li>Answer according to your common sense, but not necessarily what you would <i>personally</i> do.</li>
+        <li>If the actions or goals are hard to understand, do your best to answer.</li>
+        <li>You are encouraged to look up words you don't understand.</li>
+      </ul>
+      <a href="javascript:;" onmousedown="if(document.getElementById('example').style.display == 'none'){ document.getElementById('example').style.display = 'block'; }else{ document.getElementById('example').style.display = 'none'; }"> (show/hide an example)</a>
+      <div id="example" style="display:none; border:3px; border-style:solid; border-color:#003399; padding: 1em;">
+          <p>Goal: <b>Throw a baseball farther</b>.</p>
+          <p>Which action is the most likely to help accomplish the goal?</p>
+          <div class="col-md-4">
+            <div class="radio">
+              <label for="radios-0">
+                <input type="radio" name="example1">
+                <b>Hold the piece of white cardboard in your hand</b>
+              </label>
+            </div>
+            <div class="radio">
+              <label for="radios-1">
+                <input type="radio" name="example1">
+                <b>Make an open bridge with your other hand</b>
+              </label>
+            </div>
+            <div class="radio">
+              <label for="radios-2">
+                <input type="radio" name="example1">
+                <b>Develop chemistry with your baseball teammates</b>
+              </label>
+            </div>
+            <div class="radio">
+              <label for="radios-1">
+                <input type="radio" name="example1" checked="checked">
+                <b>Hold the ball against your chest</b>
+              </label>
+            </div>
+            <div class="radio">
+              <label for="radios-1">
+                <input type="radio" name="example1">
+                None of the above is likely
+              </label>
+            </div>
+          </div>
+          <p><u>Reason: It is very likely a beginning step when aiming at your target in throwing a baseball. The other actions are unlikely to help with the goal.</u></p>
+      </div>
+  <p></p>
+  <p>This HIT has 10 tasks. You should spend around 20 seconds on each task, and 5 minutes on this HIT, with an hourly rate of 10 dollars. Hint: To answer faster, you can use <strong>(Shift+)Tab</strong> to jump back and forth between candidates and use <strong>Space</strong> to select. </p>
+  <div style="display: none;">
+    3
+  </div>
+
+  <div style="border:3px; border-style:solid; border-color:#FF0000; padding: 1em;">
+      <p>Goal #1: <b>Avoid Holiday Office Party Blunders</b> </p>
+  </div>
+  <p>Which action is the most likely to help accomplish the goal?</p>
+  <div class="col-md-4">
+    <div class="radio">
+      <label for="radios-0">
+        <input type="radio" name="candidate1" value="1" required="">
+        <b>Think about the lyrics you are singing and how they make you feel.</b>
+      </label>
+    </div>
+    <div class="radio">
+      <label for="radios-1">
+        <input type="radio" name="candidate1" value="2" required="" checked="">
+        <b>Never Make Assumptions About Who You Are Talking To</b>
+      </label>
+    </div>
+    <div class="radio">
+      <label for="radios-2">
+        <input type="radio" name="candidate1" value="3" required="">
+        <b>Use bullet points for your script.</b>
+      </label>
+    </div>
+    <div class="radio">
+      <label for="radios-1">
+        <input type="radio" name="candidate1" value="4" required="">
+        <b>Find common ground regularly during the discussion.</b>
+      </label>
+    </div>
+    <div class="radio">
+      <label for="radios-1">
+        <input type="radio" name="candidate1" value="X" required="">
+        None of the above is likely
+      </label>
+    </div>
+  </div>
+
+<!--
+  <p>Please rate your level of confidence about the previous answers:</p>
+  Not confident at all<div id='slider'><crowd-slider name="confidence1" min="1" max="3" value="2" required pin></crowd-slider></div>Very confident
+-->
+
+	<p>(optional) If there are any of the following problems with the texts, please check the corresponding boxes:</p>
+	<div><crowd-checkbox name="grammar1" role="checkbox" tabindex="0" toggles="" aria-checked="false" aria-disabled="false" dir="null" style="--paper-checkbox-ink-size: 48px;"> Some texts don't make sense or aren't grammatical. </crowd-checkbox></div>
+	<div><crowd-checkbox name="noidea1" role="checkbox" tabindex="0" toggles="" aria-checked="false" aria-disabled="false" dir="null" style="--paper-checkbox-ink-size: 48px;"> I have no idea what the given goal or actions means. </crowd-checkbox></div>
+  <br>
+
+<!--
+	<p>(optional) For other problems, comments or concerns, please describe briefly:</p>
+	<crowd-input name="problems1" placeholder="Describe problems, if any..."></crowd-input>
+  <div style="display: none;">
+    1
+  </div>
+-->
+  <div style="border:3px; border-style:solid; border-color:#FF0000; padding: 1em;">
+      <p>Goal #2: <b>Remove Old Carpeting</b> </p>
+  </div>
+  <p>Which action is the most likely to help accomplish the goal?</p>
+  <div class="col-md-4">
+    <div class="radio">
+      <label for="radios-0">
+        <input type="radio" name="candidate2" value="1" required="">
+        <b>Sew the pieces together using the following method until you have a binding strip long enough to outline the perimeter of your quilt:</b>
+      </label>
+    </div>
+    <div class="radio">
+      <label for="radios-1">
+        <input type="radio" name="candidate2" value="2" required="">
+        <b>Cut the excess fabric off using fabric scissors, using the line you drew as a guide.</b>
+      </label>
+    </div>
+    <div class="radio">
+      <label for="radios-2">
+        <input type="radio" name="candidate2" value="3" required="">
+        <b>Cover the object with the liquid using your coated paint brush.</b>
+      </label>
+    </div>
+    <div class="radio">
+      <label for="radios-1">
+        <input type="radio" name="candidate2" value="4" required="">
+        <b>Use the pry bar to work under the carpet.</b>
+      </label>
+    </div>
+    <div class="radio">
+      <label for="radios-1">
+        <input type="radio" name="candidate2" value="X" required="">
+        None of the above is likely
+      </label>
+    </div>
+  </div>
+
+<!--
+  <p>Please rate your level of confidence about the previous answers:</p>
+  Not confident at all<div id='slider'><crowd-slider name="confidence2" min="1" max="3" value="2" required pin></crowd-slider></div>Very confident
+-->
+
+<crowd-button form-action="submit" variant="primary" data-testid="crowd-submit">Submit</crowd-button></form></crowd-form>
 
 
+      <p class="text-center">
+        <input type="submit" id="submitButton" class="btn btn-primary" disabled="" value="You must ACCEPT the Task before you can submit the results.">
+      </p>
+
+    </form>
+</body></html>
+
+Output command: self.actions.modify_radio('candidate2', '4')
+""" + f"""
 Given the above examples, generate a command that solves the following instance. Note, generate only a single command, without any explanations.
-
 
 Input name: {input_name}
 HTML: {html_code}
