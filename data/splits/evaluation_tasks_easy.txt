@@ -1,8 +1,6 @@
 Associate countries and languages with Ethnologue
 atomic_event2event-effects 4
 Author In-Group Analysis Phrase Classification 2
-Elicitation obj
-Elicitation subj
 Full sentence style annotations
 Paraphrase Clustering with Merge
 Photo Collection GVDB

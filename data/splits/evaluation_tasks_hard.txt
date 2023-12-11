@@ -1,4 +1,6 @@
 Compile list of area chairs
+Elicitation obj
+Elicitation subj
 Gun violence structured extraction
 Rationale Generation 5
 ESNLI Rationale Generation 4

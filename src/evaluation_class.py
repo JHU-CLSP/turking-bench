@@ -342,7 +342,7 @@ class Evaluation:
             input_fields.append(i)
 
         # before returning them, sort the input values based on first based on their x-coordinate and then their y-coordinate
-        # input_fields = sorted(input_fields, key=lambda i: (i.y, i.x))
+        input_fields = sorted(input_fields, key=lambda i: (i.y, i.x))
         # Commented for now; instead changed the code base to just use the order in which the Answer columns are given. We can rearrange it to the order of which inputs to fill in first
         return input_fields
 
@@ -506,12 +506,10 @@ class Evaluation:
         # normalize responses: turn "nan", or "{}" into empty string
         for idx in range(len(answers)):
             a = answers[idx]
-            if a == "nan" or a == "{}" or a == "'{}'" or (type(a) == float and np.isnan(a)):
+            if a in ["nan", "{}", "'{}'"] or (type(a) == float and np.isnan(a)):
                 answers[idx] = ""
 
         logging.info(f"answers after mapping: `{answers}`")
-
-        score = 0.0
 
         # handle empty
         if answers == []:
@@ -636,6 +634,11 @@ class Evaluation:
                 raise Exception(
                     f"{Fore.RED}The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`"
                 )
+
+            # if the answer is already empty for text input, skip it.
+            # otherwise, we would be crediting the model for not filling in the input.
+            if answers_map[i.name] == [] and i.type in ['text', 'textarea', 'hidden']:
+                continue
 
             # if checkmarks, sort the values alphabetically
             if i.type == "checkbox":
@@ -826,9 +829,6 @@ class Evaluation:
                 if self.dump_features:
                     data_to_be_dumped.append(copy.deepcopy(curr_data_to_be_dumped))
 
-                # get the input values from the web page
-                inputs_with_values = self.extract_values(inputs)
-
                 # collecting field statistics
                 if task_name not in results:
                     results[task_name] = {}
@@ -838,7 +838,7 @@ class Evaluation:
                 print(f"{Fore.CYAN} --> Per-instance per-field breakdown: {results[task_name]}")
 
                 # wait for a keyboard press before continuing
-                # input("Press Enter to continue to the next instance...")
+                input("Press Enter to continue to the next instance...")
 
                 per_task_score += score
 
