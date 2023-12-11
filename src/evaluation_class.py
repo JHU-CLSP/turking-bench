@@ -25,6 +25,7 @@ from tqdm import tqdm
 from typing import List, Union, Dict
 import logging
 import bisect
+import copy
 
 TURKLE_URL = "http://localhost:8000"
 
@@ -260,10 +261,10 @@ class Evaluation:
             for i, test1 in enumerate(all_test_splits):
                 for j, test2 in enumerate(all_test_splits):
                     if i != j:
-                        assert len(
-                            set(test1).intersection(set(test2))) == 0, f"{Fore.RED}The tests are not mutually exclusive" \
-                                                                       f"splits are not exclusive\n: test1: {test1}\ntest2: {test2}" \
-                                                                       f"\nintersection: {set(test1).intersection(set(test2))}"
+                        assert len(set(test1).intersection(set(test2))) == 0, \
+                            f"{Fore.RED}The tests are not mutually exclusive" \
+                            f"splits are not exclusive\n: test1: {test1}\ntest2: {test2}" \
+                            f"\nintersection: {set(test1).intersection(set(test2))}"
 
             if self.tasks == 'test_easy':
                 return test
@@ -387,8 +388,8 @@ class Evaluation:
                     f"return Array.from(document.getElementsByName(`{input.name}`)).filter(element => element.checked).map(element => element.value);"
                 )
                 assert len(values) <= 1, f"The number of values should be 1 or 0 but it is `{len(values)}` for {input}"
-                assert len(
-                    visible_values) <= 1, f"The number of visible values should be 1 or 0 but it is `{len(visible_values)}` for {input}"
+                assert len(visible_values) <= 1, \
+                    f"The number of visible values should be 1 or 0 but it is `{len(visible_values)}` for {input}"
             elif input.type in ['checkbox']:
                 command = f"""return Array.from(document.querySelectorAll(`input[name='{input.name}']:checked`)).map(element => element.value);"""
                 values = self.driver.execute_script(command)
@@ -700,7 +701,7 @@ class Evaluation:
             instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
 
             if self.dump_features:
-                directory = f'~/turk_data/{task_name}'
+                directory = f'/scratch4/danielk/kxu39/turk_data/{task_name}'
                 images_directory = f'{directory}/images'
                 html_directory = f'{directory}/HTML'
 
@@ -708,6 +709,7 @@ class Evaluation:
                 Path(html_directory).mkdir(parents=True, exist_ok=True)
 
                 data_to_be_dumped = []
+                curr_data_to_be_dumped = {}
 
             # Override instance_ids if specified the row_num
             if self.solver_type == "model":
@@ -718,7 +720,6 @@ class Evaluation:
                     instance_ids.append(instance_id)
                     answer_map[instance_id] = {}
                     for row in value:
-                        print("row", row)
                         answer_map[instance_id][row["input_name"]] = row["action_sequence"]
 
             # Go through the instances of each task in this random sample
@@ -759,11 +760,10 @@ class Evaluation:
                         task_field_statistics[task_name][i.type] += 1
 
                 if self.dump_features:
-                    data_to_be_dumped.append({
-                        "task_name": task_name,
-                        "instance_id": instance_id,
-                        "row_num": row_number
-                    })
+                    curr_data_to_be_dumped["task_name"] = task_name
+                    curr_data_to_be_dumped["instance_id"] = instance_id
+                    curr_data_to_be_dumped["row_num"] = row_number
+                    curr_data_to_be_dumped["fields"] = []
 
                 for input_idx, i in enumerate(inputs):
                     print(f"{Fore.GREEN} - - - - - -  starting a new element: `{i}` - - - - - -  ")
@@ -814,7 +814,7 @@ class Evaluation:
 
                     # *after* we execute the action, we dump the *output* features
                     if self.dump_features:
-                        data_to_be_dumped.append({
+                        curr_data_to_be_dumped["fields"].append({
                             'input_type': i.type,
                             'input_name': i.name,
                             'image_id': image_id,
@@ -822,6 +822,12 @@ class Evaluation:
                             'relevant_html': self.get_relevant_html(i),
                             'output': oracle_action_sequence
                         })
+
+                if self.dump_features:
+                    data_to_be_dumped.append(copy.deepcopy(curr_data_to_be_dumped))
+
+                # get the input values from the web page
+                inputs_with_values = self.extract_values(inputs)
 
                 # collecting field statistics
                 if task_name not in results:
@@ -841,16 +847,13 @@ class Evaluation:
                 elif self.solver_type == 'model':
                     kwargs["scores"].append(score)
 
-                if self.dump_features:
-                    with open(f'{directory}/{task_name}.json', 'w') as f:
-                        json.dump(data_to_be_dumped, f, indent=4)
-
             # per-task statistics
             per_task_score = per_task_score / len(instance_ids)
             print(f"{Fore.MAGENTA}Task: {task_name} --> Score: {per_task_score}")
             df = pd.DataFrame()
             for task_name, inputs in results.items():
                 for input_type, scores in inputs.items():
+                    # print(scores)
                     avg_score = sum(scores) / len(scores)
                     # TODO: check if we can safely change the "projects" in the following lines to tasks
                     df = pd.concat(
@@ -858,8 +861,7 @@ class Evaluation:
                             df, pd.DataFrame({
                             'project': [task_name],
                             'input_type': [input_type],
-                            'per_type_score': [avg_score],
-                            'per_task_score': per_task_score  # sanity check; drop it later.
+                            'score': [avg_score]
                         })
                         ],
                         ignore_index=True)
@@ -868,14 +870,16 @@ class Evaluation:
                 df.insert(0, 'project', '')
             if 'input_type' not in df.columns:
                 df.insert(1, 'input_type', '')
-            if 'per_type_score' not in df.columns:
-                df.insert(1, 'per_type_score', '')
-            if 'per_task_score' not in df.columns:
-                df.insert(1, 'per_task_score', '')
+            if 'score' not in df.columns:
+                df.insert(1, 'score', '')
 
         df = df.pivot(index='project', columns='input_type', values='per_type_score')
         today = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
         df.to_csv(f'{self.solver_type}_scores_{today}.csv', index=True)
+
+        if self.dump_features:
+            with open(f'{directory}/{task_name}.json', 'w') as f:
+                json.dump(data_to_be_dumped, f, indent=4)
 
         print("Now let's print the field statistics")
 
@@ -960,8 +964,8 @@ class Evaluation:
                         # assuming solver is oracle
                         kwargs = {'answers': answers_map[i.name]}
                         try:
-                            self.solver.solve(i,
-                                              **kwargs)  # before would store the action sequence of oracle, not needed here
+                            # before would store the action sequence of oracle, not needed here
+                            self.solver.solve(i, **kwargs)
                         except Exception as error:
                             error_flag = True
                             continue
