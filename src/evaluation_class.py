@@ -103,8 +103,10 @@ class Evaluation:
         ]
 
     def filter_TAP_tasks(self, task_name):
-        if "sandbox" in task_name:
-            return False
+        """
+        Filter tasks that cannot be solved with our oracle rule-based model.
+        These tasks are included inside the "evaluation_tasks_hard.txt" file.
+        """
 
         if "COMET2020 ATOMIC Inference Vp 5" == task_name:
             # input.type submit hasn't been coded for thus self.extract_values is erroring
@@ -133,12 +135,6 @@ class Evaluation:
         tasks_should_skip = ["Photo Collection GVDB", "NER - Task scruples 26,200 - 30,922"]
         # tasks I don't think the model is capable of solving
         if task_name in tasks_should_skip:
-            return False
-
-        # throwing Email Formality Annotation into the mix, seems like the answers r pretty unusable. questionably empty, floating in the abyss to the right of answers. tried some data processing but then realized it was just oof data. could maybe recover in future by looking at each answer to the right of the answers and sticking them inside Answer. if we want (that could be right, maybe same num of "missing ans" but also some X need answers that are found in Xsrc and junk is filled in X, so lots of work
-        # same with Simplicity HIT - rank simplicity, the answers r unusable as well (full text strings for MOST of the responses when they should be numbers between 0 - 5, and weird numbs at the end
-        weird_data_in_batch_csv = ["Simplicity HIT - rank simplicity", "Email Formality Annotation"]
-        if task_name in weird_data_in_batch_csv:
             return False
 
         if task_name not in self.task_ids.keys():
