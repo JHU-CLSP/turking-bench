@@ -456,6 +456,22 @@ class Evaluation:
         print(f"{Fore.BLUE} --> scores: ", score)
         return score
 
+    @staticmethod
+    def metric_mean_over_ground_truths(metric_fn, prediction, ground_truths, xlingual=False):
+        """
+        Returns the max score comparing model predicted output to over the ground truth labels that we have received from the gold labels
+        """
+        prediction = try_numeric(prediction)
+        scores_for_ground_truths = []
+        ground_truths = clean_values(ground_truths)
+        for ground_truth in ground_truths:
+            score = metric_fn(prediction, ground_truth, xlingual=xlingual)
+            scores_for_ground_truths.append(score)
+        score = float(sum(scores_for_ground_truths)) / len(scores_for_ground_truths)
+        print(f"prediction {prediction} ground_truths {ground_truths}")
+        print(f"{Fore.BLUE} --> scores: ", score)
+        return score
+
     def retrieve_gold_labels(self, task_name: str, instance_index: int, input_names: List[str]):
         """
         Retrieve the gold labels for a given instance index and input names.
@@ -519,7 +535,7 @@ class Evaluation:
             else:
                 score = 0.0
         elif input_type in ['text', 'textarea', 'hidden']:
-            score = Evaluation.metric_max_over_ground_truths(
+            score = Evaluation.metric_mean_over_ground_truths(
                 self.rouge,
                 prediction=baseline_answer,
                 ground_truths=[str(answer) for answer in answers],
@@ -540,7 +556,7 @@ class Evaluation:
 
                 score = Evaluation.metric_max_over_ground_truths(
                     self.exact_match,
-                    prediction=majority_answer_str,
+                    prediction=baseline_answer,
                     ground_truths=[majority_answer_str],
                     xlingual=False
                 )
@@ -558,19 +574,20 @@ class Evaluation:
             # if the gold labels are numericals, then we can compute the mean absolute error
             # else, fall back to rouge
             try:
-                # TODO: range values need to be normalized by their maximum
-                # https://github.com/JHU-CLSP/turk-instructions/issues/65
                 answers = [float(answer) for answer in answers]
                 baseline_answer = float(baseline_answer)
-                # "min" since we're happy as long as we're close to one human
-                denominator = np.max(answers)
-                scores = np.min(np.abs(np.array(answers) - baseline_answer))
+                # average distance to humans
+                scores = np.mean(np.abs(np.array(answers) - baseline_answer))
+
+                # max of baseline_answer and answers
+                denominator = max(np.max(np.abs(np.array(answers))), np.abs(baseline_answer))
+
                 if denominator > 0:
                     scores /= denominator
                 score = 1 - scores
                 print(f"{Fore.BLUE} --> using numeric values of the range to compute their error: {scores}")
             except Exception:
-                score = Evaluation.metric_max_over_ground_truths(
+                score = Evaluation.metric_mean_over_ground_truths(
                     self.exact_match,
                     prediction=baseline_answer,
                     ground_truths=[str(answer) for answer in answers],

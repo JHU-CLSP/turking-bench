@@ -1,3 +1,4 @@
+Paraphrase Clustering with Merge
 Compile list of area chairs
 Elicitation obj
 Elicitation subj
