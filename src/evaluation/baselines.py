@@ -203,6 +203,15 @@ class RandomBaseline(Baseline):
             print("random choices options:", options)
             return random.choice(options)
 
+class DoNothingBaseline(Baseline):
+    """
+    This baseline randomly does nothing!
+    Yet, it provides a baseline for the minimum score that can be achieved.
+    """
+
+    def solve(self, input: Input, **kwargs):
+        pass
+
 class OfflineModelPredictionsBaseline(Baseline):
     """
     This baseline is used to execute the outputs of our ML models

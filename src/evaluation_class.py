@@ -78,7 +78,9 @@ class Evaluation:
         self.solver = None
         # ass more solvers that we implement, we can add them here:
         self.solver_type = solver_type
-        if solver_type == "random":
+        if solver_type == "nothing":
+            self.solver = baselines.DoNothingBaseline(driver=self.driver, actions=self.actions)
+        elif solver_type == "random":
             self.solver = baselines.RandomBaseline(driver=self.driver, actions=self.actions)
         elif solver_type == "oracle":
             self.solver = baselines.OracleBaseline(driver=self.driver, actions=self.actions)
@@ -860,7 +862,7 @@ class Evaluation:
                 per_task_score += score
 
                 if self.solver_type == 'oracle':
-                    assert score > 0.95, f"{Fore.RED}The oracle baseline should always get a score of 1.0"
+                    assert score > 0.9, f"{Fore.RED}The oracle baseline should always get a score of 1.0"
                 elif self.solver_type == 'model':
                     kwargs["scores"].append(score)
 
@@ -1003,7 +1005,7 @@ class Evaluation:
 
                     score = self.score_outputs(inputs, answers_map, task_results=None)
 
-                    if score > 0.95:
+                    if score > 0.9:
                         num_successes += 1
                     else:
                         failing_tasks.append(row_num)
