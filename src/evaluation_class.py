@@ -838,7 +838,7 @@ class Evaluation:
                 print(f"{Fore.CYAN} --> Per-instance per-field breakdown: {results[task_name]}")
 
                 # wait for a keyboard press before continuing
-                input("Press Enter to continue to the next instance...")
+                # input("Press Enter to continue to the next instance...")
 
                 per_task_score += score
 
