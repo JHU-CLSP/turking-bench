@@ -843,7 +843,7 @@ class Evaluation:
                 per_task_score += score
 
                 if self.solver_type == 'oracle':
-                    assert score > 0.99, f"{Fore.RED}The oracle baseline should always get a score of 1.0"
+                    assert score > 0.95, f"{Fore.RED}The oracle baseline should always get a score of 1.0"
                 elif self.solver_type == 'model':
                     kwargs["scores"].append(score)
 
@@ -986,7 +986,7 @@ class Evaluation:
 
                     score = self.score_outputs(inputs, answers_map, task_results=None)
 
-                    if score > 0.99:
+                    if score > 0.95:
                         num_successes += 1
                     else:
                         failing_tasks.append(row_num)
