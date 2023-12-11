@@ -146,7 +146,7 @@ class OracleBaseline(Baseline):
 
         actions_per_input = {
             "input_name": input.name,
-            "action_sequence": action.action,
+            "action_sequence": action,
         }
 
         return actions_per_input

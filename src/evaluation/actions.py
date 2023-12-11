@@ -19,24 +19,6 @@ import math
 from evaluation.input import Input
 
 
-class Result:
-    """
-    This class encodes the outcome of each action.
-    The result may contain the following fields:
-    - success: whether the action was successful
-    - message: a message to be displayed to the user
-    - action: the action that was performed, including the input
-    """
-
-    def __init__(self, success, outcome, action):
-        self.success = success
-        self.outcome = outcome
-        self.action = action
-
-    def __repr__(self):
-        return f"Result(success=`{self.success}`, outcome=`{self.outcome}`, action=`{self.action}`)"
-
-
 class ActionUtils:
     """
     This class contains utility functions for actions.
@@ -109,50 +91,41 @@ class MyActions:
         # scrolss to the element but keeps it in the center of the screen
         self.scroll_to_command = "arguments[0].scrollIntoView({ behavior: 'auto', block: 'center', inline: 'center' });"
 
-    def execute_js_command(self, command, *args) -> Result:
+    def execute_js_command(self, command, *args) -> str:
         """
         Executes the javascript command and returns the result.
         """
         outcome = self.driver.execute_script(command, *args)
 
-        return Result(success=True,
-                      outcome=outcome,
-                      action=f"self.actions.execute_js_command('{command}')")
+        return f"self.actions.execute_js_command('{command}')"
 
-    def maximize_window(self) -> Result:
+    def maximize_window(self) -> str:
         """
         This function maximizes the browser window to make sure we can see all the elements on the page.
         """
         self.driver.maximize_window()
 
-        return Result(success=True,
-                      outcome=None,
-                      action="self.maximize_window()")
+        return "self.maximize_window()"
 
-    def scroll_to_element(self, input_name: str) -> Result:
+    def scroll_to_element(self, input_name: str):
         """
         This function scrolls to a given element on the page, after the page is fully loaded.
         It then returns the element.
         """
-        result = self.wait_for_element(input_name)
-        input_element = result.outcome
+        _, input_element = self.wait_for_element(input_name)
         self.execute_js_command(self.scroll_to_command, input_element)
-        return Result(success=True,
-                      outcome=input_element,
-                      action=f"self.actions.scroll_to_element('{input_name}')")
+        return f"self.actions.scroll_to_element('{input_name}')", input_element
 
-    def wait_for_element(self, input_name: Input) -> Result:
+    def wait_for_element(self, input_name: Input):
         """
         This function waits for a given element to be loaded on the page, and then returns the element.
         """
         input_element = WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located((By.NAME, input_name)))
+            EC.presence_of_element_located((By.NAME, input_name))
+        )
+        return f"self.actions.wait_for_element('{input_name}')", input_element
 
-        return Result(success=True,
-                      outcome=input_element,
-                      action=f"self.actions.wait_for_element('{input_name}')")
-
-    def modify_text(self, input_name: str, input_value) -> Result:
+    def modify_text(self, input_name: str, input_value) -> str:
         """
         For a given editable input field such as text box or text area, this function enters the input value into
         the input field.
@@ -167,18 +140,12 @@ class MyActions:
             print(
                 f"{Fore.RED}Since the input value is `{input_value}`, we are not going to modify the text."
             )
-            return Result(success=False,
-                          outcome=None,
-                          action=f"self.actions.modify_text('{input_name}', '{input_value}')")
+            return f"self.actions.modify_text('{input_name}', '{input_value}')"
 
-        result = self.scroll_to_element(input_name)
-        input_element = result.outcome
-        print(
-            f"{Fore.YELLOW}We are going to add text to this text input: {input_element.get_attribute('outerHTML')}"
-        )
+        _, input_element = self.scroll_to_element(input_name)
+        print(f"{Fore.YELLOW}Add text to this text input: {input_element.get_attribute('outerHTML')}")
 
-        action = ActionChains(
-            self.driver).move_to_element(input_element).click()
+        action = ActionChains(self.driver).move_to_element(input_element).click()
         # now modify the text
         ActionUtils.clear_text(action)
         for i, text in enumerate(re.split(r'[\n\r]', str(input_value))):
@@ -188,18 +155,19 @@ class MyActions:
         action.perform()
 
         if input_element.tag_name == 'textarea':
-            self.execute_js_command('arguments[0].innerHTML = arguments[1]',
-                                    input_element, input_value)
+            self.execute_js_command(
+                'arguments[0].innerHTML = arguments[1]',
+                input_element, input_value
+            )
         elif input_element.tag_name == 'input':
             self.execute_js_command(
                 'arguments[0].setAttribute("value", arguments[1])',
-                input_element, input_value)
+                input_element, input_value
+            )
 
-        return Result(success=True,
-                      outcome=input_element,
-                      action=f"self.actions.modify_text('{input_name}', '{input_value}')")
+        return f"self.actions.modify_text('{input_name}', '{input_value}')"
 
-    def modify_checkbox(self, input_name: str, input_value) -> Result:
+    def modify_checkbox(self, input_name: str, input_value) -> str:
         """
         For a given checkbox, this function clicks on the all the correct values.
         :param input_name: name of the input field
@@ -219,9 +187,7 @@ class MyActions:
 
         if "|" in input_value:
             input_value = input_value.split("|")
-            print(
-                f"{Fore.YELLOW} There are multiple values. Splitting them! {input_value}"
-            )
+            print(f"{Fore.YELLOW} There are multiple values. Splitting them! {input_value}")
 
         if type(input_value) == str:
             input_value = [input_value]
@@ -230,10 +196,7 @@ class MyActions:
             print(
                 f"{Fore.RED} ** Warning **: input value is 'nan'. So, we're terminating the function"
             )
-            return Result(
-                success=False,
-                outcome=None,
-                action=f"self.actions.modify_checkbox('{input_name}', '{original_input_value}')")
+            return f"self.actions.modify_checkbox('{input_name}', '{original_input_value}')"
         elif 'nan' in input_value:
             print(
                 f"{Fore.YELLOW} ** Warning **: Found input value is 'nan' and filtered it out"
@@ -243,20 +206,14 @@ class MyActions:
                 print(
                     f"{Fore.RED} ** Warning **: Since the list of values `{input_value}` is empty, "
                     f"and so, we're terminating the function")
-                return Result(
-                    success=False,
-                    outcome=None,
-                    action=f"self.actions.modify_checkbox('{input_name}', '{original_input_value}')")
+                return f"self.actions.modify_checkbox('{input_name}', '{original_input_value}')"
 
         self.wait_for_element(input_name)
         self.scroll_to_element(input_name)
 
-        print(
-            f"{Fore.YELLOW}Looking for checkboxes with `name`: {input_name}  the following values: {input_value}"
-        )
+        print(f"{Fore.YELLOW}Looking for checkboxes with `name`: `{input_name}` the values: `{input_value}`")
 
-        assert type(
-            input_value) == list, f"Input value `{input_value}` is not a list"
+        assert type(input_value) == list, f"Input value `{input_value}` is not a list"
 
         # now we have to check the checkboxes that have the values we want
         # TODO: need to escape the following parameters
@@ -272,11 +229,9 @@ class MyActions:
                 self.execute_js_command(
                     'arguments[0].setAttribute("checked", "");', checkbox)
 
-        return Result(success=True,
-                      outcome=None,
-                      action=f"self.actions.modify_checkbox('{input_name}', '{original_input_value}')")
+        return f"self.actions.modify_checkbox('{input_name}', '{original_input_value}')"
 
-    def modify_radio(self, input_name: str, input_value) -> Result:
+    def modify_radio(self, input_name: str, input_value) -> str:
         """
         For a given radio button, this function clicks on the correct radio button.
         :param input_name: name of the input field
@@ -293,10 +248,7 @@ class MyActions:
                 print(
                     f"{Fore.RED} ** Warning **: input value is {input_value}. "
                     f"So, we're not going to modify the radio button.")
-                return Result(
-                    success=False,
-                    outcome=None,
-                    action=f"self.actions.modify_radio('{input_name}', '{input_value}')")
+                return f"self.actions.modify_radio('{input_name}', '{input_value}')"
             else:
                 input_value = int(input_value)
 
@@ -307,10 +259,7 @@ class MyActions:
         if input_value in ['nan', 'None']:
             print(f"{Fore.RED} ** Warning **: input value is {input_value}. "
                   f"So, we're not going to modify the radio button.")
-            return Result(
-                success=False,
-                outcome=None,
-                action=f"self.actions.modify_radio('{input_name}', '{input_value}')")
+            return f"self.actions.modify_radio('{input_name}', '{input_value}')"
 
         self.scroll_to_element(input_name)
         value = f"@value='{input_value}'"
@@ -333,12 +282,9 @@ class MyActions:
         self.execute_js_command('arguments[0].setAttribute("checked", "");',
                                 element)
 
-        return Result(
-            success=True,
-            outcome=None,
-            action=f"self.actions.modify_radio('{input_name}', '{input_value}')")
+        return f"self.actions.modify_radio('{input_name}', '{input_value}')"
 
-    def modify_select(self, input_name: str, input_value) -> Result:
+    def modify_select(self, input_name: str, input_value) -> str:
         """
         For a given select field (dropdown menu), this function selects the specified option.
         :param input_name: name of the input field
@@ -377,12 +323,9 @@ class MyActions:
         self.execute_js_command('arguments[0].setAttribute("selected", "");',
                                 select.first_selected_option)
 
-        return Result(
-            success=True,
-            outcome=None,
-            action=f"self.actions.modify_select('{input_name}', '{input_value}')")
+        return f"self.actions.modify_select('{input_name}', '{input_value}')"
 
-    def modify_range(self, input_name: str, input_value) -> Result:
+    def modify_range(self, input_name: str, input_value) -> str:
         """
         For a given "range" input, this function clicks on the specified range value.
         :param input_name: name of the input field
@@ -404,10 +347,7 @@ class MyActions:
         if input_value in ['nan', 'None']:
             print(f"{Fore.RED} ** Warning **: input value is {input_value}. "
                   f"So, we're not going to modify the range.")
-            return Result(
-                success=False,
-                outcome=None,
-                action=f"self.actions.modify_range('{input_name}', '{input_value}')")
+            return f"self.actions.modify_range('{input_name}', '{input_value}')"
 
         self.scroll_to_element(input_name)
         # value = f"@value='{input_value}'"
@@ -430,12 +370,9 @@ class MyActions:
             arguments[0].value = {input_value};
             arguments[0].setAttribute('value', {input_value});""", element)
 
-        return Result(
-            success=True,
-            outcome=None,
-            action=f"self.actions.modify_range('{input_name}', '{input_value}')")
+        return f"self.actions.modify_range('{input_name}', '{input_value}')"
 
-    def take_screenshot(self) -> Result:
+    def take_screenshot(self) -> str:
         """
         This function takes a screenshot of the entire page that is currently visible. It then saves the screenshot.
         # TODO figure out how this function is different than other screenshot functions
@@ -458,11 +395,9 @@ class MyActions:
 
         # Take screenshot
         self.driver.save_screenshot('screenshot.png')
-        return Result(success=True,
-                      outcome=None,
-                      action="self.take_screenshot()")
+        return "self.take_screenshot()"
 
-    def take_element_screenshot(self, input_name: str) -> Result:
+    def take_element_screenshot(self, input_name: str) -> str:
         """
         This function takes a screenshot of a given element on the page.
         """
@@ -484,11 +419,9 @@ class MyActions:
         right = location['x'] + size['width']
         bottom = location['y'] + size['height']
         cropped_image = image.crop((left, top, right, bottom))
-        return Result(success=True,
-                      outcome=cropped_image,
-                      action=f"self.actions.take_element_screenshot('{input_name}')")
+        return f"self.actions.take_element_screenshot('{input_name}')"
 
-    def take_element_screenshot_with_border(self, input_name: str) -> Result:
+    def take_element_screenshot_with_border(self, input_name: str) -> str:
         """
         This function takes a screenshot of the entire page and draws a red border around the specified element.
         """
@@ -515,12 +448,9 @@ class MyActions:
              location['y'] + size['height']),
             outline='red')
 
-        return Result(
-            success=True,
-            outcome=image,
-            action=f"self.actions.take_element_screenshot_with_border('{input_name}')")
+        return f"self.actions.take_element_screenshot_with_border('{input_name}')"
 
-    def take_page_screenshots(self) -> Result:
+    def take_page_screenshots(self) -> str:
         """
         This function takes a screenshot of the entire page by scrolling down the page and taking a screenshot of each
         """
@@ -548,11 +478,9 @@ class MyActions:
             self.driver.execute_script(
                 f"window.scrollTo(0, {scroll_position});")
 
-        return Result(success=True,
-                      outcome=screenshots,
-                      action="self.take_page_screenshots()")
+        return "self.take_page_screenshots()"
 
-    def take_full_screenshot(self) -> Result:
+    def take_full_screenshot(self) -> str:
         """
         This function takes a screenshot of the entire page by stitching together screenshots of each view.
         """
@@ -586,11 +514,9 @@ class MyActions:
                 stitched_image.paste(screenshot, (x, y))
         # Save stitched image
         stitched_image.save('full_screenshot.png')
-        return Result(success=True,
-                      outcome=stitched_image,
-                      action="self.take_full_screenshot()")
+        return "self.take_full_screenshot()"
 
-    def load_jquery(self) -> Result:
+    def load_jquery(self) -> str:
         """
         This function loads jQuery into the current page.
         """
@@ -600,11 +526,9 @@ class MyActions:
             script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js';
             document.head.appendChild(script);
             """)
-        return Result(success=True, outcome=None, action="self.load_jquery()")
+        return "self.load_jquery()"
 
     def get_html(self, url):
         response = requests.get(url)
         html = response.text
         return html
-
-    # TOOD I think we need to create a function that reads strings (Python code) and executes them via Pythin interpretor
