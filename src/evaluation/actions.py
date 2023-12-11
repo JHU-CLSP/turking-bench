@@ -71,7 +71,7 @@ class ActionUtils:
     client = None
 
     @staticmethod
-    def open_ai_call(prompt):
+    def openai_call(prompt):
 
         if not ActionUtils.client:
             # read it from environment variable

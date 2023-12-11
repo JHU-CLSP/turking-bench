@@ -59,9 +59,10 @@ class NewBaseline(Baseline):
 
         # Add your code here to process the HTML data and generate a summary
 
-        # Youc can either make direct calls to the actions
+        # You can either make direct calls to the actions
         # for example, you can access the HTML code
-        html_result = self.actions.get_html()
+        url = kwargs['url']
+        html_result = self.actions.get_html(url)
 
         # or you can take screenshots of the page
         screenshot_result = self.actions.take_full_screenshot()
@@ -254,16 +255,16 @@ class GPT4TextBaseline(Baseline):
         print("about to try executing one action, on the following input:", input.name)
 
         # extract HTML
-        html = self.actions.get_html()
+        url = kwargs['url']
+        html = self.actions.get_html(url)
 
         # simplify HTML
         # simplified_html = ActionUtils.simplify_html(html)
         simplified_html = html
         text_prompt = get_encoded_input_prompt(input.name, simplified_html)
-
+        command = ActionUtils.openai_call(text_prompt)
         try:
-            command = ActionUtils.open_ai_call(text_prompt)
+            print(f"{Fore.BLUE}Executing one action: {command}")
             exec(command)
-            print(f"executed one action: {command}")
         except Exception as error:
-            print(f"failed to execute an action {command}, error: {error}")
+            print(f"{Fore.RED}Failed to execute an action {command}, error: {error}")

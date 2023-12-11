@@ -16,21 +16,18 @@ if __name__ == "__main__":
                         help="maximum number of instances per task",
                         type=int,
                         default=1)
-    parser.add_argument(
-        "--do_eval",
-        help="whether to compute the quality against the gold data",
-        default=True)
-    parser.add_argument(
-        "--headless",
-        help="whether to run the browser `headless` (no visual interface).",
-        default=False)
-    parser.add_argument("--dump_features",
-                        help="whether to dump the features",
+    parser.add_argument("--do_eval",
+                        help="whether to compute the quality against the gold data",
+                        default=True)
+    parser.add_argument("--headless",
+                        help="whether to run the browser `headless` (no visual interface).",
                         default=False)
-    parser.add_argument(
-        "--report_field_stats",
-        help="whether to collect statistics for the HTML fields",
-        default=True)
+    parser.add_argument("--dump_features",
+                        help="whether to dump the input/outputs of the model",
+                        default=False)
+    parser.add_argument("--report_field_stats",
+                        help="whether to collect statistics for the HTML fields",
+                        default=True)
 
     args = parser.parse_args()
     print(f"{Fore.BLUE}Solver: {args.solver_type}")

@@ -1,6 +1,7 @@
 from colorama import init as colorama_init
 from colorama import Fore
 import configparser
+from datetime import datetime
 from evaluation.actions import MyActions
 from evaluation.input import Input
 from evaluation import baselines
@@ -81,7 +82,7 @@ class Evaluation:
             self.solver = baselines.OracleBaseline(driver=self.driver, actions=self.actions)
         elif solver_type == "model":
             self.solver = baselines.ModelBaseline(driver=self.driver, actions=self.actions)
-        elif solver_type == "gpt4":
+        elif solver_type == "gpt4-text":
             self.solver = baselines.GPT4TextBaseline(driver=self.driver, actions=self.actions)
         else:
             raise Exception(f"{Fore.RED}Solver `{solver_type}` not implemented")
@@ -653,12 +654,12 @@ class Evaluation:
 
     def enumerate_tasks(self, max_instance_count: int, **kwargs):
         """
-        Enumerate the tasks and their instances
+        Enumerate the tasks and their instances for the main evaluation loop to go through.
         :param max_instance_count: maximum number of instances per task
         """
-        input_format = "both"
 
         if self.tasks.startswith("dmp"):
+            # TODO: explain what this is
             tasks = self.load_split_tasks(kwargs.get("dump_partitions"))
         else:
             tasks = self.load_task_names()
@@ -667,6 +668,7 @@ class Evaluation:
         if "task" in kwargs:
             tasks = [kwargs["task"]]
             print("tasks", tasks)
+
         results = {}
         aggregate_field_statistics = {}  # We store the stats related to the field types/frequency here
         task_field_statistics = {}
@@ -679,6 +681,8 @@ class Evaluation:
             instance_ids = self.task_ids[task_name]
             first_instance_id = min(instance_ids)
             print("First instance id:", first_instance_id)
+
+            per_task_score = 0.0
 
             # Create a random sample
             instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
@@ -728,9 +732,6 @@ class Evaluation:
                 )
 
                 logging.info(" --> input labels: {}".format(answers_map))
-
-                # TODO: check if all the files (images, videos, audio, css, etc.) in the HTML are accessible
-                # TODO: find all the URLS in the HTML and check if they are accessible
 
                 # for counting overall statistics
                 if self.report_field_stats:
@@ -798,7 +799,8 @@ class Evaluation:
                     elif self.solver_type == 'model':
                         self.solver.solve(i, output = answer_map[instance_id][i.name])
                     else:
-                        self.solver.solve(i)
+                        kwargs = {'url': url}
+                        self.solver.solve(i, **kwargs)
 
                     # *after* we execute the action, we dump the *output* features
                     if self.dump_features:
@@ -852,7 +854,9 @@ class Evaluation:
                     score += score_per_field
 
                 score /= len(inputs_with_values)
-                print(f"{Fore.CYAN} --> Overall score: {score}")
+                print(f"{Fore.CYAN} --> Per-instance overall score: {score}")
+
+                per_task_score += score
 
                 if self.solver_type == 'oracle':
                     assert score > 0.99, f"{Fore.RED}The oracle baseline should always get a score of 1.0"
@@ -863,31 +867,35 @@ class Evaluation:
                     with open(f'{directory}/{task_name}.json', 'w') as f:
                         json.dump(data_to_be_dumped, f, indent=4)
 
-                df = pd.DataFrame()
-                for task_name, inputs in results.items():
-                    for input_type, scores in inputs.items():
-                        # print(scores)
-                        avg_score = sum(scores) / len(scores)
-                        # TODO: check if we can safely change the "projects" in the following lines to tasks
-                        df = pd.concat(
-                            [
-                                df, pd.DataFrame({
-                                'project': [task_name],
-                                'input_type': [input_type],
-                                'score': [avg_score]
-                            })
-                            ],
-                            ignore_index=True)
+            # per-task statistics
+            per_task_score = per_task_score / len(instance_ids)
+            print(f"{Fore.MAGENTA}Task: {task_name} --> Score: {per_task_score}")
+            df = pd.DataFrame()
+            for task_name, inputs in results.items():
+                for input_type, scores in inputs.items():
+                    avg_score = sum(scores) / len(scores)
+                    # TODO: check if we can safely change the "projects" in the following lines to tasks
+                    df = pd.concat(
+                        [
+                            df, pd.DataFrame({
+                            'project': [task_name],
+                            'input_type': [input_type],
+                            'score': [avg_score],
+                            'per_task_score': per_task_score # sanity check; drop it later.
+                        })
+                        ],
+                        ignore_index=True)
 
-                if 'project' not in df.columns:
-                    df.insert(0, 'project', '')
-                if 'input_type' not in df.columns:
-                    df.insert(1, 'input_type', '')
-                if 'score' not in df.columns:
-                    df.insert(1, 'score', '')
+            if 'project' not in df.columns:
+                df.insert(0, 'project', '')
+            if 'input_type' not in df.columns:
+                df.insert(1, 'input_type', '')
+            if 'score' not in df.columns:
+                df.insert(1, 'score', '')
 
-                df = df.pivot(index='project', columns='input_type', values='score')
-                df.to_csv('oracle_baseline_scores.csv', index=True)
+        df = df.pivot(index='project', columns='input_type', values='score')
+        today = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+        df.to_csv(f'{self.solver_type}_scores_{today}.csv', index=True)
 
         print("Now let's print the field statistics")
 
@@ -919,10 +927,7 @@ class Evaluation:
         - avg score is a running mean of their score
         """
 
-        input_format = "both"
-
         tasks = self.load_split_tasks(18)
-        ret = []
 
         task_results = {} # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores, failing_tasks} }
 
@@ -936,6 +941,7 @@ class Evaluation:
             num_successes = 0
             num_errors = 0
             sum_failing_scores = 0.0
+            task_score = 0.0
             failing_tasks = []
             from utils.hidden_prints import HiddenPrintsHiddenErrors
 
@@ -1000,9 +1006,18 @@ class Evaluation:
                         failing_tasks.append(row_num)
                         sum_failing_scores += score
 
+                    task_score += score
+
             failing_tasks = failing_tasks[:10] # only keep the first 10 failing tasks
-            task_results[task_name] = {"num_successes": num_successes, "num_errors": num_errors, "num_failing": len(instance_ids) - num_successes - num_errors, "sum_failing_scores": sum_failing_scores, "failing_tasks": failing_tasks}
-            print("task result", task_name, task_results[task_name])
+            task_results[task_name] = {
+                "num_successes": num_successes,
+                "num_errors": num_errors,
+                "num_failing": len(instance_ids) - num_successes - num_errors,
+                "sum_failing_scores": sum_failing_scores,
+                "failing_tasks": failing_tasks,
+                "task_score": task_score / len(instance_ids)
+            }
+            print(f"{Fore.MAGENTA}Task result", task_name, task_results[task_name])
 
         return task_results
 
@@ -1020,10 +1035,7 @@ class Evaluation:
         - avg score is a running mean of their score
         """
 
-        input_format = "both"
-
         tasks = self.load_task_names()
-        ret = []
 
         task_results = {} # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores, failing_tasks} }
 
