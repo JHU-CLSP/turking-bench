@@ -203,7 +203,7 @@ class RandomBaseline(Baseline):
             print("random choices options:", options)
             return random.choice(options)
 
-class ModelBaseline(Baseline):
+class OfflineModelPredictionsBaseline(Baseline):
     """
     This baseline is used to execute the outputs of our ML models
     """

@@ -82,8 +82,8 @@ class Evaluation:
             self.solver = baselines.RandomBaseline(driver=self.driver, actions=self.actions)
         elif solver_type == "oracle":
             self.solver = baselines.OracleBaseline(driver=self.driver, actions=self.actions)
-        elif solver_type == "model":
-            self.solver = baselines.ModelBaseline(driver=self.driver, actions=self.actions)
+        elif solver_type == "offline_predictions":
+            self.solver = baselines.OfflineModelPredictionsBaseline(driver=self.driver, actions=self.actions)
         elif solver_type == "gpt4-text":
             self.solver = baselines.GPT4TextBaseline(driver=self.driver, actions=self.actions)
         else:
@@ -732,7 +732,7 @@ class Evaluation:
                 curr_data_to_be_dumped = {}
 
             # Override instance_ids if specified the row_num
-            if self.solver_type == "model":
+            if self.solver_type == "offline_predictions":
                 answer_map = {}
                 instance_ids = []
                 for key, value in kwargs["params"].items():
