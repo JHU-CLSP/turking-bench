@@ -642,6 +642,7 @@ class Evaluation:
         model_outputs = self.extract_values(inputs)
 
         score = 0.0
+        count = 0
         for i in model_outputs:
             if i.name in self.excluded_input_names:
                 continue
@@ -684,8 +685,9 @@ class Evaluation:
                 task_results[i.type].append(score_per_field)
 
             score += score_per_field
+            count += 1
 
-        score /= len(model_outputs)  # average score for this instance
+        score /= count  # average score for this instance
 
         return score
 

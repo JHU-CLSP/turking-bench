@@ -18,15 +18,19 @@ if __name__ == "__main__":
                         default=1)
     parser.add_argument("--do_eval",
                         help="whether to compute the quality against the gold data",
+                        action="store_true",
                         default=True)
     parser.add_argument("--headless",
                         help="whether to run the browser `headless` (no visual interface).",
+                        action="store_true",
                         default=False)
     parser.add_argument("--dump_features",
                         help="whether to dump the input/outputs of the model",
+                        action="store_true",
                         default=False)
     parser.add_argument("--report_field_stats",
                         help="whether to collect statistics for the HTML fields",
+                        action="store_true",
                         default=True)
 
     args = parser.parse_args()
