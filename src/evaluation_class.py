@@ -537,10 +537,12 @@ class Evaluation:
             else:
                 score = 0.0
         elif input_type in ['text', 'textarea', 'hidden']:
-            score = Evaluation.metric_mean_over_ground_truths(
+            answers = [str(answer) for answer in answers]
+            answers = [answer for answer in answers if answer != ""]
+            score = Evaluation.metric_max_over_ground_truths(
                 self.rouge,
                 prediction=baseline_answer,
-                ground_truths=[str(answer) for answer in answers],
+                ground_truths=answers,
                 xlingual=False
             )
         elif input_type in ['radio', 'select']:
