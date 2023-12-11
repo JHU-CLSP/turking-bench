@@ -344,6 +344,7 @@ class Evaluation:
             input_fields.append(i)
 
         # before returning them, sort the input values based on first based on their x-coordinate and then their y-coordinate
+        # sort the input fields based on their y-coordinate, and then their x-coordinate
         input_fields = sorted(input_fields, key=lambda i: (i.y, i.x))
         # Commented for now; instead changed the code base to just use the order in which the Answer columns are given. We can rearrange it to the order of which inputs to fill in first
         return input_fields
@@ -726,6 +727,10 @@ class Evaluation:
             # Create a random sample
             instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
 
+            # collecting field statistics
+            if task_name not in results:
+                results[task_name] = {}
+
             if self.dump_features:
                 directory = f'/scratch4/danielk/kxu39/turk_data/{task_name}'
                 images_directory = f'{directory}/images'
@@ -852,10 +857,6 @@ class Evaluation:
                 if self.dump_features:
                     data_to_be_dumped.append(copy.deepcopy(curr_data_to_be_dumped))
 
-                # collecting field statistics
-                if task_name not in results:
-                    results[task_name] = {}
-
                 score = self.score_outputs(inputs, answers_map, results[task_name])
                 print(f"{Fore.CYAN} --> Per-instance overall score: {score}")
                 print(f"{Fore.CYAN} --> Per-instance per-field breakdown: {results[task_name]}")
@@ -896,9 +897,13 @@ class Evaluation:
             if 'score' not in df.columns:
                 df.insert(1, 'score', '')
 
-        df = df.pivot(index='project', columns='input_type', values='per_type_score')
+        df = df.pivot(index='project', columns='input_type', values='score')
         today = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
         df.to_csv(f'{self.solver_type}_scores_{today}.csv', index=True)
+
+        # save results to json
+        with open(f'{self.solver_type}_scores_{today}.json', 'w') as f:
+            json.dump(results, f, indent=4)
 
         if self.dump_features:
             with open(f'{directory}/{task_name}.json', 'w') as f:

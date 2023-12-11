@@ -81,52 +81,73 @@ class OracleBaseline(Baseline):
     """
 
     def solve(self, input: Input, **kwargs):
-        print("Called solve, input:", input)
+        self.actions.wait_for_element(input.name)
+
+        # wait 0.1 sec for the page to fully load
+        sleep(0.1)
+        self.actions.maximize_window()
+        response = self.actions.scroll_to_element(input.name)
+        input_element = response.outcome
+
         # get the index of the input
         answers = kwargs['answers']
-        print("kwargs", kwargs) # answers should not be empty since you rely on answers to do things
-        print("answers", answers)
-        actions_per_input = ""  # no action by default
-        for answer in answers:
-            if answer and answer != '{}':
-                # self.actions.execute_command(input, answer)
+        answers = [answer for answer in answers if answer is not None and answer != '{}']
 
-                print(f" --> Input name: {input.name}")
-                print(f" --> Input value: {answer}")
+        print(f"{Fore.CYAN}--> Oracle baseline: Input name: {input.name}")
+        print(f"{Fore.CYAN}--> Oracle baseline: kwargs", kwargs) # answers should not be empty since you rely on answers to do things
+        print(f"{Fore.CYAN}--> Oracle baseline: answers", answers)
+        print(f"{Fore.CYAN}--> Oracle baseline: filtered answers", answers)
 
-                r1 = self.actions.wait_for_element(input.name)
+        action = ""  # no action by default
+        if len(answers) == 0:
+            # do nothing
+            pass
+        elif input.type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
+            # select an answer randomly
+            answer = random.choice(answers)
+            action = self.actions.modify_text(input.name, answer)
+        elif input.type in ['checkbox']:
+            answer = random.choice(answers)
+            if not input_element.is_selected():
+                action = self.actions.modify_checkbox(input.name, answer)
+        elif input.type in ['radio']:
+            # do a majority vote and then select the majority answer
+            votes = {}
+            for answer in answers:
+                if answer in votes:
+                    votes[answer] += 1
+                else:
+                    votes[answer] = 1
 
-                # wait 0.1 sec for the page to fully load
-                sleep(0.1)
-                self.actions.maximize_window()
-                response = self.actions.scroll_to_element(input.name)
-                input_element = response.outcome
+            majority_answer = max(votes, key=votes.get)
+            majority_answer_str = str(majority_answer)
 
-                action_sequence = []
+            if not input_element.is_selected():
+                action = self.actions.modify_radio(input.name, majority_answer_str)
+        elif input.type == 'select':
+            votes = {}
+            for answer in answers:
+                if answer in votes:
+                    votes[answer] += 1
+                else:
+                    votes[answer] = 1
 
-                if input.type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
-                    action_sequence.append(self.actions.modify_text(input.name, answer))
-                elif input.type in ['checkbox']:
-                    if not input_element.is_selected():
-                        action_sequence.append(self.actions.modify_checkbox(input.name, answer))
-                elif input.type in ['radio']:
-                    if not input_element.is_selected():
-                        action_sequence.append(self.actions.modify_radio(input.name, answer))
-                elif input.type == 'select':
-                    action_sequence.append(self.actions.modify_select(input.name, answer))
-                elif input.type == 'range':
-                    action_sequence.append(self.actions.modify_range(input.name, answer))
-                elif input.type in ['button', 'color', 'date', 'datetime-local', 'file', 'hidden', 'image',
-                                    'month', 'reset', 'search', 'submit', 'time']:
-                    raise Exception(
-                        f"{Fore.RED} ** Warning **: We don't know how to handle this input type `{input.type}`")
+            majority_answer = max(votes, key=votes.get)
+            majority_answer_str = str(majority_answer)
+            action = self.actions.modify_select(input.name, majority_answer_str)
+        elif input.type == 'range':
+            # average multiple answers
+            answers = [float(answer) for answer in answers]
+            avg_answer = sum(answers) / len(answers)
+            action = self.actions.modify_range(input.name, avg_answer)
+        elif input.type in ['button', 'color', 'date', 'datetime-local', 'file', 'hidden', 'image',
+                            'month', 'reset', 'search', 'submit', 'time']:
+            raise Exception(f"{Fore.RED} ** Warning **: We don't know how to handle this input type `{input.type}`")
 
-                action_sequence = "\n\n".join([r.action for r in action_sequence])
-                actions_per_input = {
-                    "input_name": input.name,
-                    "action_sequence": action_sequence,
-                }
-                break
+        actions_per_input = {
+            "input_name": input.name,
+            "action_sequence": action.action,
+        }
 
         return actions_per_input
 
