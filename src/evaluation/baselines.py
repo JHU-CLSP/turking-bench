@@ -263,6 +263,14 @@ class GPT4TextBaseline(Baseline):
         simplified_html = html
         text_prompt = get_encoded_input_prompt(input.name, simplified_html)
         command = ActionUtils.openai_call(text_prompt)
+
+        # find the index of "self.actions(" and drop anything before it.
+        # This is because the GPT4 model sometimes outputs a lot of text before the actual command
+        if not command.startswith("self.actions.") and "self.actions." in command:
+            command = command[command.find("self.actions."):]
+        if "```" in command:
+            command = command.replace("```", "")
+
         try:
             print(f"{Fore.BLUE}Executing one action: {command}")
             exec(command)

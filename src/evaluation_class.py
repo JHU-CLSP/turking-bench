@@ -67,7 +67,8 @@ class GPTTokenizer:
 
 
 class Evaluation:
-    def __init__(self, solver_type: str, tasks: str, do_eval: bool, dump_features: bool, report_field_stats: bool, headless: bool = False):
+    def __init__(self, solver_type: str, tasks: str, do_eval: bool, dump_features: bool, report_field_stats: bool,
+                 headless: bool = False):
         self.default_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
         self.xlingual_tokenizer = GPTTokenizer()
         self.xlingual_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], tokenizer=self.xlingual_tokenizer)
@@ -87,7 +88,8 @@ class Evaluation:
         else:
             raise Exception(f"{Fore.RED}Solver `{solver_type}` not implemented")
         self.tasks = tasks
-        assert tasks in ["test_easy", "test_hard", "train", "all", "subjective_test"] or tasks.startswith("tap") or tasks.startswith("dmp")
+        assert tasks in ["test_easy", "test_hard", "train", "all", "subjective_test"] or tasks.startswith(
+            "tap") or tasks.startswith("dmp")
 
         self.do_eval = do_eval
         self.dump_features = dump_features
@@ -113,7 +115,8 @@ class Evaluation:
             # input.type submit hasn't been coded for thus self.extract_values is erroring
             return False
 
-        show_questions_tasks = ["Rationale Generation 5", "Gun violence structured extraction", "ESNLI Rationale Generation 4", "JJ-NN HIT", 
+        show_questions_tasks = ["Rationale Generation 5", "Gun violence structured extraction",
+                                "ESNLI Rationale Generation 4", "JJ-NN HIT",
                                 "neural-pop (PLAN evaluation) t5-human-test b", "VQA Rationale Generation 5", "Lattice"]
         # skip these task since it requires an extra click to show the available questions or next ones
         if task_name in show_questions_tasks:
@@ -127,12 +130,12 @@ class Evaluation:
         # Skip since there is a 15 second delay before showing the available questions
         if task_name == "Summarization (RLUE) 1":
             return False
-        
+
         weird_input_formats = ["BiSECT Human Evaluation II (2)", "Spanish Word Alignment"]
         # Skip since these tasks have a weird input format the model cannot interact with
         if task_name in weird_input_formats:
             return False
-        
+
         tasks_should_skip = ["Photo Collection GVDB", "NER - Task scruples 26,200 - 30,922"]
         # tasks I don't think the model is capable of solving
         if task_name in tasks_should_skip:
@@ -173,14 +176,15 @@ class Evaluation:
         split_tasks = []
 
         # Greedy optimized way to split evenly
-        s = set() # was originally a set, but python sets aren't as robust as C++ std
+        s = set()  # was originally a set, but python sets aren't as robust as C++ std
         sum = 0
         for task in all_tasks:
             df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
             input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
-            val = min(1000, len(self.task_ids[task])) * (8 + len(input_names)) # num_tasks * num_inputs_per_task + 8 * num_tasks
+            val = min(1000, len(self.task_ids[task])) * (
+                        8 + len(input_names))  # num_tasks * num_inputs_per_task + 8 * num_tasks
             sum += val
-            s.add((val, task)) # (val, task name)
+            s.add((val, task))  # (val, task name)
 
         s = sorted(s)
 
@@ -256,9 +260,10 @@ class Evaluation:
             for i, test1 in enumerate(all_test_splits):
                 for j, test2 in enumerate(all_test_splits):
                     if i != j:
-                        assert len(set(test1).intersection(set(test2))) == 0, f"{Fore.RED}The tests are not mutually exclusive" \
-                                                                           f"splits are not exclusive\n: test1: {test1}\ntest2: {test2}" \
-                                                                           f"\nintersection: {set(test1).intersection(set(test2))}"
+                        assert len(
+                            set(test1).intersection(set(test2))) == 0, f"{Fore.RED}The tests are not mutually exclusive" \
+                                                                       f"splits are not exclusive\n: test1: {test1}\ntest2: {test2}" \
+                                                                       f"\nintersection: {set(test1).intersection(set(test2))}"
 
             if self.tasks == 'test_easy':
                 return test
@@ -335,9 +340,11 @@ class Evaluation:
 
             input_fields.append(i)
 
-        # instead changed the code base to just use the order in which the Answer columns are given. We can rearrange it to the order of which inputs to fill in first
+        # before returning them, sort the input values based on first based on their x-coordinate and then their y-coordinate
+        # input_fields = sorted(input_fields, key=lambda i: (i.y, i.x))
+        # Commented for now; instead changed the code base to just use the order in which the Answer columns are given. We can rearrange it to the order of which inputs to fill in first
         return input_fields
-    
+
     def extract_values(self, inputs: List[Input]):
         """
         Given a set of values for the input fields, extract the values from the HTML.
@@ -346,9 +353,9 @@ class Evaluation:
 
         for input in inputs:
             if input.type in [
-                    'text', 'textarea', 'select', 'password', 'email', 'number',
-                    'tel', 'url', 'button', 'color', 'date', 'datetime-local',
-                    'file', 'image', 'range', 'hidden'
+                'text', 'textarea', 'select', 'password', 'email', 'number',
+                'tel', 'url', 'button', 'color', 'date', 'datetime-local',
+                'file', 'image', 'range', 'hidden'
             ]:
 
                 values = self.driver.execute_script(
@@ -380,7 +387,8 @@ class Evaluation:
                     f"return Array.from(document.getElementsByName(`{input.name}`)).filter(element => element.checked).map(element => element.value);"
                 )
                 assert len(values) <= 1, f"The number of values should be 1 or 0 but it is `{len(values)}` for {input}"
-                assert len(visible_values) <= 1, f"The number of visible values should be 1 or 0 but it is `{len(visible_values)}` for {input}"
+                assert len(
+                    visible_values) <= 1, f"The number of visible values should be 1 or 0 but it is `{len(visible_values)}` for {input}"
             elif input.type in ['checkbox']:
                 command = f"""return Array.from(document.querySelectorAll(`input[name='{input.name}']:checked`)).map(element => element.value);"""
                 values = self.driver.execute_script(command)
@@ -489,10 +497,10 @@ class Evaluation:
         # return [a for a in answers.tolist() if not (type(a) == float and np.isnan(a))]
         return answers_map
 
-    def calculate_rouge(self, answers: List[str], input_type: str, baseline_answer: str):
+    def calculate_metrics(self, answers: List[str], input_type: str, baseline_answer: str):
         baseline_answer = str(baseline_answer)
-        logging.info(f"answers: `{answers}`")
-        logging.info(f"baseline_answer: `{baseline_answer}` - type: `{type(baseline_answer)}`")
+        print(f"{Fore.YELLOW}----> answers: `{answers}` - type: `{type(answers)}`")
+        print(f"{Fore.YELLOW}----> baseline_answer: `{baseline_answer}` - type: `{type(baseline_answer)}`")
 
         # normalize responses: turn "nan", or "{}" into empty string
         for idx in range(len(answers)):
@@ -502,22 +510,22 @@ class Evaluation:
 
         logging.info(f"answers after mapping: `{answers}`")
 
+        score = 0.0
+
         # handle empty
         if answers == []:
-            if baseline_answer == "" or baseline_answer == [
-                ""] or baseline_answer == [] or baseline_answer == "[]" or baseline_answer == "['']":
-                return 1.0
+            if baseline_answer == "" or baseline_answer == [""] or \
+                    baseline_answer == [] or baseline_answer == "[]" or baseline_answer == "['']":
+                score = 1.0
             else:
-                return 0.0
-
-        if input_type in ['text', 'textarea', 'hidden']:
-            scores = Evaluation.metric_max_over_ground_truths(
+                score = 0.0
+        elif input_type in ['text', 'textarea', 'hidden']:
+            score = Evaluation.metric_max_over_ground_truths(
                 self.rouge,
                 prediction=baseline_answer,
                 ground_truths=[str(answer) for answer in answers],
                 xlingual=False
             )
-            return scores
         elif input_type in ['radio', 'select']:
             # if the field type is radio button, then compute the majority vote among the options
             print("--> Computing the majority vote")
@@ -531,25 +539,22 @@ class Evaluation:
                 majority_answer = max(votes, key=votes.get)
                 majority_answer_str = str(majority_answer)
 
-                scores = Evaluation.metric_max_over_ground_truths(
+                score = Evaluation.metric_max_over_ground_truths(
                     self.exact_match,
                     prediction=majority_answer_str,
                     ground_truths=[majority_answer_str],
                     xlingual=False
                 )
-
-                return scores
             else:
-                return 0.0
+                score = 0.0
         elif input_type in ['checkbox']:
             print("baseline", baseline_answer, "answers:", answers)
-            scores = Evaluation.metric_max_over_ground_truths(
+            score = Evaluation.metric_max_over_ground_truths(
                 self.exact_match,
                 prediction=baseline_answer,
                 ground_truths=[str(answer) for answer in answers],
                 xlingual=False
             )
-            return scores
         elif input_type in ['range']:
             # if the gold labels are numericals, then we can compute the mean absolute error
             # else, fall back to rouge
@@ -563,19 +568,20 @@ class Evaluation:
                 scores = np.min(np.abs(np.array(answers) - baseline_answer))
                 if denominator > 0:
                     scores /= denominator
-                scores = 1 - scores
+                score = 1 - scores
                 print(f"{Fore.BLUE} --> using numeric values of the range to compute their error: {scores}")
-                return scores
             except Exception:
-                scores = Evaluation.metric_max_over_ground_truths(
+                score = Evaluation.metric_max_over_ground_truths(
                     self.exact_match,
                     prediction=baseline_answer,
                     ground_truths=[str(answer) for answer in answers],
                     xlingual=False
                 )
-                return scores
         else:
             raise Exception(f"{Fore.RED}to be implemented for type `{input_type}`")
+
+        print(f"{Fore.YELLOW}----> per-field score: {score}")
+        return score
 
     @staticmethod
     def read_config(file):
@@ -591,7 +597,8 @@ class Evaluation:
 
         print("input", input)
         target_element = self.driver.execute_script(f"return document.getElementsByName('{input.name}')[0].outerHTML")
-        unfiltered_HTML = self.driver.execute_script(f"return document.getElementsByName('{input.name}')[0].parentElement.parentElement.outerHTML")
+        unfiltered_HTML = self.driver.execute_script(
+            f"return document.getElementsByName('{input.name}')[0].parentElement.parentElement.outerHTML")
         HTML_arr = unfiltered_HTML.split(">")
         mid_idx = -1
         for idx, i in enumerate(HTML_arr):
@@ -619,11 +626,16 @@ class Evaluation:
             if i.name in self.excluded_input_names:
                 continue
 
+            element = self.driver.find_element(By.NAME, i.name)
+            if not element.is_displayed() or element.size['width'] <= 0 or element.size['height'] <= 0:
+                print(f'{Fore.RED}Skipping element `{i.name}` since it is not visible.')
+                continue
+
             if i.values != i.visible_values:
                 raise Exception(
                     f"{Fore.RED}The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`"
                 )
-            
+
             # if checkmarks, sort the values alphabetically
             if i.type == "checkbox":
                 i.values = "|".join(sorted(i.values))
@@ -638,15 +650,17 @@ class Evaluation:
                     i.values = ''
 
             # the score for this specific model input/output
-            score_per_field = self.calculate_rouge(answers_map[i.name], i.type, i.values)
+            score_per_field = self.calculate_metrics(answers_map[i.name], i.type, i.values)
 
             if task_results is not None:
+                if i.type not in task_results:
+                    task_results[i.type] = []
+
                 task_results[i.type].append(score_per_field)
 
             score += score_per_field
 
-        score /= len(model_outputs) # average score for this instance
-        print(f"{Fore.CYAN} --> Overall score: {score}")
+        score /= len(model_outputs)  # average score for this instance
 
         return score
 
@@ -686,7 +700,7 @@ class Evaluation:
             instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
 
             if self.dump_features:
-                directory = f'/scratch4/danielk/kxu39/turk_data/{task_name}'
+                directory = f'~/turk_data/{task_name}'
                 images_directory = f'{directory}/images'
                 html_directory = f'{directory}/HTML'
 
@@ -709,8 +723,6 @@ class Evaluation:
 
             # Go through the instances of each task in this random sample
             for instance_id in instance_ids:
-                # wait for a keyboard press before continuing
-                # input("Press Enter to continue...")
 
                 row_number = instance_id - first_instance_id
                 print(f"instance_id: {instance_id} <-> row_number: {row_number}")
@@ -729,7 +741,7 @@ class Evaluation:
                     task_name, row_number, [x.name for x in inputs]
                 )
 
-                logging.info(" --> input labels: {}".format(answers_map))
+                print(" --> input labels: {}".format(answers_map))
 
                 # for counting overall statistics
                 if self.report_field_stats:
@@ -795,7 +807,7 @@ class Evaluation:
                         kwargs = {'answers': answers_map[i.name]}
                         oracle_action_sequence = self.solver.solve(i, **kwargs)
                     elif self.solver_type == 'model':
-                        self.solver.solve(i, output = answer_map[instance_id][i.name])
+                        self.solver.solve(i, output=answer_map[instance_id][i.name])
                     else:
                         kwargs = {'url': url}
                         self.solver.solve(i, **kwargs)
@@ -817,6 +829,10 @@ class Evaluation:
 
                 score = self.score_outputs(inputs, answers_map, results[task_name])
                 print(f"{Fore.CYAN} --> Per-instance overall score: {score}")
+                print(f"{Fore.CYAN} --> Per-instance per-field breakdown: {results[task_name]}")
+
+                # wait for a keyboard press before continuing
+                input("Press Enter to continue to the next instance...")
 
                 per_task_score += score
 
@@ -842,8 +858,8 @@ class Evaluation:
                             df, pd.DataFrame({
                             'project': [task_name],
                             'input_type': [input_type],
-                            'score': [avg_score],
-                            'per_task_score': per_task_score # sanity check; drop it later.
+                            'per_type_score': [avg_score],
+                            'per_task_score': per_task_score  # sanity check; drop it later.
                         })
                         ],
                         ignore_index=True)
@@ -852,10 +868,12 @@ class Evaluation:
                 df.insert(0, 'project', '')
             if 'input_type' not in df.columns:
                 df.insert(1, 'input_type', '')
-            if 'score' not in df.columns:
-                df.insert(1, 'score', '')
+            if 'per_type_score' not in df.columns:
+                df.insert(1, 'per_type_score', '')
+            if 'per_task_score' not in df.columns:
+                df.insert(1, 'per_task_score', '')
 
-        df = df.pivot(index='project', columns='input_type', values='score')
+        df = df.pivot(index='project', columns='input_type', values='per_type_score')
         today = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
         df.to_csv(f'{self.solver_type}_scores_{today}.csv', index=True)
 
@@ -891,12 +909,13 @@ class Evaluation:
 
         tasks = self.load_split_tasks(18)
 
-        task_results = {} # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores, failing_tasks} }
+        task_results = {}  # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores, failing_tasks} }
 
         for task_name in tqdm(tasks):
             print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
             instance_ids = self.task_ids[task_name]
-            first_instance_id = min(instance_ids) # TODO: Check if this is also just the first one, might be with how the JSON is formatted
+            first_instance_id = min(
+                instance_ids)  # TODO: Check if this is also just the first one, might be with how the JSON is formatted
 
             instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
 
@@ -941,7 +960,8 @@ class Evaluation:
                         # assuming solver is oracle
                         kwargs = {'answers': answers_map[i.name]}
                         try:
-                            self.solver.solve(i, **kwargs) # before would store the action sequence of oracle, not needed here
+                            self.solver.solve(i,
+                                              **kwargs)  # before would store the action sequence of oracle, not needed here
                         except Exception as error:
                             error_flag = True
                             continue
@@ -970,7 +990,7 @@ class Evaluation:
 
                     task_score += score
 
-            failing_tasks = failing_tasks[:10] # only keep the first 10 failing tasks
+            failing_tasks = failing_tasks[:10]  # only keep the first 10 failing tasks
             task_results[task_name] = {
                 "num_successes": num_successes,
                 "num_errors": num_errors,
@@ -983,7 +1003,6 @@ class Evaluation:
 
         return task_results
 
-    
     def enumerate_tap_tasks_random(self, max_instance_count: int):
         """
         Enumerate all the tasks comprehensively, so going upto max_instance_count which should be high
@@ -999,12 +1018,13 @@ class Evaluation:
 
         tasks = self.load_task_names()
 
-        task_results = {} # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores, failing_tasks} }
+        task_results = {}  # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores, failing_tasks} }
 
         for task_name in tqdm(tasks):
             print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
             instance_ids = self.task_ids[task_name]
-            first_instance_id = min(instance_ids) # TODO: Check if this is also just the first one, might be with how the JSON is formatted
+            first_instance_id = min(
+                instance_ids)  # TODO: Check if this is also just the first one, might be with how the JSON is formatted
 
             instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
 
@@ -1048,7 +1068,7 @@ class Evaluation:
                         # assuming solver is oracle
                         kwargs = {'answers': answers_map[i.name]}
                         try:
-                            self.solver.solve(i, **kwargs) 
+                            self.solver.solve(i, **kwargs)
                         except Exception as error:
                             error_flag = True
                             continue
@@ -1067,8 +1087,10 @@ class Evaluation:
                         failing_tasks.append(row_num)
                         continue
 
-            failing_tasks = failing_tasks[:10] # only keep the first 10 failing tasks
-            task_results[task_name] = {"num_successes": num_successes, "num_errors": num_errors, "num_failing": len(instance_ids) - num_successes - num_errors, "sum_failing_scores": sum_failing_scores, "failing_tasks": failing_tasks}
+            failing_tasks = failing_tasks[:10]  # only keep the first 10 failing tasks
+            task_results[task_name] = {"num_successes": num_successes, "num_errors": num_errors,
+                                       "num_failing": len(instance_ids) - num_successes - num_errors,
+                                       "sum_failing_scores": sum_failing_scores, "failing_tasks": failing_tasks}
             print("task result", task_name, task_results[task_name])
 
         return task_results
