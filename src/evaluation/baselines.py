@@ -86,8 +86,7 @@ class OracleBaseline(Baseline):
         # wait 0.1 sec for the page to fully load
         sleep(0.1)
         self.actions.maximize_window()
-        response = self.actions.scroll_to_element(input.name)
-        input_element = response.outcome
+        _, input_element = self.actions.scroll_to_element(input.name)
 
         # get the index of the input
         answers = kwargs['answers']
