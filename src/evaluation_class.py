@@ -81,6 +81,8 @@ class Evaluation:
             self.solver = baselines.OracleBaseline(driver=self.driver, actions=self.actions)
         elif solver_type == "model":
             self.solver = baselines.ModelBaseline(driver=self.driver, actions=self.actions)
+        elif solver_type == "gpt4":
+            self.solver = baselines.GPT4TextBaseline(driver=self.driver, actions=self.actions)
         else:
             raise Exception(f"{Fore.RED}Solver `{solver_type}` not implemented")
         self.tasks = tasks
