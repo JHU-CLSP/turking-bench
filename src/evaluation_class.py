@@ -22,7 +22,7 @@ import shutil
 import string
 from transformers import AutoTokenizer
 from tqdm import tqdm
-from typing import List, Union
+from typing import List, Union, Dict
 import logging
 import bisect
 
@@ -600,24 +600,19 @@ class Evaluation:
                 mid_idx = idx
 
         relevant_html = []
-        upper_bound = 15;
-        lower_bound = 30;
+        upper_bound = 15
+        lower_bound = 30
         for i in range(max(0, mid_idx - upper_bound), min(len(HTML_arr), mid_idx + lower_bound)):
             relevant_html.append(HTML_arr[i])
 
         return relevant_html
 
-    def score_outputs(self, inputs: List[Input], task_name: str, row_number: int) -> float:
+    def score_outputs(self, inputs: List[Input], answers_map: Dict, task_results: Dict) -> float:
         """
         This function scores the outputs from a model for a given task and instance given the inputs the model should've answered
         """
         # get the input values from the web page
         model_outputs = self.extract_values(inputs)
-        
-        # get the right answers
-        answers_map = self.retrieve_gold_labels(
-            task_name, row_number, [x.name for x in inputs]
-        )
 
         score = 0.0
         for i in model_outputs:
@@ -626,7 +621,7 @@ class Evaluation:
 
             if i.values != i.visible_values:
                 raise Exception(
-                    f"The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`"
+                    f"{Fore.RED}The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`"
                 )
             
             # if checkmarks, sort the values alphabetically
@@ -644,6 +639,9 @@ class Evaluation:
 
             # the score for this specific model input/output
             score_per_field = self.calculate_rouge(answers_map[i.name], i.type, i.values)
+
+            if task_results is not None:
+                task_results[i.type].append(score_per_field)
 
             score += score_per_field
 
@@ -813,47 +811,11 @@ class Evaluation:
                             'output': oracle_action_sequence
                         })
 
-                # get the input values from the web page
-                inputs_with_values = self.extract_values(inputs)
-
                 # collecting field statistics
                 if task_name not in results:
                     results[task_name] = {}
 
-                # TODO: use my score_outputs function
-                score = 0.0
-                for i in inputs_with_values:
-                    if i.name in self.excluded_input_names:
-                        continue
-
-                    if i.values != i.visible_values:
-                        error_flag = True
-                        print(
-                            f"{Fore.RED}The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`"
-                        )
-
-                    # if checkmarks, sort the values alphabetically
-                    if i.type == "checkbox":
-                        i.values = "|".join(sorted(i.values))
-                        for idx in range(len(answers_map[i.name])):
-                            x = answers_map[i.name][idx]
-                            if type(x) == str and "|" in x:
-                                answers_map[i.name][idx] = "|".join(sorted(x.split("|")))
-                    else:
-                        if len(i.values) > 0:
-                            i.values = i.values[0]
-                        else:
-                            i.values = ''
-                    score_per_field = self.calculate_rouge(answers_map[i.name], i.type, i.values)
-
-                    if i.type not in results[task_name]:
-                        results[task_name][i.type] = []
-
-                    results[task_name][i.type].append(score_per_field)
-
-                    score += score_per_field
-
-                score /= len(inputs_with_values)
+                score = self.score_outputs(inputs, answers_map, results[task_name])
                 print(f"{Fore.CYAN} --> Per-instance overall score: {score}")
 
                 per_task_score += score
@@ -998,7 +960,7 @@ class Evaluation:
                         failing_tasks.append(row_num)
                         continue
 
-                    score = self.score_outputs(inputs, task_name, row_num)
+                    score = self.score_outputs(inputs, answers_map, task_results=None)
 
                     if score > 0.99:
                         num_successes += 1
