@@ -11,8 +11,8 @@ from utils.hidden_prints import HiddenPrints
 import logging
 
 TURKLE_URL = "http://localhost:8000"
-TEST_NAME = "COMET2020 ATOMIC Inference Vp 5"
-SPECIFIED_INDEX = 0
+TEST_NAME = "Elicitation Generation"
+SPECIFIED_INDEX = 9
 RUN_ALL = False
 
 class Run(evaluation_class.Evaluation):
