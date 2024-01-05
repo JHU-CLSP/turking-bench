@@ -105,6 +105,6 @@ if __name__ == '__main__':
     for root, dirs, files in os.walk('tasks'):
         for file in files:
             if file.endswith('.csv') and file.startswith('batch'):
-                if root.split("/")[1] in files_to_edit:
-                    print('Cleaning ' + file)
-                    clean_split_up_radio(os.path.join(root, file))
+                # if root.split("/")[1] in files_to_edit:
+                print('Cleaning ' + os.path.join(root, file))
+                clean_empty(os.path.join(root, file))

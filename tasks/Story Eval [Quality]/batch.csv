@@ -1,4 +1,4 @@
-Title,Description,Keywords,source,generation,method,Answer.fluency,Answer.grammar,Answer.interest,Answer.ontopic,Answer.overall
+﻿Title,Description,Keywords,source,generation,method,Answer.fluency,Answer.grammar,Answer.interest,Answer.ontopic,Answer.overall
 How well is the story written?,Do you think the story is well written?,"evaluation, annotation, story",I have a favorite pair of socks.,I wear them every day. One day I lost my favorite pair. I looked everywhere for them. I finally found them in the laundry.,greedy_gen,2,2,2,2,2
 How well is the story written?,Do you think the story is well written?,"evaluation, annotation, story",I have a favorite pair of socks.,I wear them every day. One day I lost my favorite pair. I looked everywhere for them. I finally found them in the laundry.,greedy_gen,2,2,0,2,2
 How well is the story written?,Do you think the story is well written?,"evaluation, annotation, story",I have a favorite pair of socks.,I wear them every day. One day I lost my favorite pair. I looked everywhere for them. I finally found them in the laundry.,greedy_gen,2,2,0,2,2
