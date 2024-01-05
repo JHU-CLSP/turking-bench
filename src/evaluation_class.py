@@ -177,10 +177,12 @@ class Evaluation:
         # Greedy optimized way to split evenly
         s = set() # was originally a set, but python sets aren't as robust as C++ std
         sum = 0
+        
+        max_instance_count = 2
         for task in all_tasks:
             df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
             input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
-            val = min(1000, len(self.task_ids[task])) * (8 + len(input_names)) # num_tasks * num_inputs_per_task + 8 * num_tasks
+            val = min(max_instance_count, len(self.task_ids[task])) * (8 + len(input_names)) # num_tasks * num_inputs_per_task + 8 * num_tasks
             sum += val
             s.add((val, task)) # (val, task name)
 
