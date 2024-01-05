@@ -14,7 +14,7 @@ def test_evaluation():
         results = evaluation.enumerate_tap_tasks_random(max_instance_count=2) # dictionary of results
     else:
         # dictionary mapping {task_name, {num_successes, num_errors, num_failing, sum_failing_scores} }
-        max_instance_count = 2
+        max_instance_count = 1000
         results = evaluation.enumerate_tap_tasks(max_instance_count=max_instance_count) # dictionary of results
 
     # Global statistics

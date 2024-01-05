@@ -11,8 +11,9 @@ from utils.hidden_prints import HiddenPrints
 import logging
 
 TURKLE_URL = "http://localhost:8000"
-TEST_NAME = "winogrande validation (grammar) additional_ph"
-SPECIFIED_INDEX = 29
+TEST_NAME = "Dialogue safety (socialchemistry) 5"
+# "ATOMIC - Required Objects (Sequence) 9" | 54
+SPECIFIED_INDEX = 173
 RUN_ALL = False
 
 class Run(evaluation_class.Evaluation):
