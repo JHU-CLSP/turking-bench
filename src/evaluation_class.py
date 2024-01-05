@@ -140,6 +140,10 @@ class Evaluation:
         if task_name in weird_data_in_batch_csv:
             return False
 
+        bad_data = ["Elicitation Generation"]
+        if task_name in bad_data:
+            return False
+
         if task_name not in self.task_ids.keys():
             print(f"{Fore.RED}Task `{task_name}` is not available on Turkle.")
             print("Available tasks are:", self.task_ids.keys())
