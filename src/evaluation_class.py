@@ -964,16 +964,24 @@ class Evaluation:
                     input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
                     inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
 
-                    answers_map = self.retrieve_gold_labels(
-                        task_name, row_num, [x.name for x in inputs]
-                    )
+                    error_flag = False
+                    try:
+                        answers_map = self.retrieve_gold_labels(
+                            task_name, row_num, [x.name for x in inputs]
+                        )
+                    except:
+                        error_flag = True
+
+                        if error_flag:
+                            num_errors += 1
+                            failing_tasks.append(row_num)
+                            continue
 
                     # Same TODO as above, file (images videos audio, css etc. are html accessible and find all URLs)
 
                     # TODO copy over dump_features
                     # TODO copy over report_field_stats so task_field_statistics
 
-                    error_flag = False
                     # for each input, now go ahead and answer it with oracle
                     for input_idx, i in enumerate(inputs):
                         element = self.driver.find_element(By.NAME, i.name)
