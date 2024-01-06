@@ -94,10 +94,10 @@ def clean_empty(csv_file):
     df = pd.read_csv(csv_file, low_memory=False)
     for i, row in df.iterrows():
         for col in df.columns:
-            if not (col.startswith("Answer.") and col.endswith("subject")):
+            if col.startswith("Answer."):
                 continue
             if pd.isnull(row[col]) or row[col] == "":
-                df.loc[i, col] = "--NO SUBJECT--"
+                df.loc[i, col] = " "
     df.to_csv(csv_file , encoding='utf-8-sig', index=False)
 
 # Clean an "Empty" cell with certain properties (in certain col) into an actually empty cell, reversing clean_empty 
@@ -116,6 +116,6 @@ if __name__ == '__main__':
     for root, dirs, files in os.walk('tasks'):
         for file in files:
             if file.endswith('.csv') and file.startswith('batch'):
-                if root.split("/")[1] in files_to_edit:
-                    print('Cleaning ' + os.path.join(root, file))
-                    clean_empty(os.path.join(root, file))
+                # if root.split("/")[1] in files_to_edit:
+                print('Cleaning ' + os.path.join(root, file))
+                clean_empty(os.path.join(root, file))

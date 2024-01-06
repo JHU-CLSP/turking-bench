@@ -1,4 +1,4 @@
-Title,Description,Keywords,facts,sentence,model,Answer.coverage,Answer.quality
+﻿Title,Description,Keywords,facts,sentence,model,Answer.coverage,Answer.quality
 Evaluate the quality of the text considering the given keywords,Evaluate the quality of the text considering the given keywords,"keywords, generation",name : Zizzi | Type : coffee shop | area : riverside,Zizzi is a riverside coffee shop.,neurologic,4,3
 Evaluate the quality of the text considering the given keywords,Evaluate the quality of the text considering the given keywords,"keywords, generation",name : Zizzi | Type : coffee shop | area : riverside,Zizzi is a riverside coffee shop.,neurologic,4,3
 Evaluate the quality of the text considering the given keywords,Evaluate the quality of the text considering the given keywords,"keywords, generation",name : Zizzi | Type : coffee shop | area : riverside,Zizzi is a riverside coffee shop.,neurologic,4,3
