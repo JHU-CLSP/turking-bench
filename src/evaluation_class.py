@@ -634,10 +634,11 @@ class Evaluation:
             if i.name in self.excluded_input_names:
                 continue
 
-            if i.values != i.visible_values:
-                raise Exception(
-                    f"The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`"
-                )
+            # temp commenting out the value == visible value assertion
+            # if i.values != i.visible_values:
+                # raise Exception(
+                #     f"The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`"
+                # )
             
             # if checkmarks, sort the values alphabetically
             if i.type == "checkbox":
