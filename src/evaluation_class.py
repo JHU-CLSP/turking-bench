@@ -626,10 +626,11 @@ class Evaluation:
             if i.name in self.excluded_input_names:
                 continue
 
-            if i.values != i.visible_values:
-                raise Exception(
-                    f"The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`"
-                )
+            # temp commenting out of this visible values to see what files in TAP tests 18 need to have their ending rows deleted
+            # if i.values != i.visible_values:
+            #     raise Exception(
+            #         f"The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`"
+            #     )
             
             # if checkmarks, sort the values alphabetically
             if i.type == "checkbox":
