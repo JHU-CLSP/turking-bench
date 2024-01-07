@@ -483,7 +483,6 @@ class Evaluation:
         # bringing this back in to check for errors in tap test 18
         assert len(df_subset) > 0, f"Could not find any answers for the instance index {instance_index}."
 
-
         # create a map for each Answer (input_name) to its corresponding answers of the instance
         answers_map = {
             input_name: df_subset.get(f"Answer.{input_name}", np.array([])).tolist() for input_name in input_names
@@ -962,9 +961,18 @@ class Evaluation:
                     input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
                     inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
 
-                    answers_map = self.retrieve_gold_labels(
-                        task_name, row_num, [x.name for x in inputs]
-                    )
+                    # Add stuff from kevin-2 to skip out on these answer_map
+                    try:
+                        answers_map = self.retrieve_gold_labels(
+                            task_name, row_num, [x.name for x in inputs]
+                        )
+                    except:
+                        error_flag = True
+
+                        if error_flag:
+                            num_errors += 1
+                            failing_tasks.append(row_num)
+                            continue
 
                     # Same TODO as above, file (images videos audio, css etc. are html accessible and find all URLs)
 

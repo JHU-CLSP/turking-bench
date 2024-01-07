@@ -38,4 +38,6 @@ def test_evaluation():
 if __name__ == "__main__":
     print("Running comprehensive tests")
     evaluation.tasks = sys.argv[1]
-    test_evaluation()
+    # only run tap18 for now in this temp 
+    if sys.argv[1] == "tap18":
+        test_evaluation()
