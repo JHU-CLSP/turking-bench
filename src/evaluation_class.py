@@ -479,6 +479,11 @@ class Evaluation:
         # in the original df, go choose all the rows that have the same inputs as the selected row instance and return all of the answers
         # this will be a df with multiple rows iff there are multiple answers to the same question instance
         df_subset = df[df[cols].eq(row).all(1)]
+
+        # bringing this back in to check for errors in tap test 18
+        assert len(df_subset) > 0, f"Could not find any answers for the instance index {instance_index}."
+
+
         # create a map for each Answer (input_name) to its corresponding answers of the instance
         answers_map = {
             input_name: df_subset.get(f"Answer.{input_name}", np.array([])).tolist() for input_name in input_names
