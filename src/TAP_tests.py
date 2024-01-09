@@ -39,3 +39,4 @@ def test_evaluation():
 if __name__ == "__main__":
     print("Running comprehensive tests")
     evaluation.tasks = sys.argv[1]
+    test_evaluation()
