@@ -957,6 +957,7 @@ class Evaluation:
             with HiddenPrintsHiddenErrors():
                 for instance_id in instance_ids:
                     row_num = instance_id - first_instance_id
+                    error_flag = False
 
                     url = f'{TURKLE_URL}/task/{instance_id}/iframe/'
                     self.driver.get(url)
