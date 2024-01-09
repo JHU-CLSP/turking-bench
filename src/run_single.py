@@ -11,8 +11,8 @@ from utils.hidden_prints import HiddenPrints
 import logging
 
 TURKLE_URL = "http://localhost:8000"
-TEST_NAME = "Annotation subj_obj"
-SPECIFIED_INDEX = 7
+TEST_NAME = "Social Chem - Pilot-3 Rule-of-Thumb round-1"
+SPECIFIED_INDEX = 26
 RUN_ALL = False
 
 class Run(evaluation_class.Evaluation):
