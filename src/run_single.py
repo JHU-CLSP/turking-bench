@@ -12,7 +12,7 @@ import logging
 
 TURKLE_URL = "http://localhost:8000"
 TEST_NAME = "Annotation subj_obj"
-SPECIFIED_INDEX = 12
+SPECIFIED_INDEX = 46
 RUN_ALL = False
 
 class Run(evaluation_class.Evaluation):
