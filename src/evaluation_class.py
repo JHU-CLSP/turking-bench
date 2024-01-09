@@ -485,6 +485,7 @@ class Evaluation:
         # this will be a df with multiple rows iff there are multiple answers to the same question instance
         df_subset = df[df[cols].eq(row).all(1)]
 
+        # bringing this back in to check for errors in tap test 18
         assert len(df_subset) > 0, f"Could not find any answers for the instance index {instance_index}."
 
         # create a map for each Answer (input_name) to its corresponding answers of the instance
@@ -634,11 +635,11 @@ class Evaluation:
             if i.name in self.excluded_input_names:
                 continue
 
-            # temp commenting out the value == visible value assertion
+            # temp commenting out of this visible values to see what files in TAP tests 18 need to have their ending rows deleted
             # if i.values != i.visible_values:
-                # raise Exception(
-                #     f"The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`"
-                # )
+            #     raise Exception(
+            #         f"The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`"
+            #     )
             
             # if checkmarks, sort the values alphabetically
             if i.type == "checkbox":
@@ -965,7 +966,7 @@ class Evaluation:
                     input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
                     inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
 
-                    error_flag = False
+                    # Add stuff from kevin-2 to skip out on these answer_map
                     try:
                         answers_map = self.retrieve_gold_labels(
                             task_name, row_num, [x.name for x in inputs]
