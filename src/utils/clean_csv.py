@@ -94,16 +94,41 @@ def clean_empty(csv_file):
     df = pd.read_csv(csv_file, low_memory=False)
     for i, row in df.iterrows():
         for col in df.columns:
-            if col.startswith("Answer."):
+            if not (col.startswith("Answer.") and col.endswith("subject")):
                 continue
             if pd.isnull(row[col]) or row[col] == "":
-                df.loc[i, col] = "Empty"
+                df.loc[i, col] = "--NO SUBJECT--"
+    df.to_csv(csv_file , encoding='utf-8-sig', index=False)
+
+# Make certain columns empty if not specific values
+def make_empty(csv_file):
+    df = pd.read_csv(csv_file, low_memory=False)
+    for i, row in df.iterrows():
+        for col in df.columns:
+            if not (col.startswith("Answer.") and col.endswith("box")):
+                continue
+            if pd.isnull(row[col]) or row[col] == "" or row[col] == "no":
+                continue
+
+            df.loc[i, col] = ""
+    df.to_csv(csv_file , encoding='utf-8-sig', index=False)
+
+# Clean an "Empty" cell with certain properties (in certain col) into an actually empty cell, reversing clean_empty 
+def clean_unempty(csv_file):
+    df = pd.read_csv(csv_file, low_memory=False)
+    for i, row in df.iterrows():
+        for col in df.columns:
+            if not col.startswith("Answer."):
+                continue
+            if row[col] == "Empty":
+                df.loc[i, col] = ""
     df.to_csv(csv_file , encoding='utf-8-sig', index=False)
 
 if __name__ == '__main__':
-    files_to_edit = ["wikiHow Goal Membership"]
+    files_to_edit = ["Annotation subj_obj"]
     for root, dirs, files in os.walk('tasks'):
         for file in files:
-            if file.endswith('.csv') and root.split("/")[1] in files_to_edit and file.startswith('batch'):
-                print('Cleaning ' + file)
-                clean_split_up_radio(os.path.join(root, file))
+            if file.endswith('.csv') and file.startswith('batch'):
+                if root.split("/")[1] in files_to_edit:
+                    print('Cleaning ' + os.path.join(root, file))
+                    make_empty(os.path.join(root, file))

@@ -140,6 +140,10 @@ class Evaluation:
         if task_name in weird_data_in_batch_csv:
             return False
 
+        bad_data = ["Elicitation Generation"]
+        if task_name in bad_data:
+            return False
+
         if task_name not in self.task_ids.keys():
             print(f"{Fore.RED}Task `{task_name}` is not available on Turkle.")
             print("Available tasks are:", self.task_ids.keys())
@@ -177,10 +181,11 @@ class Evaluation:
         # Greedy optimized way to split evenly
         s = set() # was originally a set, but python sets aren't as robust as C++ std
         sum = 0
+        max_instance_count = 1000
         for task in all_tasks:
             df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
             input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
-            val = min(1000, len(self.task_ids[task])) * (8 + len(input_names)) # num_tasks * num_inputs_per_task + 8 * num_tasks
+            val = min(max_instance_count, len(self.task_ids[task])) * (8 + len(input_names)) # num_tasks * num_inputs_per_task + 8 * num_tasks
             sum += val
             s.add((val, task)) # (val, task name)
 
@@ -479,6 +484,10 @@ class Evaluation:
         # in the original df, go choose all the rows that have the same inputs as the selected row instance and return all of the answers
         # this will be a df with multiple rows iff there are multiple answers to the same question instance
         df_subset = df[df[cols].eq(row).all(1)]
+
+        # bringing this back in to check for errors in tap test 18
+        assert len(df_subset) > 0, f"Could not find any answers for the instance index {instance_index}."
+
         # create a map for each Answer (input_name) to its corresponding answers of the instance
         answers_map = {
             input_name: df_subset.get(f"Answer.{input_name}", np.array([])).tolist() for input_name in input_names
@@ -626,10 +635,11 @@ class Evaluation:
             if i.name in self.excluded_input_names:
                 continue
 
-            if i.values != i.visible_values:
-                raise Exception(
-                    f"The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`"
-                )
+            # temp commenting out of this visible values to see what files in TAP tests 18 need to have their ending rows deleted
+            # if i.values != i.visible_values:
+            #     raise Exception(
+            #         f"The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`"
+            #     )
             
             # if checkmarks, sort the values alphabetically
             if i.type == "checkbox":
@@ -947,6 +957,7 @@ class Evaluation:
             with HiddenPrintsHiddenErrors():
                 for instance_id in instance_ids:
                     row_num = instance_id - first_instance_id
+                    error_flag = False
 
                     url = f'{TURKLE_URL}/task/{instance_id}/iframe/'
                     self.driver.get(url)
@@ -956,16 +967,24 @@ class Evaluation:
                     input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
                     inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
 
-                    answers_map = self.retrieve_gold_labels(
-                        task_name, row_num, [x.name for x in inputs]
-                    )
+                    # Add stuff from kevin-2 to skip out on these answer_map
+                    try:
+                        answers_map = self.retrieve_gold_labels(
+                            task_name, row_num, [x.name for x in inputs]
+                        )
+                    except:
+                        error_flag = True
+
+                        if error_flag:
+                            num_errors += 1
+                            failing_tasks.append(row_num)
+                            continue
 
                     # Same TODO as above, file (images videos audio, css etc. are html accessible and find all URLs)
 
                     # TODO copy over dump_features
                     # TODO copy over report_field_stats so task_field_statistics
 
-                    error_flag = False
                     # for each input, now go ahead and answer it with oracle
                     for input_idx, i in enumerate(inputs):
                         element = self.driver.find_element(By.NAME, i.name)
