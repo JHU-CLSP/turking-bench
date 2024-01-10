@@ -144,6 +144,11 @@ class Evaluation:
         if task_name in tasks_should_skip:
             return False
 
+        # TODO: drop this?
+        bad_data = ["Elicitation Generation"]
+        if task_name in bad_data:
+            return False
+
         if task_name not in self.task_ids.keys():
             print(f"{Fore.RED}Task `{task_name}` is not available on Turkle.")
             print("Available tasks are:", self.task_ids.keys())
@@ -181,11 +186,14 @@ class Evaluation:
         # Greedy optimized way to split evenly
         s = set()  # was originally a set, but python sets aren't as robust as C++ std
         sum = 0
+        max_instance_count = 1000
         for task in all_tasks:
             df = pd.read_csv(f'../tasks/{task}/batch.csv', nrows=0)
             input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
-            val = min(1000, len(self.task_ids[task])) * (
-                        8 + len(input_names))  # num_tasks * num_inputs_per_task + 8 * num_tasks
+            val = min(
+                max_instance_count,
+                len(self.task_ids[task])
+            ) * (8 + len(input_names))  # num_tasks * num_inputs_per_task + 8 * num_tasks
             sum += val
             s.add((val, task))  # (val, task name)
 
@@ -505,6 +513,10 @@ class Evaluation:
         # this will be a df with multiple rows iff there are multiple answers to the same question instance
         df_subset = df[df[cols].eq(row).all(1)]
 
+
+        # bringing this back in to check for errors in tap test 18
+        assert len(df_subset) > 0, f"Could not find any answers for the instance index {instance_index}."
+
         # create a map for each Answer (input_name) to its corresponding answers of the instance
         answers_map = {
             input_name: df_subset.get(f"Answer.{input_name}", np.array([])).tolist() for input_name in input_names
@@ -653,10 +665,11 @@ class Evaluation:
                 print(f'{Fore.RED}Skipping element `{i.name}` since it is not visible.')
                 continue
 
-            if i.values != i.visible_values:
-                raise Exception(
-                    f"{Fore.RED}The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`"
-                )
+            # temp commenting out of this visible values to see what files in TAP tests 18 need to have their ending rows deleted
+            # if i.values != i.visible_values:
+            #     raise Exception(
+            #         f"{Fore.RED}The values `{i.values}` and visible values `{i.visible_values}` should be the same for `{i}`"
+            #     )
 
             # if the answer is already empty for text input, skip it.
             # otherwise, we would be crediting the model for not filling in the input.
@@ -697,7 +710,6 @@ class Evaluation:
         Enumerate the tasks and their instances for the main evaluation loop to go through.
         :param max_instance_count: maximum number of instances per task
         """
-
         if self.tasks.startswith("dmp"):
             # TODO: explain what this is
             tasks = self.load_split_tasks(kwargs.get("dump_partitions"))
@@ -867,7 +879,7 @@ class Evaluation:
                 per_task_score += score
 
                 if self.solver_type == 'oracle':
-                    assert score > 0.9, f"{Fore.RED}The oracle baseline should always get a score of 1.0"
+                    assert score > 0.99, f"{Fore.RED}The oracle baseline should always get a score of 1.0"
                 elif self.solver_type == 'model':
                     kwargs["scores"].append(score)
 
@@ -961,6 +973,7 @@ class Evaluation:
             with HiddenPrintsHiddenErrors():
                 for instance_id in instance_ids:
                     row_num = instance_id - first_instance_id
+                    error_flag = False
 
                     url = f'{TURKLE_URL}/task/{instance_id}/iframe/'
                     self.driver.get(url)
@@ -970,16 +983,24 @@ class Evaluation:
                     input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
                     inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
 
-                    answers_map = self.retrieve_gold_labels(
-                        task_name, row_num, [x.name for x in inputs]
-                    )
+                    # Add stuff from kevin-2 to skip out on these answer_map
+                    try:
+                        answers_map = self.retrieve_gold_labels(
+                            task_name, row_num, [x.name for x in inputs]
+                        )
+                    except:
+                        error_flag = True
+
+                        if error_flag:
+                            num_errors += 1
+                            failing_tasks.append(row_num)
+                            continue
 
                     # Same TODO as above, file (images videos audio, css etc. are html accessible and find all URLs)
 
                     # TODO copy over dump_features
                     # TODO copy over report_field_stats so task_field_statistics
 
-                    error_flag = False
                     # for each input, now go ahead and answer it with oracle
                     for input_idx, i in enumerate(inputs):
                         element = self.driver.find_element(By.NAME, i.name)
@@ -1014,7 +1035,7 @@ class Evaluation:
 
                     score = self.score_outputs(inputs, answers_map, task_results=None)
 
-                    if score > 0.9:
+                    if score > 0.99:
                         num_successes += 1
                     else:
                         failing_tasks.append(row_num)
@@ -1120,9 +1141,12 @@ class Evaluation:
                         continue
 
             failing_tasks = failing_tasks[:10]  # only keep the first 10 failing tasks
-            task_results[task_name] = {"num_successes": num_successes, "num_errors": num_errors,
-                                       "num_failing": len(instance_ids) - num_successes - num_errors,
-                                       "sum_failing_scores": sum_failing_scores, "failing_tasks": failing_tasks}
+            task_results[task_name] = {
+                "num_successes": num_successes,
+                "num_errors": num_errors,
+                "num_failing": len(instance_ids) - num_successes - num_errors,
+                "sum_failing_scores": sum_failing_scores, "failing_tasks": failing_tasks
+            }
             print("task result", task_name, task_results[task_name])
 
         return task_results

@@ -1,4 +1,4 @@
-Title,Description,Keywords,source,generation,type,Answer.grammaticality,Answer.informativeness,Answer.relevance
+﻿Title,Description,Keywords,source,generation,type,Answer.grammaticality,Answer.informativeness,Answer.relevance
 Evaluate questions with respect to a given situation,Your task is to evaluate questions with respect to a given situation,"text, nlp, evaluation, morality",I gave my friend a Popsicle covered in ants,Where did you get the ants from?,pipeline,2,1,1
 Evaluate questions with respect to a given situation,Your task is to evaluate questions with respect to a given situation,"text, nlp, evaluation, morality",I gave my friend a Popsicle covered in ants,Where did you get the ants from?,pipeline,2,1,0
 Evaluate questions with respect to a given situation,Your task is to evaluate questions with respect to a given situation,"text, nlp, evaluation, morality",I gave my friend a Popsicle covered in ants,Where did you get the ants from?,pipeline,2,1,1

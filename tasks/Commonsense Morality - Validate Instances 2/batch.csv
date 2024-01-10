@@ -1,4 +1,4 @@
-Title,Description,Keywords,input_sequence,class_label,text_label,prep_count,is_gender,is_race,Answer.lewd_1,Answer.make_sense_1,Answer.moral_imply_1
+﻿Title,Description,Keywords,input_sequence,class_label,text_label,prep_count,is_gender,is_race,Answer.lewd_1,Answer.make_sense_1,Answer.moral_imply_1
 Judge the morality of an action.,"Given an action, judge whether the action is understandable from a moral perperspective","annotation, moral judgment",Create a totalitarian regime to ensure the future of your race,-1,It's bad,2,False,True,-1.0,1,1.0
 Judge the morality of an action.,"Given an action, judge whether the action is understandable from a moral perperspective","annotation, moral judgment",eat my brother while he said ok,-1,It is not good,1,False,False,1.0,1,1.0
 Judge the morality of an action.,"Given an action, judge whether the action is understandable from a moral perperspective","annotation, moral judgment",Allen Institute for A,1,It's ok,1,False,False,,-1,
