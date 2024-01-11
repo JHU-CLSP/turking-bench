@@ -116,7 +116,7 @@ class MyActions:
         self.execute_js_command(self.scroll_to_command, input_element)
         return f"self.actions.scroll_to_element('{input_name}')", input_element
 
-    def wait_for_element(self, input_name: Input):
+    def wait_for_element(self, input_name: str):
         """
         This function waits for a given element to be loaded on the page, and then returns the element.
         """
@@ -143,7 +143,7 @@ class MyActions:
             return f"self.actions.modify_text('{input_name}', '{input_value}')"
 
         _, input_element = self.scroll_to_element(input_name)
-        print(f"{Fore.YELLOW}Add text to this text input: {input_element.get_attribute('outerHTML')}")
+        print(f"{Fore.YELLOW}Add text `{input_value}` to this text input: {input_element.get_attribute('outerHTML')}")
 
         action = ActionChains(self.driver).move_to_element(input_element).click()
         # now modify the text
@@ -220,6 +220,16 @@ class MyActions:
         checkboxes = self.driver.find_elements(
             By.XPATH, f"//input[@type='checkbox' and @name='{input_name}']")
 
+        # TODO: if this is not useful, let's drop it.
+        # for single-checkbox inputs, we need to apply "on" or "off" to the checkbox
+        # if len(checkboxes) == 1 and input_value[0] in ['on', 'off']:
+        #     print(f"{Fore.YELLOW}About to check this checkbox: {checkboxes[0].get_attribute('outerHTML')}")
+        #     if input_value[0] == 'on':
+        #         checkboxes[0].click()
+        #         self.execute_js_command(
+        #             'arguments[0].setAttribute("checked", "");', checkboxes[0]
+        #         )
+        # else:
         for checkbox in checkboxes:
             if checkbox.get_attribute("value") in input_value:
                 print(
@@ -268,19 +278,34 @@ class MyActions:
         elif "'" in input_value:
             value = f'@value="{input_value}"'
 
-        element = self.driver.find_element(
-            By.XPATH,
-            f"//input[@type='radio' and @name='{input_name}' and {value}]")
+        element = None
+        try:
+            element = self.driver.find_element(
+                By.XPATH,
+                f"//input[@type='radio' and @name='{input_name}' and {value}]")
+        except:
+            # if the value is double/float, turn it into an integer and retry
+            print(f"The input value (`{input_value}`, {type(input_value)}) not found. ")
+            # if isinstance(input_value, float):
+            if input_value == "":
+                print(f"{Fore.RED} ** Warning **: input value is {input_value}. "
+                    f"So, we're not going to modify the radio button.")
+                return f"self.actions.modify_radio('{input_name}', '{input_value}')"
+
+            elif type(input_value) == str and re.match("^[-+]?[0-9]*\.?[0-9]+$", input_value) is not None:
+                input_value = int(float(input_value))
+                value = f"@value='{input_value}'"
+                element = self.driver.find_element(
+                    By.XPATH,
+                    f"//input[@type='radio' and @name='{input_name}' and {value}]"
+                )
 
         # print element in HTML format
-        print(
-            f"{Fore.YELLOW}We are going to select this radio button: {element.get_attribute('outerHTML')}"
-        )
+        print(f"{Fore.YELLOW}We are going to select this radio button: {element.get_attribute('outerHTML')}")
 
         action = ActionChains(self.driver).move_to_element(element).click()
         action.perform()
-        self.execute_js_command('arguments[0].setAttribute("checked", "");',
-                                element)
+        self.execute_js_command('arguments[0].setAttribute("checked", "");', element)
 
         return f"self.actions.modify_radio('{input_name}', '{input_value}')"
 
@@ -299,8 +324,7 @@ class MyActions:
         select_element = self.driver.find_element(By.NAME, input_name)
         select = Select(select_element)
 
-        assert len(
-            select.options) > 0, f"Select field {input_name} has no options"
+        assert len(select.options) > 0, f"Select field {input_name} has no options"
 
         # get the values of the options
         option_values = [
@@ -310,15 +334,16 @@ class MyActions:
             # great ... continue!
             pass
         elif ActionUtils.is_float(input_value) and not math.isnan(
-                float(input_value)) and str(int(input_value)) in option_values:
+                float(input_value)) and str(int(float(input_value))) in option_values:
             # input value is a float, but the option values are integers
-            input_value = str(int(input_value))
+            input_value = str(int(float(input_value)))
         else:
             raise Exception(
                 f"Input value `{input_value}` is not among the available option values `{option_values}`"
             )
 
         # select by value
+        print(f"{Fore.YELLOW}We are going to select this select `{input_name}` with value `{input_value}`")
         select.select_by_value(input_value)
         self.execute_js_command('arguments[0].setAttribute("selected", "");',
                                 select.first_selected_option)

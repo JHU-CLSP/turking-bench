@@ -55,6 +55,4 @@ if __name__ == "__main__":
         headless=args.headless
     )
 
-    # input_format = config.get('DEFAULT', 'input_format')
-    # image_format = config.get('DEFAULT', 'image_format', fallback='full_page')
     eval.enumerate_tasks(max_instance_count)

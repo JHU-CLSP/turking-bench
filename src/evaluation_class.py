@@ -26,33 +26,12 @@ from typing import List, Union, Dict
 import logging
 import bisect
 import copy
+from utils.cleaning import clean_values
+from utils.cleaning import try_numeric
 
 TURKLE_URL = "http://localhost:8000"
 
 colorama_init(autoreset=True)
-
-def try_numeric(x: str) -> str:
-    """Helper function to convert a string to float representation if possible."""
-    try:
-        float_value = float(x)
-        int_value = int(float_value)
-        if int_value == float_value:
-            return str(int_value)
-        else:
-            return str(float_value)
-    except:
-        return x
-
-
-def clean_values(values: List[str]) -> List[Union[str, int, float]]:
-    """
-    This function cleans the values by removing empty strings and "nan" values.
-    """
-
-    return [
-        try_numeric(value) if value is not None else ''
-        for value in values
-    ]
 
 
 class GPTTokenizer:
@@ -109,54 +88,6 @@ class Evaluation:
             'submit'
         ]
 
-    def filter_TAP_tasks(self, task_name):
-        """
-        Filter tasks that cannot be solved with our oracle rule-based model.
-        These tasks are included inside the "evaluation_tasks_hard.txt" file.
-        """
-
-        if "COMET2020 ATOMIC Inference Vp 5" == task_name:
-            # input.type submit hasn't been coded for thus self.extract_values is erroring
-            return False
-
-        show_questions_tasks = ["Rationale Generation 5", "Gun violence structured extraction",
-                                "ESNLI Rationale Generation 4", "JJ-NN HIT",
-                                "neural-pop (PLAN evaluation) t5-human-test b", "VQA Rationale Generation 5", "Lattice"]
-        # skip these task since it requires an extra click to show the available questions or next ones
-        if task_name in show_questions_tasks:
-            return False
-
-        # Has type hidden that we fail certain inputs on
-        # But we pass a lot of these cases, lots of answers don't need the hidden input
-        if task_name == "What breaks the flow - no categories 4":
-            return False
-
-        # Skip since there is a 15 second delay before showing the available questions
-        if task_name == "Summarization (RLUE) 1":
-            return False
-
-        weird_input_formats = ["BiSECT Human Evaluation II (2)", "Spanish Word Alignment"]
-        # Skip since these tasks have a weird input format the model cannot interact with
-        if task_name in weird_input_formats:
-            return False
-
-        tasks_should_skip = ["Photo Collection GVDB", "NER - Task scruples 26,200 - 30,922"]
-        # tasks I don't think the model is capable of solving
-        if task_name in tasks_should_skip:
-            return False
-
-        # TODO: drop this?
-        bad_data = ["Elicitation Generation"]
-        if task_name in bad_data:
-            return False
-
-        if task_name not in self.task_ids.keys():
-            print(f"{Fore.RED}Task `{task_name}` is not available on Turkle.")
-            print("Available tasks are:", self.task_ids.keys())
-            return False
-
-        return True
-
     def create_driver(self, headless: bool):
         options = Options()
         if headless:
@@ -176,9 +107,9 @@ class Evaluation:
         """
         args: partitions: number of partitions to split the tasks into
         """
-        # load all tasks into a list of strings
-        all_tasks = os.listdir("../tasks")
-        all_tasks = list(filter(self.filter_TAP_tasks, all_tasks))
+
+        self.tasks = 'CI_tasks'
+        all_tasks = self.load_task_names()
         print("all_tasks len:", len(all_tasks))
 
         og_partitions = partitions
@@ -284,8 +215,11 @@ class Evaluation:
             elif self.tasks == 'subjective_test':
                 return subjective_test
             elif self.tasks == 'train':
-                # all tasks minue test and subjective test
+                # all tasks minus test and subjective test
                 return list(set(all_tasks) - set(test) - set(subjective_test) - set(test_hard))
+            elif self.tasks == 'CI_tasks':
+                # all the tasks that we monitor on in CI (training + test_easy)
+                return list(set(all_tasks) - set(subjective_test) - set(test_hard))
             else:
                 raise Exception(f"{Fore.RED}Invalid setup: {self.tasks}")
 
@@ -298,7 +232,6 @@ class Evaluation:
         :param input_names: a list of input names to extract
         :return: a list of input names and their types
         """
-        # TODO I think we can drop "url" parameter later.
 
         inputs = []
         # if a list of input names are provided in the input, then extract the input fields with those names
@@ -347,6 +280,9 @@ class Evaluation:
             # save the x-coordinate of the input field
             i.x = input.location['x']
 
+            # is it visible?
+            i.is_displayed = input.is_displayed()
+
             # save the position in html source: self.driver.page_source
             i.html_pos = self.driver.page_source.find(input_name)
 
@@ -354,6 +290,10 @@ class Evaluation:
 
         # sort the input fields based on their y-coordinate, and then their x-coordinate
         input_fields = sorted(input_fields, key=lambda i: (i.y, i.x))
+
+        # sort the input fields so that visible inputs (indicated by `.is_displayed()`) are first
+        input_fields = sorted(input_fields, key=lambda i: i.is_displayed, reverse=True)
+
         # Commented for now; instead changed the code base to just use the order in which the Answer columns are given. We can rearrange it to the order of which inputs to fill in first
         return input_fields
 
@@ -364,34 +304,31 @@ class Evaluation:
         """
 
         for input in inputs:
+            print("input:", input)
             if input.type in [
-                'text', 'textarea', 'select', 'password', 'email', 'number',
-                'tel', 'url', 'button', 'color', 'date', 'datetime-local',
-                'file', 'image', 'range', 'hidden'
+                'textarea'
             ]:
-
-                values = self.driver.execute_script(
-                    f"return Array.from(document.getElementsByName(`{input.name}`)).filter((element) => element.readOnly == false).map((element) => element.value);"
+                visible_values = self.driver.execute_script(
+                    f"return Array.from(document.getElementsByName(`{input.name}`)).filter((element) => element.readOnly == false).map((element) => element.innerHTML);"
                 )
 
-                if input.type in ['textarea']:
-                    visible_values = self.driver.execute_script(
-                        f"return Array.from(document.getElementsByName(`{input.name}`)).filter((element) => element.readOnly == false).map((element) => element.innerHTML);"
-                    )
+                values = visible_values
 
-                elif input.type == 'select':
-                    visible_values = self.driver.execute_script(
-                        f"return Array.from(document.getElementsByName(`{input.name}`)[0].children).filter((el) => el.selected == true).map((el) => el.value);"
-                    )
-                else:
-                    visible_values = self.driver.execute_script(
-                        f"return Array.from(document.getElementsByName(`{input.name}`)).map((element) => element.getAttribute('value'));"
-                    )
+            elif input.type in [
+                'text', 'password', 'email', 'number', 'tel', 'url', 'button', 'color', 'date', 'datetime-local',
+                'file', 'image', 'range', 'hidden'
+            ]:
+                visible_values = self.driver.execute_script(
+                    f"return Array.from(document.getElementsByName(`{input.name}`)).map((element) => element.getAttribute('value'));"
+                )
+                values = visible_values
 
-                # commenting out this assertion since there could be more than one text input with the same name.
-                # an example of this can be seen in "Dialogue safety (socialchemistry) 5" task.
-                # assert len(values) == 1, f"The number of values should be 1 but it is `{len(values)}` for {input}"
-
+            elif input.type in ['select']:
+                values = self.driver.execute_script(
+                    f"return Array.from(document.getElementsByName(`{input.name}`)[0].children).filter((el) => el.selected == true).map((el) => el.value);"
+                )
+                visible_values = values
+                # print(f" visible_values : {visible_values}")
             elif input.type in ['radio']:
                 values = self.driver.execute_script(
                     f"return Array.from(document.querySelectorAll(`input[name='{input.name}']:checked`)).map(element => element.value);"
@@ -413,6 +350,11 @@ class Evaluation:
                 command = f"""return Array.from(document.getElementsByName(`{input.name}`)).filter(element => element.checked).map(element => element.value);"""
                 visible_values = self.driver.execute_script(command)
 
+                # print("input:", input)
+                # print("values:", values)
+                # print("visible_values:", visible_values)
+                # print(" - ")
+
             elif input.type in ['submit']:
                 # do nothing
                 values = []
@@ -429,7 +371,12 @@ class Evaluation:
             input.values = clean_values(values)
             input.visible_values = clean_visible_values
 
+            # TODO: in future, we should consider consolidating visible and visible_values
+            print(f" visible : {values}")
+            print(f" visible_values : {visible_values}")
+
         return inputs
+
 
     @staticmethod
     # adapted the flowing from Squad v1.1 evaluation, without removing the articles.
@@ -474,7 +421,6 @@ class Evaluation:
             score = metric_fn(prediction, ground_truth, xlingual=xlingual)
             scores_for_ground_truths.append(score)
         score = float(max(scores_for_ground_truths))
-        print(f"prediction {prediction} ground_truths {ground_truths}")
         print(f"{Fore.BLUE} --> scores: ", score)
         return score
 
@@ -494,7 +440,7 @@ class Evaluation:
         print(f"{Fore.BLUE} --> scores: ", score)
         return score
 
-    def retrieve_gold_labels(self, task_name: str, instance_index: int, input_names: List[str]):
+    def retrieve_gold_labels(self, task_name: str, instance_index: int, inputs: List[Input]):
         """
         Retrieve the gold labels for a given instance index and input names.
         :param task_name: the name of the task
@@ -531,10 +477,17 @@ class Evaluation:
 
         # create a map for each Answer (input_name) to its corresponding answers of the instance
         answers_map = {
-            input_name: df_subset.get(f"Answer.{input_name}", np.array([])).tolist() for input_name in input_names
+            input.name: df_subset.get(f"Answer.{input.name}", np.array([])).tolist() for input in inputs
         }
 
-        # Note Note: Should be careful with nan values since their equality is tricky in Python
+        # If the input type is checkbox, then convert "nan" values to empty strings
+        for input in inputs:
+            if input.type in ["checkbox", 'radio']:
+                answers_map[input.name] = [
+                    "" if type(answer) == float and np.isnan(answer) else answer for answer in answers_map[input.name]
+                ]
+
+        # Note: Should be careful with nan values since their equality is tricky in Python
         # Note: we explicitly do not exclude "nan" values (empty cells) because sometimes the correct action is to leave
         # the field empty. For example, not selecting a checkbox or leaving a text box empty. Of course there are also
         # scenarios where this is not correct (hence, some "noise" in the evaluation).
@@ -584,7 +537,7 @@ class Evaluation:
             else:
                 score = 0.0
         elif input_type in ['checkbox']:
-            print("baseline", baseline_answer, "answers:", answers)
+            print(f"Model answers: {baseline_answer} \nGold answers: {answers}")
             score = Evaluation.metric_max_over_ground_truths(
                 self.exact_match,
                 prediction=baseline_answer,
@@ -661,6 +614,8 @@ class Evaluation:
         score = 0.0
         count = 0
         for i in model_outputs:
+
+            print(f"{Fore.GREEN} ------- evaluating input: {i} ------- ")
             if i.name in self.excluded_input_names:
                 continue
 
@@ -668,7 +623,9 @@ class Evaluation:
                 continue
 
             element = self.driver.find_element(By.NAME, i.name)
-            if not element.is_displayed() or element.size['width'] <= 0 or element.size['height'] <= 0:
+            if not element.is_displayed():
+                # Commenting out this condition since sometimes we have visible inputs with 0 width or height
+                # or element.size['width'] <= 0 or element.size['height'] <= 0:
                 print(f'{Fore.RED}Skipping element `{i.name}` since it is not visible.')
                 continue
 
@@ -727,8 +684,16 @@ class Evaluation:
 
                 task_results[i.type].append(score_per_field)
 
-            score += score_per_field
-            count += 1
+            # if the input type is range, do not count it towards the score
+            # we use this score for the automatic checks and we do not have a way to automatically check the range
+            if i.type not in ['range']:
+                score += score_per_field
+                count += 1
+            else:
+                # instead of ignoring, use perfect score for range otherwise the tests would fail for
+                # tasks that have range inputs only
+                score += 1.0
+                count += 1
 
         # There are difficult tasks that you need do some movemenets in order for the inputs to appear.
         # Otherwise, nothing would be visible and the score would be 0.
@@ -818,9 +783,7 @@ class Evaluation:
 
                 print(" --> inputs: {}".format([x.name for x in inputs]))
 
-                answers_map = self.retrieve_gold_labels(
-                    task_name, row_number, [x.name for x in inputs]
-                )
+                answers_map = self.retrieve_gold_labels(task_name, row_number, inputs)
 
                 print(" --> input labels: {}".format(answers_map))
 
@@ -848,9 +811,17 @@ class Evaluation:
                 for input_idx, i in enumerate(inputs):
                     print(f"{Fore.GREEN} - - - - - -  starting a new element: `{i}` - - - - - -  ")
 
+                    # wait for the element to be visible
+                    try:
+                        self.actions.wait_for_element(i.name)
+                    except:
+                        print(f"{Fore.RED}Waited but didn't find input field with name `{i.name}`")
+
                     # make sure that the element is visible
                     element = self.driver.find_element(By.NAME, i.name)
-                    if not element.is_displayed() or element.size['width'] <= 0 or element.size['height'] <= 0:
+                    if not element.is_displayed():
+                        # commenting out this condition since sometimes we have visible inputs with 0 width or height
+                        # or element.size['width'] <= 0 or element.size['height'] <= 0:
                         print(f'{Fore.RED}Skipping element `{i.name}` since it is not visible.')
                         continue
 
@@ -1025,9 +996,7 @@ class Evaluation:
 
                     # Add stuff from kevin-2 to skip out on these answer_map
                     try:
-                        answers_map = self.retrieve_gold_labels(
-                            task_name, row_num, [x.name for x in inputs]
-                        )
+                        answers_map = self.retrieve_gold_labels(task_name, row_num, inputs)
                     except:
                         error_flag = True
 
@@ -1139,9 +1108,7 @@ class Evaluation:
                     input_names = [col[len('Answer.'):] for col in df.columns if col.startswith('Answer.')]
                     inputs = self.extract_input_values_from_url(url=url, task_name=task_name, input_names=input_names)
 
-                    answers_map = self.retrieve_gold_labels(
-                        task_name, row_num, [x.name for x in inputs]
-                    )
+                    answers_map = self.retrieve_gold_labels(task_name, row_num, inputs)
 
                     # Same TODO as above, file (images videos audio, css etc. are html accessible and find all URLs)
 

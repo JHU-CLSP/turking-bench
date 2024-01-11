@@ -1,3 +1,4 @@
+import numpy as np
 from colorama import Fore
 from datetime import datetime
 from datetime import timedelta
@@ -13,6 +14,8 @@ from evaluation.input import Input
 from evaluation.prompts import get_encoded_input_prompt
 import logging
 from typing import List
+from utils.cleaning import clean_values
+
 
 class Baseline:
     """
@@ -90,11 +93,9 @@ class OracleBaseline(Baseline):
 
         # get the index of the input
         answers = kwargs['answers']
-        answers = [answer for answer in answers if answer is not None and answer != '{}']
-
         print(f"{Fore.CYAN}--> Oracle baseline: Input name: {input.name}")
-        print(f"{Fore.CYAN}--> Oracle baseline: kwargs", kwargs) # answers should not be empty since you rely on answers to do things
         print(f"{Fore.CYAN}--> Oracle baseline: answers", answers)
+        answers = [answer for answer in answers if answer is not None and answer != '{}']
         print(f"{Fore.CYAN}--> Oracle baseline: filtered answers", answers)
 
         action = ""  # no action by default
@@ -103,7 +104,21 @@ class OracleBaseline(Baseline):
             pass
         elif input.type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
             # select an answer randomly
-            answer = random.choice(answers)
+            for idx in range(len(answers)):
+                a = answers[idx]
+                if a in ["nan", "{}", "'{}'"] or (type(a) == float and np.isnan(a)):
+                    answers[idx] = ""
+
+            print(f"answers after mapping: `{answers}`")
+
+            answers = clean_values(answers)
+            answers = list(set(answers))
+
+            answers_without_empty = [answer for answer in answers if answer != ""]
+            if len(answers_without_empty) > 0:
+                answer = random.choice(answers_without_empty)
+            else:
+                answer = random.choice(answers)
             action = self.actions.modify_text(input.name, answer)
         elif input.type in ['checkbox']:
             answer = random.choice(answers)
@@ -121,8 +136,12 @@ class OracleBaseline(Baseline):
             majority_answer = max(votes, key=votes.get)
             majority_answer_str = str(majority_answer)
 
-            if not input_element.is_selected():
-                action = self.actions.modify_radio(input.name, majority_answer_str)
+            # commenting out this condition since looking up the input element does not take into account
+            # the value of the input we want to select
+            # if not input_element.is_selected():
+
+            action = self.actions.modify_radio(input.name, majority_answer_str)
+
         elif input.type == 'select':
             votes = {}
             for answer in answers:
