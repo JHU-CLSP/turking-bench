@@ -284,7 +284,7 @@ class Evaluation:
                 return subjective_test
             elif self.tasks == 'train':
                 # all tasks minue test and subjective test
-                return list(set(all_tasks) - set(test) - set(subjective_test))
+                return list(set(all_tasks) - set(test) - set(subjective_test) - set(test_hard))
             else:
                 raise Exception(f"{Fore.RED}Invalid setup: {self.tasks}")
 
@@ -534,16 +534,8 @@ class Evaluation:
         print(f"{Fore.YELLOW}----> answers: `{answers}` - type: `{type(answers)}`")
         print(f"{Fore.YELLOW}----> baseline_answer: `{baseline_answer}` - type: `{type(baseline_answer)}`")
 
-        # normalize responses: turn "nan", or "{}" into empty string
-        for idx in range(len(answers)):
-            a = answers[idx]
-            if a in ["nan", "{}", "'{}'"] or (type(a) == float and np.isnan(a)):
-                answers[idx] = ""
-
-        logging.info(f"answers after mapping: `{answers}`")
-
         # handle empty
-        if answers == []:
+        if answers == [] or answers == [""]:
             if baseline_answer == "" or baseline_answer == [""] or \
                     baseline_answer == [] or baseline_answer == "[]" or baseline_answer == "['']":
                 score = 1.0
@@ -689,6 +681,26 @@ class Evaluation:
                 else:
                     i.values = ''
 
+            # if the input type is textbox and the gold text is empty, skip it.
+            # otherwise, we would be crediting the model for not filling many inputs that are not required.
+            if i.type in ['text', 'textarea', 'hidden']:
+
+                answers = answers_map[i.name]
+                # normalize responses: turn "nan", or "{}" into empty string
+                for idx in range(len(answers)):
+                    a = answers[idx]
+                    if a in ["nan", "{}", "'{}'"] or (type(a) == float and np.isnan(a)):
+                        answers[idx] = ""
+
+                print(f"answers after mapping: `{answers}`")
+
+                answers = clean_values(answers)
+                answers = list(set(answers))
+
+                if answers == [] or answers == [""]:
+                    continue
+
+
             # the score for this specific model input/output
             score_per_field = self.calculate_metrics(answers_map[i.name], i.type, i.values)
 
@@ -727,8 +739,13 @@ class Evaluation:
         for task_name in tqdm(tasks):
             print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
 
-            if self.filter_TAP_tasks(task_name) == False:
+            # skip, if starting with .
+            if task_name.startswith("."):
                 continue
+
+            # commenting this out since these tasks are not part of the evaluation
+            # if self.filter_TAP_tasks(task_name) == False:
+            #     continue
 
             instance_ids = self.task_ids[task_name]
             first_instance_id = min(instance_ids)
