@@ -5,7 +5,7 @@ from evaluation.input import Input
 from evaluation.prompts import get_encoded_input_prompt
 from utils.hidden_prints import HiddenPrints
 
-evaluation = evaluation_class.Evaluation(solver_type="oracle", tasks="all",
+evaluation = evaluation_class.Evaluation(solver_type="oracle", tasks="CI_tasks",
                              do_eval=True, dump_features=False, report_field_stats=True, headless=True)
 
 
