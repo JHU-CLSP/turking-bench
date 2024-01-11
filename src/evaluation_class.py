@@ -70,7 +70,7 @@ class Evaluation:
         else:
             raise Exception(f"{Fore.RED}Solver `{solver_type}` not implemented")
         self.tasks = tasks
-        assert tasks in ["test_easy", "test_hard", "train", "all", "subjective_test"] or tasks.startswith(
+        assert tasks in ["test_easy", "test_hard", "train", "all", "subjective_test", "CI_tasks"] or tasks.startswith(
             "tap") or tasks.startswith("dmp")
 
         self.do_eval = do_eval
