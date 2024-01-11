@@ -7,4 +7,3 @@ Scalar Adjectives Identification
 Script KD eval LONG V2 - disc result eval 1
 Sherlock IMG 2 TXT Eval 15
 wikiHow step-goal linking pilot cleanse-url
-winogrande validation (grammar) additional_ph
