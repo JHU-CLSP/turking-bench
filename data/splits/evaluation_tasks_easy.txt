@@ -1,7 +1,5 @@
 Associate countries and languages with Ethnologue
-atomic_event2event-effects 4
 Full sentence style annotations
-Photo Collection GVDB
 Radiology Report Sentence Classification
 Reddit In-group Analysis Comment annotation 3
 ROT Details [m=50] rocstories - 0 - 99

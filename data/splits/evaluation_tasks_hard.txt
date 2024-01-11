@@ -4,6 +4,7 @@ Elicitation obj
 Elicitation subj
 Gun violence structured extraction
 Rationale Generation 5
+Photo Collection GVDB
 ESNLI Rationale Generation 4
 JJ-NN HIT
 COMET2020 ATOMIC Inference Vp 5
