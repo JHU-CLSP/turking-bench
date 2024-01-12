@@ -57,7 +57,7 @@ class Evaluation:
         self.solver = None
         # ass more solvers that we implement, we can add them here:
         self.solver_type = solver_type
-        if solver_type == "nothing":
+        if solver_type == "donothing":
             self.solver = baselines.DoNothingBaseline(driver=self.driver, actions=self.actions)
         elif solver_type == "random":
             self.solver = baselines.RandomBaseline(driver=self.driver, actions=self.actions)
