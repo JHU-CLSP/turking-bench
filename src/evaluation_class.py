@@ -108,7 +108,7 @@ class Evaluation:
         args: partitions: number of partitions to split the tasks into
         """
 
-        # self.tasks = 'CI_tasks'
+        print("The task names used: ", self.tasks)
         all_tasks = self.load_task_names()
         print("all_tasks len:", len(all_tasks))
 
