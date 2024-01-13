@@ -108,7 +108,7 @@ class Evaluation:
         args: partitions: number of partitions to split the tasks into
         """
 
-        self.tasks = 'CI_tasks'
+        # self.tasks = 'CI_tasks'
         all_tasks = self.load_task_names()
         print("all_tasks len:", len(all_tasks))
 
@@ -217,7 +217,7 @@ class Evaluation:
             elif self.tasks == 'train':
                 # all tasks minus test and subjective test
                 return list(set(all_tasks) - set(test) - set(subjective_test) - set(test_hard))
-            elif self.tasks == 'CI_tasks':
+            elif self.tasks == 'CI_tasks' or self.tasks.startswith("tap"):
                 # all the tasks that we monitor on in CI (training + test_easy)
                 return list(set(all_tasks) - set(subjective_test) - set(test_hard))
             else:
