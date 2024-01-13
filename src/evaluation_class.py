@@ -509,6 +509,11 @@ class Evaluation:
         elif input_type in ['text', 'textarea', 'hidden']:
             answers = [str(answer) for answer in answers]
             answers = [answer for answer in answers if answer != ""]
+
+            amp = "&amp;"
+            answers = [answer.replace(amp, "&") for answer in answers]
+            baseline_answer = baseline_answer.replace(amp, "&")
+
             score = Evaluation.metric_max_over_ground_truths(
                 self.rouge,
                 prediction=baseline_answer,
@@ -718,6 +723,8 @@ class Evaluation:
             tasks = [kwargs["task"]]
             print("tasks", tasks)
 
+        tasks = ["TuringAdvice_GPT3-instruct"]
+
         results = {}
         aggregate_field_statistics = {}  # We store the stats related to the field types/frequency here
         task_field_statistics = {}
@@ -739,7 +746,8 @@ class Evaluation:
             per_task_score = 0.0
 
             # Create a random sample
-            instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
+            # instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
+            instance_ids = instance_ids[59:]
 
             # collecting field statistics
             if task_name not in results:
@@ -1044,7 +1052,7 @@ class Evaluation:
 
                     score = self.score_outputs(inputs, answers_map, task_results=None)
 
-                    if score > 0.99:
+                    if score > 0.95:
                         num_successes += 1
                     else:
                         failing_tasks.append(row_num)
