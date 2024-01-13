@@ -723,8 +723,6 @@ class Evaluation:
             tasks = [kwargs["task"]]
             print("tasks", tasks)
 
-        tasks = ["TuringAdvice_GPT3-instruct"]
-
         results = {}
         aggregate_field_statistics = {}  # We store the stats related to the field types/frequency here
         task_field_statistics = {}
