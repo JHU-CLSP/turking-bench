@@ -744,8 +744,7 @@ class Evaluation:
             per_task_score = 0.0
 
             # Create a random sample
-            # instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
-            instance_ids = instance_ids[59:]
+            instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
 
             # collecting field statistics
             if task_name not in results:
