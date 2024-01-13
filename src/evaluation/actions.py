@@ -307,10 +307,11 @@ class MyActions:
         if element.is_displayed():
             action = ActionChains(self.driver).move_to_element(element).click()
             action.perform()
-            self.execute_js_command('arguments[0].setAttribute("checked", "");', element)
         else:
             print(f"{Fore.RED} ** Warning **: element is not visible. "
                   f"So, we're not going to modify the radio button.")
+
+        self.execute_js_command('arguments[0].setAttribute("checked", "");', element)
 
         return f"self.actions.modify_radio('{input_name}', '{input_value}')"
 
