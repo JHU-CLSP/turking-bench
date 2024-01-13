@@ -7,7 +7,7 @@ if __name__ == "__main__":
     # user argparser to recive he input parameter
     parser = argparse.ArgumentParser()
     parser.add_argument("--solver_type",
-                        help="donothing, random, oracle, offline_predictions",
+                        help="donothing, random, oracle, offline_predictions, gpt4-text",
                         default="oracle")
     parser.add_argument("--tasks",
                         help="train, test_easy, test_hard, all, or subjective_test",

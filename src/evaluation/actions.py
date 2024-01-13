@@ -1,13 +1,14 @@
 from colorama import Fore
+from dotenv import load_dotenv
 import io
 from io import BytesIO
 from openai import OpenAI
+import platform
 import os
 import numpy as np
 from PIL import Image, ImageDraw
 import re
 import requests
-import platform
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -16,8 +17,6 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.keys import Keys
 from time import sleep
 import math
-from evaluation.input import Input
-
 
 class ActionUtils:
     """
@@ -57,7 +56,8 @@ class ActionUtils:
 
         if not ActionUtils.client:
             # read it from environment variable
-            key = os.environ.get('OPENAI_API_KEY')
+            load_dotenv()
+            key = os.getenv('OPENAI_API_KEY')
             client = OpenAI(api_key=key)
 
         response = client.chat.completions.create(
