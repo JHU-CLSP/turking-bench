@@ -733,10 +733,6 @@ class Evaluation:
             if task_name.startswith("."):
                 continue
 
-            # commenting this out since these tasks are not part of the evaluation
-            # if self.filter_TAP_tasks(task_name) == False:
-            #     continue
-
             instance_ids = self.task_ids[task_name]
             first_instance_id = min(instance_ids)
             print("First instance id:", first_instance_id)

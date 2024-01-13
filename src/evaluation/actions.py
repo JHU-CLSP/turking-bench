@@ -220,6 +220,8 @@ class MyActions:
         checkboxes = self.driver.find_elements(
             By.XPATH, f"//input[@type='checkbox' and @name='{input_name}']")
 
+        # assert len(checkboxes) > 0, f"{Fore.RED}No checkboxes found!!"
+
         # TODO: if this is not useful, let's drop it.
         # for single-checkbox inputs, we need to apply "on" or "off" to the checkbox
         # if len(checkboxes) == 1 and input_value[0] in ['on', 'off']:
@@ -230,14 +232,28 @@ class MyActions:
         #             'arguments[0].setAttribute("checked", "");', checkboxes[0]
         #         )
         # else:
+        found = False
         for checkbox in checkboxes:
             if checkbox.get_attribute("value") in input_value:
-                print(
-                    f"{Fore.YELLOW}About to check this checkbox: {checkbox.get_attribute('outerHTML')}"
-                )
+                print(f"{Fore.YELLOW}About to check this checkbox: {checkbox.get_attribute('outerHTML')}")
                 checkbox.click()
                 self.execute_js_command(
                     'arguments[0].setAttribute("checked", "");', checkbox)
+                found = True
+
+        if not found:
+            input_value = [str(int(float(v))) for v in input_value if re.match("^[-+]?[0-9]*\.?[0-9]+$", v)]
+            for checkbox in checkboxes:
+                if checkbox.get_attribute("value") in input_value:
+                    print(f"{Fore.YELLOW}About to check this checkbox: {checkbox.get_attribute('outerHTML')}")
+                    checkbox.click()
+                    self.execute_js_command(
+                        'arguments[0].setAttribute("checked", "");', checkbox)
+                    found = True
+
+        if not found:
+            print(f"{Fore.RED} ** Warning **: input value is {input_value}. "
+                  f"So, we're not going to modify the checkbox.")
 
         return f"self.actions.modify_checkbox('{input_name}', '{original_input_value}')"
 
@@ -289,7 +305,7 @@ class MyActions:
             # if isinstance(input_value, float):
             if input_value == "":
                 print(f"{Fore.RED} ** Warning **: input value is {input_value}. "
-                    f"So, we're not going to modify the radio button.")
+                      f"So, we're not going to modify the radio button.")
                 return f"self.actions.modify_radio('{input_name}', '{input_value}')"
 
             elif type(input_value) == str and re.match("^[-+]?[0-9]*\.?[0-9]+$", input_value) is not None:
