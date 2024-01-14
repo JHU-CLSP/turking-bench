@@ -1,16 +1,17 @@
-Human evaluation - quals
-COMET2020 ATOMIC Inference Vp 5
-all the show_question_tasks since model isn't made to click on those yet
-Rationale Generation 5
+Paraphrase Clustering with Merge
+Compile list of area chairs
+Elicitation obj
+Elicitation subj
 Gun violence structured extraction
+Rationale Generation 5
+Photo Collection GVDB
 ESNLI Rationale Generation 4
-JJ-NN HIT 
+JJ-NN HIT
+COMET2020 ATOMIC Inference Vp 5
 neural-pop (PLAN evaluation) t5-human-test b
 VQA Rationale Generation 5
 Lattice
 What breaks the flow - no categories 4
 Spanish Word Alignment
-Simplicity HIT - rank simplicity
-Email Formality Annotation
 BiSECT Human Evaluation II (2)
 NER - Task scruples 26,200 - 30,922

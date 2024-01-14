@@ -1,3 +1,4 @@
+import numpy as np
 from colorama import Fore
 from datetime import datetime
 from datetime import timedelta
@@ -8,9 +9,13 @@ from time import sleep
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from evaluation.actions import MyActions
+from evaluation.actions import ActionUtils
 from evaluation.input import Input
+from evaluation.prompts import get_encoded_input_prompt
 import logging
 from typing import List
+from utils.cleaning import clean_values
+
 
 class Baseline:
     """
@@ -39,16 +44,7 @@ class Baseline:
         action_list = [(method, getattr(MyActions, method).__doc__) for method in action_list]
         return action_list
 
-    def get_encoded_input_prompt(self, input: Input):
-        actions = self.get_action_list()
-        # encode the actions as a string
-        actions = '\n\n'.join([f"{action[0]}: {action[1]}" for action in actions])
-        return f"""
-        Given a web-based task, we'd like to solve it by executing actions. Below is a list of actions that
-        can be performed on a HTML page. \n\n{actions} \n\n
 
-        Now, given the following input `{input}`, decide what set of actions need to be executed.
-        """
 
 
 
@@ -61,14 +57,15 @@ class NewBaseline(Baseline):
             input_name="dummy",
             input_type="textarea",
             task_name="dummy")
-        encoded_actions_prompt = self.get_encoded_input_prompt(dummy_input)
+        encoded_actions_prompt = get_encoded_input_prompt(dummy_input, "")
         print("encoded actions: ", encoded_actions_prompt)
 
         # Add your code here to process the HTML data and generate a summary
 
-        # Youc can either make direct calls to the actions
+        # You can either make direct calls to the actions
         # for example, you can access the HTML code
-        html_result = self.actions.get_html()
+        url = kwargs['url']
+        html_result = self.actions.get_html(url)
 
         # or you can take screenshots of the page
         screenshot_result = self.actions.take_full_screenshot()
@@ -87,52 +84,88 @@ class OracleBaseline(Baseline):
     """
 
     def solve(self, input: Input, **kwargs):
-        print("Called solve, input:", input)
+        self.actions.wait_for_element(input.name)
+
+        # wait 0.1 sec for the page to fully load
+        sleep(0.1)
+        self.actions.maximize_window()
+        _, input_element = self.actions.scroll_to_element(input.name)
+
         # get the index of the input
         answers = kwargs['answers']
-        print("kwargs", kwargs) # answers should not be empty since you rely on answers to do things
-        print("answers", answers)
-        actions_per_input = ""  # no action by default
-        for answer in answers:
-            if answer and answer != '{}':
-                # self.actions.execute_command(input, answer)
+        print(f"{Fore.CYAN}--> Oracle baseline: Input name: {input.name}")
+        print(f"{Fore.CYAN}--> Oracle baseline: answers", answers)
+        answers = [answer for answer in answers if answer is not None and answer != '{}']
+        print(f"{Fore.CYAN}--> Oracle baseline: filtered answers", answers)
 
-                print(f" --> Input name: {input.name}")
-                print(f" --> Input value: {answer}")
+        action = ""  # no action by default
+        if len(answers) == 0:
+            # do nothing
+            pass
+        elif input.type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
+            # select an answer randomly
+            for idx in range(len(answers)):
+                a = answers[idx]
+                if a in ["nan", "{}", "'{}'"] or (type(a) == float and np.isnan(a)):
+                    answers[idx] = ""
 
-                r1 = self.actions.wait_for_element(input.name)
+            print(f"answers after mapping: `{answers}`")
 
-                # wait 0.1 sec for the page to fully load
-                sleep(0.1)
-                self.actions.maximize_window()
-                response = self.actions.scroll_to_element(input.name)
-                input_element = response.outcome
+            answers = clean_values(answers)
+            answers = list(set(answers))
 
-                action_sequence = []
+            answers_without_empty = [answer for answer in answers if answer != ""]
+            if len(answers_without_empty) > 0:
+                answer = random.choice(answers_without_empty)
+            else:
+                answer = random.choice(answers)
+            action = self.actions.modify_text(input.name, answer)
+        elif input.type in ['checkbox']:
+            answer = random.choice(answers)
+            if not input_element.is_selected():
+                action = self.actions.modify_checkbox(input.name, answer)
+        elif input.type in ['radio']:
+            # do a majority vote and then select the majority answer
+            votes = {}
+            for answer in answers:
+                if answer in votes:
+                    votes[answer] += 1
+                else:
+                    votes[answer] = 1
 
-                if input.type in ['text', 'textarea', 'password', 'email', 'number', 'tel', 'url']:
-                    action_sequence.append(self.actions.modify_text(input.name, answer))
-                elif input.type in ['checkbox']:
-                    if not input_element.is_selected():
-                        action_sequence.append(self.actions.modify_checkbox(input.name, answer))
-                elif input.type in ['radio']:
-                    if not input_element.is_selected():
-                        action_sequence.append(self.actions.modify_radio(input.name, answer))
-                elif input.type == 'select':
-                    action_sequence.append(self.actions.modify_select(input.name, answer))
-                elif input.type == 'range':
-                    action_sequence.append(self.actions.modify_range(input.name, answer))
-                elif input.type in ['button', 'color', 'date', 'datetime-local', 'file', 'hidden', 'image',
-                                    'month', 'reset', 'search', 'submit', 'time']:
-                    raise Exception(
-                        f"{Fore.RED} ** Warning **: We don't know how to handle this input type `{input.type}`")
+            majority_answer = max(votes, key=votes.get)
+            majority_answer_str = str(majority_answer)
 
-                action_sequence = "\n\n".join([r.action for r in action_sequence])
-                actions_per_input = {
-                    "input_name": input.name,
-                    "action_sequence": action_sequence,
-                }
-                break
+            # commenting out this condition since looking up the input element does not take into account
+            # the value of the input we want to select
+            # if not input_element.is_selected():
+
+            action = self.actions.modify_radio(input.name, majority_answer_str)
+
+        elif input.type == 'select':
+            votes = {}
+            for answer in answers:
+                if answer in votes:
+                    votes[answer] += 1
+                else:
+                    votes[answer] = 1
+
+            majority_answer = max(votes, key=votes.get)
+            majority_answer_str = str(majority_answer)
+            action = self.actions.modify_select(input.name, majority_answer_str)
+        elif input.type == 'range':
+            # average multiple answers
+            answers = [float(answer) for answer in answers]
+            avg_answer = sum(answers) / len(answers)
+            action = self.actions.modify_range(input.name, avg_answer)
+        elif input.type in ['button', 'color', 'date', 'datetime-local', 'file', 'hidden', 'image',
+                            'month', 'reset', 'search', 'submit', 'time']:
+            raise Exception(f"{Fore.RED} ** Warning **: We don't know how to handle this input type `{input.type}`")
+
+        actions_per_input = {
+            "input_name": input.name,
+            "action_sequence": action,
+        }
 
         return actions_per_input
 
@@ -209,7 +242,16 @@ class RandomBaseline(Baseline):
             print("random choices options:", options)
             return random.choice(options)
 
-class ModelBaseline(Baseline):
+class DoNothingBaseline(Baseline):
+    """
+    This baseline randomly does nothing!
+    Yet, it provides a baseline for the minimum score that can be achieved.
+    """
+
+    def solve(self, input: Input, **kwargs):
+        pass
+
+class OfflineModelPredictionsBaseline(Baseline):
     """
     This baseline is used to execute the outputs of our ML models
     """
@@ -240,3 +282,45 @@ class ModelBaseline(Baseline):
             print(f"failed to execute an action {output}, error: {error}")
 
         return error_flag
+
+class GPT4TextBaseline(Baseline):
+    """
+    Interactive calls to GPT4 to solve the task
+    """
+
+    def solve(self, input: Input, **kwargs) -> None:
+        """
+        Communicate with GPT4 to solve the task
+        """
+
+        print("input:", input)
+        self.actions.wait_for_element(input.name)
+
+        # wait 0.1 sec for the page to fully load
+        sleep(0.1)
+        self.actions.maximize_window()
+        self.actions.scroll_to_element(input.name)
+        print("about to try executing one action, on the following input:", input.name)
+
+        # extract HTML
+        url = kwargs['url']
+        html = self.actions.get_html(url)
+
+        # simplify HTML
+        # simplified_html = ActionUtils.simplify_html(html)
+        simplified_html = html
+        text_prompt = get_encoded_input_prompt(input.name, simplified_html)
+        command = ActionUtils.openai_call(text_prompt)
+
+        # find the index of "self.actions(" and drop anything before it.
+        # This is because the GPT4 model sometimes outputs a lot of text before the actual command
+        if not command.startswith("self.actions.") and "self.actions." in command:
+            command = command[command.find("self.actions."):]
+        if "```" in command:
+            command = command.replace("```", "")
+
+        try:
+            print(f"{Fore.BLUE}Executing one action: {command}")
+            exec(command)
+        except Exception as error:
+            print(f"{Fore.RED}Failed to execute an action {command}, error: {error}")

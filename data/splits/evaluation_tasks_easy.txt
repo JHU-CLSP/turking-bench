@@ -1,17 +1,16 @@
+ROT Details [m=50] rocstories - 0 - 99
 Associate countries and languages with Ethnologue
-atomic_event2event-effects 4
-Author In-Group Analysis Phrase Classification 2
-Compile list of area chairs
-Elicitation obj
-Elicitation subj
 Full sentence style annotations
-Paraphrase Clustering with Merge
-Photo Collection GVDB
 Radiology Report Sentence Classification
 Reddit In-group Analysis Comment annotation 3
-ROT Details [m=50] rocstories - 0 - 99
 Scalar Adjectives Identification
 Script KD eval LONG V2 - disc result eval 1
 Sherlock IMG 2 TXT Eval 15
 wikiHow step-goal linking pilot cleanse-url
+Arch - Rel Eval 3
+Commonsense Misinformation Tracking Pilot [cancer data setup] 10
+Compression HIT
+Formalize this
+JiminyCricket-HumanVal-b10
 winogrande validation (grammar) additional_ph
+atomic_event2event-effects 4
