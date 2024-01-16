@@ -131,12 +131,6 @@ class VisionModel:
         """
         raise NotImplementedError("This method should be implemented by the subclass.")
 
-    def click_percentage(self, x: float, y: float):
-        """
-        This function clicks on a percentage of the screen
-        """
-        width, height = pyautogui.size()
-
 
 class GPT4VModel:
     """
