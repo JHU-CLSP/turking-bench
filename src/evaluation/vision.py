@@ -132,10 +132,12 @@ class VisionModel:
         raise NotImplementedError("This method should be implemented by the subclass.")
 
 
-class GPT4VModel:
+class GPT4VModel(VisionModel):
     """
     This is the class for a Vision Language Model to solve tasks on a page
     """
+    def __init__(self):
+        super().__init__(Models.GPT4V)
 
     def get_main_prompt(self, objective: str):
         pass
