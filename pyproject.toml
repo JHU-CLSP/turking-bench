@@ -26,8 +26,8 @@ django-admin-autocomplete-list-filter = "1.0.1"
 django-guardian = "2.4.0"
 humanfriendly = "^10.0"
 jsonfield = "3.1.0"
-pyautogui = "^0.9.54"
 xlib = "^0.21"
+pyautogui = "^0.9.54"
 
 
 [build-system]

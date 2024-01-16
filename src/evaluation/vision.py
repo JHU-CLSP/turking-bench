@@ -1,22 +1,21 @@
 from __future__ import annotations
 from enum import Enum
 
-import pyautogui
 import platform
 import os
 import subprocess
 import Xlib.display
+from PIL import Image, ImageDraw, ImageFont, ImageGrab
+import pyautogui
 
 class Models(Enum):
     GPT4V = 1
 
 class ActionInstance:
-    def __init__(self, type: str, data: str, **kwargs):
+    def __init__(self, type: str, data: str, duration: int = None):
         self.type = type
         self.data = data
-
-        if "duration" in kwargs:
-            self.duration = kwargs["duration"] # how long it took to execute the action
+        self.duration = duration
 
 class Actions:
     def __init__(self):
@@ -48,7 +47,7 @@ class Actions:
         
         pyautogui.press("enter")
 
-    def capture_screen(self, filename):
+    def capture_screen(self, filename: str):
         file_path = os.path.join(self.dir, filename)
 
         if self.platform == "Darwin":
@@ -60,6 +59,59 @@ class Actions:
             screenshot = ImageGrab.grab(bbox=(0, 0, self.width, self.height))
             screenshot.save(file_path)
 
+    # Function to draw text with a white rectangle background
+    def draw_label_with_background(self, position: tuple, text: str, draw, font):
+        # Draw the text
+        fill_color = "green"
+        draw.text(position, text, fill=fill_color, font=font, anchor="mm")
+
+    def add_grid_to_image(self, old_image: str, new_image: str, num_grids: int = 1):
+        """
+        This function adds a grid to the image
+        """
+
+        old_path = os.path.join(self.dir, old_image)
+        new_path = os.path.join(self.dir, new_image)
+
+        image = Image.open(old_path)
+
+        draw = ImageDraw.Draw(image)
+
+        width, height = image.size
+        print(f"width: {width}, height: {height} self.width: {self.width}, self.height: {self.height}")
+        font_size = int(height/40)
+        
+        font = ImageFont.truetype("arial.ttf", font_size)
+
+         # Calculate the background size based on the font size
+        bg_width = int(font_size * 1.2)  # Adjust as necessary
+        bg_height = int(font_size * 1.2)  # Adjust as necessary
+
+        for x in range(0, num_grids):
+            for y in range(0, num_grids):
+                x_coord = x * (width/num_grids) + (width/num_grids)/2 - bg_width/2
+                y_coord = y * (height/num_grids) + (height/num_grids)/2 - bg_height/2
+
+                # Calculate the percentage of the width and height
+                self.draw_label_with_background(
+                    (x_coord, y_coord),
+                    f"{x * num_grids + y}",
+                    draw,
+                    font
+                )
+
+        for x in range(0, num_grids):
+            width_multiplier = width/num_grids;
+            line = ((x * width_multiplier, 0), (x * width_multiplier, height))
+            draw.line(line, fill="blue")
+
+        for y in range(0, num_grids):
+            height_multiplier = height/num_grids;
+            line = ((0, y * height_multiplier), (width, y * height_multiplier))
+            draw.line(line, fill="blue")
+        
+        # Save the image with the grid
+        image.save(new_path)
 
 class VisionModel:
     """
@@ -85,27 +137,31 @@ class VisionModel:
 
         messages = [assistant_message, user_message]
 
-        while True:
-            try:
-                response = self.get_next_action(messages)
-                action = self.parse_response(response)
+        if False:
+            while True:
+                try:
+                    response = self.get_next_action(messages)
+                    action = self.parse_response(response)
 
-                assert "type" in action and "data" in action, "Action should have a type and data"
-            except Exception as e:
-                print(e)
-                break
+                    assert "type" in action and "data" in action, "Action should have a type and data"
+                except Exception as e:
+                    print(e)
+                    break
 
-            if action["type"] == "DONE":
-                break
+                if action["type"] == "DONE":
+                    break
 
-            response = self.execute_action(action)
+                response = self.execute_action(action)
 
-            message = {
-                "role": "assistant",
-                "content": response
-            }
+                message = {
+                    "role": "assistant",
+                    "content": response
+                }
 
-            messages.append(message)
+                messages.append(message)
+
+        self.actions.capture_screen("screenshot.png")
+        self.actions.add_grid_to_image("screenshot.png", "screenshot_grid.png", 4)
             
     def get_main_prompt(objective: str) -> str:
         """
@@ -147,3 +203,7 @@ class GPT4VModel(VisionModel):
         This function gets the next action for the GPT4V Model
         """
         # send a request to GPT4V with messages
+
+if __name__ == "__main__":
+    model = GPT4VModel()
+    model.main("test")
