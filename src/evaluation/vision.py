@@ -7,6 +7,11 @@ import subprocess
 import Xlib.display
 from PIL import Image, ImageDraw, ImageFont, ImageGrab
 import pyautogui
+from openai import OpenAi
+from typing import List
+import base64
+from dotenv import load_dotenv
+import copy
 
 class Models(Enum):
     GPT4V = 1
@@ -26,7 +31,7 @@ class Actions:
 
         self.dir = "screenshots"
 
-    def click_percentage(self, x_percent: float, y_percent: float, duration: float = 0.2, circle_radius: int = 50, circle_duration: float = 0.5):
+    def click_percentage(self, x_percent: float, y_percent: float, duration: float = 0.2, circle_radius: int = 50, circle_duration: float = 0.5) -> str:
         """
         This function clicks on a percentage of the screen
         """
@@ -37,7 +42,9 @@ class Actions:
 
         pyautogui.click(x_pixel, y_pixel)
 
-    def keyboard_type(text: str):
+        return "Successfully clicked"
+
+    def keyboard_type(text: str) -> str:
         """
         This function types the given text
         """
@@ -47,7 +54,14 @@ class Actions:
         
         pyautogui.press("enter")
 
-    def capture_screen(self, filename: str):
+        return "Successfully typed"
+
+    def capture_screen(self, filename: str) -> str:
+        """
+        Capture a screenshot of the current screen
+
+        Return: Path to the screenshot
+        """
         file_path = os.path.join(self.dir, filename)
 
         if self.platform == "Darwin":
@@ -58,16 +72,21 @@ class Actions:
             size = screen.width_in_pixels, screen.height_in_pixels
             screenshot = ImageGrab.grab(bbox=(0, 0, self.width, self.height))
             screenshot.save(file_path)
+        
+        return file_path
 
-    # Function to draw text with a white rectangle background
     def draw_label_with_background(self, position: tuple, text: str, draw, font):
-        # Draw the text
+        """
+        Draws some text on the picture
+        """
         fill_color = "green"
         draw.text(position, text, fill=fill_color, font=font, anchor="mm")
 
-    def add_grid_to_image(self, old_image: str, new_image: str, num_grids: int = 1):
+    def add_grid_to_image(self, old_image: str, new_image: str, num_grids: int = 1) -> str:
         """
         This function adds a grid to the image
+
+        Return: the path to the new image
         """
 
         old_path = os.path.join(self.dir, old_image)
@@ -113,6 +132,8 @@ class Actions:
         # Save the image with the grid
         image.save(new_path)
 
+        return new_path
+
 class VisionModel:
     """
     Base Vision Model class for all vision models
@@ -125,6 +146,9 @@ class VisionModel:
     def main(self, objective: str):
         """
         This is the main function for the Vision Language Model
+
+        Params:
+        objective - User inputted objective
         """
         assistant_message = {
             "role": "assistant",
@@ -145,10 +169,10 @@ class VisionModel:
 
                     assert "type" in action and "data" in action, "Action should have a type and data"
                 except Exception as e:
-                    print(e)
+                    print(f"Error getting next action and parsing the response {e}")
                     break
 
-                if action["type"] == "DONE":
+                if action["type"] == "DONE" or action["type"] == "UNKNOWN":
                     break
 
                 response = self.execute_action(action)
@@ -160,33 +184,44 @@ class VisionModel:
 
                 messages.append(message)
 
-        self.actions.capture_screen("screenshot.png")
-        self.actions.add_grid_to_image("screenshot.png", "screenshot_grid.png", 4)
-            
     def get_main_prompt(objective: str) -> str:
         """
         This function returns the prompt for the Vision Language Model
         """
-        raise NotImplementedError("This method should be implemented by the subclass.")
+        raise NotImplementedError("This method should be implemented by the subclass.") 
     
-    def get_next_action(self, messages: str) -> str:
+    def get_next_action(self, messages: List[str], image_path: str) -> str:
         """
         This function gets the response from the VLM
         """
         raise NotImplementedError("This method should be implemented by the subclass.")
 
-    def parse_response(self, messages: str) -> ActionInstance:
+    def parse_response(self, message: str) -> ActionInstance:
         """
         This function returns an action based on the response from the Vision Language Model
         """
         raise NotImplementedError("This method should be implemented by the subclass.")
+    
+    def execute_initial_click(self, action_data: str):
+        """
+        This function executes the initial click
+        """
+        pass
 
     def execute_action(self, action: ActionInstance) -> str:
         """
         This function executes the action returned by the Vision Language Model
         """
-        raise NotImplementedError("This method should be implemented by the subclass.")
+        
+        assert action["type"] != "UNKNOWN" and action["type"] != "DONE", "Action type should not be UNKNOWN or DONE"
 
+        match action["type"]:
+            case "CLICK":
+                return self.execute_initial_click(action["data"])
+            case "TYPE":
+                return self.actions.keyboard_type(action["data"])
+            case _:
+                raise ValueError("This action type is not implemented yet.")
 
 class GPT4VModel(VisionModel):
     """
@@ -194,15 +229,55 @@ class GPT4VModel(VisionModel):
     """
     def __init__(self):
         super().__init__(Models.GPT4V)
+        load_dotenv()
+        self.client = OpenAi(os.getenv("OPENAI_API_KEY"))
 
     def get_main_prompt(self, objective: str):
         pass
 
-    def get_next_action(self, messages: str):
+    def get_next_action(self, prev_messages: List[str], message: str, image_path: str) -> str:
         """
         This function gets the next action for the GPT4V Model
         """
-        # send a request to GPT4V with messages
+        try:
+            with open(image_path, "rb") as img_file:
+                img_base64 = base64.b64encode(img_file.read()).decode("utf-8")
+        except Exception as e:
+            print(f"Error getting image {e}")
+        
+        messages = copy.deepcopy(prev_messages)
+        messages.append({
+            "role": "user",
+            "content": [
+                {"type": "text", "text": message},
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": f"data:image/jpeg;base64,{img_base64}"
+                    }
+                }
+            ]
+        })
+
+        try:
+            response = self.client.chat.completions.create(
+                model="gpt-4-vision-preview",
+                messages=messages,
+                temperature=0,
+                max_tokens=300,
+            )
+
+            content = response.choices[0].message.content
+        except Exception as e:
+            print(f"Error getting action from GPT4V model {e}")
+
+        return content
+    
+    def parse_response(self, message: str) -> ActionInstance:
+        """
+        This function parses the response from the GPT4V Model
+        """
+        pass
 
 if __name__ == "__main__":
     model = GPT4VModel()
