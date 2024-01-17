@@ -8,7 +8,7 @@ import Xlib.display
 from PIL import Image, ImageDraw, ImageFont, ImageGrab
 import pyautogui
 from openai import OpenAi
-from typing import List
+from typing import List, Tuple
 import base64
 from dotenv import load_dotenv
 import copy
@@ -75,7 +75,7 @@ class Actions:
         
         return file_path
 
-    def draw_label_with_background(self, position: tuple, text: str, draw, font):
+    def draw_label_with_background(self, position: Tuple[int, int], text: str, draw, font):
         """
         Draws some text on the picture
         """
@@ -202,10 +202,18 @@ class VisionModel:
         """
         raise NotImplementedError("This method should be implemented by the subclass.")
     
-    def execute_initial_click(self, action_data: str):
+    def execute_click_instance(self, top_left: Tuple[int, int], bottom_right: Tuple[int, int], chosen: int, left: int) -> Tuple[Tuple[int, int], Tuple[int, int]]:
         """
-        This function executes the initial click
+        top_left - tuple of the top left corner of the image we are currently considering
+        bottom_right - tuple of the bottom right corner of the grid we are currently considering
+        chosen - the grid number we chose
+        left - number of iterations in the recursion that we need to continue
         """
+        if left == 0: return (top_left, bottom_right)
+
+        # figure out new top_left and bottom_right
+        # crop out an image with those coordinates, explode it up in size, and get_next_action
+        # call execute_click_instance out again with the new top_left and bottom_right and chosen coord
         pass
 
     def execute_action(self, action: ActionInstance) -> str:
@@ -217,7 +225,7 @@ class VisionModel:
 
         match action["type"]:
             case "CLICK":
-                return self.execute_initial_click(action["data"])
+                return self.execute_click_instance(int(action["data"]))
             case "TYPE":
                 return self.actions.keyboard_type(action["data"])
             case _:
