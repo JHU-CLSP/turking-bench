@@ -377,7 +377,6 @@ class Evaluation:
 
         return inputs
 
-
     @staticmethod
     # adapted the flowing from Squad v1.1 evaluation, without removing the articles.
     def normalize_answer(s):
@@ -470,7 +469,6 @@ class Evaluation:
         # in the original df, go choose all the rows that have the same inputs as the selected row instance and return all of the answers
         # this will be a df with multiple rows iff there are multiple answers to the same question instance
         df_subset = df[df[cols].eq(row).all(1)]
-
 
         # bringing this back in to check for errors in tap test 18
         assert len(df_subset) > 0, f"Could not find any answers for the instance index {instance_index}."
@@ -678,7 +676,6 @@ class Evaluation:
 
                 if answers == [] or answers == [""]:
                     continue
-
 
             # the score for this specific model input/output
             score_per_field = self.calculate_metrics(answers_map[i.name], i.type, i.values)
@@ -900,10 +897,10 @@ class Evaluation:
             print(f"{Fore.MAGENTA}Task: {task_name} --> Score: {per_task_score}")
             df = pd.DataFrame()
             for task_name, inputs in results.items():
+                all_scores = []
                 for input_type, scores in inputs.items():
-                    # print(scores)
                     avg_score = sum(scores) / len(scores)
-                    # TODO: check if we can safely change the "projects" in the following lines to tasks
+                    all_scores.extend(scores)
                     df = pd.concat(
                         [
                             df, pd.DataFrame({
@@ -914,6 +911,17 @@ class Evaluation:
                         ],
                         ignore_index=True)
 
+
+                # add the overall score across all the inputs
+                df = pd.concat([
+                    df, pd.DataFrame({
+                        'project': [task_name],
+                        'input_type': ["all"],
+                        'score': [sum(all_scores) / len(all_scores)]
+                    }
+                    )], ignore_index=True
+                )
+
             if 'project' not in df.columns:
                 df.insert(0, 'project', '')
             if 'input_type' not in df.columns:
@@ -923,7 +931,7 @@ class Evaluation:
 
         df = df.pivot(index='project', columns='input_type', values='score')
         today = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-        df.to_csv(f'{self.solver_type}_scores_{today}.csv', index=True)
+        df.to_csv(f'{self.solver_type}_{self.tasks}_scores_{today}.csv', index=True)
 
         # save results to json
         with open(f'{self.solver_type}_scores_{today}.json', 'w') as f:
