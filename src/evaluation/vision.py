@@ -12,6 +12,7 @@ from typing import List, Tuple
 import base64
 from dotenv import load_dotenv
 import copy
+from evaluation.prompts import text_vision_oracle_instructions, few_shot_examples
 
 class Models(Enum):
     GPT4V = 1
@@ -243,8 +244,77 @@ class GPT4VModel(VisionModel):
     def get_main_prompt(self, objective: str):
         pass
 
-    def get_vision_text_baseline_action(self, image_path: str) -> str:
-        pass
+    def get_vision_text_baseline_action(self, input_name: str, html_code: str, image_path: str) -> str:
+        messages = [{
+            "role": "assistant",
+            "content": text_vision_oracle_instructions()
+        }]
+
+        for instance in few_shot_examples():
+            with open(instance[1], "rb") as img_file:
+                img_base64 = base64.b64encode(img_file.read()).decode("utf-8")
+
+            user_message = {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": instance[0]
+                    },
+                    {
+                        "type": "image_url",
+                        "image_url": {
+                            "url": f"data:image/jpeg;base64,{img_base64}"
+                        }
+                    }
+                ]
+            }
+
+            assistant_message = {
+                "role": "assistant",
+                "content": instance[2]
+            }
+
+            messages.append(user_message)
+            messages.append(assistant_message)
+
+
+        with open(image_path, "rb") as img_file:
+            img_base64 = base64.b64encode(img_file.read()).decode("utf-8")
+
+        new_message = {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": f"""
+                        Input name: {input_name}
+                        HTML:
+                        {html_code}
+                        """
+                },
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": f"data:image/jpeg;base64,{img_base64}"
+                    }
+                }
+            ]
+        }
+
+        messages.append(new_message)
+
+        response = self.client.chat.completions.create(
+            model="gpt-4-vision-preview",
+            messages=messages,
+            temperature=1,
+            max_tokens=256,
+            top_p=1,
+            frequency_penalty=0,
+            presence_penalty=0
+        )
+
+        return response.choices[0].message.content
 
     def get_next_action(self, prev_messages: List[str], message: str, image_path: str) -> str:
         """
