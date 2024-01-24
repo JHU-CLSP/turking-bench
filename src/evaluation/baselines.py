@@ -353,14 +353,12 @@ class GPT4VisionTextBaseline(Baseline):
 
         # simplify HTML
         # simplified_html = ActionUtils.simplify_html(html)
-        simplified_html = html
-        text_prompt = get_encoded_input_prompt(input.name, simplified_html)
         actions = Actions()
-        model = GPT4VModel()
         actions.capture_screen("screenshot.png")
         image_path = os.path.join("screenshots", "screenshot.png")
         
-        command = model.get_vision_text_baseline_action(image_path)
+        model = GPT4VModel()
+        command = model.get_vision_text_baseline_action(input.name, html, image_path)
 
         # find the index of "self.actions(" and drop anything before it.
         # This is because the GPT4 model sometimes outputs a lot of text before the actual command
