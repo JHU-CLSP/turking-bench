@@ -243,6 +243,9 @@ class GPT4VModel(VisionModel):
     def get_main_prompt(self, objective: str):
         pass
 
+    def get_vision_text_baseline_action(self, image_path: str) -> str:
+        pass
+
     def get_next_action(self, prev_messages: List[str], message: str, image_path: str) -> str:
         """
         This function gets the next action for the GPT4V Model

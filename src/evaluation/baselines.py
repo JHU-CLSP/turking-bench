@@ -360,7 +360,7 @@ class GPT4VisionTextBaseline(Baseline):
         actions.capture_screen("screenshot.png")
         image_path = os.path.join("screenshots", "screenshot.png")
         
-        command = model.get_next_action()
+        command = model.get_vision_text_baseline_action(image_path)
 
         # find the index of "self.actions(" and drop anything before it.
         # This is because the GPT4 model sometimes outputs a lot of text before the actual command
