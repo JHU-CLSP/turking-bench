@@ -1,6 +1,5 @@
 ROT Details [m=50] rocstories - 0 - 99
 Associate countries and languages with Ethnologue
-Full sentence style annotations
 Radiology Report Sentence Classification
 Reddit In-group Analysis Comment annotation 3
 Scalar Adjectives Identification
@@ -8,9 +7,14 @@ Script KD eval LONG V2 - disc result eval 1
 Sherlock IMG 2 TXT Eval 15
 wikiHow step-goal linking pilot cleanse-url
 Arch - Rel Eval 3
-Commonsense Misinformation Tracking Pilot [cancer data setup] 10
 Compression HIT
 Formalize this
 JiminyCricket-HumanVal-b10
 winogrande validation (grammar) additional_ph
 atomic_event2event-effects 4
+ANLI Generation Eval - Reflective_ACL_1
+ATOMIC - Object Rationale 13
+Missing Adjective FITB
+Simplicity HIT
+Step 3 Creating Answers Given Questions 23
+Word Formality Annotation
