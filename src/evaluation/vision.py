@@ -27,8 +27,8 @@ class Actions:
     def __init__(self):
         self.platform = platform.system()
 
-        if (self.platform == "Darwin" or self.platform == "Windows"):
-            self.width, self.height = pyautogui.size()
+        # if (self.platform == "Darwin" or self.platform == "Windows"):
+        self.width, self.height = pyautogui.size()
 
         self.dir = "screenshots"
 
@@ -239,7 +239,8 @@ class GPT4VModel(VisionModel):
     def __init__(self):
         super().__init__(Models.GPT4V)
         load_dotenv()
-        self.client = OpenAI(os.getenv("OPENAI_API_KEY"))
+        # api_key = os.getenv("OPENAI_API_KEY") 
+        self.client = OpenAI()
 
     def get_main_prompt(self, objective: str):
         pass

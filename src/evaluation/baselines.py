@@ -354,8 +354,7 @@ class GPT4VisionTextBaseline(Baseline):
         # simplify HTML
         # simplified_html = ActionUtils.simplify_html(html)
         actions = Actions()
-        actions.capture_screen("screenshot.png")
-        image_path = os.path.join("screenshots", "screenshot.png")
+        image_path = actions.capture_screen("screenshot.png")
         
         model = GPT4VModel()
         command = model.get_vision_text_baseline_action(input.name, html, image_path)
