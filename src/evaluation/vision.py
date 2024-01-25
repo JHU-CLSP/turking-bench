@@ -7,7 +7,7 @@ import subprocess
 import Xlib.display
 from PIL import Image, ImageDraw, ImageFont, ImageGrab
 import pyautogui
-from openai import OpenAi
+from openai import OpenAI
 from typing import List, Tuple
 import base64
 from dotenv import load_dotenv
@@ -239,7 +239,7 @@ class GPT4VModel(VisionModel):
     def __init__(self):
         super().__init__(Models.GPT4V)
         load_dotenv()
-        self.client = OpenAi(os.getenv("OPENAI_API_KEY"))
+        self.client = OpenAI(os.getenv("OPENAI_API_KEY"))
 
     def get_main_prompt(self, objective: str):
         pass
