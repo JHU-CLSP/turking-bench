@@ -33,7 +33,7 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: run Django/Turkle server
-        uses: coactions/setup-xvfb@v1.0.1
+        uses: coactions/setup-xvfb@v1.0.1 # setup-xvfb
         with:
           run: |
             echo 'Python version'
@@ -53,3 +53,4 @@ jobs:
             python 3_upload_tasks.py
             echo 'run evaluation'
             python tests.py
+          working-directory: ./ #optional
