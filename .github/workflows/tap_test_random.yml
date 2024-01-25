@@ -32,8 +32,6 @@ jobs:
           echo 'Python version'
           python --version
           python3 --version
-          echo 'Setting dummy DISPLAY environment variable'
-          export DISPLAY=:99
           echo 'Moving to src directory'
           cd src
           echo 'Print the current directory'
