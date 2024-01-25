@@ -33,23 +33,21 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: run Django/Turkle server
-        with:
-          run: |
-            echo 'Python version'
-            python --version
-            python3 --version
-            echo 'Moving to src directory'
-            cd src
-            echo 'Print the current directory'
-            pwd
-            echo 'List the files in the current directory'
-            ls -l
-            echo 'Clone Turkle'
-            ./1_run_website.sh & sleep 30
-            echo 'Generate the input files'
-            python 2_generate_input_csv.py
-            echo 'Upload the tasks'
-            python 3_upload_tasks.py
-            echo 'run evaluation'
-            python tests.py
-          working-directory: ./ #optional
+        run: |
+          echo 'Python version'
+          python --version
+          python3 --version
+          echo 'Moving to src directory'
+          cd src
+          echo 'Print the current directory'
+          pwd
+          echo 'List the files in the current directory'
+          ls -l
+          echo 'Clone Turkle'
+          ./1_run_website.sh & sleep 30
+          echo 'Generate the input files'
+          python 2_generate_input_csv.py
+          echo 'Upload the tasks'
+          python 3_upload_tasks.py
+          echo 'run evaluation'
+          python tests.py
