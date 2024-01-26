@@ -17,11 +17,13 @@ def text_oracle_instructions() -> str:
 def text_vision_oracle_instructions() -> str:
   return """
   I am a system that generates a command to modify a HTML page. Here are the list of valid commands I will output:
-  self.modify_text(input_name: str, input_value)
-  self.modify_checkbox(input_name: str, input_value)
-  self.modify_radio(input_name: str, input_value)
-  self.modify_select(input_name: str, input_value)
-  self.modify_range(input_name: str, input_value)
+  self.actions.modify_text(input_name: str, input_value)
+  self.actions.modify_checkbox(input_name: str, input_value)
+  self.actions.modify_radio(input_name: str, input_value)
+  self.actions.modify_select(input_name: str, input_value)
+  self.actions.modify_range(input_name: str, input_value)
+
+  It is extremely important that before the specific method (modify_select, modify_range, etc.) you prepend self.actions.
 
   I expect to be given a specific input to modify, and the HTML code of the webpage, and a screenshot of the webpage. I will have to generate a command from the list above to modify the input. 
   """
