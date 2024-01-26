@@ -305,15 +305,23 @@ class GPT4VModel(VisionModel):
 
         messages.append(new_message)
 
-        response = self.client.chat.completions.create(
-            model="gpt-4-vision-preview",
-            messages=messages,
-            temperature=1,
-            max_tokens=256,
-            top_p=1,
-            frequency_penalty=0,
-            presence_penalty=0
-        )
+        fail_count = 0
+        while fail_count < 5:
+            try: 
+                response = self.client.chat.completions.create(
+                    model="gpt-4-vision-preview",
+                    messages=messages,
+                    temperature=1,
+                    max_tokens=256,
+                    top_p=1,
+                    frequency_penalty=0,
+                    presence_penalty=0
+                )
+
+                break
+            except Exception as e:
+                fail_count += 1
+                print(f"Error getting action from GPT4V model {e}, trying again, current fail_count is {fail_count}")
 
         return response.choices[0].message.content
 
