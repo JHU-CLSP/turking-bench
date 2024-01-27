@@ -3,6 +3,7 @@ from enum import Enum
 
 import platform
 import os
+import io
 import subprocess
 import Xlib.display
 from PIL import Image, ImageDraw, ImageFont, ImageGrab
@@ -252,8 +253,13 @@ class GPT4VModel(VisionModel):
         }]
 
         for instance in few_shot_examples():
-            with open(instance[1], "rb") as img_file:
-                img_base64 = base64.b64encode(img_file.read()).decode("utf-8")
+            with Image.open(instance[1]) as img:
+                new_size = (int(img.width // 2.11), int(img.height // 2.11))
+                resized_img = img.resize(new_size, Image.ANTIALIAS)
+
+                buffer = io.BytesIO()
+                resized_img.save(buffer, format="PNG")  
+                img_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
 
             user_message = {
                 "role": "user",
@@ -280,8 +286,13 @@ class GPT4VModel(VisionModel):
             messages.append(assistant_message)
 
 
-        with open(image_path, "rb") as img_file:
-            img_base64 = base64.b64encode(img_file.read()).decode("utf-8")
+        with Image.open(image_path) as img:
+            new_size = (int(img.width // 2.11), int(img.height // 2.11))
+            resized_img = img.resize(new_size, Image.ANTIALIAS)
+
+            buffer = io.BytesIO()
+            resized_img.save(buffer, format="JPEG")  
+            img_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
 
         new_message = {
             "role": "user",
@@ -306,6 +317,7 @@ class GPT4VModel(VisionModel):
         messages.append(new_message)
 
         fail_count = 0
+        response = None 
         while fail_count < 5:
             try: 
                 response = self.client.chat.completions.create(
@@ -330,8 +342,13 @@ class GPT4VModel(VisionModel):
         This function gets the next action for the GPT4V Model
         """
         try:
-            with open(image_path, "rb") as img_file:
-                img_base64 = base64.b64encode(img_file.read()).decode("utf-8")
+            with Image.open(image_path) as img:
+                new_size = (int(img.width // 2.11), int(img.height // 2.11))
+                resized_img = img.resize(new_size, Image.ANTIALIAS)
+
+                buffer = io.BytesIO()
+                resized_img.save(buffer, format="JPEG")  
+                img_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
         except Exception as e:
             print(f"Error getting image {e}")
         
