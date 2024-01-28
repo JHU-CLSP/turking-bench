@@ -1,0 +1,2112 @@
+instance_id: 35097 <-> row_number: 1
+ --> inputs: ['rot-agree', 'rot-categorization', 'rot-moral-foundations', 'char-involved-general', 'rot-rewrite', 'rot-judgment', 'agency-fwd', 'action-fwd-good', 'fwd-agree', 'fwd-legal', 'fwd-pressure', 'char-involved-fwd', 'fwd-hypothetical', 'n-characters']
+ ------- evaluating input: Input(name=`rot-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-categorization`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-moral-foundations`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`char-involved-general`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`rot-rewrite`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-judgment`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`agency-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`action-fwd-good`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`n-characters`, type=`hidden`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> Per-instance overall score: 0.6923076923076923
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0], 'checkbox': [1.0, 1.0], 'text': [1.0, 1.0]}
+instance_id: 35096 <-> row_number: 0
+ --> inputs: ['rot-agree', 'rot-categorization', 'rot-moral-foundations', 'char-involved-general', 'rot-rewrite', 'rot-judgment', 'agency-fwd', 'action-fwd-good', 'fwd-agree', 'fwd-legal', 'fwd-pressure', 'char-involved-fwd', 'fwd-hypothetical', 'n-characters']
+ ------- evaluating input: Input(name=`rot-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`rot-categorization`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-moral-foundations`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`char-involved-general`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-rewrite`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-judgment`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`agency-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`action-fwd-good`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`n-characters`, type=`hidden`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> Per-instance overall score: 0.6923076923076923
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0], 'checkbox': [1.0, 1.0, 1.0, 1.0], 'text': [1.0, 1.0, 1.0, 1.0]}
+instance_id: 35100 <-> row_number: 4
+ --> inputs: ['rot-agree', 'rot-categorization', 'rot-moral-foundations', 'char-involved-general', 'rot-rewrite', 'rot-judgment', 'agency-fwd', 'action-fwd-good', 'fwd-agree', 'fwd-legal', 'fwd-pressure', 'char-involved-fwd', 'fwd-hypothetical', 'n-characters']
+ ------- evaluating input: Input(name=`rot-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-categorization`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-moral-foundations`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`char-involved-general`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-rewrite`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-judgment`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`agency-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`action-fwd-good`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`fwd-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`n-characters`, type=`hidden`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> Per-instance overall score: 0.6923076923076923
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0], 'checkbox': [1.0, 1.0, 1.0, 1.0, 1.0, 1.0], 'text': [1.0, 1.0, 1.0, 1.0, 1.0, 0.0]}
+instance_id: 35105 <-> row_number: 9
+ --> inputs: ['rot-agree', 'rot-categorization', 'rot-moral-foundations', 'char-involved-general', 'rot-rewrite', 'rot-judgment', 'agency-fwd', 'action-fwd-good', 'fwd-agree', 'fwd-legal', 'fwd-pressure', 'char-involved-fwd', 'fwd-hypothetical', 'n-characters']
+ ------- evaluating input: Input(name=`rot-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-categorization`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-moral-foundations`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`char-involved-general`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-rewrite`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-judgment`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`agency-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`action-fwd-good`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`fwd-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`n-characters`, type=`hidden`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> Per-instance overall score: 0.8461538461538461
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0], 'checkbox': [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], 'text': [1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0]}
+instance_id: 35098 <-> row_number: 2
+ --> inputs: ['rot-agree', 'rot-categorization', 'rot-moral-foundations', 'char-involved-general', 'rot-rewrite', 'rot-judgment', 'agency-fwd', 'action-fwd-good', 'fwd-agree', 'fwd-legal', 'fwd-pressure', 'char-involved-fwd', 'fwd-hypothetical', 'n-characters']
+ ------- evaluating input: Input(name=`rot-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-categorization`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-moral-foundations`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`char-involved-general`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-rewrite`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-judgment`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`agency-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`action-fwd-good`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ ------- evaluating input: Input(name=`fwd-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ ------- evaluating input: Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ ------- evaluating input: Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ ------- evaluating input: Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ ------- evaluating input: Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ ------- evaluating input: Input(name=`n-characters`, type=`hidden`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> Per-instance overall score: 0.7142857142857143
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0], 'checkbox': [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], 'text': [1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0]}
+instance_id: 35101 <-> row_number: 5
+ --> inputs: ['rot-agree', 'rot-categorization', 'rot-moral-foundations', 'char-involved-general', 'rot-rewrite', 'rot-judgment', 'agency-fwd', 'action-fwd-good', 'fwd-agree', 'fwd-legal', 'fwd-pressure', 'char-involved-fwd', 'fwd-hypothetical', 'n-characters']
+ ------- evaluating input: Input(name=`rot-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`rot-categorization`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-moral-foundations`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`char-involved-general`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-rewrite`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-judgment`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`agency-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`action-fwd-good`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`fwd-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`n-characters`, type=`hidden`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> Per-instance overall score: 0.6153846153846154
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0], 'checkbox': [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], 'text': [1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0]}
+instance_id: 35102 <-> row_number: 6
+ --> inputs: ['rot-agree', 'rot-categorization', 'rot-moral-foundations', 'char-involved-general', 'rot-rewrite', 'rot-judgment', 'agency-fwd', 'action-fwd-good', 'fwd-agree', 'fwd-legal', 'fwd-pressure', 'char-involved-fwd', 'fwd-hypothetical', 'n-characters']
+ ------- evaluating input: Input(name=`rot-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-categorization`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-moral-foundations`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`char-involved-general`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-rewrite`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-judgment`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`agency-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`action-fwd-good`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`n-characters`, type=`hidden`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> Per-instance overall score: 0.7692307692307693
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0], 'checkbox': [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], 'text': [1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0]}
+instance_id: 35103 <-> row_number: 7
+ --> inputs: ['rot-agree', 'rot-categorization', 'rot-moral-foundations', 'char-involved-general', 'rot-rewrite', 'rot-judgment', 'agency-fwd', 'action-fwd-good', 'fwd-agree', 'fwd-legal', 'fwd-pressure', 'char-involved-fwd', 'fwd-hypothetical', 'n-characters']
+ ------- evaluating input: Input(name=`rot-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`rot-categorization`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-moral-foundations`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`char-involved-general`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-rewrite`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-judgment`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`agency-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`action-fwd-good`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`n-characters`, type=`hidden`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> Per-instance overall score: 0.8461538461538461
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0], 'checkbox': [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], 'text': [1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0]}
+instance_id: 35104 <-> row_number: 8
+ --> inputs: ['rot-agree', 'rot-categorization', 'rot-moral-foundations', 'char-involved-general', 'rot-rewrite', 'rot-judgment', 'agency-fwd', 'action-fwd-good', 'fwd-agree', 'fwd-legal', 'fwd-pressure', 'char-involved-fwd', 'fwd-hypothetical', 'n-characters']
+ ------- evaluating input: Input(name=`rot-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`rot-categorization`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-moral-foundations`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`char-involved-general`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-rewrite`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-judgment`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`agency-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`action-fwd-good`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ ------- evaluating input: Input(name=`fwd-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ ------- evaluating input: Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ ------- evaluating input: Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ ------- evaluating input: Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ ------- evaluating input: Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ ------- evaluating input: Input(name=`n-characters`, type=`hidden`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> Per-instance overall score: 0.5714285714285714
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0], 'checkbox': [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], 'text': [1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0]}
+instance_id: 35099 <-> row_number: 3
+ --> inputs: ['rot-agree', 'rot-categorization', 'rot-moral-foundations', 'char-involved-general', 'rot-rewrite', 'rot-judgment', 'agency-fwd', 'action-fwd-good', 'fwd-agree', 'fwd-legal', 'fwd-pressure', 'char-involved-fwd', 'fwd-hypothetical', 'n-characters']
+ ------- evaluating input: Input(name=`rot-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`rot-categorization`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-moral-foundations`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`char-involved-general`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-rewrite`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-judgment`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`agency-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`action-fwd-good`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`fwd-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`n-characters`, type=`hidden`, task=`ROT Details [m=50] rocstories - 0 - 99`) -------
+ --> Per-instance overall score: 0.6923076923076923
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0], 'checkbox': [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], 'text': [1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0]}
+instance_id: 31660 <-> row_number: 28
+ --> inputs: ['url', 'primary_country', 'region', 'countries']
+ ------- evaluating input: Input(name=`url`, type=`text`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`primary_country`, type=`select`, task=`Associate countries and languages with Ethnologue`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`region`, type=`textarea`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`countries`, type=`checkbox`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.25
+ --> Per-instance per-field breakdown: {'text': [0.0], 'select': [1.0], 'textarea': [0.0], 'checkbox': [0.0]}
+instance_id: 31674 <-> row_number: 42
+ --> inputs: ['url', 'primary_country', 'region', 'countries']
+ ------- evaluating input: Input(name=`url`, type=`text`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`primary_country`, type=`select`, task=`Associate countries and languages with Ethnologue`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`region`, type=`textarea`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`countries`, type=`checkbox`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.25
+ --> Per-instance per-field breakdown: {'text': [0.0, 0.0], 'select': [1.0, 1.0], 'textarea': [0.0, 0.0], 'checkbox': [0.0, 0.0]}
+instance_id: 31675 <-> row_number: 43
+ --> inputs: ['url', 'primary_country', 'region', 'countries']
+ ------- evaluating input: Input(name=`url`, type=`text`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`primary_country`, type=`select`, task=`Associate countries and languages with Ethnologue`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`region`, type=`textarea`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`countries`, type=`checkbox`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.25
+ --> Per-instance per-field breakdown: {'text': [0.0, 0.0, 0.0], 'select': [1.0, 1.0, 1.0], 'textarea': [0.0, 0.0, 0.0], 'checkbox': [0.0, 0.0, 0.0]}
+instance_id: 31659 <-> row_number: 27
+ --> inputs: ['url', 'primary_country', 'region', 'countries']
+ ------- evaluating input: Input(name=`url`, type=`text`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`primary_country`, type=`select`, task=`Associate countries and languages with Ethnologue`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`region`, type=`textarea`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`countries`, type=`checkbox`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.0
+ --> Per-instance per-field breakdown: {'text': [0.0, 0.0, 0.0, 0.0], 'select': [1.0, 1.0, 1.0, 0.0], 'textarea': [0.0, 0.0, 0.0, 0.0], 'checkbox': [0.0, 0.0, 0.0, 0.0]}
+instance_id: 31640 <-> row_number: 8
+ --> inputs: ['url', 'primary_country', 'region', 'countries']
+ ------- evaluating input: Input(name=`url`, type=`text`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.8
+----> per-field score: 0.8
+ ------- evaluating input: Input(name=`primary_country`, type=`select`, task=`Associate countries and languages with Ethnologue`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`region`, type=`textarea`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`countries`, type=`checkbox`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.45
+ --> Per-instance per-field breakdown: {'text': [0.0, 0.0, 0.0, 0.0, 0.8], 'select': [1.0, 1.0, 1.0, 0.0, 1.0], 'textarea': [0.0, 0.0, 0.0, 0.0, 0.0], 'checkbox': [0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 31647 <-> row_number: 15
+ --> inputs: ['url', 'primary_country', 'region', 'countries']
+ ------- evaluating input: Input(name=`url`, type=`text`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`primary_country`, type=`select`, task=`Associate countries and languages with Ethnologue`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`region`, type=`textarea`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`countries`, type=`checkbox`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.25
+ --> Per-instance per-field breakdown: {'text': [0.0, 0.0, 0.0, 0.0, 0.8, 0.0], 'select': [1.0, 1.0, 1.0, 0.0, 1.0, 1.0], 'textarea': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'checkbox': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 31672 <-> row_number: 40
+ --> inputs: ['url', 'primary_country', 'region', 'countries']
+ ------- evaluating input: Input(name=`url`, type=`text`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`primary_country`, type=`select`, task=`Associate countries and languages with Ethnologue`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`region`, type=`textarea`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`countries`, type=`checkbox`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.0
+ --> Per-instance per-field breakdown: {'text': [0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0], 'select': [1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0], 'textarea': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'checkbox': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 31643 <-> row_number: 11
+ --> inputs: ['url', 'primary_country', 'region', 'countries']
+ ------- evaluating input: Input(name=`url`, type=`text`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`primary_country`, type=`select`, task=`Associate countries and languages with Ethnologue`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`region`, type=`textarea`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`countries`, type=`checkbox`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.25
+ --> Per-instance per-field breakdown: {'text': [0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0], 'select': [1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0], 'textarea': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'checkbox': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 31648 <-> row_number: 16
+ --> inputs: ['url', 'primary_country', 'region', 'countries']
+ ------- evaluating input: Input(name=`url`, type=`text`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`primary_country`, type=`select`, task=`Associate countries and languages with Ethnologue`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`region`, type=`textarea`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`countries`, type=`checkbox`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.25
+ --> Per-instance per-field breakdown: {'text': [0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0], 'select': [1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0], 'textarea': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'checkbox': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 31638 <-> row_number: 6
+ --> inputs: ['url', 'primary_country', 'region', 'countries']
+ ------- evaluating input: Input(name=`url`, type=`text`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.8
+----> per-field score: 0.8
+ ------- evaluating input: Input(name=`primary_country`, type=`select`, task=`Associate countries and languages with Ethnologue`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`region`, type=`textarea`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`countries`, type=`checkbox`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.45
+ --> Per-instance per-field breakdown: {'text': [0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.8], 'select': [1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0], 'textarea': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'checkbox': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 31644 <-> row_number: 12
+ --> inputs: ['url', 'primary_country', 'region', 'countries']
+ ------- evaluating input: Input(name=`url`, type=`text`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`primary_country`, type=`select`, task=`Associate countries and languages with Ethnologue`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`region`, type=`textarea`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`countries`, type=`checkbox`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.0
+ --> Per-instance per-field breakdown: {'text': [0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.8, 0.0], 'select': [1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0], 'textarea': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'checkbox': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 31646 <-> row_number: 14
+ --> inputs: ['url', 'primary_country', 'region', 'countries']
+ ------- evaluating input: Input(name=`url`, type=`text`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`primary_country`, type=`select`, task=`Associate countries and languages with Ethnologue`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`region`, type=`textarea`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`countries`, type=`checkbox`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.25
+ --> Per-instance per-field breakdown: {'text': [0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0], 'select': [1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0], 'textarea': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'checkbox': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 31663 <-> row_number: 31
+ --> inputs: ['url', 'primary_country', 'region', 'countries']
+ ------- evaluating input: Input(name=`url`, type=`text`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`primary_country`, type=`select`, task=`Associate countries and languages with Ethnologue`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`region`, type=`textarea`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`countries`, type=`checkbox`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.25
+ --> Per-instance per-field breakdown: {'text': [0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0], 'select': [1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0], 'textarea': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'checkbox': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 31655 <-> row_number: 23
+ --> inputs: ['url', 'primary_country', 'region', 'countries']
+ ------- evaluating input: Input(name=`url`, type=`text`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`primary_country`, type=`select`, task=`Associate countries and languages with Ethnologue`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`region`, type=`textarea`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.052631578947368425
+----> per-field score: 0.052631578947368425
+ ------- evaluating input: Input(name=`countries`, type=`checkbox`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.2631578947368421
+ --> Per-instance per-field breakdown: {'text': [0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0], 'select': [1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0], 'textarea': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.052631578947368425], 'checkbox': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 31635 <-> row_number: 3
+ --> inputs: ['url', 'primary_country', 'region', 'countries']
+ ------- evaluating input: Input(name=`url`, type=`text`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`primary_country`, type=`select`, task=`Associate countries and languages with Ethnologue`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`region`, type=`textarea`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`countries`, type=`checkbox`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.25
+ --> Per-instance per-field breakdown: {'text': [0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.0], 'select': [1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0], 'textarea': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.052631578947368425, 0.0], 'checkbox': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 31670 <-> row_number: 38
+ --> inputs: ['url', 'primary_country', 'region', 'countries']
+ ------- evaluating input: Input(name=`url`, type=`text`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`primary_country`, type=`select`, task=`Associate countries and languages with Ethnologue`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`region`, type=`textarea`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`countries`, type=`checkbox`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.25
+ --> Per-instance per-field breakdown: {'text': [0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'select': [1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0], 'textarea': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.052631578947368425, 0.0, 0.0], 'checkbox': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 31673 <-> row_number: 41
+ --> inputs: ['url', 'primary_country', 'region', 'countries']
+ ------- evaluating input: Input(name=`url`, type=`text`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`primary_country`, type=`select`, task=`Associate countries and languages with Ethnologue`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`region`, type=`textarea`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`countries`, type=`checkbox`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.25
+ --> Per-instance per-field breakdown: {'text': [0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'select': [1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], 'textarea': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.052631578947368425, 0.0, 0.0, 0.0], 'checkbox': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 31652 <-> row_number: 20
+ --> inputs: ['url', 'primary_country', 'region', 'countries']
+ ------- evaluating input: Input(name=`url`, type=`text`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`primary_country`, type=`select`, task=`Associate countries and languages with Ethnologue`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`region`, type=`textarea`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`countries`, type=`checkbox`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.5
+ --> Per-instance per-field breakdown: {'text': [0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'select': [1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], 'textarea': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.052631578947368425, 0.0, 0.0, 0.0, 0.0], 'checkbox': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]}
+instance_id: 31667 <-> row_number: 35
+ --> inputs: ['url', 'primary_country', 'region', 'countries']
+ ------- evaluating input: Input(name=`url`, type=`text`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`primary_country`, type=`select`, task=`Associate countries and languages with Ethnologue`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`region`, type=`textarea`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`countries`, type=`checkbox`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.0
+ --> Per-instance per-field breakdown: {'text': [0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'select': [1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0], 'textarea': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.052631578947368425, 0.0, 0.0, 0.0, 0.0, 0.0], 'checkbox': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]}
+instance_id: 31649 <-> row_number: 17
+ --> inputs: ['url', 'primary_country', 'region', 'countries']
+ ------- evaluating input: Input(name=`url`, type=`text`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.8
+----> per-field score: 0.8
+ ------- evaluating input: Input(name=`primary_country`, type=`select`, task=`Associate countries and languages with Ethnologue`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`region`, type=`textarea`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`countries`, type=`checkbox`, task=`Associate countries and languages with Ethnologue`) -------
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.45
+ --> Per-instance per-field breakdown: {'text': [0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.8], 'select': [1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0], 'textarea': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.052631578947368425, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'checkbox': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0]}
+instance_id: 35297 <-> row_number: 157
+ --> inputs: ['classification1', 'confidence1', 'classification2', 'classification3', 'confidence2', 'confidence3']
+ ------- evaluating input: Input(name=`classification1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`confidence1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`classification2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`classification3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ --> Per-instance overall score: 0.0
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0]}
+instance_id: 35374 <-> row_number: 234
+ --> inputs: ['classification1', 'confidence1', 'classification2', 'classification3', 'confidence2', 'confidence3']
+ ------- evaluating input: Input(name=`classification1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`confidence1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`classification2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`classification3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ --> Per-instance overall score: 0.0
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 0.0]}
+instance_id: 35423 <-> row_number: 283
+ --> inputs: ['classification1', 'confidence1', 'classification2', 'classification3', 'confidence2', 'confidence3']
+ ------- evaluating input: Input(name=`classification1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`confidence1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`classification2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`classification3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ --> Per-instance overall score: 0.5
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 0.0, 0.0, 1.0]}
+instance_id: 35522 <-> row_number: 382
+ --> inputs: ['classification1', 'confidence1', 'classification2', 'classification3', 'confidence2', 'confidence3']
+ ------- evaluating input: Input(name=`classification1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`confidence1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`classification2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`classification3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ --> Per-instance overall score: 0.0
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0]}
+instance_id: 35288 <-> row_number: 148
+ --> inputs: ['classification1', 'confidence1', 'classification2', 'classification3', 'confidence2', 'confidence3']
+ ------- evaluating input: Input(name=`classification1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`confidence1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`classification2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`classification3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ --> Per-instance overall score: 0.0
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 35387 <-> row_number: 247
+ --> inputs: ['classification1', 'confidence1', 'classification2', 'classification3', 'confidence2', 'confidence3']
+ ------- evaluating input: Input(name=`classification1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`confidence1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`classification2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`classification3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ --> Per-instance overall score: 0.5
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]}
+instance_id: 35437 <-> row_number: 297
+ --> inputs: ['classification1', 'confidence1', 'classification2', 'classification3', 'confidence2', 'confidence3']
+ ------- evaluating input: Input(name=`classification1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`confidence1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`classification2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`classification3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ --> Per-instance overall score: 0.0
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0]}
+instance_id: 35249 <-> row_number: 109
+ --> inputs: ['classification1', 'confidence1', 'classification2', 'classification3', 'confidence2', 'confidence3']
+ ------- evaluating input: Input(name=`classification1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`confidence1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`classification2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`classification3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ --> Per-instance overall score: 1.0
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0]}
+instance_id: 35377 <-> row_number: 237
+ --> inputs: ['classification1', 'confidence1', 'classification2', 'classification3', 'confidence2', 'confidence3']
+ ------- evaluating input: Input(name=`classification1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`confidence1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`classification2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`classification3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ --> Per-instance overall score: 0.0
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0]}
+instance_id: 35318 <-> row_number: 178
+ --> inputs: ['classification1', 'confidence1', 'classification2', 'classification3', 'confidence2', 'confidence3']
+ ------- evaluating input: Input(name=`classification1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`confidence1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`classification2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`classification3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ --> Per-instance overall score: 0.0
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 35430 <-> row_number: 290
+ --> inputs: ['classification1', 'confidence1', 'classification2', 'classification3', 'confidence2', 'confidence3']
+ ------- evaluating input: Input(name=`classification1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`confidence1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`classification2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`classification3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ --> Per-instance overall score: 0.0
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 35156 <-> row_number: 16
+ --> inputs: ['classification1', 'confidence1', 'classification2', 'classification3', 'confidence2', 'confidence3']
+ ------- evaluating input: Input(name=`classification1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`confidence1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`classification2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`classification3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ --> Per-instance overall score: 0.5
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]}
+instance_id: 35460 <-> row_number: 320
+ --> inputs: ['classification1', 'confidence1', 'classification2', 'classification3', 'confidence2', 'confidence3']
+ ------- evaluating input: Input(name=`classification1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`confidence1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`classification2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`classification3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ --> Per-instance overall score: 0.0
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0]}
+instance_id: 35240 <-> row_number: 100
+ --> inputs: ['classification1', 'confidence1', 'classification2', 'classification3', 'confidence2', 'confidence3']
+ ------- evaluating input: Input(name=`classification1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`confidence1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`classification2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`classification3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ --> Per-instance overall score: 1.0
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0]}
+instance_id: 35386 <-> row_number: 246
+ --> inputs: ['classification1', 'confidence1', 'classification2', 'classification3', 'confidence2', 'confidence3']
+ ------- evaluating input: Input(name=`classification1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`confidence1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`classification2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`classification3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ --> Per-instance overall score: 0.0
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0]}
+instance_id: 35442 <-> row_number: 302
+ --> inputs: ['classification1', 'confidence1', 'classification2', 'classification3', 'confidence2', 'confidence3']
+ ------- evaluating input: Input(name=`classification1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`confidence1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`classification2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`classification3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ --> Per-instance overall score: 0.0
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 35246 <-> row_number: 106
+ --> inputs: ['classification1', 'confidence1', 'classification2', 'classification3', 'confidence2', 'confidence3']
+ ------- evaluating input: Input(name=`classification1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`confidence1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`classification2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`classification3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ --> Per-instance overall score: 1.0
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0]}
+instance_id: 35147 <-> row_number: 7
+ --> inputs: ['classification1', 'confidence1', 'classification2', 'classification3', 'confidence2', 'confidence3']
+ ------- evaluating input: Input(name=`classification1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`confidence1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`classification2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`classification3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ --> Per-instance overall score: 1.0
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0]}
+instance_id: 35375 <-> row_number: 235
+ --> inputs: ['classification1', 'confidence1', 'classification2', 'classification3', 'confidence2', 'confidence3']
+ ------- evaluating input: Input(name=`classification1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`confidence1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`classification2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`classification3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ --> Per-instance overall score: 0.0
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0]}
+instance_id: 35204 <-> row_number: 64
+ --> inputs: ['classification1', 'confidence1', 'classification2', 'classification3', 'confidence2', 'confidence3']
+ ------- evaluating input: Input(name=`classification1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`confidence1`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`classification2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`classification3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence2`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ ------- evaluating input: Input(name=`confidence3`, type=`radio`, task=`Radiology Report Sentence Classification`) -------
+ --> Per-instance overall score: 0.5
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0]}
+instance_id: 36456 <-> row_number: 54
+ --> inputs: ['option0', 'option1', 'option2', 'option3', 'option4']
+ ------- evaluating input: Input(name=`option0`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option1`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option2`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option3`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option4`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.6
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 0.0, 1.0]}
+instance_id: 36452 <-> row_number: 50
+ --> inputs: ['option0', 'option1', 'option2', 'option3', 'option4']
+ ------- evaluating input: Input(name=`option0`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option1`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option2`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option3`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option4`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.8
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0]}
+instance_id: 36543 <-> row_number: 141
+ --> inputs: ['option0', 'option1', 'option2', 'option3', 'option4']
+ ------- evaluating input: Input(name=`option0`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option1`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option2`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option3`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option4`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.8
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0]}
+instance_id: 36450 <-> row_number: 48
+ --> inputs: ['option0', 'option1', 'option2', 'option3', 'option4']
+ ------- evaluating input: Input(name=`option0`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option1`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option2`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option3`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option4`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 1.0
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]}
+instance_id: 36494 <-> row_number: 92
+ --> inputs: ['option0', 'option1', 'option2', 'option3', 'option4']
+ ------- evaluating input: Input(name=`option0`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option1`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option2`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option3`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option4`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.2
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0]}
+instance_id: 36514 <-> row_number: 112
+ --> inputs: ['option0', 'option1', 'option2', 'option3', 'option4']
+ ------- evaluating input: Input(name=`option0`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option1`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option2`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option3`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option4`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.4
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0]}
+instance_id: 36471 <-> row_number: 69
+ --> inputs: ['option0', 'option1', 'option2', 'option3', 'option4']
+ ------- evaluating input: Input(name=`option0`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option1`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option2`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option3`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option4`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.4
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0]}
+instance_id: 36517 <-> row_number: 115
+ --> inputs: ['option0', 'option1', 'option2', 'option3', 'option4']
+ ------- evaluating input: Input(name=`option0`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option1`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option2`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option3`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option4`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.2
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0]}
+instance_id: 36443 <-> row_number: 41
+ --> inputs: ['option0', 'option1', 'option2', 'option3', 'option4']
+ ------- evaluating input: Input(name=`option0`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option1`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option2`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option3`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option4`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.8
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0]}
+instance_id: 36475 <-> row_number: 73
+ --> inputs: ['option0', 'option1', 'option2', 'option3', 'option4']
+ ------- evaluating input: Input(name=`option0`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option1`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option2`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option3`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option4`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.4
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0]}
+instance_id: 36435 <-> row_number: 33
+ --> inputs: ['option0', 'option1', 'option2', 'option3', 'option4']
+ ------- evaluating input: Input(name=`option0`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option1`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option2`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option3`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option4`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.6
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0]}
+instance_id: 36414 <-> row_number: 12
+ --> inputs: ['option0', 'option1', 'option2', 'option3', 'option4']
+ ------- evaluating input: Input(name=`option0`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option1`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option2`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option3`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option4`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.6
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0]}
+instance_id: 36481 <-> row_number: 79
+ --> inputs: ['option0', 'option1', 'option2', 'option3', 'option4']
+ ------- evaluating input: Input(name=`option0`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option1`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option2`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option3`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option4`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.8
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0]}
+instance_id: 36485 <-> row_number: 83
+ --> inputs: ['option0', 'option1', 'option2', 'option3', 'option4']
+ ------- evaluating input: Input(name=`option0`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option1`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option2`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option3`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option4`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.2
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0]}
+instance_id: 36451 <-> row_number: 49
+ --> inputs: ['option0', 'option1', 'option2', 'option3', 'option4']
+ ------- evaluating input: Input(name=`option0`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option1`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option2`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option3`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option4`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.8
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0]}
+instance_id: 36533 <-> row_number: 131
+ --> inputs: ['option0', 'option1', 'option2', 'option3', 'option4']
+ ------- evaluating input: Input(name=`option0`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option1`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option2`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option3`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option4`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.8
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0]}
+instance_id: 36477 <-> row_number: 75
+ --> inputs: ['option0', 'option1', 'option2', 'option3', 'option4']
+ ------- evaluating input: Input(name=`option0`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option1`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option2`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option3`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option4`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.8
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0]}
+instance_id: 36436 <-> row_number: 34
+ --> inputs: ['option0', 'option1', 'option2', 'option3', 'option4']
+ ------- evaluating input: Input(name=`option0`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option1`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option2`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option3`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option4`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 1.0
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]}
+instance_id: 36437 <-> row_number: 35
+ --> inputs: ['option0', 'option1', 'option2', 'option3', 'option4']
+ ------- evaluating input: Input(name=`option0`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option1`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option2`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option3`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option4`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.8
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0]}
+instance_id: 36426 <-> row_number: 24
+ --> inputs: ['option0', 'option1', 'option2', 'option3', 'option4']
+ ------- evaluating input: Input(name=`option0`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option1`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`option2`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option3`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`option4`, type=`radio`, task=`Reddit In-group Analysis Comment annotation 3`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.8
+ --> Per-instance per-field breakdown: {'radio': [1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0]}
+instance_id: 9618 <-> row_number: 150
+ --> inputs: ['adj_1', 'pos_qual_ctrl_4', 'adj_2', 'pos_qual_ctrl_5', 'adj_3', 'pos_qual_ctrl_3', 'adj_4', 'pos_qual_ctrl_2', 'pos_qual_ctrl_1', 'neg_qual_ctrl', 'adj_5', 'adj_6', 'adj_7', 'adj_8', 'adj_9', 'adj_10']
+ ------- evaluating input: Input(name=`adj_1`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_4`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_2`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_5`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_3`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_3`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_4`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_2`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_1`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`neg_qual_ctrl`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_5`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_6`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_7`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_8`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_9`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_10`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.625
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0]}
+instance_id: 9590 <-> row_number: 122
+ --> inputs: ['adj_1', 'adj_2', 'pos_qual_ctrl_5', 'pos_qual_ctrl_4', 'pos_qual_ctrl_1', 'adj_3', 'neg_qual_ctrl', 'pos_qual_ctrl_3', 'adj_4', 'adj_5', 'adj_6', 'pos_qual_ctrl_2', 'adj_7', 'adj_8', 'adj_9', 'adj_10']
+ ------- evaluating input: Input(name=`adj_1`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_2`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_5`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_4`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_1`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_3`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`neg_qual_ctrl`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_3`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_4`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_5`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_6`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_2`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_7`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_8`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_9`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_10`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.5
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0]}
+instance_id: 9554 <-> row_number: 86
+ --> inputs: ['pos_qual_ctrl_3', 'adj_1', 'adj_2', 'adj_3', 'pos_qual_ctrl_2', 'adj_4', 'adj_5', 'adj_6', 'adj_7', 'adj_8', 'neg_qual_ctrl', 'pos_qual_ctrl_1', 'pos_qual_ctrl_5', 'pos_qual_ctrl_4', 'adj_9', 'adj_10']
+ ------- evaluating input: Input(name=`pos_qual_ctrl_3`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_1`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_2`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_3`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_2`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_4`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_5`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_6`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_7`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_8`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`neg_qual_ctrl`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_1`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_5`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_4`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_9`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_10`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 1.0
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]}
+instance_id: 9599 <-> row_number: 131
+ --> inputs: ['pos_qual_ctrl_5', 'adj_1', 'pos_qual_ctrl_1', 'adj_2', 'adj_3', 'pos_qual_ctrl_4', 'adj_4', 'adj_5', 'pos_qual_ctrl_2', 'pos_qual_ctrl_3', 'adj_6', 'adj_7', 'neg_qual_ctrl', 'adj_8', 'adj_9', 'adj_10']
+ ------- evaluating input: Input(name=`pos_qual_ctrl_5`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_1`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_1`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_2`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_3`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_4`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_4`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_5`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_2`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_3`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_6`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_7`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`neg_qual_ctrl`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_8`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_9`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_10`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 1.0
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]}
+instance_id: 9475 <-> row_number: 7
+ --> inputs: ['pos_qual_ctrl_4', 'pos_qual_ctrl_5', 'adj_1', 'adj_2', 'adj_3', 'pos_qual_ctrl_2', 'adj_4', 'pos_qual_ctrl_1', 'adj_5', 'adj_6', 'neg_qual_ctrl', 'adj_7', 'adj_8', 'pos_qual_ctrl_3', 'adj_9', 'adj_10']
+ ------- evaluating input: Input(name=`pos_qual_ctrl_4`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_5`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_1`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_2`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_3`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_2`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_4`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_1`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_5`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_6`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`neg_qual_ctrl`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_7`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_8`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_3`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_9`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_10`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.8125
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0]}
+instance_id: 9483 <-> row_number: 15
+ --> inputs: ['adj_1', 'neg_qual_ctrl', 'adj_2', 'pos_qual_ctrl_2', 'pos_qual_ctrl_4', 'adj_3', 'adj_4', 'pos_qual_ctrl_5', 'adj_5', 'pos_qual_ctrl_3', 'adj_6', 'pos_qual_ctrl_1', 'adj_7', 'adj_8', 'adj_9', 'adj_10']
+ ------- evaluating input: Input(name=`adj_1`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`neg_qual_ctrl`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_2`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_2`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_4`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_3`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_4`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_5`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_5`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_3`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_6`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_1`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_7`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_8`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_9`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_10`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.75
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0]}
+instance_id: 9534 <-> row_number: 66
+ --> inputs: ['adj_1', 'adj_2', 'adj_3', 'adj_4', 'adj_5', 'neg_qual_ctrl', 'adj_6', 'adj_7', 'adj_8', 'pos_qual_ctrl_2', 'pos_qual_ctrl_4', 'pos_qual_ctrl_5', 'pos_qual_ctrl_1', 'pos_qual_ctrl_3', 'adj_9', 'adj_10']
+ ------- evaluating input: Input(name=`adj_1`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_2`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_3`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_4`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_5`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`neg_qual_ctrl`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_6`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_7`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_8`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_2`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_4`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_5`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_1`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_3`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_9`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_10`, type=`radio`, task=`Scalar Adjectives Identification`) -------
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.625
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0]}
+instance_id: 9574 <-> row_number: 106
+ --> inputs: ['pos_qual_ctrl_5', 'adj_1', 'adj_2', 'pos_qual_ctrl_4', 'pos_qual_ctrl_3', 'adj_3', 'pos_qual_ctrl_1', 'adj_4', 'neg_qual_ctrl', 'pos_qual_ctrl_2', 'adj_5', 'adj_6', 'adj_7', 'adj_8', 'adj_9', 'adj_10']
