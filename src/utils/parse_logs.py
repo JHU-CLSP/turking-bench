@@ -49,7 +49,7 @@ def group_log():
     Group the scores based on inputs
     """
 
-    ret = {}
+    data = {}
 
     with open("turk_logs_clean.txt", "r") as read_file:
         latest_task = ""
@@ -58,17 +58,21 @@ def group_log():
                 extracted_task = extract_task_info(line)
                 if extracted_task != latest_task:
                     # Skip this task since it only half finished in the logged run
-                    if extracted_task == "Scalar Adjectives Identification":
+                    skipped_task = ""
+                    if extracted_task == skipped_task:
                         break
 
-                    ret[extracted_task] = []
+                    data[extracted_task] = []
                     latest_task = extracted_task
             
             if line.startswith(" --> Per-instance overall score:"):
-                print(f"found a score line = {line}")
                 score = extract_overall_score(line)
-                print(f"score = {score}")
-                ret[latest_task].append(score)
+                data[latest_task].append(score)
+
+    ret = {}
+
+    for key in data:
+        ret[key] = sum(data[key]) / len(data[key])
 
     return ret
 
@@ -76,4 +80,6 @@ def group_log():
 if __name__ == '__main__':
     clean_log()
     res = group_log()
-    print(res)
+
+    for key in res:
+        print(f"{key}: {res[key]}")
