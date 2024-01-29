@@ -104,16 +104,20 @@ def group_log():
         ret[key] = {}
         ret[key]["all"] = sum(data[key]["all"]) / len(data[key]["all"])
 
+        temp = {}
         for breakdown in data[key]["breakdown"]:
             for field in breakdown:
                 if field not in ret:
-                    ret[key][field] = {}
-                    ret[key][field]["sum"] = 0 
-                    ret[key][field]["len"] = 0 
+                    temp[field] = {}
+                    temp[field]["sum"] = 0 
+                    temp[field]["len"] = 0 
 
                 for score in breakdown[field]:
-                    ret[key][field]["sum"] += score
-                    ret[key][field]["len"] += 1
+                    temp[field]["sum"] += score
+                    temp[field]["len"] += 1
+
+        for field in temp:
+            ret[key][field] = temp[field]["sum"] / temp[field]["len"]
 
     return ret
 
@@ -122,5 +126,7 @@ if __name__ == '__main__':
     clean_log()
     res = group_log()
 
-    for key in res:
-        print(f"{key}: {res[key]}")
+    with open("turk_logs_result.txt", "w") as write_file:
+        for key in sorted(res.keys()):
+            print(f"{key}: {res[key]}")
+            write_file.write(f"{key}: {res[key]}\n")
