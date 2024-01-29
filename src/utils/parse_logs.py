@@ -5,15 +5,21 @@ def clean_log():
     Clean the turk_logs.txt file to only contain the relevant information 
     """
     with open("turk_logs.txt", "r") as read_file, open("turk_logs_clean.txt", "w") as write_file:
+        latest_task = ""
         for line in read_file:
             # Figure out which lines to write back to the cleaned txt file
             if line.startswith("instance_id:") or line.startswith(" --> inputs:") \
-                or line.startswith(" ------- evaluating input:") \
-                or line.startswith("--> Computing the majority vote") \
-                or line.startswith(" --> scores:") or line.startswith("----> per-field score:") \
                 or line.startswith(" --> Per-instance overall score:") \
                 or line.startswith(" --> Per-instance per-field breakdown:"):
+                # or line.startswith(" --> scores:") or line.startswith("----> per-field score:") \
+                # or line.startswith("--> Computing the majority vote") \
                 write_file.write(line)
+
+            if line.startswith(" ------- evaluating input:"):
+                extracted_task = extract_task_info(line)
+                if extracted_task != latest_task:
+                    write_file.write(line)
+                    latest_task = extracted_task
 
 def extract_task_info(line: str) -> str:
     # Define the regex pattern
@@ -62,17 +68,17 @@ def group_log():
                     if extracted_task == skipped_task:
                         break
 
-                    data[extracted_task] = []
+                    data[extracted_task] = {"all": [], "breakdown": []}
                     latest_task = extracted_task
             
             if line.startswith(" --> Per-instance overall score:"):
                 score = extract_overall_score(line)
-                data[latest_task].append(score)
+                data[latest_task]["all"].append(score)
 
     ret = {}
 
     for key in data:
-        ret[key] = sum(data[key]) / len(data[key])
+        ret[key] = sum(data[key]["all"]) / len(data[key]["all"])
 
     return ret
 
