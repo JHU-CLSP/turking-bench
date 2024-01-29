@@ -12,9 +12,12 @@ from evaluation.actions import MyActions
 from evaluation.actions import ActionUtils
 from evaluation.input import Input
 from evaluation.prompts import get_encoded_input_prompt
+from evaluation.vision import Actions, GPT4VModel
 import logging
 from typing import List
 from utils.cleaning import clean_values
+import os
+import base64
 
 
 class Baseline:
@@ -311,6 +314,50 @@ class GPT4TextBaseline(Baseline):
         simplified_html = html
         text_prompt = get_encoded_input_prompt(input.name, simplified_html)
         command = ActionUtils.openai_call(text_prompt)
+
+        # find the index of "self.actions(" and drop anything before it.
+        # This is because the GPT4 model sometimes outputs a lot of text before the actual command
+        if not command.startswith("self.actions.") and "self.actions." in command:
+            command = command[command.find("self.actions."):]
+        if "```" in command:
+            command = command.replace("```", "")
+
+        try:
+            print(f"{Fore.BLUE}Executing one action: {command}")
+            exec(command)
+        except Exception as error:
+            print(f"{Fore.RED}Failed to execute an action {command}, error: {error}")
+
+class GPT4VisionTextBaseline(Baseline):
+    """
+    Interactive calls to GPT4V to solve the task
+    """
+
+    def solve(self, input: Input, **kwargs) -> None:
+        """
+        Communicate with GPT4 to solve the task
+        """
+
+        print("input:", input)
+        self.actions.wait_for_element(input.name)
+
+        # wait 0.1 sec for the page to fully load
+        sleep(0.1)
+        self.actions.maximize_window()
+        self.actions.scroll_to_element(input.name)
+        print("about to try executing one action, on the following input:", input.name)
+
+        # extract HTML
+        url = kwargs['url']
+        html = self.actions.get_html(url)
+
+        # simplify HTML
+        # simplified_html = ActionUtils.simplify_html(html)
+        actions = Actions()
+        image_path = actions.capture_screen("screenshot.png")
+        
+        model = GPT4VModel()
+        command = model.get_vision_text_baseline_action(input.name, html, image_path)
 
         # find the index of "self.actions(" and drop anything before it.
         # This is because the GPT4 model sometimes outputs a lot of text before the actual command
