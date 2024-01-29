@@ -1,4 +1,5 @@
 import re
+import ast
 
 def clean_log():
     """
@@ -49,6 +50,23 @@ def extract_overall_score(line: str) -> float:
     except ValueError:
         return None
 
+def extract_dict(line: str) -> dict:
+    # Find the start of the dictionary
+    dict_start = line.find("{")
+    # Find the end of the dictionary
+    dict_end = line.rfind("}") + 1
+
+    # Extract the dictionary string
+    dict_str = line[dict_start:dict_end]
+
+    # Convert the string to a dictionary
+    try:
+        extracted_dict = ast.literal_eval(dict_str)
+        return extracted_dict
+    except (ValueError, SyntaxError):
+        # Handle the exception if the string is not a valid Python literal
+        print(f"Error: The string {dict_str} is not a valid Python literal dictionary to extract {ValueError} {SyntaxError}")
+        return None
 
 def group_log():
     """
@@ -75,10 +93,27 @@ def group_log():
                 score = extract_overall_score(line)
                 data[latest_task]["all"].append(score)
 
+            
+            if line.startswith(" --> Per-instance per-field breakdown:"):
+                breakdown = extract_dict(line)
+                data[latest_task]["breakdown"].append(breakdown)
+
     ret = {}
 
     for key in data:
-        ret[key] = sum(data[key]["all"]) / len(data[key]["all"])
+        ret[key] = {}
+        ret[key]["all"] = sum(data[key]["all"]) / len(data[key]["all"])
+
+        for breakdown in data[key]["breakdown"]:
+            for field in breakdown:
+                if field not in ret:
+                    ret[key][field] = {}
+                    ret[key][field]["sum"] = 0 
+                    ret[key][field]["len"] = 0 
+
+                for score in breakdown[field]:
+                    ret[key][field]["sum"] += score
+                    ret[key][field]["len"] += 1
 
     return ret
 
