@@ -7,7 +7,7 @@ import io
 import subprocess
 import Xlib.display
 from PIL import Image, ImageDraw, ImageFont, ImageGrab
-# import pyautogui
+import pyautogui
 from openai import OpenAI
 from typing import List, Tuple
 import base64
@@ -29,9 +29,7 @@ class Actions:
         self.platform = platform.system()
 
         # if (self.platform == "Darwin" or self.platform == "Windows"):
-        # self.width, self.height = pyautogui.size()
-        self.width = -1
-        self.height = -1
+        self.width, self.height = pyautogui.size()
 
         self.dir = "screenshots"
 
@@ -42,9 +40,9 @@ class Actions:
         x_pixel = int(self.width * x_percent)
         y_pixel = int(self.height * y_percent)
 
-        # pyautogui.moveTo(x_pixel, y_pixel, duration=duration)
+        pyautogui.moveTo(x_pixel, y_pixel, duration=duration)
 
-        # pyautogui.click(x_pixel, y_pixel)
+        pyautogui.click(x_pixel, y_pixel)
 
         return "Successfully clicked"
 
@@ -54,10 +52,9 @@ class Actions:
         """
         text = text.replace("\\n", "\n")
         for char in text:
-            # pyautogui.write(char)
-            pass
+            pyautogui.write(char)
         
-        # pyautogui.press("enter")
+        pyautogui.press("enter")
 
         return "Successfully typed"
 
