@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-#SBATCH --job-name=dump
-#SBATCH --output=dump.out.log
-#SBATCH --error=dump.err.log
+#SBATCH --job-name=collect_field_stats
+#SBATCH --output=field_stats.out.log
+#SBATCH --error=field_stats.err.log
 #
 # Number of tasks needed for this job. Generally, used with MPI jobs
 #SBATCH --ntasks=1
