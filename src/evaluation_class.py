@@ -4,6 +4,7 @@ import configparser
 from datetime import datetime
 from evaluation.actions import MyActions
 from evaluation.input import Input
+from evaluation.prompts import current_instance
 from evaluation import baselines
 import html
 import json
@@ -37,7 +38,7 @@ colorama_init(autoreset=True)
 class GPTTokenizer:
     gpt_tokenizer = AutoTokenizer.from_pretrained("gpt2", max_length=1e5)
 
-    def tokenize(self, s):
+    def tokenize(self, s: str):
         tokens = self.gpt_tokenizer.tokenize(s)
         # GPT2 uses Byte-level BPE, which will include space as part of the word.
         # But for the first word of a sentence, there is no space before it.
@@ -793,16 +794,7 @@ class Evaluation:
                         task_field_statistics[task_name] = {}
                         task_field_statistics[task_name]["instances"] = len(instance_ids)
                         task_field_statistics[task_name]["total_instances"] = len(self.task_ids[task_name])
-
-                    for i in inputs:
-                        if i.type not in aggregate_field_statistics:
-                            aggregate_field_statistics[i.type] = 0
-
-                        aggregate_field_statistics[i.type] += 1
-
-                        if i.type not in task_field_statistics[task_name]:
-                            task_field_statistics[task_name][i.type] = 0
-                        task_field_statistics[task_name][i.type] += 1
+                        task_field_statistics[task_name]["prompt_len_sum"] = 0
 
                 if self.dump_features:
                     curr_data_to_be_dumped["task_name"] = task_name
@@ -818,6 +810,19 @@ class Evaluation:
                         self.actions.wait_for_element(i.name)
                     except:
                         print(f"{Fore.RED}Waited but didn't find input field with name `{i.name}`")
+
+                    if self.report_field_stats: 
+                        if i.type not in aggregate_field_statistics:
+                            aggregate_field_statistics[i.type] = 0
+
+                        aggregate_field_statistics[i.type] += 1
+
+                        if i.type not in task_field_statistics[task_name]:
+                            task_field_statistics[task_name][i.type] = 0
+                        task_field_statistics[task_name][i.type] += 1
+
+                        html = self.actions.get_html(url)
+                        task_field_statistics[task_name]["prompt_len_sum"] += len(self.xlingual_tokenizer.tokenize(current_instance(i.name, html)))
 
                     # make sure that the element is visible
                     element = self.driver.find_element(By.NAME, i.name)
