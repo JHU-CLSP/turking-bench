@@ -11,7 +11,7 @@ if __name__ == "__main__":
                         default="oracle")
     parser.add_argument("--tasks",
                         help="train, test_easy, test_hard, all, or subjective_test",
-                        default="test")
+                        default="test_easy")
     parser.add_argument("--max_instance_count",
                         help="maximum number of instances per task",
                         type=int,

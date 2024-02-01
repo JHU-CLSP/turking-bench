@@ -791,6 +791,8 @@ class Evaluation:
                 if self.report_field_stats:
                     if task_name not in task_field_statistics:
                         task_field_statistics[task_name] = {}
+                        task_field_statistics[task_name]["instances"] = len(instance_ids)
+                        task_field_statistics[task_name]["total_instances"] = len(self.task_ids[task_name])
 
                     for i in inputs:
                         if i.type not in aggregate_field_statistics:
