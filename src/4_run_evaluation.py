@@ -18,12 +18,12 @@ if __name__ == "__main__":
                         default=1)
     parser.add_argument("--do_eval",
                         help="whether to compute the quality against the gold data",
-                        action="store_true",
-                        default=True)
+                        action=argparse.BooleanOptionalAction)
+    parser.parse_args(['--no-do_eval'])
     parser.add_argument("--headless",
                         help="whether to run the browser `headless` (no visual interface).",
-                        action="store_true",
-                        default=False)
+                        action=argparse.BooleanOptionalAction)
+    parser.parse_args(['--no-headless'])
     parser.add_argument("--dump_features",
                         help="whether to dump the input/outputs of the model",
                         action="store_true",
