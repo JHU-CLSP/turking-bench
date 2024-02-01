@@ -1,5 +1,4 @@
 import argparse
-from colorama import init as colorama_init
 from colorama import Fore
 import evaluation_class
 

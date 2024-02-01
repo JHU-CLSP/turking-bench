@@ -868,7 +868,7 @@ class Evaluation:
                         # TODO: check if we really need to pass "answer_map" here?
                         self.solver.solve(i, output=answer_map[instance_id][i.name])
                     else:
-                        # random, nothing solvers, or model solvers that don't need to be trained
+                        # random, donothing solvers, or model solvers that don't need to be trained
                         kwargs = {'url': url}
                         self.solver.solve(i, **kwargs)
 
@@ -890,64 +890,66 @@ class Evaluation:
                 if self.dump_features:
                     data_to_be_dumped.append(copy.deepcopy(curr_data_to_be_dumped))
 
-                score = self.score_outputs(inputs, answers_map, results[task_name])
-                print(f"{Fore.CYAN} --> Per-instance overall score: {score}")
-                print(f"{Fore.CYAN} --> Per-instance per-field breakdown: {results[task_name]}")
+                if self.do_eval:
+                    score = self.score_outputs(inputs, answers_map, results[task_name])
+                    print(f"{Fore.CYAN} --> Per-instance overall score: {score}")
+                    print(f"{Fore.CYAN} --> Per-instance per-field breakdown: {results[task_name]}")
 
-                # wait for a keyboard press before continuing
-                # input("Press Enter to continue to the next instance...")
+                    # wait for a keyboard press before continuing
+                    # input("Press Enter to continue to the next instance...")
 
-                per_task_score += score
+                    per_task_score += score
 
-                if self.solver_type == 'oracle':
-                    assert score > 0.99, f"{Fore.RED}The oracle baseline should always get a score of 1.0. Instead got `{score}`."
-                elif self.solver_type == 'model':
-                    kwargs["scores"].append(score)
+                    if self.solver_type == 'oracle':
+                        assert score > 0.99, f"{Fore.RED}The oracle baseline should always get a score of 1.0. Instead got `{score}`."
+                    elif self.solver_type == 'model':
+                        kwargs["scores"].append(score)
 
-            # per-task statistics
-            per_task_score = per_task_score / len(instance_ids)
-            print(f"{Fore.MAGENTA}Task: {task_name} --> Score: {per_task_score}")
-            df = pd.DataFrame()
-            for task_name, inputs in results.items():
-                all_scores = []
-                for input_type, scores in inputs.items():
-                    avg_score = sum(scores) / len(scores)
-                    all_scores.extend(scores)
-                    df = pd.concat(
-                        [
-                            df, pd.DataFrame({
+            if self.do_eval:
+                # per-task statistics
+                per_task_score = per_task_score / len(instance_ids)
+                print(f"{Fore.MAGENTA}Task: {task_name} --> Score: {per_task_score}")
+                df = pd.DataFrame()
+                for task_name, inputs in results.items():
+                    all_scores = []
+                    for input_type, scores in inputs.items():
+                        avg_score = sum(scores) / len(scores)
+                        all_scores.extend(scores)
+                        df = pd.concat(
+                            [
+                                df, pd.DataFrame({
+                                'project': [task_name],
+                                'input_type': [input_type],
+                                'score': [avg_score]
+                            })
+                            ],
+                            ignore_index=True)
+
+
+                    # add the overall score across all the inputs
+                    df = pd.concat([
+                        df, pd.DataFrame({
                             'project': [task_name],
-                            'input_type': [input_type],
-                            'score': [avg_score]
-                        })
-                        ],
-                        ignore_index=True)
+                            'input_type': ["all"],
+                            'score': [sum(all_scores) / len(all_scores)]
+                        }
+                        )], ignore_index=True
+                    )
 
+                if 'project' not in df.columns:
+                    df.insert(0, 'project', '')
+                if 'input_type' not in df.columns:
+                    df.insert(1, 'input_type', '')
+                if 'score' not in df.columns:
+                    df.insert(1, 'score', '')
 
-                # add the overall score across all the inputs
-                df = pd.concat([
-                    df, pd.DataFrame({
-                        'project': [task_name],
-                        'input_type': ["all"],
-                        'score': [sum(all_scores) / len(all_scores)]
-                    }
-                    )], ignore_index=True
-                )
+                df = df.pivot(index='project', columns='input_type', values='score')
+                today = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+                df.to_csv(f'{self.solver_type}_{self.tasks}_scores_{today}.csv', index=True)
 
-            if 'project' not in df.columns:
-                df.insert(0, 'project', '')
-            if 'input_type' not in df.columns:
-                df.insert(1, 'input_type', '')
-            if 'score' not in df.columns:
-                df.insert(1, 'score', '')
-
-        df = df.pivot(index='project', columns='input_type', values='score')
-        today = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-        df.to_csv(f'{self.solver_type}_{self.tasks}_scores_{today}.csv', index=True)
-
-        # save results to json
-        with open(f'{self.solver_type}_scores_{today}.json', 'w') as f:
-            json.dump(results, f, indent=4)
+                # save results to json
+                with open(f'{self.solver_type}_scores_{today}.json', 'w') as f:
+                    json.dump(results, f, indent=4)
 
         if self.dump_features:
             with open(f'{directory}/{task_name}.json', 'w') as f:
