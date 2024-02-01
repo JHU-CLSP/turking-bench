@@ -39,4 +39,4 @@ $python --version
 which $python
 
 cd turk-instructions/src
-./1_rockfish_run_website.sh & sleep 10 && $python 4_run_evaluation.py --solver_type donothing --tasks all --max_instance_count 40
+./1_rockfish_run_website.sh & sleep 10 && $python 4_run_evaluation.py --solver_type donothing --tasks all --max_instance_count 40 --headless --no-do_eval
