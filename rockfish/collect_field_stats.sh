@@ -6,7 +6,7 @@
 #
 # Number of tasks needed for this job. Generally, used with MPI jobs
 #SBATCH --ntasks=1
-#SBATCH --partition=defq
+#SBATCH --partition=parallel
 #
 # Time format = HH:MM:SS, DD-HH:MM:SS
 #SBATCH --time=72:00:00
