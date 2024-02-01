@@ -4,7 +4,6 @@ import configparser
 from datetime import datetime
 from evaluation.actions import MyActions
 from evaluation.input import Input
-from evaluation.prompts import current_instance
 from evaluation import baselines
 import html
 import json
@@ -794,7 +793,10 @@ class Evaluation:
                         task_field_statistics[task_name] = {}
                         task_field_statistics[task_name]["instances"] = len(instance_ids)
                         task_field_statistics[task_name]["total_instances"] = len(self.task_ids[task_name])
-                        task_field_statistics[task_name]["prompt_len_sum"] = 0
+                        task_field_statistics[task_name]["task_templates"] = 0
+                        task_field_statistics[task_name]["instantiated_templates"] = 0
+                    html = self.actions.get_html(url)
+                    task_field_statistics[task_name]["task_templates"] += len(self.xlingual_tokenizer.tokenize(html))
 
                 if self.dump_features:
                     curr_data_to_be_dumped["task_name"] = task_name
@@ -820,9 +822,6 @@ class Evaluation:
                         if i.type not in task_field_statistics[task_name]:
                             task_field_statistics[task_name][i.type] = 0
                         task_field_statistics[task_name][i.type] += 1
-
-                        html = self.actions.get_html(url)
-                        task_field_statistics[task_name]["prompt_len_sum"] += len(self.xlingual_tokenizer.tokenize(current_instance(i.name, html)))
 
                     # make sure that the element is visible
                     element = self.driver.find_element(By.NAME, i.name)
@@ -883,6 +882,10 @@ class Evaluation:
                             'relevant_html': self.get_relevant_html(i),
                             'output': oracle_action_sequence
                         })
+
+                    if self.report_field_stats and input_idx == len(inputs) - 1:
+                        html = self.actions.get_html(url)
+                        task_field_statistics[task_name]["instantiated_templates"] += len(self.xlingual_tokenizer.tokenize(html))
 
                 if self.dump_features:
                     data_to_be_dumped.append(copy.deepcopy(curr_data_to_be_dumped))
