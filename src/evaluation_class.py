@@ -823,8 +823,13 @@ class Evaluation:
                             task_field_statistics[task_name][i.type] = 0
                         task_field_statistics[task_name][i.type] += 1
 
-                    # make sure that the element is visible
-                    element = self.driver.find_element(By.NAME, i.name)
+                    try:
+                        # make sure that the element is visible
+                        element = self.driver.find_element(By.NAME, i.name)
+                    except Exception as e:
+                        print(f"{Fore.RED}Could not find input field with name `{i.name}`")
+                        continue
+
                     if not element.is_displayed():
                         # commenting out this condition since sometimes we have visible inputs with 0 width or height
                         # or element.size['width'] <= 0 or element.size['height'] <= 0:
