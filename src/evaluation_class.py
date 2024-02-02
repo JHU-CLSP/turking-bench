@@ -793,10 +793,9 @@ class Evaluation:
                         task_field_statistics[task_name] = {}
                         task_field_statistics[task_name]["instances"] = len(instance_ids)
                         task_field_statistics[task_name]["total_instances"] = len(self.task_ids[task_name])
-                        task_field_statistics[task_name]["task_templates"] = 0
                         task_field_statistics[task_name]["instantiated_templates"] = 0
                     html = self.actions.get_html(url)
-                    task_field_statistics[task_name]["task_templates"] += len(self.xlingual_tokenizer.tokenize(html))
+                    task_field_statistics[task_name]["instantiated_templates"] += len(self.xlingual_tokenizer.tokenize(html))
 
                 if self.dump_features:
                     curr_data_to_be_dumped["task_name"] = task_name
@@ -888,9 +887,9 @@ class Evaluation:
                             'output': oracle_action_sequence
                         })
 
-                    if self.report_field_stats and input_idx == len(inputs) - 1:
-                        html = self.actions.get_html(url)
-                        task_field_statistics[task_name]["instantiated_templates"] += len(self.xlingual_tokenizer.tokenize(html))
+                    # if self.report_field_stats and input_idx == len(inputs) - 1:
+                    #     html = self.actions.get_html(url)
+                    #     task_field_statistics[task_name]["instantiated_templates"] += len(self.xlingual_tokenizer.tokenize(html))
 
                 if self.dump_features:
                     data_to_be_dumped.append(copy.deepcopy(curr_data_to_be_dumped))
