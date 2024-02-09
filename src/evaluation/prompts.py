@@ -445,6 +445,14 @@ def few_shot_examples() -> List[Tuple[str, str, str]]:
 
   return [instance_1, instance_2, instance_3]
 
+def current_instance(input_name: str, html_code: str) -> str:
+  return f"""
+  Given the above examples, generate a command that solves the following instance. Note, generate only a single command, without any explanations.
+
+  Input name: {input_name}
+  HTML: {html_code}
+  Output command:
+  """
 
 def get_encoded_input_prompt(input_name: str, html_code: str = None):
   ret = text_oracle_instructions()
@@ -457,12 +465,6 @@ def get_encoded_input_prompt(input_name: str, html_code: str = None):
      Output command: {instance[2]}
      """
     
-  ret += f"""
-  Given the above examples, generate a command that solves the following instance. Note, generate only a single command, without any explanations.
-
-  Input name: {input_name}
-  HTML: {html_code}
-  Output command:
-  """
+  ret += current_instance(input_name, html_code)
 
   return ret
