@@ -15,8 +15,12 @@ from dotenv import load_dotenv
 import copy
 from evaluation.prompts import text_vision_oracle_instructions, few_shot_examples
 
+import requests
+import json
+
 class Models(Enum):
     GPT4V = 1
+    OLlama = 2
 
 class ActionInstance:
     def __init__(self, type: str, data: str, duration: int = None):
@@ -232,6 +236,46 @@ class VisionModel:
                 return self.actions.keyboard_type(action["data"])
             case _:
                 raise ValueError("This action type is not implemented yet.")
+
+class OLlamaModel(VisionModel):
+    def __init__(self, model: str):
+        super().__init__(Models.OLlama)
+        self.model = model
+
+    def get_main_prompt(self, objective: str) -> str:
+        pass
+
+    def get_vision_text_baseline_action(self, input_name: str, html_code: str, image_path: str) -> str:
+        with Image.open(image_path) as img:
+            new_size = (int(img.width // 2.11), int(img.height // 2.11))
+            resized_img = img.resize(new_size, Image.ANTIALIAS)
+
+            buffer = io.BytesIO()
+            resized_img.save(buffer, format="JPEG")  
+            img_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
+
+        prompt = f"""
+                {text_vision_oracle_instructions()}
+                Input name: {input_name}
+                HTML:
+                {html_code}
+                """
+        url = "http://localhost:11434/api/generate"
+        payload = {
+            "model": self.model,
+            "prompt": prompt,
+            "images": [img_base64],
+            "stream": False 
+        }
+
+        response = requests.post(url, data=json.dumps(payload))
+        model_response = (json.loads(response.text))["response"]
+        print(f"OLlama response {model_response}")
+
+        return model_response
+
+    def get_next_action(self, messages: List[str], image_path: str) -> str:
+        pass
 
 class GPT4VModel(VisionModel):
     """

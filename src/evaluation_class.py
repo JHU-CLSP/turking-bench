@@ -67,8 +67,8 @@ class Evaluation:
             self.solver = baselines.OfflineModelPredictionsBaseline(driver=self.driver, actions=self.actions)
         elif solver_type == "gpt4-text":
             self.solver = baselines.GPT4TextBaseline(driver=self.driver, actions=self.actions)
-        elif solver_type == "gpt4-text-vision":
-            self.solver = baselines.GPT4VisionTextBaseline(driver=self.driver, actions=self.actions)
+        elif solver_type == "text-vision":
+            self.solver = baselines.VisionTextBaseline(driver=self.driver, actions=self.actions, model="ollama")
         else:
             raise Exception(f"{Fore.RED}Solver `{solver_type}` not implemented")
         self.tasks = tasks

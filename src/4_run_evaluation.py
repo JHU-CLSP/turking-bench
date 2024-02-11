@@ -30,7 +30,7 @@ if __name__ == "__main__":
     parser.add_argument("--report_field_stats",
                         help="whether to collect statistics for the HTML fields",
                         action="store_true",
-                        default=True)
+                        default=False)
 
     args = parser.parse_args()
     print(f"{Fore.BLUE}Solver: {args.solver_type}")
