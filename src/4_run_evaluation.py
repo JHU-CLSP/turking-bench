@@ -56,4 +56,4 @@ if __name__ == "__main__":
 
     # eval.enumerate_tasks(max_instance_count)
     # Collecting example code: python 4_run_evaluation.py --no-do_eval --headless > extract.txt
-    eval.enumerate_tasks(max_instance_count, task="DI Rationale Gen. evaluation - single 2", first_instance_only=True)
+    eval.enumerate_tasks(max_instance_count, task="wiki103_quality 7", first_instance_only=True, input_name="coherence")

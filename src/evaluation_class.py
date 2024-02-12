@@ -867,8 +867,8 @@ class Evaluation:
 
                     # *after* we dump *input* features, we execute the action
                     if self.solver_type == 'oracle':
-                        kwargs = {'answers': answers_map[i.name]}
-                        oracle_action_sequence = self.solver.solve(i, **kwargs)
+                        solver_kwargs = {'answers': answers_map[i.name]}
+                        oracle_action_sequence = self.solver.solve(i, **solver_kwargs)
                     elif self.solver_type == 'model':
                         # TODO: the name should be "offline" here?
                         # TODO: check if we really need to pass "answer_map" here?
@@ -889,13 +889,13 @@ class Evaluation:
                             'output': oracle_action_sequence
                         })
 
-                    if i.name == 'weakener_rationale1_relevant':
+                    if "input_name" in kwargs and i.name == kwargs["input_name"]:
                         print("=" * 20)
                         print("\"" * 3)
                         print(f"Input name: {i.name}")
                         print(f"HTML:\n{self.driver.execute_script('return document.documentElement.outerHTML;')}")
                         print("\"\"\",")
-                        print(f"{oracle_action_sequence['action_sequence']}")
+                        print(f"\"{oracle_action_sequence['action_sequence']}\"")
                         print("=" * 20)
 
                 if self.dump_features:

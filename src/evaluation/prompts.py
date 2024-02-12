@@ -1081,11 +1081,528 @@ HTML:
 
 </body></html>
 """,
-  os.path.join("img", "ex3.png"),
+  os.path.join("img", "ex4.png"),
 "self.actions.modify_checkbox('weakener_rationale1_relevant', 'on')"
   ]
 
-  return [instance_1, instance_2, instance_3]
+  instance_5 = [
+"""
+Input name: coherence
+HTML:
+<html lang="en"><head>
+    <title>Task</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  </head>
+  <body>
+    <form name="mturk_form" method="post" id="mturk_form" target="_parent" action="#">
+
+      <input type="hidden" name="csrfmiddlewaretoken" value="mxxOcvn5jEL7yVHlhiuinhjEiIAtwpy0kU5RiKRzY5fOqVTwgc2IiArDYf8KPFpp">
+      
+
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+                    <!-- BOOTSTRAP CSS -->
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+                    <!-- HITPUB CSS -->
+                    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
+                    <style id="hitpub_css">
+                        /***********************************************
+                        MOSAIC BOOSTRAP OVERWRITES
+                        ***********************************************/
+                        #hitinfo .card {
+                            border-radius: 0;
+                        }
+                        #hitinfo .card:first-child {
+                            border-bottom: 0;
+                        }
+                         #hitinfo button.btn-link {
+                            color: #06486F;
+                            text-decoration: none;
+                         }
+                        #hitinfo button.btn-link:hover {
+                            text-decoration: none;
+                        }
+                        #hit ul.question-choice {
+                            list-style-type: none;
+                        }
+                        /***********************************************
+                        MOSAIC GENERAL STYLING
+                        ***********************************************/
+                         body {
+                             font-family: "Open Sans", "Roboto", sans-serif;
+                         }
+                        textarea#feedback {
+                            width: 100%
+                        }
+                        input#submitButton {
+                            margin: auto;
+                            display: block;
+                            background-color: #2172a4;
+                            color: #fff;
+                            font-size: 1.125rem;
+                            padding: .5rem 1rem;
+                            cursor: pointer;
+                            border-radius: 1rem;
+                        }
+                        input#submitButton:hover {
+                            background-color: #06486F;
+                        }
+
+                        .key-term1{
+                            color: #0072B2;
+                            font-weight:bold;
+                        }
+
+                        .key-term2{
+                            color:#D55E00;
+                            font-weight:bold;
+                        }
+
+                        .key-term3{
+                            color: #CC79A7;
+                            font-weight:bold;
+                        }
+
+                    </style>
+                   <div id="hit" class="container">
+                        <div class="col-8 offset-2">
+                            <div class="accordion" id="hitinfo">
+                                <!-- INSTRUCTIONS START -->
+                                <div class="card">
+                                    <div class="card-header" id="instructionsHeading">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#instructions" aria-expanded="true" aria-controls="instructions">
+                                                Instructions (click to expand)
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div class="collapse" id="instructions" aria-labelledby="instructionsHeading" data-parent="#hitinfo">
+                                        <div class="card-body">
+                                            <p> In this HIT you will be presented with a <span class="key-term1">excerpt from a Wikipedia article</span> that acts as a prompt and a
+                                            <span class="key-term2">system's automatically-generated continuation</span> of that excerpt.
+                                            Your job is to rate the quality of the <span class="key-term2">system generation</span> across three axes:</p>
+                                            <ul>
+                                            <li> <strong>Coherence:</strong> <em> Is the system's generation <u>aligned in meaning and topic with the prompt?</u></em></li>
+                                            <li> <strong>Fluency:</strong> <em> Is the system's generation <u>grammatical, easy-to-read, and not repetitive?</u></em> </li>
+                                            <li> <strong>Overall:</strong> <em> All things considered, how good is the system's completion?</em></li>
+                                            </ul>
+
+                                            <p>You will be able to rate each of the three axes on a scale from 1 to 5, with
+                                            <span style="color:red;">1 being the lowest/worst</span> and
+                                            <span style="color:green;">5 the highest/best</span>. The specific scales are:</p>
+                                            <ul>
+                                                <li> <strong>Coherence:</strong>
+                                                    <ul>
+                                                        <li> <strong style="color:green;">5/5 (excellent):</strong> The system's result is perfectly in line with the prompt; topically speaking, I could see
+                                                        this type of continuation appearing in a Wikipedia article. </li>
+                                                        <li> 4/5: The system's result is closely related to the prompt with some minor errors that do not affect overall relevance to the prompt.</li>
+                                                        <li> 3/5: The system's result is, to some extent, relevant to the prompt, but there are some errors/irrelevant parts that stray from what a human might write.</li>
+                                                        <li> 2/5: At the first glance, the system's result seems somewhat related to the prompt, but the semantic inconsistency can be easily spotted.</li>
+                                                        <li> <strong style="color:red;">1/5 (bad):</strong> The system's result is completely off topic, or is semantically contradictory to the content contained in the prompt.</li>
+                                                    </ul>
+                                                </li>
+
+                                                <li> <strong>Fluency:</strong>
+                                                    <ul>
+                                                    <li> <strong style="color:green;">5/5 (excellent):</strong> The system's result is human-like, grammatically correct, not repetitive, introduces new content beyond the prompt, and is very easy to understand.</li>
+                                                    <li> 4/5: Very good fluency, but I could probably tell a machine wrote it based on a minor grammar error, an awkward reptition of the prompt, or other small mistake.</li>
+                                                    <li> 3/5: The system's result definitely contains minor errors, unnatural repetition, or awkward sentence-by-sentence progression, but I'm able to mostly understand.</li>
+                                                    <li> 2/5: While I managed to read most of the continuation, the grammar/language errors are difficult to overlook, there are many unnatural repetitions, or the continuation doesn't go beyond the prompt at all.</li>
+                                                    <li> <strong style="color:red;">1/5 (bad):</strong> The system's result does not make sense and it is unreadable.</li>
+                                                    </ul>
+                                                </li>
+
+                                                <li> <strong>Overall:</strong>
+                                                    <ul>
+                                                    <li> <strong style="color:green;">5/5 (excellent):</strong> The system's result is very informative, contains novel content, and seems plausible. It displays the right level of diversity and is enjoyable to read.</li>
+                                                    <li> 4/5: Pretty good.</li>
+                                                    <li> 3/5: Just okay.</li>
+                                                    <li> 2/5: Mediocre.</li>
+                                                    <li> <strong style="color:red;">1/5 (bad):</strong> The system's result is dull, repetitive, difficult to read.
+                                                    It doesn't contribute anything new, or, what it does contriubte is obviously wrong/nonsensical.</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <br>
+                                            <em>Note: While you should incorporate correctness into your "Overall" rating (e.g., if the system says "Superman won the World Cup", you should deduct points),
+                                            it's okay to rely on what you know and only deduct for obviously wrong information.
+                                            There's no need to search on your own to verify the correctness of the presented facts. </em>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- INSTRUCTIONS END -->
+
+                                <!-- EXAMPLES START -->
+                                <div class="card">
+                                    <div class="card-header" id="examplesHeading">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#examples" aria-expanded="true" aria-controls="examples">
+                                                Examples (click to expand)
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div class="collapse" id="examples" aria-labelledby="examplesHeading" data-parent="#hitinfo">
+                                        <div class="card-body">
+
+                                            <h3>Example 1 (bad completion):</h3>
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <h5><span class="key-term1">Prompt:</span></h5>
+                                                    <div class="col-12 align-text-center">
+                                                        <fieldset style="border: 1px solid #0072B2; margin: 20px; padding: 0 10px 10px; border-radius: 8px; padding-top: 10px; box-shadow: 0 0 3px #666;">
+                                                            ... Animals in the Trout Creek Mountains are adapted to the environment of the High Desert. Pronghorn are common in the open, sagebrush-covered...
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <h5><span class="key-term2">System's generation <u>(rate this!)</u>:</span></h5>
+                                                    <div class="col-12 align-text-center">
+                                                        <fieldset style="border: 1px solid #D55E00; margin: 20px; padding: 0 10px 10px; border-radius: 8px; padding-top: 10px; box-shadow: 0 0 3px #666;">
+                                                            ... watershed, where sea lions have become widespread due to habitat loss, and have been the dominant species since the Conquest of the Rocky Mountains.
+                                                            Altogether these animals are often found alone, detached from their surroundings, feeding on other animals, lice, and other similar items.
+                                                            After the commercial logging and expansion of the Rogue River and the construction of the Burnett Basin,
+                                                            the Elk River valley became a common center of pastoral activity. Elk River residents have settled...
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <ul>
+                                                <li> <strong style="color:lightcoral">Coherence: 2/5</strong> <em>Why?</em> The completion is partly related to animals, but
+                                                    the prompt is about the animals in the mountains, while the completion talks about a watershed with sea lions (and then talks about Elk River residents and flowers). </li>
+                                                <li> <strong>Fluency: 3/5</strong> <em>Why?</em> The sentences are individually grammatically correct without repetition,
+                                                but they are difficult to read because the topic changes very frequently. </li>
+                                                <li> <strong style="color:lightcoral">Overall: 2/5</strong>  <em>Why?</em> Each sentence provides new information beyond the prompt,
+                                                but there's a significant amount of obviously incorrect information (e.g., I know sea lions don't eat lice, and wouldn't be a dominant species in the Rocky Mountains).
+                                                Furthermore, while this isn't a repetitive generation, it "jumps around" topically more than it should. </li>
+                                            </ul>
+
+                                            <em> Note: for the "Overall" rating, there are other incorrect pieces of information in the system's output
+                                            (e.g., the Trout Creek Mountains are not in the Rocky Mountains). But only consider factual mistakes that are obvious to you
+                                            without additional research --- there's no need to verify every new fact that the system generates. </em>
+
+                                            <br>
+                                            <br>
+                                            <h3>Example 2 (good completion):</h3>
+
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <h5><span class="key-term1">Prompt:</span></h5>
+                                                    <div class="col-12 align-text-center">
+                                                        <fieldset style="border: 1px solid #0072B2; margin: 20px; padding: 0 10px 10px; border-radius: 8px; padding-top: 10px; box-shadow: 0 0 3px #666;">
+                                                            ... Richmond fell ill the day after the 1986 NASCAR annual banquet during a promotional trip to New York. He was not well enough to begin the 1987 NASCAR season despite...
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <h5><span class="key-term2">System's generation <u>(rate this!)</u>:</span></h5>
+                                                    <div class="col-12 align-text-center">
+                                                        <fieldset style="border: 1px solid #D55E00; margin: 20px; padding: 0 10px 10px; border-radius: 8px; padding-top: 10px; box-shadow: 0 0 3px #666;">
+                                                            ... lengthy hospitalization in Cleveland and further rest at home; when Richmond missed the Daytona 500, his condition was reported as double pneumonia.
+                                                            Media later reported that he had tested positive for acquired immune deficiency syndrome (AIDS).
+                                                            He returned to Pocono for the Miller High Life 500 during the middle of the year.
+                                                            Starting third, he led by the fifth lap and ultimately led 82 laps, including the final 46,
+                                                            to win the race by eight car-lengths over Bill Elliott. In the middle of the race, Richmond's car suffered gearbox problems...
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+
+                                            <ul>
+                                                <li> <strong style="color:green">Coherence: 5/5</strong> <em>Why?</em>
+                                                The completion is well-aligned with the prompt, because it continues to describe the health and career of a NASCAR driver. </li>
+
+                                                <li> <strong style="color:green">Fluency: 5/5</strong> <em>Why?</em> The sentences are grammatically correct,
+                                                and flow nicely as a career summary of the NASCAR driver.</li>
+
+                                                <li> <strong style="color:green">Overall: 5/5</strong>  <em>Why?</em> The completion doesn't repeat information in the prompt, and also provides interesting new information
+                                                about the driver's career that could definitely be correct.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- MTURK INPUT START -->
+                        <div class="col-8 mt-5 offset-2 align-content-center">
+                            
+                                <input type="hidden" value="" name="assignmentId" id="assignmentId">
+                                <input type="hidden" name="ee" id="ee">
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5><span class="key-term1">Prompt (do your best to understand the gist, even if it's hard!):</span></h5>
+                                        <div class="col-12 align-text-center">
+                                            <fieldset style="border: 1px solid #0072B2; margin: 20px; padding: 0 10px 10px; border-radius: 8px; padding-top: 10px; box-shadow: 0 0 3px #666;">
+                                                Rebuilt after the war, the city entered a "Golden Age" it become the largest city in Mississippi between 1890 and 1930, and a leading center for manufacturing...
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5><span class="key-term2">System's generation <u>(rate this!)</u>:</span></h5>
+                                        <div class="col-12 align-text-center">
+                                        <fieldset style="border: 1px solid #D55E00; margin: 20px; padding: 0 10px 10px; border-radius: 8px; padding-top: 10px; box-shadow: 0 0 3px #666;">
+                                            ...and trade. The city was also the site of the first major slave trade in the United States.
+The city was also the site of the first major slave-owned plantation in the South, and the first major industrial city in the United Kingdom. The city was also the site of the "<unk>" in the name of the "<penny ",="" a="" term="" that="" was="" used="" to="" describe="" the"="" <="" hard="" or="" "hard-white="" cotton,="" and="" cotton-sugar.="" the="" also="" in="" name="" of="" a"="" <pry="" fieldset="">
+
+                                        </penny></unk></fieldset></div>
+                                    </div>
+                                </div>
+
+                                <div class="row align-content-center mt-5">
+                                    <div class="col-12 align-content-center">
+                                        <div class="form-group">
+                                            <label for="coherence" id="coherencelabel" style="font-size: 32px"><strong>Coherence: 3/5</strong></label>
+                                            <br>
+                                            <small> <em> Is the system's generation <u>aligned in meaning and topic with the prompt?</u></em> </small>
+                                            <br>
+                                            <label class="float-left" style="color:red;">Bad</label>
+                                            <label class="float-right" style="color:green;">Excellent</label>
+                                            <br>
+                                            <input type="range" class="form-control-range" id="coherence" name="coherence" min="1" max="5" step="1" value="4" list="coherence_list">
+                                            <datalist id="coherence_list">
+                                                <option value="1" label="bad">
+                                                </option><option value="2" label="mediocre">
+                                                </option><option value="3" label="okay">
+                                                </option><option value="4" label="good">
+                                                </option><option value="5" label="excellent">
+                                            </option></datalist>
+                                            <small id="coherenceHelp" class="form-text text-muted" style="min-height:70px;">
+                                               The system's result is, to some extent, relevant to the prompt, but there are some errors/irrelevant parts that stray from what a human might write.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row align-content-center">
+                                    <div class="col-12 align-content-center">
+                                        <div class="form-group">
+                                            <label for="fluency" id="fluencylabel" style="font-size: 32px"><strong>Fluency: 3/5</strong></label>
+                                            <br>
+                                            <small> <em> Is the system's generation <u>grammatical, easy-to-read, and not repetitive? </u></em> </small>
+                                            <br>
+                                            <label class="float-left" style="color:red;">Bad</label>
+                                            <label class="float-right" style="color:green;">Excellent</label>
+                                            <br>
+                                            <input type="range" class="form-control-range" id="fluency" name="fluency" min="1" max="5" step="1" value="3" list="fluency_list">
+                                            <datalist id="fluency_list">
+                                                <option value="1" label="bad">
+                                                </option><option value="2" label="mediocre">
+                                                </option><option value="3" label="okay">
+                                                </option><option value="4" label="good">
+                                                </option><option value="5" label="excellent">
+                                            </option></datalist>
+                                            <small id="fluencyHelp" class="form-text text-muted" style="min-height:70px;">
+                                                The system's result definitely contains minor errors, unnatural repetition, or awkward sentence-by-sentence progression, but I'm able to mostly understand.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row align-content-center">
+                                    <div class="col-12 align-content-center">
+                                        <div class="form-group">
+                                            <label for="overall" id="overalllabel" style="font-size: 32px"><strong>Overall: 3/5</strong></label>
+                                            <br>
+                                            <small> <em> All things considered, <u>how good is the system's generation?</u> </em> </small>
+                                            <br>
+                                            <label class="float-left" style="color:red;">Bad</label>
+                                            <label class="float-right" style="color:green;">Excellent</label>
+                                            <br>
+                                            <input type="range" class="form-control-range" id="overall" name="overall" min="1" max="5" step="1" value="3" list="overall_list">
+                                            <datalist id="overall_list">
+                                                <option value="1" label="bad">
+                                                </option><option value="2" label="mediocre">
+                                                </option><option value="3" label="okay">
+                                                </option><option value="4" label="good">
+                                                </option><option value="5" label="excellent">
+                                            </option></datalist>
+                                            <small id="overallHelp" class="form-text text-muted" style="min-height:70px;">
+                                                Just okay.
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- OPTIONAL FEEDBACK -->
+                                <div class="row mt-5">
+                                    <div class="col-8 offset-2 col-lg-6 offset-lg-3">
+                                        <p>(Optional) Please let us know if anything was unclear, if you experienced any issues, or if you have any other feedback for us.</p>
+                                        <textarea id="feedback" name="feedback" rows="3"></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- SUBMIT BUTTON -->
+                                <div class="row mt-5">
+                                    <div class="col-2 offset-5">
+                                        <input id="submitButton" onclick="getnext()" type="submit" value="Submit">
+                                    </div>
+                                </div>
+
+                            
+                            <script language="Javascript">turkSetAssignmentID();</script>
+                        </div>
+                        <!-- MTURK INPUT END -->
+
+                    </div></form>
+		            <!-- HIT END -->
+
+                    <!-- BOOSTRAP JS -->
+                    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+                    <!-- HITPUB JS -->
+                    <script id="hitpub_js">
+
+                        // TimeMe.js
+                        (function () { var e, t; e = this, t = function () { var r = { startStopTimes: {}, idleTimeoutMs: 3e4, currentIdleTimeMs: 0, checkStateRateMs: 250, active: !1, idle: !1, currentPageName: "default-page-name", timeElapsedCallbacks: [], userLeftCallbacks: [], userReturnCallbacks: [], trackTimeOnElement: function (e) { var t = document.getElementById(e); t && (t.addEventListener("mouseover", function () { r.startTimer(e) }), t.addEventListener("mousemove", function () { r.startTimer(e) }), t.addEventListener("mouseleave", function () { r.stopTimer(e) }), t.addEventListener("keypress", function () { r.startTimer(e) }), t.addEventListener("focus", function () { r.startTimer(e) })) }, getTimeOnElementInSeconds: function (e) { var t = r.getTimeOnPageInSeconds(e); return t || 0 }, startTimer: function (e, t) { if (e || (e = r.currentPageName), void 0 === r.startStopTimes[e]) r.startStopTimes[e] = []; else { var n = r.startStopTimes[e], i = n[n.length - 1]; if (void 0 !== i && void 0 === i.stopTime) return } r.startStopTimes[e].push({ startTime: t || new Date, stopTime: void 0 }), r.active = !0, r.idle = !1 }, stopAllTimers: function () { for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++)r.stopTimer(e[t]) }, stopTimer: function (e, t) { e || (e = r.currentPageName); var n = r.startStopTimes[e]; void 0 !== n && 0 !== n.length && (void 0 === n[n.length - 1].stopTime && (n[n.length - 1].stopTime = t || new Date), r.active = !1) }, getTimeOnCurrentPageInSeconds: function () { return r.getTimeOnPageInSeconds(r.currentPageName) }, getTimeOnPageInSeconds: function (e) { var t = r.getTimeOnPageInMilliseconds(e); return void 0 === t ? void 0 : t / 1e3 }, getTimeOnCurrentPageInMilliseconds: function () { return r.getTimeOnPageInMilliseconds(r.currentPageName) }, getTimeOnPageInMilliseconds: function (e) { var t = r.startStopTimes[e]; if (void 0 !== t) { for (var n = 0, i = 0; i < t.length; i++) { var s = t[i].startTime, o = t[i].stopTime; void 0 === o && (o = new Date), n += o - s } return Number(n) } }, getTimeOnAllPagesInSeconds: function () { for (var e = [], t = Object.keys(r.startStopTimes), n = 0; n < t.length; n++) { var i = t[n], s = r.getTimeOnPageInSeconds(i); e.push({ pageName: i, timeOnPage: s }) } return e }, setIdleDurationInSeconds: function (e) { var t = parseFloat(e); if (!1 !== isNaN(t)) throw { name: "InvalidDurationException", message: "An invalid duration time (" + e + ") was provided." }; return r.idleTimeoutMs = 1e3 * e, this }, setCurrentPageName: function (e) { return r.currentPageName = e, this }, resetRecordedPageTime: function (e) { delete r.startStopTimes[e] }, resetAllRecordedPageTimes: function () { for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++)r.resetRecordedPageTime(e[t]) }, resetIdleCountdown: function () { r.idle && r.triggerUserHasReturned(), r.idle = !1, r.currentIdleTimeMs = 0 }, callWhenUserLeaves: function (e, t) { this.userLeftCallbacks.push({ callback: e, numberOfTimesToInvoke: t }) }, callWhenUserReturns: function (e, t) { this.userReturnCallbacks.push({ callback: e, numberOfTimesToInvoke: t }) }, triggerUserHasReturned: function () { if (!r.active) for (var e = 0; e < this.userReturnCallbacks.length; e++) { var t = this.userReturnCallbacks[e], n = t.numberOfTimesToInvoke; (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback()) } r.startTimer() }, triggerUserHasLeftPage: function () { if (r.active) for (var e = 0; e < this.userLeftCallbacks.length; e++) { var t = this.userLeftCallbacks[e], n = t.numberOfTimesToInvoke; (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback()) } r.stopAllTimers() }, callAfterTimeElapsedInSeconds: function (e, t) { r.timeElapsedCallbacks.push({ timeInSeconds: e, callback: t, pending: !0 }) }, checkState: function () { for (var e = 0; e < r.timeElapsedCallbacks.length; e++)r.timeElapsedCallbacks[e].pending && r.getTimeOnCurrentPageInSeconds() > r.timeElapsedCallbacks[e].timeInSeconds && (r.timeElapsedCallbacks[e].callback(), r.timeElapsedCallbacks[e].pending = !1); !1 === r.idle && r.currentIdleTimeMs > r.idleTimeoutMs ? (r.idle = !0, r.triggerUserHasLeftPage()) : r.currentIdleTimeMs += r.checkStateRateMs }, visibilityChangeEventName: void 0, hiddenPropName: void 0, listenForVisibilityEvents: function () { void 0 !== document.hidden ? (r.hiddenPropName = "hidden", r.visibilityChangeEventName = "visibilitychange") : void 0 !== document.mozHidden ? (r.hiddenPropName = "mozHidden", r.visibilityChangeEventName = "mozvisibilitychange") : void 0 !== document.msHidden ? (r.hiddenPropName = "msHidden", r.visibilityChangeEventName = "msvisibilitychange") : void 0 !== document.webkitHidden && (r.hiddenPropName = "webkitHidden", r.visibilityChangeEventName = "webkitvisibilitychange"), document.addEventListener(r.visibilityChangeEventName, function () { document[r.hiddenPropName] ? r.triggerUserHasLeftPage() : r.triggerUserHasReturned() }, !1), window.addEventListener("blur", function () { r.triggerUserHasLeftPage() }), window.addEventListener("focus", function () { r.triggerUserHasReturned() }), document.addEventListener("mousemove", function () { r.resetIdleCountdown() }), document.addEventListener("keyup", function () { r.resetIdleCountdown() }), document.addEventListener("touchstart", function () { r.resetIdleCountdown() }), window.addEventListener("scroll", function () { r.resetIdleCountdown() }), setInterval(function () { r.checkState() }, r.checkStateRateMs) }, websocket: void 0, websocketHost: void 0, setUpWebsocket: function (e) { if (window.WebSocket && e) { var t = e.websocketHost; try { r.websocket = new WebSocket(t), window.onbeforeunload = function () { r.sendCurrentTime(e.appId) }, r.websocket.onopen = function () { r.sendInitWsRequest(e.appId) }, r.websocket.onerror = function (e) { console && console.log("Error occurred in websocket connection: " + e) }, r.websocket.onmessage = function (e) { console && console.log(e.data) } } catch (e) { console && console.error("Failed to connect to websocket host.  Error:" + e) } } return this }, websocketSend: function (e) { r.websocket.send(JSON.stringify(e)) }, sendCurrentTime: function (e) { var t = { type: "INSERT_TIME", appId: e, timeOnPageMs: r.getTimeOnCurrentPageInMilliseconds(), pageName: r.currentPageName }; r.websocketSend(t) }, sendInitWsRequest: function (e) { var t = { type: "INIT", appId: e }; r.websocketSend(t) }, initialize: function (e) { var t = r.idleTimeoutMs || 30, n = r.currentPageName || "default-page-name", i = void 0, s = void 0; e && (t = e.idleTimeoutInSeconds || t, n = e.currentPageName || n, i = e.websocketOptions, s = e.initialStartTime), r.setIdleDurationInSeconds(t).setCurrentPageName(n).setUpWebsocket(i).listenForVisibilityEvents(), r.startTimer(void 0, s) } }; return r }, "undefined" != typeof module && module.exports ? module.exports = t() : "function" == typeof define && define.amd ? define([], function () { return e.TimeMe = t() }) : e.TimeMe = t() }).call(this);
+
+                        TimeMe.initialize({
+                            currentPageName: "task",
+                            idleTimeoutInSeconds: 30
+                        });
+
+
+
+                        $(document).ready(function() {
+                            var cookie_name = '_task_repetition_v1';
+
+                            $('.collapse').collapse({ 'toggle': false }).on('hidden.bs.collapse', function() {
+                        	if (this.id) {
+                                    localStorage[this.id + cookie_name] = 'true';
+                        	}
+                            }).on('shown.bs.collapse', function() {
+                        	if (this.id) {
+                                    localStorage.removeItem(this.id + cookie_name);
+                        	}
+                            }).each(function() {
+                        	if (this.id && localStorage[this.id + cookie_name] == 'true' ) {
+                                    $(this).collapse('hide');
+                        	}
+                            });
+
+
+                            $('#submitButton').click(function () {
+                                try {
+                                    $('input[name=ee]').attr('value', TimeMe.getTimeOnCurrentPageInSeconds());
+                                } catch {
+                                }
+                                return true;
+                            });
+
+                            $('#coherence').on('input', function() {
+                                var value = $(this).val()
+                                if(value == 5) {
+                                    $('#coherenceHelp').text(
+                                        "The system's result is perfectly in line with the prompt; topically speaking, I could see "+
+                                        "this type of continuation appearing in a Wikipedia article.");
+                                    $('#coherencelabel').html('<strong style="color:green;">Coherence: 5/5</strong>');
+                                }
+                                else if(value == 4) {
+                                    $('#coherenceHelp').text("The system's result is closely related to the prompt with some minor errors that do not affect overall relevance to the prompt.");
+                                    $('#coherencelabel').html('<strong style="color:mediumseagreen;">Coherence: 4/5</strong>');
+                                }
+                                else if(value == 3) {
+                                    $('#coherenceHelp').text("The system's result is, to some extent, relevant to the prompt, but there are some errors/irrelevant parts that stray from what a human might write.");
+                                    $('#coherencelabel').html('<strong>Coherence: 3/5</strong>');
+                                }
+                                else if(value == 2) {
+                                    $('#coherenceHelp').text("At the first glance, the system's result seems somewhat related to the prompt, but the semantic inconsistency can be easily spotted.");
+                                    $('#coherencelabel').html('<strong style="color:lightcoral">Coherence: 2/5</strong>');
+                                }
+                                else if(value == 1) {
+                                    $('#coherenceHelp').text("The system's result is completely off topic, or is semantically contradictory to the content contained in the prompt.");
+                                    $('#coherencelabel').html('<strong style="color:red">Coherence: 1/5</strong>');
+                                }
+                            });
+
+                            $('#fluency').on('input', function() {
+                                var value = $(this).val()
+                                if(value == 5) {
+                                    $('#fluencyHelp').text(
+                                        "The system's result is human-like, grammatically correct, not repetitive, introduces new content beyond the prompt, and is very easy to understand.");
+                                    $('#fluencylabel').html('<strong style="color:green;">Fluency: 5/5</strong>');
+                                }
+                                else if(value == 4) {
+                                    $('#fluencyHelp').text("Very good fluency, but I could probably tell a machine wrote it based on a minor grammar error, an awkward reptition of the prompt, or other small mistake.");
+                                    $('#fluencylabel').html('<strong style="color:mediumseagreen;">Fluency: 4/5</strong>');
+                                }
+                                else if(value == 3) {
+                                    $('#fluencyHelp').text("The system's result definitely contains minor errors, unnatural repetition, or awkward sentence-by-sentence progression, but I'm able to mostly understand.");
+                                    $('#fluencylabel').html('<strong>Fluency: 3/5</strong>');
+                                }
+                                else if(value == 2) {
+                                    $('#fluencyHelp').text("While I managed to read most of the continuation, the grammar/language errors are difficult to overlook, there are many unnatural repetitions, or the continuation doesn't go beyond the prompt at all.");
+                                    $('#fluencylabel').html('<strong style="color:lightcoral">Fluency: 2/5</strong>');
+                                }
+                                else if(value == 1) {
+                                    $('#fluencyHelp').text("The system's result does not make sense and it is unreadable.");
+                                    $('#fluencylabel').html('<strong style="color:red">Fluency: 1/5</strong>');
+                                }
+                            });
+
+                            $('#overall').on('input', function() {
+                                var value = $(this).val()
+                                if(value == 5) {
+                                    $('#overallHelp').text(
+                                        "The system's result is very informative, contains novel content, and seems plausible. It displays the right level of diversity and is enjoyable to read.");
+                                    $('#overalllabel').html('<strong style="color:green;">Overall: 5/5</strong>');
+                                }
+                                else if(value == 4) {
+                                    $('#overallHelp').text("Pretty good");
+                                    $('#overalllabel').html('<strong style="color:mediumseagreen;">Overall: 4/5</strong>');
+
+                                }
+                                else if(value == 3) {
+                                    $('#overallHelp').text("Just okay.");
+                                    $('#overalllabel').html('<strong>Overall: 3/5</strong>');
+                                }
+                                else if(value == 2) {
+                                    $('#overallHelp').text("Mediocre.");
+                                    $('#overalllabel').html('<strong style="color:lightcoral">Overall: 2/5</strong>');
+                                }
+                                else if(value == 1) {
+                                    $('#overallHelp').text("The system's result is dull, repetitive, difficult to read. It doesn't contribute anything new, or, what it does contriubte is obviously wrong/nonsensical.");
+                                    $('#overalllabel').html('<strong style="color:red">Overall: 1/5</strong>');
+                                }
+                            });
+
+
+
+
+                        });
+
+                    </script>
+
+      
+    
+  
+
+</body></html>
+""",
+  os.path.join("img", "ex5.png"),
+"self.actions.modify_range('coherence', '4.0')"
+  ]
+
+  os.path.join("img", "ex4.png"),
+  return [instance_1, instance_2, instance_3, instance_4]
 
 def current_instance(input_name: str, html_code: str) -> str:
   return f"""
