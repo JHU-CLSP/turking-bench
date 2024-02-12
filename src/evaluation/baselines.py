@@ -12,7 +12,7 @@ from evaluation.actions import MyActions
 from evaluation.actions import ActionUtils
 from evaluation.input import Input
 from evaluation.prompts import get_encoded_input_prompt
-from evaluation.vision import Actions, GPT4VModel
+from evaluation.vision import Actions, GPT4VModel, OLlamaModel
 import logging
 from typing import List
 from utils.cleaning import clean_values
@@ -328,10 +328,38 @@ class GPT4TextBaseline(Baseline):
         except Exception as error:
             print(f"{Fore.RED}Failed to execute an action {command}, error: {error}")
 
-class GPT4VisionTextBaseline(Baseline):
+class VisionTextBaseline(Baseline):
     """
-    Interactive calls to GPT4V to solve the task
+    Interactive calls to a VLM to solve the task
     """
+    def __init__(self, actions: MyActions, driver, model: str):
+        super().__init__(actions, driver)
+        self.model = model
+
+    def get_relevant_html(self, input: Input):
+        """
+        This function returns an array of the the relevant HTML lines for a given input field.
+        If you want it to be a string of HTML, just to_string this list concatenating one after another
+        """
+
+        print("input", input)
+        target_element = self.driver.execute_script(f"return document.getElementsByName('{input.name}')[0].outerHTML")
+        unfiltered_HTML = self.driver.execute_script(
+            f"return document.getElementsByName('{input.name}')[0].parentElement.parentElement.outerHTML")
+        HTML_arr = unfiltered_HTML.split(">")
+        mid_idx = -1
+        for idx, i in enumerate(HTML_arr):
+            HTML_arr[idx] = i + ">"
+            if HTML_arr[idx] == target_element:
+                mid_idx = idx
+
+        relevant_html = []
+        upper_bound = 5
+        lower_bound = 10
+        for i in range(max(0, mid_idx - upper_bound), min(len(HTML_arr), mid_idx + lower_bound)):
+            relevant_html.append(HTML_arr[i])
+
+        return relevant_html
 
     def solve(self, input: Input, **kwargs) -> None:
         """
@@ -353,11 +381,19 @@ class GPT4VisionTextBaseline(Baseline):
 
         # simplify HTML
         # simplified_html = ActionUtils.simplify_html(html)
+        relevant_html = self.get_relevant_html(input)
         actions = Actions()
         image_path = actions.capture_screen("screenshot.png")
         
-        model = GPT4VModel()
-        command = model.get_vision_text_baseline_action(input.name, html, image_path)
+        match self.model:
+            case "gpt4v":
+                model = GPT4VModel()
+            case "ollama":
+                model = OLlamaModel(model="llava")
+            case _:
+                raise ValueError(f"Model {self.model} is not supported")
+
+        command = model.get_vision_text_baseline_action(input.name, relevant_html, image_path)
 
         # find the index of "self.actions(" and drop anything before it.
         # This is because the GPT4 model sometimes outputs a lot of text before the actual command

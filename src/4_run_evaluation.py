@@ -30,7 +30,7 @@ if __name__ == "__main__":
     parser.add_argument("--report_field_stats",
                         help="whether to collect statistics for the HTML fields",
                         action="store_true",
-                        default=True)
+                        default=False)
 
     args = parser.parse_args()
     print(f"{Fore.BLUE}Solver: {args.solver_type}")
@@ -55,3 +55,5 @@ if __name__ == "__main__":
     )
 
     eval.enumerate_tasks(max_instance_count)
+    # Collecting example code: python 4_run_evaluation.py --no-do_eval --headless > extract.txt
+    # eval.enumerate_tasks(max_instance_count, task="ethics_sbic dialogue 2nd 0", first_instance_only=True, input_name="norm")

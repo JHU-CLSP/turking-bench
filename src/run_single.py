@@ -11,8 +11,8 @@ from utils.hidden_prints import HiddenPrints
 import logging
 
 TURKLE_URL = "http://localhost:8000"
-TEST_NAME = "Annotation subj_obj"
-SPECIFIED_INDEX = 46
+TEST_NAME = "DI Rationale Gen. evaluation - single 2"
+SPECIFIED_INDEX = 0 
 RUN_ALL = False
 
 class Run(evaluation_class.Evaluation):
@@ -149,6 +149,11 @@ class Run(evaluation_class.Evaluation):
                         'output': oracle_action_sequence
                     })
 
+                if i.name == 'weakener_rationale1_relevant':
+                    print(f"Input name {i.name}")
+                    print(f"HTML: \n {self.drver.execute_script('return document.documentElement.outerHTML;')}")
+                    print(f"oracle_action_sequence: \n {oracle_action_sequence}")
+
             # get the input values from the web page
             inputs_with_values = self.extract_values(inputs)
 
@@ -241,34 +246,19 @@ class Run(evaluation_class.Evaluation):
 
         print("Now let's print the field statistics")
 
-        # save task_field_statistics (hashmap of hashmaps mapped to integers) as a csv file
-        # first turn this hashmap into data frame
-        # then save it as a csv file
-        results = pd.DataFrame.from_dict(task_field_statistics)
-        results.to_csv('task_field_statistics.csv', index=True)
-
-        print("----------------------------------------------")
-        print(f'Number of tasks: {len(task_field_statistics.keys())}')
-        print("----------------------------------------------")
-        print(f'Number of fields: {len(aggregate_field_statistics.keys())}')
-        print("----------------------------------------------")
-        print(f'Overall field statistics: {aggregate_field_statistics}')
-        print("----------------------------------------------")
-        print(f'Field statistics per task: {task_field_statistics}')
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)  # Set the logging level to INFO
     # user argparser to recive he input parameter
     parser = argparse.ArgumentParser()
-    parser.add_argument("--solver_type", help="random or oracle", default="random")
+    parser.add_argument("--solver_type", help="random or oracle", default="oracle")
     parser.add_argument("--tasks", help="train, test, or subjective_test", default="test_easy")
     parser.add_argument("--max_instance_count", help="maximum number of instances per task", default=1)
-    parser.add_argument("--do_eval", help="whether to compute the quality aginst the gold data", default=True)
+    parser.add_argument("--do_eval", help="whether to compute the quality aginst the gold data", default=False)
     parser.add_argument("--dump_features", help="whether to dump the features", default=False)
-    parser.add_argument("--report_field_stats", help="whether to collect statistics for the HTML fields", default=True)
+    parser.add_argument("--report_field_stats", help="whether to collect statistics for the HTML fields", default=False)
 
     args = parser.parse_args()
-    args.solver_type = "oracle"
 
     if RUN_ALL:
         args.max_instance_count = 1000
@@ -285,7 +275,7 @@ if __name__ == "__main__":
         raise Exception(f"{Fore.RED}dump_features can only be used with oracle solver")
 
     eval = Run(solver_type=args.solver_type, tasks=args.tasks,
-                      do_eval=do_eval, dump_features=dump_features, report_field_stats=report_field_stats, headless = RUN_ALL)
+                      do_eval=do_eval, dump_features=dump_features, report_field_stats=report_field_stats, headless = True)
 
     if RUN_ALL:
         # Note if everything runs smoothly, nothing will be printed since it all succeeds

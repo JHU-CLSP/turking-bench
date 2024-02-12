@@ -67,8 +67,8 @@ class Evaluation:
             self.solver = baselines.OfflineModelPredictionsBaseline(driver=self.driver, actions=self.actions)
         elif solver_type == "gpt4-text":
             self.solver = baselines.GPT4TextBaseline(driver=self.driver, actions=self.actions)
-        elif solver_type == "gpt4-text-vision":
-            self.solver = baselines.GPT4VisionTextBaseline(driver=self.driver, actions=self.actions)
+        elif solver_type == "text-vision":
+            self.solver = baselines.VisionTextBaseline(driver=self.driver, actions=self.actions, model="ollama")
         else:
             raise Exception(f"{Fore.RED}Solver `{solver_type}` not implemented")
         self.tasks = tasks
@@ -740,6 +740,8 @@ class Evaluation:
 
             # Create a random sample
             instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
+            if "first_instance_only" in kwargs and kwargs["first_instance_only"] == True:
+                instance_ids = [first_instance_id]
 
             # collecting field statistics
             if task_name not in results:
@@ -865,8 +867,8 @@ class Evaluation:
 
                     # *after* we dump *input* features, we execute the action
                     if self.solver_type == 'oracle':
-                        kwargs = {'answers': answers_map[i.name]}
-                        oracle_action_sequence = self.solver.solve(i, **kwargs)
+                        solver_kwargs = {'answers': answers_map[i.name]}
+                        oracle_action_sequence = self.solver.solve(i, **solver_kwargs)
                     elif self.solver_type == 'model':
                         # TODO: the name should be "offline" here?
                         # TODO: check if we really need to pass "answer_map" here?
@@ -887,9 +889,14 @@ class Evaluation:
                             'output': oracle_action_sequence
                         })
 
-                    # if self.report_field_stats and input_idx == len(inputs) - 1:
-                    #     html = self.actions.get_html(url)
-                    #     task_field_statistics[task_name]["instantiated_templates"] += len(self.xlingual_tokenizer.tokenize(html))
+                    if "input_name" in kwargs and i.name == kwargs["input_name"]:
+                        print("=" * 20)
+                        print("\"" * 3)
+                        print(f"Input name: {i.name}")
+                        print(f"HTML:\n{self.driver.execute_script('return document.documentElement.outerHTML;')}")
+                        print("\"\"\",")
+                        print(f"\"{oracle_action_sequence['action_sequence']}\"")
+                        print("=" * 20)
 
                 if self.dump_features:
                     data_to_be_dumped.append(copy.deepcopy(curr_data_to_be_dumped))
