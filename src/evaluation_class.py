@@ -740,6 +740,8 @@ class Evaluation:
 
             # Create a random sample
             instance_ids = random.sample(instance_ids, min(max_instance_count, len(instance_ids)))
+            if "first_instance_only" in kwargs and kwargs["first_instance_only"] == True:
+                instance_ids = [first_instance_id]
 
             # collecting field statistics
             if task_name not in results:
@@ -887,9 +889,12 @@ class Evaluation:
                             'output': oracle_action_sequence
                         })
 
-                    # if self.report_field_stats and input_idx == len(inputs) - 1:
-                    #     html = self.actions.get_html(url)
-                    #     task_field_statistics[task_name]["instantiated_templates"] += len(self.xlingual_tokenizer.tokenize(html))
+                    if i.name == 'weakener_rationale1_relevant':
+                        print("=" * 20)
+                        print(f"Input name: {i.name}")
+                        print(f"HTML:\n{self.driver.execute_script('return document.documentElement.outerHTML;')}")
+                        print(f"oracle_action_sequence: {oracle_action_sequence['action_sequence']}")
+                        print("=" * 20)
 
                 if self.dump_features:
                     data_to_be_dumped.append(copy.deepcopy(curr_data_to_be_dumped))

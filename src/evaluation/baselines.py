@@ -354,8 +354,8 @@ class VisionTextBaseline(Baseline):
                 mid_idx = idx
 
         relevant_html = []
-        upper_bound = 15
-        lower_bound = 30
+        upper_bound = 5
+        lower_bound = 10
         for i in range(max(0, mid_idx - upper_bound), min(len(HTML_arr), mid_idx + lower_bound)):
             relevant_html.append(HTML_arr[i])
 
