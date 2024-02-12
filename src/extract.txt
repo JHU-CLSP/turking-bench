@@ -1,23 +1,4 @@
-Solver: oracle
-tasks ['DI Rationale Gen. evaluation - single 2']
- = = = = = = = = = = = = starting new task: `DI Rationale Gen. evaluation - single 2` = = = = = = = = = = = = 
-First instance id: 7143
-instance_id: 7143 <-> row_number: 0
- --> inputs: ['weakener_rationale1_gibberish_understandable_grammatical', 'weakener_rationale1_relevant', 'weakener_rationale1_correct', 'weakener_rationale1_explains', 'strengthener_rationale1_gibberish_understandable_grammatical', 'strengthener_rationale1_relevant', 'strengthener_rationale1_correct', 'strengthener_rationale1_explains', 'strengthener_rationale1_method', 'weakener_rationale1_method']
- --> Looking up gold labels from row index 0 of `input.csv` (unique inputs). 
- --> input labels: {'weakener_rationale1_gibberish_understandable_grammatical': ['grammatical', 'grammatical', 'understandable'], 'weakener_rationale1_relevant': ['on', 'on', 'on'], 'weakener_rationale1_correct': ['on', 'on', ''], 'weakener_rationale1_explains': ['', '', ''], 'strengthener_rationale1_gibberish_understandable_grammatical': ['grammatical', 'grammatical', 'grammatical'], 'strengthener_rationale1_relevant': ['on', 'on', 'on'], 'strengthener_rationale1_correct': ['', '', 'on'], 'strengthener_rationale1_explains': ['', '', 'on'], 'strengthener_rationale1_method': ['rationale_bart-large', 'rationale_bart-large', 'rationale_bart-large'], 'weakener_rationale1_method': ['rationale_bart-large', 'rationale_bart-large', 'rationale_bart-large']}
- - - - - - -  starting a new element: `Input(name=`weakener_rationale1_gibberish_understandable_grammatical`, type=`radio`, task=`DI Rationale Gen. evaluation - single 2`)` - - - - - -  
---> Oracle baseline: Input name: weakener_rationale1_gibberish_understandable_grammatical
---> Oracle baseline: answers ['grammatical', 'grammatical', 'understandable']
---> Oracle baseline: filtered answers ['grammatical', 'grammatical', 'understandable']
-We are going to select this radio button: <input id="weakener_rationale1_grammatical" name="weakener_rationale1_gibberish_understandable_grammatical" onclick="toggle_gibberish('weakener_rationale1')" type="radio" value="grammatical">
- - - - - - -  starting a new element: `Input(name=`weakener_rationale1_relevant`, type=`checkbox`, task=`DI Rationale Gen. evaluation - single 2`)` - - - - - -  
---> Oracle baseline: Input name: weakener_rationale1_relevant
---> Oracle baseline: answers ['on', 'on', 'on']
---> Oracle baseline: filtered answers ['on', 'on', 'on']
-Looking for checkboxes with `name`: `weakener_rationale1_relevant` the values: `['on']`
-About to check this checkbox: <input id="weakener_rationale1_relevant" name="weakener_rationale1_relevant" type="checkbox">
-====================
+"""
 Input name: weakener_rationale1_relevant
 HTML:
 <html><head>
@@ -28,7 +9,7 @@ HTML:
   <body>
     <form name="mturk_form" method="post" id="mturk_form" target="_parent" action="#">
 
-      <input type="hidden" name="csrfmiddlewaretoken" value="dIgBz9HlLYf3Pkdh8LxB5wP4m1VZ2rFAbPwxM66vqlHocDUIZO9fzIVDzMTqYgc4">
+      <input type="hidden" name="csrfmiddlewaretoken" value="a0o0vAwk6AtwMECoIPg8Tbb20wusAaA5XUCodgPpVqgzUkIhXZK2YT0Vv2SF9Nlc">
       <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"><!-- BOOTSTRAP CSS -->
 <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet"><!-- HITPUB CSS -->
@@ -653,53 +634,5 @@ HTML:
   
 
 </body></html>
-oracle_action_sequence: self.actions.modify_checkbox('weakener_rationale1_relevant', 'on')
-====================
- - - - - - -  starting a new element: `Input(name=`weakener_rationale1_correct`, type=`checkbox`, task=`DI Rationale Gen. evaluation - single 2`)` - - - - - -  
---> Oracle baseline: Input name: weakener_rationale1_correct
---> Oracle baseline: answers ['on', 'on', '']
---> Oracle baseline: filtered answers ['on', 'on', '']
-Looking for checkboxes with `name`: `weakener_rationale1_correct` the values: `['on']`
-About to check this checkbox: <input id="weakener_rationale1_correct" name="weakener_rationale1_correct" type="checkbox">
- - - - - - -  starting a new element: `Input(name=`weakener_rationale1_explains`, type=`checkbox`, task=`DI Rationale Gen. evaluation - single 2`)` - - - - - -  
---> Oracle baseline: Input name: weakener_rationale1_explains
---> Oracle baseline: answers ['', '', '']
---> Oracle baseline: filtered answers ['', '', '']
-Looking for checkboxes with `name`: `weakener_rationale1_explains` the values: `['']`
- ** Warning **: input value is []. So, we're not going to modify the checkbox.
- - - - - - -  starting a new element: `Input(name=`strengthener_rationale1_gibberish_understandable_grammatical`, type=`radio`, task=`DI Rationale Gen. evaluation - single 2`)` - - - - - -  
---> Oracle baseline: Input name: strengthener_rationale1_gibberish_understandable_grammatical
---> Oracle baseline: answers ['grammatical', 'grammatical', 'grammatical']
---> Oracle baseline: filtered answers ['grammatical', 'grammatical', 'grammatical']
-We are going to select this radio button: <input id="strengthener_rationale1_grammatical" name="strengthener_rationale1_gibberish_understandable_grammatical" onclick="toggle_gibberish('strengthener_rationale1')" type="radio" value="grammatical">
- - - - - - -  starting a new element: `Input(name=`strengthener_rationale1_relevant`, type=`checkbox`, task=`DI Rationale Gen. evaluation - single 2`)` - - - - - -  
---> Oracle baseline: Input name: strengthener_rationale1_relevant
---> Oracle baseline: answers ['on', 'on', 'on']
---> Oracle baseline: filtered answers ['on', 'on', 'on']
-Looking for checkboxes with `name`: `strengthener_rationale1_relevant` the values: `['on']`
-About to check this checkbox: <input id="strengthener_rationale1_relevant" name="strengthener_rationale1_relevant" type="checkbox">
- - - - - - -  starting a new element: `Input(name=`strengthener_rationale1_correct`, type=`checkbox`, task=`DI Rationale Gen. evaluation - single 2`)` - - - - - -  
---> Oracle baseline: Input name: strengthener_rationale1_correct
---> Oracle baseline: answers ['', '', 'on']
---> Oracle baseline: filtered answers ['', '', 'on']
-Looking for checkboxes with `name`: `strengthener_rationale1_correct` the values: `['']`
- ** Warning **: input value is []. So, we're not going to modify the checkbox.
- - - - - - -  starting a new element: `Input(name=`strengthener_rationale1_explains`, type=`checkbox`, task=`DI Rationale Gen. evaluation - single 2`)` - - - - - -  
---> Oracle baseline: Input name: strengthener_rationale1_explains
---> Oracle baseline: answers ['', '', 'on']
---> Oracle baseline: filtered answers ['', '', 'on']
-Looking for checkboxes with `name`: `strengthener_rationale1_explains` the values: `['on']`
-About to check this checkbox: <input id="strengthener_rationale1_explains" name="strengthener_rationale1_explains" type="checkbox">
- - - - - - -  starting a new element: `Input(name=`strengthener_rationale1_method`, type=`hidden`, task=`DI Rationale Gen. evaluation - single 2`)` - - - - - -  
-Skipping element `strengthener_rationale1_method` since it is not visible.
- - - - - - -  starting a new element: `Input(name=`weakener_rationale1_method`, type=`hidden`, task=`DI Rationale Gen. evaluation - single 2`)` - - - - - -  
-Skipping element `weakener_rationale1_method` since it is not visible.
-Now let's print the field statistics
-----------------------------------------------
-Number of tasks: 0
-----------------------------------------------
-Number of fields: 0
-----------------------------------------------
-Overall field statistics: {}
-----------------------------------------------
-Field statistics per task: {}
+""",
+self.actions.modify_checkbox('weakener_rationale1_relevant', 'on')

@@ -891,9 +891,11 @@ class Evaluation:
 
                     if i.name == 'weakener_rationale1_relevant':
                         print("=" * 20)
+                        print("\"" * 3)
                         print(f"Input name: {i.name}")
                         print(f"HTML:\n{self.driver.execute_script('return document.documentElement.outerHTML;')}")
-                        print(f"oracle_action_sequence: {oracle_action_sequence['action_sequence']}")
+                        print("\"\"\",")
+                        print(f"{oracle_action_sequence['action_sequence']}")
                         print("=" * 20)
 
                 if self.dump_features:
