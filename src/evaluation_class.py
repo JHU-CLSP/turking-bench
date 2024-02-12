@@ -724,7 +724,8 @@ class Evaluation:
 
         results = {}
         aggregate_field_statistics = {}  # We store the stats related to the field types/frequency here
-        task_field_statistics = {}
+        if self.report_field_stats:
+            task_field_statistics = {}
         for task_name in tqdm(tasks):
             print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
 
@@ -966,22 +967,23 @@ class Evaluation:
             with open(f'{directory}/{task_name}.json', 'w') as f:
                 json.dump(data_to_be_dumped, f, indent=4)
 
-        print("Now let's print the field statistics")
+        if self.report_field_stats:
+            print("Now let's print the field statistics")
 
-        # save task_field_statistics (hashmap of hashmaps mapped to integers) as a csv file
-        # first turn this hashmap into data frame
-        # then save it as a csv file
-        results = pd.DataFrame.from_dict(task_field_statistics)
-        results.to_csv('task_field_statistics.csv', index=True)
+            # save task_field_statistics (hashmap of hashmaps mapped to integers) as a csv file
+            # first turn this hashmap into data frame
+            # then save it as a csv file
+            results = pd.DataFrame.from_dict(task_field_statistics)
+            results.to_csv('task_field_statistics.csv', index=True)
 
-        print("----------------------------------------------")
-        print(f'Number of tasks: {len(task_field_statistics.keys())}')
-        print("----------------------------------------------")
-        print(f'Number of fields: {len(aggregate_field_statistics.keys())}')
-        print("----------------------------------------------")
-        print(f'Overall field statistics: {aggregate_field_statistics}')
-        print("----------------------------------------------")
-        print(f'Field statistics per task: {task_field_statistics}')
+            print("----------------------------------------------")
+            print(f'Number of tasks: {len(task_field_statistics.keys())}')
+            print("----------------------------------------------")
+            print(f'Number of fields: {len(aggregate_field_statistics.keys())}')
+            print("----------------------------------------------")
+            print(f'Overall field statistics: {aggregate_field_statistics}')
+            print("----------------------------------------------")
+            print(f'Field statistics per task: {task_field_statistics}')
 
     def enumerate_tap_tasks(self, max_instance_count: int):
         """
