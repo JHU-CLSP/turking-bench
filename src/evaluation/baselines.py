@@ -382,7 +382,7 @@ class VisionTextBaseline(Baseline):
         # simplify HTML
         # simplified_html = ActionUtils.simplify_html(html)
         relevant_html = self.get_relevant_html(input)
-        image_path = "screenshots/screenshot.png"
+        image_path = os.path.join("screenshots", "screenshot.png")
         self.driver.save_screenshot(image_path)
         # actions = Actions()
         # image_path = actions.capture_screen("screenshot.png")
