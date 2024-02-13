@@ -156,18 +156,20 @@ class VisionModel:
         Params:
         objective - User inputted objective
         """
-        assistant_message = {
-            "role": "assistant",
-            "content": "Hello, I am your assistant. How can I help you?"
-        }
-        user_message = {
-            "role": "user",
-            "content": self.get_main_prompt(objective)
-        }
-
-        messages = [assistant_message, user_message]
+        image_path = self.actions.capture_screen("screenshot.png")
 
         if False:
+            assistant_message = {
+                "role": "assistant",
+                "content": "Hello, I am your assistant. How can I help you?"
+            }
+            user_message = {
+                "role": "user",
+                "content": self.get_main_prompt(objective)
+            }
+
+            messages = [assistant_message, user_message]
+
             while True:
                 try:
                     response = self.get_next_action(messages)
@@ -431,5 +433,5 @@ class GPT4VModel(VisionModel):
         pass
 
 if __name__ == "__main__":
-    model = GPT4VModel()
+    model = OLlamaModel(model="llava")
     model.main("test")
