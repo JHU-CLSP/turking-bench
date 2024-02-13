@@ -40,4 +40,4 @@ $python --version
 which $python
 
 cd turk-instructions/src
-Xvfb :99 & ./1_rockfish_run_website.sh & sleep 10 && python 4_run_evaluation.py --solver_type donothing --tasks all --max_instance_count 1 --no-headless --no-do_eval
+Xvfb :99 & ./1_ia1_run_website.sh & sleep 10 && python 4_run_evaluation.py --solver_type donothing --tasks all --max_instance_count 1 --no-headless --no-do_eval
