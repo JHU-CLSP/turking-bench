@@ -28,6 +28,7 @@ import bisect
 import copy
 from utils.cleaning import clean_values
 from utils.cleaning import try_numeric
+from pyvirtualdisplay import Display
 
 TURKLE_URL = "http://localhost:8000"
 
@@ -48,14 +49,23 @@ class GPTTokenizer:
 
 class Evaluation:
     def __init__(self, solver_type: str, tasks: str, do_eval: bool, dump_features: bool, report_field_stats: bool,
-                 headless: bool = False):
+                 headless: bool = False, on_server: bool = False):
+        """
+        on_server flag specifies if we are running this on a server with xvfb and xserver-xephyr
+        """
         self.default_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
         self.xlingual_tokenizer = GPTTokenizer()
         self.xlingual_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], tokenizer=self.xlingual_tokenizer)
         self.driver = self.create_driver(headless=headless)
         self.actions = MyActions(self.driver)
         self.solver = None
-        # ass more solvers that we implement, we can add them here:
+        self.on_server = on_server
+
+        if not headless and on_server:
+            self.display = Display(visible=0, size=(1920, 1080))
+            self.display.start()
+
+        # as more solvers that we implement, we can add them here:
         self.solver_type = solver_type
         if solver_type == "donothing":
             self.solver = baselines.DoNothingBaseline(driver=self.driver, actions=self.actions)
@@ -89,6 +99,11 @@ class Evaluation:
             'ee',
             'submit'
         ]
+
+    def __del__(self):
+        self.driver.quit()
+        if not self.headless and self.on_server:
+            self.display.stop()
 
     def create_driver(self, headless: bool):
         options = Options()

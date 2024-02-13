@@ -31,6 +31,10 @@ if __name__ == "__main__":
                         help="whether to collect statistics for the HTML fields",
                         action="store_true",
                         default=False)
+    parser.add_argument("--server",
+                        help="whether we are running on a virtual server with xvfb and xserver-xephyr installed",
+                        action=argparse.BooleanOptionalAction)
+    parser.parse_args(['--no-server'])
 
     args = parser.parse_args()
     print(f"{Fore.BLUE}Solver: {args.solver_type}")
@@ -51,7 +55,8 @@ if __name__ == "__main__":
         do_eval=args.do_eval,
         dump_features=dump_features,
         report_field_stats=report_field_stats,
-        headless=args.headless
+        headless=args.headless,
+        on_server=args.server
     )
 
     eval.enumerate_tasks(max_instance_count)
