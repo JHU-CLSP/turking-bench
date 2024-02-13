@@ -27,6 +27,7 @@ module load anaconda
 
 source ~/.bashrc
 
+conda init
 conda activate turk
 
 module list
