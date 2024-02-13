@@ -56,17 +56,17 @@ class Evaluation:
         self.default_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
         self.xlingual_tokenizer = GPTTokenizer()
         self.xlingual_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], tokenizer=self.xlingual_tokenizer)
-        self.driver = self.create_driver(headless=headless)
-        self.actions = MyActions(self.driver)
-        self.solver = None
-        self.on_server = on_server
-        self.headless = headless
 
         if not headless and on_server:
             self.display = Display(visible=0, size=(1920, 1080))
             self.display.start()
             print(f"Display port: {self.display.display}")
 
+        self.driver = self.create_driver(headless=headless)
+        self.actions = MyActions(self.driver)
+        self.solver = None
+        self.on_server = on_server
+        self.headless = headless
         # as more solvers that we implement, we can add them here:
         self.solver_type = solver_type
         if solver_type == "donothing":
