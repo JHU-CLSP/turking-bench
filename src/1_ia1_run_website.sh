@@ -5,6 +5,6 @@ repo_dir="Turkle"
 if [ -d "$repo_dir" ]; then
     echo "Directory $repo_dir exists, running pre-existing server"
     cd $repo_dir
-    python manage.py runserver 0.0.0.0:8000
+    python3 manage.py runserver 0.0.0.0:8000
     exit 0
 fi
