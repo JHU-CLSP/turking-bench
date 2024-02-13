@@ -382,8 +382,10 @@ class VisionTextBaseline(Baseline):
         # simplify HTML
         # simplified_html = ActionUtils.simplify_html(html)
         relevant_html = self.get_relevant_html(input)
-        actions = Actions()
-        image_path = actions.capture_screen("screenshot.png")
+        image_path = "screenshots/screenshot.png"
+        self.driver.save_screenshot(image_path)
+        # actions = Actions()
+        # image_path = actions.capture_screen("screenshot.png")
         
         match self.model:
             case "gpt4v":
