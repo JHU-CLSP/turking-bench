@@ -64,6 +64,7 @@ class Evaluation:
         if not headless and on_server:
             self.display = Display(visible=0, size=(1920, 1080))
             self.display.start()
+            print(f"Display port: {self.display.display}")
 
         # as more solvers that we implement, we can add them here:
         self.solver_type = solver_type

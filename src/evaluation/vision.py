@@ -7,7 +7,12 @@ import io
 import subprocess
 import Xlib.display
 from PIL import Image, ImageDraw, ImageFont, ImageGrab
-import pyautogui
+try:
+    import pyautogui
+    pyautogui_installed = True
+except ImportError:
+    print("Error importing pyautogui")
+    pyautogui_installed = False
 from openai import OpenAI
 from typing import List, Tuple
 import base64
@@ -33,7 +38,8 @@ class Actions:
         self.platform = platform.system()
 
         # if (self.platform == "Darwin" or self.platform == "Windows"):
-        self.width, self.height = pyautogui.size()
+        if pyautogui_installed:
+            self.width, self.height = pyautogui.size()
 
         self.dir = "screenshots"
 
@@ -41,6 +47,9 @@ class Actions:
         """
         This function clicks on a percentage of the screen
         """
+        if not pyautogui_installed:
+            raise Exception("Pyautogui is not installed")
+
         x_pixel = int(self.width * x_percent)
         y_pixel = int(self.height * y_percent)
 
@@ -54,6 +63,9 @@ class Actions:
         """
         This function types the given text
         """
+        if not pyautogui_installed:
+            raise Exception("Pyautogui is not installed")
+
         text = text.replace("\\n", "\n")
         for char in text:
             pyautogui.write(char)
