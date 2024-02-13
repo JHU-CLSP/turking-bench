@@ -102,9 +102,13 @@ class Evaluation:
         ]
 
     def __del__(self):
+        try:
+            if not self.headless and self.on_server:
+                self.display.stop()
+        except Exception as e:
+            print(f"{Fore.RED}Error while stopping the display: {e}")
+
         self.driver.quit()
-        if not self.headless and self.on_server:
-            self.display.stop()
 
     def create_driver(self, headless: bool):
         options = Options()
