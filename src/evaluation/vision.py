@@ -10,8 +10,8 @@ from PIL import Image, ImageDraw, ImageFont, ImageGrab
 try:
     import pyautogui
     pyautogui_installed = True
-except ImportError:
-    print("Error importing pyautogui")
+except Exception as e:
+    print(f"Error importing pyautogui {e}")
     pyautogui_installed = False
 from openai import OpenAI
 from typing import List, Tuple
