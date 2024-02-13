@@ -30,6 +30,7 @@ xlib = "^0.21"
 pyautogui = "^0.9.54"
 openai = "^1.8.0"
 python-dotenv = "^1.0.1"
+pyvirtualdisplay = "^3.0"
 
 
 [build-system]
