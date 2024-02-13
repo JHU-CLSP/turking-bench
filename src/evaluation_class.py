@@ -60,7 +60,6 @@ class Evaluation:
         if not headless and on_server:
             self.display = Display(visible=0, size=(1920, 1080))
             self.display.start()
-            print(f"Display port: {self.display.display}")
 
         self.driver = self.create_driver(headless=headless)
         self.actions = MyActions(self.driver)
