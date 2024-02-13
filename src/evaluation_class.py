@@ -60,6 +60,7 @@ class Evaluation:
         self.actions = MyActions(self.driver)
         self.solver = None
         self.on_server = on_server
+        self.headless = headless
 
         if not headless and on_server:
             self.display = Display(visible=0, size=(1920, 1080))
