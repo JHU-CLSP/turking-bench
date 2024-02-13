@@ -11,7 +11,7 @@ options = Options()
 
 browser = webdriver.Chrome(options=options)
 browser.get('http://www.google.com')
-browser.save_screenshot('screenie.png')
+browser.save_screenshot('screenshots/screenie.png')
 # screenshot = browser.get_screenshot_as_png()
 # image = Image.open(BytesIO(screenshot))
 browser.quit()
