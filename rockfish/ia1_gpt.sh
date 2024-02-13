@@ -40,4 +40,4 @@ $python --version
 which $python
 
 cd turk-instructions/src
-ollama run llava & ./1_ia1_run_website.sh & sleep 10 && python3 4_run_evaluation.py --solver_type text-vision --tasks test_easy --max_instance_count 1 --no-headless --no-do_eval --server
+ollama run llava & ./1_ia1_run_website.sh & sleep 10 && python3 4_run_evaluation.py --solver_type text-vision --tasks test_easy --max_instance_count 1 --no-headless --no-do_eval --server > text_gpt.txt
