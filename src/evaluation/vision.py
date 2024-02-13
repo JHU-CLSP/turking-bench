@@ -265,7 +265,7 @@ class OLlamaModel(VisionModel):
             resized_img = img.resize(new_size, Image.ANTIALIAS)
 
             buffer = io.BytesIO()
-            resized_img.save(buffer, format="JPEG")  
+            resized_img.save(buffer, format="PNG")  
             img_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
 
         prompt = f"""
