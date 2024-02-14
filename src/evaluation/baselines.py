@@ -369,7 +369,7 @@ class VisionTextBaseline(Baseline):
         for i in range(max(0, mid_idx - upper_bound), min(len(HTML_arr), mid_idx + lower_bound)):
             relevant_html.append(HTML_arr[i])
 
-        return relevant_html
+        return "\n".join(relevant_html)
 
     def solve(self, input: Input, **kwargs) -> None:
         """
