@@ -342,7 +342,7 @@ class VisionTextBaseline(Baseline):
         self.num_demonstrations = num_demonstrations
         self.use_relevant_html = use_relevant_html
 
-    def get_html(self, input: Input, url: str = None):
+    def get_html(self, input: Input, url: str = None) -> str:
         """
         Depending on self.use_relevant_html, if false it is the entire HTML, otherwise:
         This function returns an array of the the relevant HTML lines for a given input field.
