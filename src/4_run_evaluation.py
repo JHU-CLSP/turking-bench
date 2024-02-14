@@ -6,8 +6,11 @@ if __name__ == "__main__":
     # user argparser to recive he input parameter
     parser = argparse.ArgumentParser()
     parser.add_argument("--solver_type",
-                        help="donothing, random, oracle, offline_predictions, gpt4-text",
+                        help="donothing, random, oracle, offline_predictions, gpt4-text, gpt4-text-vision, text-vision",
                         default="oracle")
+    parser.add_argument("--ollama_model",
+                        help="llava",
+                        default="llava")
     parser.add_argument("--tasks",
                         help="train, test_easy, test_hard, all, or subjective_test",
                         default="test_easy")
@@ -54,6 +57,7 @@ if __name__ == "__main__":
 
     eval = evaluation_class.Evaluation(
         solver_type=args.solver_type,
+        ollama_model=args.ollama_model,
         tasks=args.tasks,
         do_eval=args.do_eval,
         dump_features=dump_features,

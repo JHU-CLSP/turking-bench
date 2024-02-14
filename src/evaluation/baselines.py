@@ -332,9 +332,11 @@ class VisionTextBaseline(Baseline):
     """
     Interactive calls to a VLM to solve the task
     """
-    def __init__(self, actions: MyActions, driver, model: str, screenshot_path: str):
+    def __init__(self, actions: MyActions, driver, model: str, screenshot_path: str, ollama_model: str = "llava"):
         super().__init__(actions, driver)
         self.model = model
+        if self.model == "ollama":
+            self.ollama_model = ollama_model
         self.screenshot_path = os.path.join("screenshots", screenshot_path)
 
     def get_relevant_html(self, input: Input):
@@ -389,7 +391,7 @@ class VisionTextBaseline(Baseline):
             case "gpt4v":
                 model = GPT4VModel()
             case "ollama":
-                model = OLlamaModel(model="llava")
+                model = OLlamaModel(self.ollama_model)
             case _:
                 raise ValueError(f"Model {self.model} is not supported")
 
