@@ -943,53 +943,53 @@ class Evaluation:
                     elif self.solver_type == 'model':
                         kwargs["scores"].append(score)
 
-            if self.do_eval:
-                # per-task statistics
-                per_task_score = per_task_score / len(instance_ids)
-                print(f"{Fore.MAGENTA}Task: {task_name} --> Score: {per_task_score}")
-                df = pd.DataFrame()
-                for task_name, inputs in results.items():
-                    all_scores = []
-                    for input_type, scores in inputs.items():
-                        avg_score = sum(scores) / len(scores)
-                        all_scores.extend(scores)
-                        df = pd.concat(
-                            [
-                                df, pd.DataFrame({
-                                'project': [task_name],
-                                'input_type': [input_type],
-                                'score': [avg_score]
-                            })
-                            ],
-                            ignore_index=True)
-
-
-                    # add the overall score across all the inputs
-                    df = pd.concat([
-                        df, pd.DataFrame({
+        if self.do_eval:
+            # per-task statistics
+            per_task_score = per_task_score / len(instance_ids)
+            print(f"{Fore.MAGENTA}Task: {task_name} --> Score: {per_task_score}")
+            df = pd.DataFrame()
+            for task_name, inputs in results.items():
+                all_scores = []
+                for input_type, scores in inputs.items():
+                    avg_score = sum(scores) / len(scores)
+                    all_scores.extend(scores)
+                    df = pd.concat(
+                        [
+                            df, pd.DataFrame({
                             'project': [task_name],
-                            'input_type': ["all"],
-                            'score': [sum(all_scores) / len(all_scores)]
-                        }
-                        )], ignore_index=True
-                    )
+                            'input_type': [input_type],
+                            'score': [avg_score]
+                        })
+                        ],
+                        ignore_index=True)
 
-                if 'project' not in df.columns:
-                    df.insert(0, 'project', '')
-                if 'input_type' not in df.columns:
-                    df.insert(1, 'input_type', '')
-                if 'score' not in df.columns:
-                    df.insert(1, 'score', '')
 
-                df = df.pivot(index='project', columns='input_type', values='score')
-                today = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-                if self.solver_type == "text-vision" or self.solver_type == "gpt4-text-vision":
-                    csv_filename = f'{self.solver_type}_{self.num_demonstrations}_use-relevant-html_{self.use_relevant_html}_{self.tasks}_scores_{today}.csv'
-                df.to_csv(csv_filename, index=True)
+                # add the overall score across all the inputs
+                df = pd.concat([
+                    df, pd.DataFrame({
+                        'project': [task_name],
+                        'input_type': ["all"],
+                        'score': [sum(all_scores) / len(all_scores)]
+                    }
+                    )], ignore_index=True
+                )
 
-                # save results to json
-                with open(f'{self.solver_type}_scores_{today}.json', 'w') as f:
-                    json.dump(results, f, indent=4)
+            if 'project' not in df.columns:
+                df.insert(0, 'project', '')
+            if 'input_type' not in df.columns:
+                df.insert(1, 'input_type', '')
+            if 'score' not in df.columns:
+                df.insert(1, 'score', '')
+
+            df = df.pivot(index='project', columns='input_type', values='score')
+            today = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+            if self.solver_type == "text-vision" or self.solver_type == "gpt4-text-vision":
+                csv_filename = f'{self.solver_type}_{self.num_demonstrations}_use-relevant-html_{self.use_relevant_html}_{self.tasks}_scores_{today}.csv'
+            df.to_csv(csv_filename, index=True)
+
+            # save results to json
+            with open(f'{self.solver_type}_scores_{today}.json', 'w') as f:
+                json.dump(results, f, indent=4)
 
         if self.dump_features:
             with open(f'{directory}/{task_name}.json', 'w') as f:
