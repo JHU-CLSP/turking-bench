@@ -108,6 +108,7 @@ class Evaluation:
         ]
 
     def __del__(self):
+        print(f"Premature destructor being called potentially")
         try:
             if not self.headless and self.on_server:
                 self.display.stop()
