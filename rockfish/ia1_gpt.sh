@@ -41,4 +41,4 @@ python --version
 which python
 
 cd turk-instructions/src
-./1_ia1_run_website.sh & sleep 10 && python3 4_run_evaluation.py --solver_type gpt4-text-vision --tasks test_easy --max_instance_count 1 --num_demonstrations 2 --no-use_relevant_html --no-headless --do_eval --server > text_gpt.txt
+./1_ia1_run_website.sh & sleep 10 && python3 4_run_evaluation.py --solver_type gpt4-text-vision --tasks test_easy --max_instance_count 1 --num_demonstrations 2 --no-use_relevant_html --no-headless --do_eval --server --screenshot_path screenshot9.png > text_gpt.txt
