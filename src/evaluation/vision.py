@@ -258,7 +258,7 @@ class VisionModel:
         """
         raise NotImplementedError("This method should be implemented by the subclass.")
 
-class OLlamaModel(VisionModel):
+class OLlamaVisionModel(VisionModel):
     def __init__(self, model: str):
         super().__init__(Models.OLlama)
         self.model = model

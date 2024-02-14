@@ -10,8 +10,9 @@ def text_oracle_instructions() -> str:
   self.modify_select(input_name: str, input_value)
   self.modify_range(input_name: str, input_value)
 
-  Here are a few examples:
+  It is extremely important that before the specific method (modify_select, modify_range, etc.) you prepend self.actions.
 
+  I expect to be given a specific input to modify and the HTML code of the webpage. I will have to generate a command from the list above to modify the input. 
   """
 
 def text_vision_oracle_instructions() -> str:

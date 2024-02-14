@@ -12,7 +12,8 @@ from evaluation.actions import MyActions
 from evaluation.actions import ActionUtils
 from evaluation.input import Input
 from evaluation.prompts import get_encoded_input_prompt
-from evaluation.vision import Actions, GPT4VModel, OLlamaModel
+from evaluation.vision import GPT4VModel, OLlamaVisionModel
+from evaluation.text import GPT4Model, OLlamaTextModel
 import logging
 from typing import List
 from utils.cleaning import clean_values
@@ -286,14 +287,51 @@ class OfflineModelPredictionsBaseline(Baseline):
 
         return error_flag
 
-class GPT4TextBaseline(Baseline):
+class TextBaseline(Baseline):
     """
-    Interactive calls to GPT4 to solve the task
+    Interactive calls to a VLM to solve the task
     """
+    def __init__(self, actions: MyActions, driver, model: str, num_demonstrations: int, use_relevant_html: bool, ollama_model: str = "llava"):
+        super().__init__(actions, driver)
+        self.model = model
+        if self.model == "ollama":
+            self.ollama_model = ollama_model
+
+        self.num_demonstrations = num_demonstrations
+        self.use_relevant_html = use_relevant_html
+
+    def get_html(self, input: Input, url: str = None) -> str:
+        """
+        Depending on self.use_relevant_html, if false it is the entire HTML, otherwise:
+        This function returns an array of the the relevant HTML lines for a given input field.
+        If you want it to be a string of HTML, just to_string this list concatenating one after another
+        """
+
+        if not self.use_relevant_html:
+            return self.actions.get_html(url)
+
+        print("input", input)
+        target_element = self.driver.execute_script(f"return document.getElementsByName('{input.name}')[0].outerHTML")
+        unfiltered_HTML = self.driver.execute_script(
+            f"return document.getElementsByName('{input.name}')[0].parentElement.parentElement.outerHTML")
+        HTML_arr = unfiltered_HTML.split(">")
+        mid_idx = -1
+        for idx, i in enumerate(HTML_arr):
+            HTML_arr[idx] = i + ">"
+            if HTML_arr[idx] == target_element:
+                mid_idx = idx
+
+        relevant_html = []
+        upper_bound = 5
+        lower_bound = 10
+        for i in range(max(0, mid_idx - upper_bound), min(len(HTML_arr), mid_idx + lower_bound)):
+            relevant_html.append(HTML_arr[i])
+
+        return "\n".join(relevant_html)
 
     def solve(self, input: Input, **kwargs) -> None:
         """
-        Communicate with GPT4 to solve the task
+        Communicate with TextModel to solve the task
         """
 
         print("input:", input)
@@ -306,14 +344,17 @@ class GPT4TextBaseline(Baseline):
         print("about to try executing one action, on the following input:", input.name)
 
         # extract HTML
-        url = kwargs['url']
-        html = self.actions.get_html(url)
+        html = self.get_html(input, kwargs['url'])
+        
+        match self.model:
+            case "gpt4":
+                model = GPT4Model()
+            case "ollama":
+                model = OLlamaTextModel(self.ollama_model)
+            case _:
+                raise ValueError(f"Model {self.model} is not supported")
 
-        # simplify HTML
-        # simplified_html = ActionUtils.simplify_html(html)
-        simplified_html = html
-        text_prompt = get_encoded_input_prompt(input.name, simplified_html)
-        command = ActionUtils.openai_call(text_prompt)
+        command = model.get_text_baseline_action(input.name, html, self.num_demonstrations, self.use_relevant_html)
 
         # find the index of "self.actions(" and drop anything before it.
         # This is because the GPT4 model sometimes outputs a lot of text before the actual command
@@ -373,7 +414,7 @@ class VisionTextBaseline(Baseline):
 
     def solve(self, input: Input, **kwargs) -> None:
         """
-        Communicate with GPT4 to solve the task
+        Communicate with VLM to solve the task
         """
 
         print("input:", input)
@@ -393,7 +434,7 @@ class VisionTextBaseline(Baseline):
             case "gpt4v":
                 model = GPT4VModel()
             case "ollama":
-                model = OLlamaModel(self.ollama_model)
+                model = OLlamaVisionModel(self.ollama_model)
             case _:
                 raise ValueError(f"Model {self.model} is not supported")
 

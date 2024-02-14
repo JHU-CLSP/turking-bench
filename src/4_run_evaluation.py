@@ -6,7 +6,7 @@ if __name__ == "__main__":
     # user argparser to recive he input parameter
     parser = argparse.ArgumentParser()
     parser.add_argument("--solver_type",
-                        help="donothing, random, oracle, offline_predictions, gpt4-text, gpt4-text-vision, text-vision",
+                        help="donothing, random, oracle, offline_predictions, gpt4-text, gpt4-text-vision, text, text-vision",
                         default="oracle")
     parser.add_argument("--ollama_model",
                         help="llava",

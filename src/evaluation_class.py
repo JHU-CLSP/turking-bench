@@ -77,13 +77,21 @@ class Evaluation:
             self.solver = baselines.OracleBaseline(driver=self.driver, actions=self.actions)
         elif solver_type == "offline_predictions":
             self.solver = baselines.OfflineModelPredictionsBaseline(driver=self.driver, actions=self.actions)
-        elif solver_type == "gpt4-text":
-            self.solver = baselines.GPT4TextBaseline(driver=self.driver, actions=self.actions)
+        elif solver_type == "text" or solver_type == "gpt4-text":
+            if solver_type == "gpt4-text":
+                self.solver = baselines.TextBaseline(driver=self.driver, actions=self.actions, model="gpt4", num_demonstrations=kwargs["num_demonstrations"], use_relevant_html=kwargs["use_relevant_html"])
+            else:
+                self.solver = baselines.TextBaseline(driver=self.driver, actions=self.actions, model="ollama", num_demonstrations=kwargs['num_demonstrations'], use_relevant_html=kwargs['use_relevant_html'], ollama_model=kwargs["ollama_model"])
+                self.ollama_model = kwargs["ollama_model"]
+
+            self.num_demonstrations = kwargs["num_demonstrations"]
+            self.use_relevant_html = kwargs["use_relevant_html"]
         elif solver_type == "text-vision" or solver_type == "gpt4-text-vision":
             if solver_type == "gpt4-text-vision":
                 self.solver = baselines.VisionTextBaseline(driver=self.driver, actions=self.actions, model="gpt4v", screenshot_path=kwargs["screenshot_path"], num_demonstrations=kwargs["num_demonstrations"], use_relevant_html=kwargs["use_relevant_html"])
             else:
                 self.solver = baselines.VisionTextBaseline(driver=self.driver, actions=self.actions, model="ollama", screenshot_path=kwargs["screenshot_path"], num_demonstrations=kwargs['num_demonstrations'], use_relevant_html=kwargs['use_relevant_html'], ollama_model=kwargs["ollama_model"])
+                self.ollama_model = kwargs["ollama_model"]
 
             self.num_demonstrations = kwargs["num_demonstrations"]
             self.use_relevant_html = kwargs["use_relevant_html"]
@@ -985,8 +993,11 @@ class Evaluation:
 
             df = df.pivot(index='project', columns='input_type', values='score')
             today = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-            if self.solver_type == "text-vision" or self.solver_type == "gpt4-text-vision":
+            if self.solver_type == "gpt4-text" or self.solver_type == "gpt4-text-vision":
                 csv_filename = f'{self.solver_type}_{self.num_demonstrations}_use-relevant-html_{self.use_relevant_html}_{self.tasks}_scores_{today}.csv'
+            elif self.solver_type == "text" or self.solver_type == "text-vision":
+                csv_filename = f'{self.solver_type}_{self.ollama_model}_{self.num_demonstrations}_use-relevant-html_{self.use_relevant_html}_{self.tasks}_scores_{today}.csv'
+
             df.to_csv(csv_filename, index=True)
 
             # save results to json
