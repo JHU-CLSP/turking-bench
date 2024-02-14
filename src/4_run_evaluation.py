@@ -77,7 +77,8 @@ if __name__ == "__main__":
         use_relevant_html=args.use_relevant_html
     )
 
-    eval.enumerate_tasks(max_instance_count, task="ethics_sbic dialogue 2nd 0", first_instance_only=True)
-    # eval.enumerate_tasks(max_instance_count)
+    eval.enumerate_tasks(max_instance_count)
+    # Debugging mode
+    # eval.enumerate_tasks(max_instance_count, task="ethics_sbic dialogue 2nd 0", first_instance_only=True)
     # Collecting example code: python 4_run_evaluation.py --no-do_eval --headless > extract.txt
     # eval.enumerate_tasks(max_instance_count, task="ethics_sbic dialogue 2nd 0", first_instance_only=True, input_name="norm")
