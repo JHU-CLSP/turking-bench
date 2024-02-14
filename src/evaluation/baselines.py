@@ -332,9 +332,10 @@ class VisionTextBaseline(Baseline):
     """
     Interactive calls to a VLM to solve the task
     """
-    def __init__(self, actions: MyActions, driver, model: str):
+    def __init__(self, actions: MyActions, driver, model: str, screenshot_path: str):
         super().__init__(actions, driver)
         self.model = model
+        self.screenshot_path = os.path.join("screenshots", screenshot_path)
 
     def get_relevant_html(self, input: Input):
         """
@@ -382,10 +383,7 @@ class VisionTextBaseline(Baseline):
         # simplify HTML
         # simplified_html = ActionUtils.simplify_html(html)
         relevant_html = self.get_relevant_html(input)
-        image_path = os.path.join("screenshots", "screenshot.png")
-        self.driver.save_screenshot(image_path)
-        # actions = Actions()
-        # image_path = actions.capture_screen("screenshot.png")
+        self.driver.save_screenshot(self.screenshot_path)
         
         match self.model:
             case "gpt4v":
@@ -395,7 +393,7 @@ class VisionTextBaseline(Baseline):
             case _:
                 raise ValueError(f"Model {self.model} is not supported")
 
-        command = model.get_vision_text_baseline_action(input.name, relevant_html, image_path)
+        command = model.get_vision_text_baseline_action(input.name, relevant_html, self.screenshot_path)
 
         # find the index of "self.actions(" and drop anything before it.
         # This is because the GPT4 model sometimes outputs a lot of text before the actual command

@@ -49,7 +49,7 @@ class GPTTokenizer:
 
 class Evaluation:
     def __init__(self, solver_type: str, tasks: str, do_eval: bool, dump_features: bool, report_field_stats: bool,
-                 headless: bool = False, on_server: bool = False):
+                 screenshot_path: str = "screenshot.png", headless: bool = False, on_server: bool = False):
         """
         on_server flag specifies if we are running this on a server with xvfb and xserver-xephyr
         """
@@ -79,7 +79,7 @@ class Evaluation:
         elif solver_type == "gpt4-text":
             self.solver = baselines.GPT4TextBaseline(driver=self.driver, actions=self.actions)
         elif solver_type == "text-vision":
-            self.solver = baselines.VisionTextBaseline(driver=self.driver, actions=self.actions, model="ollama")
+            self.solver = baselines.VisionTextBaseline(driver=self.driver, actions=self.actions, model="ollama", screenshot_path=screenshot_path)
         else:
             raise Exception(f"{Fore.RED}Solver `{solver_type}` not implemented")
         self.tasks = tasks

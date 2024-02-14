@@ -35,6 +35,9 @@ if __name__ == "__main__":
                         help="whether we are running on a virtual server with xvfb and xserver-xephyr installed",
                         action=argparse.BooleanOptionalAction)
     parser.parse_args(['--no-server'])
+    parser.add_argument("--screenshot_path",
+                        help="file name where screenshots are saved",
+                        default="screenshot.png")
 
     args = parser.parse_args()
     print(f"{Fore.BLUE}Solver: {args.solver_type}")
@@ -55,6 +58,7 @@ if __name__ == "__main__":
         do_eval=args.do_eval,
         dump_features=dump_features,
         report_field_stats=report_field_stats,
+        screenshot_path=args.screenshot_path,
         headless=args.headless,
         on_server=args.server
     )
