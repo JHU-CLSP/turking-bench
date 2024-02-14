@@ -11,6 +11,14 @@ if __name__ == "__main__":
     parser.add_argument("--ollama_model",
                         help="llava",
                         default="llava")
+    parser.add_argument("--num_demonstrations",
+                        help="number of demonstrations for few shot example per input",
+                        type=int,
+                        default=0)
+    parser.add_argument("--use_relevant_html",
+                        help="whether to give only relevant HTML as context to the model",
+                        action=argparse.BooleanOptionalAction)
+    parser.parse_args(['--no-use_relevant_html'])
     parser.add_argument("--tasks",
                         help="train, test_easy, test_hard, all, or subjective_test",
                         default="test_easy")
@@ -57,14 +65,16 @@ if __name__ == "__main__":
 
     eval = evaluation_class.Evaluation(
         solver_type=args.solver_type,
-        ollama_model=args.ollama_model,
         tasks=args.tasks,
         do_eval=args.do_eval,
         dump_features=dump_features,
         report_field_stats=report_field_stats,
-        screenshot_path=args.screenshot_path,
         headless=args.headless,
-        on_server=args.server
+        on_server=args.server,
+        ollama_model=args.ollama_model,
+        screenshot_path=args.screenshot_path,
+        num_demonstrations=args.num_demonstrations,
+        use_relevant_html=args.use_relevant_html
     )
 
     eval.enumerate_tasks(max_instance_count, task="ethics_sbic dialogue 2nd 0", first_instance_only=True)

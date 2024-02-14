@@ -332,18 +332,25 @@ class VisionTextBaseline(Baseline):
     """
     Interactive calls to a VLM to solve the task
     """
-    def __init__(self, actions: MyActions, driver, model: str, screenshot_path: str, ollama_model: str = "llava"):
+    def __init__(self, actions: MyActions, driver, model: str, screenshot_path: str, num_demonstrations: int, use_relevant_html: bool, ollama_model: str = "llava"):
         super().__init__(actions, driver)
         self.model = model
         if self.model == "ollama":
             self.ollama_model = ollama_model
         self.screenshot_path = os.path.join("screenshots", screenshot_path)
 
-    def get_relevant_html(self, input: Input):
+        self.num_demonstrations = num_demonstrations
+        self.use_relevant_html = use_relevant_html
+
+    def get_html(self, input: Input, url: str = None):
         """
+        Depending on self.use_relevant_html, if false it is the entire HTML, otherwise:
         This function returns an array of the the relevant HTML lines for a given input field.
         If you want it to be a string of HTML, just to_string this list concatenating one after another
         """
+
+        if not self.use_relevant_html:
+            return self.actions.get_html(url)
 
         print("input", input)
         target_element = self.driver.execute_script(f"return document.getElementsByName('{input.name}')[0].outerHTML")
@@ -379,12 +386,7 @@ class VisionTextBaseline(Baseline):
         print("about to try executing one action, on the following input:", input.name)
 
         # extract HTML
-        url = kwargs['url']
-        html = self.actions.get_html(url)
-
-        # simplify HTML
-        # simplified_html = ActionUtils.simplify_html(html)
-        relevant_html = self.get_relevant_html(input)
+        html = self.get_html(input, kwargs['url'])
         self.driver.save_screenshot(self.screenshot_path)
         
         match self.model:
@@ -395,7 +397,7 @@ class VisionTextBaseline(Baseline):
             case _:
                 raise ValueError(f"Model {self.model} is not supported")
 
-        command = model.get_vision_text_baseline_action(input.name, relevant_html, self.screenshot_path)
+        command = model.get_vision_text_baseline_action(input.name, html, self.screenshot_path, self.num_demonstrations, self.use_relevant_html)
 
         # find the index of "self.actions(" and drop anything before it.
         # This is because the GPT4 model sometimes outputs a lot of text before the actual command

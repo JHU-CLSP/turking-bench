@@ -19,6 +19,7 @@ import base64
 from dotenv import load_dotenv
 import copy
 from evaluation.prompts import text_vision_oracle_instructions, few_shot_examples
+from itertools import islice
 
 import requests
 import json
@@ -251,6 +252,12 @@ class VisionModel:
             case _:
                 raise ValueError("This action type is not implemented yet.")
 
+    def get_vision_text_baseline_action(self, input_name: str, html_code: str, image_path: str, num_demonstrations: int, use_relevant_html: bool) -> str:
+        """
+        This function is used in baselines for the text-vision benchmarks
+        """
+        raise NotImplementedError("This method should be implemented by the subclass.")
+
 class OLlamaModel(VisionModel):
     def __init__(self, model: str):
         super().__init__(Models.OLlama)
@@ -259,7 +266,7 @@ class OLlamaModel(VisionModel):
     def get_main_prompt(self, objective: str) -> str:
         pass
 
-    def get_vision_text_baseline_action(self, input_name: str, html_code: str, image_path: str) -> str:
+    def get_vision_text_baseline_action(self, input_name: str, html_code: str, image_path: str, num_demonstrations: int, use_relevant_html: bool) -> str:
         with Image.open(image_path) as img:
             new_size = (int(img.width // 2.11), int(img.height // 2.11))
             resized_img = img.resize(new_size, Image.ANTIALIAS)
@@ -304,13 +311,13 @@ class GPT4VModel(VisionModel):
     def get_main_prompt(self, objective: str):
         pass
 
-    def get_vision_text_baseline_action(self, input_name: str, html_code: str, image_path: str) -> str:
+    def get_vision_text_baseline_action(self, input_name: str, html_code: str, image_path: str, num_demonstrations: int, use_relevant_html: bool) -> str:
         messages = [{
             "role": "assistant",
             "content": text_vision_oracle_instructions()
         }]
 
-        for instance in few_shot_examples():
+        for idx, instance in enumerate(islice(few_shot_examples(), num_demonstrations)):
             with Image.open(instance[1]) as img:
                 new_size = (int(img.width // 2.11), int(img.height // 2.11))
                 resized_img = img.resize(new_size, Image.ANTIALIAS)
@@ -324,7 +331,7 @@ class GPT4VModel(VisionModel):
                 "content": [
                     {
                         "type": "text",
-                        "text": instance[0]
+                        "text": instance[3] if use_relevant_html else instance[0]
                     },
                     {
                         "type": "image_url",

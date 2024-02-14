@@ -49,7 +49,7 @@ class GPTTokenizer:
 
 class Evaluation:
     def __init__(self, solver_type: str, tasks: str, do_eval: bool, dump_features: bool, report_field_stats: bool,
-                 screenshot_path: str = "screenshot.png", ollama_model: str = "llava", headless: bool = False, on_server: bool = False):
+                 headless: bool = False, on_server: bool = False, **kwargs):
         """
         on_server flag specifies if we are running this on a server with xvfb and xserver-xephyr
         """
@@ -80,9 +80,9 @@ class Evaluation:
             self.solver = baselines.GPT4TextBaseline(driver=self.driver, actions=self.actions)
         elif solver_type == "text-vision" or solver_type == "gpt4-text-vision":
             if solver_type == "gpt4-text-vision":
-                self.solver = baselines.VisionTextBaseline(driver=self.driver, actions=self.actions, model="gpt4v", screenshot_path=screenshot_path)
+                self.solver = baselines.VisionTextBaseline(driver=self.driver, actions=self.actions, model="gpt4v", screenshot_path=kwargs["screenshot_path"], num_demonstrations=kwargs["num_demonstrations"], use_relevant_html=kwargs["use_relevant_html"])
 
-            self.solver = baselines.VisionTextBaseline(driver=self.driver, actions=self.actions, model="ollama", screenshot_path=screenshot_path, ollama_model=ollama_model)
+            self.solver = baselines.VisionTextBaseline(driver=self.driver, actions=self.actions, model="ollama", screenshot_path=kwargs["screenshot_path"], num_demonstrations=kwargs['num_demonstrations'], use_relevant_html=kwargs['use_relevant_html'], ollama_model=kwargs["ollama_model"])
         else:
             raise Exception(f"{Fore.RED}Solver `{solver_type}` not implemented")
         self.tasks = tasks
