@@ -58,6 +58,7 @@ class Evaluation:
         self.xlingual_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], tokenizer=self.xlingual_tokenizer)
 
         if not headless and on_server:
+            print(f"Starting display for the server")
             self.display = Display(visible=0, size=(1920, 1080))
             self.display.start()
 
