@@ -980,7 +980,8 @@ class Evaluation:
 
                 df = df.pivot(index='project', columns='input_type', values='score')
                 today = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-                df.to_csv(f'{self.solver_type}_{self.tasks}_scores_{today}.csv', index=True)
+                csv_filename = f'{self.solver_type}_{random.randint(1, 1000)}_{self.tasks}_scores_{today}.csv'
+                df.to_csv(csv_filename, index=True)
 
                 # save results to json
                 with open(f'{self.solver_type}_scores_{today}.json', 'w') as f:

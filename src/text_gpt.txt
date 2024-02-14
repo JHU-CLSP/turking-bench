@@ -9,3 +9,60 @@ instance_id: 16430 <-> row_number: 0
  - - - - - -  starting a new element: `Input(name=`fix1`, type=`textarea`, task=`ethics_sbic dialogue 2nd 0`)` - - - - - -  
 input: Input(name=`fix1`, type=`textarea`, task=`ethics_sbic dialogue 2nd 0`)
 about to try executing one action, on the following input: fix1
+Executing one action: self.actions.modify_text('fix1', 'I accidentally spilled coffee on a customer today.')
+Add text `I accidentally spilled coffee on a customer today.` to this text input: <textarea class="form-control" id="fix1" name="fix1" oninput="changeDialog(this);" placeholder="Modify: I poured the hot coffee on the customer" rows="2" style="width: 100%;"></textarea>
+ - - - - - -  starting a new element: `Input(name=`fix2`, type=`textarea`, task=`ethics_sbic dialogue 2nd 0`)` - - - - - -  
+input: Input(name=`fix2`, type=`textarea`, task=`ethics_sbic dialogue 2nd 0`)
+about to try executing one action, on the following input: fix2
+Executing one action: self.actions.modify_text('fix2', 'I accidentally spilled coffee on a customer today!')
+Add text `I accidentally spilled coffee on a customer today!` to this text input: <textarea class="form-control" id="fix2" name="fix2" oninput="changeDialog(this);" placeholder="Modify: Where were you when you did this? It doesn't sound like something you would do." rows="2" style="width: 100%;"></textarea>
+ - - - - - -  starting a new element: `Input(name=`fix3`, type=`textarea`, task=`ethics_sbic dialogue 2nd 0`)` - - - - - -  
+input: Input(name=`fix3`, type=`textarea`, task=`ethics_sbic dialogue 2nd 0`)
+about to try executing one action, on the following input: fix3
+Executing one action: self.actions.modify_text('fix3', 'I accidentally spilled coffee on a customer today.')
+Add text `I accidentally spilled coffee on a customer today.` to this text input: <textarea class="form-control" id="fix3" name="fix3" oninput="changeDialog(this);" placeholder="Modify: The customer made me mad." rows="2" style="width: 100%;"></textarea>
+ - - - - - -  starting a new element: `Input(name=`fix4`, type=`textarea`, task=`ethics_sbic dialogue 2nd 0`)` - - - - - -  
+input: Input(name=`fix4`, type=`textarea`, task=`ethics_sbic dialogue 2nd 0`)
+about to try executing one action, on the following input: fix4
+Executing one action: self.actions.modify_text('fix4', 'While it’s understandable to feel frustrated at times, it’s important to maintain professionalism in the workplace and manage conflicts through proper channels rather than resorting to actions that could harm others or oneself.')
+Add text `While it’s understandable to feel frustrated at times, it’s important to maintain professionalism in the workplace and manage conflicts through proper channels rather than resorting to actions that could harm others or oneself.` to this text input: <textarea class="form-control" id="fix4" name="fix4" oninput="changeDialog(this);" placeholder="Modify: It is not okay to pour coffee on someone on purpose.  It is especially not okay to do this at work." rows="4" style="width: 100%;"></textarea>
+ - - - - - -  starting a new element: `Input(name=`fix5`, type=`textarea`, task=`ethics_sbic dialogue 2nd 0`)` - - - - - -  
+input: Input(name=`fix5`, type=`textarea`, task=`ethics_sbic dialogue 2nd 0`)
+about to try executing one action, on the following input: fix5
+Executing one action: self.actions.modify_text('fix5', 'It is not wise to retaliate against rude behavior by being rude yourself. Perhaps a calm discussion with the customer could improve the situation for both of you.')
+Add text `It is not wise to retaliate against rude behavior by being rude yourself. Perhaps a calm discussion with the customer could improve the situation for both of you.` to this text input: <textarea class="form-control" id="fix5" name="fix5" oninput="changeDialog(this);" placeholder="Modify: The customer was an asshole, every day he complains about something." rows="2" style="width: 100%;"></textarea>
+ - - - - - -  starting a new element: `Input(name=`norm`, type=`radio`, task=`ethics_sbic dialogue 2nd 0`)` - - - - - -  
+input: Input(name=`norm`, type=`radio`, task=`ethics_sbic dialogue 2nd 0`)
+about to try executing one action, on the following input: norm
+Executing one action: self.actions.modify_radio('norm', 's6')
+self.actions.modify_text('socialnew', 'It is essential to exercise control and avoid harming others, even when faced with frustrating situations.')
+We are going to select this radio button: <input class="form-check-input" id="s6" name="norm" type="radio" value="s6" required="">
+Add text `It is essential to exercise control and avoid harming others, even when faced with frustrating situations.` to this text input: <textarea class="form-control" style="background-color:white" id="socialnew" name="socialnew" placeholder="Please write your rule-of-thumb here" rows="2"></textarea>
+ - - - - - -  starting a new element: `Input(name=`socialnew`, type=`textarea`, task=`ethics_sbic dialogue 2nd 0`)` - - - - - -  
+input: Input(name=`socialnew`, type=`textarea`, task=`ethics_sbic dialogue 2nd 0`)
+about to try executing one action, on the following input: socialnew
+Executing one action: self.actions.modify_radio('socialnew', 'It is essential to exercise control and avoid harming others, even when faced with frustrating situations.')
+The input value (`It is essential to exercise control and avoid harming others, even when faced with frustrating situations.`, <class 'str'>) not found. 
+Failed to execute an action self.actions.modify_radio('socialnew', 'It is essential to exercise control and avoid harming others, even when faced with frustrating situations.'), error: 'NoneType' object has no attribute 'get_attribute'
+ - - - - - -  starting a new element: `Input(name=`response`, type=`textarea`, task=`ethics_sbic dialogue 2nd 0`)` - - - - - -  
+input: Input(name=`response`, type=`textarea`, task=`ethics_sbic dialogue 2nd 0`)
+about to try executing one action, on the following input: response
+Executing one action: self.actions.modify_text('response', 'While it's understandable to feel frustrated at times, it's important to maintain professionalism in the workplace and manage conflicts through proper channels rather than resorting to actions that could harm others or oneself. It is not wise to retaliate against rude behavior by being rude yourself. Perhaps a calm discussion with the customer could improve the situation for both of you.')
+Failed to execute an action self.actions.modify_text('response', 'While it's understandable to feel frustrated at times, it's important to maintain professionalism in the workplace and manage conflicts through proper channels rather than resorting to actions that could harm others or oneself. It is not wise to retaliate against rude behavior by being rude yourself. Perhaps a calm discussion with the customer could improve the situation for both of you.'), error: invalid syntax. Perhaps you forgot a comma? (<string>, line 1)
+ - - - - - -  starting a new element: `Input(name=`norm_fix`, type=`checkbox`, task=`ethics_sbic dialogue 2nd 0`)` - - - - - -  
+input: Input(name=`norm_fix`, type=`checkbox`, task=`ethics_sbic dialogue 2nd 0`)
+about to try executing one action, on the following input: norm_fix
+Executing one action: self.actions.modify_checkbox('norm_fix', 'on')
+Looking for checkboxes with `name`: `norm_fix` the values: `['on']`
+ ** Warning **: input value is []. So, we're not going to modify the checkbox.
+ - - - - - -  starting a new element: `Input(name=`socialfix`, type=`textarea`, task=`ethics_sbic dialogue 2nd 0`)` - - - - - -  
+input: Input(name=`socialfix`, type=`textarea`, task=`ethics_sbic dialogue 2nd 0`)
+about to try executing one action, on the following input: socialfix
+Executing one action: self.actions.modify_text('socialfix', 'It is important to address issues professionally without resorting to harmful actions.')
+Add text `It is important to address issues professionally without resorting to harmful actions.` to this text input: <textarea class="form-control" style="background-color:white" id="socialfix" name="socialfix" placeholder="Please write the revised rule-of-thumb here. If there are multiple RoTs, seperate them with semicolons (;)" rows="2"></textarea>
+ - - - - - -  starting a new element: `Input(name=`certify-no-pii-response`, type=`checkbox`, task=`ethics_sbic dialogue 2nd 0`)` - - - - - -  
+input: Input(name=`certify-no-pii-response`, type=`checkbox`, task=`ethics_sbic dialogue 2nd 0`)
+about to try executing one action, on the following input: certify-no-pii-response
+Executing one action: self.actions.modify_checkbox('certify-no-pii-response', 'on')
+Looking for checkboxes with `name`: `certify-no-pii-response` the values: `['on']`
+About to check this checkbox: <input checked="checked" class="form-check-input" id="certify-no-pii-response" name="certify-no-pii-response" required="" type="checkbox">
