@@ -57,6 +57,8 @@ class OLlamaTextModel():
         assistant:
         """
 
+        print(f"Prompt: {prompt}")
+
         url = "http://localhost:11434/api/generate"
         payload = {
             "model": self.model,
