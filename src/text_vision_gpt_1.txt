@@ -33139,3 +33139,578 @@ Add text `Clarice Lancaster Jackson` to this text input: <input type="text" name
  - - - - - -  starting a new element: `Input(name=`incorrectoptions-10`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
 input: Input(name=`incorrectoptions-10`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
 about to try executing one action, on the following input: incorrectoptions-10
+Executing one action: self.actions.modify_text('incorrectoptions-10', 'Home//Inn')
+Add text `Home//Inn` to this text input: <input type="text" name="incorrectoptions-10">
+ - - - - - -  starting a new element: `Input(name=`correctoptions-11`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+input: Input(name=`correctoptions-11`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+about to try executing one action, on the following input: correctoptions-11
+Executing one action: self.actions.modify_text('correctoptions-11', 'James Page Jackson // Jackson')
+Add text `James Page Jackson // Jackson` to this text input: <input type="text" name="correctoptions-11">
+ - - - - - -  starting a new element: `Input(name=`incorrectoptions-11`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+input: Input(name=`incorrectoptions-11`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+about to try executing one action, on the following input: incorrectoptions-11
+Executing one action: self.actions.modify_text('incorrectoptions-11', 'Jackson // Galloway')
+Add text `Jackson // Galloway` to this text input: <input type="text" name="incorrectoptions-11">
+ - - - - - -  starting a new element: `Input(name=`correctoptions-12`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+input: Input(name=`correctoptions-12`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+about to try executing one action, on the following input: correctoptions-12
+Executing one action: self.actions.modify_text('correctoptions-12', 'Jackson')
+Add text `Jackson` to this text input: <input type="text" name="correctoptions-12">
+ - - - - - -  starting a new element: `Input(name=`incorrectoptions-12`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+input: Input(name=`incorrectoptions-12`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+about to try executing one action, on the following input: incorrectoptions-12
+Executing one action: self.actions.modify_text('incorrectoptions-12', 'Jackson // Galloway')
+Add text `Jackson // Galloway` to this text input: <input type="text" name="incorrectoptions-12">
+ - - - - - -  starting a new element: `Input(name=`correctoptions-13`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+input: Input(name=`correctoptions-13`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+about to try executing one action, on the following input: correctoptions-13
+Executing one action: self.actions.modify_text('correctoptions-13', 'Stove // Cooktop')
+Add text `Stove // Cooktop` to this text input: <input type="text" name="correctoptions-13">
+ - - - - - -  starting a new element: `Input(name=`incorrectoptions-13`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+input: Input(name=`incorrectoptions-13`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+about to try executing one action, on the following input: incorrectoptions-13
+Executing one action: self.actions.modify_text('incorrectoptions-13', 'HotelMotelInn // HotelMotel')
+Add text `HotelMotelInn // HotelMotel` to this text input: <input type="text" name="incorrectoptions-13">
+ - - - - - -  starting a new element: `Input(name=`correctoptions-14`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+input: Input(name=`correctoptions-14`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+about to try executing one action, on the following input: correctoptions-14
+Executing one action: self.actions.modify_text('correctoptions-14', 'The Anthony House')
+Add text `The Anthony House` to this text input: <input type="text" name="correctoptions-14">
+ - - - - - -  starting a new element: `Input(name=`incorrectoptions-14`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+input: Input(name=`incorrectoptions-14`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+about to try executing one action, on the following input: incorrectoptions-14
+Executing one action: self.actions.modify_text('incorrectoptions-14', 'HotelMotelInn // HotelMotel')
+Add text `HotelMotelInn // HotelMotel` to this text input: <input type="text" name="incorrectoptions-14">
+ - - - - - -  starting a new element: `Input(name=`hiddenName`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+Skipping element `hiddenName` since it is not visible.
+input: Input(name=`correctoptions-0`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['James Page Jackson']
+ visible_values : ['James Page Jackson']
+input: Input(name=`incorrectoptions-0`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['James Page Jackson']
+ visible_values : ['James Page Jackson']
+input: Input(name=`correctoptions-1`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Hotel']
+ visible_values : ['Hotel']
+input: Input(name=`incorrectoptions-1`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Hotel']
+ visible_values : ['Hotel']
+input: Input(name=`correctoptions-2`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Anthony House']
+ visible_values : ['Anthony House']
+input: Input(name=`incorrectoptions-2`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Hotel//Motel//Inn']
+ visible_values : ['Hotel//Motel//Inn']
+input: Input(name=`correctoptions-3`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Hotel']
+ visible_values : ['Hotel']
+input: Input(name=`incorrectoptions-3`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Hotel//Motel//Inn']
+ visible_values : ['Hotel//Motel//Inn']
+input: Input(name=`correctoptions-4`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['James Page Jackson']
+ visible_values : ['James Page Jackson']
+input: Input(name=`incorrectoptions-4`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['James Page Jackson']
+ visible_values : ['James Page Jackson']
+input: Input(name=`correctoptions-5`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Jackson']
+ visible_values : ['Jackson']
+input: Input(name=`incorrectoptions-5`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Jackson // Galloway']
+ visible_values : ['Jackson // Galloway']
+input: Input(name=`correctoptions-6`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Jackson']
+ visible_values : ['Jackson']
+input: Input(name=`incorrectoptions-6`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Hotel//Motel//Inn']
+ visible_values : ['Hotel//Motel//Inn']
+input: Input(name=`correctoptions-7`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['James Page Jackson']
+ visible_values : ['James Page Jackson']
+input: Input(name=`incorrectoptions-7`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Hotel/Motel/Inn']
+ visible_values : ['Hotel/Motel/Inn']
+input: Input(name=`correctoptions-8`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Anthony House']
+ visible_values : ['Anthony House']
+input: Input(name=`incorrectoptions-8`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['HotelMotelInn // HotelMotel']
+ visible_values : ['HotelMotelInn // HotelMotel']
+input: Input(name=`correctoptions-9`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['carpentry']
+ visible_values : ['carpentry']
+input: Input(name=`incorrectoptions-9`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Jackson // Galloway']
+ visible_values : ['Jackson // Galloway']
+input: Input(name=`correctoptions-10`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Clarice Lancaster Jackson']
+ visible_values : ['Clarice Lancaster Jackson']
+input: Input(name=`incorrectoptions-10`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Home//Inn']
+ visible_values : ['Home//Inn']
+input: Input(name=`correctoptions-11`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['James Page Jackson // Jackson']
+ visible_values : ['James Page Jackson // Jackson']
+input: Input(name=`incorrectoptions-11`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Jackson // Galloway']
+ visible_values : ['Jackson // Galloway']
+input: Input(name=`correctoptions-12`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Jackson']
+ visible_values : ['Jackson']
+input: Input(name=`incorrectoptions-12`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Jackson // Galloway']
+ visible_values : ['Jackson // Galloway']
+input: Input(name=`correctoptions-13`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Stove // Cooktop']
+ visible_values : ['Stove // Cooktop']
+input: Input(name=`incorrectoptions-13`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['HotelMotelInn // HotelMotel']
+ visible_values : ['HotelMotelInn // HotelMotel']
+input: Input(name=`correctoptions-14`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['The Anthony House']
+ visible_values : ['The Anthony House']
+input: Input(name=`incorrectoptions-14`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['HotelMotelInn // HotelMotel']
+ visible_values : ['HotelMotelInn // HotelMotel']
+input: Input(name=`hiddenName`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : [None]
+ visible_values : [None]
+ ------- evaluating input: Input(name=`correctoptions-0`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['james page jackson', 'James Page Jackson']`
+----> answers: `['James Page Jackson', 'james page jackson']` - type: `<class 'list'>`
+----> baseline_answer: `James Page Jackson` - type: `<class 'str'>`
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`incorrectoptions-0`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['james galloway', 'Galloway']`
+----> answers: `['james galloway', 'Galloway']` - type: `<class 'list'>`
+----> baseline_answer: `James Page Jackson` - type: `<class 'str'>`
+ --> scores:  0.4
+----> per-field score: 0.4
+ ------- evaluating input: Input(name=`correctoptions-1`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['a hotel', 'hotel']`
+----> answers: `['hotel', 'a hotel']` - type: `<class 'list'>`
+----> baseline_answer: `Hotel` - type: `<class 'str'>`
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`incorrectoptions-1`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['a house', 'plantation']`
+----> answers: `['plantation', 'a house']` - type: `<class 'list'>`
+----> baseline_answer: `Hotel` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`correctoptions-2`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['anthony house', 'Anthony House']`
+----> answers: `['Anthony House', 'anthony house']` - type: `<class 'list'>`
+----> baseline_answer: `Anthony House` - type: `<class 'str'>`
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`incorrectoptions-2`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['jackson plantation', 'House']`
+----> answers: `['jackson plantation', 'House']` - type: `<class 'list'>`
+----> baseline_answer: `Hotel//Motel//Inn` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`correctoptions-3`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['a hotel', 'hotel']`
+----> answers: `['hotel', 'a hotel']` - type: `<class 'list'>`
+----> baseline_answer: `Hotel` - type: `<class 'str'>`
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`incorrectoptions-3`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['a resturant', 'House']`
+----> answers: `['House', 'a resturant']` - type: `<class 'list'>`
+----> baseline_answer: `Hotel//Motel//Inn` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`correctoptions-4`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['james page jackson', "James Page Jackson's"]`
+----> answers: `["James Page Jackson's", 'james page jackson']` - type: `<class 'list'>`
+----> baseline_answer: `James Page Jackson` - type: `<class 'str'>`
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`incorrectoptions-4`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['james galloway', 'Galloway']`
+----> answers: `['james galloway', 'Galloway']` - type: `<class 'list'>`
+----> baseline_answer: `James Page Jackson` - type: `<class 'str'>`
+ --> scores:  0.4
+----> per-field score: 0.4
+ ------- evaluating input: Input(name=`correctoptions-5`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['because his masters name was galloway', 'A man named Galloway bought my James Page Jackson']`
+----> answers: `['because his masters name was galloway', 'A man named Galloway bought my James Page Jackson']` - type: `<class 'list'>`
+----> baseline_answer: `Jackson` - type: `<class 'str'>`
+ --> scores:  0.19999999999999998
+----> per-field score: 0.19999999999999998
+ ------- evaluating input: Input(name=`incorrectoptions-5`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['that was his name', 'He  was a fine cook']`
+----> answers: `['that was his name', 'He  was a fine cook']` - type: `<class 'list'>`
+----> baseline_answer: `Jackson // Galloway` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`correctoptions-6`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['JACKSON', 'Jackson']`
+----> answers: `['Jackson', 'JACKSON']` - type: `<class 'list'>`
+----> baseline_answer: `Jackson` - type: `<class 'str'>`
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`incorrectoptions-6`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['JAMES', 'Lancaster']`
+----> answers: `['Lancaster', 'JAMES']` - type: `<class 'list'>`
+----> baseline_answer: `Hotel//Motel//Inn` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`correctoptions-7`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['james page jackson', 'James Page Jackson']`
+----> answers: `['James Page Jackson', 'james page jackson']` - type: `<class 'list'>`
+----> baseline_answer: `James Page Jackson` - type: `<class 'str'>`
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`incorrectoptions-7`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['clairese landcaster jackson', 'Clarice Lancaster Jackson']`
+----> answers: `['Clarice Lancaster Jackson', 'clairese landcaster jackson']` - type: `<class 'list'>`
+----> baseline_answer: `Hotel/Motel/Inn` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`correctoptions-8`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['anthony house', 'Anthony House']`
+----> answers: `['Anthony House', 'anthony house']` - type: `<class 'list'>`
+----> baseline_answer: `Anthony House` - type: `<class 'str'>`
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`incorrectoptions-8`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['landcaster plantation', 'Dutch ovens.']`
+----> answers: `['landcaster plantation', 'Dutch ovens.']` - type: `<class 'list'>`
+----> baseline_answer: `HotelMotelInn // HotelMotel` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`correctoptions-9`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['carpenter', 'He was a good carpenter']`
+----> answers: `['He was a good carpenter', 'carpenter']` - type: `<class 'list'>`
+----> baseline_answer: `carpentry` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`incorrectoptions-9`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['father', 'He was a good worker']`
+----> answers: `['He was a good worker', 'father']` - type: `<class 'list'>`
+----> baseline_answer: `Jackson // Galloway` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`correctoptions-10`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['in memory of their old home', 'in memory of his old home.']`
+----> answers: `['in memory of his old home.', 'in memory of their old home']` - type: `<class 'list'>`
+----> baseline_answer: `Clarice Lancaster Jackson` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`incorrectoptions-10`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['she liked the name', 'in memory of Anthony House']`
+----> answers: `['in memory of Anthony House', 'she liked the name']` - type: `<class 'list'>`
+----> baseline_answer: `Home//Inn` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`correctoptions-11`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['because his masters name was galloway', 'A man named Galloway bought James Page Jackson']`
+----> answers: `['because his masters name was galloway', 'A man named Galloway bought James Page Jackson']` - type: `<class 'list'>`
+----> baseline_answer: `James Page Jackson // Jackson` - type: `<class 'str'>`
+ --> scores:  0.5
+----> per-field score: 0.5
+ ------- evaluating input: Input(name=`incorrectoptions-11`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['that was his name', 'he was a fine cook']`
+----> answers: `['he was a fine cook', 'that was his name']` - type: `<class 'list'>`
+----> baseline_answer: `Jackson // Galloway` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`correctoptions-12`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['because thats what her fathers name was', 'James Page Jackson belonged to Mr. Galloway at the time of her birth']`
+----> answers: `['because thats what her fathers name was', 'James Page Jackson belonged to Mr. Galloway at the time of her birth']` - type: `<class 'list'>`
+----> baseline_answer: `Jackson` - type: `<class 'str'>`
+ --> scores:  0.14285714285714288
+----> per-field score: 0.14285714285714288
+ ------- evaluating input: Input(name=`incorrectoptions-12`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['that was her name', 'The first cook stove ever brought to this town was one my father']`
+----> answers: `['The first cook stove ever brought to this town was one my father', 'that was her name']` - type: `<class 'list'>`
+----> baseline_answer: `Jackson // Galloway` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`correctoptions-13`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['because he was taken by his owner', 'He was cook at the Anthony House.']`
+----> answers: `['He was cook at the Anthony House.', 'because he was taken by his owner']` - type: `<class 'list'>`
+----> baseline_answer: `Stove // Cooktop` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`incorrectoptions-13`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['he wanted to move there', 'Father just kept on telling about the stoves']`
+----> answers: `['Father just kept on telling about the stoves', 'he wanted to move there']` - type: `<class 'list'>`
+----> baseline_answer: `HotelMotelInn // HotelMotel` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`correctoptions-14`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['anthony house', 'Anthony House']`
+----> answers: `['Anthony House', 'anthony house']` - type: `<class 'list'>`
+----> baseline_answer: `The Anthony House` - type: `<class 'str'>`
+ --> scores:  0.8
+----> per-field score: 0.8
+ ------- evaluating input: Input(name=`incorrectoptions-14`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['jackson plantation', 'Jackson plantation']`
+----> answers: `['jackson plantation', 'Jackson plantation']` - type: `<class 'list'>`
+----> baseline_answer: `HotelMotelInn // HotelMotel` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`hiddenName`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+Skipping element `hiddenName` since it is not visible.
+ --> Per-instance overall score: 0.3480952380952381
+ --> Per-instance per-field breakdown: {'text': [0.0, 0.2, 0.6666666666666666, 0.3333333333333333, 0.6666666666666666, 0.0, 1.0, 0.0, 0.5454545454545454, 0.3076923076923077, 0.28571428571428575, 0.3333333333333333, 0.19354838709677416, 0.0, 0.31578947368421056, 0.0, 1.0, 0.0, 0.5, 0.15384615384615385, 0.0, 0.0, 0.11764705882352941, 0.15384615384615385, 0.33333333333333337, 0.0, 1.0, 0.6666666666666666, 0.0, 0.0, 0.0, 0.0, 1.0, 0.3333333333333333, 0.6666666666666666, 0.0, 0.8, 0.0, 1.0, 0.0, 1.0, 0.6666666666666666, 0.0, 0.0, 0.5, 0.0, 0.6666666666666666, 0.2, 0.6666666666666666, 0.0, 0.5, 0.0, 0.0, 0.0, 0.18181818181818182, 0.20512820512820512, 0.3333333333333333, 0.0, 0.5, 0.0, 0.6666666666666666, 0.0, 0.5714285714285715, 0.0, 0.36363636363636365, 0.0, 0.33333333333333337, 0.0, 0.33333333333333337, 0.0, 0.2222222222222222, 0.2222222222222222, 0.07692307692307691, 0.0, 0.2727272727272727, 0.14285714285714288, 0.0, 0.0, 0.0, 0.0, 0.41666666666666663, 0.12500000000000003, 0.11764705882352941, 0.4615384615384615, 1.0, 0.0, 1.0, 0.15384615384615385, 0.0, 0.0, 0.888888888888889, 0.26086956521739135, 0.923076923076923, 0.3448275862068966, 0.15384615384615385, 0.04545454545454545, 1.0, 0.0, 0.36363636363636365, 0.0, 0.923076923076923, 0.06451612903225806, 1.0, 0.5, 0.0, 0.33333333333333337, 0.923076923076923, 0.05714285714285715, 0.6666666666666665, 0.1739130434782609, 0.923076923076923, 0.054054054054054064, 0.5714285714285715, 0.0, 0.923076923076923, 0.3333333333333333, 1.0, 0.0, 1.0, 0.0, 1.0, 0.2, 0.8, 0.22222222222222224, 1.0, 0.0, 0.0, 0.0, 0.8571428571428571, 0.0, 0.15384615384615383, 0.0, 0.2, 0.3333333333333333, 0.18181818181818182, 0.23529411764705882, 0.1111111111111111, 0.0, 0.0, 0.0, 0.8571428571428571, 0.30769230769230765, 0.0, 0.0, 0.0, 0.1818181818181818, 0.4, 0.0, 1.0, 0.4615384615384615, 0.25, 0.0, 0.2222222222222222, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.4, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.6666666666666666, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.6666666666666666, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.4000000000000001, 0.4, 0.30769230769230765, 0.5806451612903226, 0.1111111111111111, 0.25, 0.22222222222222224, 0.16666666666666666, 0.0, 0.125, 0.0, 1.0, 0.0, 1.0, 0.6666666666666666, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.05128205128205127, 0.25, 0.7499999999999999, 0.14285714285714288, 0.5, 0.14285714285714288, 0.5, 0.0, 1.0, 0.33333333333333337, 0.9473684210526316, 0.32, 0.7142857142857143, 0.0, 1.0, 0.3225806451612903, 0.0, 0.13333333333333336, 0.0, 0.0, 0.6153846153846153, 0.15789473684210525, 0.7499999999999999, 0.125, 0.36363636363636365, 0.13793103448275862, 1.0, 0.0, 1.0, 0.19999999999999998, 1.0, 0.5454545454545454, 0.23529411764705882, 0.13333333333333333, 0.0, 0.0, 0.6666666666666666, 0.6666666666666666, 0.33333333333333337, 0.5, 1.0, 0.0, 0.23529411764705882, 0.2222222222222222, 0.9333333333333333, 0.14285714285714285, 1.0, 0.2857142857142857, 0.0, 0.0, 0.25, 0.2105263157894737, 0.23529411764705882, 0.15384615384615383, 0.4615384615384615, 0.0, 0.9090909090909091, 0.25, 0.12903225806451613, 0.25, 0.16666666666666666, 0.0, 0.7000000000000001, 0.23529411764705885, 1.0, 0.4000000000000001, 1.0, 0.0, 1.0, 0.5, 1.0, 0.5, 0.0, 0.0, 1.0, 0.4, 1.0, 0.4000000000000001, 0.09523809523809522, 0.16666666666666666, 0.9090909090909091, 0.7272727272727272, 0.3181818181818182, 0.12765957446808512, 0.6666666666666666, 0.23529411764705885, 1.0, 0.2, 0.14285714285714285, 0.06666666666666667, 0.0, 0.4, 0.06896551724137931, 0.15789473684210525, 0.25, 0.26666666666666666, 0.4444444444444445, 0.3636363636363636, 0.6666666666666666, 0.2222222222222222, 0.20000000000000004, 0.0, 0.25000000000000006, 0.125, 0.0, 0.28571428571428575, 0.0, 0.125, 0.1818181818181818, 0.2222222222222222, 1.0, 0.13793103448275862, 0.1739130434782609, 0.2222222222222222, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.7272727272727274, 0.2, 0.6, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6666666666666666, 0.0, 0.19999999999999998, 0.0, 0.0, 0.0, 0.0, 0.0, 0.19999999999999998, 0.0, 0.5, 0.5, 0.2222222222222222, 0.4, 0.6666666666666666, 0.0, 0.15384615384615385, 0.32, 1.0, 0.28571428571428575, 1.0, 0.4, 0.5454545454545454, 0.16666666666666666, 0.6153846153846153, 0.15384615384615383, 0.2857142857142857, 0.0, 0.11764705882352941, 0.0, 0.07407407407407407, 0.0, 0.13333333333333333, 0.0, 1.0, 0.4, 0.2857142857142857, 0.12500000000000003, 0.4, 0.0, 0.14285714285714288, 0.16666666666666669, 0.48275862068965514, 0.10000000000000002, 0.9090909090909091, 0.0, 0.0, 0.0, 0.0, 0.15384615384615385, 0.0, 0.0, 0.0, 0.0, 0.8421052631578948, 0.0, 1.0, 0.4, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.4, 0.19999999999999998, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.14285714285714288, 0.0, 0.0, 0.0, 0.8, 0.0]}
+instance_id: 34785 <-> row_number: 50
+Could not find input field with name `correctoptions-10`
+Could not find input field with name `correctoptions-11`
+Could not find input field with name `correctoptions-12`
+Could not find input field with name `correctoptions-13`
+Could not find input field with name `correctoptions-14`
+Could not find input field with name `correctoptions-15`
+Could not find input field with name `correctoptions-16`
+Could not find input field with name `correctoptions-17`
+Could not find input field with name `correctoptions-18`
+Could not find input field with name `correctoptions-19`
+Could not find input field with name `correctoptions-20`
+Could not find input field with name `correctoptions-21`
+Could not find input field with name `correctoptions-22`
+Could not find input field with name `correctoptions-7`
+Could not find input field with name `correctoptions-8`
+Could not find input field with name `correctoptions-9`
+Could not find input field with name `incorrectoptions-10`
+Could not find input field with name `incorrectoptions-11`
+Could not find input field with name `incorrectoptions-12`
+Could not find input field with name `incorrectoptions-13`
+Could not find input field with name `incorrectoptions-14`
+Could not find input field with name `incorrectoptions-15`
+Could not find input field with name `incorrectoptions-16`
+Could not find input field with name `incorrectoptions-17`
+Could not find input field with name `incorrectoptions-18`
+Could not find input field with name `incorrectoptions-19`
+Could not find input field with name `incorrectoptions-20`
+Could not find input field with name `incorrectoptions-21`
+Could not find input field with name `incorrectoptions-22`
+Could not find input field with name `incorrectoptions-7`
+Could not find input field with name `incorrectoptions-8`
+Could not find input field with name `incorrectoptions-9`
+ --> inputs: ['correctoptions-0', 'incorrectoptions-0', 'correctoptions-1', 'incorrectoptions-1', 'correctoptions-2', 'incorrectoptions-2', 'correctoptions-3', 'incorrectoptions-3', 'correctoptions-4', 'incorrectoptions-4', 'correctoptions-5', 'incorrectoptions-5', 'correctoptions-6', 'incorrectoptions-6', 'hiddenName']
+ --> Looking up gold labels from row index 50 of `input.csv` (unique inputs). 
+ --> input labels: {'correctoptions-0': ["She thought it wasn't fair to Delamere or Clara//She thought it was unfair to Delamere or Clara", 'Bin Ladin'], 'incorrectoptions-0': ['She appreciated it//She supported it', 'Qaida when'], 'correctoptions-1': ['He was not aware of it//He remained unaffected', 'Command Center'], 'incorrectoptions-1': ['He was angry//He was upset', "Atta's personalities."], 'correctoptions-2': ['Mrs. Carteret// Madam Cataret', 'Reagan National Airport'], 'incorrectoptions-2': ['Olivia//Delamere', 'terrorist'], 'correctoptions-3': ['Olivia//Clara', 'American 77'], 'incorrectoptions-3': ['Mrs. Carteret //Ellis', 'considered'], 'correctoptions-4': ['He had no family//He had no means', 'notified'], 'incorrectoptions-4': ['He was very good//He was impressionable', 'secret service'], 'correctoptions-5': ['She was partial to Tom//Clara was young and impressionable', 'During the second'], 'incorrectoptions-5': ['She liked him//Delamere disliked him', 'lived in Germany'], 'correctoptions-6': ['He more than friendly interest in her//His depreciation of Delamere', 'e passed between'], 'incorrectoptions-6': ['He had no family//He had no means', '{}'], 'hiddenName': ['{}', '{}']}
+ - - - - - -  starting a new element: `Input(name=`correctoptions-0`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+input: Input(name=`correctoptions-0`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+about to try executing one action, on the following input: correctoptions-0
+Executing one action: self.actions.modify_text('correctoptions-0', 'Suspicions//Disapproval')
+Add text `Suspicions//Disapproval` to this text input: <input type="text" name="correctoptions-0">
+ - - - - - -  starting a new element: `Input(name=`incorrectoptions-0`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+input: Input(name=`incorrectoptions-0`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+about to try executing one action, on the following input: incorrectoptions-0
+Executing one action: self.actions.modify_text('incorrectoptions-0', 'Suspicion/Disapproval')
+Add text `Suspicion/Disapproval` to this text input: <input type="text" name="incorrectoptions-0">
+ - - - - - -  starting a new element: `Input(name=`correctoptions-1`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+input: Input(name=`correctoptions-1`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+about to try executing one action, on the following input: correctoptions-1
+Executing one action: self.actions.modify_text('correctoptions-1', 'Disapproval')
+Add text `Disapproval` to this text input: <input type="text" name="correctoptions-1">
+ - - - - - -  starting a new element: `Input(name=`incorrectoptions-1`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+input: Input(name=`incorrectoptions-1`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+about to try executing one action, on the following input: incorrectoptions-1
+Executing one action: self.actions.modify_text('incorrectoptions-1', 'Suspicion//Disapproval')
+Add text `Suspicion//Disapproval` to this text input: <input type="text" name="incorrectoptions-1">
+ - - - - - -  starting a new element: `Input(name=`correctoptions-2`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+input: Input(name=`correctoptions-2`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+about to try executing one action, on the following input: correctoptions-2
+Executing one action: self.actions.modify_text('correctoptions-2', 'Mrs. Carteret//Major Carteret')
+Add text `Mrs. Carteret//Major Carteret` to this text input: <input type="text" name="correctoptions-2">
+ - - - - - -  starting a new element: `Input(name=`incorrectoptions-2`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+input: Input(name=`incorrectoptions-2`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+about to try executing one action, on the following input: incorrectoptions-2
+Executing one action: self.actions.modify_text('incorrectoptions-2', 'Mrs. Carteret//Major Carteret')
+Add text `Mrs. Carteret//Major Carteret` to this text input: <input type="text" name="incorrectoptions-2">
+ - - - - - -  starting a new element: `Input(name=`correctoptions-3`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+input: Input(name=`correctoptions-3`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+about to try executing one action, on the following input: correctoptions-3
+Executing one action: self.actions.modify_text('correctoptions-3', 'Olivia//Mrs. Carteret')
+Add text `Olivia//Mrs. Carteret` to this text input: <input type="text" name="correctoptions-3">
+ - - - - - -  starting a new element: `Input(name=`incorrectoptions-3`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+input: Input(name=`incorrectoptions-3`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+about to try executing one action, on the following input: incorrectoptions-3
+Executing one action: self.actions.modify_text('incorrectoptions-3', 'Olivia//Mrs. Carteret//Major Carteret')
+Add text `Olivia//Mrs. Carteret//Major Carteret` to this text input: <input type="text" name="incorrectoptions-3">
+ - - - - - -  starting a new element: `Input(name=`correctoptions-4`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+input: Input(name=`correctoptions-4`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+about to try executing one action, on the following input: correctoptions-4
+Executing one action: self.actions.modify_text('correctoptions-4', 'Lack of family and means//Social standing and wealth')
+Add text `Lack of family and means//Social standing and wealth` to this text input: <input type="text" name="correctoptions-4">
+ - - - - - -  starting a new element: `Input(name=`incorrectoptions-4`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+input: Input(name=`incorrectoptions-4`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+about to try executing one action, on the following input: incorrectoptions-4
+Executing one action: self.actions.modify_text('incorrectoptions-4', 'Financial status//Family background')
+Add text `Financial status//Family background` to this text input: <input type="text" name="incorrectoptions-4">
+ - - - - - -  starting a new element: `Input(name=`correctoptions-5`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+input: Input(name=`correctoptions-5`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+about to try executing one action, on the following input: correctoptions-5
+Executing one action: self.actions.modify_text('correctoptions-5', 'Suspicion/Disapproval') 
+
+If you have a specific value you'd like to submit for this input, please provide it, and I can generate the correct command.
+Failed to execute an action self.actions.modify_text('correctoptions-5', 'Suspicion/Disapproval') 
+
+If you have a specific value you'd like to submit for this input, please provide it, and I can generate the correct command., error: unterminated string literal (detected at line 3) (<string>, line 3)
+ - - - - - -  starting a new element: `Input(name=`incorrectoptions-5`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+input: Input(name=`incorrectoptions-5`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+about to try executing one action, on the following input: incorrectoptions-5
+Executing one action: self.actions.modify_text('incorrectoptions-5', 'Suspicion/Disapproval')
+Add text `Suspicion/Disapproval` to this text input: <input type="text" name="incorrectoptions-5">
+ - - - - - -  starting a new element: `Input(name=`correctoptions-6`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+input: Input(name=`correctoptions-6`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+about to try executing one action, on the following input: correctoptions-6
+Executing one action: self.actions.modify_text('correctoptions-6', 'Supposed depreciation of Delamere')
+Add text `Supposed depreciation of Delamere` to this text input: <input type="text" name="correctoptions-6">
+ - - - - - -  starting a new element: `Input(name=`incorrectoptions-6`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+input: Input(name=`incorrectoptions-6`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+about to try executing one action, on the following input: incorrectoptions-6
+Executing one action: self.actions.modify_text('incorrectoptions-6', 'nan')
+Since the input value is `nan`, we are not going to modify the text.
+ - - - - - -  starting a new element: `Input(name=`hiddenName`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)` - - - - - -  
+Skipping element `hiddenName` since it is not visible.
+input: Input(name=`correctoptions-0`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Suspicions//Disapproval']
+ visible_values : ['Suspicions//Disapproval']
+input: Input(name=`incorrectoptions-0`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Suspicion/Disapproval']
+ visible_values : ['Suspicion/Disapproval']
+input: Input(name=`correctoptions-1`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Disapproval']
+ visible_values : ['Disapproval']
+input: Input(name=`incorrectoptions-1`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Suspicion//Disapproval']
+ visible_values : ['Suspicion//Disapproval']
+input: Input(name=`correctoptions-2`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Mrs. Carteret//Major Carteret']
+ visible_values : ['Mrs. Carteret//Major Carteret']
+input: Input(name=`incorrectoptions-2`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Mrs. Carteret//Major Carteret']
+ visible_values : ['Mrs. Carteret//Major Carteret']
+input: Input(name=`correctoptions-3`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Olivia//Mrs. Carteret']
+ visible_values : ['Olivia//Mrs. Carteret']
+input: Input(name=`incorrectoptions-3`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Olivia//Mrs. Carteret//Major Carteret']
+ visible_values : ['Olivia//Mrs. Carteret//Major Carteret']
+input: Input(name=`correctoptions-4`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Lack of family and means//Social standing and wealth']
+ visible_values : ['Lack of family and means//Social standing and wealth']
+input: Input(name=`incorrectoptions-4`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Financial status//Family background']
+ visible_values : ['Financial status//Family background']
+input: Input(name=`correctoptions-5`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`incorrectoptions-5`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Suspicion/Disapproval']
+ visible_values : ['Suspicion/Disapproval']
+input: Input(name=`correctoptions-6`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : ['Supposed depreciation of Delamere']
+ visible_values : ['Supposed depreciation of Delamere']
+input: Input(name=`incorrectoptions-6`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`hiddenName`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`)
+ visible : [None]
+ visible_values : [None]
+ ------- evaluating input: Input(name=`correctoptions-0`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `["She thought it wasn't fair to Delamere or Clara//She thought it was unfair to Delamere or Clara", 'Bin Ladin']`
+----> answers: `["She thought it wasn't fair to Delamere or Clara//She thought it was unfair to Delamere or Clara", 'Bin Ladin']` - type: `<class 'list'>`
+----> baseline_answer: `Suspicions//Disapproval` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`incorrectoptions-0`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['She appreciated it//She supported it', 'Qaida when']`
+----> answers: `['She appreciated it//She supported it', 'Qaida when']` - type: `<class 'list'>`
+----> baseline_answer: `Suspicion/Disapproval` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`correctoptions-1`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['He was not aware of it//He remained unaffected', 'Command Center']`
+----> answers: `['Command Center', 'He was not aware of it//He remained unaffected']` - type: `<class 'list'>`
+----> baseline_answer: `Disapproval` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`incorrectoptions-1`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['He was angry//He was upset', "Atta's personalities."]`
+----> answers: `['He was angry//He was upset', "Atta's personalities."]` - type: `<class 'list'>`
+----> baseline_answer: `Suspicion//Disapproval` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`correctoptions-2`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['Mrs. Carteret// Madam Cataret', 'Reagan National Airport']`
+----> answers: `['Reagan National Airport', 'Mrs. Carteret// Madam Cataret']` - type: `<class 'list'>`
+----> baseline_answer: `Mrs. Carteret//Major Carteret` - type: `<class 'str'>`
+ --> scores:  0.5
+----> per-field score: 0.5
+ ------- evaluating input: Input(name=`incorrectoptions-2`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['Olivia//Delamere', 'terrorist']`
+----> answers: `['Olivia//Delamere', 'terrorist']` - type: `<class 'list'>`
+----> baseline_answer: `Mrs. Carteret//Major Carteret` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`correctoptions-3`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['Olivia//Clara', 'American 77']`
+----> answers: `['American 77', 'Olivia//Clara']` - type: `<class 'list'>`
+----> baseline_answer: `Olivia//Mrs. Carteret` - type: `<class 'str'>`
+ --> scores:  0.4
+----> per-field score: 0.4
+ ------- evaluating input: Input(name=`incorrectoptions-3`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['Mrs. Carteret //Ellis', 'considered']`
+----> answers: `['Mrs. Carteret //Ellis', 'considered']` - type: `<class 'list'>`
+----> baseline_answer: `Olivia//Mrs. Carteret//Major Carteret` - type: `<class 'str'>`
+ --> scores:  0.5
+----> per-field score: 0.5
+ ------- evaluating input: Input(name=`correctoptions-4`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['He had no family//He had no means', 'notified']`
+----> answers: `['He had no family//He had no means', 'notified']` - type: `<class 'list'>`
+----> baseline_answer: `Lack of family and means//Social standing and wealth` - type: `<class 'str'>`
+ --> scores:  0.23529411764705882
+----> per-field score: 0.23529411764705882
+ ------- evaluating input: Input(name=`incorrectoptions-4`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['He was very good//He was impressionable', 'secret service']`
+----> answers: `['He was very good//He was impressionable', 'secret service']` - type: `<class 'list'>`
+----> baseline_answer: `Financial status//Family background` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`correctoptions-5`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['She was partial to Tom//Clara was young and impressionable', 'During the second']`
+----> answers: `['She was partial to Tom//Clara was young and impressionable', 'During the second']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`incorrectoptions-5`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['She liked him//Delamere disliked him', 'lived in Germany']`
+----> answers: `['lived in Germany', 'She liked him//Delamere disliked him']` - type: `<class 'list'>`
+----> baseline_answer: `Suspicion/Disapproval` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`correctoptions-6`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['He more than friendly interest in her//His depreciation of Delamere', 'e passed between']`
+----> answers: `['e passed between', 'He more than friendly interest in her//His depreciation of Delamere']` - type: `<class 'list'>`
+----> baseline_answer: `Supposed depreciation of Delamere` - type: `<class 'str'>`
+ --> scores:  0.39999999999999997
+----> per-field score: 0.39999999999999997
+ ------- evaluating input: Input(name=`incorrectoptions-6`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+answers after mapping: `['He had no family//He had no means', '']`
+----> answers: `['', 'He had no family//He had no means']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`hiddenName`, type=`text`, task=`Step 3 Creating Answers Given Questions 23`) ------- 
+Skipping element `hiddenName` since it is not visible.
+ --> Per-instance overall score: 0.14537815126050418
+ --> Per-instance per-field breakdown: {'text': [0.0, 0.2, 0.6666666666666666, 0.3333333333333333, 0.6666666666666666, 0.0, 1.0, 0.0, 0.5454545454545454, 0.3076923076923077, 0.28571428571428575, 0.3333333333333333, 0.19354838709677416, 0.0, 0.31578947368421056, 0.0, 1.0, 0.0, 0.5, 0.15384615384615385, 0.0, 0.0, 0.11764705882352941, 0.15384615384615385, 0.33333333333333337, 0.0, 1.0, 0.6666666666666666, 0.0, 0.0, 0.0, 0.0, 1.0, 0.3333333333333333, 0.6666666666666666, 0.0, 0.8, 0.0, 1.0, 0.0, 1.0, 0.6666666666666666, 0.0, 0.0, 0.5, 0.0, 0.6666666666666666, 0.2, 0.6666666666666666, 0.0, 0.5, 0.0, 0.0, 0.0, 0.18181818181818182, 0.20512820512820512, 0.3333333333333333, 0.0, 0.5, 0.0, 0.6666666666666666, 0.0, 0.5714285714285715, 0.0, 0.36363636363636365, 0.0, 0.33333333333333337, 0.0, 0.33333333333333337, 0.0, 0.2222222222222222, 0.2222222222222222, 0.07692307692307691, 0.0, 0.2727272727272727, 0.14285714285714288, 0.0, 0.0, 0.0, 0.0, 0.41666666666666663, 0.12500000000000003, 0.11764705882352941, 0.4615384615384615, 1.0, 0.0, 1.0, 0.15384615384615385, 0.0, 0.0, 0.888888888888889, 0.26086956521739135, 0.923076923076923, 0.3448275862068966, 0.15384615384615385, 0.04545454545454545, 1.0, 0.0, 0.36363636363636365, 0.0, 0.923076923076923, 0.06451612903225806, 1.0, 0.5, 0.0, 0.33333333333333337, 0.923076923076923, 0.05714285714285715, 0.6666666666666665, 0.1739130434782609, 0.923076923076923, 0.054054054054054064, 0.5714285714285715, 0.0, 0.923076923076923, 0.3333333333333333, 1.0, 0.0, 1.0, 0.0, 1.0, 0.2, 0.8, 0.22222222222222224, 1.0, 0.0, 0.0, 0.0, 0.8571428571428571, 0.0, 0.15384615384615383, 0.0, 0.2, 0.3333333333333333, 0.18181818181818182, 0.23529411764705882, 0.1111111111111111, 0.0, 0.0, 0.0, 0.8571428571428571, 0.30769230769230765, 0.0, 0.0, 0.0, 0.1818181818181818, 0.4, 0.0, 1.0, 0.4615384615384615, 0.25, 0.0, 0.2222222222222222, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.4, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.6666666666666666, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.6666666666666666, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.4000000000000001, 0.4, 0.30769230769230765, 0.5806451612903226, 0.1111111111111111, 0.25, 0.22222222222222224, 0.16666666666666666, 0.0, 0.125, 0.0, 1.0, 0.0, 1.0, 0.6666666666666666, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.05128205128205127, 0.25, 0.7499999999999999, 0.14285714285714288, 0.5, 0.14285714285714288, 0.5, 0.0, 1.0, 0.33333333333333337, 0.9473684210526316, 0.32, 0.7142857142857143, 0.0, 1.0, 0.3225806451612903, 0.0, 0.13333333333333336, 0.0, 0.0, 0.6153846153846153, 0.15789473684210525, 0.7499999999999999, 0.125, 0.36363636363636365, 0.13793103448275862, 1.0, 0.0, 1.0, 0.19999999999999998, 1.0, 0.5454545454545454, 0.23529411764705882, 0.13333333333333333, 0.0, 0.0, 0.6666666666666666, 0.6666666666666666, 0.33333333333333337, 0.5, 1.0, 0.0, 0.23529411764705882, 0.2222222222222222, 0.9333333333333333, 0.14285714285714285, 1.0, 0.2857142857142857, 0.0, 0.0, 0.25, 0.2105263157894737, 0.23529411764705882, 0.15384615384615383, 0.4615384615384615, 0.0, 0.9090909090909091, 0.25, 0.12903225806451613, 0.25, 0.16666666666666666, 0.0, 0.7000000000000001, 0.23529411764705885, 1.0, 0.4000000000000001, 1.0, 0.0, 1.0, 0.5, 1.0, 0.5, 0.0, 0.0, 1.0, 0.4, 1.0, 0.4000000000000001, 0.09523809523809522, 0.16666666666666666, 0.9090909090909091, 0.7272727272727272, 0.3181818181818182, 0.12765957446808512, 0.6666666666666666, 0.23529411764705885, 1.0, 0.2, 0.14285714285714285, 0.06666666666666667, 0.0, 0.4, 0.06896551724137931, 0.15789473684210525, 0.25, 0.26666666666666666, 0.4444444444444445, 0.3636363636363636, 0.6666666666666666, 0.2222222222222222, 0.20000000000000004, 0.0, 0.25000000000000006, 0.125, 0.0, 0.28571428571428575, 0.0, 0.125, 0.1818181818181818, 0.2222222222222222, 1.0, 0.13793103448275862, 0.1739130434782609, 0.2222222222222222, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.7272727272727274, 0.2, 0.6, 0.0, 0.0, 0.0, 0.0, 0.0, 0.6666666666666666, 0.0, 0.19999999999999998, 0.0, 0.0, 0.0, 0.0, 0.0, 0.19999999999999998, 0.0, 0.5, 0.5, 0.2222222222222222, 0.4, 0.6666666666666666, 0.0, 0.15384615384615385, 0.32, 1.0, 0.28571428571428575, 1.0, 0.4, 0.5454545454545454, 0.16666666666666666, 0.6153846153846153, 0.15384615384615383, 0.2857142857142857, 0.0, 0.11764705882352941, 0.0, 0.07407407407407407, 0.0, 0.13333333333333333, 0.0, 1.0, 0.4, 0.2857142857142857, 0.12500000000000003, 0.4, 0.0, 0.14285714285714288, 0.16666666666666669, 0.48275862068965514, 0.10000000000000002, 0.9090909090909091, 0.0, 0.0, 0.0, 0.0, 0.15384615384615385, 0.0, 0.0, 0.0, 0.0, 0.8421052631578948, 0.0, 1.0, 0.4, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.4, 0.19999999999999998, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.14285714285714288, 0.0, 0.0, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.4, 0.5, 0.23529411764705882, 0.0, 0.0, 0.0, 0.39999999999999997, 0.0]}
+ = = = = = = = = = = = = starting new task: `Word Formality Annotation` = = = = = = = = = = = = 
+First instance id: 4911
+instance_id: 4945 <-> row_number: 34
+ --> inputs: ['email0', 'email1', 'email2', 'email3', 'email4', 'email5', 'email6', 'email7', 'email8', 'email9', 'email10', 'email11', 'email12', 'email13', 'email14', 'email15', 'email16', 'email17', 'email18', 'email19']
+ --> Looking up gold labels from row index 34 of `input.csv` (unique inputs). 
+ --> input labels: {'email0': ['0_Neither', '0_Neither', '-1_Slightly_Informal', '-1_Slightly_Informal', '0_Not_Usable'], 'email1': ['1_Slightly_Formal', '3_Very_Formal', '1_Slightly_Formal', '3_Very_Formal', '2_Moderately_Formal'], 'email2': ['0_Neither', '-1_Slightly_Informal', '1_Slightly_Formal', '0_Neither', '2_Moderately_Formal'], 'email3': ['1_Slightly_Formal', '1_Slightly_Formal', '1_Slightly_Formal', '1_Slightly_Formal', '2_Moderately_Formal'], 'email4': ['0_Neither', '2_Moderately_Formal', '1_Slightly_Formal', '2_Moderately_Formal', '2_Moderately_Formal'], 'email5': ['1_Slightly_Formal', '1_Slightly_Formal', '1_Slightly_Formal', '1_Slightly_Formal', '2_Moderately_Formal'], 'email6': ['0_Neither', '-1_Slightly_Informal', '1_Slightly_Formal', '1_Slightly_Formal', '2_Moderately_Formal'], 'email7': ['0_Neither', '-1_Slightly_Informal', '1_Slightly_Formal', '0_Neither', '2_Moderately_Formal'], 'email8': ['1_Slightly_Formal', '1_Slightly_Formal', '1_Slightly_Formal', '1_Slightly_Formal', '2_Moderately_Formal'], 'email9': ['0_Neither', '0_Neither', '-1_Slightly_Informal', '1_Slightly_Formal', '-2_Moderately_Informal'], 'email10': ['-1_Slightly_Informal', '1_Slightly_Formal', '1_Slightly_Formal', '-1_Slightly_Informal', '-3_Very_Informal'], 'email11': ['2_Moderately_Formal', '3_Very_Formal', '2_Moderately_Formal', '3_Very_Formal', '2_Moderately_Formal'], 'email12': ['-1_Slightly_Informal', '2_Moderately_Formal', '1_Slightly_Formal', '1_Slightly_Formal', '-1_Slightly_Informal'], 'email13': ['0_Neither', '-1_Slightly_Informal', '0_Neither', '0_Neither', '2_Moderately_Formal'], 'email14': ['1_Slightly_Formal', '-1_Slightly_Informal', '0_Neither', '1_Slightly_Formal', '2_Moderately_Formal'], 'email15': ['-1_Slightly_Informal', '-1_Slightly_Informal', '-2_Moderately_Informal', '-2_Moderately_Informal', '2_Moderately_Formal'], 'email16': ['0_Neither', '0_Neither', '-3_Very_Informal', '0_Neither', '-2_Moderately_Informal'], 'email17': ['0_Neither', '-1_Slightly_Informal', '0_Neither', '0_Neither', '2_Moderately_Formal'], 'email18': ['0_Neither', '1_Slightly_Formal', '1_Slightly_Formal', '1_Slightly_Formal', '2_Moderately_Formal'], 'email19': ['1_Slightly_Formal', '0_Neither', '0_Neither', '0_Neither', '-1_Slightly_Informal']}
+ - - - - - -  starting a new element: `Input(name=`email0`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email0`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email0
