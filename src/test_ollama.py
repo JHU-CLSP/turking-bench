@@ -104,4 +104,24 @@ class OLlamaVisionModel():
         return model_response
 
 if __name__ == "__main__":
-    model = OLlamaVisionModel(model="llava")
+    model = OLlamaTextModel(model="llama2")
+    input_name = "weakener_rationale1_relevant"
+    relevant_html = """
+HTML:
+        <input id="weakener_rationale1_understandable" name="weakener_rationale1_gibberish_understandable_grammatical" onclick="toggle_gibberish('weakener_rationale1')" type="radio" value="understandable"> <label for="understandable">The rationale is not perfectly grammatical, but I can understand it.</label><br>
+        <input id="weakener_rationale1_grammatical" name="weakener_rationale1_gibberish_understandable_grammatical" onclick="toggle_gibberish('weakener_rationale1')" type="radio" value="grammatical" checked=""> <label for="grammatical">The rationale is grammatical.</label></div>
+        </td>
+      </tr>
+      <tr>
+        <td><input id="weakener_rationale1_relevant" name="weakener_rationale1_relevant" type="checkbox" checked=""> The rationale is on topic with respect to the premise and hypothesis.</td>
+      </tr>
+      <tr>
+        <td><input id="weakener_rationale1_correct" name="weakener_rationale1_correct" type="checkbox"> The rationale is factually correct or likely true.</td>
+      </tr>
+      <tr>
+        <td><input id="weakener_rationale1_explains" name="weakener_rationale1_explains" type="checkbox"> The rationale may explain why the rationale weakens the hypothesis.</td>
+      </tr>
+    </tbody>
+  </table>
+"""
+    res = model.get_text_baseline_action(input_name, relevant_html, 3, True)
