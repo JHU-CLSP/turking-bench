@@ -13,7 +13,7 @@ from evaluation.actions import ActionUtils
 from evaluation.input import Input
 from evaluation.prompts import get_encoded_input_prompt
 from evaluation.vision import GPT4VModel, OLlamaVisionModel
-from evaluation.text import GPT4Model, OLlamaTextModel
+from evaluation.text import GPT4Model, OLlamaTextModel, ClaudeTextModel
 import logging
 from typing import List
 from utils.cleaning import clean_values
@@ -347,10 +347,12 @@ class TextBaseline(Baseline):
         html = self.get_html(input, kwargs['url'])
         
         match self.model:
-            case "gpt4":
+            case "gpt4-text":
                 model = GPT4Model()
             case "ollama":
                 model = OLlamaTextModel(self.ollama_model)
+            case "claude":
+                model = ClaudeTextModel()
             case _:
                 raise ValueError(f"Model {self.model} is not supported")
 
@@ -431,7 +433,7 @@ class VisionTextBaseline(Baseline):
         self.driver.save_screenshot(self.screenshot_path)
         
         match self.model:
-            case "gpt4v":
+            case "gpt4-text-vision":
                 model = GPT4VModel()
             case "ollama":
                 model = OLlamaVisionModel(self.ollama_model)

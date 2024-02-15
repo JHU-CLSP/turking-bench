@@ -77,9 +77,9 @@ class Evaluation:
             self.solver = baselines.OracleBaseline(driver=self.driver, actions=self.actions)
         elif solver_type == "offline_predictions":
             self.solver = baselines.OfflineModelPredictionsBaseline(driver=self.driver, actions=self.actions)
-        elif solver_type == "text" or solver_type == "gpt4-text":
-            if solver_type == "gpt4-text":
-                self.solver = baselines.TextBaseline(driver=self.driver, actions=self.actions, model="gpt4", num_demonstrations=kwargs["num_demonstrations"], use_relevant_html=kwargs["use_relevant_html"])
+        elif solver_type == "text" or solver_type == "gpt4-text" or solver_type == "claude":
+            if solver_type == "gpt4-text" or solver_type == "claude":
+                self.solver = baselines.TextBaseline(driver=self.driver, actions=self.actions, model=solver_type, num_demonstrations=kwargs["num_demonstrations"], use_relevant_html=kwargs["use_relevant_html"])
             else:
                 self.solver = baselines.TextBaseline(driver=self.driver, actions=self.actions, model="ollama", num_demonstrations=kwargs['num_demonstrations'], use_relevant_html=kwargs['use_relevant_html'], ollama_model=kwargs["ollama_model"])
                 self.ollama_model = kwargs["ollama_model"]
@@ -88,7 +88,7 @@ class Evaluation:
             self.use_relevant_html = kwargs["use_relevant_html"]
         elif solver_type == "text-vision" or solver_type == "gpt4-text-vision":
             if solver_type == "gpt4-text-vision":
-                self.solver = baselines.VisionTextBaseline(driver=self.driver, actions=self.actions, model="gpt4v", screenshot_path=kwargs["screenshot_path"], num_demonstrations=kwargs["num_demonstrations"], use_relevant_html=kwargs["use_relevant_html"])
+                self.solver = baselines.VisionTextBaseline(driver=self.driver, actions=self.actions, model=solver_type, screenshot_path=kwargs["screenshot_path"], num_demonstrations=kwargs["num_demonstrations"], use_relevant_html=kwargs["use_relevant_html"])
             else:
                 self.solver = baselines.VisionTextBaseline(driver=self.driver, actions=self.actions, model="ollama", screenshot_path=kwargs["screenshot_path"], num_demonstrations=kwargs['num_demonstrations'], use_relevant_html=kwargs['use_relevant_html'], ollama_model=kwargs["ollama_model"])
                 self.ollama_model = kwargs["ollama_model"]

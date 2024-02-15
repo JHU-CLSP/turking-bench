@@ -90,7 +90,7 @@ class OLlamaTextModel(TextModel):
     def get_text_baseline_action(self, input_name: str, html_code: str, num_demonstrations: int, use_relevant_html: bool) -> str:
         pass
 
-class ClaudeModel(TextModel):
+class ClaudeTextModel(TextModel):
     def __init__(self):
         super().__init__(Models.Claude)
         load_dotenv()

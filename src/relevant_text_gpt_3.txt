@@ -19212,3 +19212,1399 @@ We are going to select this radio button: <input type="radio" name="candidate_1"
 input: Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
 about to try executing one action, on the following input: candidate_2
 input Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_2', '0')
+We are going to select this radio button: <input type="radio" name="candidate_2" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_3
+input Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_3', '0')
+We are going to select this radio button: <input type="radio" name="candidate_3" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_4
+input Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_4', '0')
+We are going to select this radio button: <input type="radio" name="candidate_4" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_5
+input Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_5', '0')
+We are going to select this radio button: <input type="radio" name="candidate_5" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_6
+input Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_6', '0')
+We are going to select this radio button: <input type="radio" name="candidate_6" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_7
+input Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_7', '0')
+We are going to select this radio button: <input type="radio" name="candidate_7" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_8
+input Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_8', '0')
+We are going to select this radio button: <input type="radio" name="candidate_8" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_9
+input Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_9', '0')
+We are going to select this radio button: <input type="radio" name="candidate_9" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_10
+input Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_10', '0')
+We are going to select this radio button: <input type="radio" name="candidate_10" value="0" required="">
+input: Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+ ------- evaluating input: Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_0` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_1` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_2` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_3` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_4` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_5` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_6` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_7` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+----> answers: `[0, 0, 2]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+----> answers: `[3, 0, 3]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+----> answers: `[1, 1, 2]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.3333333333333333
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0]}
+instance_id: 27769 <-> row_number: 37
+Could not find input field with name `candidate_0.0`
+Could not find input field with name `candidate_0.1`
+Could not find input field with name `candidate_0.2`
+Could not find input field with name `candidate_0.3`
+Could not find input field with name `candidate_0.4`
+Could not find input field with name `candidate_1.0`
+Could not find input field with name `candidate_1.1`
+Could not find input field with name `candidate_1.2`
+Could not find input field with name `candidate_1.3`
+Could not find input field with name `candidate_1.4`
+Could not find input field with name `candidate_10.0`
+Could not find input field with name `candidate_10.1`
+Could not find input field with name `candidate_10.2`
+Could not find input field with name `candidate_10.3`
+Could not find input field with name `candidate_10.4`
+Could not find input field with name `candidate_2.0`
+Could not find input field with name `candidate_2.1`
+Could not find input field with name `candidate_2.2`
+Could not find input field with name `candidate_2.3`
+Could not find input field with name `candidate_2.4`
+Could not find input field with name `candidate_3.0`
+Could not find input field with name `candidate_3.1`
+Could not find input field with name `candidate_3.2`
+Could not find input field with name `candidate_3.3`
+Could not find input field with name `candidate_3.4`
+Could not find input field with name `candidate_4.0`
+Could not find input field with name `candidate_4.1`
+Could not find input field with name `candidate_4.2`
+Could not find input field with name `candidate_4.3`
+Could not find input field with name `candidate_4.4`
+Could not find input field with name `candidate_5.0`
+Could not find input field with name `candidate_5.1`
+Could not find input field with name `candidate_5.2`
+Could not find input field with name `candidate_5.3`
+Could not find input field with name `candidate_5.4`
+Could not find input field with name `candidate_6.0`
+Could not find input field with name `candidate_6.1`
+Could not find input field with name `candidate_6.2`
+Could not find input field with name `candidate_6.3`
+Could not find input field with name `candidate_6.4`
+Could not find input field with name `candidate_7.0`
+Could not find input field with name `candidate_7.1`
+Could not find input field with name `candidate_7.2`
+Could not find input field with name `candidate_7.3`
+Could not find input field with name `candidate_7.4`
+Could not find input field with name `candidate_8.0`
+Could not find input field with name `candidate_8.1`
+Could not find input field with name `candidate_8.2`
+Could not find input field with name `candidate_8.3`
+Could not find input field with name `candidate_8.4`
+Could not find input field with name `candidate_9.0`
+Could not find input field with name `candidate_9.1`
+Could not find input field with name `candidate_9.2`
+Could not find input field with name `candidate_9.3`
+Could not find input field with name `candidate_9.4`
+ --> inputs: ['candidate_0', 'candidate_1', 'candidate_2', 'candidate_3', 'candidate_4', 'candidate_5', 'candidate_6', 'candidate_7', 'candidate_8', 'candidate_9', 'candidate_10']
+ --> Looking up gold labels from row index 37 of `input.csv` (unique inputs). 
+ --> input labels: {'candidate_0': [2, 1, 3], 'candidate_1': [2, 0, 3], 'candidate_2': [3, 1, 3], 'candidate_3': [1, 1, 3], 'candidate_4': [0, 2, 3], 'candidate_5': [3, 1, 3], 'candidate_6': [2, 0, 1], 'candidate_7': [3, 1, 3], 'candidate_8': [0, 1, 2], 'candidate_9': [0, 1, 2], 'candidate_10': [2, 0, 3]}
+ - - - - - -  starting a new element: `Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_0
+input Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_0', '0')
+We are going to select this radio button: <input type="radio" name="candidate_0" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_1
+input Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_1', '0')
+We are going to select this radio button: <input type="radio" name="candidate_1" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_2
+input Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_2', '0')
+We are going to select this radio button: <input type="radio" name="candidate_2" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_3
+input Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_3', '0')
+We are going to select this radio button: <input type="radio" name="candidate_3" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_4
+input Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_4', '0')
+We are going to select this radio button: <input type="radio" name="candidate_4" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_5
+input Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_5', '0')
+We are going to select this radio button: <input type="radio" name="candidate_5" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_6
+input Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_6', '0')
+We are going to select this radio button: <input type="radio" name="candidate_6" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_7
+input Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_7', '0')
+We are going to select this radio button: <input type="radio" name="candidate_7" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_8
+input Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_8', '0')
+We are going to select this radio button: <input type="radio" name="candidate_8" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_9
+input Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_9', '0')
+We are going to select this radio button: <input type="radio" name="candidate_9" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_10
+input Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_10', '0')
+We are going to select this radio button: <input type="radio" name="candidate_10" value="0" required="">
+input: Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+ ------- evaluating input: Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_0` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_1` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_2` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_3` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_4` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_5` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_6` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_7` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+----> answers: `[0, 1, 2]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+----> answers: `[0, 1, 2]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+----> answers: `[2, 0, 3]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.6666666666666666
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0]}
+instance_id: 27800 <-> row_number: 68
+Could not find input field with name `candidate_0.0`
+Could not find input field with name `candidate_0.1`
+Could not find input field with name `candidate_0.2`
+Could not find input field with name `candidate_0.3`
+Could not find input field with name `candidate_0.4`
+Could not find input field with name `candidate_1.0`
+Could not find input field with name `candidate_1.1`
+Could not find input field with name `candidate_1.2`
+Could not find input field with name `candidate_1.3`
+Could not find input field with name `candidate_1.4`
+Could not find input field with name `candidate_10.0`
+Could not find input field with name `candidate_10.1`
+Could not find input field with name `candidate_10.2`
+Could not find input field with name `candidate_10.3`
+Could not find input field with name `candidate_10.4`
+Could not find input field with name `candidate_2.0`
+Could not find input field with name `candidate_2.1`
+Could not find input field with name `candidate_2.2`
+Could not find input field with name `candidate_2.3`
+Could not find input field with name `candidate_2.4`
+Could not find input field with name `candidate_3.0`
+Could not find input field with name `candidate_3.1`
+Could not find input field with name `candidate_3.2`
+Could not find input field with name `candidate_3.3`
+Could not find input field with name `candidate_3.4`
+Could not find input field with name `candidate_4.0`
+Could not find input field with name `candidate_4.1`
+Could not find input field with name `candidate_4.2`
+Could not find input field with name `candidate_4.3`
+Could not find input field with name `candidate_4.4`
+Could not find input field with name `candidate_5.0`
+Could not find input field with name `candidate_5.1`
+Could not find input field with name `candidate_5.2`
+Could not find input field with name `candidate_5.3`
+Could not find input field with name `candidate_5.4`
+Could not find input field with name `candidate_6.0`
+Could not find input field with name `candidate_6.1`
+Could not find input field with name `candidate_6.2`
+Could not find input field with name `candidate_6.3`
+Could not find input field with name `candidate_6.4`
+Could not find input field with name `candidate_7.0`
+Could not find input field with name `candidate_7.1`
+Could not find input field with name `candidate_7.2`
+Could not find input field with name `candidate_7.3`
+Could not find input field with name `candidate_7.4`
+Could not find input field with name `candidate_8.0`
+Could not find input field with name `candidate_8.1`
+Could not find input field with name `candidate_8.2`
+Could not find input field with name `candidate_8.3`
+Could not find input field with name `candidate_8.4`
+Could not find input field with name `candidate_9.0`
+Could not find input field with name `candidate_9.1`
+Could not find input field with name `candidate_9.2`
+Could not find input field with name `candidate_9.3`
+Could not find input field with name `candidate_9.4`
+ --> inputs: ['candidate_0', 'candidate_1', 'candidate_2', 'candidate_3', 'candidate_4', 'candidate_5', 'candidate_6', 'candidate_7', 'candidate_8', 'candidate_9', 'candidate_10']
+ --> Looking up gold labels from row index 68 of `input.csv` (unique inputs). 
+ --> input labels: {'candidate_0': [2, 2, 3], 'candidate_1': [0, 1, 3], 'candidate_2': [0, 0, 3], 'candidate_3': [0, 0, 0], 'candidate_4': [0, 2, 3], 'candidate_5': [3, 3, 3], 'candidate_6': [3, 3, 3], 'candidate_7': [0, 0, 3], 'candidate_8': [2, 2, 2], 'candidate_9': [0, 2, 3], 'candidate_10': [2, 3, 3]}
+ - - - - - -  starting a new element: `Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_0
+input Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_0', '0')
+We are going to select this radio button: <input type="radio" name="candidate_0" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_1
+input Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_1', '0')
+We are going to select this radio button: <input type="radio" name="candidate_1" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_2
+input Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_2', '0')
+We are going to select this radio button: <input type="radio" name="candidate_2" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_3
+input Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_3', '0')
+We are going to select this radio button: <input type="radio" name="candidate_3" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_4
+input Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_4', '0')
+We are going to select this radio button: <input type="radio" name="candidate_4" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_5
+input Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_5', '0')
+We are going to select this radio button: <input type="radio" name="candidate_5" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_6
+input Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_6', '0')
+We are going to select this radio button: <input type="radio" name="candidate_6" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_7
+input Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_7', '0')
+We are going to select this radio button: <input type="radio" name="candidate_7" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_8
+input Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_8', '0')
+We are going to select this radio button: <input type="radio" name="candidate_8" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_9
+input Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_9', '0')
+We are going to select this radio button: <input type="radio" name="candidate_9" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_10
+input Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_10', '0')
+We are going to select this radio button: <input type="radio" name="candidate_10" value="0" required="">
+input: Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+ ------- evaluating input: Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_0` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_1` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_2` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_3` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_4` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_5` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_6` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_7` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+----> answers: `[2, 2, 2]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+----> answers: `[0, 2, 3]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+----> answers: `[2, 3, 3]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.3333333333333333
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0]}
+instance_id: 27783 <-> row_number: 51
+Could not find input field with name `candidate_0.0`
+Could not find input field with name `candidate_0.1`
+Could not find input field with name `candidate_0.2`
+Could not find input field with name `candidate_0.3`
+Could not find input field with name `candidate_0.4`
+Could not find input field with name `candidate_1.0`
+Could not find input field with name `candidate_1.1`
+Could not find input field with name `candidate_1.2`
+Could not find input field with name `candidate_1.3`
+Could not find input field with name `candidate_1.4`
+Could not find input field with name `candidate_10.0`
+Could not find input field with name `candidate_10.1`
+Could not find input field with name `candidate_10.2`
+Could not find input field with name `candidate_10.3`
+Could not find input field with name `candidate_10.4`
+Could not find input field with name `candidate_2.0`
+Could not find input field with name `candidate_2.1`
+Could not find input field with name `candidate_2.2`
+Could not find input field with name `candidate_2.3`
+Could not find input field with name `candidate_2.4`
+Could not find input field with name `candidate_3.0`
+Could not find input field with name `candidate_3.1`
+Could not find input field with name `candidate_3.2`
+Could not find input field with name `candidate_3.3`
+Could not find input field with name `candidate_3.4`
+Could not find input field with name `candidate_4.0`
+Could not find input field with name `candidate_4.1`
+Could not find input field with name `candidate_4.2`
+Could not find input field with name `candidate_4.3`
+Could not find input field with name `candidate_4.4`
+Could not find input field with name `candidate_5.0`
+Could not find input field with name `candidate_5.1`
+Could not find input field with name `candidate_5.2`
+Could not find input field with name `candidate_5.3`
+Could not find input field with name `candidate_5.4`
+Could not find input field with name `candidate_6.0`
+Could not find input field with name `candidate_6.1`
+Could not find input field with name `candidate_6.2`
+Could not find input field with name `candidate_6.3`
+Could not find input field with name `candidate_6.4`
+Could not find input field with name `candidate_7.0`
+Could not find input field with name `candidate_7.1`
+Could not find input field with name `candidate_7.2`
+Could not find input field with name `candidate_7.3`
+Could not find input field with name `candidate_7.4`
+Could not find input field with name `candidate_8.0`
+Could not find input field with name `candidate_8.1`
+Could not find input field with name `candidate_8.2`
+Could not find input field with name `candidate_8.3`
+Could not find input field with name `candidate_8.4`
+Could not find input field with name `candidate_9.0`
+Could not find input field with name `candidate_9.1`
+Could not find input field with name `candidate_9.2`
+Could not find input field with name `candidate_9.3`
+Could not find input field with name `candidate_9.4`
+ --> inputs: ['candidate_0', 'candidate_1', 'candidate_2', 'candidate_3', 'candidate_4', 'candidate_5', 'candidate_6', 'candidate_7', 'candidate_8', 'candidate_9', 'candidate_10']
+ --> Looking up gold labels from row index 51 of `input.csv` (unique inputs). 
+ --> input labels: {'candidate_0': [3, 0, 1], 'candidate_1': [0, 1, 0], 'candidate_2': [0, 0, 1], 'candidate_3': [3, 1, 1], 'candidate_4': [2, 1, 2], 'candidate_5': [1, 1, 1], 'candidate_6': [3, 2, 0], 'candidate_7': [0, 1, 1], 'candidate_8': [3, 1, 1], 'candidate_9': [2, 1, 2], 'candidate_10': [2, 0, 1]}
+ - - - - - -  starting a new element: `Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_0
+input Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_0', '0')
+We are going to select this radio button: <input type="radio" name="candidate_0" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_1
+input Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_1', '0')
+We are going to select this radio button: <input type="radio" name="candidate_1" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_2
+input Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_2', '0')
+We are going to select this radio button: <input type="radio" name="candidate_2" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_3
+input Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_3', '0')
+We are going to select this radio button: <input type="radio" name="candidate_3" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_4
+input Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_4', '0')
+We are going to select this radio button: <input type="radio" name="candidate_4" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_5
+input Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_5', '0')
+We are going to select this radio button: <input type="radio" name="candidate_5" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_6
+input Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_6', '0')
+We are going to select this radio button: <input type="radio" name="candidate_6" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_7
+input Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_7', '0')
+We are going to select this radio button: <input type="radio" name="candidate_7" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_8
+input Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_8', '0')
+We are going to select this radio button: <input type="radio" name="candidate_8" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_9
+input Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_9', '0')
+We are going to select this radio button: <input type="radio" name="candidate_9" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_10
+input Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_10', '0')
+We are going to select this radio button: <input type="radio" name="candidate_10" value="0" required="">
+input: Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+ ------- evaluating input: Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_0` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_1` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_2` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_3` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_4` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_5` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_6` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_7` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+----> answers: `[3, 1, 1]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+----> answers: `[2, 1, 2]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+----> answers: `[2, 0, 1]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.0
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 27742 <-> row_number: 10
+Could not find input field with name `candidate_0.0`
+Could not find input field with name `candidate_0.1`
+Could not find input field with name `candidate_0.2`
+Could not find input field with name `candidate_0.3`
+Could not find input field with name `candidate_0.4`
+Could not find input field with name `candidate_1.0`
+Could not find input field with name `candidate_1.1`
+Could not find input field with name `candidate_1.2`
+Could not find input field with name `candidate_1.3`
+Could not find input field with name `candidate_1.4`
+Could not find input field with name `candidate_10.0`
+Could not find input field with name `candidate_10.1`
+Could not find input field with name `candidate_10.2`
+Could not find input field with name `candidate_10.3`
+Could not find input field with name `candidate_10.4`
+Could not find input field with name `candidate_2.0`
+Could not find input field with name `candidate_2.1`
+Could not find input field with name `candidate_2.2`
+Could not find input field with name `candidate_2.3`
+Could not find input field with name `candidate_2.4`
+Could not find input field with name `candidate_3.0`
+Could not find input field with name `candidate_3.1`
+Could not find input field with name `candidate_3.2`
+Could not find input field with name `candidate_3.3`
+Could not find input field with name `candidate_3.4`
+Could not find input field with name `candidate_4.0`
+Could not find input field with name `candidate_4.1`
+Could not find input field with name `candidate_4.2`
+Could not find input field with name `candidate_4.3`
+Could not find input field with name `candidate_4.4`
+Could not find input field with name `candidate_5.0`
+Could not find input field with name `candidate_5.1`
+Could not find input field with name `candidate_5.2`
+Could not find input field with name `candidate_5.3`
+Could not find input field with name `candidate_5.4`
+Could not find input field with name `candidate_6.0`
+Could not find input field with name `candidate_6.1`
+Could not find input field with name `candidate_6.2`
+Could not find input field with name `candidate_6.3`
+Could not find input field with name `candidate_6.4`
+Could not find input field with name `candidate_7.0`
+Could not find input field with name `candidate_7.1`
+Could not find input field with name `candidate_7.2`
+Could not find input field with name `candidate_7.3`
+Could not find input field with name `candidate_7.4`
+Could not find input field with name `candidate_8.0`
+Could not find input field with name `candidate_8.1`
+Could not find input field with name `candidate_8.2`
+Could not find input field with name `candidate_8.3`
+Could not find input field with name `candidate_8.4`
+Could not find input field with name `candidate_9.0`
+Could not find input field with name `candidate_9.1`
+Could not find input field with name `candidate_9.2`
+Could not find input field with name `candidate_9.3`
+Could not find input field with name `candidate_9.4`
+ --> inputs: ['candidate_0', 'candidate_1', 'candidate_2', 'candidate_3', 'candidate_4', 'candidate_5', 'candidate_6', 'candidate_7', 'candidate_8', 'candidate_9', 'candidate_10']
+ --> Looking up gold labels from row index 10 of `input.csv` (unique inputs). 
+ --> input labels: {'candidate_0': [0, 1, 3], 'candidate_1': [0, 1, 3], 'candidate_2': [0, 1, 2], 'candidate_3': [3, 0, 3], 'candidate_4': [1, 2, 2], 'candidate_5': [0, 1, 1], 'candidate_6': [0, 1, 2], 'candidate_7': [0, 0, 1], 'candidate_8': [2, 1, 3], 'candidate_9': [0, 1, 1], 'candidate_10': [0, 0, 2]}
+ - - - - - -  starting a new element: `Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_0
+input Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_0', '0')
+We are going to select this radio button: <input type="radio" name="candidate_0" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_1
+input Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_1', '0')
+We are going to select this radio button: <input type="radio" name="candidate_1" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_2
+input Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_2', '0')
+We are going to select this radio button: <input type="radio" name="candidate_2" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_3
+input Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_3', '0')
+We are going to select this radio button: <input type="radio" name="candidate_3" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_4
+input Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_4', '0')
+We are going to select this radio button: <input type="radio" name="candidate_4" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_5
+input Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_5', '0')
+We are going to select this radio button: <input type="radio" name="candidate_5" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_6
+input Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_6', '0')
+We are going to select this radio button: <input type="radio" name="candidate_6" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_7
+input Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_7', '0')
+We are going to select this radio button: <input type="radio" name="candidate_7" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_8
+input Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_8', '0')
+We are going to select this radio button: <input type="radio" name="candidate_8" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_9
+input Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_9', '0')
+We are going to select this radio button: <input type="radio" name="candidate_9" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_10
+input Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_10', '0')
+We are going to select this radio button: <input type="radio" name="candidate_10" value="0" required="">
+input: Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+ ------- evaluating input: Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_0` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_1` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_2` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_3` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_4` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_5` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_6` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_7` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+----> answers: `[2, 1, 3]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+----> answers: `[0, 1, 1]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+----> answers: `[0, 0, 2]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.3333333333333333
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]}
+instance_id: 27751 <-> row_number: 19
+Could not find input field with name `candidate_0.0`
+Could not find input field with name `candidate_0.1`
+Could not find input field with name `candidate_0.2`
+Could not find input field with name `candidate_0.3`
+Could not find input field with name `candidate_0.4`
+Could not find input field with name `candidate_1.0`
+Could not find input field with name `candidate_1.1`
+Could not find input field with name `candidate_1.2`
+Could not find input field with name `candidate_1.3`
+Could not find input field with name `candidate_1.4`
+Could not find input field with name `candidate_10.0`
+Could not find input field with name `candidate_10.1`
+Could not find input field with name `candidate_10.2`
+Could not find input field with name `candidate_10.3`
+Could not find input field with name `candidate_10.4`
+Could not find input field with name `candidate_2.0`
+Could not find input field with name `candidate_2.1`
+Could not find input field with name `candidate_2.2`
+Could not find input field with name `candidate_2.3`
+Could not find input field with name `candidate_2.4`
+Could not find input field with name `candidate_3.0`
+Could not find input field with name `candidate_3.1`
+Could not find input field with name `candidate_3.2`
+Could not find input field with name `candidate_3.3`
+Could not find input field with name `candidate_3.4`
+Could not find input field with name `candidate_4.0`
+Could not find input field with name `candidate_4.1`
+Could not find input field with name `candidate_4.2`
+Could not find input field with name `candidate_4.3`
+Could not find input field with name `candidate_4.4`
+Could not find input field with name `candidate_5.0`
+Could not find input field with name `candidate_5.1`
+Could not find input field with name `candidate_5.2`
+Could not find input field with name `candidate_5.3`
+Could not find input field with name `candidate_5.4`
+Could not find input field with name `candidate_6.0`
+Could not find input field with name `candidate_6.1`
+Could not find input field with name `candidate_6.2`
+Could not find input field with name `candidate_6.3`
+Could not find input field with name `candidate_6.4`
+Could not find input field with name `candidate_7.0`
+Could not find input field with name `candidate_7.1`
+Could not find input field with name `candidate_7.2`
+Could not find input field with name `candidate_7.3`
+Could not find input field with name `candidate_7.4`
+Could not find input field with name `candidate_8.0`
+Could not find input field with name `candidate_8.1`
+Could not find input field with name `candidate_8.2`
+Could not find input field with name `candidate_8.3`
+Could not find input field with name `candidate_8.4`
+Could not find input field with name `candidate_9.0`
+Could not find input field with name `candidate_9.1`
+Could not find input field with name `candidate_9.2`
+Could not find input field with name `candidate_9.3`
+Could not find input field with name `candidate_9.4`
+ --> inputs: ['candidate_0', 'candidate_1', 'candidate_2', 'candidate_3', 'candidate_4', 'candidate_5', 'candidate_6', 'candidate_7', 'candidate_8', 'candidate_9', 'candidate_10']
+ --> Looking up gold labels from row index 19 of `input.csv` (unique inputs). 
+ --> input labels: {'candidate_0': [1, 3, 3], 'candidate_1': [1, 2, 2], 'candidate_2': [0, 3, 2], 'candidate_3': [1, 0, 2], 'candidate_4': [2, 3, 2], 'candidate_5': [1, 3, 3], 'candidate_6': [1, 3, 2], 'candidate_7': [2, 0, 3], 'candidate_8': [1, 3, 2], 'candidate_9': [1, 3, 2], 'candidate_10': [0, 0, 2]}
+ - - - - - -  starting a new element: `Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_0
+input Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_0', '0')
+We are going to select this radio button: <input type="radio" name="candidate_0" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_1
+input Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_1', '0')
+We are going to select this radio button: <input type="radio" name="candidate_1" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_2
+input Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_2', '0')
+We are going to select this radio button: <input type="radio" name="candidate_2" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_3
+input Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_3', '0')
+We are going to select this radio button: <input type="radio" name="candidate_3" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_4
+input Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_4', '0')
+We are going to select this radio button: <input type="radio" name="candidate_4" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_5
+input Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_5', '0')
+We are going to select this radio button: <input type="radio" name="candidate_5" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_6
+input Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_6', '0')
+We are going to select this radio button: <input type="radio" name="candidate_6" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_7
+input Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_7', '0')
+We are going to select this radio button: <input type="radio" name="candidate_7" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_8
+input Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_8', '0')
+We are going to select this radio button: <input type="radio" name="candidate_8" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_9
+input Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_9', '0')
+We are going to select this radio button: <input type="radio" name="candidate_9" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_10
+input Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_10', '0')
+We are going to select this radio button: <input type="radio" name="candidate_10" value="0" required="">
+input: Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+ ------- evaluating input: Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_0` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_1` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_2` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_3` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_4` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_5` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_6` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_7` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+----> answers: `[1, 3, 2]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+----> answers: `[1, 3, 2]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+----> answers: `[0, 0, 2]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.3333333333333333
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0]}
+instance_id: 27758 <-> row_number: 26
+Could not find input field with name `candidate_0.0`
+Could not find input field with name `candidate_0.1`
+Could not find input field with name `candidate_0.2`
+Could not find input field with name `candidate_0.3`
+Could not find input field with name `candidate_0.4`
+Could not find input field with name `candidate_1.0`
+Could not find input field with name `candidate_1.1`
+Could not find input field with name `candidate_1.2`
+Could not find input field with name `candidate_1.3`
+Could not find input field with name `candidate_1.4`
+Could not find input field with name `candidate_10.0`
+Could not find input field with name `candidate_10.1`
+Could not find input field with name `candidate_10.2`
+Could not find input field with name `candidate_10.3`
+Could not find input field with name `candidate_10.4`
+Could not find input field with name `candidate_2.0`
+Could not find input field with name `candidate_2.1`
+Could not find input field with name `candidate_2.2`
+Could not find input field with name `candidate_2.3`
+Could not find input field with name `candidate_2.4`
+Could not find input field with name `candidate_3.0`
+Could not find input field with name `candidate_3.1`
+Could not find input field with name `candidate_3.2`
+Could not find input field with name `candidate_3.3`
+Could not find input field with name `candidate_3.4`
+Could not find input field with name `candidate_4.0`
+Could not find input field with name `candidate_4.1`
+Could not find input field with name `candidate_4.2`
+Could not find input field with name `candidate_4.3`
+Could not find input field with name `candidate_4.4`
+Could not find input field with name `candidate_5.0`
+Could not find input field with name `candidate_5.1`
+Could not find input field with name `candidate_5.2`
+Could not find input field with name `candidate_5.3`
+Could not find input field with name `candidate_5.4`
+Could not find input field with name `candidate_6.0`
+Could not find input field with name `candidate_6.1`
+Could not find input field with name `candidate_6.2`
+Could not find input field with name `candidate_6.3`
+Could not find input field with name `candidate_6.4`
+Could not find input field with name `candidate_7.0`
+Could not find input field with name `candidate_7.1`
+Could not find input field with name `candidate_7.2`
+Could not find input field with name `candidate_7.3`
+Could not find input field with name `candidate_7.4`
+Could not find input field with name `candidate_8.0`
+Could not find input field with name `candidate_8.1`
+Could not find input field with name `candidate_8.2`
+Could not find input field with name `candidate_8.3`
+Could not find input field with name `candidate_8.4`
+Could not find input field with name `candidate_9.0`
+Could not find input field with name `candidate_9.1`
+Could not find input field with name `candidate_9.2`
+Could not find input field with name `candidate_9.3`
+Could not find input field with name `candidate_9.4`
+ --> inputs: ['candidate_0', 'candidate_1', 'candidate_2', 'candidate_3', 'candidate_4', 'candidate_5', 'candidate_6', 'candidate_7', 'candidate_8', 'candidate_9', 'candidate_10']
+ --> Looking up gold labels from row index 26 of `input.csv` (unique inputs). 
+ --> input labels: {'candidate_0': [2, 3, 3], 'candidate_1': [1, 0, 0], 'candidate_2': [0, 3, 3], 'candidate_3': [2, 2, 1], 'candidate_4': [1, 0, 0], 'candidate_5': [2, 2, 1], 'candidate_6': [0, 3, 1], 'candidate_7': [3, 3, 1], 'candidate_8': [2, 0, 0], 'candidate_9': [2, 0, 0], 'candidate_10': [0, 2, 2]}
+ - - - - - -  starting a new element: `Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_0
+input Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_0', '0')
+We are going to select this radio button: <input type="radio" name="candidate_0" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_1
+input Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_1', '0')
+We are going to select this radio button: <input type="radio" name="candidate_1" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_2
+input Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_2', '0')
+We are going to select this radio button: <input type="radio" name="candidate_2" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_3
+input Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_3', '0')
+We are going to select this radio button: <input type="radio" name="candidate_3" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_4
+input Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_4', '0')
+We are going to select this radio button: <input type="radio" name="candidate_4" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_5
+input Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_5', '0')
+We are going to select this radio button: <input type="radio" name="candidate_5" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_6
+input Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_6', '0')
+We are going to select this radio button: <input type="radio" name="candidate_6" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_7
+input Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_7', '0')
+We are going to select this radio button: <input type="radio" name="candidate_7" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_8
+input Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_8', '0')
+We are going to select this radio button: <input type="radio" name="candidate_8" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_9
+input Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_9', '0')
+We are going to select this radio button: <input type="radio" name="candidate_9" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_10
+input Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_10', '0')
+We are going to select this radio button: <input type="radio" name="candidate_10" value="0" required="">
+input: Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+ visible : ['0']
+ visible_values : ['0']
+ ------- evaluating input: Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_0` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_1` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_2` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_3` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_4` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_5` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_6` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+Skipping element `candidate_7` since it is not visible.
+ ------- evaluating input: Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+----> answers: `[2, 0, 0]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`candidate_9`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+----> answers: `[2, 0, 0]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`candidate_10`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`) ------- 
+----> answers: `[0, 2, 2]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.6666666666666666
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0]}
+instance_id: 27734 <-> row_number: 2
+Could not find input field with name `candidate_0.0`
+Could not find input field with name `candidate_0.1`
+Could not find input field with name `candidate_0.2`
+Could not find input field with name `candidate_0.3`
+Could not find input field with name `candidate_0.4`
+Could not find input field with name `candidate_1.0`
+Could not find input field with name `candidate_1.1`
+Could not find input field with name `candidate_1.2`
+Could not find input field with name `candidate_1.3`
+Could not find input field with name `candidate_1.4`
+Could not find input field with name `candidate_10.0`
+Could not find input field with name `candidate_10.1`
+Could not find input field with name `candidate_10.2`
+Could not find input field with name `candidate_10.3`
+Could not find input field with name `candidate_10.4`
+Could not find input field with name `candidate_2.0`
+Could not find input field with name `candidate_2.1`
+Could not find input field with name `candidate_2.2`
+Could not find input field with name `candidate_2.3`
+Could not find input field with name `candidate_2.4`
+Could not find input field with name `candidate_3.0`
+Could not find input field with name `candidate_3.1`
+Could not find input field with name `candidate_3.2`
+Could not find input field with name `candidate_3.3`
+Could not find input field with name `candidate_3.4`
+Could not find input field with name `candidate_4.0`
+Could not find input field with name `candidate_4.1`
+Could not find input field with name `candidate_4.2`
+Could not find input field with name `candidate_4.3`
+Could not find input field with name `candidate_4.4`
+Could not find input field with name `candidate_5.0`
+Could not find input field with name `candidate_5.1`
+Could not find input field with name `candidate_5.2`
+Could not find input field with name `candidate_5.3`
+Could not find input field with name `candidate_5.4`
+Could not find input field with name `candidate_6.0`
+Could not find input field with name `candidate_6.1`
+Could not find input field with name `candidate_6.2`
+Could not find input field with name `candidate_6.3`
+Could not find input field with name `candidate_6.4`
+Could not find input field with name `candidate_7.0`
+Could not find input field with name `candidate_7.1`
+Could not find input field with name `candidate_7.2`
+Could not find input field with name `candidate_7.3`
+Could not find input field with name `candidate_7.4`
+Could not find input field with name `candidate_8.0`
+Could not find input field with name `candidate_8.1`
+Could not find input field with name `candidate_8.2`
+Could not find input field with name `candidate_8.3`
+Could not find input field with name `candidate_8.4`
+Could not find input field with name `candidate_9.0`
+Could not find input field with name `candidate_9.1`
+Could not find input field with name `candidate_9.2`
+Could not find input field with name `candidate_9.3`
+Could not find input field with name `candidate_9.4`
+ --> inputs: ['candidate_0', 'candidate_1', 'candidate_2', 'candidate_3', 'candidate_4', 'candidate_5', 'candidate_6', 'candidate_7', 'candidate_8', 'candidate_9', 'candidate_10']
+ --> Looking up gold labels from row index 2 of `input.csv` (unique inputs). 
+ --> input labels: {'candidate_0': [2, 1, 2], 'candidate_1': [3, 1, 3], 'candidate_2': [0, 2, 1], 'candidate_3': [3, 1, 3], 'candidate_4': [3, 0, 1], 'candidate_5': [1, 1, 1], 'candidate_6': [1, 0, 3], 'candidate_7': [1, 1, 0], 'candidate_8': [1, 0, 2], 'candidate_9': [3, 1, 2], 'candidate_10': [2, 1, 2]}
+ - - - - - -  starting a new element: `Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_0
+input Input(name=`candidate_0`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_0', '0')
+We are going to select this radio button: <input type="radio" name="candidate_0" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_1
+input Input(name=`candidate_1`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_1', '0')
+We are going to select this radio button: <input type="radio" name="candidate_1" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_2
+input Input(name=`candidate_2`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_2', '0')
+We are going to select this radio button: <input type="radio" name="candidate_2" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_3
+input Input(name=`candidate_3`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_3', '0')
+We are going to select this radio button: <input type="radio" name="candidate_3" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_4
+input Input(name=`candidate_4`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_4', '0')
+We are going to select this radio button: <input type="radio" name="candidate_4" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_5
+input Input(name=`candidate_5`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_5', '0')
+We are going to select this radio button: <input type="radio" name="candidate_5" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_6
+input Input(name=`candidate_6`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_6', '0')
+We are going to select this radio button: <input type="radio" name="candidate_6" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_7
+input Input(name=`candidate_7`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_7', '0')
+We are going to select this radio button: <input type="radio" name="candidate_7" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)` - - - - - -  
+input: Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+about to try executing one action, on the following input: candidate_8
+input Input(name=`candidate_8`, type=`radio`, task=`wikiHow step-goal linking pilot cleanse-url`)
+Executing one action: self.actions.modify_radio('candidate_8', '0')
+We are going to select this radio button: <input type="radio" name="candidate_8" value="0" required="">

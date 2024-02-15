@@ -33739,3 +33739,604 @@ Please provide the desired formality rating value to proceed., error: invalid sy
  - - - - - -  starting a new element: `Input(name=`email3`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
 input: Input(name=`email3`, type=`select`, task=`Word Formality Annotation`)
 about to try executing one action, on the following input: email3
+Executing one action: self.actions.modify_select('email3', '3_Very_Formal')
+We are going to select this select `email3` with value `3_Very_Formal`
+ - - - - - -  starting a new element: `Input(name=`email4`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email4`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email4
+Executing one action: self.actions.modify_select('email4', 'value of the option you want to select') 
+
+Replace 'value of the option you want to select' with one of the actual values from the Select options available such as "NA", "-3_Very_Informal", "-2_Moderately_Informal", "-1_Slightly_Informal", "0_Neither", "1_Slightly_Formal", "2_Moderately_Formal", or "3_Very_Formal". If you have a specific formality rating in mind, please provide it, and I can generate the precise command for you.
+Failed to execute an action self.actions.modify_select('email4', 'value of the option you want to select') 
+
+Replace 'value of the option you want to select' with one of the actual values from the Select options available such as "NA", "-3_Very_Informal", "-2_Moderately_Informal", "-1_Slightly_Informal", "0_Neither", "1_Slightly_Formal", "2_Moderately_Formal", or "3_Very_Formal". If you have a specific formality rating in mind, please provide it, and I can generate the precise command for you., error: invalid syntax (<string>, line 3)
+ - - - - - -  starting a new element: `Input(name=`email5`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email5`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email5
+Executing one action: self.actions.modify_select('email5', '0_Neither')
+We are going to select this select `email5` with value `0_Neither`
+ - - - - - -  starting a new element: `Input(name=`email6`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email6`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email6
+Executing one action: self.actions.modify_select('email6', '1_Slightly_Formal')
+We are going to select this select `email6` with value `1_Slightly_Formal`
+ - - - - - -  starting a new element: `Input(name=`email7`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email7`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email7
+Executing one action: self.actions.modify_select('email7', '0_Not_Usable')
+We are going to select this select `email7` with value `0_Not_Usable`
+ - - - - - -  starting a new element: `Input(name=`email8`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email8`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email8
+Executing one action: self.actions.modify_select('email8', 'NA')
+We are going to select this select `email8` with value `NA`
+ - - - - - -  starting a new element: `Input(name=`email9`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email9`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email9
+Executing one action: self.actions.modify_select('email9', 'NA')
+We are going to select this select `email9` with value `NA`
+ - - - - - -  starting a new element: `Input(name=`email10`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email10`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email10
+Executing one action: self.actions.modify_select('email10', '0_Not_Usable')
+We are going to select this select `email10` with value `0_Not_Usable`
+ - - - - - -  starting a new element: `Input(name=`email11`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email11`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email11
+Executing one action: self.actions.modify_select('email11', '0_Not_Usable')
+We are going to select this select `email11` with value `0_Not_Usable`
+ - - - - - -  starting a new element: `Input(name=`email12`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email12`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email12
+Executing one action: self.actions.modify_select('email12', '0_Not_Usable')
+We are going to select this select `email12` with value `0_Not_Usable`
+ - - - - - -  starting a new element: `Input(name=`email13`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email13`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email13
+Executing one action: self.actions.modify_select('email13', '0_Not_Usable')
+We are going to select this select `email13` with value `0_Not_Usable`
+ - - - - - -  starting a new element: `Input(name=`email14`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email14`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email14
+Executing one action: self.actions.modify_select('email14', '0_Not_Usable')
+We are going to select this select `email14` with value `0_Not_Usable`
+ - - - - - -  starting a new element: `Input(name=`email15`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email15`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email15
+Executing one action: self.actions.modify_select('email15', '0_Not_Usable')
+We are going to select this select `email15` with value `0_Not_Usable`
+ - - - - - -  starting a new element: `Input(name=`email16`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email16`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email16
+Executing one action: self.actions.modify_select('email16', '0_Not_Usable')
+We are going to select this select `email16` with value `0_Not_Usable`
+ - - - - - -  starting a new element: `Input(name=`email17`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email17`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email17
+Executing one action: self.actions.modify_select('email17', '0_Not_Usable')
+We are going to select this select `email17` with value `0_Not_Usable`
+ - - - - - -  starting a new element: `Input(name=`email18`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email18`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email18
+Executing one action: self.actions.modify_select('email18', '-1_Slightly_Informal')
+
+
+Please specify the value you'd like to select for "email18," and I can generate the command for you.
+Failed to execute an action self.actions.modify_select('email18', '-1_Slightly_Informal')
+
+
+Please specify the value you'd like to select for "email18," and I can generate the command for you., error: unterminated string literal (detected at line 4) (<string>, line 4)
+ - - - - - -  starting a new element: `Input(name=`email19`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email19`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email19
+Executing one action: self.actions.modify_select('email19', '0_Neither')
+We are going to select this select `email19` with value `0_Neither`
+input: Input(name=`email0`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['0_Neither']
+ visible_values : ['0_Neither']
+input: Input(name=`email1`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['NA']
+ visible_values : ['NA']
+input: Input(name=`email2`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['NA']
+ visible_values : ['NA']
+input: Input(name=`email3`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['3_Very_Formal']
+ visible_values : ['3_Very_Formal']
+input: Input(name=`email4`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['NA']
+ visible_values : ['NA']
+input: Input(name=`email5`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['0_Neither']
+ visible_values : ['0_Neither']
+input: Input(name=`email6`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['1_Slightly_Formal']
+ visible_values : ['1_Slightly_Formal']
+input: Input(name=`email7`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['0_Not_Usable']
+ visible_values : ['0_Not_Usable']
+input: Input(name=`email8`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['NA']
+ visible_values : ['NA']
+input: Input(name=`email9`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['NA']
+ visible_values : ['NA']
+input: Input(name=`email10`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['0_Not_Usable']
+ visible_values : ['0_Not_Usable']
+input: Input(name=`email11`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['0_Not_Usable']
+ visible_values : ['0_Not_Usable']
+input: Input(name=`email12`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['0_Not_Usable']
+ visible_values : ['0_Not_Usable']
+input: Input(name=`email13`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['0_Not_Usable']
+ visible_values : ['0_Not_Usable']
+input: Input(name=`email14`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['0_Not_Usable']
+ visible_values : ['0_Not_Usable']
+input: Input(name=`email15`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['0_Not_Usable']
+ visible_values : ['0_Not_Usable']
+input: Input(name=`email16`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['0_Not_Usable']
+ visible_values : ['0_Not_Usable']
+input: Input(name=`email17`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['0_Not_Usable']
+ visible_values : ['0_Not_Usable']
+input: Input(name=`email18`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['NA']
+ visible_values : ['NA']
+input: Input(name=`email19`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['0_Neither']
+ visible_values : ['0_Neither']
+ ------- evaluating input: Input(name=`email0`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['0_Neither', '0_Neither', '-1_Slightly_Informal', '-1_Slightly_Informal', '0_Not_Usable']` - type: `<class 'list'>`
+----> baseline_answer: `0_Neither` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`email1`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['1_Slightly_Formal', '3_Very_Formal', '1_Slightly_Formal', '3_Very_Formal', '2_Moderately_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `NA` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email2`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['0_Neither', '-1_Slightly_Informal', '1_Slightly_Formal', '0_Neither', '2_Moderately_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `NA` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email3`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['1_Slightly_Formal', '1_Slightly_Formal', '1_Slightly_Formal', '1_Slightly_Formal', '2_Moderately_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `3_Very_Formal` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email4`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['0_Neither', '2_Moderately_Formal', '1_Slightly_Formal', '2_Moderately_Formal', '2_Moderately_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `NA` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email5`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['1_Slightly_Formal', '1_Slightly_Formal', '1_Slightly_Formal', '1_Slightly_Formal', '2_Moderately_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `0_Neither` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email6`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['0_Neither', '-1_Slightly_Informal', '1_Slightly_Formal', '1_Slightly_Formal', '2_Moderately_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `1_Slightly_Formal` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`email7`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['0_Neither', '-1_Slightly_Informal', '1_Slightly_Formal', '0_Neither', '2_Moderately_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `0_Not_Usable` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email8`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['1_Slightly_Formal', '1_Slightly_Formal', '1_Slightly_Formal', '1_Slightly_Formal', '2_Moderately_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `NA` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email9`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['0_Neither', '0_Neither', '-1_Slightly_Informal', '1_Slightly_Formal', '-2_Moderately_Informal']` - type: `<class 'list'>`
+----> baseline_answer: `NA` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email10`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['-1_Slightly_Informal', '1_Slightly_Formal', '1_Slightly_Formal', '-1_Slightly_Informal', '-3_Very_Informal']` - type: `<class 'list'>`
+----> baseline_answer: `0_Not_Usable` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email11`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['2_Moderately_Formal', '3_Very_Formal', '2_Moderately_Formal', '3_Very_Formal', '2_Moderately_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `0_Not_Usable` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email12`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['-1_Slightly_Informal', '2_Moderately_Formal', '1_Slightly_Formal', '1_Slightly_Formal', '-1_Slightly_Informal']` - type: `<class 'list'>`
+----> baseline_answer: `0_Not_Usable` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email13`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['0_Neither', '-1_Slightly_Informal', '0_Neither', '0_Neither', '2_Moderately_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `0_Not_Usable` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email14`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['1_Slightly_Formal', '-1_Slightly_Informal', '0_Neither', '1_Slightly_Formal', '2_Moderately_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `0_Not_Usable` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email15`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['-1_Slightly_Informal', '-1_Slightly_Informal', '-2_Moderately_Informal', '-2_Moderately_Informal', '2_Moderately_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `0_Not_Usable` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email16`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['0_Neither', '0_Neither', '-3_Very_Informal', '0_Neither', '-2_Moderately_Informal']` - type: `<class 'list'>`
+----> baseline_answer: `0_Not_Usable` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email17`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['0_Neither', '-1_Slightly_Informal', '0_Neither', '0_Neither', '2_Moderately_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `0_Not_Usable` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email18`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['0_Neither', '1_Slightly_Formal', '1_Slightly_Formal', '1_Slightly_Formal', '2_Moderately_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `NA` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email19`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['1_Slightly_Formal', '0_Neither', '0_Neither', '0_Neither', '-1_Slightly_Informal']` - type: `<class 'list'>`
+----> baseline_answer: `0_Neither` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.15
+ --> Per-instance per-field breakdown: {'select': [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]}
+instance_id: 4929 <-> row_number: 18
+ --> inputs: ['email0', 'email1', 'email2', 'email3', 'email4', 'email5', 'email6', 'email7', 'email8', 'email9', 'email10', 'email11', 'email12', 'email13', 'email14', 'email15', 'email16', 'email17', 'email18', 'email19']
+ --> Looking up gold labels from row index 18 of `input.csv` (unique inputs). 
+ --> input labels: {'email0': ['3_Very_Formal', '3_Very_Formal', '3_Very_Formal', '1_Slightly_Formal', '2_Moderately_Formal'], 'email1': ['3_Very_Formal', '3_Very_Formal', '1_Slightly_Formal', '-1_Slightly_Informal', '2_Moderately_Formal'], 'email2': ['0_Neither', '-3_Very_Informal', '-1_Slightly_Informal', '1_Slightly_Formal', '-2_Moderately_Informal'], 'email3': ['0_Not_Usable', '0_Neither', '0_Neither', '2_Moderately_Formal', '0_Not_Usable'], 'email4': ['0_Neither', '-3_Very_Informal', '-2_Moderately_Informal', '-1_Slightly_Informal', '-3_Very_Informal'], 'email5': ['1_Slightly_Formal', '3_Very_Formal', '1_Slightly_Formal', '1_Slightly_Formal', '1_Slightly_Formal'], 'email6': ['1_Slightly_Formal', '3_Very_Formal', '0_Not_Usable', '-3_Very_Informal', '0_Not_Usable'], 'email7': ['2_Moderately_Formal', '2_Moderately_Formal', '1_Slightly_Formal', '2_Moderately_Formal', '2_Moderately_Formal'], 'email8': ['0_Neither', '0_Not_Usable', '0_Neither', '-2_Moderately_Informal', '-3_Very_Informal'], 'email9': ['2_Moderately_Formal', '2_Moderately_Formal', '1_Slightly_Formal', '0_Neither', '-2_Moderately_Informal'], 'email10': ['-3_Very_Informal', '-3_Very_Informal', '-3_Very_Informal', '0_Neither', '-3_Very_Informal'], 'email11': ['1_Slightly_Formal', '3_Very_Formal', '1_Slightly_Formal', '1_Slightly_Formal', '1_Slightly_Formal'], 'email12': ['3_Very_Formal', '3_Very_Formal', '3_Very_Formal', '2_Moderately_Formal', '3_Very_Formal'], 'email13': ['0_Neither', '-3_Very_Informal', '-3_Very_Informal', '-2_Moderately_Informal', '-3_Very_Informal'], 'email14': ['1_Slightly_Formal', '2_Moderately_Formal', '3_Very_Formal', '-1_Slightly_Informal', '1_Slightly_Formal'], 'email15': ['3_Very_Formal', '3_Very_Formal', '2_Moderately_Formal', '2_Moderately_Formal', '1_Slightly_Formal'], 'email16': ['2_Moderately_Formal', '3_Very_Formal', '1_Slightly_Formal', '1_Slightly_Formal', '-1_Slightly_Informal'], 'email17': ['0_Neither', '-3_Very_Informal', '-1_Slightly_Informal', '-2_Moderately_Informal', '-3_Very_Informal'], 'email18': ['2_Moderately_Formal', '3_Very_Formal', '2_Moderately_Formal', '1_Slightly_Formal', '1_Slightly_Formal'], 'email19': ['2_Moderately_Formal', '3_Very_Formal', '2_Moderately_Formal', '1_Slightly_Formal', '1_Slightly_Formal']}
+ - - - - - -  starting a new element: `Input(name=`email0`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email0`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email0
+Executing one action: self.actions.modify_select('email0', '3_Very_Formal')
+We are going to select this select `email0` with value `3_Very_Formal`
+ - - - - - -  starting a new element: `Input(name=`email1`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email1`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email1
+Executing one action: self.actions.modify_select('email1', 'input_value')
+Failed to execute an action self.actions.modify_select('email1', 'input_value'), error: Input value `input_value` is not among the available option values `['NA', '-3_Very_Informal', '-2_Moderately_Informal', '-1_Slightly_Informal', '0_Neither', '1_Slightly_Formal', '2_Moderately_Formal', '3_Very_Formal', '0_Not_Usable']`
+ - - - - - -  starting a new element: `Input(name=`email2`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email2`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email2
+Executing one action: self.actions.modify_select('email2', 'input_value')
+Failed to execute an action self.actions.modify_select('email2', 'input_value'), error: Input value `input_value` is not among the available option values `['NA', '-3_Very_Informal', '-2_Moderately_Informal', '-1_Slightly_Informal', '0_Neither', '1_Slightly_Formal', '2_Moderately_Formal', '3_Very_Formal', '0_Not_Usable']`
+ - - - - - -  starting a new element: `Input(name=`email3`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email3`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email3
+Executing one action: self.actions.modify_select('email3', '3_Very_Formal')
+We are going to select this select `email3` with value `3_Very_Formal`
+ - - - - - -  starting a new element: `Input(name=`email4`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email4`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email4
+Executing one action: self.actions.modify_select('email4', '3_Very_Formal')
+We are going to select this select `email4` with value `3_Very_Formal`
+ - - - - - -  starting a new element: `Input(name=`email5`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email5`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email5
+Executing one action: self.actions.modify_select('email5', '3_Very_Formal')
+
+
+Please replace `'3_Very_Formal'` with the actual value you wish to use for the formality rating.
+Failed to execute an action self.actions.modify_select('email5', '3_Very_Formal')
+
+
+Please replace `'3_Very_Formal'` with the actual value you wish to use for the formality rating., error: invalid syntax (<string>, line 4)
+ - - - - - -  starting a new element: `Input(name=`email6`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email6`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email6
+Executing one action: self.actions.modify_select('email6', 'your_desired_option_value')
+
+
+Replace `your_desired_option_value` with the value attribute of the option you want to select. Since I don't have information about what the desired value should be, you'll need to fill that part in as per your requirement. For instance, if you want to select the option "7 Very Formal" for "email6" you would use:
+
+plaintext
+self.actions.modify_select('email6', '3_Very_Formal')
+
+
+Note that I deduced the value attribute from the pattern in the HTML for other similar options. If the value for "7 Very Formal" is different for "email6", please use the correct value.
+Failed to execute an action self.actions.modify_select('email6', 'your_desired_option_value')
+
+
+Replace `your_desired_option_value` with the value attribute of the option you want to select. Since I don't have information about what the desired value should be, you'll need to fill that part in as per your requirement. For instance, if you want to select the option "7 Very Formal" for "email6" you would use:
+
+plaintext
+self.actions.modify_select('email6', '3_Very_Formal')
+
+
+Note that I deduced the value attribute from the pattern in the HTML for other similar options. If the value for "7 Very Formal" is different for "email6", please use the correct value., error: invalid syntax (<string>, line 4)
+ - - - - - -  starting a new element: `Input(name=`email7`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email7`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email7
+Executing one action: self.actions.modify_select('email7', 'NA')
+We are going to select this select `email7` with value `NA`
+ - - - - - -  starting a new element: `Input(name=`email8`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email8`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email8
+Executing one action: self.actions.modify_select('email8', 'NA')
+We are going to select this select `email8` with value `NA`
+ - - - - - -  starting a new element: `Input(name=`email9`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email9`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email9
+Executing one action: self.actions.modify_select('email9', '0_Not_Usable')
+We are going to select this select `email9` with value `0_Not_Usable`
+ - - - - - -  starting a new element: `Input(name=`email10`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email10`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email10
+Executing one action: self.actions.modify_select('email10', '0_Not_Usable')
+We are going to select this select `email10` with value `0_Not_Usable`
+ - - - - - -  starting a new element: `Input(name=`email11`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email11`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email11
+Executing one action: self.actions.modify_select('email11', '3_Very_Formal')
+We are going to select this select `email11` with value `3_Very_Formal`
+ - - - - - -  starting a new element: `Input(name=`email12`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email12`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email12
+Executing one action: self.actions.modify_select('email12', '3_Very_Formal')
+We are going to select this select `email12` with value `3_Very_Formal`
+ - - - - - -  starting a new element: `Input(name=`email13`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email13`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email13
+Executing one action: self.actions.modify_select('email13', '0_Not_Usable')
+We are going to select this select `email13` with value `0_Not_Usable`
+ - - - - - -  starting a new element: `Input(name=`email14`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email14`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email14
+Executing one action: self.actions.modify_select('email14', '0_Not_Usable')
+We are going to select this select `email14` with value `0_Not_Usable`
+ - - - - - -  starting a new element: `Input(name=`email15`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email15`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email15
+Executing one action: self.actions.modify_select('email15', '1_Slightly_Formal')
+We are going to select this select `email15` with value `1_Slightly_Formal`
+ - - - - - -  starting a new element: `Input(name=`email16`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email16`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email16
+Executing one action: self.actions.modify_select('email16', '3_Very_Formal')
+We are going to select this select `email16` with value `3_Very_Formal`
+ - - - - - -  starting a new element: `Input(name=`email17`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email17`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email17
+Executing one action: self.actions.modify_select('email17', '1_Slightly_Formal')
+We are going to select this select `email17` with value `1_Slightly_Formal`
+ - - - - - -  starting a new element: `Input(name=`email18`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email18`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email18
+Executing one action: self.actions.modify_select('email18', '3_Very_Formal')
+We are going to select this select `email18` with value `3_Very_Formal`
+ - - - - - -  starting a new element: `Input(name=`email19`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email19`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email19
+Executing one action: self.actions.modify_select('email19', '3_Very_Formal')
+We are going to select this select `email19` with value `3_Very_Formal`
+input: Input(name=`email0`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['3_Very_Formal']
+ visible_values : ['3_Very_Formal']
+input: Input(name=`email1`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['NA']
+ visible_values : ['NA']
+input: Input(name=`email2`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['NA']
+ visible_values : ['NA']
+input: Input(name=`email3`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['3_Very_Formal']
+ visible_values : ['3_Very_Formal']
+input: Input(name=`email4`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['3_Very_Formal']
+ visible_values : ['3_Very_Formal']
+input: Input(name=`email5`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['NA']
+ visible_values : ['NA']
+input: Input(name=`email6`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['NA']
+ visible_values : ['NA']
+input: Input(name=`email7`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['NA']
+ visible_values : ['NA']
+input: Input(name=`email8`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['NA']
+ visible_values : ['NA']
+input: Input(name=`email9`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['0_Not_Usable']
+ visible_values : ['0_Not_Usable']
+input: Input(name=`email10`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['0_Not_Usable']
+ visible_values : ['0_Not_Usable']
+input: Input(name=`email11`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['3_Very_Formal']
+ visible_values : ['3_Very_Formal']
+input: Input(name=`email12`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['3_Very_Formal']
+ visible_values : ['3_Very_Formal']
+input: Input(name=`email13`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['0_Not_Usable']
+ visible_values : ['0_Not_Usable']
+input: Input(name=`email14`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['0_Not_Usable']
+ visible_values : ['0_Not_Usable']
+input: Input(name=`email15`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['1_Slightly_Formal']
+ visible_values : ['1_Slightly_Formal']
+input: Input(name=`email16`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['3_Very_Formal']
+ visible_values : ['3_Very_Formal']
+input: Input(name=`email17`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['1_Slightly_Formal']
+ visible_values : ['1_Slightly_Formal']
+input: Input(name=`email18`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['3_Very_Formal']
+ visible_values : ['3_Very_Formal']
+input: Input(name=`email19`, type=`select`, task=`Word Formality Annotation`)
+ visible : ['3_Very_Formal']
+ visible_values : ['3_Very_Formal']
+ ------- evaluating input: Input(name=`email0`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['3_Very_Formal', '3_Very_Formal', '3_Very_Formal', '1_Slightly_Formal', '2_Moderately_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `3_Very_Formal` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`email1`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['3_Very_Formal', '3_Very_Formal', '1_Slightly_Formal', '-1_Slightly_Informal', '2_Moderately_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `NA` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email2`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['0_Neither', '-3_Very_Informal', '-1_Slightly_Informal', '1_Slightly_Formal', '-2_Moderately_Informal']` - type: `<class 'list'>`
+----> baseline_answer: `NA` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email3`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['0_Not_Usable', '0_Neither', '0_Neither', '2_Moderately_Formal', '0_Not_Usable']` - type: `<class 'list'>`
+----> baseline_answer: `3_Very_Formal` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email4`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['0_Neither', '-3_Very_Informal', '-2_Moderately_Informal', '-1_Slightly_Informal', '-3_Very_Informal']` - type: `<class 'list'>`
+----> baseline_answer: `3_Very_Formal` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email5`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['1_Slightly_Formal', '3_Very_Formal', '1_Slightly_Formal', '1_Slightly_Formal', '1_Slightly_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `NA` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email6`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['1_Slightly_Formal', '3_Very_Formal', '0_Not_Usable', '-3_Very_Informal', '0_Not_Usable']` - type: `<class 'list'>`
+----> baseline_answer: `NA` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email7`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['2_Moderately_Formal', '2_Moderately_Formal', '1_Slightly_Formal', '2_Moderately_Formal', '2_Moderately_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `NA` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email8`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['0_Neither', '0_Not_Usable', '0_Neither', '-2_Moderately_Informal', '-3_Very_Informal']` - type: `<class 'list'>`
+----> baseline_answer: `NA` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email9`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['2_Moderately_Formal', '2_Moderately_Formal', '1_Slightly_Formal', '0_Neither', '-2_Moderately_Informal']` - type: `<class 'list'>`
+----> baseline_answer: `0_Not_Usable` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email10`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['-3_Very_Informal', '-3_Very_Informal', '-3_Very_Informal', '0_Neither', '-3_Very_Informal']` - type: `<class 'list'>`
+----> baseline_answer: `0_Not_Usable` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email11`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['1_Slightly_Formal', '3_Very_Formal', '1_Slightly_Formal', '1_Slightly_Formal', '1_Slightly_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `3_Very_Formal` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email12`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['3_Very_Formal', '3_Very_Formal', '3_Very_Formal', '2_Moderately_Formal', '3_Very_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `3_Very_Formal` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`email13`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['0_Neither', '-3_Very_Informal', '-3_Very_Informal', '-2_Moderately_Informal', '-3_Very_Informal']` - type: `<class 'list'>`
+----> baseline_answer: `0_Not_Usable` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email14`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['1_Slightly_Formal', '2_Moderately_Formal', '3_Very_Formal', '-1_Slightly_Informal', '1_Slightly_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `0_Not_Usable` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email15`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['3_Very_Formal', '3_Very_Formal', '2_Moderately_Formal', '2_Moderately_Formal', '1_Slightly_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `1_Slightly_Formal` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email16`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['2_Moderately_Formal', '3_Very_Formal', '1_Slightly_Formal', '1_Slightly_Formal', '-1_Slightly_Informal']` - type: `<class 'list'>`
+----> baseline_answer: `3_Very_Formal` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email17`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['0_Neither', '-3_Very_Informal', '-1_Slightly_Informal', '-2_Moderately_Informal', '-3_Very_Informal']` - type: `<class 'list'>`
+----> baseline_answer: `1_Slightly_Formal` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email18`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['2_Moderately_Formal', '3_Very_Formal', '2_Moderately_Formal', '1_Slightly_Formal', '1_Slightly_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `3_Very_Formal` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`email19`, type=`select`, task=`Word Formality Annotation`) ------- 
+----> answers: `['2_Moderately_Formal', '3_Very_Formal', '2_Moderately_Formal', '1_Slightly_Formal', '1_Slightly_Formal']` - type: `<class 'list'>`
+----> baseline_answer: `3_Very_Formal` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.1
+ --> Per-instance per-field breakdown: {'select': [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 4976 <-> row_number: 65
+ --> inputs: ['email0', 'email1', 'email2', 'email3', 'email4', 'email5', 'email6', 'email7', 'email8', 'email9', 'email10', 'email11', 'email12', 'email13', 'email14', 'email15', 'email16', 'email17', 'email18', 'email19']
+ --> Looking up gold labels from row index 65 of `input.csv` (unique inputs). 
+ --> input labels: {'email0': ['0_Neither', '0_Neither', '1_Slightly_Formal', '-2_Moderately_Informal', '-2_Moderately_Informal'], 'email1': ['0_Neither', '-1_Slightly_Informal', '0_Neither', '0_Neither', '2_Moderately_Formal'], 'email2': ['0_Neither', '-1_Slightly_Informal', '0_Neither', '0_Neither', '2_Moderately_Formal'], 'email3': ['-2_Moderately_Informal', '1_Slightly_Formal', '0_Neither', '0_Neither', '2_Moderately_Formal'], 'email4': ['1_Slightly_Formal', '1_Slightly_Formal', '3_Very_Formal', '1_Slightly_Formal', '2_Moderately_Formal'], 'email5': ['2_Moderately_Formal', '2_Moderately_Formal', '3_Very_Formal', '2_Moderately_Formal', '2_Moderately_Formal'], 'email6': ['0_Neither', '1_Slightly_Formal', '-1_Slightly_Informal', '0_Neither', '1_Slightly_Formal'], 'email7': ['0_Neither', '0_Neither', '0_Neither', '0_Neither', '2_Moderately_Formal'], 'email8': ['2_Moderately_Formal', '3_Very_Formal', '3_Very_Formal', '2_Moderately_Formal', '0_Neither'], 'email9': ['-1_Slightly_Informal', '2_Moderately_Formal', '-1_Slightly_Informal', '1_Slightly_Formal', '1_Slightly_Formal'], 'email10': ['0_Neither', '2_Moderately_Formal', '-2_Moderately_Informal', '1_Slightly_Formal', '1_Slightly_Formal'], 'email11': ['-1_Slightly_Informal', '-3_Very_Informal', '0_Neither', '-1_Slightly_Informal', '0_Neither'], 'email12': ['0_Neither', '1_Slightly_Formal', '1_Slightly_Formal', '1_Slightly_Formal', '2_Moderately_Formal'], 'email13': ['0_Neither', '1_Slightly_Formal', '1_Slightly_Formal', '0_Neither', '1_Slightly_Formal'], 'email14': ['0_Neither', '2_Moderately_Formal', '0_Neither', '0_Neither', '2_Moderately_Formal'], 'email15': ['0_Neither', '-1_Slightly_Informal', '0_Neither', '0_Neither', '1_Slightly_Formal'], 'email16': ['0_Neither', '-1_Slightly_Informal', '-1_Slightly_Informal', '0_Neither', '1_Slightly_Formal'], 'email17': ['0_Neither', '1_Slightly_Formal', '0_Neither', '1_Slightly_Formal', '0_Neither'], 'email18': ['0_Neither', '2_Moderately_Formal', '0_Neither', '1_Slightly_Formal', '1_Slightly_Formal'], 'email19': ['0_Neither', '1_Slightly_Formal', '0_Neither', '0_Neither', '2_Moderately_Formal']}
+ - - - - - -  starting a new element: `Input(name=`email0`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email0`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email0
+Executing one action: self.actions.modify_select('email0', '1_Slightly_Formal')
+We are going to select this select `email0` with value `1_Slightly_Formal`
+ - - - - - -  starting a new element: `Input(name=`email1`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email1`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email1
+Executing one action: self.actions.modify_select('email1', '0_Neither')
+We are going to select this select `email1` with value `0_Neither`
+ - - - - - -  starting a new element: `Input(name=`email2`, type=`select`, task=`Word Formality Annotation`)` - - - - - -  
+input: Input(name=`email2`, type=`select`, task=`Word Formality Annotation`)
+about to try executing one action, on the following input: email2

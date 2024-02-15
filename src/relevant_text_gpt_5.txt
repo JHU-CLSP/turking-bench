@@ -28106,3 +28106,1382 @@ Could not find input field with name `intra-4.1`
 Could not find input field with name `intra-4.2`
 Could not find input field with name `intra-5.1`
 Could not find input field with name `intra-5.2`
+ --> inputs: ['coherent-1', 'complete-1', 'intra-1', 'diverse-1', 'bestq-1', 'coherent-2', 'complete-2', 'intra-2', 'diverse-2', 'bestq-2', 'coherent-3', 'complete-3', 'intra-3', 'diverse-3', 'bestq-3', 'coherent-4', 'complete-4', 'intra-4', 'diverse-4', 'bestq-4', 'coherent-5', 'complete-5', 'intra-5', 'diverse-5', 'bestq-5']
+ --> Looking up gold labels from row index 37 of `input.csv` (unique inputs). 
+ --> input labels: {'coherent-1': [2.0, 1.0, 1.0], 'complete-1': [2.0, 1.0, 1.0], 'intra-1': [2.0, 1.0, 1.0], 'diverse-1': [2.0, 2.0, 2.0], 'bestq-1': [2.0, 1.0, 1.0], 'coherent-2': [2.0, 2.0, 2.0], 'complete-2': [2.0, 2.0, 2.0], 'intra-2': [2.0, 2.0, 2.0], 'diverse-2': [1.0, 2.0, 2.0], 'bestq-2': [2.0, 2.0, 2.0], 'coherent-3': [1, 1, 1], 'complete-3': [1, 1, 1], 'intra-3': [1, 2, 1], 'diverse-3': [1.0, 2.0, 2.0], 'bestq-3': [1, 1, 1], 'coherent-4': [2, 1, 1], 'complete-4': [2.0, 1.0, 1.0], 'intra-4': [2.0, 1.0, 1.0], 'diverse-4': [1, 1, 2], 'bestq-4': [2, 1, 1], 'coherent-5': [1, 1, 1], 'complete-5': [1, 1, 1], 'intra-5': [1.0, 1.0, 1.0], 'diverse-5': [2, 2, 1], 'bestq-5': [1, 1, 1]}
+ - - - - - -  starting a new element: `Input(name=`coherent-1`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`coherent-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: coherent-1
+input Input(name=`coherent-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('coherent-1', '1')
+We are going to select this radio button: <input name="coherent-1" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`complete-1`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`complete-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: complete-1
+input Input(name=`complete-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('complete-1', '1')
+We are going to select this radio button: <input name="complete-1" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`intra-1`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`intra-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: intra-1
+input Input(name=`intra-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('intra-1', '1')
+We are going to select this radio button: <input name="intra-1" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`diverse-1`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`diverse-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: diverse-1
+input Input(name=`diverse-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('diverse-1', '1')
+We are going to select this radio button: <input name="diverse-1" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`bestq-1`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`bestq-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: bestq-1
+input Input(name=`bestq-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('bestq-1', '1')
+We are going to select this radio button: <input name="bestq-1" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`coherent-2`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`coherent-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: coherent-2
+input Input(name=`coherent-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('coherent-2', '1')
+We are going to select this radio button: <input name="coherent-2" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`complete-2`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`complete-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: complete-2
+input Input(name=`complete-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('complete-2', '1')
+We are going to select this radio button: <input name="complete-2" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`intra-2`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`intra-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: intra-2
+input Input(name=`intra-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('intra-2', '1')
+We are going to select this radio button: <input name="intra-2" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`diverse-2`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`diverse-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: diverse-2
+input Input(name=`diverse-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('diverse-2', '1')
+We are going to select this radio button: <input name="diverse-2" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`bestq-2`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`bestq-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: bestq-2
+input Input(name=`bestq-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('bestq-2', '1')
+We are going to select this radio button: <input name="bestq-2" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`coherent-3`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`coherent-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: coherent-3
+input Input(name=`coherent-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('coherent-3', '1')
+We are going to select this radio button: <input name="coherent-3" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`complete-3`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`complete-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: complete-3
+input Input(name=`complete-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('complete-3', '1')
+We are going to select this radio button: <input name="complete-3" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`intra-3`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`intra-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: intra-3
+input Input(name=`intra-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('intra-3', '1')
+We are going to select this radio button: <input name="intra-3" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`diverse-3`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`diverse-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: diverse-3
+input Input(name=`diverse-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('diverse-3', '1')
+We are going to select this radio button: <input name="diverse-3" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`bestq-3`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`bestq-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: bestq-3
+input Input(name=`bestq-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('bestq-3', '1')
+We are going to select this radio button: <input name="bestq-3" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`coherent-4`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`coherent-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: coherent-4
+input Input(name=`coherent-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('coherent-4', '1')
+
+We are going to select this radio button: <input name="coherent-4" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`complete-4`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`complete-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: complete-4
+input Input(name=`complete-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('complete-4', '1')
+We are going to select this radio button: <input name="complete-4" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`intra-4`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`intra-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: intra-4
+input Input(name=`intra-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('intra-4', '1')
+We are going to select this radio button: <input name="intra-4" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`diverse-4`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`diverse-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: diverse-4
+input Input(name=`diverse-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('diverse-4', '1')
+We are going to select this radio button: <input name="diverse-4" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`bestq-4`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`bestq-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: bestq-4
+input Input(name=`bestq-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('bestq-4', '1')
+We are going to select this radio button: <input name="bestq-4" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`coherent-5`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`coherent-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: coherent-5
+input Input(name=`coherent-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('coherent-5', '1')
+We are going to select this radio button: <input name="coherent-5" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`complete-5`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`complete-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: complete-5
+input Input(name=`complete-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('complete-5', '1')
+We are going to select this radio button: <input name="complete-5" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`intra-5`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`intra-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: intra-5
+input Input(name=`intra-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('intra-5', '1')
+We are going to select this radio button: <input name="intra-5" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`diverse-5`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`diverse-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: diverse-5
+input Input(name=`diverse-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('diverse-5', '1')
+We are going to select this radio button: <input name="diverse-5" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`bestq-5`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`bestq-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: bestq-5
+input Input(name=`bestq-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('bestq-5', '1')
+We are going to select this radio button: <input name="bestq-5" type="radio" value="1">
+input: Input(name=`coherent-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`complete-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`intra-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`diverse-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`bestq-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`coherent-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`complete-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`intra-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`diverse-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`bestq-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`coherent-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`complete-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`intra-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`diverse-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`bestq-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`coherent-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`complete-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`intra-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`diverse-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`bestq-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`coherent-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`complete-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`intra-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`diverse-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`bestq-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+ ------- evaluating input: Input(name=`coherent-1`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2.0, 1.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`complete-1`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2.0, 1.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`intra-1`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2.0, 1.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`diverse-1`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2.0, 2.0, 2.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`bestq-1`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2.0, 1.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`coherent-2`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2.0, 2.0, 2.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`complete-2`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2.0, 2.0, 2.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`intra-2`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2.0, 2.0, 2.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`diverse-2`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1.0, 2.0, 2.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`bestq-2`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2.0, 2.0, 2.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`coherent-3`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1, 1, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`complete-3`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1, 1, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`intra-3`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1, 2, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`diverse-3`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1.0, 2.0, 2.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`bestq-3`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1, 1, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`coherent-4`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2, 1, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`complete-4`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2.0, 1.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`intra-4`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2.0, 1.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`diverse-4`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1, 1, 2]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`bestq-4`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2, 1, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`coherent-5`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1, 1, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`complete-5`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1, 1, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`intra-5`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1.0, 1.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`diverse-5`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2, 2, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`bestq-5`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1, 1, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.68
+ --> Per-instance per-field breakdown: {'radio': [1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0]}
+instance_id: 33656 <-> row_number: 2
+Could not find input field with name `bestq-1.1`
+Could not find input field with name `bestq-1.2`
+Could not find input field with name `bestq-2.1`
+Could not find input field with name `bestq-2.2`
+Could not find input field with name `bestq-3.1`
+Could not find input field with name `bestq-3.2`
+Could not find input field with name `bestq-4.1`
+Could not find input field with name `bestq-4.2`
+Could not find input field with name `bestq-5.1`
+Could not find input field with name `bestq-5.2`
+Could not find input field with name `coherent-1.1`
+Could not find input field with name `coherent-1.2`
+Could not find input field with name `coherent-2.1`
+Could not find input field with name `coherent-2.2`
+Could not find input field with name `coherent-3.1`
+Could not find input field with name `coherent-3.2`
+Could not find input field with name `coherent-4.1`
+Could not find input field with name `coherent-4.2`
+Could not find input field with name `coherent-5.1`
+Could not find input field with name `coherent-5.2`
+Could not find input field with name `complete-1.1`
+Could not find input field with name `complete-1.2`
+Could not find input field with name `complete-2.1`
+Could not find input field with name `complete-2.2`
+Could not find input field with name `complete-3.1`
+Could not find input field with name `complete-3.2`
+Could not find input field with name `complete-4.1`
+Could not find input field with name `complete-4.2`
+Could not find input field with name `complete-5.1`
+Could not find input field with name `complete-5.2`
+Could not find input field with name `diverse-1.1`
+Could not find input field with name `diverse-1.2`
+Could not find input field with name `diverse-2.1`
+Could not find input field with name `diverse-2.2`
+Could not find input field with name `diverse-3.1`
+Could not find input field with name `diverse-3.2`
+Could not find input field with name `diverse-4.1`
+Could not find input field with name `diverse-4.2`
+Could not find input field with name `diverse-5.1`
+Could not find input field with name `diverse-5.2`
+Could not find input field with name `intra-1.1`
+Could not find input field with name `intra-1.2`
+Could not find input field with name `intra-2.1`
+Could not find input field with name `intra-2.2`
+Could not find input field with name `intra-3.1`
+Could not find input field with name `intra-3.2`
+Could not find input field with name `intra-4.1`
+Could not find input field with name `intra-4.2`
+Could not find input field with name `intra-5.1`
+Could not find input field with name `intra-5.2`
+ --> inputs: ['coherent-1', 'complete-1', 'intra-1', 'diverse-1', 'bestq-1', 'coherent-2', 'complete-2', 'intra-2', 'diverse-2', 'bestq-2', 'coherent-3', 'complete-3', 'intra-3', 'diverse-3', 'bestq-3', 'coherent-4', 'complete-4', 'intra-4', 'diverse-4', 'bestq-4', 'coherent-5', 'complete-5', 'intra-5', 'diverse-5', 'bestq-5']
+ --> Looking up gold labels from row index 2 of `input.csv` (unique inputs). 
+ --> input labels: {'coherent-1': [2.0, 2.0, 2.0], 'complete-1': [2.0, 2.0, 2.0], 'intra-1': [2.0, 2.0, 2.0], 'diverse-1': [1.0, 1.0, 1.0], 'bestq-1': [2.0, 2.0, 2.0], 'coherent-2': [1.0, 2.0, 1.0], 'complete-2': [1.0, 1.0, 1.0], 'intra-2': [1.0, 2.0, 1.0], 'diverse-2': [2.0, 2.0, 1.0], 'bestq-2': [1.0, 2.0, 1.0], 'coherent-3': [1, 1, 1], 'complete-3': [1, 2, 1], 'intra-3': [1, 1, 1], 'diverse-3': [1.0, 2.0, 1.0], 'bestq-3': [1, 1, 1], 'coherent-4': [2, 1, 1], 'complete-4': [2.0, 2.0, 1.0], 'intra-4': [2.0, 1.0, 1.0], 'diverse-4': [2, 1, 1], 'bestq-4': [2, 2, 1], 'coherent-5': [1, 2, 1], 'complete-5': [1, 2, 1], 'intra-5': [1.0, 1.0, 1.0], 'diverse-5': [1, 1, 2], 'bestq-5': [1, 2, 1]}
+ - - - - - -  starting a new element: `Input(name=`coherent-1`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`coherent-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: coherent-1
+input Input(name=`coherent-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('coherent-1', '1')
+We are going to select this radio button: <input name="coherent-1" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`complete-1`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`complete-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: complete-1
+input Input(name=`complete-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('complete-1', '1')
+We are going to select this radio button: <input name="complete-1" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`intra-1`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`intra-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: intra-1
+input Input(name=`intra-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('intra-1', '1')
+We are going to select this radio button: <input name="intra-1" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`diverse-1`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`diverse-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: diverse-1
+input Input(name=`diverse-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('diverse-1', '1')
+We are going to select this radio button: <input name="diverse-1" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`bestq-1`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`bestq-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: bestq-1
+input Input(name=`bestq-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('bestq-1', '1')
+We are going to select this radio button: <input name="bestq-1" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`coherent-2`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`coherent-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: coherent-2
+input Input(name=`coherent-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('coherent-2', '1')
+We are going to select this radio button: <input name="coherent-2" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`complete-2`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`complete-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: complete-2
+input Input(name=`complete-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('complete-2', '1')
+We are going to select this radio button: <input name="complete-2" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`intra-2`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`intra-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: intra-2
+input Input(name=`intra-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('intra-2', '1')
+We are going to select this radio button: <input name="intra-2" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`diverse-2`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`diverse-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: diverse-2
+input Input(name=`diverse-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('diverse-2', '1')
+We are going to select this radio button: <input name="diverse-2" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`bestq-2`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`bestq-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: bestq-2
+input Input(name=`bestq-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('bestq-2', '1')
+We are going to select this radio button: <input name="bestq-2" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`coherent-3`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`coherent-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: coherent-3
+input Input(name=`coherent-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('coherent-3', '1')
+We are going to select this radio button: <input name="coherent-3" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`complete-3`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`complete-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: complete-3
+input Input(name=`complete-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('complete-3', '1')
+We are going to select this radio button: <input name="complete-3" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`intra-3`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`intra-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: intra-3
+input Input(name=`intra-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('intra-3', '1')
+We are going to select this radio button: <input name="intra-3" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`diverse-3`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`diverse-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: diverse-3
+input Input(name=`diverse-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('diverse-3', '1')
+We are going to select this radio button: <input name="diverse-3" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`bestq-3`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`bestq-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: bestq-3
+input Input(name=`bestq-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('bestq-3', '1')
+We are going to select this radio button: <input name="bestq-3" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`coherent-4`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`coherent-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: coherent-4
+input Input(name=`coherent-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('coherent-4', '1')
+We are going to select this radio button: <input name="coherent-4" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`complete-4`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`complete-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: complete-4
+input Input(name=`complete-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('complete-4', '1')
+We are going to select this radio button: <input name="complete-4" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`intra-4`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`intra-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: intra-4
+input Input(name=`intra-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('intra-4', '1')
+We are going to select this radio button: <input name="intra-4" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`diverse-4`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`diverse-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: diverse-4
+input Input(name=`diverse-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('diverse-4', '1')
+We are going to select this radio button: <input name="diverse-4" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`bestq-4`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`bestq-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: bestq-4
+input Input(name=`bestq-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('bestq-4', '1')
+We are going to select this radio button: <input name="bestq-4" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`coherent-5`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`coherent-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: coherent-5
+input Input(name=`coherent-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('coherent-5', '1')
+We are going to select this radio button: <input name="coherent-5" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`complete-5`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`complete-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: complete-5
+input Input(name=`complete-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('complete-5', '1')
+We are going to select this radio button: <input name="complete-5" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`intra-5`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`intra-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: intra-5
+input Input(name=`intra-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('intra-5', '1')
+We are going to select this radio button: <input name="intra-5" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`diverse-5`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`diverse-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: diverse-5
+input Input(name=`diverse-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('diverse-5', '1')
+We are going to select this radio button: <input name="diverse-5" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`bestq-5`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`bestq-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: bestq-5
+input Input(name=`bestq-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('bestq-5', '1')
+We are going to select this radio button: <input name="bestq-5" type="radio" value="1">
+input: Input(name=`coherent-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`complete-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`intra-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`diverse-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`bestq-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`coherent-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`complete-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`intra-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`diverse-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`bestq-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`coherent-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`complete-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`intra-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`diverse-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`bestq-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`coherent-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`complete-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`intra-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`diverse-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`bestq-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`coherent-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`complete-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`intra-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`diverse-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`bestq-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+ ------- evaluating input: Input(name=`coherent-1`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2.0, 2.0, 2.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`complete-1`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2.0, 2.0, 2.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`intra-1`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2.0, 2.0, 2.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`diverse-1`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1.0, 1.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`bestq-1`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2.0, 2.0, 2.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`coherent-2`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1.0, 2.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`complete-2`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1.0, 1.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`intra-2`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1.0, 2.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`diverse-2`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2.0, 2.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`bestq-2`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1.0, 2.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`coherent-3`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1, 1, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`complete-3`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1, 2, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`intra-3`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1, 1, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`diverse-3`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1.0, 2.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`bestq-3`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1, 1, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`coherent-4`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2, 1, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`complete-4`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2.0, 2.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`intra-4`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2.0, 1.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`diverse-4`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2, 1, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`bestq-4`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2, 2, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`coherent-5`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1, 2, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`complete-5`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1, 2, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`intra-5`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1.0, 1.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`diverse-5`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1, 1, 2]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`bestq-5`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1, 2, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.72
+ --> Per-instance per-field breakdown: {'radio': [1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0]}
+instance_id: 33673 <-> row_number: 19
+Could not find input field with name `bestq-1.1`
+Could not find input field with name `bestq-1.2`
+Could not find input field with name `bestq-2.1`
+Could not find input field with name `bestq-2.2`
+Could not find input field with name `bestq-3.1`
+Could not find input field with name `bestq-3.2`
+Could not find input field with name `bestq-4.1`
+Could not find input field with name `bestq-4.2`
+Could not find input field with name `bestq-5.1`
+Could not find input field with name `bestq-5.2`
+Could not find input field with name `coherent-1.1`
+Could not find input field with name `coherent-1.2`
+Could not find input field with name `coherent-2.1`
+Could not find input field with name `coherent-2.2`
+Could not find input field with name `coherent-3.1`
+Could not find input field with name `coherent-3.2`
+Could not find input field with name `coherent-4.1`
+Could not find input field with name `coherent-4.2`
+Could not find input field with name `coherent-5.1`
+Could not find input field with name `coherent-5.2`
+Could not find input field with name `complete-1.1`
+Could not find input field with name `complete-1.2`
+Could not find input field with name `complete-2.1`
+Could not find input field with name `complete-2.2`
+Could not find input field with name `complete-3.1`
+Could not find input field with name `complete-3.2`
+Could not find input field with name `complete-4.1`
+Could not find input field with name `complete-4.2`
+Could not find input field with name `complete-5.1`
+Could not find input field with name `complete-5.2`
+Could not find input field with name `diverse-1.1`
+Could not find input field with name `diverse-1.2`
+Could not find input field with name `diverse-2.1`
+Could not find input field with name `diverse-2.2`
+Could not find input field with name `diverse-3.1`
+Could not find input field with name `diverse-3.2`
+Could not find input field with name `diverse-4.1`
+Could not find input field with name `diverse-4.2`
+Could not find input field with name `diverse-5.1`
+Could not find input field with name `diverse-5.2`
+Could not find input field with name `intra-1.1`
+Could not find input field with name `intra-1.2`
+Could not find input field with name `intra-2.1`
+Could not find input field with name `intra-2.2`
+Could not find input field with name `intra-3.1`
+Could not find input field with name `intra-3.2`
+Could not find input field with name `intra-4.1`
+Could not find input field with name `intra-4.2`
+Could not find input field with name `intra-5.1`
+Could not find input field with name `intra-5.2`
+ --> inputs: ['coherent-1', 'complete-1', 'intra-1', 'diverse-1', 'bestq-1', 'coherent-2', 'complete-2', 'intra-2', 'diverse-2', 'bestq-2', 'coherent-3', 'complete-3', 'intra-3', 'diverse-3', 'bestq-3', 'coherent-4', 'complete-4', 'intra-4', 'diverse-4', 'bestq-4', 'coherent-5', 'complete-5', 'intra-5', 'diverse-5', 'bestq-5']
+ --> Looking up gold labels from row index 19 of `input.csv` (unique inputs). 
+ --> input labels: {'coherent-1': [1.0, 1.0, 1.0], 'complete-1': [2.0, '', 1.0], 'intra-1': [2.0, 1.0, 1.0], 'diverse-1': [1.0, 2.0, 1.0], 'bestq-1': [1.0, 1.0, 1.0], 'coherent-2': [1.0, 2.0, 1.0], 'complete-2': [1.0, 2.0, 1.0], 'intra-2': [1.0, 2.0, 1.0], 'diverse-2': [2.0, 1.0, 1.0], 'bestq-2': [1.0, 2.0, 1.0], 'coherent-3': [1, 1, 1], 'complete-3': [1, 1, 1], 'intra-3': [1, 1, 1], 'diverse-3': [1.0, 1.0, 1.0], 'bestq-3': [1, 1, 1], 'coherent-4': [1, 1, 1], 'complete-4': [1.0, 1.0, 1.0], 'intra-4': [1.0, 1.0, 1.0], 'diverse-4': [1, 2, 1], 'bestq-4': [1, 1, 1], 'coherent-5': [2, 2, 1], 'complete-5': [2, 2, 1], 'intra-5': [2.0, 1.0, 1.0], 'diverse-5': [2, 2, 1], 'bestq-5': [2, 1, 1]}
+ - - - - - -  starting a new element: `Input(name=`coherent-1`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`coherent-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: coherent-1
+input Input(name=`coherent-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('coherent-1', '1')
+We are going to select this radio button: <input name="coherent-1" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`complete-1`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`complete-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: complete-1
+input Input(name=`complete-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('complete-1', '1')
+We are going to select this radio button: <input name="complete-1" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`intra-1`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`intra-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: intra-1
+input Input(name=`intra-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('intra-1', '1')
+We are going to select this radio button: <input name="intra-1" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`diverse-1`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`diverse-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: diverse-1
+input Input(name=`diverse-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('diverse-1', '1')
+We are going to select this radio button: <input name="diverse-1" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`bestq-1`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`bestq-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: bestq-1
+input Input(name=`bestq-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('bestq-1', '1')
+We are going to select this radio button: <input name="bestq-1" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`coherent-2`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`coherent-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: coherent-2
+input Input(name=`coherent-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('coherent-2', '1')
+We are going to select this radio button: <input name="coherent-2" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`complete-2`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`complete-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: complete-2
+input Input(name=`complete-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('complete-2', '1')
+We are going to select this radio button: <input name="complete-2" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`intra-2`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`intra-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: intra-2
+input Input(name=`intra-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('intra-2', '1')
+We are going to select this radio button: <input name="intra-2" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`diverse-2`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`diverse-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: diverse-2
+input Input(name=`diverse-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('diverse-2', '1')
+We are going to select this radio button: <input name="diverse-2" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`bestq-2`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`bestq-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: bestq-2
+input Input(name=`bestq-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('bestq-2', '1')
+We are going to select this radio button: <input name="bestq-2" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`coherent-3`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`coherent-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: coherent-3
+input Input(name=`coherent-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('coherent-3', '1')
+We are going to select this radio button: <input name="coherent-3" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`complete-3`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`complete-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: complete-3
+input Input(name=`complete-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('complete-3', '1')
+We are going to select this radio button: <input name="complete-3" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`intra-3`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`intra-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: intra-3
+input Input(name=`intra-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('intra-3', '1')
+We are going to select this radio button: <input name="intra-3" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`diverse-3`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`diverse-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: diverse-3
+input Input(name=`diverse-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('diverse-3', '1')
+We are going to select this radio button: <input name="diverse-3" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`bestq-3`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`bestq-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: bestq-3
+input Input(name=`bestq-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('bestq-3', '1')
+We are going to select this radio button: <input name="bestq-3" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`coherent-4`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`coherent-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: coherent-4
+input Input(name=`coherent-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('coherent-4', '1')
+We are going to select this radio button: <input name="coherent-4" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`complete-4`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`complete-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: complete-4
+input Input(name=`complete-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('complete-4', '1')
+We are going to select this radio button: <input name="complete-4" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`intra-4`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`intra-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: intra-4
+input Input(name=`intra-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('intra-4', '1')
+We are going to select this radio button: <input name="intra-4" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`diverse-4`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`diverse-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: diverse-4
+input Input(name=`diverse-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('diverse-4', '1')
+We are going to select this radio button: <input name="diverse-4" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`bestq-4`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`bestq-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: bestq-4
+input Input(name=`bestq-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('bestq-4', '1')
+We are going to select this radio button: <input name="bestq-4" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`coherent-5`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`coherent-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: coherent-5
+input Input(name=`coherent-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('coherent-5', '1')
+We are going to select this radio button: <input name="coherent-5" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`complete-5`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`complete-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: complete-5
+input Input(name=`complete-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('complete-5', '1')
+We are going to select this radio button: <input name="complete-5" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`intra-5`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`intra-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: intra-5
+input Input(name=`intra-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('intra-5', '1')
+We are going to select this radio button: <input name="intra-5" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`diverse-5`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`diverse-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: diverse-5
+input Input(name=`diverse-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('diverse-5', '1')
+We are going to select this radio button: <input name="diverse-5" type="radio" value="1">
+ - - - - - -  starting a new element: `Input(name=`bestq-5`, type=`radio`, task=`Arch - Rel Eval 3`)` - - - - - -  
+input: Input(name=`bestq-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+about to try executing one action, on the following input: bestq-5
+input Input(name=`bestq-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+Executing one action: self.actions.modify_radio('bestq-5', '1')
+We are going to select this radio button: <input name="bestq-5" type="radio" value="1">
+input: Input(name=`coherent-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`complete-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`intra-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`diverse-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`bestq-1`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`coherent-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`complete-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`intra-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`diverse-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`bestq-2`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`coherent-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`complete-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`intra-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`diverse-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`bestq-3`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`coherent-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`complete-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`intra-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`diverse-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`bestq-4`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`coherent-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`complete-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`intra-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`diverse-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`bestq-5`, type=`radio`, task=`Arch - Rel Eval 3`)
+ visible : ['1']
+ visible_values : ['1']
+ ------- evaluating input: Input(name=`coherent-1`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1.0, 1.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`complete-1`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2.0, '', 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`intra-1`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2.0, 1.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`diverse-1`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1.0, 2.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`bestq-1`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1.0, 1.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`coherent-2`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1.0, 2.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`complete-2`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1.0, 2.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`intra-2`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1.0, 2.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`diverse-2`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2.0, 1.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`bestq-2`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1.0, 2.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`coherent-3`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1, 1, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`complete-3`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1, 1, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`intra-3`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1, 1, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`diverse-3`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1.0, 1.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`bestq-3`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1, 1, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`coherent-4`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1, 1, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`complete-4`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1.0, 1.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`intra-4`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1.0, 1.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`diverse-4`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1, 2, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`bestq-4`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[1, 1, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`coherent-5`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2, 2, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`complete-5`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2, 2, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`intra-5`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2.0, 1.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`diverse-5`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2, 2, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`bestq-5`, type=`radio`, task=`Arch - Rel Eval 3`) ------- 
+----> answers: `[2, 1, 1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.84
+ --> Per-instance per-field breakdown: {'radio': [1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0]}
+ = = = = = = = = = = = = starting new task: `Compression HIT` = = = = = = = = = = = = 
+First instance id: 7310
+instance_id: 7793 <-> row_number: 483
+ --> inputs: ['meaning_0_10', 'grammar_0_10', 'meaning_0_6', 'grammar_0_6', 'meaning_0_3', 'grammar_0_3', 'meaning_0_7', 'grammar_0_7', 'meaning_0_2', 'grammar_0_2', 'meaning_0_11', 'grammar_0_11', 'meaning_0_5', 'grammar_0_5', 'meaning_0_0', 'grammar_0_0', 'meaning_0_8', 'grammar_0_8', 'meaning_0_4', 'grammar_0_4', 'meaning_0_9', 'grammar_0_9', 'meaning_0_1', 'grammar_0_1']
+ --> Looking up gold labels from row index 483 of `input.csv` (unique inputs). 
+ --> input labels: {'meaning_0_10': [3, 2], 'grammar_0_10': [3, 2], 'meaning_0_6': [5, 5], 'grammar_0_6': [5, 5], 'meaning_0_3': [2, 2], 'grammar_0_3': [2, 2], 'meaning_0_7': [3, 4], 'grammar_0_7': [4, 4], 'meaning_0_2': [5, 5], 'grammar_0_2': [5, 5], 'meaning_0_11': [3, 3], 'grammar_0_11': [3, 2], 'meaning_0_5': [5, 5], 'grammar_0_5': [5, 5], 'meaning_0_0': [3, 4], 'grammar_0_0': [5, 5], 'meaning_0_8': [1, 3], 'grammar_0_8': [4, 2], 'meaning_0_4': [1, 5], 'grammar_0_4': [5, 5], 'meaning_0_9': [1, 3], 'grammar_0_9': [2, 2], 'meaning_0_1': [2, 3], 'grammar_0_1': [2, 3]}
+ - - - - - -  starting a new element: `Input(name=`meaning_0_10`, type=`select`, task=`Compression HIT`)` - - - - - -  
+input: Input(name=`meaning_0_10`, type=`select`, task=`Compression HIT`)
+about to try executing one action, on the following input: meaning_0_10
+input Input(name=`meaning_0_10`, type=`select`, task=`Compression HIT`)
+Executing one action: self.actions.modify_select('meaning_0_10', '5')
+We are going to select this select `meaning_0_10` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_10`, type=`select`, task=`Compression HIT`)` - - - - - -  
+input: Input(name=`grammar_0_10`, type=`select`, task=`Compression HIT`)
+about to try executing one action, on the following input: grammar_0_10
+input Input(name=`grammar_0_10`, type=`select`, task=`Compression HIT`)
+Executing one action: self.actions.modify_select('grammar_0_10', 'blank')
+We are going to select this select `grammar_0_10` with value `blank`
+ - - - - - -  starting a new element: `Input(name=`meaning_0_6`, type=`select`, task=`Compression HIT`)` - - - - - -  
+input: Input(name=`meaning_0_6`, type=`select`, task=`Compression HIT`)
+about to try executing one action, on the following input: meaning_0_6
+input Input(name=`meaning_0_6`, type=`select`, task=`Compression HIT`)
+Executing one action: self.actions.modify_select('meaning_0_6', '5')
+We are going to select this select `meaning_0_6` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_6`, type=`select`, task=`Compression HIT`)` - - - - - -  
+input: Input(name=`grammar_0_6`, type=`select`, task=`Compression HIT`)
+about to try executing one action, on the following input: grammar_0_6
+input Input(name=`grammar_0_6`, type=`select`, task=`Compression HIT`)
+Executing one action: self.actions.modify_select('grammar_0_6', '5')
+We are going to select this select `grammar_0_6` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_0_3`, type=`select`, task=`Compression HIT`)` - - - - - -  
+input: Input(name=`meaning_0_3`, type=`select`, task=`Compression HIT`)
+about to try executing one action, on the following input: meaning_0_3
+input Input(name=`meaning_0_3`, type=`select`, task=`Compression HIT`)
+Executing one action: self.actions.modify_select('meaning_0_3', '5')
+We are going to select this select `meaning_0_3` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_3`, type=`select`, task=`Compression HIT`)` - - - - - -  
+input: Input(name=`grammar_0_3`, type=`select`, task=`Compression HIT`)
+about to try executing one action, on the following input: grammar_0_3
+input Input(name=`grammar_0_3`, type=`select`, task=`Compression HIT`)
+Executing one action: self.actions.modify_select('grammar_0_3', '5')
+We are going to select this select `grammar_0_3` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_0_7`, type=`select`, task=`Compression HIT`)` - - - - - -  
+input: Input(name=`meaning_0_7`, type=`select`, task=`Compression HIT`)
+about to try executing one action, on the following input: meaning_0_7
+input Input(name=`meaning_0_7`, type=`select`, task=`Compression HIT`)
+Executing one action: self.actions.modify_select('meaning_0_7', '5')
+We are going to select this select `meaning_0_7` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_7`, type=`select`, task=`Compression HIT`)` - - - - - -  
+input: Input(name=`grammar_0_7`, type=`select`, task=`Compression HIT`)
+about to try executing one action, on the following input: grammar_0_7
+input Input(name=`grammar_0_7`, type=`select`, task=`Compression HIT`)
+Executing one action: self.actions.modify_select('grammar_0_7', 'blank')
+We are going to select this select `grammar_0_7` with value `blank`
+ - - - - - -  starting a new element: `Input(name=`meaning_0_2`, type=`select`, task=`Compression HIT`)` - - - - - -  
+input: Input(name=`meaning_0_2`, type=`select`, task=`Compression HIT`)
+about to try executing one action, on the following input: meaning_0_2
+input Input(name=`meaning_0_2`, type=`select`, task=`Compression HIT`)
+Executing one action: self.actions.modify_select('meaning_0_2', '5')
+We are going to select this select `meaning_0_2` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_2`, type=`select`, task=`Compression HIT`)` - - - - - -  
+input: Input(name=`grammar_0_2`, type=`select`, task=`Compression HIT`)
+about to try executing one action, on the following input: grammar_0_2
+input Input(name=`grammar_0_2`, type=`select`, task=`Compression HIT`)
+Executing one action: self.actions.modify_select('grammar_0_2', '5')
+We are going to select this select `grammar_0_2` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_0_11`, type=`select`, task=`Compression HIT`)` - - - - - -  
+input: Input(name=`meaning_0_11`, type=`select`, task=`Compression HIT`)
+about to try executing one action, on the following input: meaning_0_11
+input Input(name=`meaning_0_11`, type=`select`, task=`Compression HIT`)
+Executing one action: self.actions.modify_select('meaning_0_11', '5')
+We are going to select this select `meaning_0_11` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_11`, type=`select`, task=`Compression HIT`)` - - - - - -  
+input: Input(name=`grammar_0_11`, type=`select`, task=`Compression HIT`)
+about to try executing one action, on the following input: grammar_0_11
+input Input(name=`grammar_0_11`, type=`select`, task=`Compression HIT`)
+Executing one action: self.actions.modify_select('meaning_0_11', '5')
+We are going to select this select `meaning_0_11` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_0_5`, type=`select`, task=`Compression HIT`)` - - - - - -  
+input: Input(name=`meaning_0_5`, type=`select`, task=`Compression HIT`)
+about to try executing one action, on the following input: meaning_0_5
+input Input(name=`meaning_0_5`, type=`select`, task=`Compression HIT`)
+Executing one action: self.actions.modify_select('meaning_0_5', '5')
+We are going to select this select `meaning_0_5` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_5`, type=`select`, task=`Compression HIT`)` - - - - - -  
+input: Input(name=`grammar_0_5`, type=`select`, task=`Compression HIT`)
+about to try executing one action, on the following input: grammar_0_5
+input Input(name=`grammar_0_5`, type=`select`, task=`Compression HIT`)
+Executing one action: self.actions.modify_select('grammar_0_5', 'nan')
+Failed to execute an action self.actions.modify_select('grammar_0_5', 'nan'), error: Input value `nan` is not among the available option values `['blank', '5', '4', '3', '2', '1']`
+ - - - - - -  starting a new element: `Input(name=`meaning_0_0`, type=`select`, task=`Compression HIT`)` - - - - - -  
+input: Input(name=`meaning_0_0`, type=`select`, task=`Compression HIT`)
+about to try executing one action, on the following input: meaning_0_0
+input Input(name=`meaning_0_0`, type=`select`, task=`Compression HIT`)
+Executing one action: self.actions.modify_select('meaning_0_0', '5')
+We are going to select this select `meaning_0_0` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_0`, type=`select`, task=`Compression HIT`)` - - - - - -  
+input: Input(name=`grammar_0_0`, type=`select`, task=`Compression HIT`)
+about to try executing one action, on the following input: grammar_0_0
+input Input(name=`grammar_0_0`, type=`select`, task=`Compression HIT`)
+Executing one action: self.actions.modify_select('meaning_0_0', '5')
+We are going to select this select `meaning_0_0` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_0_8`, type=`select`, task=`Compression HIT`)` - - - - - -  
+input: Input(name=`meaning_0_8`, type=`select`, task=`Compression HIT`)
+about to try executing one action, on the following input: meaning_0_8
+input Input(name=`meaning_0_8`, type=`select`, task=`Compression HIT`)
+Executing one action: self.actions.modify_select('meaning_0_8', '5')
+We are going to select this select `meaning_0_8` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_8`, type=`select`, task=`Compression HIT`)` - - - - - -  
+input: Input(name=`grammar_0_8`, type=`select`, task=`Compression HIT`)
+about to try executing one action, on the following input: grammar_0_8
+input Input(name=`grammar_0_8`, type=`select`, task=`Compression HIT`)
+Executing one action: self.actions.modify_select('meaning_0_8', '5')
+We are going to select this select `meaning_0_8` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_0_4`, type=`select`, task=`Compression HIT`)` - - - - - -  
+input: Input(name=`meaning_0_4`, type=`select`, task=`Compression HIT`)
+about to try executing one action, on the following input: meaning_0_4
+input Input(name=`meaning_0_4`, type=`select`, task=`Compression HIT`)
+Executing one action: self.actions.modify_select('meaning_0_4', '5')
+We are going to select this select `meaning_0_4` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_4`, type=`select`, task=`Compression HIT`)` - - - - - -  
+input: Input(name=`grammar_0_4`, type=`select`, task=`Compression HIT`)
+about to try executing one action, on the following input: grammar_0_4
+input Input(name=`grammar_0_4`, type=`select`, task=`Compression HIT`)
+Executing one action: self.actions.modify_select('grammar_0_4', '5')
+We are going to select this select `grammar_0_4` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_0_9`, type=`select`, task=`Compression HIT`)` - - - - - -  
+input: Input(name=`meaning_0_9`, type=`select`, task=`Compression HIT`)
+about to try executing one action, on the following input: meaning_0_9
+input Input(name=`meaning_0_9`, type=`select`, task=`Compression HIT`)
+Executing one action: self.actions.modify_select('meaning_0_9', '5')
+We are going to select this select `meaning_0_9` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_9`, type=`select`, task=`Compression HIT`)` - - - - - -  
+input: Input(name=`grammar_0_9`, type=`select`, task=`Compression HIT`)
+about to try executing one action, on the following input: grammar_0_9
+input Input(name=`grammar_0_9`, type=`select`, task=`Compression HIT`)
