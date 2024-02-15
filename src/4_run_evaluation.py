@@ -6,7 +6,7 @@ if __name__ == "__main__":
     # user argparser to recive he input parameter
     parser = argparse.ArgumentParser()
     parser.add_argument("--solver_type",
-                        help="donothing, random, oracle, offline_predictions, gpt4-text, gpt4-text-vision, text, text-vision",
+                        help="donothing, random, oracle, offline_predictions, gpt4-text, gpt4-text-vision, text, text-vision, claude",
                         default="oracle")
     parser.add_argument("--ollama_model",
                         help="llava",
@@ -41,7 +41,7 @@ if __name__ == "__main__":
     parser.add_argument("--report_field_stats",
                         help="whether to collect statistics for the HTML fields",
                         action="store_true",
-                        default=False)
+                        default=True)
     parser.add_argument("--server",
                         help="whether we are running on a virtual server with xvfb and xserver-xephyr installed",
                         action=argparse.BooleanOptionalAction)
