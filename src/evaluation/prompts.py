@@ -1,5 +1,7 @@
 import os
 from typing import List, Tuple
+from transformers import AutoTokenizer
+from itertools import islice
 
 def text_oracle_instructions() -> str:
   return """
@@ -3860,3 +3862,42 @@ def get_encoded_input_prompt(input_name: str, html_code: str = None):
   ret += current_instance(input_name, html_code)
 
   return ret
+
+class GPTTokenizer:
+  def __init__(self):
+    self.gpt_tokenizer = AutoTokenizer.from_pretrained("gpt2", max_length=1e5)
+
+  def tokenize(self, s: str):
+    tokens = self.gpt_tokenizer.tokenize(s)
+    # GPT2 uses Byte-level BPE, which will include space as part of the word.
+    # But for the first word of a sentence, there is no space before it.
+    # So, we remove all the added spaces ("Ġ").
+    tokens = [t.lstrip("Ġ") for t in tokens]
+    return tokens
+
+if __name__ == "__main__":
+  xlingual_tokenizer = GPTTokenizer()
+  print(f"xlingual tokenizer of hello friend: {xlingual_tokenizer.tokenize('hello friend')}")
+  use_relevant_html = 3
+
+  num_demonstrations = 1
+  num_tokens = 0
+  for idx, instance in enumerate(islice(few_shot_examples(), num_demonstrations)):
+    num_tokens += len(xlingual_tokenizer.tokenize(instance[use_relevant_html]))
+
+  print(f"{num_demonstrations} demonstration: {num_tokens}")
+
+  num_demonstrations = 3
+  num_tokens = 0
+  for idx, instance in enumerate(islice(few_shot_examples(), num_demonstrations)):
+    num_tokens += len(xlingual_tokenizer.tokenize(instance[use_relevant_html]))
+
+  print(f"{num_demonstrations} demonstration: {num_tokens}")
+
+  num_demonstrations = 7
+  num_tokens = 0
+  for idx, instance in enumerate(islice(few_shot_examples(), num_demonstrations)):
+    num_tokens += len(xlingual_tokenizer.tokenize(instance[use_relevant_html]))
+
+  print(f"{num_demonstrations} demonstration: {num_tokens}")
+  pass
