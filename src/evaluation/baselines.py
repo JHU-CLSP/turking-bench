@@ -293,9 +293,18 @@ class TextBaseline(Baseline):
     """
     def __init__(self, actions: MyActions, driver, model: str, num_demonstrations: int, use_relevant_html: bool, ollama_model: str = "llava"):
         super().__init__(actions, driver)
-        self.model = model
-        if self.model == "ollama":
+        if model == "ollama":
             self.ollama_model = ollama_model
+
+        match model:
+            case "gpt4-text":
+                self.model = GPT4Model()
+            case "ollama":
+                self.model = OLlamaTextModel(self.ollama_model)
+            case "claude":
+                self.model = ClaudeTextModel()
+            case _:
+                raise ValueError(f"Model {self.model} is not supported")
 
         self.num_demonstrations = num_demonstrations
         self.use_relevant_html = use_relevant_html
@@ -346,17 +355,7 @@ class TextBaseline(Baseline):
         # extract HTML
         html = self.get_html(input, kwargs['url'])
         
-        match self.model:
-            case "gpt4-text":
-                model = GPT4Model()
-            case "ollama":
-                model = OLlamaTextModel(self.ollama_model)
-            case "claude":
-                model = ClaudeTextModel()
-            case _:
-                raise ValueError(f"Model {self.model} is not supported")
-
-        command = model.get_text_baseline_action(input.name, html, self.num_demonstrations, self.use_relevant_html)
+        command = self.model.get_text_baseline_action(input.name, html, self.num_demonstrations, self.use_relevant_html)
 
         # find the index of "self.actions(" and drop anything before it.
         # This is because the GPT4 model sometimes outputs a lot of text before the actual command

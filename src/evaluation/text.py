@@ -130,10 +130,13 @@ class ClaudeTextModel(TextModel):
                     top_k=250,
                     top_p=0.5,
                 )
+
+                time.sleep(0.5)
+
                 break
             except Exception as e:
                 fail_count += 1
-                time.sleep(30)
+                time.sleep(10)
                 print(f"Error getting action from Claude model {e}, trying again, current fail_count is {fail_count}")
 
         print(f"Claude response: {completion.completion}")
