@@ -98,7 +98,6 @@ if __name__ == "__main__":
     model = OLlamaTextModel(model="llama2:70b")
     input_name = "weakener_rationale1_relevant"
     relevant_html = """
-HTML:
         <input id="weakener_rationale1_understandable" name="weakener_rationale1_gibberish_understandable_grammatical" onclick="toggle_gibberish('weakener_rationale1')" type="radio" value="understandable"> <label for="understandable">The rationale is not perfectly grammatical, but I can understand it.</label><br>
         <input id="weakener_rationale1_grammatical" name="weakener_rationale1_gibberish_understandable_grammatical" onclick="toggle_gibberish('weakener_rationale1')" type="radio" value="grammatical" checked=""> <label for="grammatical">The rationale is grammatical.</label></div>
         </td>
