@@ -41,7 +41,7 @@ if __name__ == "__main__":
     parser.add_argument("--report_field_stats",
                         help="whether to collect statistics for the HTML fields",
                         action="store_true",
-                        default=True)
+                        default=False)
     parser.add_argument("--server",
                         help="whether we are running on a virtual server with xvfb and xserver-xephyr installed",
                         action=argparse.BooleanOptionalAction)
