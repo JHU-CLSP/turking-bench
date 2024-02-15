@@ -1,0 +1,21 @@
+project,all,checkbox,radio,select,text,textarea
+ANLI Generation Eval - Reflective_ACL_1,0.0,,0.0,,,
+ATOMIC - Object Rationale 13,0.0014492753623188406,,,,,0.0014492753623188406
+Arch - Rel Eval 3,0.254,,0.254,,,
+Associate countries and languages with Ethnologue,0.1125,0.05,,0.4,0.0,0.0
+Compression HIT,0.0020833333333333333,,,0.0020833333333333333,,
+Formalize this,0.018854479406242398,,,,,0.018854479406242398
+JiminyCricket-HumanVal-b10,0.4676482873851295,0.7,0.7,,,0.002944862155388471
+Missing Adjective FITB,0.0,,,,0.0,
+ROT Details [m=50] rocstories - 0 - 99,0.4467151186663382,0.75,0.3614457831325301,,0.49729797979797985,
+Radiology Report Sentence Classification,0.6,,0.6,,,
+Reddit In-group Analysis Comment annotation 3,0.28,,0.28,,,
+Scalar Adjectives Identification,0.09375,,0.09375,,,
+Script KD eval LONG V2 - disc result eval 1,0.4375,,0.4375,,,
+Sherlock IMG 2 TXT Eval 15,0.0,,0.0,,,
+Simplicity HIT,0.0020920502092050207,,,0.0020920502092050207,,
+Step 3 Creating Answers Given Questions 23,0.0336255557809873,,,,0.0336255557809873,
+Word Formality Annotation,0.0,,,0.0,,
+atomic_event2event-effects 4,0.2169811320754717,,0.575,,0.0,
+wikiHow step-goal linking pilot cleanse-url,0.016666666666666666,,0.016666666666666666,,,
+winogrande validation (grammar) additional_ph,0.2,0.375,0.025,,,

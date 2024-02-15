@@ -20,6 +20,7 @@ from dotenv import load_dotenv
 import copy
 from evaluation.prompts import text_vision_oracle_instructions, few_shot_examples
 from itertools import islice
+import time
 
 import requests
 import json
@@ -383,7 +384,7 @@ class GPT4VModel(VisionModel):
 
         fail_count = 0
         response = None 
-        while fail_count < 5:
+        while fail_count < 20:
             try: 
                 response = self.client.chat.completions.create(
                     model="gpt-4-vision-preview",
@@ -398,6 +399,7 @@ class GPT4VModel(VisionModel):
                 break
             except Exception as e:
                 fail_count += 1
+                time.sleep(30)
                 print(f"Error getting action from GPT4V model {e}, trying again, current fail_count is {fail_count}")
 
         return response.choices[0].message.content
@@ -452,5 +454,5 @@ class GPT4VModel(VisionModel):
         pass
 
 if __name__ == "__main__":
-    model = OLlamaModel(model="llava")
+    model = OLlamaVisionModel(model="llava")
     model.main("test")

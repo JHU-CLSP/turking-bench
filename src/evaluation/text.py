@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 from openai import OpenAI
 from evaluation.prompts import text_oracle_instructions, few_shot_examples
 from itertools import islice
+import time
 
 class Models(Enum):
     GPT4 = 1
@@ -58,7 +59,7 @@ class GPT4Model(TextModel):
 
         fail_count = 0
         response = None 
-        while fail_count < 5:
+        while fail_count < 20:
             try: 
                 response = self.client.chat.completions.create(
                     model="gpt-4-turbo-preview",
@@ -73,6 +74,7 @@ class GPT4Model(TextModel):
                 break
             except Exception as e:
                 fail_count += 1
+                time.sleep(30)
                 print(f"Error getting action from GPT4V model {e}, trying again, current fail_count is {fail_count}")
 
         return response.choices[0].message.content
