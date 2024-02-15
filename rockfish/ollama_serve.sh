@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 #SBATCH --job-name=ollama_serve
-#SBATCH --output=/dev/null
+#SBATCH --output=out.log
 #SBATCH --error=ollama_serve.err.log
 #
 # Number of tasks needed for this job. Generally, used with MPI jobs
@@ -39,4 +39,4 @@ bash="/bin/bash"
 python --version
 which python
 
-nohup ollama serve &
+nohup ollama serve & ollama run llama2:70b
