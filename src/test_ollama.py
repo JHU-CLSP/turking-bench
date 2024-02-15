@@ -95,7 +95,7 @@ class OLlamaVisionModel():
         return model_response
 
 if __name__ == "__main__":
-    model = OLlamaTextModel(model="llama2")
+    model = OLlamaTextModel(model="llama2:70b")
     input_name = "weakener_rationale1_relevant"
     relevant_html = """
 HTML:
