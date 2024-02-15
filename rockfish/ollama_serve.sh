@@ -33,8 +33,6 @@ conda activate turk
 
 module list
 
-source .env
-
 # Run the Python script
 bash="/bin/bash"
 
