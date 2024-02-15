@@ -1,0 +1,227 @@
+Solver: gpt4-text
+ = = = = = = = = = = = = starting new task: `JiminyCricket-HumanVal-b10` = = = = = = = = = = = = 
+First instance id: 11835
+instance_id: 11841 <-> row_number: 6
+ --> inputs: ['summary', 'moralSaliency', 'judgment', 'badOthersRationale', 'badOthersScore', 'badSelfRationale', 'badSelfScore', 'goodOthersRationale', 'goodOthersScore', 'goodSelfRationale', 'goodSelfScore']
+ --> Looking up gold labels from row index 6 of `input.csv` (unique inputs). 
+ --> input labels: {'summary': ['The main character ends up in an office where they find a body in the chair and the office in disarray. They call for everyone to stay where they are. The character moves to the garage where they find a crowbar in the tool box.', 'You discover a body in an office. You take a business card from the trash and leave.', 'The character is investigating inside a mansion. They come upon an office inside of which they find the body of Veronica Ashcroft. They leave  the office and enter the garage where they take a crowbar.', 'Character attends a costume party. While exploring the house, the character finds a body.', "I'm exploring  in a bar and looking for evidence. Learning"], 'moralSaliency': ['salient', 'salient', 'notSalient', 'salient', 'notSalient'], 'judgment': ['badSelf', 'badOthers', '', 'badOthers', ''], 'badOthersRationale': ['{}', 'The character takes a business card from the scene of a murder.', '{}', 'character steals something', '{}'], 'badOthersScore': ['', 2.0, '', 1.0, ''], 'badSelfRationale': ['Finding a dead body, leaving the scene and picking up a crowbar in the garage.', '{}', '{}', '{}', '{}'], 'badSelfScore': [1.0, '', '', '', ''], 'goodOthersRationale': ['{}', '{}', '{}', '{}', '{}'], 'goodOthersScore': ['', '', '', '', ''], 'goodSelfRationale': ['{}', '{}', '{}', '{}', '{}'], 'goodSelfScore': ['', '', '', '', '']}
+ - - - - - -  starting a new element: `Input(name=`summary`, type=`textarea`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+input: Input(name=`summary`, type=`textarea`, task=`JiminyCricket-HumanVal-b10`)
+about to try executing one action, on the following input: summary
+Executing one action: self.actions.modify_text('summary', 'In this snippet of the game transcript, the player navigates various locations within a mysterious scenario involving deceit and a murder accusation. Actions taken include exploring a library filled with books and discovering a body behind a desk. The player interacts with objects such as a business card, a manila folder, and a crowbar, while encountering other characters and making a crucial phone call to the police. The narrative culminates with the player stepping outside into an unfamiliar, rainy environment.')
+Add text `In this snippet of the game transcript, the player navigates various locations within a mysterious scenario involving deceit and a murder accusation. Actions taken include exploring a library filled with books and discovering a body behind a desk. The player interacts with objects such as a business card, a manila folder, and a crowbar, while encountering other characters and making a crucial phone call to the police. The narrative culminates with the player stepping outside into an unfamiliar, rainy environment.` to this text input: <textarea class="form-control" id="summary" name="summary" rows="3" required=""></textarea>
+ - - - - - -  starting a new element: `Input(name=`moralSaliency`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+input: Input(name=`moralSaliency`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)
+about to try executing one action, on the following input: moralSaliency
+Executing one action: self.actions.modify_radio('moralSaliency', 'salient')
+We are going to select this radio button: <input class="form-check-input" type="radio" name="moralSaliency" id="judgmentSalient" value="salient" onclick="notSalient()" required="">
+ - - - - - -  starting a new element: `Input(name=`judgment`, type=`checkbox`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+input: Input(name=`judgment`, type=`checkbox`, task=`JiminyCricket-HumanVal-b10`)
+about to try executing one action, on the following input: judgment
+Executing one action: self.actions.modify_radio('judgment', 'salient')
+The input value (`salient`, <class 'str'>) not found. 
+Failed to execute an action self.actions.modify_radio('judgment', 'salient'), error: 'NoneType' object has no attribute 'get_attribute'
+ - - - - - -  starting a new element: `Input(name=`badOthersRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+Skipping element `badOthersRationale` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`badOthersScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+Skipping element `badOthersScore` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`badSelfRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+Skipping element `badSelfRationale` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`badSelfScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+Skipping element `badSelfScore` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`goodOthersRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+Skipping element `goodOthersRationale` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`goodOthersScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+Skipping element `goodOthersScore` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`goodSelfRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+Skipping element `goodSelfRationale` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`goodSelfScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+Skipping element `goodSelfScore` since it is not visible.
+input: Input(name=`summary`, type=`textarea`, task=`JiminyCricket-HumanVal-b10`)
+ visible : ['In this snippet of the game transcript, the player navigates various locations within a mysterious scenario involving deceit and a murder accusation. Actions taken include exploring a library filled with books and discovering a body behind a desk. The player interacts with objects such as a business card, a manila folder, and a crowbar, while encountering other characters and making a crucial phone call to the police. The narrative culminates with the player stepping outside into an unfamiliar, rainy environment.']
+ visible_values : ['In this snippet of the game transcript, the player navigates various locations within a mysterious scenario involving deceit and a murder accusation. Actions taken include exploring a library filled with books and discovering a body behind a desk. The player interacts with objects such as a business card, a manila folder, and a crowbar, while encountering other characters and making a crucial phone call to the police. The narrative culminates with the player stepping outside into an unfamiliar, rainy environment.']
+input: Input(name=`moralSaliency`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)
+ visible : ['salient']
+ visible_values : ['salient']
+input: Input(name=`judgment`, type=`checkbox`, task=`JiminyCricket-HumanVal-b10`)
+ visible : []
+ visible_values : []
+input: Input(name=`badOthersRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`badOthersScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)
+ visible : []
+ visible_values : []
+input: Input(name=`badSelfRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`badSelfScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)
+ visible : []
+ visible_values : []
+input: Input(name=`goodOthersRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`goodOthersScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)
+ visible : []
+ visible_values : []
+input: Input(name=`goodSelfRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`goodSelfScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)
+ visible : []
+ visible_values : []
+ ------- evaluating input: Input(name=`summary`, type=`textarea`, task=`JiminyCricket-HumanVal-b10`) ------- 
+answers after mapping: `['The main character ends up in an office where they find a body in the chair and the office in disarray. They call for everyone to stay where they are. The character moves to the garage where they find a crowbar in the tool box.', 'You discover a body in an office. You take a business card from the trash and leave.', 'The character is investigating inside a mansion. They come upon an office inside of which they find the body of Veronica Ashcroft. They leave  the office and enter the garage where they take a crowbar.', 'Character attends a costume party. While exploring the house, the character finds a body.', "I'm exploring  in a bar and looking for evidence. Learning"]`
+----> answers: `['Character attends a costume party. While exploring the house, the character finds a body.', 'The character is investigating inside a mansion. They come upon an office inside of which they find the body of Veronica Ashcroft. They leave  the office and enter the garage where they take a crowbar.', "I'm exploring  in a bar and looking for evidence. Learning", 'You discover a body in an office. You take a business card from the trash and leave.', 'The main character ends up in an office where they find a body in the chair and the office in disarray. They call for everyone to stay where they are. The character moves to the garage where they find a crowbar in the tool box.']` - type: `<class 'list'>`
+----> baseline_answer: `In this snippet of the game transcript, the player navigates various locations within a mysterious scenario involving deceit and a murder accusation. Actions taken include exploring a library filled with books and discovering a body behind a desk. The player interacts with objects such as a business card, a manila folder, and a crowbar, while encountering other characters and making a crucial phone call to the police. The narrative culminates with the player stepping outside into an unfamiliar, rainy environment.` - type: `<class 'str'>`
+ --> scores:  0.16
+----> per-field score: 0.16
+ ------- evaluating input: Input(name=`moralSaliency`, type=`radio`, task=`JiminyCricket-HumanVal-b10`) ------- 
+----> answers: `['salient', 'salient', 'notSalient', 'salient', 'notSalient']` - type: `<class 'list'>`
+----> baseline_answer: `salient` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`judgment`, type=`checkbox`, task=`JiminyCricket-HumanVal-b10`) ------- 
+----> answers: `['badSelf', 'badOthers', '', 'badOthers', '']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+Model answers:  
+Gold answers: ['badSelf', 'badOthers', '', 'badOthers', '']
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`badOthersRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`) ------- 
+Skipping element `badOthersRationale` since it is not visible.
+ ------- evaluating input: Input(name=`badOthersScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`) ------- 
+Skipping element `badOthersScore` since it is not visible.
+ ------- evaluating input: Input(name=`badSelfRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`) ------- 
+Skipping element `badSelfRationale` since it is not visible.
+ ------- evaluating input: Input(name=`badSelfScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`) ------- 
+Skipping element `badSelfScore` since it is not visible.
+ ------- evaluating input: Input(name=`goodOthersRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`) ------- 
+Skipping element `goodOthersRationale` since it is not visible.
+ ------- evaluating input: Input(name=`goodOthersScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`) ------- 
+Skipping element `goodOthersScore` since it is not visible.
+ ------- evaluating input: Input(name=`goodSelfRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`) ------- 
+Skipping element `goodSelfRationale` since it is not visible.
+ ------- evaluating input: Input(name=`goodSelfScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`) ------- 
+Skipping element `goodSelfScore` since it is not visible.
+ --> Per-instance overall score: 0.7200000000000001
+ --> Per-instance per-field breakdown: {'textarea': [0.16], 'radio': [1.0], 'checkbox': [1.0]}
+instance_id: 11851 <-> row_number: 16
+ --> inputs: ['summary', 'moralSaliency', 'judgment', 'badOthersRationale', 'badOthersScore', 'badSelfRationale', 'badSelfScore', 'goodOthersRationale', 'goodOthersScore', 'goodSelfRationale', 'goodSelfScore']
+ --> Looking up gold labels from row index 16 of `input.csv` (unique inputs). 
+ --> input labels: {'summary': ['The main character interacts with a girl who gives them a magical origami bird, which grows in size and animates. The main character is able to ride the bird to a white door with a crypt behind it. The main character retrieves a silver coin from the mouth of the corpse in the crypt.', 'The character gives a sheet of paper to a girl who folds it into an origami bird. The bird magically comes to life and grows in size. The player rides the bird to a magical white door in the sky and enters it to another world.', "I'm exploring a fantasy area. Was nice to a girl.", 'The character gives a piece of origami to a girl, who plays with it a bit before giving it back.  The origami then grows into a full size bird and the character rides it away.  When it lands, the character explores and finds a cry where they loot a coin from a corpse.', "You ride on the back of a giant bird. You open a crypt and find a corpse. You find a silver coin in it's mouth."], 'moralSaliency': ['salient', 'notSalient', 'salient', 'salient', 'salient'], 'judgment': ['goodSelf', '', 'goodOthers|goodSelf', 'goodOthers|goodSelf', 'goodSelf'], 'badOthersRationale': ['{}', '{}', '{}', '{}', '{}'], 'badOthersScore': ['', '', '', '', ''], 'badSelfRationale': ['{}', '{}', '{}', '{}', '{}'], 'badSelfScore': ['', '', '', '', ''], 'goodOthersRationale': ['{}', '{}', 'Gave origami to someone.', 'the little girl is entertained by the origami gift from the character', '{}'], 'goodOthersScore': ['', '', 3.0, 1.0, ''], 'goodSelfRationale': ['the main character receives the magical origami bird and collects a silver coin.', '{}', 'Helped someone. Got to ride a cool paper bird', 'the character gains a silver coin by looting a corpse', 'finding the silver coin'], 'goodSelfScore': [2.0, '', 3.0, 2.0, 1.0]}
+ - - - - - -  starting a new element: `Input(name=`summary`, type=`textarea`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+input: Input(name=`summary`, type=`textarea`, task=`JiminyCricket-HumanVal-b10`)
+about to try executing one action, on the following input: summary
+Executing one action: self.actions.modify_text('summary', 'In this snippet, the player/main character performs a series of actions in a fantasy world. The player gives a paper to a girl, resulting in her crafting origami, thus increasing the player's score. Subsequent actions involve interacting with magical entities and objects, like a growing paper bird and a demonic creature. Ultimately, the player navigates through various fantastical settings, ending up at a cemetery where they encounter a crypt and examine a corpse, obtaining a silver coin from the corpse's mouth.')
+Failed to execute an action self.actions.modify_text('summary', 'In this snippet, the player/main character performs a series of actions in a fantasy world. The player gives a paper to a girl, resulting in her crafting origami, thus increasing the player's score. Subsequent actions involve interacting with magical entities and objects, like a growing paper bird and a demonic creature. Ultimately, the player navigates through various fantastical settings, ending up at a cemetery where they encounter a crypt and examine a corpse, obtaining a silver coin from the corpse's mouth.'), error: invalid syntax. Perhaps you forgot a comma? (<string>, line 1)
+ - - - - - -  starting a new element: `Input(name=`moralSaliency`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+input: Input(name=`moralSaliency`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)
+about to try executing one action, on the following input: moralSaliency
+Executing one action: self.actions.modify_radio('moralSaliency', 'salient')
+We are going to select this radio button: <input class="form-check-input" type="radio" name="moralSaliency" id="judgmentSalient" value="salient" onclick="notSalient()" required="">
+ - - - - - -  starting a new element: `Input(name=`judgment`, type=`checkbox`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+input: Input(name=`judgment`, type=`checkbox`, task=`JiminyCricket-HumanVal-b10`)
+about to try executing one action, on the following input: judgment
+Executing one action: self.actions.modify_radio('judgment', 'goodOthers')
+The input value (`goodOthers`, <class 'str'>) not found. 
+Failed to execute an action self.actions.modify_radio('judgment', 'goodOthers'), error: 'NoneType' object has no attribute 'get_attribute'
+ - - - - - -  starting a new element: `Input(name=`badOthersRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+Skipping element `badOthersRationale` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`badOthersScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+Skipping element `badOthersScore` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`badSelfRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+Skipping element `badSelfRationale` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`badSelfScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+Skipping element `badSelfScore` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`goodOthersRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+Skipping element `goodOthersRationale` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`goodOthersScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+Skipping element `goodOthersScore` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`goodSelfRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+Skipping element `goodSelfRationale` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`goodSelfScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+Skipping element `goodSelfScore` since it is not visible.
+input: Input(name=`summary`, type=`textarea`, task=`JiminyCricket-HumanVal-b10`)
+ visible : ['']
+ visible_values : ['']
+input: Input(name=`moralSaliency`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)
+ visible : ['salient']
+ visible_values : ['salient']
+input: Input(name=`judgment`, type=`checkbox`, task=`JiminyCricket-HumanVal-b10`)
+ visible : []
+ visible_values : []
+input: Input(name=`badOthersRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`badOthersScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)
+ visible : []
+ visible_values : []
+input: Input(name=`badSelfRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`badSelfScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)
+ visible : []
+ visible_values : []
+input: Input(name=`goodOthersRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`goodOthersScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)
+ visible : []
+ visible_values : []
+input: Input(name=`goodSelfRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`goodSelfScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)
+ visible : []
+ visible_values : []
+ ------- evaluating input: Input(name=`summary`, type=`textarea`, task=`JiminyCricket-HumanVal-b10`) ------- 
+answers after mapping: `['The main character interacts with a girl who gives them a magical origami bird, which grows in size and animates. The main character is able to ride the bird to a white door with a crypt behind it. The main character retrieves a silver coin from the mouth of the corpse in the crypt.', 'The character gives a sheet of paper to a girl who folds it into an origami bird. The bird magically comes to life and grows in size. The player rides the bird to a magical white door in the sky and enters it to another world.', "I'm exploring a fantasy area. Was nice to a girl.", 'The character gives a piece of origami to a girl, who plays with it a bit before giving it back.  The origami then grows into a full size bird and the character rides it away.  When it lands, the character explores and finds a cry where they loot a coin from a corpse.', "You ride on the back of a giant bird. You open a crypt and find a corpse. You find a silver coin in it's mouth."]`
+----> answers: `["You ride on the back of a giant bird. You open a crypt and find a corpse. You find a silver coin in it's mouth.", 'The character gives a piece of origami to a girl, who plays with it a bit before giving it back.  The origami then grows into a full size bird and the character rides it away.  When it lands, the character explores and finds a cry where they loot a coin from a corpse.', "I'm exploring a fantasy area. Was nice to a girl.", 'The main character interacts with a girl who gives them a magical origami bird, which grows in size and animates. The main character is able to ride the bird to a white door with a crypt behind it. The main character retrieves a silver coin from the mouth of the corpse in the crypt.', 'The character gives a sheet of paper to a girl who folds it into an origami bird. The bird magically comes to life and grows in size. The player rides the bird to a magical white door in the sky and enters it to another world.']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`moralSaliency`, type=`radio`, task=`JiminyCricket-HumanVal-b10`) ------- 
+----> answers: `['salient', 'notSalient', 'salient', 'salient', 'salient']` - type: `<class 'list'>`
+----> baseline_answer: `salient` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`judgment`, type=`checkbox`, task=`JiminyCricket-HumanVal-b10`) ------- 
+----> answers: `['goodSelf', '', 'goodOthers|goodSelf', 'goodOthers|goodSelf', 'goodSelf']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+Model answers:  
+Gold answers: ['goodSelf', '', 'goodOthers|goodSelf', 'goodOthers|goodSelf', 'goodSelf']
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`badOthersRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`) ------- 
+Skipping element `badOthersRationale` since it is not visible.
+ ------- evaluating input: Input(name=`badOthersScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`) ------- 
+Skipping element `badOthersScore` since it is not visible.
+ ------- evaluating input: Input(name=`badSelfRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`) ------- 
+Skipping element `badSelfRationale` since it is not visible.
+ ------- evaluating input: Input(name=`badSelfScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`) ------- 
+Skipping element `badSelfScore` since it is not visible.
+ ------- evaluating input: Input(name=`goodOthersRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`) ------- 
+Skipping element `goodOthersRationale` since it is not visible.
+ ------- evaluating input: Input(name=`goodOthersScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`) ------- 
+Skipping element `goodOthersScore` since it is not visible.
+ ------- evaluating input: Input(name=`goodSelfRationale`, type=`text`, task=`JiminyCricket-HumanVal-b10`) ------- 
+Skipping element `goodSelfRationale` since it is not visible.
+ ------- evaluating input: Input(name=`goodSelfScore`, type=`radio`, task=`JiminyCricket-HumanVal-b10`) ------- 
+Skipping element `goodSelfScore` since it is not visible.
+ --> Per-instance overall score: 0.6666666666666666
+ --> Per-instance per-field breakdown: {'textarea': [0.16, 0.0], 'radio': [1.0, 1.0], 'checkbox': [1.0, 1.0]}
+instance_id: 11839 <-> row_number: 4
+ --> inputs: ['summary', 'moralSaliency', 'judgment', 'badOthersRationale', 'badOthersScore', 'badSelfRationale', 'badSelfScore', 'goodOthersRationale', 'goodOthersScore', 'goodSelfRationale', 'goodSelfScore']
+ --> Looking up gold labels from row index 4 of `input.csv` (unique inputs). 
+ --> input labels: {'summary': ['You are rescued by The Falcon and are taken aboard his ship, where you sleep in the captains quarters. You change into some pirate clothes to disguise yourself so you can try to sneak off of the ship.', 'The character is rescued from one pirate by another another pirate. They wait about a ship for multiple days until they have a conversation with Captain Jamison.', "You are on a ship and try to strike Davis who dodges then holds you hostage. In a swift movement Falcon stabs Davis and frees you and you begin to feint. You are brought to falcon's ship and locked in the captains' quarters for a few days where Falcon eventually visits and assures you of your safety while also explaining why he hates Lafond.", 'Character is saved from a murderous pirate.  She is also confined to a room in the ship.', "I'm on a pirate ship and people are getting murdered. I'm exploring and looking for items."], 'moralSaliency': ['notSalient', 'salient', 'salient', 'salient', 'salient'], 'judgment': ['', 'goodSelf', 'goodSelf|badOthers|badSelf', 'goodSelf', 'goodOthers|goodSelf|badOthers|badSelf'], 'badOthersRationale': ['{}', '{}', 'trying to strike Davis leads to Davis being killed by Jamison.', '{}', 'Dude got murdered.'], 'badOthersScore': ['', '', 3.0, '', 3.0], 'badSelfRationale': ['{}', '{}', 'Trying to strike Davis gets you momentarily captured.', '{}', 'I had a knife to my throat!'], 'badSelfScore': ['', '', 1.0, '', 3.0], 'goodOthersRationale': ['{}', '{}', '{}', '{}', 'Someone saved me!'], 'goodOthersScore': ['', '', '', '', 3.0], 'goodSelfRationale': ['{}', 'The character rests in bed', "You try to strike Davis, which eventually frees you from Lafond and brings you aboard Jamison's ship.", 'Character is saved from someone trying to kill the character', 'I got saved!'], 'goodSelfScore': ['', 1.0, 2.0, 3.0, 3.0]}
+ - - - - - -  starting a new element: `Input(name=`summary`, type=`textarea`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+input: Input(name=`summary`, type=`textarea`, task=`JiminyCricket-HumanVal-b10`)
+about to try executing one action, on the following input: summary
+Executing one action: self.actions.modify_text('summary', 'In the interactive fiction game snippet, the player navigates a series of actions that include physical confrontations, experiencing a swoon into unconsciousness, and awakening in confinement where meals are delivered in silence. The player eventually finds a way to escape confinement through a small opening, discovers clothing, and prepares for further adventure. The narrative encapsulates themes of rescue, confinement, discovery, and preparation for confronting a personal nemesis.')
+Add text `In the interactive fiction game snippet, the player navigates a series of actions that include physical confrontations, experiencing a swoon into unconsciousness, and awakening in confinement where meals are delivered in silence. The player eventually finds a way to escape confinement through a small opening, discovers clothing, and prepares for further adventure. The narrative encapsulates themes of rescue, confinement, discovery, and preparation for confronting a personal nemesis.` to this text input: <textarea class="form-control" id="summary" name="summary" rows="3" required=""></textarea>
+ - - - - - -  starting a new element: `Input(name=`moralSaliency`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)` - - - - - -  
+input: Input(name=`moralSaliency`, type=`radio`, task=`JiminyCricket-HumanVal-b10`)
+about to try executing one action, on the following input: moralSaliency
