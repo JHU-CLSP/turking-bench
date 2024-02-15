@@ -1,0 +1,20 @@
+ANLI Generation Eval - Reflective_ACL_1: {'all': 0.2875, 'radio': 0.2875}
+ATOMIC - Object Rationale 13: {'all': 0.0, 'textarea': 0.0}
+Arch - Rel Eval 3: {'all': 0.6060000000000001, 'radio': 0.606}
+Associate countries and languages with Ethnologue: {'all': 0.1383522727272727, 'text': 0.490909090909091, 'select': 0.05, 'textarea': 0.0125, 'checkbox': 0.0}
+Compression HIT: {'all': 0.15208333333333338, 'select': 0.15208333333333332}
+Formalize this: {'all': 0.020934475650677582, 'textarea': 0.020934475650677582}
+JiminyCricket-HumanVal-b10: {'all': 0.26641402089362837, 'textarea': 0.04924206268088511, 'radio': 0.1, 'checkbox': 0.65}
+Missing Adjective FITB: {'all': 0.3534999999999999, 'text': 0.3534999999999999}
+ROT Details [m=50] rocstories - 0 - 99: {'all': 0.30704857943988373, 'radio': 0.16666666666666666, 'checkbox': 0.85, 'text': 0.39581576635924465}
+Radiology Report Sentence Classification: {'all': 0.15, 'radio': 0.15}
+Reddit In-group Analysis Comment annotation 3: {'all': 0.0, 'radio': 0.0}
+Scalar Adjectives Identification: {'all': 0.465625, 'radio': 0.465625}
+Script KD eval LONG V2 - disc result eval 1: {'all': 0.3875, 'radio': 0.3875}
+Sherlock IMG 2 TXT Eval 15: {'all': 0.23500000000000001, 'radio': 0.235}
+Simplicity HIT: {'all': 0.24128787878787877, 'select': 0.24050632911392406}
+Step 3 Creating Answers Given Questions 23: {'all': 0.00022180054817625978, 'text': 0.0004318848307118102}
+Word Formality Annotation: {'all': 0.0, 'select': 0.0}
+atomic_event2event-effects 4: {'all': 0.2512301587301587, 'radio': 0.675, 'text': 0.010476190476190477}
+wikiHow step-goal linking pilot cleanse-url: {'all': 0.14999999999999997, 'radio': 0.15}
+winogrande validation (grammar) additional_ph: {'all': 0.2375, 'radio': 0.075, 'checkbox': 0.4}
