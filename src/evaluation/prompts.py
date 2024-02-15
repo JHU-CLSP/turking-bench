@@ -168,6 +168,8 @@ def few_shot_examples() -> List[Tuple[str, str, str]]:
     os.path.join("img", "ex1.png"),
     "self.actions.modify_checkbox('q1-quant', 'nan')",
     """
+    Input name: candidate2
+    HTML: 
           <input name="q1-law" type="checkbox" value="q1-law"> Law<br>
           <input name="q1-org" type="checkbox" value="q1-org"> Organization<br>
           <input name="q1-date" type="checkbox" value="q1-date"> Date<br>
@@ -275,6 +277,8 @@ def few_shot_examples() -> List[Tuple[str, str, str]]:
     os.path.join("img", "ex2.png"),
     "self.actions.modify_checkbox('0-0', 'on')",
     """
+    Input name: 0-0
+    HTML:
     <h4>For the following paragraph, select <u>all</u> the correct answer(s).</h4>
 
     <h4>There might be&nbsp;<span style="background-color: rgb(240, 248, 255); color: red;">more than one correct answer; </span><span style="background-color: rgb(240, 248, 255);">in which case,&nbsp;</span><span style="background-color: rgb(240, 248, 255); color: red;">please select <strong><u>all</u></strong>&nbsp;the options that&nbsp;apply to the question.&nbsp;</span></h4>
@@ -480,6 +484,8 @@ def few_shot_examples() -> List[Tuple[str, str, str]]:
     os.path.join("img", "ex3.png"),
     "self.actions.modify_radio('candidate2', '4')",
     """
+    Input name: candidate2
+    HTML: 
       </div>
       <p>Which action is the most likely to help accomplish the goal?</p>
       <div class="col-md-4">
@@ -1139,6 +1145,8 @@ HTML:
     os.path.join("img", "ex4.png"),
   "self.actions.modify_checkbox('weakener_rationale1_relevant', 'on')",
   """
+Input name: weakener_rationale1_relevant
+HTML:
         <input id="weakener_rationale1_understandable" name="weakener_rationale1_gibberish_understandable_grammatical" onclick="toggle_gibberish('weakener_rationale1')" type="radio" value="understandable"> <label for="understandable">The rationale is not perfectly grammatical, but I can understand it.</label><br>
         <input id="weakener_rationale1_grammatical" name="weakener_rationale1_gibberish_understandable_grammatical" onclick="toggle_gibberish('weakener_rationale1')" type="radio" value="grammatical" checked=""> <label for="grammatical">The rationale is grammatical.</label></div>
         </td>
@@ -1667,6 +1675,8 @@ The city was also the site of the first major slave-owned plantation in the Sout
   os.path.join("img", "ex5.png"),
 "self.actions.modify_range('coherence', '4.0')",
 """
+Input name: coherence
+HTML:
                                             <small> <em> Is the system's generation <u>aligned in meaning and topic with the prompt?</u></em> </small>
                                             <br>
                                             <label class="float-left" style="color:red;">Bad</label>
@@ -1869,6 +1879,8 @@ HTML:
   os.path.join("img", "ex6.png"),
 "self.actions.modify_text('story1', 'Fred's boss started to yell at him.')",
 """
+Input name: story1
+HTML:
 			<th>Ending</th>
 		</tr>
 		<tr>
@@ -2209,6 +2221,8 @@ span.s1 {font-variant-ligatures: no-common-ligatures}
   os.path.join("img", "ex7.png"),
 "self.actions.modify_text('story1', 'He was a nascar driver.')",
 """
+Input name: story1
+HTML:
 			<p>&nbsp;</p>
 
 			<p><span style="color:#FF8C00;"><strong>Original middle:&nbsp;"John carelessly crashed into an elderly woman."</strong></span></p>
@@ -2508,6 +2522,8 @@ getUserInfo();
   os.path.join("img", "ex8.png"),
 "self.actions.modify_radio('radio0_9', '1')",
 """
+Input name: radio0_9
+HTML:
 	}
 }
 writeParaphraseTables();
@@ -3799,6 +3815,8 @@ HTML:
   os.path.join("img", "ex9.png"),
 "self.actions.modify_radio('norm', 's1')",
 """
+Input name: norm
+HTML:
                            <li>there was nothing socially problematic (unethical, rude, biased, disturbing, dangerous) in the dialogue at all</li>
                         </ul> -->
                      </ul>
