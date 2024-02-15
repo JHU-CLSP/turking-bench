@@ -39,4 +39,6 @@ bash="/bin/bash"
 python --version
 which python
 
-nohup ollama serve & ollama run llama2:70b
+cd turk-instructions/src
+
+nohup ollama serve & sleep 5 && ollama run llama2:70b & sleep 10 && python3 test_ollama.py
