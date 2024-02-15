@@ -1,0 +1,21 @@
+project,all,checkbox,radio,select,text,textarea
+ANLI Generation Eval - Reflective_ACL_1,0.75,,0.75,,,
+ATOMIC - Object Rationale 13,0.20197611401683868,,,,,0.20197611401683868
+Arch - Rel Eval 3,0.654,,0.654,,,
+Associate countries and languages with Ethnologue,0.3867195699787095,0.05,,0.7,0.6979166666666667,0.09896161324817139
+Compression HIT,0.19583333333333333,,,0.19583333333333333,,
+Formalize this,0.32935431054611086,,,,,0.32935431054611086
+JiminyCricket-HumanVal-b10,0.562783175593651,0.65,0.8095238095238095,,,0.2164886855606356
+Missing Adjective FITB,0.18166666666666664,,,,0.18166666666666664,
+ROT Details [m=50] rocstories - 0 - 99,0.635544328552803,0.85,0.5769230769230769,,0.6497115384615385,
+Radiology Report Sentence Classification,0.225,,0.225,,,
+Reddit In-group Analysis Comment annotation 3,0.5,,0.5,,,
+Scalar Adjectives Identification,0.853125,,0.853125,,,
+Script KD eval LONG V2 - disc result eval 1,0.3375,,0.3375,,,
+Sherlock IMG 2 TXT Eval 15,0.345,,0.345,,,
+Simplicity HIT,0.22291666666666668,,,0.22291666666666668,,
+Step 3 Creating Answers Given Questions 23,0.3109351645304422,,,,0.3109351645304422,
+Word Formality Annotation,0.1275,,,0.1275,,
+atomic_event2event-effects 4,0.3050150859241767,,0.65,,0.10788084930942074,
+wikiHow step-goal linking pilot cleanse-url,0.45,,0.45,,,
+winogrande validation (grammar) additional_ph,0.7625,0.95,0.575,,,
