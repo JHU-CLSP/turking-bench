@@ -50189,3 +50189,1165 @@ We are going to select this select `grammar_0_0` with value `5`
 input: Input(name=`meaning_0_3`, type=`select`, task=`Simplicity HIT`)
 about to try executing one action, on the following input: meaning_0_3
 input Input(name=`meaning_0_3`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_3', '5')
+We are going to select this select `meaning_0_3` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_3`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_0_3`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_0_3
+input Input(name=`grammar_0_3`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('grammar_0_3', 'nan')
+Failed to execute an action self.actions.modify_select('grammar_0_3', 'nan'), error: Input value `nan` is not among the available option values `['blank', '5', '4', '3', '2', '1']`
+ - - - - - -  starting a new element: `Input(name=`meaning_0_5`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_0_5`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_0_5
+input Input(name=`meaning_0_5`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_5', '5')
+We are going to select this select `meaning_0_5` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_5`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_0_5`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_0_5
+input Input(name=`grammar_0_5`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('grammar_0_5', '5')
+We are going to select this select `grammar_0_5` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_0_1`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_0_1`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_0_1
+input Input(name=`meaning_0_1`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_1', '5')
+We are going to select this select `meaning_0_1` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_1`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_0_1`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_0_1
+input Input(name=`grammar_0_1`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('grammar_0_1', 'nan')
+Failed to execute an action self.actions.modify_select('grammar_0_1', 'nan'), error: Input value `nan` is not among the available option values `['blank', '5', '4', '3', '2', '1']`
+ - - - - - -  starting a new element: `Input(name=`meaning_0_2`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_0_2`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_0_2
+input Input(name=`meaning_0_2`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_2', '5')
+We are going to select this select `meaning_0_2` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_2`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_0_2`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_0_2
+input Input(name=`grammar_0_2`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_2', '5')
+We are going to select this select `meaning_0_2` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_1_4`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_1_4`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_1_4
+input Input(name=`meaning_1_4`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_1_4', '5')
+We are going to select this select `meaning_1_4` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_1_4`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_1_4`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_1_4
+input Input(name=`grammar_1_4`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('grammar_1_4', 'nan')
+Failed to execute an action self.actions.modify_select('grammar_1_4', 'nan'), error: Input value `nan` is not among the available option values `['blank', '5', '4', '3', '2', '1']`
+ - - - - - -  starting a new element: `Input(name=`meaning_1_0`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_1_0`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_1_0
+input Input(name=`meaning_1_0`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_1_0', '5')
+We are going to select this select `meaning_1_0` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_1_0`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_1_0`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_1_0
+input Input(name=`grammar_1_0`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_1_0', '5')
+
+
+If "grammar_1_0" was indeed the intended target or if there is some other specific action or input you had in mind, please provide more details or correct the input name that corresponds to the action you want to take.
+Failed to execute an action self.actions.modify_select('meaning_1_0', '5')
+
+
+If "grammar_1_0" was indeed the intended target or if there is some other specific action or input you had in mind, please provide more details or correct the input name that corresponds to the action you want to take., error: invalid syntax (<string>, line 4)
+ - - - - - -  starting a new element: `Input(name=`meaning_1_1`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_1_1`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_1_1
+input Input(name=`meaning_1_1`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_1_1', '5')
+We are going to select this select `meaning_1_1` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_1_1`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_1_1`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_1_1
+input Input(name=`grammar_1_1`, type=`select`, task=`Simplicity HIT`)
+Executing one action: I'm sorry, but the provided HTML code and input name do not match in the context of the HTML structure and possible actions listed in the initial setup. The input name "grammar_1_1" suggests a requirement for a grammar-related action, but the HTML code snippet provided is for a dropdown menu related to "meaning_1_1" and its evaluation, not a direct action for grammar correction or evaluation.
+
+Could you clarify or provide the correct input name and action you aim to perform related to grammar?
+Failed to execute an action I'm sorry, but the provided HTML code and input name do not match in the context of the HTML structure and possible actions listed in the initial setup. The input name "grammar_1_1" suggests a requirement for a grammar-related action, but the HTML code snippet provided is for a dropdown menu related to "meaning_1_1" and its evaluation, not a direct action for grammar correction or evaluation.
+
+Could you clarify or provide the correct input name and action you aim to perform related to grammar?, error: unterminated string literal (detected at line 1) (<string>, line 1)
+ - - - - - -  starting a new element: `Input(name=`meaning_1_5`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_1_5`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_1_5
+input Input(name=`meaning_1_5`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_1_5', '5')
+We are going to select this select `meaning_1_5` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_1_5`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_1_5`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_1_5
+input Input(name=`grammar_1_5`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('grammar_1_5', '5')
+We are going to select this select `grammar_1_5` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_1_2`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_1_2`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_1_2
+input Input(name=`meaning_1_2`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_1_2', '5')
+We are going to select this select `meaning_1_2` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_1_2`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_1_2`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_1_2
+input Input(name=`grammar_1_2`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('grammar_1_2', '5')
+We are going to select this select `grammar_1_2` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_1_3`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_1_3`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_1_3
+input Input(name=`meaning_1_3`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_1_3', '5')
+We are going to select this select `meaning_1_3` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_1_3`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_1_3`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_1_3
+input Input(name=`grammar_1_3`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('grammar_1_3', '5')
+We are going to select this select `grammar_1_3` with value `5`
+input: Input(name=`meaning_0_4`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_0_4`, type=`select`, task=`Simplicity HIT`)
+ visible : ['blank']
+ visible_values : ['blank']
+input: Input(name=`meaning_0_0`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_0_0`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`meaning_0_3`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_0_3`, type=`select`, task=`Simplicity HIT`)
+ visible : ['blank']
+ visible_values : ['blank']
+input: Input(name=`meaning_0_5`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_0_5`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`meaning_0_1`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_0_1`, type=`select`, task=`Simplicity HIT`)
+ visible : ['blank']
+ visible_values : ['blank']
+input: Input(name=`meaning_0_2`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_0_2`, type=`select`, task=`Simplicity HIT`)
+ visible : ['blank']
+ visible_values : ['blank']
+input: Input(name=`meaning_1_4`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_1_4`, type=`select`, task=`Simplicity HIT`)
+ visible : ['blank']
+ visible_values : ['blank']
+input: Input(name=`meaning_1_0`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_1_0`, type=`select`, task=`Simplicity HIT`)
+ visible : ['blank']
+ visible_values : ['blank']
+input: Input(name=`meaning_1_1`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_1_1`, type=`select`, task=`Simplicity HIT`)
+ visible : ['blank']
+ visible_values : ['blank']
+input: Input(name=`meaning_1_5`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_1_5`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`meaning_1_2`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_1_2`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`meaning_1_3`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_1_3`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+ ------- evaluating input: Input(name=`meaning_0_4`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4.0, 3.0, 5.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_0_4`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4.0, 5.0, 5.0]` - type: `<class 'list'>`
+----> baseline_answer: `blank` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_0_0`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4, 3, 5]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_0_0`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4, 5, 5]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`meaning_0_3`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5.0, 5.0, 5.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`grammar_0_3`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4.0, 4.0, 4.0]` - type: `<class 'list'>`
+----> baseline_answer: `blank` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_0_5`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5.0, 5.0, 5.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`grammar_0_5`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5.0, 5.0, 5.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`meaning_0_1`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4, 3, 3]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_0_1`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[3, 2, 2]` - type: `<class 'list'>`
+----> baseline_answer: `blank` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_0_2`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5, 4, 3]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`grammar_0_2`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5, 1, 2]` - type: `<class 'list'>`
+----> baseline_answer: `blank` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_1_4`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5.0, 3.0, 3.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_1_4`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4.0, 2.0, 4.0]` - type: `<class 'list'>`
+----> baseline_answer: `blank` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_1_0`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5, 5, 4]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`grammar_1_0`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4, 2, 2]` - type: `<class 'list'>`
+----> baseline_answer: `blank` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_1_1`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[1, 2, 3]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_1_1`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[1, 2, 2]` - type: `<class 'list'>`
+----> baseline_answer: `blank` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_1_5`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[1.0, 2.0, 3.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_1_5`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5.0, 5.0, 5.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`meaning_1_2`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5, 2, 2]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_1_2`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[2, 2, 4]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_1_3`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5.0, 4.0, 4.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_1_3`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5.0, 4.0, 5.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.3333333333333333
+ --> Per-instance per-field breakdown: {'select': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]}
+instance_id: 18609 <-> row_number: 14
+ --> inputs: ['meaning_0_4', 'grammar_0_4', 'meaning_0_5', 'grammar_0_5', 'meaning_0_3', 'grammar_0_3', 'meaning_0_2', 'grammar_0_2', 'meaning_0_1', 'grammar_0_1', 'meaning_0_0', 'grammar_0_0', 'meaning_1_4', 'grammar_1_4', 'meaning_1_5', 'grammar_1_5', 'meaning_1_1', 'grammar_1_1', 'meaning_1_2', 'grammar_1_2', 'meaning_1_0', 'grammar_1_0', 'meaning_1_3', 'grammar_1_3']
+ --> Looking up gold labels from row index 14 of `input.csv` (unique inputs). 
+ --> input labels: {'meaning_0_4': [4.0, 3.0, 4.0], 'grammar_0_4': [5.0, 2.0, 2.0], 'meaning_0_5': [4.0, 5.0, 5.0], 'grammar_0_5': [5.0, 5.0, 5.0], 'meaning_0_3': [4.0, 3.0, 1.0], 'grammar_0_3': [4.0, 4.0, 1.0], 'meaning_0_2': [4, 3, 3], 'grammar_0_2': [3, 2, 2], 'meaning_0_1': [4, 2, 4], 'grammar_0_1': [2, 2, 2], 'meaning_0_0': [4, 4, 5], 'grammar_0_0': [4, 5, 4], 'meaning_1_4': [5.0, 5.0, 3.0], 'grammar_1_4': [5.0, 2.0, 2.0], 'meaning_1_5': [4.0, 3.0, 4.0], 'grammar_1_5': [5.0, 5.0, 5.0], 'meaning_1_1': [3, 3, 1], 'grammar_1_1': [2, 2, 2], 'meaning_1_2': [4, 3, 2], 'grammar_1_2': [2, 2, 1], 'meaning_1_0': [4, 4, 4], 'grammar_1_0': [2, 4, 2], 'meaning_1_3': [5.0, 5.0, 5.0], 'grammar_1_3': [5.0, 4.0, 5.0]}
+ - - - - - -  starting a new element: `Input(name=`meaning_0_4`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_0_4`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_0_4
+input Input(name=`meaning_0_4`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_4', '5')
+We are going to select this select `meaning_0_4` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_4`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_0_4`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_0_4
+input Input(name=`grammar_0_4`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('grammar_0_4', '5')
+We are going to select this select `grammar_0_4` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_0_5`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_0_5`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_0_5
+input Input(name=`meaning_0_5`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_5', '5')
+We are going to select this select `meaning_0_5` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_5`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_0_5`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_0_5
+input Input(name=`grammar_0_5`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('grammar_0_5', '5')
+We are going to select this select `grammar_0_5` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_0_3`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_0_3`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_0_3
+input Input(name=`meaning_0_3`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_3', '5')
+We are going to select this select `meaning_0_3` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_3`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_0_3`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_0_3
+input Input(name=`grammar_0_3`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_3', '5')
+We are going to select this select `meaning_0_3` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_0_2`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_0_2`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_0_2
+input Input(name=`meaning_0_2`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_2', '5')
+We are going to select this select `meaning_0_2` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_2`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_0_2`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_0_2
+input Input(name=`grammar_0_2`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('grammar_0_2', '5')
+We are going to select this select `grammar_0_2` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_0_1`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_0_1`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_0_1
+input Input(name=`meaning_0_1`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_1', '5')
+We are going to select this select `meaning_0_1` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_1`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_0_1`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_0_1
+input Input(name=`grammar_0_1`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_1', 'your_target_value_here')
+
+
+Please clarify or provide the specific value you want to select if necessary.
+Failed to execute an action self.actions.modify_select('meaning_0_1', 'your_target_value_here')
+
+
+Please clarify or provide the specific value you want to select if necessary., error: invalid syntax (<string>, line 4)
+ - - - - - -  starting a new element: `Input(name=`meaning_0_0`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_0_0`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_0_0
+input Input(name=`meaning_0_0`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_0', '5')
+We are going to select this select `meaning_0_0` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_0`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_0_0`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_0_0
+input Input(name=`grammar_0_0`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_0', '5')
+We are going to select this select `meaning_0_0` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_1_4`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_1_4`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_1_4
+input Input(name=`meaning_1_4`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_1_4', '5')
+We are going to select this select `meaning_1_4` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_1_4`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_1_4`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_1_4
+input Input(name=`grammar_1_4`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('grammar_1_4', 'nan')
+Failed to execute an action self.actions.modify_select('grammar_1_4', 'nan'), error: Input value `nan` is not among the available option values `['blank', '5', '4', '3', '2', '1']`
+ - - - - - -  starting a new element: `Input(name=`meaning_1_5`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_1_5`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_1_5
+input Input(name=`meaning_1_5`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_1_5', '5')
+We are going to select this select `meaning_1_5` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_1_5`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_1_5`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_1_5
+input Input(name=`grammar_1_5`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('grammar_1_5', 'desired_value')
+
+
+Please replace `'desired_value'` with the appropriate value you intend to select for the `"grammar_1_5"` input, if this was indeed the task you were asking about. If you were referring to the selection related to the meaning as shown in the HTML, and the goal was to select the value "5" for identical:
+
+plaintext
+self.actions.modify_select('meaning_1_5', '5')
+
+Failed to execute an action self.actions.modify_select('grammar_1_5', 'desired_value')
+
+
+Please replace `'desired_value'` with the appropriate value you intend to select for the `"grammar_1_5"` input, if this was indeed the task you were asking about. If you were referring to the selection related to the meaning as shown in the HTML, and the goal was to select the value "5" for identical:
+
+plaintext
+self.actions.modify_select('meaning_1_5', '5')
+, error: invalid syntax (<string>, line 4)
+ - - - - - -  starting a new element: `Input(name=`meaning_1_1`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_1_1`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_1_1
+input Input(name=`meaning_1_1`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_1_1', '5')
+We are going to select this select `meaning_1_1` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_1_1`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_1_1`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_1_1
+input Input(name=`grammar_1_1`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_1_1', '5')
+We are going to select this select `meaning_1_1` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_1_2`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_1_2`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_1_2
+input Input(name=`meaning_1_2`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_1_2', '5')
+We are going to select this select `meaning_1_2` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_1_2`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_1_2`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_1_2
+input Input(name=`grammar_1_2`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('grammar_1_2', '5')
+We are going to select this select `grammar_1_2` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_1_0`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_1_0`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_1_0
+input Input(name=`meaning_1_0`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_1_0', '5')
+We are going to select this select `meaning_1_0` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_1_0`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_1_0`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_1_0
+input Input(name=`grammar_1_0`, type=`select`, task=`Simplicity HIT`)
+Executing one action: I'm sorry, but it seems there was a misunderstanding. The provided HTML snippet doesn't include an input element with the name "grammar_1_0". The snippet includes a "select" element with the name "meaning_1_0" and the selected option being "identical". 
+
+If you need assistance with a different input or if there's a specific command you would like me to generate based on the available inputs, please provide the relevant details.
+Failed to execute an action I'm sorry, but it seems there was a misunderstanding. The provided HTML snippet doesn't include an input element with the name "grammar_1_0". The snippet includes a "select" element with the name "meaning_1_0" and the selected option being "identical". 
+
+If you need assistance with a different input or if there's a specific command you would like me to generate based on the available inputs, please provide the relevant details., error: unterminated string literal (detected at line 3) (<string>, line 3)
+ - - - - - -  starting a new element: `Input(name=`meaning_1_3`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_1_3`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_1_3
+input Input(name=`meaning_1_3`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_1_3', '5')
+We are going to select this select `meaning_1_3` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_1_3`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_1_3`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_1_3
+input Input(name=`grammar_1_3`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_1_3', '5')
+We are going to select this select `meaning_1_3` with value `5`
+input: Input(name=`meaning_0_4`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_0_4`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`meaning_0_5`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_0_5`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`meaning_0_3`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_0_3`, type=`select`, task=`Simplicity HIT`)
+ visible : ['blank']
+ visible_values : ['blank']
+input: Input(name=`meaning_0_2`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_0_2`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`meaning_0_1`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_0_1`, type=`select`, task=`Simplicity HIT`)
+ visible : ['blank']
+ visible_values : ['blank']
+input: Input(name=`meaning_0_0`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_0_0`, type=`select`, task=`Simplicity HIT`)
+ visible : ['blank']
+ visible_values : ['blank']
+input: Input(name=`meaning_1_4`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_1_4`, type=`select`, task=`Simplicity HIT`)
+ visible : ['blank']
+ visible_values : ['blank']
+input: Input(name=`meaning_1_5`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_1_5`, type=`select`, task=`Simplicity HIT`)
+ visible : ['blank']
+ visible_values : ['blank']
+input: Input(name=`meaning_1_1`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_1_1`, type=`select`, task=`Simplicity HIT`)
+ visible : ['blank']
+ visible_values : ['blank']
+input: Input(name=`meaning_1_2`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_1_2`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`meaning_1_0`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_1_0`, type=`select`, task=`Simplicity HIT`)
+ visible : ['blank']
+ visible_values : ['blank']
+input: Input(name=`meaning_1_3`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_1_3`, type=`select`, task=`Simplicity HIT`)
+ visible : ['blank']
+ visible_values : ['blank']
+ ------- evaluating input: Input(name=`meaning_0_4`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4.0, 3.0, 4.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_0_4`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5.0, 2.0, 2.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_0_5`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4.0, 5.0, 5.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`grammar_0_5`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5.0, 5.0, 5.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`meaning_0_3`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4.0, 3.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_0_3`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4.0, 4.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `blank` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_0_2`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4, 3, 3]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_0_2`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[3, 2, 2]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_0_1`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4, 2, 4]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_0_1`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[2, 2, 2]` - type: `<class 'list'>`
+----> baseline_answer: `blank` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_0_0`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4, 4, 5]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_0_0`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4, 5, 4]` - type: `<class 'list'>`
+----> baseline_answer: `blank` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_1_4`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5.0, 5.0, 3.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`grammar_1_4`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5.0, 2.0, 2.0]` - type: `<class 'list'>`
+----> baseline_answer: `blank` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_1_5`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4.0, 3.0, 4.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_1_5`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5.0, 5.0, 5.0]` - type: `<class 'list'>`
+----> baseline_answer: `blank` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_1_1`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[3, 3, 1]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_1_1`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[2, 2, 2]` - type: `<class 'list'>`
+----> baseline_answer: `blank` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_1_2`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4, 3, 2]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_1_2`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[2, 2, 1]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_1_0`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4, 4, 4]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_1_0`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[2, 4, 2]` - type: `<class 'list'>`
+----> baseline_answer: `blank` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_1_3`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5.0, 5.0, 5.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`grammar_1_3`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5.0, 4.0, 5.0]` - type: `<class 'list'>`
+----> baseline_answer: `blank` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.16666666666666666
+ --> Per-instance per-field breakdown: {'select': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]}
+instance_id: 18643 <-> row_number: 48
+ --> inputs: ['meaning_0_1', 'grammar_0_1', 'meaning_0_5', 'grammar_0_5', 'meaning_0_0', 'grammar_0_0', 'meaning_0_4', 'grammar_0_4', 'meaning_0_3', 'grammar_0_3', 'meaning_0_2', 'grammar_0_2', 'meaning_1_1', 'grammar_1_1', 'meaning_1_2', 'grammar_1_2', 'meaning_1_5', 'grammar_1_5', 'meaning_1_4', 'grammar_1_4', 'meaning_1_0', 'grammar_1_0', 'meaning_1_3', 'grammar_1_3']
+ --> Looking up gold labels from row index 48 of `input.csv` (unique inputs). 
+ --> input labels: {'meaning_0_1': [5, 2, 3], 'grammar_0_1': [5, 1, 4], 'meaning_0_5': [4.0, 1.0, 2.0], 'grammar_0_5': [5.0, 3.0, 2.0], 'meaning_0_0': [4, 3, 4], 'grammar_0_0': [4, 2, 3], 'meaning_0_4': [4.0, 1.0, 3.0], 'grammar_0_4': [4.0, 1.0, 1.0], 'meaning_0_3': [4.0, 4.0, 2.0], 'grammar_0_3': [4.0, 2.0, 1.0], 'meaning_0_2': [3, 3, 3], 'grammar_0_2': [3, 2, 3], 'meaning_1_1': [3, 3, 4], 'grammar_1_1': [4, 3, 3], 'meaning_1_2': [5, 5, 5], 'grammar_1_2': [5, 5, 5], 'meaning_1_5': [4.0, 4.0, 4.0], 'grammar_1_5': [3.0, 4.0, 5.0], 'meaning_1_4': [5.0, 2.0, 3.0], 'grammar_1_4': [4.0, 1.0, 1.0], 'meaning_1_0': [4, 3, 1], 'grammar_1_0': [4, 2, 4], 'meaning_1_3': [4.0, 3.0, 4.0], 'grammar_1_3': [4.0, 2.0, 4.0]}
+ - - - - - -  starting a new element: `Input(name=`meaning_0_1`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_0_1`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_0_1
+input Input(name=`meaning_0_1`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_1', '5')
+We are going to select this select `meaning_0_1` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_1`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_0_1`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_0_1
+input Input(name=`grammar_0_1`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_1', '5')
+We are going to select this select `meaning_0_1` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_0_5`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_0_5`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_0_5
+input Input(name=`meaning_0_5`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_5', '5')
+We are going to select this select `meaning_0_5` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_5`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_0_5`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_0_5
+input Input(name=`grammar_0_5`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('grammar_0_5', '5')
+We are going to select this select `grammar_0_5` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_0_0`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_0_0`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_0_0
+input Input(name=`meaning_0_0`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_0', '5')
+We are going to select this select `meaning_0_0` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_0`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_0_0`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_0_0
+input Input(name=`grammar_0_0`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('grammar_0_0', '5')
+We are going to select this select `grammar_0_0` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_0_4`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_0_4`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_0_4
+input Input(name=`meaning_0_4`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_4', '5')
+We are going to select this select `meaning_0_4` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_4`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_0_4`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_0_4
+input Input(name=`grammar_0_4`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('grammar_0_4', 'nan')
+Failed to execute an action self.actions.modify_select('grammar_0_4', 'nan'), error: Input value `nan` is not among the available option values `['blank', '5', '4', '3', '2', '1']`
+ - - - - - -  starting a new element: `Input(name=`meaning_0_3`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_0_3`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_0_3
+input Input(name=`meaning_0_3`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_3', '5')
+We are going to select this select `meaning_0_3` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_3`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_0_3`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_0_3
+input Input(name=`grammar_0_3`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_3', '5')
+We are going to select this select `meaning_0_3` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_0_2`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_0_2`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_0_2
+input Input(name=`meaning_0_2`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_2', '5')
+We are going to select this select `meaning_0_2` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_2`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_0_2`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_0_2
+input Input(name=`grammar_0_2`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_2', '5')
+We are going to select this select `meaning_0_2` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_1_1`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_1_1`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_1_1
+input Input(name=`meaning_1_1`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_1_1', '5')
+We are going to select this select `meaning_1_1` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_1_1`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_1_1`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_1_1
+input Input(name=`grammar_1_1`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('grammar_1_1', '5')
+We are going to select this select `grammar_1_1` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_1_2`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_1_2`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_1_2
+input Input(name=`meaning_1_2`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_1_2', '5')
+We are going to select this select `meaning_1_2` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_1_2`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_1_2`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_1_2
+input Input(name=`grammar_1_2`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('grammar_1_2', '5')
+We are going to select this select `grammar_1_2` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_1_5`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_1_5`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_1_5
+input Input(name=`meaning_1_5`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_1_5', '5')
+We are going to select this select `meaning_1_5` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_1_5`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_1_5`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_1_5
+input Input(name=`grammar_1_5`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('grammar_1_5', 'nan')
+Failed to execute an action self.actions.modify_select('grammar_1_5', 'nan'), error: Input value `nan` is not among the available option values `['blank', '5', '4', '3', '2', '1']`
+ - - - - - -  starting a new element: `Input(name=`meaning_1_4`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_1_4`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_1_4
+input Input(name=`meaning_1_4`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_1_4', '5')
+We are going to select this select `meaning_1_4` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_1_4`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_1_4`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_1_4
+input Input(name=`grammar_1_4`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('grammar_1_4', '5')
+We are going to select this select `grammar_1_4` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_1_0`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_1_0`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_1_0
+input Input(name=`meaning_1_0`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_1_0', '5')
+We are going to select this select `meaning_1_0` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_1_0`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_1_0`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_1_0
+input Input(name=`grammar_1_0`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_1_0', '5')
+We are going to select this select `meaning_1_0` with value `5`
+ - - - - - -  starting a new element: `Input(name=`meaning_1_3`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_1_3`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_1_3
+input Input(name=`meaning_1_3`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_1_3', '5')
+We are going to select this select `meaning_1_3` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_1_3`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_1_3`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_1_3
+input Input(name=`grammar_1_3`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('grammar_1_3', '5')
+We are going to select this select `grammar_1_3` with value `5`
+input: Input(name=`meaning_0_1`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_0_1`, type=`select`, task=`Simplicity HIT`)
+ visible : ['blank']
+ visible_values : ['blank']
+input: Input(name=`meaning_0_5`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_0_5`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`meaning_0_0`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_0_0`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`meaning_0_4`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_0_4`, type=`select`, task=`Simplicity HIT`)
+ visible : ['blank']
+ visible_values : ['blank']
+input: Input(name=`meaning_0_3`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_0_3`, type=`select`, task=`Simplicity HIT`)
+ visible : ['blank']
+ visible_values : ['blank']
+input: Input(name=`meaning_0_2`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_0_2`, type=`select`, task=`Simplicity HIT`)
+ visible : ['blank']
+ visible_values : ['blank']
+input: Input(name=`meaning_1_1`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_1_1`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`meaning_1_2`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_1_2`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`meaning_1_5`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_1_5`, type=`select`, task=`Simplicity HIT`)
+ visible : ['blank']
+ visible_values : ['blank']
+input: Input(name=`meaning_1_4`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_1_4`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`meaning_1_0`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_1_0`, type=`select`, task=`Simplicity HIT`)
+ visible : ['blank']
+ visible_values : ['blank']
+input: Input(name=`meaning_1_3`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+input: Input(name=`grammar_1_3`, type=`select`, task=`Simplicity HIT`)
+ visible : ['5']
+ visible_values : ['5']
+ ------- evaluating input: Input(name=`meaning_0_1`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5, 2, 3]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`grammar_0_1`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5, 1, 4]` - type: `<class 'list'>`
+----> baseline_answer: `blank` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_0_5`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4.0, 1.0, 2.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_0_5`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5.0, 3.0, 2.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`meaning_0_0`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4, 3, 4]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_0_0`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4, 2, 3]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_0_4`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4.0, 1.0, 3.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_0_4`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4.0, 1.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `blank` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_0_3`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4.0, 4.0, 2.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_0_3`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4.0, 2.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `blank` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_0_2`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[3, 3, 3]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_0_2`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[3, 2, 3]` - type: `<class 'list'>`
+----> baseline_answer: `blank` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_1_1`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[3, 3, 4]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_1_1`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4, 3, 3]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_1_2`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5, 5, 5]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`grammar_1_2`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5, 5, 5]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`meaning_1_5`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4.0, 4.0, 4.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_1_5`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[3.0, 4.0, 5.0]` - type: `<class 'list'>`
+----> baseline_answer: `blank` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_1_4`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[5.0, 2.0, 3.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`grammar_1_4`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4.0, 1.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_1_0`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4, 3, 1]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_1_0`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4, 2, 4]` - type: `<class 'list'>`
+----> baseline_answer: `blank` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`meaning_1_3`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4.0, 3.0, 4.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`grammar_1_3`, type=`select`, task=`Simplicity HIT`) ------- 
+----> answers: `[4.0, 2.0, 4.0]` - type: `<class 'list'>`
+----> baseline_answer: `5` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.20833333333333334
+ --> Per-instance per-field breakdown: {'select': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 18634 <-> row_number: 39
+ --> inputs: ['meaning_0_4', 'grammar_0_4', 'meaning_0_3', 'grammar_0_3', 'meaning_0_5', 'grammar_0_5', 'meaning_0_0', 'grammar_0_0', 'meaning_0_1', 'grammar_0_1', 'meaning_0_2', 'grammar_0_2', 'meaning_1_5', 'grammar_1_5', 'meaning_1_0', 'grammar_1_0', 'meaning_1_3', 'grammar_1_3', 'meaning_1_4', 'grammar_1_4', 'meaning_1_1', 'grammar_1_1', 'meaning_1_2', 'grammar_1_2']
+ --> Looking up gold labels from row index 39 of `input.csv` (unique inputs). 
+ --> input labels: {'meaning_0_4': [2.0, 4.0, 4.0], 'grammar_0_4': [2.0, 3.0, 4.0], 'meaning_0_3': [3.0, 4.0, 5.0], 'grammar_0_3': [4.0, 2.0, 5.0], 'meaning_0_5': [2.0, 4.0, 3.0], 'grammar_0_5': [3.0, 3.0, 5.0], 'meaning_0_0': [5, 5, 5], 'grammar_0_0': [5, 5, 5], 'meaning_0_1': [1, 4, 2], 'grammar_0_1': [2, 2, 1], 'meaning_0_2': [2, 4, 2], 'grammar_0_2': [2, 2, 2], 'meaning_1_5': [1.0, 4.0, 4.0], 'grammar_1_5': [5.0, 4.0, 5.0], 'meaning_1_0': [5, 5, 5], 'grammar_1_0': [5, 5, 5], 'meaning_1_3': [5.0, 5.0, 5.0], 'grammar_1_3': [5.0, 5.0, 5.0], 'meaning_1_4': [2.0, 4.0, 3.0], 'grammar_1_4': [2.0, 2.0, 2.0], 'meaning_1_1': [4, 4, 4], 'grammar_1_1': [3, 2, 3], 'meaning_1_2': [4, 4, 4], 'grammar_1_2': [4, 3, 5]}
+ - - - - - -  starting a new element: `Input(name=`meaning_0_4`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_0_4`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_0_4
+input Input(name=`meaning_0_4`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_4', '5')
+We are going to select this select `meaning_0_4` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_4`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_0_4`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_0_4
+input Input(name=`grammar_0_4`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('grammar_0_4', 'nan')
+Failed to execute an action self.actions.modify_select('grammar_0_4', 'nan'), error: Input value `nan` is not among the available option values `['blank', '5', '4', '3', '2', '1']`
+ - - - - - -  starting a new element: `Input(name=`meaning_0_3`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_0_3`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_0_3
+input Input(name=`meaning_0_3`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_3', '5')
+We are going to select this select `meaning_0_3` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_3`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_0_3`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_0_3
+input Input(name=`grammar_0_3`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_3', '5')
+
+
+If the input name "grammar_0_3" should have been used to select a grammar option not shown in the snippet, please provide the correct HTML content or further clarifications.
+Failed to execute an action self.actions.modify_select('meaning_0_3', '5')
+
+
+If the input name "grammar_0_3" should have been used to select a grammar option not shown in the snippet, please provide the correct HTML content or further clarifications., error: invalid syntax (<string>, line 4)
+ - - - - - -  starting a new element: `Input(name=`meaning_0_5`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_0_5`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_0_5
+input Input(name=`meaning_0_5`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_5', '5')
+We are going to select this select `meaning_0_5` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_5`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_0_5`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_0_5
+input Input(name=`grammar_0_5`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_5', '5')
+
+
+This would select the option with value "5" (which is labeled "identical" in your snippet) for the select input named "meaning_0
+Failed to execute an action self.actions.modify_select('meaning_0_5', '5')
+
+
+This would select the option with value "5" (which is labeled "identical" in your snippet) for the select input named "meaning_0, error: unterminated string literal (detected at line 4) (<string>, line 4)
+ - - - - - -  starting a new element: `Input(name=`meaning_0_0`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`meaning_0_0`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: meaning_0_0
+input Input(name=`meaning_0_0`, type=`select`, task=`Simplicity HIT`)
+Executing one action: self.actions.modify_select('meaning_0_0', '5')
+We are going to select this select `meaning_0_0` with value `5`
+ - - - - - -  starting a new element: `Input(name=`grammar_0_0`, type=`select`, task=`Simplicity HIT`)` - - - - - -  
+input: Input(name=`grammar_0_0`, type=`select`, task=`Simplicity HIT`)
+about to try executing one action, on the following input: grammar_0_0
+input Input(name=`grammar_0_0`, type=`select`, task=`Simplicity HIT`)

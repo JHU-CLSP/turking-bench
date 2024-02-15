@@ -1597,3 +1597,597 @@ We are going to select this radio button: <input type="radio" name="fwd-agree" v
 input: Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
 about to try executing one action, on the following input: fwd-legal
 input Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_radio('fwd-legal', 'illegal')
+We are going to select this radio button: <input type="radio" name="fwd-legal" value="illegal" required="required">
+ - - - - - -  starting a new element: `Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: fwd-pressure
+input Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_radio('fwd-pressure', '-2')
+We are going to select this radio button: <input type="radio" name="fwd-pressure" value="-2" required="required">
+ - - - - - -  starting a new element: `Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: char-involved-fwd
+input Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_radio('char-involved-fwd', 'char-0')
+We are going to select this radio button: <input type="radio" name="char-involved-fwd" value="char-0" required="required">
+ - - - - - -  starting a new element: `Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: fwd-hypothetical
+input Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_radio('fwd-hypothetical', 'explicit-no')
+We are going to select this radio button: <input type="radio" name="fwd-hypothetical" value="explicit-no" required="required">
+ - - - - - -  starting a new element: `Input(name=`n-characters`, type=`hidden`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+Skipping element `n-characters` since it is not visible.
+input: Input(name=`rot-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : []
+ visible_values : []
+input: Input(name=`rot-categorization`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['morality-ethics']
+ visible_values : ['morality-ethics']
+input: Input(name=`rot-moral-foundations`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['care-harm']
+ visible_values : ['care-harm']
+input: Input(name=`char-involved-general`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : []
+ visible_values : []
+input: Input(name=`rot-rewrite`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ["It's good to avoid disturbing animals in the wild."]
+ visible_values : ["It's good to avoid disturbing animals in the wild."]
+input: Input(name=`rot-judgment`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`agency-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['agency']
+ visible_values : ['agency']
+input: Input(name=`action-fwd-good`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['2']
+ visible_values : ['2']
+input: Input(name=`fwd-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['illegal']
+ visible_values : ['illegal']
+input: Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['-2']
+ visible_values : ['-2']
+input: Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['char-0']
+ visible_values : ['char-0']
+input: Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['explicit-no']
+ visible_values : ['explicit-no']
+input: Input(name=`n-characters`, type=`hidden`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['2']
+ visible_values : ['2']
+ ------- evaluating input: Input(name=`rot-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `[3, 4, 4, 3, 3, 3, 4, 3, 4, 3, 4, 3, 4, 2, 3, 3, 2, 3, 3, 3, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3, 4, 4, 3, 3, 3, 4, 3, 4, 3, 4]` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`rot-categorization`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `['advice|morality-ethics', 'advice', 'advice', 'advice', 'advice', 'advice', 'advice', 'description', 'advice', 'advice', 'description|social-norms', 'advice|morality-ethics', 'morality-ethics|social-norms', 'advice|social-norms', 'advice', 'advice', 'morality-ethics', 'advice', 'advice', 'advice', 'advice', 'advice', 'morality-ethics', 'advice', 'social-norms', 'advice|morality-ethics', 'advice', 'advice', 'advice', 'advice|morality-ethics', 'advice|social-norms', 'advice|social-norms', 'advice', 'advice|morality-ethics', 'advice', 'morality-ethics|social-norms', 'advice', 'advice', 'advice', 'morality-ethics', 'advice', 'advice', 'advice|morality-ethics', 'advice', 'advice', 'advice', 'advice', 'advice', 'advice', 'advice']` - type: `<class 'list'>`
+----> baseline_answer: `morality-ethics` - type: `<class 'str'>`
+Model answers: morality-ethics 
+Gold answers: ['advice|morality-ethics', 'advice', 'advice', 'advice', 'advice', 'advice', 'advice', 'description', 'advice', 'advice', 'description|social-norms', 'advice|morality-ethics', 'morality-ethics|social-norms', 'advice|social-norms', 'advice', 'advice', 'morality-ethics', 'advice', 'advice', 'advice', 'advice', 'advice', 'morality-ethics', 'advice', 'social-norms', 'advice|morality-ethics', 'advice', 'advice', 'advice', 'advice|morality-ethics', 'advice|social-norms', 'advice|social-norms', 'advice', 'advice|morality-ethics', 'advice', 'morality-ethics|social-norms', 'advice', 'advice', 'advice', 'morality-ethics', 'advice', 'advice', 'advice|morality-ethics', 'advice', 'advice', 'advice', 'advice', 'advice', 'advice', 'advice']
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-moral-foundations`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `['care-harm|sanctity-degradation', '', 'care-harm', 'authority-subversion', 'care-harm', '', 'care-harm', 'sanctity-degradation', 'authority-subversion|care-harm', '', 'care-harm', 'care-harm', 'authority-subversion|care-harm|sanctity-degradation', 'care-harm', 'care-harm|sanctity-degradation', '', 'care-harm', 'care-harm', 'care-harm', 'care-harm', 'care-harm|fairness-cheating', 'sanctity-degradation', 'care-harm', 'care-harm', 'care-harm|loyalty-betrayal', 'care-harm|sanctity-degradation', 'care-harm', 'care-harm', 'care-harm', 'care-harm', 'care-harm', '', '', 'care-harm', 'care-harm', 'sanctity-degradation', 'care-harm|sanctity-degradation', 'sanctity-degradation', 'care-harm', 'care-harm', 'care-harm', 'care-harm', 'care-harm', '', 'care-harm', 'care-harm', '', 'care-harm', 'care-harm', 'care-harm']` - type: `<class 'list'>`
+----> baseline_answer: `care-harm` - type: `<class 'str'>`
+Model answers: care-harm 
+Gold answers: ['care-harm|sanctity-degradation', '', 'care-harm', 'authority-subversion', 'care-harm', '', 'care-harm', 'sanctity-degradation', 'authority-subversion|care-harm', '', 'care-harm', 'care-harm', 'authority-subversion|care-harm|sanctity-degradation', 'care-harm', 'care-harm|sanctity-degradation', '', 'care-harm', 'care-harm', 'care-harm', 'care-harm', 'care-harm|fairness-cheating', 'sanctity-degradation', 'care-harm', 'care-harm', 'care-harm|loyalty-betrayal', 'care-harm|sanctity-degradation', 'care-harm', 'care-harm', 'care-harm', 'care-harm', 'care-harm', '', '', 'care-harm', 'care-harm', 'sanctity-degradation', 'care-harm|sanctity-degradation', 'sanctity-degradation', 'care-harm', 'care-harm', 'care-harm', 'care-harm', 'care-harm', '', 'care-harm', 'care-harm', '', 'care-harm', 'care-harm', 'care-harm']
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`char-involved-general`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `['char-0', 'char-0', 'char-1', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-none', 'char-0', 'char-0', 'char-1', 'char-1', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-1', 'char-1', 'char-0', 'char-0', 'char-0', 'char-1', 'char-1', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-1', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-none', 'char-1', 'char-1', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-1', 'char-0']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`rot-rewrite`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+answers after mapping: `['avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'not disturbing animals in the wild.', 'avoiding disturbing animals in the wild', 'disturbing animals in the wild', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'not disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild.', 'avoiding disturbing animals in the wild']`
+----> answers: `['avoiding disturbing animals in the wild.', 'disturbing animals in the wild', 'avoiding disturbing animals in the wild', 'not disturbing animals in the wild.']` - type: `<class 'list'>`
+----> baseline_answer: `It's good to avoid disturbing animals in the wild.` - type: `<class 'str'>`
+ --> scores:  0.7499999999999999
+----> per-field score: 0.7499999999999999
+ ------- evaluating input: Input(name=`rot-judgment`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+answers after mapping: `["It's good", 'good', "It's good", "it's good", "It's good", "It's good", "It's good", "it's good", 'good', "It's good", "it's good", "It's good", "it's good", "It's good", "It's good", 'good', 'good', "It's good", "It's good", "It's good", "It's good", "it's good", "It's good", "It's good", "It's good", "It's good", "it's good", "it's good", 'good', "It's good", "it's good", "It's good", 'you should avoid it', "It's good", "It's good", "it's good", "It's good", 'good', "It's good", "It's good", "it's good", "It's good", "It's good", "It's good", "it's good", "it's good", 'good', "It's good", "it's good", "It's good"]`
+----> answers: `["it's good", "It's good", 'you should avoid it', 'good']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`agency-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `['agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency']` - type: `<class 'list'>`
+----> baseline_answer: `agency` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`action-fwd-good`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `[1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, -1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]` - type: `<class 'list'>`
+----> baseline_answer: `2` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`fwd-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `[3.0, 4.0, 2.0, 3.0, 3.0, 4.0, 4.0, 3.0, 4.0, 3.0, 4.0, 3.0, 4.0, 2.0, 3.0, 3.0, 2.0, 4.0, 3.0, 3.0, 4.0, 4.0, 4.0, 4.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 4.0, 3.0, 3.0, 3.0, 4.0, 4.0, 4.0, 3.0, 4.0]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `['legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal']` - type: `<class 'list'>`
+----> baseline_answer: `illegal` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `[2.0, -1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 2.0, 1.0, 2.0, 0.0, 1.0, 0.0, 2.0, 1.0, 1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 2.0, 1.0, 1.0, 1.0, 2.0, 1.0, -1.0, 1.0, 1.0, 1.0, 2.0, 1.0, 2.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 2.0, 1.0, 2.0, 1.0, 2.0]` - type: `<class 'list'>`
+----> baseline_answer: `-2` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `['char-0', 'char-0', 'char-1', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-none', 'char-0', 'char-0', 'char-1', 'char-1', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-1', 'char-1', 'char-0', 'char-0', 'char-0', 'char-1', 'char-1', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-1', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-none', 'char-1', 'char-1', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-1', 'char-0']` - type: `<class 'list'>`
+----> baseline_answer: `char-0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `['hypothetical', 'probable', 'hypothetical', 'explicit', 'hypothetical', 'probable', 'probable', 'probable', '', 'hypothetical', 'probable', 'probable-no', 'probable-no', 'probable', 'probable', 'hypothetical', 'probable', 'hypothetical', 'probable', 'hypothetical', 'explicit-no', 'explicit', 'hypothetical', 'probable', 'probable-no', 'probable-no', 'hypothetical', 'hypothetical', 'probable', 'probable', 'hypothetical', 'probable-no', 'probable-no', 'hypothetical', 'hypothetical', 'probable', 'probable', '', 'hypothetical', 'hypothetical', 'hypothetical', 'hypothetical', 'hypothetical', 'probable', 'probable', 'hypothetical', 'probable', 'hypothetical', 'hypothetical', 'probable']` - type: `<class 'list'>`
+----> baseline_answer: `explicit-no` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`n-characters`, type=`hidden`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+Skipping element `n-characters` since it is not visible.
+ --> Per-instance overall score: 0.36538461538461536
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0], 'checkbox': [1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0], 'text': [0.5, 0.8, 0.8695652173913044, 0.5555555555555556, 1.0, 0.6666666666666666, 0.8, 0.4, 0.782608695652174, 0.35294117647058826, 0.7777777777777778, 0.0, 0.8181818181818181, 0.0, 0.7499999999999999, 0.0]}
+instance_id: 32976 <-> row_number: 5
+ --> inputs: ['rot-agree', 'rot-categorization', 'rot-moral-foundations', 'char-involved-general', 'rot-rewrite', 'rot-judgment', 'agency-fwd', 'action-fwd-good', 'fwd-agree', 'fwd-legal', 'fwd-pressure', 'char-involved-fwd', 'fwd-hypothetical', 'n-characters']
+ --> Looking up gold labels from row index 5 of `input.csv` (unique inputs). 
+ --> input labels: {'rot-agree': [4, 4, 4, 4, 4, 3, 2, 4, 3, 3, 3, 2, 4, 4, 4, 3, 3, 4, 3, 3, 4, 3, 4, 3, 3, 3, 4, 3, 3, 3, 3, 2, 2, 3, 3, 3, 3, 2, 4, 3, 3, 3, 4, 3, 4, 3, 3, 4, 4, 3], 'rot-categorization': ['social-norms', 'morality-ethics|social-norms', 'morality-ethics|social-norms', 'social-norms', 'morality-ethics|social-norms', 'social-norms', 'social-norms', 'social-norms', 'morality-ethics|advice', 'morality-ethics|social-norms', 'social-norms', 'morality-ethics|social-norms', 'social-norms', 'social-norms', 'morality-ethics|social-norms', 'morality-ethics', 'morality-ethics', 'social-norms|advice', 'morality-ethics', 'morality-ethics', 'social-norms|description', 'morality-ethics|social-norms', 'social-norms|advice', 'social-norms', 'morality-ethics|social-norms', 'social-norms|description', 'social-norms', 'social-norms', 'morality-ethics|social-norms', 'social-norms|advice', 'morality-ethics', 'social-norms', 'morality-ethics|social-norms', 'morality-ethics|social-norms', 'morality-ethics|social-norms', 'social-norms', 'morality-ethics', 'morality-ethics|social-norms', 'social-norms', 'morality-ethics|social-norms', 'morality-ethics|social-norms', 'social-norms', 'social-norms|advice', 'social-norms', 'morality-ethics', 'social-norms', 'morality-ethics', 'social-norms', 'morality-ethics', 'morality-ethics'], 'rot-moral-foundations': ['sanctity-degradation', 'sanctity-degradation', 'sanctity-degradation', 'sanctity-degradation', 'authority-subversion|sanctity-degradation', 'care-harm|sanctity-degradation', 'sanctity-degradation', 'sanctity-degradation', 'care-harm', 'sanctity-degradation', 'authority-subversion|sanctity-degradation', 'care-harm|authority-subversion', 'sanctity-degradation', 'sanctity-degradation', 'care-harm|loyalty-betrayal|sanctity-degradation', 'sanctity-degradation', 'fairness-cheating', 'care-harm|authority-subversion', 'loyalty-betrayal|sanctity-degradation', 'sanctity-degradation', 'authority-subversion|sanctity-degradation', 'sanctity-degradation', 'sanctity-degradation', 'sanctity-degradation', 'care-harm|authority-subversion', 'care-harm|sanctity-degradation', 'loyalty-betrayal|sanctity-degradation', 'care-harm', 'care-harm|authority-subversion|sanctity-degradation', 'care-harm|sanctity-degradation', 'care-harm|sanctity-degradation', 'care-harm|sanctity-degradation', 'care-harm', 'sanctity-degradation', 'sanctity-degradation', 'sanctity-degradation', 'care-harm', 'loyalty-betrayal|authority-subversion', 'sanctity-degradation', 'care-harm|sanctity-degradation', 'care-harm', 'sanctity-degradation', 'care-harm|sanctity-degradation', '', 'sanctity-degradation', 'sanctity-degradation', 'care-harm', 'sanctity-degradation', 'sanctity-degradation', 'sanctity-degradation'], 'char-involved-general': ['char-0', 'char-none', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-none', 'char-none', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-none', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-none'], 'rot-rewrite': ['a parent  helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'helping your teenage boy shower.', 'a parent helping a teenage boy shower.', 'parent helping a teenage boy shower.', 'parents helping a teenage boy shower.', 'helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'Parents helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'helping a teenage boy shower.', 'helping your teenage son shower.', 'a parent helping a teenage boy shower.', 'helping your teenage son take a shower', 'a parent helping a teenage boy shower.', 'helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'helping your teenage boy shower.', 'parents helping teenage boys shower', 'helping your teenage boy shower.', 'being a parent and helping a teenage boy shower.', 'for a parent helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'parents helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'a parent to helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'parents helping a teenage boy shower.', 'A parent helping a teenage boy shower.', 'parent helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'helping your teenage boy shower.', "helping a teenage boy shower when you're a parent.", 'helping a teenage boy shower as a parent', "helping one's teenage boy shower.", 'helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'parent helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'helping your teenage boy shower', 'a parent helping a teenage boy shower.', 'a parent helping a teenage boy shower.'], 'rot-judgment': ["It's inappropriate", "It's inappropriate", 'inappropriate', "It's inappropriate", 'inappropriate', "It's inappropriate", "it's inappropriate", "It's inappropriate", "It's inappropriate.", "it's inappropriate", 'inappropriate', "It's inappropriate", "It's inappropriate for", "It's inappropriate", 'inappropriate', "It's inappropriate", 'inappropriate', "It's inappropriate", "it's inappropriate", 'inappropriate', "It's inappropriate", "It's inappropriate", "It's inappropriate", "it's inappropriate", "It's inappropriate", "It's inappropriate", "It's inappropriate", "It's inappropriate", "It's inappropriate", "It's inappropriate", "it's inappropriate", 'inappropriate', "It's inappropriate", "It's inappropriate", "it's inappropriate", "It's inappropriate", "It's inappropriate", "it's inappropriate", "It's inappropriate", "It's inappropriate", "It's inappropriate for a parent to", "It's inappropriate", "It's inappropriate", "It's inappropriate", "It's inappropriate", "It's inappropriate", "it's inappropriate", "it's inappropriate", 'inappropriate', "It's inappropriate"], 'agency-fwd': ['agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'experience', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency'], 'action-fwd-good': [-1.0, -1.0, -2.0, -2.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -2.0, -1.0, -2.0, -1.0, -1.0, -1.0, -2.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, '', -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -2.0, -1.0, -1.0], 'fwd-agree': [4.0, 4.0, 4.0, 4.0, 4.0, 3.0, 2.0, 4.0, 3.0, 3.0, 4.0, 2.0, 4.0, 4.0, 4.0, 3.0, 3.0, 4.0, 3.0, 3.0, 4.0, 3.0, 4.0, 3.0, 3.0, 3.0, 4.0, 3.0, 3.0, 3.0, 3.0, 2.0, 2.0, '', 3.0, 3.0, 2.0, 2.0, 4.0, 2.0, 3.0, 3.0, 3.0, 3.0, 4.0, 3.0, 3.0, 4.0, 4.0, 3.0], 'fwd-legal': ['legal', 'tolerated', 'legal', 'tolerated', 'tolerated', 'legal', 'legal', 'legal', 'legal', 'legal', 'tolerated', 'tolerated', 'tolerated', 'legal', 'tolerated', 'legal', 'tolerated', 'legal', 'legal', 'legal', 'illegal', 'tolerated', 'tolerated', 'tolerated', 'legal', 'tolerated', 'legal', 'tolerated', 'legal', 'legal', 'legal', 'legal', 'legal', '', 'tolerated', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'tolerated', 'legal', 'tolerated', 'tolerated', 'legal', 'legal'], 'fwd-pressure': [-2.0, -2.0, -2.0, -2.0, -2.0, -2.0, 0.0, -1.0, -2.0, -2.0, -1.0, -1.0, -1.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -1.0, -2.0, -1.0, -2.0, -1.0, -2.0, 0.0, 0.0, '', -1.0, -1.0, -1.0, -1.0, -2.0, -1.0, -1.0, -1.0, -2.0, -1.0, -2.0, -1.0, -1.0, -2.0, -1.0, -2.0], 'char-involved-fwd': ['char-0', 'char-none', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-none', 'char-none', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-none', 'char-0', '', 'char-0', 'char-0', 'char-none', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-none'], 'fwd-hypothetical': ['probable', '', 'explicit', 'explicit', 'probable', 'explicit', 'explicit', '', '', 'explicit', 'probable', 'hypothetical', 'explicit', 'probable', 'explicit', 'explicit', 'explicit', 'hypothetical', 'explicit', 'explicit', 'explicit', 'hypothetical', 'explicit', 'explicit', 'explicit', 'explicit', 'probable', 'explicit', 'explicit', 'explicit', 'explicit', '', 'probable', '', 'explicit', 'hypothetical', '', 'probable', 'probable', 'explicit', 'hypothetical', 'explicit', 'explicit', 'probable', 'hypothetical', 'probable', 'explicit', 'explicit', 'hypothetical', ''], 'n-characters': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}
+ - - - - - -  starting a new element: `Input(name=`rot-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`rot-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: rot-agree
+input Input(name=`rot-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_radio('rot-agree', '0')
+We are going to select this radio button: <input type="radio" name="rot-agree" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`rot-categorization`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`rot-categorization`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: rot-categorization
+input Input(name=`rot-categorization`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_checkbox('rot-categorization', 'morality-ethics')
+Looking for checkboxes with `name`: `rot-categorization` the values: `['morality-ethics']`
+About to check this checkbox: <input type="checkbox" name="rot-categorization" value="morality-ethics">
+ - - - - - -  starting a new element: `Input(name=`rot-moral-foundations`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`rot-moral-foundations`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: rot-moral-foundations
+input Input(name=`rot-moral-foundations`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_checkbox('rot-moral-foundations', 'care-harm')
+Looking for checkboxes with `name`: `rot-moral-foundations` the values: `['care-harm']`
+About to check this checkbox: <input type="checkbox" name="rot-moral-foundations" value="care-harm">
+ - - - - - -  starting a new element: `Input(name=`char-involved-general`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`char-involved-general`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: char-involved-general
+input Input(name=`char-involved-general`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_radio('char-involved-general', 'char-0')
+We are going to select this radio button: <input type="radio" name="char-involved-general" value="char-0" required="">
+ - - - - - -  starting a new element: `Input(name=`rot-rewrite`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`rot-rewrite`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: rot-rewrite
+input Input(name=`rot-rewrite`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_text('rot-rewrite', "It's inappropriate for a parent to help a teenage boy shower.")
+Add text `It's inappropriate for a parent to help a teenage boy shower.` to this text input: <input type="text" class="text" name="rot-rewrite" value="It's inappropriate for a parent to help a teenage boy shower." id="rot-rewrite">
+ - - - - - -  starting a new element: `Input(name=`rot-judgment`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`rot-judgment`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: rot-judgment
+input Input(name=`rot-judgment`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_text('rot-judgment', 'It\'s inappropriate for a parent to help a teenage boy shower.')
+Add text `It's inappropriate for a parent to help a teenage boy shower.` to this text input: <input type="text" class="text" name="rot-judgment" id="rot-judgment">
+ - - - - - -  starting a new element: `Input(name=`agency-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`agency-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: agency-fwd
+input Input(name=`agency-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_radio('agency-fwd', 'agency')
+We are going to select this radio button: <input type="radio" name="agency-fwd" value="agency" required="">
+ - - - - - -  starting a new element: `Input(name=`action-fwd-good`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`action-fwd-good`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: action-fwd-good
+input Input(name=`action-fwd-good`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_radio('action-fwd-good', '-2')
+We are going to select this radio button: <input type="radio" name="action-fwd-good" value="-2" required="required">
+ - - - - - -  starting a new element: `Input(name=`fwd-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`fwd-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: fwd-agree
+input Input(name=`fwd-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_radio('fwd-agree', '0')
+We are going to select this radio button: <input type="radio" name="fwd-agree" value="0" required="required">
+ - - - - - -  starting a new element: `Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: fwd-legal
+input Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_radio('fwd-legal', 'illegal')
+We are going to select this radio button: <input type="radio" name="fwd-legal" value="illegal" required="required">
+ - - - - - -  starting a new element: `Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: fwd-pressure
+input Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_radio('fwd-pressure', '-2')
+We are going to select this radio button: <input type="radio" name="fwd-pressure" value="-2" required="required">
+ - - - - - -  starting a new element: `Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: char-involved-fwd
+input Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_radio('char-involved-fwd', 'char-0')
+We are going to select this radio button: <input type="radio" name="char-involved-fwd" value="char-0" required="required">
+ - - - - - -  starting a new element: `Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: fwd-hypothetical
+input Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_radio('fwd-hypothetical', 'explicit-no')
+We are going to select this radio button: <input type="radio" name="fwd-hypothetical" value="explicit-no" required="required">
+ - - - - - -  starting a new element: `Input(name=`n-characters`, type=`hidden`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+Skipping element `n-characters` since it is not visible.
+input: Input(name=`rot-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`rot-categorization`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['morality-ethics']
+ visible_values : ['morality-ethics']
+input: Input(name=`rot-moral-foundations`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['care-harm']
+ visible_values : ['care-harm']
+input: Input(name=`char-involved-general`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['char-0']
+ visible_values : ['char-0']
+input: Input(name=`rot-rewrite`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ["It's inappropriate for a parent to help a teenage boy shower."]
+ visible_values : ["It's inappropriate for a parent to help a teenage boy shower."]
+input: Input(name=`rot-judgment`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ["It's inappropriate for a parent to help a teenage boy shower."]
+ visible_values : ["It's inappropriate for a parent to help a teenage boy shower."]
+input: Input(name=`agency-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['agency']
+ visible_values : ['agency']
+input: Input(name=`action-fwd-good`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['-2']
+ visible_values : ['-2']
+input: Input(name=`fwd-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['illegal']
+ visible_values : ['illegal']
+input: Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['-2']
+ visible_values : ['-2']
+input: Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['char-0']
+ visible_values : ['char-0']
+input: Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['explicit-no']
+ visible_values : ['explicit-no']
+input: Input(name=`n-characters`, type=`hidden`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['1']
+ visible_values : ['1']
+ ------- evaluating input: Input(name=`rot-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `[4, 4, 4, 4, 4, 3, 2, 4, 3, 3, 3, 2, 4, 4, 4, 3, 3, 4, 3, 3, 4, 3, 4, 3, 3, 3, 4, 3, 3, 3, 3, 2, 2, 3, 3, 3, 3, 2, 4, 3, 3, 3, 4, 3, 4, 3, 3, 4, 4, 3]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`rot-categorization`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `['social-norms', 'morality-ethics|social-norms', 'morality-ethics|social-norms', 'social-norms', 'morality-ethics|social-norms', 'social-norms', 'social-norms', 'social-norms', 'advice|morality-ethics', 'morality-ethics|social-norms', 'social-norms', 'morality-ethics|social-norms', 'social-norms', 'social-norms', 'morality-ethics|social-norms', 'morality-ethics', 'morality-ethics', 'advice|social-norms', 'morality-ethics', 'morality-ethics', 'description|social-norms', 'morality-ethics|social-norms', 'advice|social-norms', 'social-norms', 'morality-ethics|social-norms', 'description|social-norms', 'social-norms', 'social-norms', 'morality-ethics|social-norms', 'advice|social-norms', 'morality-ethics', 'social-norms', 'morality-ethics|social-norms', 'morality-ethics|social-norms', 'morality-ethics|social-norms', 'social-norms', 'morality-ethics', 'morality-ethics|social-norms', 'social-norms', 'morality-ethics|social-norms', 'morality-ethics|social-norms', 'social-norms', 'advice|social-norms', 'social-norms', 'morality-ethics', 'social-norms', 'morality-ethics', 'social-norms', 'morality-ethics', 'morality-ethics']` - type: `<class 'list'>`
+----> baseline_answer: `morality-ethics` - type: `<class 'str'>`
+Model answers: morality-ethics 
+Gold answers: ['social-norms', 'morality-ethics|social-norms', 'morality-ethics|social-norms', 'social-norms', 'morality-ethics|social-norms', 'social-norms', 'social-norms', 'social-norms', 'advice|morality-ethics', 'morality-ethics|social-norms', 'social-norms', 'morality-ethics|social-norms', 'social-norms', 'social-norms', 'morality-ethics|social-norms', 'morality-ethics', 'morality-ethics', 'advice|social-norms', 'morality-ethics', 'morality-ethics', 'description|social-norms', 'morality-ethics|social-norms', 'advice|social-norms', 'social-norms', 'morality-ethics|social-norms', 'description|social-norms', 'social-norms', 'social-norms', 'morality-ethics|social-norms', 'advice|social-norms', 'morality-ethics', 'social-norms', 'morality-ethics|social-norms', 'morality-ethics|social-norms', 'morality-ethics|social-norms', 'social-norms', 'morality-ethics', 'morality-ethics|social-norms', 'social-norms', 'morality-ethics|social-norms', 'morality-ethics|social-norms', 'social-norms', 'advice|social-norms', 'social-norms', 'morality-ethics', 'social-norms', 'morality-ethics', 'social-norms', 'morality-ethics', 'morality-ethics']
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-moral-foundations`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `['sanctity-degradation', 'sanctity-degradation', 'sanctity-degradation', 'sanctity-degradation', 'authority-subversion|sanctity-degradation', 'care-harm|sanctity-degradation', 'sanctity-degradation', 'sanctity-degradation', 'care-harm', 'sanctity-degradation', 'authority-subversion|sanctity-degradation', 'authority-subversion|care-harm', 'sanctity-degradation', 'sanctity-degradation', 'care-harm|loyalty-betrayal|sanctity-degradation', 'sanctity-degradation', 'fairness-cheating', 'authority-subversion|care-harm', 'loyalty-betrayal|sanctity-degradation', 'sanctity-degradation', 'authority-subversion|sanctity-degradation', 'sanctity-degradation', 'sanctity-degradation', 'sanctity-degradation', 'authority-subversion|care-harm', 'care-harm|sanctity-degradation', 'loyalty-betrayal|sanctity-degradation', 'care-harm', 'authority-subversion|care-harm|sanctity-degradation', 'care-harm|sanctity-degradation', 'care-harm|sanctity-degradation', 'care-harm|sanctity-degradation', 'care-harm', 'sanctity-degradation', 'sanctity-degradation', 'sanctity-degradation', 'care-harm', 'authority-subversion|loyalty-betrayal', 'sanctity-degradation', 'care-harm|sanctity-degradation', 'care-harm', 'sanctity-degradation', 'care-harm|sanctity-degradation', '', 'sanctity-degradation', 'sanctity-degradation', 'care-harm', 'sanctity-degradation', 'sanctity-degradation', 'sanctity-degradation']` - type: `<class 'list'>`
+----> baseline_answer: `care-harm` - type: `<class 'str'>`
+Model answers: care-harm 
+Gold answers: ['sanctity-degradation', 'sanctity-degradation', 'sanctity-degradation', 'sanctity-degradation', 'authority-subversion|sanctity-degradation', 'care-harm|sanctity-degradation', 'sanctity-degradation', 'sanctity-degradation', 'care-harm', 'sanctity-degradation', 'authority-subversion|sanctity-degradation', 'authority-subversion|care-harm', 'sanctity-degradation', 'sanctity-degradation', 'care-harm|loyalty-betrayal|sanctity-degradation', 'sanctity-degradation', 'fairness-cheating', 'authority-subversion|care-harm', 'loyalty-betrayal|sanctity-degradation', 'sanctity-degradation', 'authority-subversion|sanctity-degradation', 'sanctity-degradation', 'sanctity-degradation', 'sanctity-degradation', 'authority-subversion|care-harm', 'care-harm|sanctity-degradation', 'loyalty-betrayal|sanctity-degradation', 'care-harm', 'authority-subversion|care-harm|sanctity-degradation', 'care-harm|sanctity-degradation', 'care-harm|sanctity-degradation', 'care-harm|sanctity-degradation', 'care-harm', 'sanctity-degradation', 'sanctity-degradation', 'sanctity-degradation', 'care-harm', 'authority-subversion|loyalty-betrayal', 'sanctity-degradation', 'care-harm|sanctity-degradation', 'care-harm', 'sanctity-degradation', 'care-harm|sanctity-degradation', '', 'sanctity-degradation', 'sanctity-degradation', 'care-harm', 'sanctity-degradation', 'sanctity-degradation', 'sanctity-degradation']
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`char-involved-general`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `['char-0', 'char-none', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-none', 'char-none', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-none', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-none']` - type: `<class 'list'>`
+----> baseline_answer: `char-0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-rewrite`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+answers after mapping: `['a parent  helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'helping your teenage boy shower.', 'a parent helping a teenage boy shower.', 'parent helping a teenage boy shower.', 'parents helping a teenage boy shower.', 'helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'Parents helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'helping a teenage boy shower.', 'helping your teenage son shower.', 'a parent helping a teenage boy shower.', 'helping your teenage son take a shower', 'a parent helping a teenage boy shower.', 'helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'helping your teenage boy shower.', 'parents helping teenage boys shower', 'helping your teenage boy shower.', 'being a parent and helping a teenage boy shower.', 'for a parent helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'parents helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'a parent to helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'parents helping a teenage boy shower.', 'A parent helping a teenage boy shower.', 'parent helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'helping your teenage boy shower.', "helping a teenage boy shower when you're a parent.", 'helping a teenage boy shower as a parent', "helping one's teenage boy shower.", 'helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'parent helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'a parent helping a teenage boy shower.', 'helping your teenage boy shower', 'a parent helping a teenage boy shower.', 'a parent helping a teenage boy shower.']`
+----> answers: `['a parent  helping a teenage boy shower.', 'helping a teenage boy shower.', 'A parent helping a teenage boy shower.', 'helping your teenage son take a shower', 'a parent helping a teenage boy shower.', 'parents helping teenage boys shower', 'Parents helping a teenage boy shower.', "helping a teenage boy shower when you're a parent.", 'helping a teenage boy shower as a parent', 'helping your teenage boy shower.', 'for a parent helping a teenage boy shower.', 'a parent to helping a teenage boy shower.', 'parent helping a teenage boy shower.', "helping one's teenage boy shower.", 'parents helping a teenage boy shower.', 'helping your teenage boy shower', 'helping your teenage son shower.', 'being a parent and helping a teenage boy shower.']` - type: `<class 'list'>`
+----> baseline_answer: `It's inappropriate for a parent to help a teenage boy shower.` - type: `<class 'str'>`
+ --> scores:  0.8
+----> per-field score: 0.8
+ ------- evaluating input: Input(name=`rot-judgment`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+answers after mapping: `["It's inappropriate", "It's inappropriate", 'inappropriate', "It's inappropriate", 'inappropriate', "It's inappropriate", "it's inappropriate", "It's inappropriate", "It's inappropriate.", "it's inappropriate", 'inappropriate', "It's inappropriate", "It's inappropriate for", "It's inappropriate", 'inappropriate', "It's inappropriate", 'inappropriate', "It's inappropriate", "it's inappropriate", 'inappropriate', "It's inappropriate", "It's inappropriate", "It's inappropriate", "it's inappropriate", "It's inappropriate", "It's inappropriate", "It's inappropriate", "It's inappropriate", "It's inappropriate", "It's inappropriate", "it's inappropriate", 'inappropriate', "It's inappropriate", "It's inappropriate", "it's inappropriate", "It's inappropriate", "It's inappropriate", "it's inappropriate", "It's inappropriate", "It's inappropriate", "It's inappropriate for a parent to", "It's inappropriate", "It's inappropriate", "It's inappropriate", "It's inappropriate", "It's inappropriate", "it's inappropriate", "it's inappropriate", 'inappropriate', "It's inappropriate"]`
+----> answers: `["It's inappropriate for", 'inappropriate', "It's inappropriate for a parent to", "It's inappropriate", "it's inappropriate", "It's inappropriate."]` - type: `<class 'list'>`
+----> baseline_answer: `It's inappropriate for a parent to help a teenage boy shower.` - type: `<class 'str'>`
+ --> scores:  0.7368421052631579
+----> per-field score: 0.7368421052631579
+ ------- evaluating input: Input(name=`agency-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `['agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'experience', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency']` - type: `<class 'list'>`
+----> baseline_answer: `agency` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`action-fwd-good`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `[-1.0, -1.0, -2.0, -2.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -2.0, -1.0, -2.0, -1.0, -1.0, -1.0, -2.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, '', -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -2.0, -1.0, -1.0]` - type: `<class 'list'>`
+----> baseline_answer: `-2` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`fwd-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `[4.0, 4.0, 4.0, 4.0, 4.0, 3.0, 2.0, 4.0, 3.0, 3.0, 4.0, 2.0, 4.0, 4.0, 4.0, 3.0, 3.0, 4.0, 3.0, 3.0, 4.0, 3.0, 4.0, 3.0, 3.0, 3.0, 4.0, 3.0, 3.0, 3.0, 3.0, 2.0, 2.0, '', 3.0, 3.0, 2.0, 2.0, 4.0, 2.0, 3.0, 3.0, 3.0, 3.0, 4.0, 3.0, 3.0, 4.0, 4.0, 3.0]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `['legal', 'tolerated', 'legal', 'tolerated', 'tolerated', 'legal', 'legal', 'legal', 'legal', 'legal', 'tolerated', 'tolerated', 'tolerated', 'legal', 'tolerated', 'legal', 'tolerated', 'legal', 'legal', 'legal', 'illegal', 'tolerated', 'tolerated', 'tolerated', 'legal', 'tolerated', 'legal', 'tolerated', 'legal', 'legal', 'legal', 'legal', 'legal', '', 'tolerated', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'tolerated', 'legal', 'tolerated', 'tolerated', 'legal', 'legal']` - type: `<class 'list'>`
+----> baseline_answer: `illegal` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `[-2.0, -2.0, -2.0, -2.0, -2.0, -2.0, 0.0, -1.0, -2.0, -2.0, -1.0, -1.0, -1.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -1.0, -2.0, -1.0, -2.0, -1.0, -2.0, 0.0, 0.0, '', -1.0, -1.0, -1.0, -1.0, -2.0, -1.0, -1.0, -1.0, -2.0, -1.0, -2.0, -1.0, -1.0, -2.0, -1.0, -2.0]` - type: `<class 'list'>`
+----> baseline_answer: `-2` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `['char-0', 'char-none', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-none', 'char-none', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-none', 'char-0', '', 'char-0', 'char-0', 'char-none', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-0', 'char-none']` - type: `<class 'list'>`
+----> baseline_answer: `char-0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `['probable', '', 'explicit', 'explicit', 'probable', 'explicit', 'explicit', '', '', 'explicit', 'probable', 'hypothetical', 'explicit', 'probable', 'explicit', 'explicit', 'explicit', 'hypothetical', 'explicit', 'explicit', 'explicit', 'hypothetical', 'explicit', 'explicit', 'explicit', 'explicit', 'probable', 'explicit', 'explicit', 'explicit', 'explicit', '', 'probable', '', 'explicit', 'hypothetical', '', 'probable', 'probable', 'explicit', 'hypothetical', 'explicit', 'explicit', 'probable', 'hypothetical', 'probable', 'explicit', 'explicit', 'hypothetical', '']` - type: `<class 'list'>`
+----> baseline_answer: `explicit-no` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`n-characters`, type=`hidden`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+Skipping element `n-characters` since it is not visible.
+ --> Per-instance overall score: 0.5797570850202429
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0], 'checkbox': [1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0], 'text': [0.5, 0.8, 0.8695652173913044, 0.5555555555555556, 1.0, 0.6666666666666666, 0.8, 0.4, 0.782608695652174, 0.35294117647058826, 0.7777777777777778, 0.0, 0.8181818181818181, 0.0, 0.7499999999999999, 0.0, 0.8, 0.7368421052631579]}
+instance_id: 32979 <-> row_number: 8
+ --> inputs: ['rot-agree', 'rot-categorization', 'rot-moral-foundations', 'char-involved-general', 'rot-rewrite', 'rot-judgment', 'agency-fwd', 'action-fwd-good', 'fwd-agree', 'fwd-legal', 'fwd-pressure', 'char-involved-fwd', 'fwd-hypothetical', 'n-characters']
+ --> Looking up gold labels from row index 8 of `input.csv` (unique inputs). 
+ --> input labels: {'rot-agree': [2, 0, 1, 1, 0, 1, 0, 2, 1, 2, 2, 1, 1, 0, 2, 2, 1, 1, 3, 2, 1, 2, 1, 2, 3, 2, 1, 1, 2, 2, 1, 2, 3, 2, 1, 2, 1, 1, 2, 2, 3, 2, 2, 2, 2, 0, 3, 3, 1, 2], 'rot-categorization': ['morality-ethics|social-norms', 'social-norms', 'social-norms', 'social-norms', 'social-norms', 'social-norms', 'social-norms|advice', 'social-norms', 'description', 'social-norms', 'social-norms', 'social-norms', 'social-norms', 'social-norms', 'social-norms', 'description', 'social-norms', 'social-norms', 'social-norms', 'social-norms', 'social-norms|advice', 'social-norms|description', 'social-norms', 'social-norms', 'description', 'social-norms', 'social-norms', 'social-norms', 'social-norms|advice', 'social-norms|advice', 'social-norms', 'social-norms', 'description', 'social-norms', 'social-norms|description', 'social-norms|description', 'social-norms', 'description', 'social-norms', 'social-norms', 'description', 'social-norms', 'social-norms|advice', 'social-norms', 'social-norms', 'social-norms|advice', 'description', 'morality-ethics|advice', 'social-norms', 'social-norms'], 'rot-moral-foundations': ['care-harm|sanctity-degradation', '', '', '', 'sanctity-degradation', '', 'fairness-cheating|loyalty-betrayal', 'authority-subversion', 'fairness-cheating', 'care-harm', '', '', 'authority-subversion', 'sanctity-degradation', 'authority-subversion', '', '', 'fairness-cheating', '', '', 'fairness-cheating', 'authority-subversion', '', '', 'care-harm', 'care-harm|authority-subversion|sanctity-degradation', '', 'authority-subversion', 'care-harm', '', '', '', 'loyalty-betrayal', '', 'sanctity-degradation', 'fairness-cheating|loyalty-betrayal', 'authority-subversion', '', 'sanctity-degradation', 'care-harm', 'care-harm', 'care-harm', '', '', '', '', '', 'care-harm', '', ''], 'char-involved-general': ['char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1'], 'rot-rewrite': ['carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'Carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol'], 'rot-judgment': ["It's okay", 'okay', "It's okay", "it's okay", "It's okay", "It's okay", "it's okay", 'okay', "It's okay", "It's okay", "It's okay", "it's okay", "It's okay", "it's okay", "It's okay", 'okay', 'okay', "It's okay", "It's okay", "It's okay", "It's okay", "it's okay", 'okay', "It's okay", "It's okay", "It's okay", "it's okay", 'ok', "It's okay", "it's okay", "It's okay", "It's okay", "It's okay", "it's okay", "It's okay", "it's okay", "It's okay", 'okay', "It's okay", "it's okay", "It's okay", 'Its okay', "It's okay", "It's okay", "it's okay", "It's okay", "it's okay", "It's okay", "it's ok", "It's okay"], 'agency-fwd': ['agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency'], 'action-fwd-good': [0.0, -1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0], 'fwd-agree': [2.0, 4.0, 1.0, 1.0, 0.0, 1.0, 4.0, 2.0, 1.0, 2.0, 2.0, 1.0, 1.0, 0.0, 2.0, 2.0, 2.0, 1.0, 3.0, 2.0, 1.0, 2.0, 1.0, 2.0, 3.0, 2.0, 1.0, 1.0, 2.0, 2.0, 1.0, 2.0, 4.0, 2.0, 2.0, 2.0, 1.0, 1.0, 2.0, 2.0, 3.0, 2.0, 2.0, 2.0, 2.0, 0.0, 3.0, 3.0, 1.0, 2.0], 'fwd-legal': ['legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'tolerated', 'legal', 'legal', 'tolerated', 'legal', 'legal', 'tolerated', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'tolerated'], 'fwd-pressure': [-1.0, -1.0, -1.0, 0.0, 0.0, -1.0, -2.0, -1.0, -1.0, 0.0, 0.0, 0.0, -1.0, -1.0, 0.0, 0.0, -2.0, -1.0, 0.0, 0.0, 0.0, -1.0, -1.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, -1.0, 0.0, 0.0, 0.0, -1.0, 0.0, -1.0, 0.0, -1.0, 0.0, 0.0, -1.0, -1.0, -1.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0], 'char-involved-fwd': ['char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1'], 'fwd-hypothetical': ['probable', 'explicit', 'explicit', 'probable', 'explicit', 'hypothetical', 'hypothetical', 'explicit', 'hypothetical', 'hypothetical', 'hypothetical', 'hypothetical', 'hypothetical', 'hypothetical', 'hypothetical', 'probable', 'hypothetical', 'hypothetical', 'probable', 'explicit', 'hypothetical', 'probable', 'hypothetical', 'probable', 'explicit', 'probable', 'hypothetical', 'hypothetical', 'hypothetical', 'hypothetical', 'explicit', 'explicit', 'explicit', 'probable', 'hypothetical', 'probable', 'explicit', 'explicit', 'hypothetical', 'hypothetical', 'explicit', 'explicit', 'hypothetical', 'hypothetical', 'probable', 'hypothetical', 'hypothetical', 'hypothetical', 'probable', 'hypothetical'], 'n-characters': [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]}
+ - - - - - -  starting a new element: `Input(name=`rot-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`rot-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: rot-agree
+input Input(name=`rot-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_radio('rot-agree', '0')
+We are going to select this radio button: <input type="radio" name="rot-agree" value="0" required="">
+ - - - - - -  starting a new element: `Input(name=`rot-categorization`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`rot-categorization`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: rot-categorization
+input Input(name=`rot-categorization`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_checkbox('rot-categorization', 'morality-ethics')
+Looking for checkboxes with `name`: `rot-categorization` the values: `['morality-ethics']`
+About to check this checkbox: <input type="checkbox" name="rot-categorization" value="morality-ethics">
+ - - - - - -  starting a new element: `Input(name=`rot-moral-foundations`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`rot-moral-foundations`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: rot-moral-foundations
+input Input(name=`rot-moral-foundations`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_checkbox('rot-moral-foundations', 'care-harm')
+Looking for checkboxes with `name`: `rot-moral-foundations` the values: `['care-harm']`
+About to check this checkbox: <input type="checkbox" name="rot-moral-foundations" value="care-harm">
+ - - - - - -  starting a new element: `Input(name=`char-involved-general`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`char-involved-general`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: char-involved-general
+input Input(name=`char-involved-general`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_radio('char-involved-general', 'char-1')
+We are going to select this radio button: <input type="radio" name="char-involved-general" value="char-1" required="">
+ - - - - - -  starting a new element: `Input(name=`rot-rewrite`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`rot-rewrite`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: rot-rewrite
+input Input(name=`rot-rewrite`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_text('rot-rewrite', "It's okay to carry your pet in public as a status symbol")
+Add text `It's okay to carry your pet in public as a status symbol` to this text input: <input type="text" class="text" name="rot-rewrite" value="It's okay to carry your pet in public as a status symbol" id="rot-rewrite">
+ - - - - - -  starting a new element: `Input(name=`rot-judgment`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`rot-judgment`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: rot-judgment
+input Input(name=`rot-judgment`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_text('rot-judgment', 'It\'s okay to carry your pet in public as a status symbol')
+Add text `It's okay to carry your pet in public as a status symbol` to this text input: <input type="text" class="text" name="rot-judgment" id="rot-judgment">
+ - - - - - -  starting a new element: `Input(name=`agency-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`agency-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: agency-fwd
+input Input(name=`agency-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_radio('agency-fwd', 'agency')
+We are going to select this radio button: <input type="radio" name="agency-fwd" value="agency" required="">
+ - - - - - -  starting a new element: `Input(name=`action-fwd-good`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`action-fwd-good`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: action-fwd-good
+input Input(name=`action-fwd-good`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_radio('action-fwd-good', '-2')
+We are going to select this radio button: <input type="radio" name="action-fwd-good" value="-2" required="required">
+ - - - - - -  starting a new element: `Input(name=`fwd-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`fwd-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: fwd-agree
+input Input(name=`fwd-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_radio('fwd-agree', '0')
+We are going to select this radio button: <input type="radio" name="fwd-agree" value="0" required="required">
+ - - - - - -  starting a new element: `Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: fwd-legal
+input Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_radio('fwd-legal', 'illegal')
+We are going to select this radio button: <input type="radio" name="fwd-legal" value="illegal" required="required">
+ - - - - - -  starting a new element: `Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: fwd-pressure
+input Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_radio('fwd-pressure', '-2')
+We are going to select this radio button: <input type="radio" name="fwd-pressure" value="-2" required="required">
+ - - - - - -  starting a new element: `Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: char-involved-fwd
+input Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_radio('char-involved-fwd', 'char-0')
+We are going to select this radio button: <input type="radio" name="char-involved-fwd" value="char-0" required="required">
+ - - - - - -  starting a new element: `Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+input: Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+about to try executing one action, on the following input: fwd-hypothetical
+input Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+Executing one action: self.actions.modify_radio('fwd-hypothetical', 'explicit-no')
+We are going to select this radio button: <input type="radio" name="fwd-hypothetical" value="explicit-no" required="required">
+ - - - - - -  starting a new element: `Input(name=`n-characters`, type=`hidden`, task=`ROT Details [m=50] rocstories - 0 - 99`)` - - - - - -  
+Skipping element `n-characters` since it is not visible.
+input: Input(name=`rot-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`rot-categorization`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['morality-ethics']
+ visible_values : ['morality-ethics']
+input: Input(name=`rot-moral-foundations`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['care-harm']
+ visible_values : ['care-harm']
+input: Input(name=`char-involved-general`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['char-1']
+ visible_values : ['char-1']
+input: Input(name=`rot-rewrite`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ["It's okay to carry your pet in public as a status symbol"]
+ visible_values : ["It's okay to carry your pet in public as a status symbol"]
+input: Input(name=`rot-judgment`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ["It's okay to carry your pet in public as a status symbol"]
+ visible_values : ["It's okay to carry your pet in public as a status symbol"]
+input: Input(name=`agency-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['agency']
+ visible_values : ['agency']
+input: Input(name=`action-fwd-good`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['-2']
+ visible_values : ['-2']
+input: Input(name=`fwd-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['0']
+ visible_values : ['0']
+input: Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['illegal']
+ visible_values : ['illegal']
+input: Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['-2']
+ visible_values : ['-2']
+input: Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['char-0']
+ visible_values : ['char-0']
+input: Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['explicit-no']
+ visible_values : ['explicit-no']
+input: Input(name=`n-characters`, type=`hidden`, task=`ROT Details [m=50] rocstories - 0 - 99`)
+ visible : ['2']
+ visible_values : ['2']
+ ------- evaluating input: Input(name=`rot-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `[2, 0, 1, 1, 0, 1, 0, 2, 1, 2, 2, 1, 1, 0, 2, 2, 1, 1, 3, 2, 1, 2, 1, 2, 3, 2, 1, 1, 2, 2, 1, 2, 3, 2, 1, 2, 1, 1, 2, 2, 3, 2, 2, 2, 2, 0, 3, 3, 1, 2]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`rot-categorization`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `['morality-ethics|social-norms', 'social-norms', 'social-norms', 'social-norms', 'social-norms', 'social-norms', 'advice|social-norms', 'social-norms', 'description', 'social-norms', 'social-norms', 'social-norms', 'social-norms', 'social-norms', 'social-norms', 'description', 'social-norms', 'social-norms', 'social-norms', 'social-norms', 'advice|social-norms', 'description|social-norms', 'social-norms', 'social-norms', 'description', 'social-norms', 'social-norms', 'social-norms', 'advice|social-norms', 'advice|social-norms', 'social-norms', 'social-norms', 'description', 'social-norms', 'description|social-norms', 'description|social-norms', 'social-norms', 'description', 'social-norms', 'social-norms', 'description', 'social-norms', 'advice|social-norms', 'social-norms', 'social-norms', 'advice|social-norms', 'description', 'advice|morality-ethics', 'social-norms', 'social-norms']` - type: `<class 'list'>`
+----> baseline_answer: `morality-ethics` - type: `<class 'str'>`
+Model answers: morality-ethics 
+Gold answers: ['morality-ethics|social-norms', 'social-norms', 'social-norms', 'social-norms', 'social-norms', 'social-norms', 'advice|social-norms', 'social-norms', 'description', 'social-norms', 'social-norms', 'social-norms', 'social-norms', 'social-norms', 'social-norms', 'description', 'social-norms', 'social-norms', 'social-norms', 'social-norms', 'advice|social-norms', 'description|social-norms', 'social-norms', 'social-norms', 'description', 'social-norms', 'social-norms', 'social-norms', 'advice|social-norms', 'advice|social-norms', 'social-norms', 'social-norms', 'description', 'social-norms', 'description|social-norms', 'description|social-norms', 'social-norms', 'description', 'social-norms', 'social-norms', 'description', 'social-norms', 'advice|social-norms', 'social-norms', 'social-norms', 'advice|social-norms', 'description', 'advice|morality-ethics', 'social-norms', 'social-norms']
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`rot-moral-foundations`, type=`checkbox`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `['care-harm|sanctity-degradation', '', '', '', 'sanctity-degradation', '', 'fairness-cheating|loyalty-betrayal', 'authority-subversion', 'fairness-cheating', 'care-harm', '', '', 'authority-subversion', 'sanctity-degradation', 'authority-subversion', '', '', 'fairness-cheating', '', '', 'fairness-cheating', 'authority-subversion', '', '', 'care-harm', 'authority-subversion|care-harm|sanctity-degradation', '', 'authority-subversion', 'care-harm', '', '', '', 'loyalty-betrayal', '', 'sanctity-degradation', 'fairness-cheating|loyalty-betrayal', 'authority-subversion', '', 'sanctity-degradation', 'care-harm', 'care-harm', 'care-harm', '', '', '', '', '', 'care-harm', '', '']` - type: `<class 'list'>`
+----> baseline_answer: `care-harm` - type: `<class 'str'>`
+Model answers: care-harm 
+Gold answers: ['care-harm|sanctity-degradation', '', '', '', 'sanctity-degradation', '', 'fairness-cheating|loyalty-betrayal', 'authority-subversion', 'fairness-cheating', 'care-harm', '', '', 'authority-subversion', 'sanctity-degradation', 'authority-subversion', '', '', 'fairness-cheating', '', '', 'fairness-cheating', 'authority-subversion', '', '', 'care-harm', 'authority-subversion|care-harm|sanctity-degradation', '', 'authority-subversion', 'care-harm', '', '', '', 'loyalty-betrayal', '', 'sanctity-degradation', 'fairness-cheating|loyalty-betrayal', 'authority-subversion', '', 'sanctity-degradation', 'care-harm', 'care-harm', 'care-harm', '', '', '', '', '', 'care-harm', '', '']
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`char-involved-general`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `['char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1']` - type: `<class 'list'>`
+----> baseline_answer: `char-1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`rot-rewrite`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+answers after mapping: `['carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'Carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol', 'carrying your pet in public as a status symbol']`
+----> answers: `['carrying your pet in public as a status symbol', 'Carrying your pet in public as a status symbol', 'carrying your pet in public']` - type: `<class 'list'>`
+----> baseline_answer: `It's okay to carry your pet in public as a status symbol` - type: `<class 'str'>`
+ --> scores:  0.8181818181818181
+----> per-field score: 0.8181818181818181
+ ------- evaluating input: Input(name=`rot-judgment`, type=`text`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+answers after mapping: `["It's okay", 'okay', "It's okay", "it's okay", "It's okay", "It's okay", "it's okay", 'okay', "It's okay", "It's okay", "It's okay", "it's okay", "It's okay", "it's okay", "It's okay", 'okay', 'okay', "It's okay", "It's okay", "It's okay", "It's okay", "it's okay", 'okay', "It's okay", "It's okay", "It's okay", "it's okay", 'ok', "It's okay", "it's okay", "It's okay", "It's okay", "It's okay", "it's okay", "It's okay", "it's okay", "It's okay", 'okay', "It's okay", "it's okay", "It's okay", 'Its okay', "It's okay", "It's okay", "it's okay", "It's okay", "it's okay", "It's okay", "it's ok", "It's okay"]`
+----> answers: `['okay', 'ok', "It's okay", 'Its okay', "it's okay", "it's ok"]` - type: `<class 'list'>`
+----> baseline_answer: `It's okay to carry your pet in public as a status symbol` - type: `<class 'str'>`
+ --> scores:  0.375
+----> per-field score: 0.375
+ ------- evaluating input: Input(name=`agency-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `['agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency', 'agency']` - type: `<class 'list'>`
+----> baseline_answer: `agency` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`action-fwd-good`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `[0.0, -1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0]` - type: `<class 'list'>`
+----> baseline_answer: `-2` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`fwd-agree`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `[2.0, 4.0, 1.0, 1.0, 0.0, 1.0, 4.0, 2.0, 1.0, 2.0, 2.0, 1.0, 1.0, 0.0, 2.0, 2.0, 2.0, 1.0, 3.0, 2.0, 1.0, 2.0, 1.0, 2.0, 3.0, 2.0, 1.0, 1.0, 2.0, 2.0, 1.0, 2.0, 4.0, 2.0, 2.0, 2.0, 1.0, 1.0, 2.0, 2.0, 3.0, 2.0, 2.0, 2.0, 2.0, 0.0, 3.0, 3.0, 1.0, 2.0]` - type: `<class 'list'>`
+----> baseline_answer: `0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`fwd-legal`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `['legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'tolerated', 'legal', 'legal', 'tolerated', 'legal', 'legal', 'tolerated', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'legal', 'tolerated']` - type: `<class 'list'>`
+----> baseline_answer: `illegal` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`fwd-pressure`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `[-1.0, -1.0, -1.0, 0.0, 0.0, -1.0, -2.0, -1.0, -1.0, 0.0, 0.0, 0.0, -1.0, -1.0, 0.0, 0.0, -2.0, -1.0, 0.0, 0.0, 0.0, -1.0, -1.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, -1.0, 0.0, 0.0, 0.0, -1.0, 0.0, -1.0, 0.0, -1.0, 0.0, 0.0, -1.0, -1.0, -1.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0]` - type: `<class 'list'>`
+----> baseline_answer: `-2` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`char-involved-fwd`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `['char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1', 'char-1']` - type: `<class 'list'>`
+----> baseline_answer: `char-0` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`fwd-hypothetical`, type=`radio`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+----> answers: `['probable', 'explicit', 'explicit', 'probable', 'explicit', 'hypothetical', 'hypothetical', 'explicit', 'hypothetical', 'hypothetical', 'hypothetical', 'hypothetical', 'hypothetical', 'hypothetical', 'hypothetical', 'probable', 'hypothetical', 'hypothetical', 'probable', 'explicit', 'hypothetical', 'probable', 'hypothetical', 'probable', 'explicit', 'probable', 'hypothetical', 'hypothetical', 'hypothetical', 'hypothetical', 'explicit', 'explicit', 'explicit', 'probable', 'hypothetical', 'probable', 'explicit', 'explicit', 'hypothetical', 'hypothetical', 'explicit', 'explicit', 'hypothetical', 'hypothetical', 'probable', 'hypothetical', 'hypothetical', 'hypothetical', 'probable', 'hypothetical']` - type: `<class 'list'>`
+----> baseline_answer: `explicit-no` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`n-characters`, type=`hidden`, task=`ROT Details [m=50] rocstories - 0 - 99`) ------- 
+Skipping element `n-characters` since it is not visible.
+ --> Per-instance overall score: 0.32255244755244755
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'checkbox': [1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0], 'text': [0.5, 0.8, 0.8695652173913044, 0.5555555555555556, 1.0, 0.6666666666666666, 0.8, 0.4, 0.782608695652174, 0.35294117647058826, 0.7777777777777778, 0.0, 0.8181818181818181, 0.0, 0.7499999999999999, 0.0, 0.8, 0.7368421052631579, 0.8181818181818181, 0.375]}
+ = = = = = = = = = = = = starting new task: `Associate countries and languages with Ethnologue` = = = = = = = = = = = = 
+First instance id: 29921
+instance_id: 29948 <-> row_number: 27
+ --> inputs: ['url', 'primary_country', 'region', 'countries']
+ --> Looking up gold labels from row index 27 of `input.csv` (unique inputs). 
+ --> input labels: {'url': ['http://www.ethnologue.com/show_language.asp?code=arb', 'http://www.ethnologue.com/show_language.asp?code=arb', 'http://www.ethnologue.com/show_language.asp?code=arb'], 'primary_country': ['saudiarabia', 'saudiarabia', 'saudiarabia'], 'region': ['Middle East, North Africa. Also in Algeria, Bahrain, Chad, Comoros, Djibouti, Egypt, Eritrea, Iraq, Israel, Jordan, Kuwait, Lebanon, Libya, Morocco, Oman, Palestinian West Bank and Gaza, Qatar, Somalia, Sudan, Syria, Tanzania, Tunisia, United Arab Emirates, Yemen.', 'Middle East, North Africa. Also in Algeria, Bahrain, Chad, Comoros, Djibouti, Egypt, Eritrea, Iraq, Israel, Jordan, Kuwait, Lebanon, Libya, Morocco, Oman, Palestinian West Bank and Gaza, Qatar, Somalia, Sudan, Syria, Tanzania, Tunisia, United Arab Emirates, Yemen.', 'Region  \tMiddle East, North Africa. Also in Algeria, Bahrain, Chad, Comoros, Djibouti, Egypt, Eritrea, Iraq, Israel, Jordan, Kuwait, Lebanon, Libya, Morocco, Oman, Palestinian West Bank and Gaza, Qatar, Somalia, Sudan, Syria, Tanzania, Tunisia, United Arab Emirates, Yemen.'], 'countries': ['tunisia|algeria|uae|somalia|jordan|bahrain|kuwait|morocco|yemen|egypt|lebanon|other|tanzania', 'tunisia|oman|israel|somalia|jordan|qatar|kuwait|yemen|egypt|tanzania', 'tunisia|oman|anguilla|israel|uae|somalia|jordan|bahrain|qatar|kuwait|morocco|yemen|egypt|lebanon|tanzania']}
+ - - - - - -  starting a new element: `Input(name=`url`, type=`text`, task=`Associate countries and languages with Ethnologue`)` - - - - - -  
+input: Input(name=`url`, type=`text`, task=`Associate countries and languages with Ethnologue`)
+about to try executing one action, on the following input: url
+input Input(name=`url`, type=`text`, task=`Associate countries and languages with Ethnologue`)
+Executing one action: self.actions.modify_text('url', 'URL placeholder where the actual URL should be inputted after researching the Ethnologue website for the Arabic language')
+Add text `URL placeholder where the actual URL should be inputted after researching the Ethnologue website for the Arabic language` to this text input: <input type="text" size="80" name="url">
+ - - - - - -  starting a new element: `Input(name=`primary_country`, type=`select`, task=`Associate countries and languages with Ethnologue`)` - - - - - -  
+input: Input(name=`primary_country`, type=`select`, task=`Associate countries and languages with Ethnologue`)
+about to try executing one action, on the following input: primary_country
+input Input(name=`primary_country`, type=`select`, task=`Associate countries and languages with Ethnologue`)
+Executing one action: self.actions.modify_select('primary_country', 'Albania')
+Failed to execute an action self.actions.modify_select('primary_country', 'Albania'), error: Input value `Albania` is not among the available option values `['albania', 'algeria', 'anguilla', 'argentina', 'armenia', 'aruba', 'australia', 'austria', 'bahrain', 'bangladesh', 'belarus', 'belgium', 'bosnia', 'brazil', 'brunei', 'bulgaria', 'cameroon', 'canada', 'chile', 'china', 'colombia', 'costarica', 'croatia', 'cyprus', 'czechrepublic', 'denmark', 'dominicanrepublic', 'egypt', 'estonia', 'ethiopia', 'finland', 'france', 'georgia', 'germany', 'greece', 'guam', 'guatemala', 'guineabissau', 'guyana', 'bosniaandherzegovina', 'hongkong', 'hungary', 'iceland', 'india', 'indonesia', 'iran', 'ireland', 'israel', 'italy', 'jamaica', 'japan', 'jordan', 'kazakhstan', 'kenya', 'korea', 'kuwait', 'latvia', 'lebanon', 'liberia', 'lithuania', 'luxembourg', 'macedonia', 'macedoniatheformeryugoslavrepublicof', 'madagascar', 'malaysia', 'maldives', 'malta', 'mauritius', 'mexico', 'moldova', 'morocco', 'nepal', 'netherlands', 'newzealand', 'nigeria', 'norway', 'oman', 'other', 'pakistan', 'panama', 'peru', 'philippines', 'poland', 'portugal', 'puertorico', 'qatar', 'romania', 'russia', 'russianfederation', 'saudiarabia', 'scotland', 'serbia', 'singapore', 'slovakia', 'slovenia', 'somalia', 'southafrica', 'spain', 'srilanka', 'stlucia', 'stvincent', 'sweden', 'switzerland', 'taiwan', 'tanzania', 'thailand', 'tunisia', 'turkey', 'uae', 'uk', 'ukraine', 'unitedstates', 'uruguay', 'uzbekistan', 'venezuela', 'vietnam', 'yemen', 'zambia']`
+ - - - - - -  starting a new element: `Input(name=`region`, type=`textarea`, task=`Associate countries and languages with Ethnologue`)` - - - - - -  
+input: Input(name=`region`, type=`textarea`, task=`Associate countries and languages with Ethnologue`)
+about to try executing one action, on the following input: region
+input Input(name=`region`, type=`textarea`, task=`Associate countries and languages with Ethnologue`)

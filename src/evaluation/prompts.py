@@ -3877,7 +3877,6 @@ class GPTTokenizer:
 
 if __name__ == "__main__":
   xlingual_tokenizer = GPTTokenizer()
-  print(f"xlingual tokenizer of hello friend: {xlingual_tokenizer.tokenize('hello friend')}")
   use_relevant_html = 3
 
   num_demonstrations = 1
@@ -3900,4 +3899,7 @@ if __name__ == "__main__":
     num_tokens += len(xlingual_tokenizer.tokenize(instance[use_relevant_html]))
 
   print(f"{num_demonstrations} demonstration: {num_tokens}")
+
+  print(f"text_instructions {len(xlingual_tokenizer.tokenize(text_oracle_instructions()))}")
+  print(f"text_vision_instructions {len(xlingual_tokenizer.tokenize(text_vision_oracle_instructions()))}")
   pass

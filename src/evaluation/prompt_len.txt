@@ -1,4 +1,5 @@
-xlingual tokenizer of hello friend: ['hello', 'friend']
-1 demonstration: 3592
-3 demonstration: 10513
-7 demonstration: 64773
+1 demonstration: 479
+3 demonstration: 2298
+7 demonstration: 4218
+text_instructions 189
+text_vision_instructions 211
