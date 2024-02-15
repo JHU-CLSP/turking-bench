@@ -997,6 +997,8 @@ class Evaluation:
                 csv_filename = f'{self.solver_type}_{self.num_demonstrations}_use-relevant-html_{self.use_relevant_html}_{self.tasks}_scores_{today}.csv'
             elif self.solver_type == "text" or self.solver_type == "text-vision":
                 csv_filename = f'{self.solver_type}_{self.ollama_model}_{self.num_demonstrations}_use-relevant-html_{self.use_relevant_html}_{self.tasks}_scores_{today}.csv'
+            else:
+                csv_filename = f'{self.solver_type}_{self.tasks}_scores_{today}.csv'
 
             df.to_csv(csv_filename, index=True)
 
