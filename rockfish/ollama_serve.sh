@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-#SBATCH --job-name=llava
-#SBATCH --output=llava.out.log
-#SBATCH --error=llava.err.log
+#SBATCH --job-name=ollama_serve
+#SBATCH --output=ollama_serve.out.log
+#SBATCH --error=ollama_serve.err.log
 #
 # Number of tasks needed for this job. Generally, used with MPI jobs
 #SBATCH --ntasks=1
@@ -41,5 +41,4 @@ bash="/bin/bash"
 python --version
 which python
 
-cd turk-instructions/src
-ollama run llava & ./1_ia1_run_website.sh & sleep 10 && python3 4_run_evaluation.py --solver_type text-vision --ollama_model llava --tasks test_easy --max_instance_count 1 --no-headless --no-do_eval --server > text_gpt.txt
+ollama serve > ollama_serve.log &
