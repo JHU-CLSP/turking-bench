@@ -39,4 +39,4 @@ bash="/bin/bash"
 python --version
 which python
 
-ollama serve &
+nohup ollama serve &
