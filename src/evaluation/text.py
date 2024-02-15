@@ -78,7 +78,7 @@ class GPT4Model(TextModel):
             except Exception as e:
                 fail_count += 1
                 time.sleep(30)
-                print(f"Error getting action from GPT4V model {e}, trying again, current fail_count is {fail_count}")
+                print(f"Error getting action from GPT4 model {e}, trying again, current fail_count is {fail_count}")
 
         print(f"OpenAI Response: {response.choices[0].message.content}")
         return response.choices[0].message.content
@@ -134,7 +134,7 @@ class ClaudeModel(TextModel):
             except Exception as e:
                 fail_count += 1
                 time.sleep(30)
-                print(f"Error getting action from GPT4V model {e}, trying again, current fail_count is {fail_count}")
+                print(f"Error getting action from Claude model {e}, trying again, current fail_count is {fail_count}")
 
         print(f"Claude response: {completion.completion}")
         return completion.completion
