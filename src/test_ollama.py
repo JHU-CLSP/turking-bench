@@ -13,16 +13,62 @@ except Exception as e:
     print(f"Error importing pyautogui {e}")
     pyautogui_installed = False
 from openai import OpenAI
-from typing import List, Tuple
+from typing import List, Tuple, Union, Literal
 import base64
 from dotenv import load_dotenv
 import copy
-from evaluation.prompts import text_vision_oracle_instructions, few_shot_examples
+from evaluation.prompts import text_oracle_instructions, text_vision_oracle_instructions, few_shot_examples
 from itertools import islice
 import time
+from pydantic import BaseModel
 
 import requests
 import json
+
+class OLlamaTextModel():
+    def __init__(self, model: str):
+        self.model = model
+
+    def get_text_baseline_action(self, input_name: str, html_code: str, num_demonstrations: int, use_relevant_html: bool) -> str:
+        prompt = f"""
+                {text_oracle_instructions()}
+                Input name: {input_name}
+                HTML:
+                {html_code}
+                """
+
+        prompt = f"""
+        {text_oracle_instructions()}
+
+        Here are some examples of how the user might interact with the assistant. 
+        """
+        for idx, instance in enumerate(islice(few_shot_examples(), num_demonstrations)):
+            prompt += f"""
+            user: 
+            {instance[3] if use_relevant_html else instance[0]}
+            assistant:
+            {instance[2]}
+
+            """ 
+
+        prompt += f"""
+        user: 
+        {html_code}
+        assistant:
+        """
+
+        url = "http://localhost:11434/api/generate"
+        payload = {
+            "model": self.model,
+            "prompt": prompt,
+            "stream": False 
+        }
+
+        response = requests.post(url, data=json.dumps(payload))
+        model_response = (json.loads(response.text))["response"]
+        print(f"OLlama response {model_response}")
+
+        return model_response
 
 class OLlamaVisionModel():
     def __init__(self, model: str):
