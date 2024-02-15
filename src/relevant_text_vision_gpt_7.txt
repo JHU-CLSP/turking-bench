@@ -10352,3 +10352,195 @@ We are going to select this radio button: <input type="radio" name="adj_7" value
 input: Input(name=`pos_qual_ctrl_2`, type=`radio`, task=`Scalar Adjectives Identification`)
 about to try executing one action, on the following input: pos_qual_ctrl_2
 input Input(name=`pos_qual_ctrl_2`, type=`radio`, task=`Scalar Adjectives Identification`)
+Executing one action: self.actions.modify_radio('pos_qual_ctrl_2', 'Yes')
+We are going to select this radio button: <input type="radio" name="pos_qual_ctrl_2" value="Yes" required="">
+ - - - - - -  starting a new element: `Input(name=`adj_8`, type=`radio`, task=`Scalar Adjectives Identification`)` - - - - - -  
+input: Input(name=`adj_8`, type=`radio`, task=`Scalar Adjectives Identification`)
+about to try executing one action, on the following input: adj_8
+input Input(name=`adj_8`, type=`radio`, task=`Scalar Adjectives Identification`)
+Executing one action: self.actions.modify_radio('adj_8', 'No')
+We are going to select this radio button: <input type="radio" name="adj_8" value="No">
+ - - - - - -  starting a new element: `Input(name=`pos_qual_ctrl_4`, type=`radio`, task=`Scalar Adjectives Identification`)` - - - - - -  
+input: Input(name=`pos_qual_ctrl_4`, type=`radio`, task=`Scalar Adjectives Identification`)
+about to try executing one action, on the following input: pos_qual_ctrl_4
+input Input(name=`pos_qual_ctrl_4`, type=`radio`, task=`Scalar Adjectives Identification`)
+Executing one action: self.actions.modify_radio('pos_qual_ctrl_4', 'Yes')
+We are going to select this radio button: <input type="radio" name="pos_qual_ctrl_4" value="Yes" required="">
+ - - - - - -  starting a new element: `Input(name=`adj_9`, type=`radio`, task=`Scalar Adjectives Identification`)` - - - - - -  
+input: Input(name=`adj_9`, type=`radio`, task=`Scalar Adjectives Identification`)
+about to try executing one action, on the following input: adj_9
+input Input(name=`adj_9`, type=`radio`, task=`Scalar Adjectives Identification`)
+Executing one action: self.actions.modify_radio('adj_9', 'Yes')
+We are going to select this radio button: <input type="radio" name="adj_9" value="Yes" required="">
+ - - - - - -  starting a new element: `Input(name=`adj_10`, type=`radio`, task=`Scalar Adjectives Identification`)` - - - - - -  
+input: Input(name=`adj_10`, type=`radio`, task=`Scalar Adjectives Identification`)
+about to try executing one action, on the following input: adj_10
+input Input(name=`adj_10`, type=`radio`, task=`Scalar Adjectives Identification`)
+Executing one action: self.actions.modify_radio('adj_10', 'No')
+We are going to select this radio button: <input type="radio" name="adj_10" value="No">
+input: Input(name=`adj_1`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : ['No']
+ visible_values : ['No']
+input: Input(name=`pos_qual_ctrl_1`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : ['No']
+ visible_values : ['No']
+input: Input(name=`adj_2`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : ['Naa']
+ visible_values : ['Naa']
+input: Input(name=`adj_3`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : ['No']
+ visible_values : ['No']
+input: Input(name=`neg_qual_ctrl`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : ['Yes']
+ visible_values : ['Yes']
+input: Input(name=`adj_4`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : []
+ visible_values : []
+input: Input(name=`adj_5`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : ['No']
+ visible_values : ['No']
+input: Input(name=`pos_qual_ctrl_3`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : ['Yes']
+ visible_values : ['Yes']
+input: Input(name=`adj_6`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : ['No']
+ visible_values : ['No']
+input: Input(name=`pos_qual_ctrl_5`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : ['Yes']
+ visible_values : ['Yes']
+input: Input(name=`adj_7`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : ['No']
+ visible_values : ['No']
+input: Input(name=`pos_qual_ctrl_2`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : ['Yes']
+ visible_values : ['Yes']
+input: Input(name=`adj_8`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : ['No']
+ visible_values : ['No']
+input: Input(name=`pos_qual_ctrl_4`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : ['Yes']
+ visible_values : ['Yes']
+input: Input(name=`adj_9`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : ['Yes']
+ visible_values : ['Yes']
+input: Input(name=`adj_10`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : ['No']
+ visible_values : ['No']
+ ------- evaluating input: Input(name=`adj_1`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['No', 'No', 'No']` - type: `<class 'list'>`
+----> baseline_answer: `No` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_1`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['Yes', 'Yes', 'Yes']` - type: `<class 'list'>`
+----> baseline_answer: `No` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_2`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['No', 'No', 'No']` - type: `<class 'list'>`
+----> baseline_answer: `Naa` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_3`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['No', 'No', 'No']` - type: `<class 'list'>`
+----> baseline_answer: `No` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`neg_qual_ctrl`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['No', 'No', 'No']` - type: `<class 'list'>`
+----> baseline_answer: `Yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_4`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['No', 'No', 'No']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_5`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['No', 'No', 'No']` - type: `<class 'list'>`
+----> baseline_answer: `No` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_3`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['Yes', 'Yes', 'Yes']` - type: `<class 'list'>`
+----> baseline_answer: `Yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_6`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['No', 'No', 'No']` - type: `<class 'list'>`
+----> baseline_answer: `No` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_5`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['Yes', 'Yes', 'Yes']` - type: `<class 'list'>`
+----> baseline_answer: `Yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_7`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['No', 'No', 'No']` - type: `<class 'list'>`
+----> baseline_answer: `No` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_2`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['Yes', 'Yes', 'Yes']` - type: `<class 'list'>`
+----> baseline_answer: `Yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_8`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['No', 'No', 'No']` - type: `<class 'list'>`
+----> baseline_answer: `No` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_4`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['Yes', 'Yes', 'Yes']` - type: `<class 'list'>`
+----> baseline_answer: `Yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_9`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['No', 'No', 'No']` - type: `<class 'list'>`
+----> baseline_answer: `Yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_10`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['No', 'No', 'No']` - type: `<class 'list'>`
+----> baseline_answer: `No` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ --> Per-instance overall score: 0.6875
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0]}
+instance_id: 9576 <-> row_number: 113
+ --> inputs: ['pos_qual_ctrl_1', 'pos_qual_ctrl_2', 'pos_qual_ctrl_3', 'adj_1', 'adj_2', 'adj_3', 'pos_qual_ctrl_5', 'pos_qual_ctrl_4', 'adj_4', 'neg_qual_ctrl', 'adj_5', 'adj_6', 'adj_7', 'adj_8', 'adj_9', 'adj_10']
+ --> Looking up gold labels from row index 113 of `input.csv` (unique inputs). 
+ --> input labels: {'pos_qual_ctrl_1': ['Yes', 'Yes', 'Yes'], 'pos_qual_ctrl_2': ['Yes', 'Yes', 'No'], 'pos_qual_ctrl_3': ['Yes', 'Yes', 'Yes'], 'adj_1': ['No', 'No', 'No'], 'adj_2': ['No', 'No', 'No'], 'adj_3': ['No', 'Naa', 'No'], 'pos_qual_ctrl_5': ['Yes', 'Yes', 'Yes'], 'pos_qual_ctrl_4': ['Yes', 'Yes', 'Yes'], 'adj_4': ['No', 'No', 'No'], 'neg_qual_ctrl': ['No', 'No', 'No'], 'adj_5': ['No', 'No', 'No'], 'adj_6': ['No', 'No', 'No'], 'adj_7': ['No', 'No', 'No'], 'adj_8': ['No', 'No', 'No'], 'adj_9': ['No', 'No', 'No'], 'adj_10': ['No', 'No', 'No']}
+ - - - - - -  starting a new element: `Input(name=`pos_qual_ctrl_1`, type=`radio`, task=`Scalar Adjectives Identification`)` - - - - - -  
+input: Input(name=`pos_qual_ctrl_1`, type=`radio`, task=`Scalar Adjectives Identification`)
+about to try executing one action, on the following input: pos_qual_ctrl_1
+input Input(name=`pos_qual_ctrl_1`, type=`radio`, task=`Scalar Adjectives Identification`)
+Executing one action: self.actions.modify_radio('pos_qual_ctrl_1', 'No')
+We are going to select this radio button: <input type="radio" name="pos_qual_ctrl_1" value="No">
+ - - - - - -  starting a new element: `Input(name=`pos_qual_ctrl_2`, type=`radio`, task=`Scalar Adjectives Identification`)` - - - - - -  
+input: Input(name=`pos_qual_ctrl_2`, type=`radio`, task=`Scalar Adjectives Identification`)
+about to try executing one action, on the following input: pos_qual_ctrl_2
+input Input(name=`pos_qual_ctrl_2`, type=`radio`, task=`Scalar Adjectives Identification`)
+Executing one action: self.actions.modify_radio('pos_qual_ctrl_2', 'No')
+We are going to select this radio button: <input type="radio" name="pos_qual_ctrl_2" value="No">
+ - - - - - -  starting a new element: `Input(name=`pos_qual_ctrl_3`, type=`radio`, task=`Scalar Adjectives Identification`)` - - - - - -  
+input: Input(name=`pos_qual_ctrl_3`, type=`radio`, task=`Scalar Adjectives Identification`)
+about to try executing one action, on the following input: pos_qual_ctrl_3
+input Input(name=`pos_qual_ctrl_3`, type=`radio`, task=`Scalar Adjectives Identification`)
