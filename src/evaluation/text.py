@@ -4,10 +4,13 @@ from openai import OpenAI
 from evaluation.prompts import text_oracle_instructions, few_shot_examples
 from itertools import islice
 import time
+import os
+from anthropic import AI_PROMPT, HUMAN_PROMPT, AnthropicBedrock
 
 class Models(Enum):
     GPT4 = 1
     OLlama = 2
+    Claude = 3
 
 class TextModel:
     def __init__(self, model: Models):
@@ -85,3 +88,65 @@ class OLlamaTextModel(TextModel):
 
     def get_text_baseline_action(self, input_name: str, html_code: str, num_demonstrations: int, use_relevant_html: bool) -> str:
         pass
+
+class ClaudeModel(TextModel):
+    def __init__(self):
+        super().__init__(Models.Claude)
+        load_dotenv()
+        aws_secret_key = os.getenv("AWS_SECRET_KEY")
+        aws_access_key = os.getenv("AWS_ACCESS_KEY")
+        self.client = AnthropicBedrock(aws_access_key=aws_access_key, aws_secret_key=aws_secret_key, aws_region="us-east-1")
+
+    def get_text_baseline_action(self, input_name: str, html_code: str, num_demonstrations: int, use_relevant_html: bool) -> str:
+        messages = [{
+            "role": "assistant",
+            "content": text_oracle_instructions()
+        }]
+
+        for idx, instance in enumerate(islice(few_shot_examples(), num_demonstrations)):
+            user_message = {
+                "role": "user",
+                "content": instance[3] if use_relevant_html else instance[0]
+            }
+
+            assistant_message = {
+                "role": "assistant",
+                "content": instance[2]
+            }
+
+            messages.append(user_message)
+            messages.append(assistant_message)
+
+
+        new_message = {
+            "role": "user",
+            "content": f"""
+                        Input name: {input_name}
+                        HTML:
+                        {html_code}
+                        """
+        }
+
+        messages.append(new_message)
+
+        fail_count = 0
+        response = None 
+        while fail_count < 20:
+            try: 
+                response = self.client.chat.completions.create(
+                    model="gpt-4-turbo-preview",
+                    messages=messages,
+                    temperature=1,
+                    max_tokens=256,
+                    top_p=1,
+                    frequency_penalty=0,
+                    presence_penalty=0
+                )
+
+                break
+            except Exception as e:
+                fail_count += 1
+                time.sleep(30)
+                print(f"Error getting action from GPT4V model {e}, trying again, current fail_count is {fail_count}")
+
+        return response.choices[0].message.content
