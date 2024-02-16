@@ -43397,3 +43397,2213 @@ input Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (gr
 OpenAI Response: self.actions.modify_radio('Answer_radios2', '1')
 Executing one action: self.actions.modify_radio('Answer_radios2', '1')
 We are going to select this radio button: <input type="radio" name="Answer_radios2" id="Answer_radios_2_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal2
+input Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal2', '1')
+Executing one action: self.actions.modify_checkbox('equal2', '1')
+Looking for checkboxes with `name`: `equal2` the values: `['1']`
+About to check this checkbox: <input type="checkbox" name="equal2" id="equal2" value="1">
+ - - - - - -  starting a new element: `Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender1` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender2` since it is not visible.
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : []
+ visible_values : []
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+ ------- evaluating input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[2]` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender1` since it is not visible.
+ ------- evaluating input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender2` since it is not visible.
+ --> Per-instance overall score: 0.25
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0], 'checkbox': [1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 20503 <-> row_number: 81
+ --> inputs: ['Answer_radios1', 'equal1', 'Answer_radios2', 'equal2', 'gender1', 'gender2']
+ --> Looking up gold labels from row index 81 of `input.csv` (unique inputs). 
+ --> input labels: {'Answer_radios1': [1], 'equal1': [''], 'Answer_radios2': [2], 'equal2': [''], 'gender1': [nan], 'gender2': [nan]}
+ - - - - - -  starting a new element: `Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios1
+input Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios1', '1')
+Executing one action: self.actions.modify_radio('Answer_radios1', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios1" id="Answer_radios_1_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal1
+input Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal1', '1')
+Executing one action: self.actions.modify_checkbox('equal1', '1')
+Looking for checkboxes with `name`: `equal1` the values: `['1']`
+About to check this checkbox: <input type="checkbox" name="equal1" id="equal1" value="1">
+ - - - - - -  starting a new element: `Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios2
+input Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios2', '1')
+Executing one action: self.actions.modify_radio('Answer_radios2', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios2" id="Answer_radios_2_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal2
+input Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal2', '1')
+Executing one action: self.actions.modify_checkbox('equal2', '1')
+Looking for checkboxes with `name`: `equal2` the values: `['1']`
+About to check this checkbox: <input type="checkbox" name="equal2" id="equal2" value="1">
+ - - - - - -  starting a new element: `Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender1` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender2` since it is not visible.
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+ ------- evaluating input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[2]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender1` since it is not visible.
+ ------- evaluating input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender2` since it is not visible.
+ --> Per-instance overall score: 0.25
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0], 'checkbox': [1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 20490 <-> row_number: 68
+ --> inputs: ['Answer_radios1', 'equal1', 'Answer_radios2', 'equal2', 'gender1', 'gender2']
+ --> Looking up gold labels from row index 68 of `input.csv` (unique inputs). 
+ --> input labels: {'Answer_radios1': [1], 'equal1': [''], 'Answer_radios2': [2], 'equal2': [''], 'gender1': [nan], 'gender2': [nan]}
+ - - - - - -  starting a new element: `Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios1
+input Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios1', '1')
+Executing one action: self.actions.modify_radio('Answer_radios1', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios1" id="Answer_radios_1_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal1
+input Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal1', '1')
+Executing one action: self.actions.modify_checkbox('equal1', '1')
+Looking for checkboxes with `name`: `equal1` the values: `['1']`
+About to check this checkbox: <input type="checkbox" name="equal1" id="equal1" value="1">
+ - - - - - -  starting a new element: `Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios2
+input Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios2', '1')
+Executing one action: self.actions.modify_radio('Answer_radios2', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios2" id="Answer_radios_2_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal2
+input Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal2', '1')
+Executing one action: self.actions.modify_checkbox('equal2', '1')
+Looking for checkboxes with `name`: `equal2` the values: `['1']`
+About to check this checkbox: <input type="checkbox" name="equal2" id="equal2" value="1">
+ - - - - - -  starting a new element: `Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender1` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender2` since it is not visible.
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+ ------- evaluating input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[2]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender1` since it is not visible.
+ ------- evaluating input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender2` since it is not visible.
+ --> Per-instance overall score: 0.25
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0], 'checkbox': [1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 20429 <-> row_number: 7
+ --> inputs: ['Answer_radios1', 'equal1', 'Answer_radios2', 'equal2', 'gender1', 'gender2']
+ --> Looking up gold labels from row index 7 of `input.csv` (unique inputs). 
+ --> input labels: {'Answer_radios1': [2], 'equal1': [''], 'Answer_radios2': [1], 'equal2': [''], 'gender1': [nan], 'gender2': [nan]}
+ - - - - - -  starting a new element: `Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios1
+input Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios1', '1')
+Executing one action: self.actions.modify_radio('Answer_radios1', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios1" id="Answer_radios_1_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal1
+input Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal1', '1')
+Executing one action: self.actions.modify_checkbox('equal1', '1')
+Looking for checkboxes with `name`: `equal1` the values: `['1']`
+About to check this checkbox: <input type="checkbox" name="equal1" id="equal1" value="1">
+ - - - - - -  starting a new element: `Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios2
+input Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios2', '1')
+Executing one action: self.actions.modify_radio('Answer_radios2', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios2" id="Answer_radios_2_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal2
+input Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal2', '1')
+Executing one action: self.actions.modify_checkbox('equal2', '1')
+Looking for checkboxes with `name`: `equal2` the values: `['1']`
+About to check this checkbox: <input type="checkbox" name="equal2" id="equal2" value="1">
+ - - - - - -  starting a new element: `Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender1` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender2` since it is not visible.
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+ ------- evaluating input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[2]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender1` since it is not visible.
+ ------- evaluating input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender2` since it is not visible.
+ --> Per-instance overall score: 0.25
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0], 'checkbox': [1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 20521 <-> row_number: 99
+ --> inputs: ['Answer_radios1', 'equal1', 'Answer_radios2', 'equal2', 'gender1', 'gender2']
+ --> Looking up gold labels from row index 99 of `input.csv` (unique inputs). 
+ --> input labels: {'Answer_radios1': [2], 'equal1': [''], 'Answer_radios2': [1], 'equal2': [''], 'gender1': [nan], 'gender2': [nan]}
+ - - - - - -  starting a new element: `Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios1
+input Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios1', '1')
+Executing one action: self.actions.modify_radio('Answer_radios1', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios1" id="Answer_radios_1_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal1
+input Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal1', True)
+Executing one action: self.actions.modify_checkbox('equal1', True)
+Looking for checkboxes with `name`: `equal1` the values: `['True']`
+ ** Warning **: input value is []. So, we're not going to modify the checkbox.
+ - - - - - -  starting a new element: `Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios2
+input Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios2', '1')
+Executing one action: self.actions.modify_radio('Answer_radios2', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios2" id="Answer_radios_2_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal2
+input Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal2', '1')
+Executing one action: self.actions.modify_checkbox('equal2', '1')
+Looking for checkboxes with `name`: `equal2` the values: `['1']`
+About to check this checkbox: <input type="checkbox" name="equal2" id="equal2" value="1">
+ - - - - - -  starting a new element: `Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender1` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender2` since it is not visible.
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : []
+ visible_values : []
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+ ------- evaluating input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[2]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender1` since it is not visible.
+ ------- evaluating input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender2` since it is not visible.
+ --> Per-instance overall score: 0.5
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0], 'checkbox': [1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]}
+instance_id: 20510 <-> row_number: 88
+ --> inputs: ['Answer_radios1', 'equal1', 'Answer_radios2', 'equal2', 'gender1', 'gender2']
+ --> Looking up gold labels from row index 88 of `input.csv` (unique inputs). 
+ --> input labels: {'Answer_radios1': [1], 'equal1': [''], 'Answer_radios2': [2], 'equal2': [''], 'gender1': [nan], 'gender2': [nan]}
+ - - - - - -  starting a new element: `Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios1
+input Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios1', '1')
+Executing one action: self.actions.modify_radio('Answer_radios1', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios1" id="Answer_radios_1_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal1
+input Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal1', '1')
+Executing one action: self.actions.modify_checkbox('equal1', '1')
+Looking for checkboxes with `name`: `equal1` the values: `['1']`
+About to check this checkbox: <input type="checkbox" name="equal1" id="equal1" value="1">
+ - - - - - -  starting a new element: `Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios2
+input Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios2', '1')
+Executing one action: self.actions.modify_radio('Answer_radios2', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios2" id="Answer_radios_2_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal2
+input Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal2', True)
+Executing one action: self.actions.modify_checkbox('equal2', True)
+Looking for checkboxes with `name`: `equal2` the values: `['True']`
+ ** Warning **: input value is []. So, we're not going to modify the checkbox.
+ - - - - - -  starting a new element: `Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender1` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender2` since it is not visible.
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : []
+ visible_values : []
+input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+ ------- evaluating input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[2]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender1` since it is not visible.
+ ------- evaluating input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender2` since it is not visible.
+ --> Per-instance overall score: 0.5
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0], 'checkbox': [1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0]}
+instance_id: 20474 <-> row_number: 52
+ --> inputs: ['Answer_radios1', 'equal1', 'Answer_radios2', 'equal2', 'gender1', 'gender2']
+ --> Looking up gold labels from row index 52 of `input.csv` (unique inputs). 
+ --> input labels: {'Answer_radios1': [2], 'equal1': [''], 'Answer_radios2': [1], 'equal2': [''], 'gender1': [nan], 'gender2': [nan]}
+ - - - - - -  starting a new element: `Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios1
+input Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios1', '1')
+Executing one action: self.actions.modify_radio('Answer_radios1', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios1" id="Answer_radios_1_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal1
+input Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal1', '1')
+Executing one action: self.actions.modify_checkbox('equal1', '1')
+Looking for checkboxes with `name`: `equal1` the values: `['1']`
+About to check this checkbox: <input type="checkbox" name="equal1" id="equal1" value="1">
+ - - - - - -  starting a new element: `Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios2
+input Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios2', '1')
+Executing one action: self.actions.modify_radio('Answer_radios2', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios2" id="Answer_radios_2_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal2
+input Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal2', '1')
+Executing one action: self.actions.modify_checkbox('equal2', '1')
+Looking for checkboxes with `name`: `equal2` the values: `['1']`
+About to check this checkbox: <input type="checkbox" name="equal2" id="equal2" value="1">
+ - - - - - -  starting a new element: `Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender1` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender2` since it is not visible.
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+ ------- evaluating input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[2]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender1` since it is not visible.
+ ------- evaluating input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender2` since it is not visible.
+ --> Per-instance overall score: 0.25
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0], 'checkbox': [1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0]}
+instance_id: 20509 <-> row_number: 87
+ --> inputs: ['Answer_radios1', 'equal1', 'Answer_radios2', 'equal2', 'gender1', 'gender2']
+ --> Looking up gold labels from row index 87 of `input.csv` (unique inputs). 
+ --> input labels: {'Answer_radios1': [2], 'equal1': [''], 'Answer_radios2': [1], 'equal2': [1.0], 'gender1': [nan], 'gender2': [nan]}
+ - - - - - -  starting a new element: `Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios1
+input Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios1', '1')
+Executing one action: self.actions.modify_radio('Answer_radios1', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios1" id="Answer_radios_1_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal1
+input Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal1', '1')
+Executing one action: self.actions.modify_checkbox('equal1', '1')
+Looking for checkboxes with `name`: `equal1` the values: `['1']`
+About to check this checkbox: <input type="checkbox" name="equal1" id="equal1" value="1">
+ - - - - - -  starting a new element: `Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios2
+input Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios2', '1')
+Executing one action: self.actions.modify_radio('Answer_radios2', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios2" id="Answer_radios_2_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal2
+input Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal2', '1')
+Executing one action: self.actions.modify_checkbox('equal2', '1')
+Looking for checkboxes with `name`: `equal2` the values: `['1']`
+About to check this checkbox: <input type="checkbox" name="equal2" id="equal2" value="1">
+ - - - - - -  starting a new element: `Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender1` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender2` since it is not visible.
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+ ------- evaluating input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[2]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[1.0]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+Model answers: 1 
+Gold answers: [1.0]
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender1` since it is not visible.
+ ------- evaluating input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender2` since it is not visible.
+ --> Per-instance overall score: 0.5
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0], 'checkbox': [1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]}
+instance_id: 20450 <-> row_number: 28
+ --> inputs: ['Answer_radios1', 'equal1', 'Answer_radios2', 'equal2', 'gender1', 'gender2']
+ --> Looking up gold labels from row index 28 of `input.csv` (unique inputs). 
+ --> input labels: {'Answer_radios1': [1], 'equal1': [''], 'Answer_radios2': [2], 'equal2': [''], 'gender1': [nan], 'gender2': [nan]}
+ - - - - - -  starting a new element: `Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios1
+input Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios1', '1')
+Executing one action: self.actions.modify_radio('Answer_radios1', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios1" id="Answer_radios_1_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal1
+input Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal1', '1')
+Executing one action: self.actions.modify_checkbox('equal1', '1')
+Looking for checkboxes with `name`: `equal1` the values: `['1']`
+About to check this checkbox: <input type="checkbox" name="equal1" id="equal1" value="1">
+ - - - - - -  starting a new element: `Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios2
+input Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios2', '1')
+Executing one action: self.actions.modify_radio('Answer_radios2', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios2" id="Answer_radios_2_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal2
+input Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal2', '1')
+Executing one action: self.actions.modify_checkbox('equal2', '1')
+Looking for checkboxes with `name`: `equal2` the values: `['1']`
+About to check this checkbox: <input type="checkbox" name="equal2" id="equal2" value="1">
+ - - - - - -  starting a new element: `Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender1` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender2` since it is not visible.
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+ ------- evaluating input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[2]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender1` since it is not visible.
+ ------- evaluating input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender2` since it is not visible.
+ --> Per-instance overall score: 0.25
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0], 'checkbox': [1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0]}
+instance_id: 20434 <-> row_number: 12
+ --> inputs: ['Answer_radios1', 'equal1', 'Answer_radios2', 'equal2', 'gender1', 'gender2']
+ --> Looking up gold labels from row index 12 of `input.csv` (unique inputs). 
+ --> input labels: {'Answer_radios1': [1], 'equal1': [''], 'Answer_radios2': [2], 'equal2': [''], 'gender1': [nan], 'gender2': [nan]}
+ - - - - - -  starting a new element: `Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios1
+input Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios1', '1')
+Executing one action: self.actions.modify_radio('Answer_radios1', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios1" id="Answer_radios_1_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal1
+input Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal1', '1')
+Executing one action: self.actions.modify_checkbox('equal1', '1')
+Looking for checkboxes with `name`: `equal1` the values: `['1']`
+About to check this checkbox: <input type="checkbox" name="equal1" id="equal1" value="1">
+ - - - - - -  starting a new element: `Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios2
+input Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios2', '1')
+Executing one action: self.actions.modify_radio('Answer_radios2', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios2" id="Answer_radios_2_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal2
+input Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal2', '1')
+Executing one action: self.actions.modify_checkbox('equal2', '1')
+Looking for checkboxes with `name`: `equal2` the values: `['1']`
+About to check this checkbox: <input type="checkbox" name="equal2" id="equal2" value="1">
+ - - - - - -  starting a new element: `Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender1` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender2` since it is not visible.
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+ ------- evaluating input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[2]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender1` since it is not visible.
+ ------- evaluating input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender2` since it is not visible.
+ --> Per-instance overall score: 0.25
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0], 'checkbox': [1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 20453 <-> row_number: 31
+ --> inputs: ['Answer_radios1', 'equal1', 'Answer_radios2', 'equal2', 'gender1', 'gender2']
+ --> Looking up gold labels from row index 31 of `input.csv` (unique inputs). 
+ --> input labels: {'Answer_radios1': [2], 'equal1': [''], 'Answer_radios2': [1], 'equal2': [''], 'gender1': [nan], 'gender2': [nan]}
+ - - - - - -  starting a new element: `Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios1
+input Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios1', '1')
+Executing one action: self.actions.modify_radio('Answer_radios1', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios1" id="Answer_radios_1_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal1
+input Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal1', '1')
+Executing one action: self.actions.modify_checkbox('equal1', '1')
+Looking for checkboxes with `name`: `equal1` the values: `['1']`
+About to check this checkbox: <input type="checkbox" name="equal1" id="equal1" value="1">
+ - - - - - -  starting a new element: `Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios2
+input Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios2', '1')
+Executing one action: self.actions.modify_radio('Answer_radios2', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios2" id="Answer_radios_2_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal2
+input Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal2', '1')
+Executing one action: self.actions.modify_checkbox('equal2', '1')
+Looking for checkboxes with `name`: `equal2` the values: `['1']`
+About to check this checkbox: <input type="checkbox" name="equal2" id="equal2" value="1">
+ - - - - - -  starting a new element: `Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender1` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender2` since it is not visible.
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+ ------- evaluating input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[2]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender1` since it is not visible.
+ ------- evaluating input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender2` since it is not visible.
+ --> Per-instance overall score: 0.25
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0], 'checkbox': [1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 20511 <-> row_number: 89
+ --> inputs: ['Answer_radios1', 'equal1', 'Answer_radios2', 'equal2', 'gender1', 'gender2']
+ --> Looking up gold labels from row index 89 of `input.csv` (unique inputs). 
+ --> input labels: {'Answer_radios1': [1], 'equal1': [''], 'Answer_radios2': [2], 'equal2': [''], 'gender1': [nan], 'gender2': [nan]}
+ - - - - - -  starting a new element: `Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios1
+input Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios1', '1')
+Executing one action: self.actions.modify_radio('Answer_radios1', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios1" id="Answer_radios_1_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal1
+input Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal1', '1')
+Executing one action: self.actions.modify_checkbox('equal1', '1')
+Looking for checkboxes with `name`: `equal1` the values: `['1']`
+About to check this checkbox: <input type="checkbox" name="equal1" id="equal1" value="1">
+ - - - - - -  starting a new element: `Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios2
+input Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios2', '1')
+Executing one action: self.actions.modify_radio('Answer_radios2', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios2" id="Answer_radios_2_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal2
+input Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal2', '1')
+Executing one action: self.actions.modify_checkbox('equal2', '1')
+Looking for checkboxes with `name`: `equal2` the values: `['1']`
+About to check this checkbox: <input type="checkbox" name="equal2" id="equal2" value="1">
+ - - - - - -  starting a new element: `Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender1` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender2` since it is not visible.
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+ ------- evaluating input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[2]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender1` since it is not visible.
+ ------- evaluating input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender2` since it is not visible.
+ --> Per-instance overall score: 0.25
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0], 'checkbox': [1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 20422 <-> row_number: 0
+ --> inputs: ['Answer_radios1', 'equal1', 'Answer_radios2', 'equal2', 'gender1', 'gender2']
+ --> Looking up gold labels from row index 0 of `input.csv` (unique inputs). 
+ --> input labels: {'Answer_radios1': [1], 'equal1': [''], 'Answer_radios2': [2], 'equal2': [''], 'gender1': [nan], 'gender2': [nan]}
+ - - - - - -  starting a new element: `Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios1
+input Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios1', '1')
+Executing one action: self.actions.modify_radio('Answer_radios1', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios1" id="Answer_radios_1_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal1
+input Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal1', '1')
+Executing one action: self.actions.modify_checkbox('equal1', '1')
+Looking for checkboxes with `name`: `equal1` the values: `['1']`
+About to check this checkbox: <input type="checkbox" name="equal1" id="equal1" value="1">
+ - - - - - -  starting a new element: `Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: Answer_radios2
+input Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_radio('Answer_radios2', '1')
+Executing one action: self.actions.modify_radio('Answer_radios2', '1')
+We are going to select this radio button: <input type="radio" name="Answer_radios2" id="Answer_radios_2_1" value="1">
+ - - - - - -  starting a new element: `Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+about to try executing one action, on the following input: equal2
+input Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+OpenAI Response: self.actions.modify_checkbox('equal2', '1')
+Executing one action: self.actions.modify_checkbox('equal2', '1')
+Looking for checkboxes with `name`: `equal2` the values: `['1']`
+About to check this checkbox: <input type="checkbox" name="equal2" id="equal2" value="1">
+ - - - - - -  starting a new element: `Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender1` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)` - - - - - -  
+Skipping element `gender2` since it is not visible.
+input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`)
+ visible : ['1']
+ visible_values : ['1']
+input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`)
+ visible : [' ']
+ visible_values : [' ']
+ ------- evaluating input: Input(name=`Answer_radios1`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[1]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`equal1`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`Answer_radios2`, type=`radio`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `[2]` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`equal2`, type=`checkbox`, task=`winogrande validation (grammar) additional_ph`) ------- 
+----> answers: `['']` - type: `<class 'list'>`
+----> baseline_answer: `1` - type: `<class 'str'>`
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`gender1`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender1` since it is not visible.
+ ------- evaluating input: Input(name=`gender2`, type=`hidden`, task=`winogrande validation (grammar) additional_ph`) ------- 
+Skipping element `gender2` since it is not visible.
+ --> Per-instance overall score: 0.25
+ --> Per-instance per-field breakdown: {'radio': [0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0], 'checkbox': [1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+ = = = = = = = = = = = = starting new task: `atomic_event2event-effects 4` = = = = = = = = = = = = 
+First instance id: 33704
+instance_id: 33768 <-> row_number: 64
+ --> inputs: ['xhaseff', 'ohaseff', 'xeff2a', 'xeff3b', 'xeff3c', 'xeff3d', 'norational', 'oeff4a', 'oeff4b', 'oeff4c', 'oeff4d']
+ --> Looking up gold labels from row index 64 of `input.csv` (unique inputs). 
+ --> input labels: {'xhaseff': ['no', 'yes', 'no'], 'ohaseff': ['no', 'yes', 'no'], 'xeff2a': ['{}', 'Person Y kisses Person X', '{}'], 'xeff3b': ['{}', 'Person Y hugs Person X', '{}'], 'xeff3c': ['{}', '{}', '{}'], 'xeff3d': ['{}', '{}', '{}'], 'norational': ["Liking someone isn't an action", '{}', 'The event is a simple statement of emotion.'], 'oeff4a': ['{}', 'Person Y blushes', '{}'], 'oeff4b': ['{}', 'Person Y smiles', '{}'], 'oeff4c': ['{}', '{}', '{}'], 'oeff4d': ['{}', '{}', '{}']}
+ - - - - - -  starting a new element: `Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xhaseff
+input Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_radio('xhaseff', 'yes')
+Executing one action: self.actions.modify_radio('xhaseff', 'yes')
+We are going to select this radio button: <input id="radio3a" name="xhaseff" onclick="showhelper('xeff');requirelist(['input3a1', 'input3a2']);allNoHide()" required="" type="radio" value="yes">
+ - - - - - -  starting a new element: `Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: ohaseff
+input Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_radio('ohaseff', 'yes')
+Executing one action: self.actions.modify_radio('ohaseff', 'yes')
+We are going to select this radio button: <input id="radio4a" name="ohaseff" onclick="showhelper('oeff');requirelist(['input4a1', 'input4a2']);allNoHide()" required="" type="radio" value="yes">
+ - - - - - -  starting a new element: `Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff2a
+input Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff2a', 'input_value')
+Executing one action: self.actions.modify_text('xeff2a', 'input_value')
+Add text `input_value` to this text input: <input autocomplete="off" id="input3a1" name="xeff2a" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3b
+input Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3b', 'Your desired text here')
+Executing one action: self.actions.modify_text('xeff3b', 'Your desired text here')
+Add text `Your desired text here` to this text input: <input autocomplete="off" id="input3a2" name="xeff3b" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3c
+input Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3c', 'nan')
+Executing one action: self.actions.modify_text('xeff3c', 'nan')
+Since the input value is `nan`, we are not going to modify the text.
+ - - - - - -  starting a new element: `Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3d
+input Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3d', 'nan')
+Executing one action: self.actions.modify_text('xeff3d', 'nan')
+Since the input value is `nan`, we are not going to modify the text.
+ - - - - - -  starting a new element: `Input(name=`norational`, type=`textarea`, task=`atomic_event2event-effects 4`)` - - - - - -  
+Skipping element `norational` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4a
+input Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4a', 'Your new text here')
+Executing one action: self.actions.modify_text('oeff4a', 'Your new text here')
+Add text `Your new text here` to this text input: <input autocomplete="off" id="input4a1" name="oeff4a" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4b
+input Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4b', 'your_new_value')
+Executing one action: self.actions.modify_text('oeff4b', 'your_new_value')
+Add text `your_new_value` to this text input: <input autocomplete="off" id="input4a2" name="oeff4b" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4c
+input Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4c', 'Your new value here')
+Executing one action: self.actions.modify_text('oeff4c', 'Your new value here')
+Add text `Your new value here` to this text input: <input autocomplete="off" id="input4a3" name="oeff4c" style="padding-left:10px;margin-left:10px;background-color:#f0f0f0;width:250px" type="text" width="500px">
+ - - - - - -  starting a new element: `Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4d
+input Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4d', 'nan')
+Executing one action: self.actions.modify_text('oeff4d', 'nan')
+Since the input value is `nan`, we are not going to modify the text.
+input: Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+ visible : ['yes']
+ visible_values : ['yes']
+input: Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+ visible : ['yes']
+ visible_values : ['yes']
+input: Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['input_value']
+ visible_values : ['input_value']
+input: Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your desired text here']
+ visible_values : ['Your desired text here']
+input: Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`norational`, type=`textarea`, task=`atomic_event2event-effects 4`)
+ visible : ['']
+ visible_values : ['']
+input: Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your new text here']
+ visible_values : ['Your new text here']
+input: Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['your_new_value']
+ visible_values : ['your_new_value']
+input: Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your new value here']
+ visible_values : ['Your new value here']
+input: Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : [None]
+ visible_values : [None]
+ ------- evaluating input: Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`) ------- 
+----> answers: `['no', 'yes', 'no']` - type: `<class 'list'>`
+----> baseline_answer: `yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`) ------- 
+----> answers: `['no', 'yes', 'no']` - type: `<class 'list'>`
+----> baseline_answer: `yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', 'Person Y kisses Person X', '']`
+----> answers: `['', 'Person Y kisses Person X']` - type: `<class 'list'>`
+----> baseline_answer: `input_value` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', 'Person Y hugs Person X', '']`
+----> answers: `['', 'Person Y hugs Person X']` - type: `<class 'list'>`
+----> baseline_answer: `Your desired text here` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ ------- evaluating input: Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ ------- evaluating input: Input(name=`norational`, type=`textarea`, task=`atomic_event2event-effects 4`) ------- 
+Skipping element `norational` since it is not visible.
+ ------- evaluating input: Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', 'Person Y blushes', '']`
+----> answers: `['', 'Person Y blushes']` - type: `<class 'list'>`
+----> baseline_answer: `Your new text here` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', 'Person Y smiles', '']`
+----> answers: `['', 'Person Y smiles']` - type: `<class 'list'>`
+----> baseline_answer: `your_new_value` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ ------- evaluating input: Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ --> Per-instance overall score: 0.0
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0], 'text': [0.0, 0.0, 0.0, 0.0]}
+instance_id: 33792 <-> row_number: 88
+ --> inputs: ['xhaseff', 'ohaseff', 'xeff2a', 'xeff3b', 'xeff3c', 'xeff3d', 'norational', 'oeff4a', 'oeff4b', 'oeff4c', 'oeff4d']
+ --> Looking up gold labels from row index 88 of `input.csv` (unique inputs). 
+ --> input labels: {'xhaseff': ['no', 'yes', 'no'], 'ohaseff': ['no', 'yes', 'yes'], 'xeff2a': ['{}', 'gets thanked', '{}'], 'xeff3b': ['{}', 'gets smiled at', '{}'], 'xeff3c': ['{}', '{}', '{}'], 'xeff3d': ['{}', '{}', '{}'], 'norational': ['I could not think of any involuntary actions involving either party -- or anyone else -- that would occur as a result of the event.', '{}', '{}'], 'oeff4a': ['{}', 'remembers', 'they do what they forgot'], 'oeff4b': ['{}', 'gains knowledge', 'make a list'], 'oeff4c': ['{}', '{}', '{}'], 'oeff4d': ['{}', '{}', '{}']}
+ - - - - - -  starting a new element: `Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xhaseff
+input Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_radio('xhaseff', 'yes')
+Executing one action: self.actions.modify_radio('xhaseff', 'yes')
+We are going to select this radio button: <input id="radio3a" name="xhaseff" onclick="showhelper('xeff');requirelist(['input3a1', 'input3a2']);allNoHide()" required="" type="radio" value="yes">
+ - - - - - -  starting a new element: `Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: ohaseff
+input Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_radio('ohaseff', 'yes')
+Executing one action: self.actions.modify_radio('ohaseff', 'yes')
+We are going to select this radio button: <input id="radio4a" name="ohaseff" onclick="showhelper('oeff');requirelist(['input4a1', 'input4a2']);allNoHide()" required="" type="radio" value="yes">
+ - - - - - -  starting a new element: `Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff2a
+input Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff2a', 'Your intended text here')
+Executing one action: self.actions.modify_text('xeff2a', 'Your intended text here')
+Add text `Your intended text here` to this text input: <input autocomplete="off" id="input3a1" name="xeff2a" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3b
+input Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3b', 'Your text here')
+Executing one action: self.actions.modify_text('xeff3b', 'Your text here')
+Add text `Your text here` to this text input: <input autocomplete="off" id="input3a2" name="xeff3b" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3c
+input Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3c', 'Your desired text here')
+Executing one action: self.actions.modify_text('xeff3c', 'Your desired text here')
+Add text `Your desired text here` to this text input: <input autocomplete="off" id="input3a3" name="xeff3c" style="padding-left:10px;margin-left:10px;background-color:#f0f0f0;width:250px" type="text" width="500px">
+ - - - - - -  starting a new element: `Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3d
+input Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3d', 'nan')
+Executing one action: self.actions.modify_text('xeff3d', 'nan')
+Since the input value is `nan`, we are not going to modify the text.
+ - - - - - -  starting a new element: `Input(name=`norational`, type=`textarea`, task=`atomic_event2event-effects 4`)` - - - - - -  
+Skipping element `norational` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4a
+input Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4a', 'Your desired text here')
+Executing one action: self.actions.modify_text('oeff4a', 'Your desired text here')
+Add text `Your desired text here` to this text input: <input autocomplete="off" id="input4a1" name="oeff4a" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4b
+input Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4b', 'Your Desired Effect Here')
+Executing one action: self.actions.modify_text('oeff4b', 'Your Desired Effect Here')
+Add text `Your Desired Effect Here` to this text input: <input autocomplete="off" id="input4a2" name="oeff4b" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4c
+input Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4c', 'nan')
+Executing one action: self.actions.modify_text('oeff4c', 'nan')
+Since the input value is `nan`, we are not going to modify the text.
+ - - - - - -  starting a new element: `Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4d
+input Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4d', 'nan')
+Executing one action: self.actions.modify_text('oeff4d', 'nan')
+Since the input value is `nan`, we are not going to modify the text.
+input: Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+ visible : ['yes']
+ visible_values : ['yes']
+input: Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+ visible : ['yes']
+ visible_values : ['yes']
+input: Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your intended text here']
+ visible_values : ['Your intended text here']
+input: Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your text here']
+ visible_values : ['Your text here']
+input: Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your desired text here']
+ visible_values : ['Your desired text here']
+input: Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`norational`, type=`textarea`, task=`atomic_event2event-effects 4`)
+ visible : ['']
+ visible_values : ['']
+input: Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your desired text here']
+ visible_values : ['Your desired text here']
+input: Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your Desired Effect Here']
+ visible_values : ['Your Desired Effect Here']
+input: Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : [None]
+ visible_values : [None]
+ ------- evaluating input: Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`) ------- 
+----> answers: `['no', 'yes', 'no']` - type: `<class 'list'>`
+----> baseline_answer: `yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`) ------- 
+----> answers: `['no', 'yes', 'yes']` - type: `<class 'list'>`
+----> baseline_answer: `yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', 'gets thanked', '']`
+----> answers: `['', 'gets thanked']` - type: `<class 'list'>`
+----> baseline_answer: `Your intended text here` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', 'gets smiled at', '']`
+----> answers: `['', 'gets smiled at']` - type: `<class 'list'>`
+----> baseline_answer: `Your text here` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ ------- evaluating input: Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ ------- evaluating input: Input(name=`norational`, type=`textarea`, task=`atomic_event2event-effects 4`) ------- 
+Skipping element `norational` since it is not visible.
+ ------- evaluating input: Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', 'remembers', 'they do what they forgot']`
+----> answers: `['', 'remembers', 'they do what they forgot']` - type: `<class 'list'>`
+----> baseline_answer: `Your desired text here` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', 'gains knowledge', 'make a list']`
+----> answers: `['', 'gains knowledge', 'make a list']` - type: `<class 'list'>`
+----> baseline_answer: `Your Desired Effect Here` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ ------- evaluating input: Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ --> Per-instance overall score: 0.16666666666666666
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 1.0], 'text': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 33724 <-> row_number: 20
+ --> inputs: ['xhaseff', 'ohaseff', 'xeff2a', 'xeff3b', 'xeff3c', 'xeff3d', 'norational', 'oeff4a', 'oeff4b', 'oeff4c', 'oeff4d']
+ --> Looking up gold labels from row index 20 of `input.csv` (unique inputs). 
+ --> input labels: {'xhaseff': ['no', 'yes', 'yes'], 'ohaseff': ['no', 'yes', 'yes'], 'xeff2a': ['{}', 'becomes happier', 'helps person y'], 'xeff3b': ['{}', 'becomes more friendly towards PersonY', 'talks to person y'], 'xeff3c': ['{}', '{}', '{}'], 'xeff3d': ['{}', '{}', '{}'], 'norational': ['Nothing involuntary or unemotional would happen to either person as a result of this action.', '{}', '{}'], 'oeff4a': ['{}', 'becomes happier', 'thanks person x'], 'oeff4b': ['{}', 'becomes more friendly towards PersonX', 'talks to person x'], 'oeff4c': ['{}', '{}', '{}'], 'oeff4d': ['{}', '{}', '{}']}
+ - - - - - -  starting a new element: `Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xhaseff
+input Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_radio('xhaseff', 'yes')
+Executing one action: self.actions.modify_radio('xhaseff', 'yes')
+We are going to select this radio button: <input id="radio3a" name="xhaseff" onclick="showhelper('xeff');requirelist(['input3a1', 'input3a2']);allNoHide()" required="" type="radio" value="yes">
+ - - - - - -  starting a new element: `Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: ohaseff
+input Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_radio('ohaseff', 'yes')
+Executing one action: self.actions.modify_radio('ohaseff', 'yes')
+We are going to select this radio button: <input id="radio4a" name="ohaseff" onclick="showhelper('oeff');requirelist(['input4a1', 'input4a2']);allNoHide()" required="" type="radio" value="yes">
+ - - - - - -  starting a new element: `Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff2a
+input Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff2a', 'nan')
+Executing one action: self.actions.modify_text('xeff2a', 'nan')
+Since the input value is `nan`, we are not going to modify the text.
+ - - - - - -  starting a new element: `Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3b
+input Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3b', 'Your desired value here')
+Executing one action: self.actions.modify_text('xeff3b', 'Your desired value here')
+Add text `Your desired value here` to this text input: <input autocomplete="off" id="input3a2" name="xeff3b" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3c
+input Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3c', 'nan')
+Executing one action: self.actions.modify_text('xeff3c', 'nan')
+Since the input value is `nan`, we are not going to modify the text.
+ - - - - - -  starting a new element: `Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3d
+input Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3d', 'nan')
+Executing one action: self.actions.modify_text('xeff3d', 'nan')
+Since the input value is `nan`, we are not going to modify the text.
+ - - - - - -  starting a new element: `Input(name=`norational`, type=`textarea`, task=`atomic_event2event-effects 4`)` - - - - - -  
+Skipping element `norational` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4a
+input Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4a', 'nan')
+Executing one action: self.actions.modify_text('oeff4a', 'nan')
+Since the input value is `nan`, we are not going to modify the text.
+ - - - - - -  starting a new element: `Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4b
+input Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4b', 'nan')
+Executing one action: self.actions.modify_text('oeff4b', 'nan')
+Since the input value is `nan`, we are not going to modify the text.
+ - - - - - -  starting a new element: `Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4c
+input Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4c', 'nan')
+Executing one action: self.actions.modify_text('oeff4c', 'nan')
+Since the input value is `nan`, we are not going to modify the text.
+ - - - - - -  starting a new element: `Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4d
+input Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4d', 'Your desired text here')
+Executing one action: self.actions.modify_text('oeff4d', 'Your desired text here')
+Add text `Your desired text here` to this text input: <input autocomplete="off" id="input4a4" name="oeff4d" style="padding-left:10px;margin-left:10px;background-color:#f0f0f0;width:250px" type="text" width="500px">
+input: Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+ visible : ['yes']
+ visible_values : ['yes']
+input: Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+ visible : ['yes']
+ visible_values : ['yes']
+input: Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your desired value here']
+ visible_values : ['Your desired value here']
+input: Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`norational`, type=`textarea`, task=`atomic_event2event-effects 4`)
+ visible : ['']
+ visible_values : ['']
+input: Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your desired text here']
+ visible_values : ['Your desired text here']
+ ------- evaluating input: Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`) ------- 
+----> answers: `['no', 'yes', 'yes']` - type: `<class 'list'>`
+----> baseline_answer: `yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`) ------- 
+----> answers: `['no', 'yes', 'yes']` - type: `<class 'list'>`
+----> baseline_answer: `yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', 'becomes happier', 'helps person y']`
+----> answers: `['', 'becomes happier', 'helps person y']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', 'becomes more friendly towards PersonY', 'talks to person y']`
+----> answers: `['', 'talks to person y', 'becomes more friendly towards PersonY']` - type: `<class 'list'>`
+----> baseline_answer: `Your desired value here` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ ------- evaluating input: Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ ------- evaluating input: Input(name=`norational`, type=`textarea`, task=`atomic_event2event-effects 4`) ------- 
+Skipping element `norational` since it is not visible.
+ ------- evaluating input: Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', 'becomes happier', 'thanks person x']`
+----> answers: `['', 'thanks person x', 'becomes happier']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', 'becomes more friendly towards PersonX', 'talks to person x']`
+----> answers: `['', 'becomes more friendly towards PersonX', 'talks to person x']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ ------- evaluating input: Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ --> Per-instance overall score: 0.3333333333333333
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 1.0, 1.0, 1.0], 'text': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 33737 <-> row_number: 33
+ --> inputs: ['xhaseff', 'ohaseff', 'xeff2a', 'xeff3b', 'xeff3c', 'xeff3d', 'norational', 'oeff4a', 'oeff4b', 'oeff4c', 'oeff4d']
+ --> Looking up gold labels from row index 33 of `input.csv` (unique inputs). 
+ --> input labels: {'xhaseff': ['no', 'yes', 'yes'], 'ohaseff': ['yes', 'no', 'no'], 'xeff2a': ['{}', 'learns some new', 'PersonX gains knowledge.'], 'xeff3b': ['{}', 'satisfies curiosity', 'PersonX reacts to PersonY'], 'xeff3c': ['{}', '{}', '{}'], 'xeff3d': ['{}', '{}', '{}'], 'norational': ['{}', '{}', '{}'], 'oeff4a': ['He is found out.', '{}', '{}'], 'oeff4b': ['He is taken away', '{}', '{}'], 'oeff4c': ['{}', '{}', '{}'], 'oeff4d': ['{}', '{}', '{}']}
+ - - - - - -  starting a new element: `Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xhaseff
+input Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_radio('xhaseff', 'yes')
+Executing one action: self.actions.modify_radio('xhaseff', 'yes')
+We are going to select this radio button: <input id="radio3a" name="xhaseff" onclick="showhelper('xeff');requirelist(['input3a1', 'input3a2']);allNoHide()" required="" type="radio" value="yes">
+ - - - - - -  starting a new element: `Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: ohaseff
+input Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_radio('ohaseff', 'yes')
+Executing one action: self.actions.modify_radio('ohaseff', 'yes')
+We are going to select this radio button: <input id="radio4a" name="ohaseff" onclick="showhelper('oeff');requirelist(['input4a1', 'input4a2']);allNoHide()" required="" type="radio" value="yes">
+ - - - - - -  starting a new element: `Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff2a
+input Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff2a', 'your_text_here')
+Executing one action: self.actions.modify_text('xeff2a', 'your_text_here')
+Add text `your_text_here` to this text input: <input autocomplete="off" id="input3a1" name="xeff2a" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3b
+input Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3b', 'input_value')
+Executing one action: self.actions.modify_text('xeff3b', 'input_value')
+Add text `input_value` to this text input: <input autocomplete="off" id="input3a2" name="xeff3b" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3c
+input Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3c', 'Your Text Here')
+Executing one action: self.actions.modify_text('xeff3c', 'Your Text Here')
+Add text `Your Text Here` to this text input: <input autocomplete="off" id="input3a3" name="xeff3c" style="padding-left:10px;margin-left:10px;background-color:#f0f0f0;width:250px" type="text" width="500px">
+ - - - - - -  starting a new element: `Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3d
+input Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3d', 'nan')
+Executing one action: self.actions.modify_text('xeff3d', 'nan')
+Since the input value is `nan`, we are not going to modify the text.
+ - - - - - -  starting a new element: `Input(name=`norational`, type=`textarea`, task=`atomic_event2event-effects 4`)` - - - - - -  
+Skipping element `norational` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4a
+input Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4a', 'Your text here')
+Executing one action: self.actions.modify_text('oeff4a', 'Your text here')
+Add text `Your text here` to this text input: <input autocomplete="off" id="input4a1" name="oeff4a" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4b
+input Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4b', 'write an effect')
+Executing one action: self.actions.modify_text('oeff4b', 'write an effect')
+Add text `write an effect` to this text input: <input autocomplete="off" id="input4a2" name="oeff4b" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4c
+input Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4c', 'nan')
+Executing one action: self.actions.modify_text('oeff4c', 'nan')
+Since the input value is `nan`, we are not going to modify the text.
+ - - - - - -  starting a new element: `Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4d
+input Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4d', 'nan')
+Executing one action: self.actions.modify_text('oeff4d', 'nan')
+Since the input value is `nan`, we are not going to modify the text.
+input: Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+ visible : ['yes']
+ visible_values : ['yes']
+input: Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+ visible : ['yes']
+ visible_values : ['yes']
+input: Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['your_text_here']
+ visible_values : ['your_text_here']
+input: Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['input_value']
+ visible_values : ['input_value']
+input: Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your Text Here']
+ visible_values : ['Your Text Here']
+input: Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`norational`, type=`textarea`, task=`atomic_event2event-effects 4`)
+ visible : ['']
+ visible_values : ['']
+input: Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your text here']
+ visible_values : ['Your text here']
+input: Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['write an effect']
+ visible_values : ['write an effect']
+input: Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : [None]
+ visible_values : [None]
+ ------- evaluating input: Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`) ------- 
+----> answers: `['no', 'yes', 'yes']` - type: `<class 'list'>`
+----> baseline_answer: `yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`) ------- 
+----> answers: `['yes', 'no', 'no']` - type: `<class 'list'>`
+----> baseline_answer: `yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', 'learns some new', 'PersonX gains knowledge.']`
+----> answers: `['', 'PersonX gains knowledge.', 'learns some new']` - type: `<class 'list'>`
+----> baseline_answer: `your_text_here` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', 'satisfies curiosity', 'PersonX reacts to PersonY']`
+----> answers: `['', 'PersonX reacts to PersonY', 'satisfies curiosity']` - type: `<class 'list'>`
+----> baseline_answer: `input_value` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ ------- evaluating input: Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ ------- evaluating input: Input(name=`norational`, type=`textarea`, task=`atomic_event2event-effects 4`) ------- 
+Skipping element `norational` since it is not visible.
+ ------- evaluating input: Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['He is found out.', '', '']`
+----> answers: `['', 'He is found out.']` - type: `<class 'list'>`
+----> baseline_answer: `Your text here` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['He is taken away', '', '']`
+----> answers: `['', 'He is taken away']` - type: `<class 'list'>`
+----> baseline_answer: `write an effect` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ ------- evaluating input: Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ --> Per-instance overall score: 0.16666666666666666
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0], 'text': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 33804 <-> row_number: 100
+ --> inputs: ['xhaseff', 'ohaseff', 'xeff2a', 'xeff3b', 'xeff3c', 'xeff3d', 'norational', 'oeff4a', 'oeff4b', 'oeff4c', 'oeff4d']
+ --> Looking up gold labels from row index 100 of `input.csv` (unique inputs). 
+ --> input labels: {'xhaseff': ['no', 'yes', 'yes'], 'ohaseff': ['no', 'yes', 'yes'], 'xeff2a': ['{}', 'is alone', 'gets thanked'], 'xeff3b': ['{}', 'stays behind', 'gets yelled at'], 'xeff3c': ['{}', '{}', '{}'], 'xeff3d': ['{}', '{}', '{}'], 'norational': ['No involuntary actions', '{}', '{}'], 'oeff4a': ['{}', 'whines', 'feels thankful'], 'oeff4b': ['{}', 'is outdoors', 'feels bad'], 'oeff4c': ['{}', '{}', '{}'], 'oeff4d': ['{}', '{}', '{}']}
+ - - - - - -  starting a new element: `Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xhaseff
+input Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_radio('xhaseff', 'yes')
+Executing one action: self.actions.modify_radio('xhaseff', 'yes')
+We are going to select this radio button: <input id="radio3a" name="xhaseff" onclick="showhelper('xeff');requirelist(['input3a1', 'input3a2']);allNoHide()" required="" type="radio" value="yes">
+ - - - - - -  starting a new element: `Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: ohaseff
+input Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_radio('ohaseff', 'yes')
+Executing one action: self.actions.modify_radio('ohaseff', 'yes')
+We are going to select this radio button: <input id="radio4a" name="ohaseff" onclick="showhelper('oeff');requirelist(['input4a1', 'input4a2']);allNoHide()" required="" type="radio" value="yes">
+ - - - - - -  starting a new element: `Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff2a
+input Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff2a', 'Your input value here')
+Executing one action: self.actions.modify_text('xeff2a', 'Your input value here')
+Add text `Your input value here` to this text input: <input autocomplete="off" id="input3a1" name="xeff2a" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3b
+input Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3b', 'Your new input value here')
+Executing one action: self.actions.modify_text('xeff3b', 'Your new input value here')
+Add text `Your new input value here` to this text input: <input autocomplete="off" id="input3a2" name="xeff3b" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3c
+input Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3c', 'your_value_here')
+Executing one action: self.actions.modify_text('xeff3c', 'your_value_here')
+Add text `your_value_here` to this text input: <input autocomplete="off" id="input3a3" name="xeff3c" style="padding-left:10px;margin-left:10px;background-color:#f0f0f0;width:250px" type="text" width="500px">
+ - - - - - -  starting a new element: `Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3d
+input Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3d', 'nan')
+Executing one action: self.actions.modify_text('xeff3d', 'nan')
+Since the input value is `nan`, we are not going to modify the text.
+ - - - - - -  starting a new element: `Input(name=`norational`, type=`textarea`, task=`atomic_event2event-effects 4`)` - - - - - -  
+Skipping element `norational` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4a
+input Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4a', 'Your Desired Text Here')
+Executing one action: self.actions.modify_text('oeff4a', 'Your Desired Text Here')
+Add text `Your Desired Text Here` to this text input: <input autocomplete="off" id="input4a1" name="oeff4a" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4b
+input Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4b', 'Your text here')
+Executing one action: self.actions.modify_text('oeff4b', 'Your text here')
+Add text `Your text here` to this text input: <input autocomplete="off" id="input4a2" name="oeff4b" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4c
+input Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4c', 'Your text here')
+Executing one action: self.actions.modify_text('oeff4c', 'Your text here')
+Add text `Your text here` to this text input: <input autocomplete="off" id="input4a3" name="oeff4c" style="padding-left:10px;margin-left:10px;background-color:#f0f0f0;width:250px" type="text" width="500px">
+ - - - - - -  starting a new element: `Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4d
+input Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4d', 'Your desired value here')
+Executing one action: self.actions.modify_text('oeff4d', 'Your desired value here')
+Add text `Your desired value here` to this text input: <input autocomplete="off" id="input4a4" name="oeff4d" style="padding-left:10px;margin-left:10px;background-color:#f0f0f0;width:250px" type="text" width="500px">
+input: Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+ visible : ['yes']
+ visible_values : ['yes']
+input: Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+ visible : ['yes']
+ visible_values : ['yes']
+input: Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your input value here']
+ visible_values : ['Your input value here']
+input: Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your new input value here']
+ visible_values : ['Your new input value here']
+input: Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['your_value_here']
+ visible_values : ['your_value_here']
+input: Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`norational`, type=`textarea`, task=`atomic_event2event-effects 4`)
+ visible : ['']
+ visible_values : ['']
+input: Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your Desired Text Here']
+ visible_values : ['Your Desired Text Here']
+input: Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your text here']
+ visible_values : ['Your text here']
+input: Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your text here']
+ visible_values : ['Your text here']
+input: Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your desired value here']
+ visible_values : ['Your desired value here']
+ ------- evaluating input: Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`) ------- 
+----> answers: `['no', 'yes', 'yes']` - type: `<class 'list'>`
+----> baseline_answer: `yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`) ------- 
+----> answers: `['no', 'yes', 'yes']` - type: `<class 'list'>`
+----> baseline_answer: `yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', 'is alone', 'gets thanked']`
+----> answers: `['', 'gets thanked', 'is alone']` - type: `<class 'list'>`
+----> baseline_answer: `Your input value here` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', 'stays behind', 'gets yelled at']`
+----> answers: `['', 'gets yelled at', 'stays behind']` - type: `<class 'list'>`
+----> baseline_answer: `Your new input value here` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ ------- evaluating input: Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ ------- evaluating input: Input(name=`norational`, type=`textarea`, task=`atomic_event2event-effects 4`) ------- 
+Skipping element `norational` since it is not visible.
+ ------- evaluating input: Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', 'whines', 'feels thankful']`
+----> answers: `['', 'feels thankful', 'whines']` - type: `<class 'list'>`
+----> baseline_answer: `Your Desired Text Here` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', 'is outdoors', 'feels bad']`
+----> answers: `['', 'is outdoors', 'feels bad']` - type: `<class 'list'>`
+----> baseline_answer: `Your text here` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ ------- evaluating input: Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ --> Per-instance overall score: 0.3333333333333333
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0], 'text': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 33725 <-> row_number: 21
+ --> inputs: ['xhaseff', 'ohaseff', 'xeff2a', 'xeff3b', 'xeff3c', 'xeff3d', 'norational', 'oeff4a', 'oeff4b', 'oeff4c', 'oeff4d']
+ --> Looking up gold labels from row index 21 of `input.csv` (unique inputs). 
+ --> input labels: {'xhaseff': ['yes', 'no', 'yes'], 'ohaseff': ['yes', 'no', 'yes'], 'xeff2a': ['becomes proud of changing PersonY opinion', '{}', 'Get Y to listen'], 'xeff3b': ['becomes happier', '{}', 'Are rebuffed by Y'], 'xeff3c': ['{}', '{}', '{}'], 'xeff3d': ['{}', '{}', '{}'], 'norational': ['{}', 'it convinces him to work', '{}'], 'oeff4a': ['changes his opinion', '{}', 'Learn something new'], 'oeff4b': ['becomes impressed by PersonX', '{}', 'Lose friendship with X'], 'oeff4c': ['{}', '{}', '{}'], 'oeff4d': ['{}', '{}', '{}']}
+ - - - - - -  starting a new element: `Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xhaseff
+input Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_radio('xhaseff', 'yes')
+Executing one action: self.actions.modify_radio('xhaseff', 'yes')
+We are going to select this radio button: <input id="radio3a" name="xhaseff" onclick="showhelper('xeff');requirelist(['input3a1', 'input3a2']);allNoHide()" required="" type="radio" value="yes">
+ - - - - - -  starting a new element: `Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: ohaseff
+input Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_radio('ohaseff', 'yes')
+Executing one action: self.actions.modify_radio('ohaseff', 'yes')
+We are going to select this radio button: <input id="radio4a" name="ohaseff" onclick="showhelper('oeff');requirelist(['input4a1', 'input4a2']);allNoHide()" required="" type="radio" value="yes">
+ - - - - - -  starting a new element: `Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff2a
+input Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff2a', 'your_desired_text_here')
+Executing one action: self.actions.modify_text('xeff2a', 'your_desired_text_here')
+Add text `your_desired_text_here` to this text input: <input autocomplete="off" id="input3a1" name="xeff2a" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3b
+input Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3b', 'Your desired value here')
+Executing one action: self.actions.modify_text('xeff3b', 'Your desired value here')
+Add text `Your desired value here` to this text input: <input autocomplete="off" id="input3a2" name="xeff3b" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3c
+input Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3c', 'your text here')
+Executing one action: self.actions.modify_text('xeff3c', 'your text here')
+Add text `your text here` to this text input: <input autocomplete="off" id="input3a3" name="xeff3c" style="padding-left:10px;margin-left:10px;background-color:#f0f0f0;width:250px" type="text" width="500px">
+ - - - - - -  starting a new element: `Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3d
+input Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3d', 'nan')
+Executing one action: self.actions.modify_text('xeff3d', 'nan')
+Since the input value is `nan`, we are not going to modify the text.
+ - - - - - -  starting a new element: `Input(name=`norational`, type=`textarea`, task=`atomic_event2event-effects 4`)` - - - - - -  
+Skipping element `norational` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4a
+input Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4a', 'your_effect_here')
+Executing one action: self.actions.modify_text('oeff4a', 'your_effect_here')
+Add text `your_effect_here` to this text input: <input autocomplete="off" id="input4a1" name="oeff4a" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4b
+input Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4b', 'your_value_here')
+Executing one action: self.actions.modify_text('oeff4b', 'your_value_here')
+Add text `your_value_here` to this text input: <input autocomplete="off" id="input4a2" name="oeff4b" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4c
+input Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4c', 'YourDesiredValue')
+Executing one action: self.actions.modify_text('oeff4c', 'YourDesiredValue')
+Add text `YourDesiredValue` to this text input: <input autocomplete="off" id="input4a3" name="oeff4c" style="padding-left:10px;margin-left:10px;background-color:#f0f0f0;width:250px" type="text" width="500px">
+ - - - - - -  starting a new element: `Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4d
+input Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4d', 'Your desired new value')
+Executing one action: self.actions.modify_text('oeff4d', 'Your desired new value')
+Add text `Your desired new value` to this text input: <input autocomplete="off" id="input4a4" name="oeff4d" style="padding-left:10px;margin-left:10px;background-color:#f0f0f0;width:250px" type="text" width="500px">
+input: Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+ visible : ['yes']
+ visible_values : ['yes']
+input: Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+ visible : ['yes']
+ visible_values : ['yes']
+input: Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['your_desired_text_here']
+ visible_values : ['your_desired_text_here']
+input: Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your desired value here']
+ visible_values : ['Your desired value here']
+input: Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['your text here']
+ visible_values : ['your text here']
+input: Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`norational`, type=`textarea`, task=`atomic_event2event-effects 4`)
+ visible : ['']
+ visible_values : ['']
+input: Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['your_effect_here']
+ visible_values : ['your_effect_here']
+input: Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['your_value_here']
+ visible_values : ['your_value_here']
+input: Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['YourDesiredValue']
+ visible_values : ['YourDesiredValue']
+input: Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your desired new value']
+ visible_values : ['Your desired new value']
+ ------- evaluating input: Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`) ------- 
+----> answers: `['yes', 'no', 'yes']` - type: `<class 'list'>`
+----> baseline_answer: `yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`) ------- 
+----> answers: `['yes', 'no', 'yes']` - type: `<class 'list'>`
+----> baseline_answer: `yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['becomes proud of changing PersonY opinion', '', 'Get Y to listen']`
+----> answers: `['', 'Get Y to listen', 'becomes proud of changing PersonY opinion']` - type: `<class 'list'>`
+----> baseline_answer: `your_desired_text_here` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['becomes happier', '', 'Are rebuffed by Y']`
+----> answers: `['', 'Are rebuffed by Y', 'becomes happier']` - type: `<class 'list'>`
+----> baseline_answer: `Your desired value here` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ ------- evaluating input: Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ ------- evaluating input: Input(name=`norational`, type=`textarea`, task=`atomic_event2event-effects 4`) ------- 
+Skipping element `norational` since it is not visible.
+ ------- evaluating input: Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['changes his opinion', '', 'Learn something new']`
+----> answers: `['', 'changes his opinion', 'Learn something new']` - type: `<class 'list'>`
+----> baseline_answer: `your_effect_here` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['becomes impressed by PersonX', '', 'Lose friendship with X']`
+----> answers: `['becomes impressed by PersonX', '', 'Lose friendship with X']` - type: `<class 'list'>`
+----> baseline_answer: `your_value_here` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ ------- evaluating input: Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ --> Per-instance overall score: 0.3333333333333333
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0], 'text': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 33786 <-> row_number: 82
+ --> inputs: ['xhaseff', 'ohaseff', 'xeff2a', 'xeff3b', 'xeff3c', 'xeff3d', 'norational', 'oeff4a', 'oeff4b', 'oeff4c', 'oeff4d']
+ --> Looking up gold labels from row index 82 of `input.csv` (unique inputs). 
+ --> input labels: {'xhaseff': ['no', 'no', 'yes'], 'ohaseff': ['yes', 'yes', 'no'], 'xeff2a': ['{}', '{}', 'learn about PersonY'], 'xeff3b': ['{}', '{}', 'know more about PersonY'], 'xeff3c': ['{}', '{}', '{}'], 'xeff3d': ['{}', '{}', '{}'], 'norational': ['{}', '{}', '{}'], 'oeff4a': ['Y is liked by X', 'he falls asleep', '{}'], 'oeff4b': ['Y is disliked by X', 'he is kissed goodnight', '{}'], 'oeff4c': ['{}', '{}', '{}'], 'oeff4d': ['{}', '{}', '{}']}
+ - - - - - -  starting a new element: `Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xhaseff
+input Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_radio('xhaseff', 'yes')
+Executing one action: self.actions.modify_radio('xhaseff', 'yes')
+We are going to select this radio button: <input id="radio3a" name="xhaseff" onclick="showhelper('xeff');requirelist(['input3a1', 'input3a2']);allNoHide()" required="" type="radio" value="yes">
+ - - - - - -  starting a new element: `Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: ohaseff
+input Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_radio('ohaseff', 'yes')
+Executing one action: self.actions.modify_radio('ohaseff', 'yes')
+We are going to select this radio button: <input id="radio4a" name="ohaseff" onclick="showhelper('oeff');requirelist(['input4a1', 'input4a2']);allNoHide()" required="" type="radio" value="yes">
+ - - - - - -  starting a new element: `Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff2a
+input Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff2a', 'Your desired text here')
+Executing one action: self.actions.modify_text('xeff2a', 'Your desired text here')
+Add text `Your desired text here` to this text input: <input autocomplete="off" id="input3a1" name="xeff2a" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3b
+input Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3b', 'nan')
+Executing one action: self.actions.modify_text('xeff3b', 'nan')
+Since the input value is `nan`, we are not going to modify the text.
+ - - - - - -  starting a new element: `Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3c
+input Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3c', 'Your value here')
+Executing one action: self.actions.modify_text('xeff3c', 'Your value here')
+Add text `Your value here` to this text input: <input autocomplete="off" id="input3a3" name="xeff3c" style="padding-left:10px;margin-left:10px;background-color:#f0f0f0;width:250px" type="text" width="500px">
+ - - - - - -  starting a new element: `Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3d
+input Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3d', 'nan')
+Executing one action: self.actions.modify_text('xeff3d', 'nan')
+Since the input value is `nan`, we are not going to modify the text.
+ - - - - - -  starting a new element: `Input(name=`norational`, type=`textarea`, task=`atomic_event2event-effects 4`)` - - - - - -  
+Skipping element `norational` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4a
+input Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4a', 'Your desired text here')
+Executing one action: self.actions.modify_text('oeff4a', 'Your desired text here')
+Add text `Your desired text here` to this text input: <input autocomplete="off" id="input4a1" name="oeff4a" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4b
+input Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4b', 'Your effect here')
+Executing one action: self.actions.modify_text('oeff4b', 'Your effect here')
+Add text `Your effect here` to this text input: <input autocomplete="off" id="input4a2" name="oeff4b" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4c
+input Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4c', 'your_value_here')
+Executing one action: self.actions.modify_text('oeff4c', 'your_value_here')
+Add text `your_value_here` to this text input: <input autocomplete="off" id="input4a3" name="oeff4c" style="padding-left:10px;margin-left:10px;background-color:#f0f0f0;width:250px" type="text" width="500px">
+ - - - - - -  starting a new element: `Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4d
+input Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4d', 'nan')
+Executing one action: self.actions.modify_text('oeff4d', 'nan')
+Since the input value is `nan`, we are not going to modify the text.
+input: Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+ visible : ['yes']
+ visible_values : ['yes']
+input: Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+ visible : ['yes']
+ visible_values : ['yes']
+input: Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your desired text here']
+ visible_values : ['Your desired text here']
+input: Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your value here']
+ visible_values : ['Your value here']
+input: Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : [None]
+ visible_values : [None]
+input: Input(name=`norational`, type=`textarea`, task=`atomic_event2event-effects 4`)
+ visible : ['']
+ visible_values : ['']
+input: Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your desired text here']
+ visible_values : ['Your desired text here']
+input: Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['Your effect here']
+ visible_values : ['Your effect here']
+input: Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : ['your_value_here']
+ visible_values : ['your_value_here']
+input: Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`)
+ visible : [None]
+ visible_values : [None]
+ ------- evaluating input: Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`) ------- 
+----> answers: `['no', 'no', 'yes']` - type: `<class 'list'>`
+----> baseline_answer: `yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`) ------- 
+----> answers: `['yes', 'yes', 'no']` - type: `<class 'list'>`
+----> baseline_answer: `yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', 'learn about PersonY']`
+----> answers: `['', 'learn about PersonY']` - type: `<class 'list'>`
+----> baseline_answer: `Your desired text here` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', 'know more about PersonY']`
+----> answers: `['', 'know more about PersonY']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ ------- evaluating input: Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ ------- evaluating input: Input(name=`norational`, type=`textarea`, task=`atomic_event2event-effects 4`) ------- 
+Skipping element `norational` since it is not visible.
+ ------- evaluating input: Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['Y is liked by X', 'he falls asleep', '']`
+----> answers: `['', 'Y is liked by X', 'he falls asleep']` - type: `<class 'list'>`
+----> baseline_answer: `Your desired text here` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['Y is disliked by X', 'he is kissed goodnight', '']`
+----> answers: `['', 'Y is disliked by X', 'he is kissed goodnight']` - type: `<class 'list'>`
+----> baseline_answer: `Your effect here` - type: `<class 'str'>`
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ ------- evaluating input: Input(name=`oeff4d`, type=`text`, task=`atomic_event2event-effects 4`) ------- 
+answers after mapping: `['', '', '']`
+ --> Per-instance overall score: 0.16666666666666666
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0], 'text': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 33778 <-> row_number: 74
+ --> inputs: ['xhaseff', 'ohaseff', 'xeff2a', 'xeff3b', 'xeff3c', 'xeff3d', 'norational', 'oeff4a', 'oeff4b', 'oeff4c', 'oeff4d']
+ --> Looking up gold labels from row index 74 of `input.csv` (unique inputs). 
+ --> input labels: {'xhaseff': ['yes', 'yes', 'yes'], 'ohaseff': ['no', 'no', 'no'], 'xeff2a': ['is victorious.', 'becomes tired', 'sighs'], 'xeff3b': ['is challenged.', 'becomes healthier', 'sweats'], 'xeff3c': ['{}', '{}', '{}'], 'xeff3d': ['{}', '{}', '{}'], 'norational': ['{}', '{}', '{}'], 'oeff4a': ['{}', 'becomes grateful towards', '{}'], 'oeff4b': ['{}', '{}', '{}'], 'oeff4c': ['{}', '{}', '{}'], 'oeff4d': ['{}', '{}', '{}']}
+ - - - - - -  starting a new element: `Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xhaseff
+input Input(name=`xhaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_radio('xhaseff', 'yes')
+Executing one action: self.actions.modify_radio('xhaseff', 'yes')
+We are going to select this radio button: <input id="radio3a" name="xhaseff" onclick="showhelper('xeff');requirelist(['input3a1', 'input3a2']);allNoHide()" required="" type="radio" value="yes">
+ - - - - - -  starting a new element: `Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: ohaseff
+input Input(name=`ohaseff`, type=`radio`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_radio('ohaseff', 'yes')
+Executing one action: self.actions.modify_radio('ohaseff', 'yes')
+We are going to select this radio button: <input id="radio4a" name="ohaseff" onclick="showhelper('oeff');requirelist(['input4a1', 'input4a2']);allNoHide()" required="" type="radio" value="yes">
+ - - - - - -  starting a new element: `Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff2a
+input Input(name=`xeff2a`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff2a', 'nan')
+Executing one action: self.actions.modify_text('xeff2a', 'nan')
+Since the input value is `nan`, we are not going to modify the text.
+ - - - - - -  starting a new element: `Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3b
+input Input(name=`xeff3b`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3b', 'Your Desired Value Here')
+Executing one action: self.actions.modify_text('xeff3b', 'Your Desired Value Here')
+Add text `Your Desired Value Here` to this text input: <input autocomplete="off" id="input3a2" name="xeff3b" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3c
+input Input(name=`xeff3c`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3c', 'Your desired input value here')
+Executing one action: self.actions.modify_text('xeff3c', 'Your desired input value here')
+Add text `Your desired input value here` to this text input: <input autocomplete="off" id="input3a3" name="xeff3c" style="padding-left:10px;margin-left:10px;background-color:#f0f0f0;width:250px" type="text" width="500px">
+ - - - - - -  starting a new element: `Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: xeff3d
+input Input(name=`xeff3d`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('xeff3d', 'Your Text Here')
+Executing one action: self.actions.modify_text('xeff3d', 'Your Text Here')
+Add text `Your Text Here` to this text input: <input autocomplete="off" id="input2a4" name="xeff3d" style="padding-left:10px;margin-left:10px;background-color:#f0f0f0;width:250px" type="text" width="500px">
+ - - - - - -  starting a new element: `Input(name=`norational`, type=`textarea`, task=`atomic_event2event-effects 4`)` - - - - - -  
+Skipping element `norational` since it is not visible.
+ - - - - - -  starting a new element: `Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4a
+input Input(name=`oeff4a`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4a', 'nan')
+Executing one action: self.actions.modify_text('oeff4a', 'nan')
+Since the input value is `nan`, we are not going to modify the text.
+ - - - - - -  starting a new element: `Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4b
+input Input(name=`oeff4b`, type=`text`, task=`atomic_event2event-effects 4`)
+OpenAI Response: self.actions.modify_text('oeff4b', 'your desired text')
+Executing one action: self.actions.modify_text('oeff4b', 'your desired text')
+Add text `your desired text` to this text input: <input autocomplete="off" id="input4a2" name="oeff4b" style="padding-left:10px;margin-left:10px;width:250px" type="text" width="500px" required="">
+ - - - - - -  starting a new element: `Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)` - - - - - -  
+input: Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)
+about to try executing one action, on the following input: oeff4c
+input Input(name=`oeff4c`, type=`text`, task=`atomic_event2event-effects 4`)
