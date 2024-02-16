@@ -127,22 +127,14 @@ for run_idx in {1..5}; do
     run_llava_group "llava:7b" $run_idx
     run_llava_group "llava:13b" $run_idx
     run_llava_group "llava:34b" $run_idx
-done
 
-# Main loop to run all command groups 5 times
-for run_idx in {1..5}; do
-    echo "Starting iteration $run_idx of 5"
+    run_command_group "llama2:7b" $run_idx
+    run_command_group "llama2:7b-chat" $run_idx
+    run_command_group "llama2:13b" $run_idx
+    run_command_group "llama2:13b-chat" $run_idx
     run_command_group "llama2:70b" $run_idx
     run_command_group "llama2:70b-chat" $run_idx
-    run_command_group "llama2:7b-chat" $run_idx
-    run_command_group "llama2:13b-chat" $run_idx
-    run_command_group "llama2:7b" $run_idx
-    run_command_group "llama2:13b" $run_idx
-done
 
-# Main loop to run all command groups 5 times
-for run_idx in {1..5}; do
-    echo "Starting iteration $run_idx of 5"
     run_llava_group "bakllava" $run_idx
 done
 
