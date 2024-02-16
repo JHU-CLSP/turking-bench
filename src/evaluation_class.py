@@ -62,7 +62,7 @@ class Evaluation:
             self.display = Display(visible=0, size=(1920, 1080))
             self.display.start()
 
-        self.driver = self.create_driver(headless=headless)
+        self.driver = self.create_driver(headless=headless, on_server=on_server)
         self.actions = MyActions(self.driver)
         self.solver = None
         self.on_server = on_server
@@ -126,10 +126,12 @@ class Evaluation:
 
         self.driver.quit()
 
-    def create_driver(self, headless: bool):
+    def create_driver(self, headless: bool, on_server: bool = False):
         options = Options()
         if headless:
             options.add_argument("--headless=new")
+        if on_server:
+            options.add_experimental_option("detach", True)
 
         import platform
         if platform.system() == 'Linux':

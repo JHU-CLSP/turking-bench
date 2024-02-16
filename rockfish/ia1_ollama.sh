@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 #SBATCH --job-name=ollama
-#SBATCH --output=out.log
+#SBATCH --output=out.ollama.log
 #SBATCH --error=err.ollama.log
 #
 # Number of tasks needed for this job. Generally, used with MPI jobs
