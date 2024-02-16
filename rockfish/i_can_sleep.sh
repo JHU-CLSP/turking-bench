@@ -61,7 +61,7 @@ run_llava_group() {
 
     # 0 relevant_html
     while true; do
-        if python3 4_run_evaluation.py --solver_type text-vision --ollama_model "$ollama_model" --tasks test_easy --max_instance_count 4 --num_demonstrations 0 --use_relevant_html --headless --do_eval --server > "$output_file_3" 2>&1; then
+        if python3 4_run_evaluation.py --solver_type text-vision --ollama_model "$ollama_model" --tasks test_easy --max_instance_count 4 --num_demonstrations 0 --use_relevant_html --headless --do_eval --server > "$output_file_0" 2>&1; then
             echo "Evaluation for $ollama_model, 0_relevant_html iteration $run_idx completed successfully."
             break
         else
