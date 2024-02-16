@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-#SBATCH --job-name=ollama
-#SBATCH --output=out.ollama.log
-#SBATCH --error=err.ollama.log
+#SBATCH --job-name=llama2_70b
+#SBATCH --output=out.llama2_70b.log
+#SBATCH --error=err.llama_70b.log
 #
 # Number of tasks needed for this job. Generally, used with MPI jobs
 #SBATCH --ntasks=1
@@ -41,4 +41,4 @@ which python
 
 cd turk-instructions/src
 
-nohup ollama serve & sleep 5 && ollama run llama2:70b & sleep 10 && python3 4_run_evaluation.py --solver_type gpt4-text --tasks test_easy --max_instance_count 20 --num_demonstrations 3 --use_relevant_html --headless --do_eval --server > relevant_ollama_llama270b_3.txt
+ollama run llama2:70b & sleep 10 && python3 4_run_evaluation.py --solver_type text --ollama_model llama2:70b --tasks test_easy --max_instance_count 20 --num_demonstrations 3 --use_relevant_html --headless --do_eval --server > relevant_ollama_llama270b_3.txt
