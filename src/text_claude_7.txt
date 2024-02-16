@@ -19782,3 +19782,463 @@ Let me know if you have any other questions!, error: invalid decimal literal (<s
  - - - - - -  starting a new element: `Input(name=`adj_7`, type=`radio`, task=`Scalar Adjectives Identification`)` - - - - - -  
 input: Input(name=`adj_7`, type=`radio`, task=`Scalar Adjectives Identification`)
 about to try executing one action, on the following input: adj_7
+Claude response:  Okay, let's modify the radio button with name "adj_7" to have value "Yes" checked.
+
+To accomplish this, the code would be:
+
+```python
+self.actions.modify_radio('adj_7', 'Yes')
+```
+
+This will select the radio button with name "adj_7" and set the "Yes" option to be checked.
+Executing one action: self.actions.modify_radio('adj_7', 'Yes')
+
+
+This will select the radio button with name "adj_7" and set the "Yes" option to be checked.
+Failed to execute an action self.actions.modify_radio('adj_7', 'Yes')
+
+
+This will select the radio button with name "adj_7" and set the "Yes" option to be checked., error: invalid syntax (<string>, line 4)
+ - - - - - -  starting a new element: `Input(name=`adj_8`, type=`radio`, task=`Scalar Adjectives Identification`)` - - - - - -  
+input: Input(name=`adj_8`, type=`radio`, task=`Scalar Adjectives Identification`)
+about to try executing one action, on the following input: adj_8
+Claude response:  self.actions.modify_radio('adj_8', 'Yes')
+Executing one action: self.actions.modify_radio('adj_8', 'Yes')
+We are going to select this radio button: <input type="radio" name="adj_8" value="Yes" required="">
+ - - - - - -  starting a new element: `Input(name=`adj_9`, type=`radio`, task=`Scalar Adjectives Identification`)` - - - - - -  
+input: Input(name=`adj_9`, type=`radio`, task=`Scalar Adjectives Identification`)
+about to try executing one action, on the following input: adj_9
+Claude response:  To modify the radio button with name "adj_9":
+
+self.actions.modify_radio('adj_9', 'Yes')
+Executing one action: self.actions.modify_radio('adj_9', 'Yes')
+We are going to select this radio button: <input type="radio" name="adj_9" value="Yes" required="">
+ - - - - - -  starting a new element: `Input(name=`neg_qual_ctrl`, type=`radio`, task=`Scalar Adjectives Identification`)` - - - - - -  
+input: Input(name=`neg_qual_ctrl`, type=`radio`, task=`Scalar Adjectives Identification`)
+about to try executing one action, on the following input: neg_qual_ctrl
+Claude response:  To modify the radio button with name "neg_qual_ctrl", you can use:
+
+```python
+self.actions.modify_radio("neg_qual_ctrl", "Yes")
+```
+
+This will select the "Yes" option for the radio button named "neg_qual_ctrl".
+
+Some key things to note:
+
+- The radio button name matches the variable `neg_qual_ctrl` defined in the JavaScript code
+- We pass the value we want to select, "Yes", as the second argument
+
+So this will find the radio button with that name on the page and select the "Yes" option.
+Executing one action: self.actions.modify_radio("neg_qual_ctrl", "Yes")
+
+
+This will select the "Yes" option for the radio button named "neg_qual_ctrl".
+
+Some key things to note:
+
+- The radio button name matches the variable `neg_qual_ctrl` defined in the JavaScript code
+- We pass the value we want to select, "Yes", as the second argument
+
+So this will find the radio button with that name on the page and select the "Yes" option.
+Failed to execute an action self.actions.modify_radio("neg_qual_ctrl", "Yes")
+
+
+This will select the "Yes" option for the radio button named "neg_qual_ctrl".
+
+Some key things to note:
+
+- The radio button name matches the variable `neg_qual_ctrl` defined in the JavaScript code
+- We pass the value we want to select, "Yes", as the second argument
+
+So this will find the radio button with that name on the page and select the "Yes" option., error: invalid syntax (<string>, line 4)
+ - - - - - -  starting a new element: `Input(name=`adj_10`, type=`radio`, task=`Scalar Adjectives Identification`)` - - - - - -  
+input: Input(name=`adj_10`, type=`radio`, task=`Scalar Adjectives Identification`)
+about to try executing one action, on the following input: adj_10
+Claude response:  Okay, let's modify the radio button with the name "adj_10" to have the value "Yes" checked.
+
+To accomplish this, the code would be:
+
+```python
+self.actions.modify_radio('adj_10', 'Yes')
+```
+
+This will:
+
+1. Find the radio input with name "adj_10"
+2. Set the "Yes" radio button to be checked
+
+So this will mark the 10th adjective in the list as an adjective that describes the given attribute of kindness.
+Executing one action: self.actions.modify_radio('adj_10', 'Yes')
+
+
+This will:
+
+1. Find the radio input with name "adj_10"
+2. Set the "Yes" radio button to be checked
+
+So this will mark the 10th adjective in the list as an adjective that describes the given attribute of kindness.
+Failed to execute an action self.actions.modify_radio('adj_10', 'Yes')
+
+
+This will:
+
+1. Find the radio input with name "adj_10"
+2. Set the "Yes" radio button to be checked
+
+So this will mark the 10th adjective in the list as an adjective that describes the given attribute of kindness., error: invalid decimal literal (<string>, line 9)
+input: Input(name=`adj_1`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : ['Yes']
+ visible_values : ['Yes']
+input: Input(name=`pos_qual_ctrl_5`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : []
+ visible_values : []
+input: Input(name=`adj_2`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : []
+ visible_values : []
+input: Input(name=`adj_3`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : ['Yes']
+ visible_values : ['Yes']
+input: Input(name=`adj_4`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : ['No']
+ visible_values : ['No']
+input: Input(name=`adj_5`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : ['Yes']
+ visible_values : ['Yes']
+input: Input(name=`adj_6`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : []
+ visible_values : []
+input: Input(name=`pos_qual_ctrl_1`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : []
+ visible_values : []
+input: Input(name=`pos_qual_ctrl_3`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : []
+ visible_values : []
+input: Input(name=`pos_qual_ctrl_2`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : []
+ visible_values : []
+input: Input(name=`pos_qual_ctrl_4`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : []
+ visible_values : []
+input: Input(name=`adj_7`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : []
+ visible_values : []
+input: Input(name=`adj_8`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : ['Yes']
+ visible_values : ['Yes']
+input: Input(name=`adj_9`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : ['Yes']
+ visible_values : ['Yes']
+input: Input(name=`neg_qual_ctrl`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : []
+ visible_values : []
+input: Input(name=`adj_10`, type=`radio`, task=`Scalar Adjectives Identification`)
+ visible : []
+ visible_values : []
+ ------- evaluating input: Input(name=`adj_1`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['No', 'No', 'No']` - type: `<class 'list'>`
+----> baseline_answer: `Yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_5`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['Yes', 'Yes', 'Yes']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_2`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['No', 'No', 'No']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_3`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['No', 'No', 'No']` - type: `<class 'list'>`
+----> baseline_answer: `Yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_4`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['No', 'No', 'No']` - type: `<class 'list'>`
+----> baseline_answer: `No` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  1.0
+----> per-field score: 1.0
+ ------- evaluating input: Input(name=`adj_5`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['No', 'No', 'No']` - type: `<class 'list'>`
+----> baseline_answer: `Yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_6`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['Yes', 'No', 'No']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_1`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['Yes', 'Yes', 'Yes']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_3`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['Yes', 'Yes', 'Yes']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_2`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['Yes', 'Yes', 'Yes']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`pos_qual_ctrl_4`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['Yes', 'Yes', 'Yes']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_7`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['No', 'No', 'No']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_8`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['No', 'No', 'No']` - type: `<class 'list'>`
+----> baseline_answer: `Yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_9`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['No', 'No', 'No']` - type: `<class 'list'>`
+----> baseline_answer: `Yes` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`neg_qual_ctrl`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['No', 'No', 'No']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ ------- evaluating input: Input(name=`adj_10`, type=`radio`, task=`Scalar Adjectives Identification`) ------- 
+----> answers: `['No', 'No', 'No']` - type: `<class 'list'>`
+----> baseline_answer: `` - type: `<class 'str'>`
+--> Computing the majority vote
+ --> scores:  0.0
+----> per-field score: 0.0
+ --> Per-instance overall score: 0.0625
+ --> Per-instance per-field breakdown: {'radio': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}
+instance_id: 9527 <-> row_number: 64
+ --> inputs: ['pos_qual_ctrl_3', 'adj_1', 'adj_2', 'adj_3', 'pos_qual_ctrl_4', 'adj_4', 'adj_5', 'pos_qual_ctrl_5', 'neg_qual_ctrl', 'pos_qual_ctrl_2', 'adj_6', 'adj_7', 'adj_8', 'pos_qual_ctrl_1', 'adj_9', 'adj_10']
+ --> Looking up gold labels from row index 64 of `input.csv` (unique inputs). 
+ --> input labels: {'pos_qual_ctrl_3': ['Yes', 'Yes', 'Yes'], 'adj_1': ['No', 'No', 'No'], 'adj_2': ['No', 'No', 'No'], 'adj_3': ['No', 'No', 'No'], 'pos_qual_ctrl_4': ['Yes', 'Yes', 'Yes'], 'adj_4': ['Naa', 'No', 'No'], 'adj_5': ['Yes', 'No', 'Yes'], 'pos_qual_ctrl_5': ['Yes', 'Yes', 'Yes'], 'neg_qual_ctrl': ['No', 'No', 'No'], 'pos_qual_ctrl_2': ['Yes', 'Yes', 'Yes'], 'adj_6': ['No', 'No', 'No'], 'adj_7': ['No', 'No', 'No'], 'adj_8': ['No', 'No', 'No'], 'pos_qual_ctrl_1': ['Yes', 'Yes', 'Yes'], 'adj_9': ['No', 'No', 'No'], 'adj_10': ['Yes', 'No', 'Yes']}
+ - - - - - -  starting a new element: `Input(name=`pos_qual_ctrl_3`, type=`radio`, task=`Scalar Adjectives Identification`)` - - - - - -  
+input: Input(name=`pos_qual_ctrl_3`, type=`radio`, task=`Scalar Adjectives Identification`)
+about to try executing one action, on the following input: pos_qual_ctrl_3
+Claude response:  To modify the radio button with name "pos_qual_ctrl_3", you can use:
+
+```python
+self.actions.modify_radio("pos_qual_ctrl_3", "Yes")
+```
+
+This will select the "Yes" option for that radio button.
+
+The key things to note are:
+
+- Use the `modify_radio` action 
+- Pass the name of the radio button group ("pos_qual_ctrl_3")
+- Pass the value you want selected ("Yes")
+Executing one action: self.actions.modify_radio("pos_qual_ctrl_3", "Yes")
+
+
+This will select the "Yes" option for that radio button.
+
+The key things to note are:
+
+- Use the `modify_radio` action 
+- Pass the name of the radio button group ("pos_qual_ctrl_3")
+- Pass the value you want selected ("Yes")
+Failed to execute an action self.actions.modify_radio("pos_qual_ctrl_3", "Yes")
+
+
+This will select the "Yes" option for that radio button.
+
+The key things to note are:
+
+- Use the `modify_radio` action 
+- Pass the name of the radio button group ("pos_qual_ctrl_3")
+- Pass the value you want selected ("Yes"), error: invalid syntax (<string>, line 4)
+ - - - - - -  starting a new element: `Input(name=`adj_1`, type=`radio`, task=`Scalar Adjectives Identification`)` - - - - - -  
+input: Input(name=`adj_1`, type=`radio`, task=`Scalar Adjectives Identification`)
+about to try executing one action, on the following input: adj_1
+Claude response:  self.actions.modify_radio('adj_1', 'Yes')
+Executing one action: self.actions.modify_radio('adj_1', 'Yes')
+We are going to select this radio button: <input type="radio" name="adj_1" value="Yes" required="">
+ - - - - - -  starting a new element: `Input(name=`adj_2`, type=`radio`, task=`Scalar Adjectives Identification`)` - - - - - -  
+input: Input(name=`adj_2`, type=`radio`, task=`Scalar Adjectives Identification`)
+about to try executing one action, on the following input: adj_2
+Claude response:  Okay, let's analyze this:
+
+The attribute is "fidelity" which is defined as "the quality of being faithful". 
+
+The example adjectives given are:
+- treacherous 
+- fast
+- loyal
+- trusty
+- truehearted
+
+The adjective we need to evaluate is "same".
+
+Based on the definition and examples, "fidelity" relates to being faithful, loyal, and trustworthy. The adjective "same" does not describe those qualities.
+
+Therefore, I would:
+
+1. Check "No" for the "same" radio button, since it is an adjective but does not describe the attribute of "fidelity".
+
+2. Uncheck the "Yes" and "Not an adjective" buttons for "same".
+
+To summarize:
+- "same" is an adjective 
+- But it does NOT describe the attribute of "fidelity"
+- So I would select "No" for the "same" radio button
+Executing one action:  Okay, let's analyze this:
+
+The attribute is "fidelity" which is defined as "the quality of being faithful". 
+
+The example adjectives given are:
+- treacherous 
+- fast
+- loyal
+- trusty
+- truehearted
+
+The adjective we need to evaluate is "same".
+
+Based on the definition and examples, "fidelity" relates to being faithful, loyal, and trustworthy. The adjective "same" does not describe those qualities.
+
+Therefore, I would:
+
+1. Check "No" for the "same" radio button, since it is an adjective but does not describe the attribute of "fidelity".
+
+2. Uncheck the "Yes" and "Not an adjective" buttons for "same".
+
+To summarize:
+- "same" is an adjective 
+- But it does NOT describe the attribute of "fidelity"
+- So I would select "No" for the "same" radio button
+Failed to execute an action  Okay, let's analyze this:
+
+The attribute is "fidelity" which is defined as "the quality of being faithful". 
+
+The example adjectives given are:
+- treacherous 
+- fast
+- loyal
+- trusty
+- truehearted
+
+The adjective we need to evaluate is "same".
+
+Based on the definition and examples, "fidelity" relates to being faithful, loyal, and trustworthy. The adjective "same" does not describe those qualities.
+
+Therefore, I would:
+
+1. Check "No" for the "same" radio button, since it is an adjective but does not describe the attribute of "fidelity".
+
+2. Uncheck the "Yes" and "Not an adjective" buttons for "same".
+
+To summarize:
+- "same" is an adjective 
+- But it does NOT describe the attribute of "fidelity"
+- So I would select "No" for the "same" radio button, error: unexpected indent (<string>, line 1)
+ - - - - - -  starting a new element: `Input(name=`adj_3`, type=`radio`, task=`Scalar Adjectives Identification`)` - - - - - -  
+input: Input(name=`adj_3`, type=`radio`, task=`Scalar Adjectives Identification`)
+about to try executing one action, on the following input: adj_3
+Claude response:  Okay, let's analyze this:
+
+The attribute is "fidelity" which is defined as "the quality of being faithful".
+
+Some example adjectives are:
+- treacherous 
+- fast
+- loyal
+- trusty
+- truehearted
+
+The adjective we need to evaluate is "unceasing"
+
+Based on the definition and examples, adjectives that describe "fidelity" seem to relate to being faithful, loyal, trustworthy, etc. 
+
+The adjective "unceasing" means not stopping or never ending. This doesn't seem directly related to the concept of fidelity or faithfulness.
+
+So I would modify the radio button with name "adj_3" and select the value "No" to indicate:
+
+The word is an adjective BUT does not describe fidelity.
+
+Therefore, the suggested action is:
+
+self.actions.modify_radio('adj_3', 'No')
+Executing one action: self.actions.modify_radio('adj_3', 'No')
+We are going to select this radio button: <input type="radio" name="adj_3" value="No">
+ - - - - - -  starting a new element: `Input(name=`pos_qual_ctrl_4`, type=`radio`, task=`Scalar Adjectives Identification`)` - - - - - -  
+input: Input(name=`pos_qual_ctrl_4`, type=`radio`, task=`Scalar Adjectives Identification`)
+about to try executing one action, on the following input: pos_qual_ctrl_4
+Claude response:  To modify the radio button with name "pos_qual_ctrl_4", you can use:
+
+```python
+self.actions.modify_radio("pos_qual_ctrl_4", "Yes")
+```
+
+This will select the "Yes" option for that radio button.
+
+The key things to note are:
+
+- Use the `name` attribute of the radio button as the identifier 
+- Pass the value you want to select as the second parameter (`"Yes"`, `"No"`, or `"Naa"`)
+Executing one action: self.actions.modify_radio("pos_qual_ctrl_4", "Yes")
+
+
+This will select the "Yes" option for that radio button.
+
+The key things to note are:
+
+- Use the `name` attribute of the radio button as the identifier 
+- Pass the value you want to select as the second parameter (`"Yes"`, `"No"`, or `"Naa"`)
+Failed to execute an action self.actions.modify_radio("pos_qual_ctrl_4", "Yes")
+
+
+This will select the "Yes" option for that radio button.
+
+The key things to note are:
+
+- Use the `name` attribute of the radio button as the identifier 
+- Pass the value you want to select as the second parameter (`"Yes"`, `"No"`, or `"Naa"`), error: invalid syntax (<string>, line 4)
+ - - - - - -  starting a new element: `Input(name=`adj_4`, type=`radio`, task=`Scalar Adjectives Identification`)` - - - - - -  
+input: Input(name=`adj_4`, type=`radio`, task=`Scalar Adjectives Identification`)
+about to try executing one action, on the following input: adj_4
+Claude response:  Let's focus on the adjective "aspirational" and the radio button with name "adj_4".
+
+To evaluate if "aspirational" describes the attribute "fidelity", we should:
+
+1. Read the definition of the attribute "fidelity" - "the quality of being faithful".
+
+2. Read the example adjectives like "loyal", "trusty" that describe "fidelity". 
+
+3. Determine if "aspirational" fits the definition and examples. 
+
+Since "aspirational" means "having a desire to achieve something", it does not directly describe "being faithful".
+
+Therefore, the best answer is:
+
+self.actions.modify_radio('adj_4', 'No')
+Executing one action: self.actions.modify_radio('adj_4', 'No')
+We are going to select this radio button: <input type="radio" name="adj_4" value="No">
+ - - - - - -  starting a new element: `Input(name=`adj_5`, type=`radio`, task=`Scalar Adjectives Identification`)` - - - - - -  
+input: Input(name=`adj_5`, type=`radio`, task=`Scalar Adjectives Identification`)
+about to try executing one action, on the following input: adj_5
