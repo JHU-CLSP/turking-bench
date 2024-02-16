@@ -89,7 +89,6 @@ class OLlamaTextModel(TextModel):
     def __init__(self, model: str):
         super().__init__(Models.OLlama)
         self.model = model
-        print(f"OLlama model: {self.model}")
 
     def get_text_baseline_action(self, input_name: str, html_code: str, num_demonstrations: int, use_relevant_html: bool) -> str:
         if num_demonstrations == 0:
@@ -117,8 +116,6 @@ HTML:
 [/INST]
 """
         
-        print(f"Prompt: {prompt}")
-
         url = "http://localhost:11434/api/generate"
         payload = {
             "model": self.model,
