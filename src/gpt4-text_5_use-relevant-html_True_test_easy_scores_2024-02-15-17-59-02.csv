@@ -1,0 +1,21 @@
+project,all,checkbox,radio,select,text,textarea
+ANLI Generation Eval - Reflective_ACL_1,0.2375,,0.2375,,,
+ATOMIC - Object Rationale 13,0.0018518518518518517,,,,,0.0018518518518518517
+Arch - Rel Eval 3,0.558,,0.558,,,
+Associate countries and languages with Ethnologue,0.0125,0.0,,0.05,0.0,0.0
+Compression HIT,0.1125,,,0.1125,,
+Formalize this,0.0,,,,,0.0
+JiminyCricket-HumanVal-b10,0.2574264861671954,0.65,0.1,,,0.0222794585015861
+Missing Adjective FITB,0.40583333333333327,,,,0.40583333333333327,
+ROT Details [m=50] rocstories - 0 - 99,0.30179971066160327,0.85,0.16666666666666666,,0.36169811930042106,
+Radiology Report Sentence Classification,0.15,,0.15,,,
+Reddit In-group Analysis Comment annotation 3,0.0,,0.0,,,
+Scalar Adjectives Identification,0.40625,,0.40625,,,
+Script KD eval LONG V2 - disc result eval 1,0.375,,0.375,,,
+Sherlock IMG 2 TXT Eval 15,0.205,,0.205,,,
+Simplicity HIT,0.19703389830508475,,,0.19703389830508475,,
+Step 3 Creating Answers Given Questions 23,0.0,,,,0.0,
+Word Formality Annotation,0.0,,,0.0,,
+atomic_event2event-effects 4,0.24271844660194175,,0.625,,0.0,
+wikiHow step-goal linking pilot cleanse-url,0.2833333333333333,,0.2833333333333333,,,
+winogrande validation (grammar) additional_ph,0.3,0.5,0.1,,,
