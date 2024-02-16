@@ -277,11 +277,13 @@ class OLlamaVisionModel(VisionModel):
             img_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
 
         prompt = f"""
-                {text_vision_oracle_instructions()}
-                Input name: {input_name}
-                HTML:
-                {html_code}
-                """
+<s> [INST] <<SYS>>
+{text_vision_oracle_instructions()}
+<</SYS>> 
+Input name: {input_name}
+HTML:
+{html_code} [/INST]
+"""
         url = "http://localhost:11434/api/generate"
         payload = {
             "model": self.model,
@@ -292,12 +294,9 @@ class OLlamaVisionModel(VisionModel):
 
         response = requests.post(url, data=json.dumps(payload))
         model_response = (json.loads(response.text))["response"]
-        print(f"OLlama response {model_response}")
+        print(f"OLlama Vision response {model_response}")
 
         return model_response
-
-    def get_next_action(self, messages: List[str], image_path: str) -> str:
-        pass
 
 class GPT4VModel(VisionModel):
     """
