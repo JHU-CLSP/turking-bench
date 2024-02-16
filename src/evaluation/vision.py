@@ -276,14 +276,13 @@ class OLlamaVisionModel(VisionModel):
             resized_img.save(buffer, format="PNG")  
             img_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
 
-        prompt = f"""
-<s> [INST] <<SYS>>
-{text_vision_oracle_instructions()}
-<</SYS>> 
+        prompt = "\{\{" + text_vision_oracle_instructions() + "\}\}\nUSER: \{\{" + f"""
 Input name: {input_name}
 HTML:
-{html_code} [/INST]
+{html_code}
+ASSISTANT:
 """
+        print(f"prompt {prompt}")
         url = "http://localhost:11434/api/generate"
         payload = {
             "model": self.model,
