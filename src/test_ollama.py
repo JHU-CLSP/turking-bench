@@ -1,18 +1,9 @@
 from __future__ import annotations
 
-import platform
 import os
 import io
 import subprocess
-import Xlib.display
 from PIL import Image, ImageDraw, ImageFont, ImageGrab
-try:
-    import pyautogui
-    pyautogui_installed = True
-except Exception as e:
-    print(f"Error importing pyautogui {e}")
-    pyautogui_installed = False
-from openai import OpenAI
 from typing import List, Tuple, Union, Literal
 import base64
 from dotenv import load_dotenv
@@ -30,33 +21,31 @@ class OLlamaTextModel():
         self.model = model
 
     def get_text_baseline_action(self, input_name: str, html_code: str, num_demonstrations: int, use_relevant_html: bool) -> str:
-        prompt = f"""
-                {text_oracle_instructions()}
-                Input name: {input_name}
-                HTML:
-                {html_code}
-                """
+        if num_demonstrations == 0:
+            return ""
 
         prompt = f"""
-        {text_oracle_instructions()}
-
-        Here are some examples of how the user might interact with the assistant. 
-        """
+<s> [INST] <<SYS>>
+{text_oracle_instructions()}
+<</SYS>>        
+{few_shot_examples()[0][3] if use_relevant_html else few_shot_examples()[0][0]}[/INST]
+{few_shot_examples()[0][2]}</s>
+"""
         for idx, instance in enumerate(islice(few_shot_examples(), num_demonstrations)):
+            if idx == 0:
+                continue
             prompt += f"""
-            user: 
-            {instance[3] if use_relevant_html else instance[0]}
-            assistant:
-            {instance[2]}
-
-            """ 
+<s> [INST] {instance[3] if use_relevant_html else instance[0]} [/INST] {instance[2]}</s>
+""" 
 
         prompt += f"""
-        user: 
-        {html_code}
-        assistant:
-        """
-
+<s> [INST]
+Input name: {input_name}
+HTML:
+{html_code}
+[/INST]
+"""
+        
         print(f"Prompt: {prompt}")
 
         url = "http://localhost:11434/api/generate"
@@ -106,10 +95,9 @@ class OLlamaVisionModel():
         return model_response
 
 if __name__ == "__main__":
-    model = OLlamaTextModel(model="llama2")
+    model = OLlamaTextModel(model="llama2:70b")
     input_name = "weakener_rationale1_relevant"
     relevant_html = """
-HTML:
         <input id="weakener_rationale1_understandable" name="weakener_rationale1_gibberish_understandable_grammatical" onclick="toggle_gibberish('weakener_rationale1')" type="radio" value="understandable"> <label for="understandable">The rationale is not perfectly grammatical, but I can understand it.</label><br>
         <input id="weakener_rationale1_grammatical" name="weakener_rationale1_gibberish_understandable_grammatical" onclick="toggle_gibberish('weakener_rationale1')" type="radio" value="grammatical" checked=""> <label for="grammatical">The rationale is grammatical.</label></div>
         </td>

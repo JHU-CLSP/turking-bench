@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-#SBATCH --job-name=llama2_70b
-#SBATCH --output=out.llama2_70b.log
-#SBATCH --error=err.llama_70b.log
+#SBATCH --job-name=download_ollama
+#SBATCH --output=/dev/null
+#SBATCH --error=err.download_ollama.log
 #
 # Number of tasks needed for this job. Generally, used with MPI jobs
 #SBATCH --ntasks=1
@@ -26,19 +26,6 @@
 # Load necessary modules
 module load anaconda
 
-source ~/.bashrc
-
-conda init
 conda activate turk
 
-module list
-
-# Run the Python script
-bash="/bin/bash"
-
-python --version
-which python
-
-cd turk-instructions/src
-
-ollama run llama2:70b & sleep 10 && python3 4_run_evaluation.py --solver_type text --ollama_model llama2:70b --tasks test_easy --max_instance_count 20 --num_demonstrations 3 --use_relevant_html --headless --do_eval --server > relevant_ollama_llama270b_3.txt
+ollama run llava:34b
