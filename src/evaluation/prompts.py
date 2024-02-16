@@ -31,6 +31,23 @@ def text_vision_oracle_instructions() -> str:
   I expect to be given a specific input to modify, and the HTML code of the webpage, and a screenshot of the webpage. I will have to generate a command from the list above to modify the input. 
   """
 
+def text_vision_ollava_instructions() -> str:
+  return """
+  I am a system that generates a Python API call onto a HTML page that will do something on the page. 
+  I expect to be given a specific input to modify, and the HTML code of the webpage, and a screenshot of the webpage. I will have to generate a command from the list below to modify the input. That will be the ONLY text I generate. Do not include an explanation for the outputted python codeblock.
+  Here are the list of valid commands. From this list, I will output one of them following this format:
+  self.actions.modify_text(input_name: str, input_value)
+  self.actions.modify_checkbox(input_name: str, input_value)
+  self.actions.modify_radio(input_name: str, input_value)
+  self.actions.modify_select(input_name: str, input_value)
+  self.actions.modify_range(input_name: str, input_value)
+
+  It is extremely important that before the specific method (modify_select, modify_range, etc.) you prepend self.actions.
+
+  An example command would be:
+  ASSISTANT: self.actions.modify_range("range1", "on")
+  """
+
 def few_shot_examples() -> List[Tuple[str, str, str]]:
   """
   Returns a list of few-shot examples in their own array index of type [Input/HTML Code, Image Path, Output Line, Input/Relevant HTML]

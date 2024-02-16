@@ -18,7 +18,7 @@ from typing import List, Tuple
 import base64
 from dotenv import load_dotenv
 import copy
-from evaluation.prompts import text_vision_oracle_instructions, few_shot_examples
+from evaluation.prompts import text_vision_oracle_instructions, text_vision_ollava_instructions, few_shot_examples
 from itertools import islice
 import time
 
@@ -276,13 +276,11 @@ class OLlamaVisionModel(VisionModel):
             resized_img.save(buffer, format="PNG")  
             img_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
 
-        prompt = "\{\{" + text_vision_oracle_instructions() + "\}\}\nUSER: \{\{" + f"""
+        prompt = "\{\{" + text_vision_ollava_instructions() + "\}\}\nUSER: \{\{" + f"""
 Input name: {input_name}
 HTML:
 {html_code}
-ASSISTANT:
-"""
-        print(f"prompt {prompt}")
+ASSISTANT:"""
         url = "http://localhost:11434/api/generate"
         payload = {
             "model": self.model,

@@ -8,7 +8,7 @@ from typing import List, Tuple, Union, Literal
 import base64
 from dotenv import load_dotenv
 import copy
-from evaluation.prompts import text_oracle_instructions, text_vision_oracle_instructions, few_shot_examples
+from evaluation.prompts import text_oracle_instructions, text_vision_oracle_instructions, text_vision_ollava_instructions, few_shot_examples
 from itertools import islice
 import time
 from pydantic import BaseModel
@@ -85,12 +85,11 @@ class OLlamaVisionModel():
             resized_img.save(buffer, format="PNG")  
             img_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
 
-        prompt = "\{\{" + text_vision_oracle_instructions() + "\}\}\nUSER: \{\{" + f"""
+        prompt = "\{\{" + text_vision_ollava_instructions() + "\}\}\nUSER: \{\{" + f"""
 Input name: {input_name}
 HTML:
 {html_code}
-ASSISTANT:
-"""
+ASSISTANT:"""
         print(f"prompt {prompt}")
         url = "http://localhost:11434/api/generate"
         payload = {
@@ -107,7 +106,7 @@ ASSISTANT:
         return model_response
 
 if __name__ == "__main__":
-    model = OLlamaTextModel(model="llama2:70b")
+    model = OLlamaVisionModel(model="llava")
     input_name = "weakener_rationale1_relevant"
     relevant_html = """
         <input id="weakener_rationale1_understandable" name="weakener_rationale1_gibberish_understandable_grammatical" onclick="toggle_gibberish('weakener_rationale1')" type="radio" value="understandable"> <label for="understandable">The rationale is not perfectly grammatical, but I can understand it.</label><br>
@@ -126,4 +125,4 @@ if __name__ == "__main__":
     </tbody>
   </table>
 """
-    res = model.get_text_baseline_action(input_name, relevant_html, 3, True)
+    res = model.get_vision_text_baseline_action(input_name, relevant_html, "screenshots/screenshot.png", 0, True)
