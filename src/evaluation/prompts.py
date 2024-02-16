@@ -45,7 +45,7 @@ def text_vision_ollava_instructions() -> str:
   It is extremely important that before the specific method (modify_select, modify_range, etc.) you prepend self.actions.
 
   An example command would be:
-  ASSISTANT: self.actions.modify_range("range1", "on")
+  ASSISTANT: self.actions.modify_checkbox("range1", "on")
   """
 
 def few_shot_examples() -> List[Tuple[str, str, str]]:
