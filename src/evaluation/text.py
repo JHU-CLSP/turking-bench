@@ -6,6 +6,8 @@ from itertools import islice
 import time
 import os
 from anthropic import AI_PROMPT, HUMAN_PROMPT, AnthropicBedrock
+import requests
+import json
 
 class Models(Enum):
     GPT4 = 1
@@ -84,11 +86,50 @@ class GPT4Model(TextModel):
         return response.choices[0].message.content
 
 class OLlamaTextModel(TextModel):
-    def __init__(self):
+    def __init__(self, model: str):
         super().__init__(Models.OLlama)
+        self.model = model
 
     def get_text_baseline_action(self, input_name: str, html_code: str, num_demonstrations: int, use_relevant_html: bool) -> str:
-        pass
+        if num_demonstrations == 0:
+            return ""
+
+        prompt = f"""
+<s> [INST] <<SYS>>
+{text_oracle_instructions()}
+<</SYS>>        
+{few_shot_examples()[0][3] if use_relevant_html else few_shot_examples()[0][0]}[/INST]
+{few_shot_examples()[0][2]}</s>
+"""
+        for idx, instance in enumerate(islice(few_shot_examples(), num_demonstrations)):
+            if idx == 0:
+                continue
+            prompt += f"""
+<s> [INST] {instance[3] if use_relevant_html else instance[0]} [/INST] {instance[2]}</s>
+""" 
+
+        prompt += f"""
+<s> [INST]
+Input name: {input_name}
+HTML:
+{html_code}
+[/INST]
+"""
+        
+        print(f"Prompt: {prompt}")
+
+        url = "http://localhost:11434/api/generate"
+        payload = {
+            "model": self.model,
+            "prompt": prompt,
+            "stream": False 
+        }
+
+        response = requests.post(url, data=json.dumps(payload))
+        model_response = (json.loads(response.text))["response"]
+        print(f"OLlama response {model_response}")
+
+        return model_response
 
 class ClaudeTextModel(TextModel):
     def __init__(self):

@@ -41,4 +41,4 @@ which python
 
 cd turk-instructions/src
 
-nohup ollama serve & sleep 5 && ollama run llama2:70b & sleep 10 && python3 test_ollama.py
+nohup ollama serve & sleep 5 && ollama run llama2:70b & sleep 10 && python3 4_run_evaluation.py --solver_type gpt4-text --tasks test_easy --max_instance_count 20 --num_demonstrations 3 --use_relevant_html --headless --do_eval --server > relevant_ollama_llama270b_3.txt
