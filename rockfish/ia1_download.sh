@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-#SBATCH --job-name=ollama
-#SBATCH --output=out.ollama.log
-#SBATCH --error=err.ollama.log
+#SBATCH --job-name=download_ollama
+#SBATCH --output=/dev/null
+#SBATCH --error=err.download_ollama.log
 #
 # Number of tasks needed for this job. Generally, used with MPI jobs
 #SBATCH --ntasks=1
