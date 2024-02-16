@@ -92,15 +92,20 @@ class OLlamaTextModel(TextModel):
 
     def get_text_baseline_action(self, input_name: str, html_code: str, num_demonstrations: int, use_relevant_html: bool) -> str:
         if num_demonstrations == 0:
-            return ""
-
-        prompt = f"""
+            prompt = f"""
+<s> [INST] <<SYS>>
+{text_oracle_instructions()}
+<</SYS>> 
+            """
+        else:
+            prompt = f"""
 <s> [INST] <<SYS>>
 {text_oracle_instructions()}
 <</SYS>>        
 {few_shot_examples()[0][3] if use_relevant_html else few_shot_examples()[0][0]}[/INST]
 {few_shot_examples()[0][2]}</s>
 """
+
         for idx, instance in enumerate(islice(few_shot_examples(), num_demonstrations)):
             if idx == 0:
                 continue
@@ -108,8 +113,16 @@ class OLlamaTextModel(TextModel):
 <s> [INST] {instance[3] if use_relevant_html else instance[0]} [/INST] {instance[2]}</s>
 """ 
 
-        prompt += f"""
+        if num_demonstrations > 0:
+            prompt += f"""
 <s> [INST]
+Input name: {input_name}
+HTML:
+{html_code}
+[/INST]
+"""
+        else:
+            prompt += f"""
 Input name: {input_name}
 HTML:
 {html_code}
