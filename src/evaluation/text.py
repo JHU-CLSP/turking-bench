@@ -183,8 +183,6 @@ class ClaudeTextModel(TextModel):
                     top_p=0.5,
                 )
 
-                time.sleep(0.5)
-
                 break
             except Exception as e:
                 fail_count += 1

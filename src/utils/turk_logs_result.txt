@@ -1,20 +1,9 @@
-ANLI Generation Eval - Reflective_ACL_1: {'all': 0.0, 'radio': 0.0}
-ATOMIC - Object Rationale 13: {'all': 0.0014492753623188406, 'textarea': 0.0014492753623188406}
-Arch - Rel Eval 3: {'all': 0.254, 'radio': 0.254}
-Associate countries and languages with Ethnologue: {'all': 0.1125, 'text': 0.0, 'select': 0.4, 'textarea': 0.0, 'checkbox': 0.05}
-Compression HIT: {'all': 0.0020833333333333333, 'select': 0.0020833333333333333}
-Formalize this: {'all': 0.018854479406242398, 'textarea': 0.018854479406242398}
-JiminyCricket-HumanVal-b10: {'all': 0.46764828738512937, 'textarea': 0.002944862155388471, 'radio': 0.7, 'checkbox': 0.7}
-Missing Adjective FITB: {'all': 0.0, 'text': 0.0}
-ROT Details [m=50] rocstories - 0 - 99: {'all': 0.44304584304584305, 'radio': 0.3614457831325301, 'checkbox': 0.75, 'text': 0.49729797979797985}
-Radiology Report Sentence Classification: {'all': 0.6, 'radio': 0.6}
-Reddit In-group Analysis Comment annotation 3: {'all': 0.2800000000000001, 'radio': 0.28}
-Scalar Adjectives Identification: {'all': 0.09375, 'radio': 0.09375}
-Script KD eval LONG V2 - disc result eval 1: {'all': 0.4375, 'radio': 0.4375}
+Arch - Rel Eval 3: {'all': 0.01, 'radio': 0.01}
+Associate countries and languages with Ethnologue: {'all': 0.0625, 'text': 0.0, 'select': 0.25, 'textarea': 0.0, 'checkbox': 0.0}
+ROT Details [m=50] rocstories - 0 - 99: {'all': 0.21303418803418805, 'radio': 0.05555555555555555, 'checkbox': 0.75, 'text': 0.3847222222222222}
+Radiology Report Sentence Classification: {'all': 0.75, 'radio': 0.75}
+Reddit In-group Analysis Comment annotation 3: {'all': 0.0, 'radio': 0.0}
+Scalar Adjectives Identification: {'all': 0.015625, 'radio': 0.015625}
+Script KD eval LONG V2 - disc result eval 1: {'all': 0.0, 'radio': 0.0}
 Sherlock IMG 2 TXT Eval 15: {'all': 0.0, 'radio': 0.0}
-Simplicity HIT: {'all': 0.0022727272727272726, 'select': 0.0020920502092050207}
-Step 3 Creating Answers Given Questions 23: {'all': 0.04081347257188976, 'text': 0.0336255557809873}
-Word Formality Annotation: {'all': 0.0, 'select': 0.0}
-atomic_event2event-effects 4: {'all': 0.21666666666666662, 'radio': 0.575, 'text': 0.0}
-wikiHow step-goal linking pilot cleanse-url: {'all': 0.016666666666666666, 'radio': 0.016666666666666666}
-winogrande validation (grammar) additional_ph: {'all': 0.2, 'radio': 0.025, 'checkbox': 0.375}
+wikiHow step-goal linking pilot cleanse-url: {'all': 0.0, 'radio': 0.0}
