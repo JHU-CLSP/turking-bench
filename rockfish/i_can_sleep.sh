@@ -136,6 +136,17 @@ for run_idx in {1..5}; do
     run_command_group "llama2:70b-chat" $run_idx
 
     run_llava_group "bakllava" $run_idx
+
+    run_command_group "mistral" $run_idx
+    run_command_group "mixtral" $run_idx
+
+    run_command_group "codellama:7b" $run_idx
+    run_command_group "codellama:34b" $run_idx
+    run_command_group "codellama:70b" $run_idx
+
+    run_command_group "gemma:2b" $run_idx
+    run_command_group "gemma:7b" $run_idx
+    run_command_group "phi" $run_idx
 done
 
 echo "All iterations completed."
