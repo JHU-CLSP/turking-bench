@@ -1,9 +1,20 @@
-Arch - Rel Eval 3: {'all': 0.01, 'radio': 0.01}
-Associate countries and languages with Ethnologue: {'all': 0.0625, 'text': 0.0, 'select': 0.25, 'textarea': 0.0, 'checkbox': 0.0}
-ROT Details [m=50] rocstories - 0 - 99: {'all': 0.21303418803418805, 'radio': 0.05555555555555555, 'checkbox': 0.75, 'text': 0.3847222222222222}
-Radiology Report Sentence Classification: {'all': 0.75, 'radio': 0.75}
-Reddit In-group Analysis Comment annotation 3: {'all': 0.0, 'radio': 0.0}
-Scalar Adjectives Identification: {'all': 0.015625, 'radio': 0.015625}
-Script KD eval LONG V2 - disc result eval 1: {'all': 0.0, 'radio': 0.0}
-Sherlock IMG 2 TXT Eval 15: {'all': 0.0, 'radio': 0.0}
-wikiHow step-goal linking pilot cleanse-url: {'all': 0.0, 'radio': 0.0}
+ANLI Generation Eval - Reflective_ACL_1: {'all': 0.0625, 'radio': 0.0625}
+ATOMIC - Object Rationale 13: {'all': 0.1161407932644664, 'textarea': 0.11614079326446643}
+Arch - Rel Eval 3: {'all': 0.39600000000000013, 'radio': 0.396}
+Associate countries and languages with Ethnologue: {'all': 0.13941558441558444, 'text': 0.14857142857142858, 'select': 0.4, 'textarea': 0.00909090909090909, 'checkbox': 0.0}
+Compression HIT: {'all': 0.06458333333333333, 'select': 0.06458333333333334}
+Formalize this: {'all': 0.0, 'textarea': 0.0}
+JiminyCricket-HumanVal-b10: {'all': 0.36666666666666664, 'textarea': 0.0, 'radio': 0.45, 'checkbox': 0.65}
+Missing Adjective FITB: {'all': 0.3455952380952381, 'text': 0.3455952380952381}
+ROT Details [m=50] rocstories - 0 - 99: {'all': 0.19963439673584604, 'radio': 0.03333333333333333, 'checkbox': 0.65, 'text': 0.45831576635924465}
+Radiology Report Sentence Classification: {'all': 0.7, 'radio': 0.7}
+Reddit In-group Analysis Comment annotation 3: {'all': 0.15000000000000002, 'radio': 0.15}
+Scalar Adjectives Identification: {'all': 0.1125, 'radio': 0.1125}
+Script KD eval LONG V2 - disc result eval 1: {'all': 0.15, 'radio': 0.15}
+Sherlock IMG 2 TXT Eval 15: {'all': 0.135, 'radio': 0.135}
+Simplicity HIT: {'all': 0.06950757575757575, 'select': 0.06903765690376569}
+Step 3 Creating Answers Given Questions 23: {'all': 0.2793597060043404, 'text': 0.26417103912751144}
+Word Formality Annotation: {'all': 0.12750000000000003, 'select': 0.1275}
+atomic_event2event-effects 4: {'all': 0.025, 'radio': 0.025}
+wikiHow step-goal linking pilot cleanse-url: {'all': 0.08333333333333333, 'radio': 0.08333333333333333}
+winogrande validation (grammar) additional_ph: {'all': 0.825, 'radio': 0.65, 'checkbox': 1.0}
