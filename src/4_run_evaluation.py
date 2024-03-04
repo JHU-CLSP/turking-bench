@@ -49,6 +49,9 @@ if __name__ == "__main__":
     parser.add_argument("--screenshot_path",
                         help="file name where screenshots are saved",
                         default="screenshot.png")
+    parser.add_argument("--task",
+                        help="Overwrite tasks to just do one specific task",
+                        default="")
 
     args = parser.parse_args()
     print(f"{Fore.BLUE}Solver: {args.solver_type}")
@@ -77,7 +80,11 @@ if __name__ == "__main__":
         use_relevant_html=args.use_relevant_html
     )
 
-    eval.enumerate_tasks(max_instance_count)
+    # Check if task is empty
+    if args.task: 
+        eval.enumerate_tasks(max_instance_count, task=args.task)
+    else:
+        eval.enumerate_tasks(max_instance_count)
     # Debugging mode
     # eval.enumerate_tasks(max_instance_count, task="ethics_sbic dialogue 2nd 0", first_instance_only=True)
     # Collecting example code: python 4_run_evaluation.py --no-do_eval --headless > extract.txt

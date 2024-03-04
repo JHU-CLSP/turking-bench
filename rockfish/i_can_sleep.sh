@@ -41,6 +41,8 @@ which python
 
 cd turk-instructions/src
 
+IFS=$'\n' read -d '' -r -a tasks < ../data/splits/evaluation_tasks_easy.txt
+
 run_llava_group() {
     ollama_model=$1
     run_idx=$2
@@ -59,15 +61,17 @@ run_llava_group() {
     # Sleep for some time
     sleep 10
 
-    # 0 relevant_html
-    while true; do
-        if python3 4_run_evaluation.py --solver_type text-vision --ollama_model "$ollama_model" --tasks test_easy --max_instance_count 4 --num_demonstrations 0 --use_relevant_html --headless --do_eval --server > "$output_file_0" 2>&1; then
-            echo "Evaluation for $ollama_model, 0_relevant_html iteration $run_idx completed successfully."
-            break
-        else
-            echo "Evaluation for $ollama_model, 0_relevant html iteration $run_idx failed. Retrying..." | tee -a "$output_file"
-            sleep 5  # Wait for 5 seconds before retrying
-        fi
+    for task in "${tasks[@]}"; do
+        # 0 relevant_html
+        while true; do
+            if python3 4_run_evaluation.py --solver_type text-vision --ollama_model "$ollama_model" --tasks test_easy --task "$task" --max_instance_count 20 --num_demonstrations 0 --use_relevant_html --headless --do_eval --server > "$output_file_0" 2>&1; then
+                echo "Evaluation for $ollama_model, 0_relevant_html iteration $run_idx completed successfully."
+                break
+            else
+                echo "Evaluation for $ollama_model, 0_relevant html iteration $run_idx failed. Retrying..." | tee -a "$output_file"
+                sleep 5  # Wait for 5 seconds before retrying
+            fi
+        done
     done
 
     # Kill the ollama run and website processes
@@ -95,25 +99,29 @@ run_command_group() {
     sleep 10
 
     # 3 relevant_html
-    while true; do
-        if python3 4_run_evaluation.py --solver_type text --ollama_model "$ollama_model" --tasks test_easy --max_instance_count 4 --num_demonstrations 3 --use_relevant_html --headless --do_eval --server > "$output_file_3" 2>&1; then
-            echo "Evaluation for $ollama_model, 3_relevant_html iteration $run_idx completed successfully."
-            break
-        else
-            echo "Evaluation for $ollama_model, 3_relevant html iteration $run_idx failed. Retrying..." | tee -a "$output_file"
-            sleep 5  # Wait for 5 seconds before retrying
-        fi
+    for task in "${tasks[@]}"; do
+        while true; do
+            if python3 4_run_evaluation.py --solver_type text --ollama_model "$ollama_model" --tasks test_easy --task "$task" --max_instance_count 4 --num_demonstrations 3 --use_relevant_html --headless --do_eval --server > "$output_file_3" 2>&1; then
+                echo "Evaluation for $ollama_model, 3_relevant_html iteration $run_idx completed successfully."
+                break
+            else
+                echo "Evaluation for $ollama_model, 3_relevant html iteration $run_idx failed. Retrying..." | tee -a "$output_file"
+                sleep 5  # Wait for 5 seconds before retrying
+            fi
+        done
     done
 
     # 0 full_html
-    while true; do
-        if python3 4_run_evaluation.py --solver_type text --ollama_model "$ollama_model" --tasks test_easy --max_instance_count 4 --num_demonstrations 0 --no-use_relevant_html --headless --do_eval --server > "$output_file_0" 2>&1; then
-            echo "Evaluation for $ollama_model, 0 full_html iteration $run_idx completed successfully."
-            break
-        else
-            echo "Evaluation for $ollama_model, 0 full_html iteration $run_idx failed. Retrying..." | tee -a "$output_file"
-            sleep 5  # Wait for 5 seconds before retrying
-        fi
+    for task in "${tasks[@]}"; do
+        while true; do
+            if python3 4_run_evaluation.py --solver_type text --ollama_model "$ollama_model" --tasks test_easy --task "$task" --max_instance_count 4 --num_demonstrations 0 --no-use_relevant_html --headless --do_eval --server > "$output_file_0" 2>&1; then
+                echo "Evaluation for $ollama_model, 0 full_html iteration $run_idx completed successfully."
+                break
+            else
+                echo "Evaluation for $ollama_model, 0 full_html iteration $run_idx failed. Retrying..." | tee -a "$output_file"
+                sleep 5  # Wait for 5 seconds before retrying
+            fi
+        done
     done
 
     # Kill the ollama run and website processes
@@ -121,32 +129,28 @@ run_command_group() {
     kill $website_pid
 }
 
-# Main loop to run all command groups 5 times
-for run_idx in {1..5}; do
-    echo "Starting iteration $run_idx of 5"
-    run_llava_group "llava:7b" $run_idx
-    run_llava_group "llava:13b" $run_idx
-    run_llava_group "llava:34b" $run_idx
+run_llava_group "llava:7b" $run_idx
+run_llava_group "llava:13b" $run_idx
+run_llava_group "llava:34b" $run_idx
 
-    run_command_group "llama2:7b" $run_idx
-    run_command_group "llama2:7b-chat" $run_idx
-    run_command_group "llama2:13b" $run_idx
-    run_command_group "llama2:13b-chat" $run_idx
-    run_command_group "llama2:70b" $run_idx
-    run_command_group "llama2:70b-chat" $run_idx
+run_command_group "llama2:7b" $run_idx
+run_command_group "llama2:7b-chat" $run_idx
+run_command_group "llama2:13b" $run_idx
+run_command_group "llama2:13b-chat" $run_idx
+run_command_group "llama2:70b" $run_idx
+run_command_group "llama2:70b-chat" $run_idx
 
-    run_llava_group "bakllava" $run_idx
+run_llava_group "bakllava" $run_idx
 
-    run_command_group "mistral" $run_idx
-    run_command_group "mixtral" $run_idx
+run_command_group "mistral" $run_idx
+run_command_group "mixtral" $run_idx
 
-    run_command_group "codellama:7b" $run_idx
-    run_command_group "codellama:34b" $run_idx
-    run_command_group "codellama:70b" $run_idx
+run_command_group "codellama:7b" $run_idx
+run_command_group "codellama:34b" $run_idx
+run_command_group "codellama:70b" $run_idx
 
-    run_command_group "gemma:2b" $run_idx
-    run_command_group "gemma:7b" $run_idx
-    run_command_group "phi" $run_idx
-done
+run_command_group "gemma:2b" $run_idx
+run_command_group "gemma:7b" $run_idx
+run_command_group "phi" $run_idx
 
 echo "All iterations completed."
