@@ -61,14 +61,14 @@ run_llava_group() {
     sleep 10
 
     for task in "${tasks[@]}"; do
-        output_file_0="${run_idx}_${ollama_model}_${task}_0.txt"
+        output_file_0="${ollama_model}_${task}_0.txt"
         # 0 relevant_html
         while true; do
             if python3 4_run_evaluation.py --solver_type text-vision --ollama_model "$ollama_model" --tasks test_easy --task "$task" --max_instance_count 20 --num_demonstrations 0 --use_relevant_html --headless --do_eval --server > "$output_file_0" 2>&1; then
                 echo "Evaluation for $ollama_model, 0_relevant_html iteration $run_idx completed successfully."
                 break
             else
-                echo "Evaluation for $ollama_model, 0_relevant html iteration $run_idx failed. Retrying..." | tee -a "$output_file"
+                echo "Evaluation for $ollama_model, 0_relevant html iteration $run_idx failed. Retrying..."
                 sleep 5  # Wait for 5 seconds before retrying
             fi
         done
@@ -98,13 +98,13 @@ run_command_group() {
 
     # 3 relevant_html
     for task in "${tasks[@]}"; do
-        output_file_3="${run_idx}_${ollama_model}_${task}_3.txt"
+        output_file_3="${ollama_model}_${task}_3.txt"
         while true; do
             if python3 4_run_evaluation.py --solver_type text --ollama_model "$ollama_model" --tasks test_easy --task "$task" --max_instance_count 4 --num_demonstrations 3 --use_relevant_html --headless --do_eval --server > "$output_file_3" 2>&1; then
                 echo "Evaluation for $ollama_model, 3_relevant_html iteration $run_idx completed successfully."
                 break
             else
-                echo "Evaluation for $ollama_model, 3_relevant html iteration $run_idx failed. Retrying..." | tee -a "$output_file"
+                echo "Evaluation for $ollama_model, 3_relevant html iteration $run_idx failed. Retrying..."
                 sleep 5  # Wait for 5 seconds before retrying
             fi
         done
@@ -112,13 +112,13 @@ run_command_group() {
 
     # 0 full_html
     for task in "${tasks[@]}"; do
-        output_file_0="${run_idx}_${ollama_model}_${task}_0.txt"
+        output_file_0="${ollama_model}_${task}_0.txt"
         while true; do
             if python3 4_run_evaluation.py --solver_type text --ollama_model "$ollama_model" --tasks test_easy --task "$task" --max_instance_count 4 --num_demonstrations 0 --no-use_relevant_html --headless --do_eval --server > "$output_file_0" 2>&1; then
                 echo "Evaluation for $ollama_model, 0 full_html iteration $run_idx completed successfully."
                 break
             else
-                echo "Evaluation for $ollama_model, 0 full_html iteration $run_idx failed. Retrying..." | tee -a "$output_file"
+                echo "Evaluation for $ollama_model, 0 full_html iteration $run_idx failed. Retrying..."
                 sleep 5  # Wait for 5 seconds before retrying
             fi
         done
