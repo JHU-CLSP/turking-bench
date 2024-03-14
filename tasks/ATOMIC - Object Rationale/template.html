@@ -1,0 +1,610 @@
+            <html lang="en">
+
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+
+
+                    <!-- BOOTSTRAP CSS -->
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+                    <!-- HITPUB CSS -->
+                    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
+                    <link rel=stylesheet href="https://cdn.jsdelivr.net/npm/@allenai/varnish@0.3.18/theme.css" />
+                    <style id="hitpub_css">
+                        /***********************************************
+                        MOSAIC BOOSTRAP OVERWRITES
+                        ***********************************************/
+                        #hitinfo .card {
+                            border-radius: 0;
+                        }
+                        #hitinfo .card:first-child {
+                            border-bottom: 0;
+                        }
+                         #hitinfo button.btn-link {
+                            color: #06486F;
+                            text-decoration: none;
+                         }
+                        #hitinfo button.btn-link:hover {
+                            text-decoration: none;
+                        }
+                        #hit ul.question-choice {
+                            list-style-type: none;
+                        }
+                        #hit h3 {
+                            font-size: 1.25rem;
+                        }
+                        /***********************************************
+                        MOSAIC GENERAL STYLING
+                        ***********************************************/
+                        body {
+                            font-family: "Open Sans", "Roboto", sans-serif;
+                            background-color: #E9EAED;
+                        }
+                        #hit {
+                            background-color: #fff;
+                            padding-bottom: 2.5rem;
+                        }
+                        textarea#feedback {
+                            width: 100%
+                        }
+                        input#submitButton {
+                            margin: auto;
+                            display: block;
+                            background-color: #2172a4;
+                            color: #fff;
+                            font-size: 1.125rem;
+                            padding: .5rem 1rem;
+                            cursor: pointer;
+                            border-radius: 1rem;
+                        }
+                        input#submitButton:hover {
+                            background-color: #06486F;
+                        }
+                        textarea.inline-input {
+                            display: inline-block;
+                            width: 100%;
+                            border: none;
+                        }
+                        textarea.inline-input:focus {
+                            outline: none;
+                        }
+                        div.event {
+                            margin-bottom: 1rem;
+                        }
+                        div.prompt {
+                            margin-bottom: 1rem;
+                        }
+                        div.response, div.response textarea, div.response .card{
+                            border: none;
+                            padding: 0;
+                            font-style: italic;
+                        }
+                        div.question .obj, div.question .use {
+                            font-weight: bold;
+                        }
+                        div.feedback-container {
+                            padding-top: 2.5rem;
+                        }
+                        textarea#feedback {
+                            border: solid 1px #ccc;
+                        }
+                        div.question-container {
+                            border-bottom: solid 1px #ccc;
+                            padding: 2rem 0;
+                        }
+                        div.prompt-response.container {
+                            padding: 0;
+                        }
+                        div.valid-checkbox-container {
+                            margin-top: 3rem;
+                        }
+                        div.obj-use-container {
+                            margin-bottom: 2rem;
+                        }
+                        div.response textarea {
+                            padding: .82rem;
+                            border: solid 1px #ccc;
+                        }
+                        div.rationale-container {
+                            font-style: italic;
+                        }
+                    </style>
+		   <!-- HIT START -->
+                   <div id="hit" class="container">
+                        <div class="col-10 offset-1">
+                            <div class="accordion" id="hitinfo">
+
+                                <!-- INSTRUCTIONS START -->
+                                <div class="card">
+                                    <div class="card-header id="instructionsHeading">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#instructions" aria-expanded="true" aria-controls="instructions">
+                                                Instructions (click to expand)
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div class="collapse show" id="instructions" aria-labelledby="instructionsHeading" data-parent="#hitinfo">
+                                        <div class="card-body">
+                                            <p>Thanks for participating in this HIT! In this HIT, you will be asked several questions.</p>
+                                            <p>
+                                                For each question, you will be shown:
+                                                <ul>
+                                                    <li>An event (or one in a sequence of events).</li>
+                                                    <li>An object needed for the event.</li>
+                                                    <li>How the object would be used for the event.</li>
+                                                </ul>
+                                            </p>
+                                            <p>Your goal is to describe the reasons WHY the object would be used in that way.</p>
+                                            <h3>Guidelines</h3>
+                                            <ul>
+                                                <li>Describe the features/properties of the object that make it suitable for the use (see examples).</li>
+                                                <li>Do not mention specific people (PersonX, PersonY, etc.).</li>
+                                                <li>Mark "Object is out of place..." if the object is clearly out of place given the event.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- INSTRUCTIONS END -->
+
+                                <!-- EXAMPLES START -->
+                                <div class="card">
+                                    <div class="card-header id="examplesHeading">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#examples" aria-expanded="true" aria-controls="examples">
+                                                Examples (click to expand)
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div class="collapse" id="examples" aria-labelledby="examplesHeading" data-parent="#hitinfo">
+                                        <div class="card-body">
+
+
+                                            <div class="row justify-content-center question" id="example1">
+                                                <input type='hidden' value='Beginning' class="step-container" id='step1' disabled/>
+                                                <div class="row col-10 question-container">
+                                                    <div class="col-1">
+                                                        1)
+                                                    </div>
+                                                    <div class="col-11">
+                                                        <div class="sequence-container row mb-4">
+                                                            <div class="beginning event col-3">
+                                                                PersonX buys socks online.
+                                                            </div>
+                                                            <div class="middle arrow col-1 text-center">
+                                                                →
+                                                            </div>
+                                                            <div class="middle event col-3">
+
+                                                            </div>
+                                                            <div class="end arrow col-1 text-center">
+                                                                →
+                                                            </div>
+                                                            <div class="end event col-3">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-10 obj-use-container row">
+                                                            <div class="prompt">
+                                                                They need <span class="obj">laptop</span> to <span class="use">look for best deals online.</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-10 rationale-container row">
+                                                            Laptops have internet browsers. You need to use a browser to visit websites where you can buy things online.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row justify-content-center question" id="example2">
+                                                <input type='hidden' value='Middle' class="step-container" id='step2' disabled/>
+                                                <div class="row col-10 question-container">
+                                                    <div class="col-1">
+                                                        2)
+                                                    </div>
+                                                    <div class="col-11">
+                                                        <div class="sequence-container row mb-4">
+                                                            <div class="beginning event col-3">
+                                                                PersonX graduates from Law School
+                                                            </div>
+                                                            <div class="middle arrow col-1 text-center">
+                                                                →
+                                                            </div>
+                                                            <div class="middle event col-3">
+                                                                PersonX gets a job as a lawyer.
+                                                            </div>
+                                                            <div class="end arrow col-1 text-center">
+                                                                →
+                                                            </div>
+                                                            <div class="end event col-3">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-10 obj-use-container row">
+                                                            <div class="prompt">
+                                                                They need <span class="obj">suit</span> to <span class="use">look professional at work.</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-10 rationale-container row">
+                                                            Lawyers wear suits at work. To look professional at work, you need to fit in. If you get a job as a laywer, you need to wear a suit to fit in.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row justify-content-center question" id="example3">
+                                                <input type='hidden' value='End' class="step-container" id='step3' disabled/>
+                                                <div class="row col-10 question-container">
+                                                    <div class="col-1">
+                                                        3)
+                                                    </div>
+                                                    <div class="col-11">
+                                                        <div class="sequence-container row mb-4">
+                                                            <div class="beginning event col-3">
+                                                                PersonX wants to grow zuchinnis.
+                                                            </div>
+                                                            <div class="middle arrow col-1 text-center">
+                                                                →
+                                                            </div>
+                                                            <div class="middle event col-3">
+                                                                PersonX goes to the hardware store
+                                                            </div>
+                                                            <div class="end arrow col-1 text-center">
+                                                                →
+                                                            </div>
+                                                            <div class="end event col-3">
+                                                                PersonX starts a garden.
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-10 obj-use-container row">
+                                                            <div class="prompt">
+                                                                They need <span class="obj">shovel</span> to <span class="use">dig holes.</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-10 rationale-container row">
+                                                            When you start a garden, you need to dig holes to plant things in. A shovel has a hard metal head and a long handle that make it easy to dig holes with.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row justify-content-center question" id="example4">
+                                                <input type='hidden' value='Middle' class="step-container" id='step4' disabled/>
+                                                <div class="row col-10 question-container">
+                                                    <div class="col-1">
+                                                        4)
+                                                    </div>
+                                                    <div class="col-11">
+                                                        <div class="sequence-container row mb-4">
+                                                            <div class="beginning event col-3">
+                                                                PersonX brings a fishing rod to the river
+                                                            </div>
+                                                            <div class="middle arrow col-1 text-center">
+                                                                →
+                                                            </div>
+                                                            <div class="middle event col-3">
+                                                                PersonX catches a fish and brings it home.
+                                                            </div>
+                                                            <div class="end arrow col-1 text-center">
+                                                                →
+                                                            </div>
+                                                            <div class="end event col-3">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-10 obj-use-container row">
+                                                            <div class="prompt">
+                                                                They need <span class="obj">aluminum foil</span> to <span class="use">wrap fish in for grilling.</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-10 rationale-container row">
+                                                            Aluminum foil is heat safe. You can use it to wrap food in when cooking at high heat to help prevent burning.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- EXAMPLES END -->
+
+                            </div>
+                        </div>
+
+                        <!-- MTURK INPUT START -->
+                        <div class="col-12 mt-5">
+                            <form name='mturk_form' method='post' id='mturk_form' >
+                                <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+
+                                <!-- START QUESTION MACRO -->
+
+                                <!-- END QUESTION MACRO -->
+
+                                <!-- START QUESTIONS -->
+
+                                <div class="row justify-content-center question" id="question1">
+                                    <input type='hidden' value='${ObjectUseId1}' name='ObjectUseId1' id='ObjectUseId1'/>
+                                    <input type='hidden' value='${Step1}' class="step-container" name='Step1' id='step1'/>
+                                    <div class="row col-8 question-container">
+                                        <div class="col-1">
+                                            1)
+                                        </div>
+                                        <div class="col-11">
+                                            <div class="sequence-container row mb-4">
+                                                <div class="beginning event col-3">
+                                                    ${Beginning1}
+                                                </div>
+                                                <div class="middle arrow col-1 text-center">
+                                                    →
+                                                </div>
+                                                <div class="middle event col-3">
+                                                    ${Middle1}
+                                                </div>
+                                                <div class="end arrow col-1 text-center">
+                                                    →
+                                                </div>
+                                                <div class="end event col-3">
+                                                    ${End1}
+                                                </div>
+                                            </div>
+                                            <div class="obj-use-container col-10 row">
+                                                <div class="prompt">
+                                                    They need <span class="obj">${Object1}</span> to <span class="use">${Use1}.</span>
+                                                </div>
+                                            </div>
+                                            <div class="response collapse show col-10" id="response1">
+                                                    <div class="card card-body">
+                                                        <textarea rows="1" class="required inline-input" name="rationale1" placeholder="Why? ..." required></textarea>
+                                                    </div>
+                                            </div>
+                                            <div class="form-check valid-checkbox-container">
+                                                <input type="checkbox" class="form-check-input" id="valid1">
+                                                <label class="form-check-label" for="valid1"><em>Object is out of place for the event (use this as a last resort).</em></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row justify-content-center question" id="question2">
+                                    <input type='hidden' value='${ObjectUseId2}' name='ObjectUseId2' id='ObjectUseId2'/>
+                                    <input type='hidden' value='${Step2}' class="step-container" name='Step2' id='step2'/>
+                                    <div class="row col-8 question-container">
+                                        <div class="col-1">
+                                            2)
+                                        </div>
+                                        <div class="col-11">
+                                            <div class="sequence-container row mb-4">
+                                                <div class="beginning event col-3">
+                                                    ${Beginning2}
+                                                </div>
+                                                <div class="middle arrow col-1 text-center">
+                                                    →
+                                                </div>
+                                                <div class="middle event col-3">
+                                                    ${Middle2}
+                                                </div>
+                                                <div class="end arrow col-1 text-center">
+                                                    →
+                                                </div>
+                                                <div class="end event col-3">
+                                                    ${End2}
+                                                </div>
+                                            </div>
+                                            <div class="obj-use-container col-10 row">
+                                                <div class="prompt">
+                                                    They need <span class="obj">${Object2}</span> to <span class="use">${Use2}.</span>
+                                                </div>
+                                            </div>
+                                            <div class="response collapse show col-10" id="response2">
+                                                    <div class="card card-body">
+                                                        <textarea rows="1" class="required inline-input" name="rationale2" placeholder="Why? ..." required></textarea>
+                                                    </div>
+                                            </div>
+                                            <div class="form-check valid-checkbox-container">
+                                                <input type="checkbox" class="form-check-input" id="valid2">
+                                                <label class="form-check-label" for="valid2"><em>Object is out of place for the event (use this as a last resort).</em></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row justify-content-center question" id="question3">
+                                    <input type='hidden' value='${ObjectUseId3}' name='ObjectUseId3' id='ObjectUseId3'/>
+                                    <input type='hidden' value='${Step3}' class="step-container" name='Step3' id='step3'/>
+                                    <div class="row col-8 question-container">
+                                        <div class="col-1">
+                                            3)
+                                        </div>
+                                        <div class="col-11">
+                                            <div class="sequence-container row mb-4">
+                                                <div class="beginning event col-3">
+                                                    ${Beginning3}
+                                                </div>
+                                                <div class="middle arrow col-1 text-center">
+                                                    →
+                                                </div>
+                                                <div class="middle event col-3">
+                                                    ${Middle3}
+                                                </div>
+                                                <div class="end arrow col-1 text-center">
+                                                    →
+                                                </div>
+                                                <div class="end event col-3">
+                                                    ${End3}
+                                                </div>
+                                            </div>
+                                            <div class="obj-use-container col-10 row">
+                                                <div class="prompt">
+                                                    They need <span class="obj">${Object3}</span> to <span class="use">${Use3}.</span>
+                                                </div>
+                                            </div>
+                                            <div class="response collapse show col-10" id="response3">
+                                                    <div class="card card-body">
+                                                        <textarea rows="1" class="required inline-input" name="rationale3" placeholder="Why? ..." required></textarea>
+                                                    </div>
+                                            </div>
+                                            <div class="form-check valid-checkbox-container">
+                                                <input type="checkbox" class="form-check-input" id="valid3">
+                                                <label class="form-check-label" for="valid3"><em>Object is out of place for the event (use this as a last resort).</em></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- END QUESTIONS -->
+
+                                <!-- OPTIONAL FEEDBACK -->
+                                <div class="feeback-container row mt-5 pt-3">
+                                    <div class="col-8 offset-2 col-lg-6 offset-lg-3">
+                                        <p>(Optional) Please let us know if anything was unclear, if you experienced any issues, or if you have any other fedback for us.</p>
+                                        <textarea id="feedback" name="feedback" rows=3></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- SUBMIT BUTTON -->
+                                <div class="row mt-5">
+                                    <div class="col-2 offset-5">
+                                        <input id="submitButton" onclick="getnext()" type="submit" value="Submit">
+                                    </div>
+                                </div>
+
+                            </form>
+                            <script language='Javascript'>turkSetAssignmentID();</script>
+                        </div>
+                        <!-- MTURK INPUT END -->
+
+                    </div>
+		    <!-- HIT END -->
+
+                <!-- BOOSTRAP JS -->
+                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+                <!-- HITPUB JS -->
+                <script id="hitpub_js">
+                    // automatically resize textarea fields based on content
+                    var autoExpand = function (field) {
+                    	// Reset field height
+                    	field.style.height = 'inherit';
+                    	// Get the computed styles for the element
+                    	var computed = window.getComputedStyle(field);
+                    	// Calculate the height
+                    	var height = parseInt(computed.getPropertyValue('border-top-width'), 10)
+                    	             + parseInt(computed.getPropertyValue('padding-top'), 10)
+                    	             + field.scrollHeight
+                    	             + parseInt(computed.getPropertyValue('padding-bottom'), 10)
+                    	             + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
+
+                    	field.style.height = height + 'px';
+                    };
+                    // add autoExpand listeners to textarea inputs
+                    document.addEventListener('input', function (event) {
+                    	if (event.target.tagName.toLowerCase() !== 'textarea') return;
+                    	autoExpand(event.target);
+                    }, false);
+
+                    // autoExpand inputs on document load
+                    document.addEventListener('DOMContentLoaded', function(event) {
+                       inputs = document.getElementsByTagName('textarea');
+                       for (var i = 1; i < inputs.length; i++) {
+                           autoExpand(inputs[i]);
+                       }
+                    })
+
+                    // prevent submit on enter key
+                    document.getElementById("mturk_form").onkeypress = function(e) {
+                        var key = e.charCode || e.keyCode || 0;
+                        if (key == 13) {
+                          e.preventDefault();
+                        }
+                    }
+
+                    // fuction to display contexts
+                    function setContextDisplays(qNum, qType) {
+
+                        if (qType == "question") {
+                            var questionId = "question" + String(i);
+                        }
+                        else {
+                            var questionId = "example" + String(i)
+                        }
+                        var questionElement = document.getElementById(questionId);
+
+                        var stepId = "step" + String(qNum);
+                        var step = questionElement.getElementsByClassName("step-container")[0].getAttribute("value").toLowerCase();
+
+                        // set display: none for elements after Step
+                        var hideSteps = [];
+                        if (step == 'beginning') {
+                            hideSteps = ['middle', 'end']
+                        }
+                        else if (step == 'middle') {
+                            hideSteps = ['end']
+                        }
+                        hideSteps.forEach( function (hideStep) {
+                            console.log(hideStep);
+                            var hideElements = Array.from(questionElement.getElementsByClassName(hideStep));
+                            hideElements.forEach( function (hideElement) {
+                                console.log(hideElement);
+                                hideElement.style.display = "none";
+                            })
+                        })
+
+                        // set offest for obj-use-container
+                        /*
+                        var objUseContainer = questionElement.getElementsByClassName('obj-use-container')[0];
+                        if (step == 'middle') {
+                            objUseContainer.classList.add('offset-4');
+                        }
+                        else if (step == 'end') {
+                           objUseContainer.classList.add('offset-8');
+                        }
+                        */
+
+                    }
+                    for (var i = 1; i <= 3; i++) {
+                    	setContextDisplays(i, "question");
+                    }
+                    for (var i = 1; i <= 4; i++) {
+                    	setContextDisplays(i, "example");
+                    }
+
+                    // checkbox toggle collapse function
+                    function addCheckboxToggleListener(target_id, toggle_checkbox_id) {
+                        var targetElement = document.getElementById(target_id);
+                        var targetCollapse = $("#" + target_id);
+                        var toggleCheckboxElement = document.getElementById(toggle_checkbox_id);
+                        toggleCheckboxElement.addEventListener("click", function() {
+                    		if (targetElement.classList.contains("show")) {
+                                console.log('hide')
+                                targetCollapse.collapse('toggle');
+                                // remove required attribute from fields
+                                var toggleInputs = targetElement.getElementsByClassName("required");
+                                for (var i = 0; i < toggleInputs.length; i++) {
+                                    toggleInputs[i].required = false;
+                                }
+                            }
+                            else {
+                                console.log('show')
+                                targetCollapse.collapse('toggle');
+                                // add required attribute to fields
+                                var toggleInputs = targetElement.getElementsByClassName("required");
+                                for (var i = 0; i < toggleInputs.length; i++) {
+                                    toggleInputs[i].required = true;
+                                }
+                            }
+                        });
+                    }
+
+                    for (var i = 1; i <= 3; i++) {
+                        var containerId = "response" + String(i);
+                        var toggleCheckboxId = "valid" + String(i);
+                    	addCheckboxToggleListener(containerId, toggleCheckboxId)
+                    }
+                </script>

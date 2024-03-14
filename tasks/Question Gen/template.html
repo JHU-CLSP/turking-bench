@@ -1,0 +1,671 @@
+
+<html lang="en">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+
+
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- HITPUB CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
+    <style id="hitpub_css">
+        /***********************************************
+        MOSAIC BOOSTRAP OVERWRITES
+        ***********************************************/
+        #hitinfo .card {
+            border-radius: 0;
+        }
+
+         #hitinfo button.btn-link {
+            color: #fff;
+            text-decoration: none;
+         }
+        #hitinfo button.btn-link:hover {
+            text-decoration: none;
+        }
+        #hit ul.question-choice {
+            list-style-type: none;
+        }
+
+        /***********************************************
+        MOSAIC GENERAL STYLING
+        ***********************************************/
+        body {
+            font-family: "Open Sans", "Roboto", sans-serif;
+            line-height: 1.25;
+        }
+        textarea#feedback {
+            width: 100%
+        }
+        input#submitButton {
+            margin: auto;
+            display: block;
+            background-color: #2172a4;
+            color: #fff;
+            font-size: 1.125rem;
+            padding: .5rem 1rem;
+            cursor: pointer;
+            border-radius: 1rem;
+        }
+        input#submitButton:hover {
+            background-color: #06486F;
+        }
+
+        input[type="radio"] {
+            cursor: pointer;
+        }
+
+        div.question {
+            border-bottom: solid 1px #ccc;
+            padding: 1rem 0;
+        }
+
+        /***********************************************
+        HIT CUSTOM GENERAL STYLING
+        ***********************************************/
+        div.card-header {
+            background-color: #06486F;
+        }
+        div.card-header h5 {
+            color: #fff !important;
+        }
+
+        li {
+            margin: .5em 0;
+        }
+
+
+        label[for="2"] {
+            background-color: #bbda9a !important;
+            color:#368b00;
+        }
+        label[for="1"] {
+            background-color: #d8eac5 !important;
+            color:#71b300;
+        }
+        label[for="0"] {
+            background-color: #cecece !important;
+            color:#636363;
+        }
+        label[for="-1"] {
+            background-color:  #fde9e9 !important;
+            color:#ea0000;
+        }
+        label[for="-2"] {
+            background-color: #f9c5c5 !important;
+            color:#c90000;
+        }
+        label[for="-9"] {
+            background-color: #dfdfff !important;
+            color:#636363;
+        }
+
+        label[for="2"]:hover, label[for="2"].active {
+            background-color: #368b00 !important;
+        }
+        label[for="1"]:hover, label[for="1"].active {
+            background-color: #71b300 !important;
+        }
+        label[for="0"]:hover, label[for="0"].active {
+            background-color: #555555 !important;
+        }
+        label[for="-1"]:hover, label[for="-1"].active {
+            background-color:  #ea0000 !important;
+        }
+        label[for="-2"]:hover, label[for="-2"].active {
+            background-color: #c90000 !important;
+        }
+
+        label[for="-9"]:hover, label[for="-9"].active {
+            background-color: #0000f9 !important;
+        }
+
+        .text2 {
+            color: #368b00;
+            font-weight: bold;
+        }
+        .text1 {
+            color: #71b300;
+            font-weight: bold;
+        }
+        .text0 {
+            color: #555555;
+            font-weight: bold;
+        }
+        .text-1 {
+            color: #f90000;
+            font-weight: bold;
+        }
+        .text-2 {
+            color: #c90000;
+            font-weight: bold;
+        }
+        .text-9 {
+            color: #000093;
+            font-weight: bold;
+        }
+
+
+        .story {
+            border:1px solid #ccc;
+            margin:3px;
+            text-align: center;
+            padding:10px;
+        }
+
+        .gray-out{
+            background-color:#eee;
+            color:white;
+            border: 1px solid #eee;
+        }
+
+        .paraphrase-sentence{
+            color: darkorange;
+            font-weight: bold;
+        }
+
+        .source-sentence {
+            color: #0072B2;
+            font-weight: bold;
+        }
+
+        .ending-sentence{
+            color: red;
+        }
+
+        .border-source {
+            background-color: #0072B2;
+            color: white;
+            padding: 0.2em;
+        }
+
+        .border-paraphrase {
+            background-color: darkorange;
+            color: white;
+            padding: 0.2em;
+        }
+
+        .key-term {
+            font-weight:bold;
+            font-style:italic;
+        }
+
+
+        .example-card {
+            margin-top: 3em;
+        }
+
+        .legend {
+            margin-top: .33rem;
+            font-weight: normal;
+            padding-left: 40px;
+        }
+        .legend .label{
+            font-style: italic;
+        }
+
+
+        .emphasize {
+            font-weight: bold;
+            color: black;
+        }
+
+        .obj-emph {
+            font-weight: bold;
+            color: blue;
+        }
+
+        .use-emph{
+            font-weight: bold;
+            color: green;
+        }
+
+        .example {
+            pointer-events:none;
+            font-size:90%;
+        }
+
+
+
+        @media (max-width:460px){
+          body{
+            display: none;
+          }
+        }
+
+        .vbottom{
+            position: relative;
+            top: 100%;
+            transform: translateY(50%);
+        }
+
+
+        .smaller-text {
+            font-size: 90%;
+        }
+    </style>
+
+    <!-- HIT START -->
+   <div id="hit" class="container">
+
+        <!-- ACCORDION START -->
+        <div class="col-12 accordion" id="hitinfo">
+
+            <!-- INSTRUCTIONS START -->
+            <div class="card">
+                <div class="card-header id="instructionsHeading">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#instructions" aria-expanded="true" aria-controls="instructions">
+                            Instructions (click to expand/collapse)
+                        </button>
+                    </h5>
+                </div>
+                <div class="collapse show" id="instructions" aria-labelledby="instructionsHeading" data-parent="#hitinfo">
+                    <div class="card-body">
+                        <div class="card-content">
+                            <p>Thanks for participating in this HIT! Please read the instructions carefully.</p>
+
+                            <p class="pl-2 pr-2 border border-secondary" style="padding: 10px;">In this HIT, you will be given a list of <span class="source-sentence">keywords</span>, and an interrogative <span class="paraphrase-sentence">question</span> containing given keywords. <br><br>
+
+                            Your task is to <b><span style="background-color:yellow;">evaluate</span></b> the <span class="paraphrase-sentence">question</span> on <b>3</b> qualities and <b>overall</b>:</p>
+
+                            <ol>
+                                <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Grammar</span>
+                                    Is the <span class="paraphrase-sentence">question</span> written in a <span class="key-term">grammatically correct</span> way?
+
+                                <ul class="smaller-text mb-3">
+                                    <li><span class="badge badge-success">Yes</span> It is <b>entirely</b> or <b>mostly</b> grammatically correct, with <b>no</b> or <b>minimal</b> grammatical mistakes.
+                                    <li><span class="badge badge-dark">Somewhat</span> It is <b>partially</b> grammatically correct, with <b>some</b> grammatical mistakes.
+                                    <li><span class="badge badge-danger">No</span> It is <b>mostly not</b> grammatically correct, with <b>many</b> grammatical mistakes.
+                                </ul>
+
+                                </li>
+
+
+                                <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Fluency</span>
+                                    Is the <span class="paraphrase-sentence">question</span> written in a <span class="key-term">fluent</span> and <span class="key-term">understandable</span> way?
+
+                                <ul class="smaller-text mb-3">
+                                    <li><span class="badge badge-success">Yes</span> It is <b>entirely</b> or <b>mostly</b> fluent and understandable.
+                                    <li><span class="badge badge-dark">Somewhat</span> It is <b>somewhat</b> fluent and understandable, but it reads <b>a bit awkward</b>.
+                                    <li><span class="badge badge-danger">No</span> It is <b>mostly poorly written</b> and hard to understand.
+                                </ul>
+
+                                </li>
+
+
+                                <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Meaningfulness</span>
+                                    Does the given <span class="paraphrase-sentence">question</span> sentence ask a <span class="key-term">meaningful</span> question?
+
+                                <ul class="smaller-text mb-3">
+                                    <li><span class="badge badge-success">Yes</span> It is an <b>entirely</b> or <b>mostly</b> meaningful question.
+                                    <li><span class="badge badge-dark">Somewhat</span> It is a <b>somewhat</b> meaningful question, but it might be <b>a bit unclear</b>.
+                                    <li><span class="badge badge-danger">No</span> It is <b>mostly not</b> a meaningful question.
+                                </ul>
+
+                                </li>
+
+
+                                <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Overall</span>
+                                    Consider <span class="font-weight-bold pl-2 pr-2 border border-secondary">grammar</span>, <span class="font-weight-bold pl-2 pr-2 border border-secondary">fluency</span> and <span class="font-weight-bold pl-2 pr-2 border border-secondary">meaningfulness</span>, overall, what's the quality of the <span class="paraphrase-sentence">question</span>?
+
+                                <ul class="smaller-text mb-3">
+                                    <li><span class="badge badge-success">Good</span> The overall quality is <b>high</b>.
+                                    <li><span class="badge badge-dark">Ok</span> The overall quality is <b>ok</b>.
+                                    <li><span class="badge badge-danger">Bad</span> The overall quality is <b>low</b>.
+                                </ul>
+
+                                </li>
+
+                            </ol>
+
+                            <h4><span class="badge badge-info">Rules</span></h4>
+                            <ul>
+                            <li> Read and answer <strong>carefully</strong>.
+                            <li> Please take care to <strong>not</strong> submit responses that are <strong>uninformed</strong> by the instructions.
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- INSTRUCTIONS END -->
+
+
+            <!-- Example START -->
+            <div class="card" style="background-color:#f9f9f9;">
+                <div class="card-header id="examplesHeading">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#examplesInstructions" aria-expanded="true" aria-controls="examplesInstructions">
+                            Examples (click to expand/collapse)
+                        </button>
+                    </h5>
+                </div>
+                <div class="collapse show" id="examplesInstructions" aria-labelledby="examplesHeading" data-parent="#hitinfo">
+                    <div class="card-body">
+                        <div class="card-content">
+                            <div class="col-12 mt-1 bg-light border" style="padding: 10px">
+                                <strong class="source-sentence">Keywords</strong>: <b>Norman | major | exports</b>
+                                <br>
+                                <strong class="paraphrase-sentence">Question</strong>: Why else was he just standing there right about now?
+                                <br>
+                                <br>
+
+                                <ul class="smaller-text mb-3">
+                                    <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Grammar</span> <span class="badge badge-danger">No</span> (mostly not grammatically correct)
+
+                                    <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Fluency</span> <span class="badge badge-danger">No</span> (poorly written and hard to understand)
+
+                                    <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Meaningfulness</span> <span class="badge badge-danger">No</span> (ignore all the keywords and question doesn’t make sense)
+
+                                    <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Overall</span> <span class="badge badge-danger">Bad</span>
+                                </ul>
+                                <br>
+                            </div>
+
+                            <div class="col-12 mt-1 bg-light border" style="padding: 10px">
+                                <strong class="source-sentence">Keywords</strong>: <b>waste | heat | water</b>
+                                <br>
+                                <strong class="paraphrase-sentence">Question</strong>: Where was the waste - water heater?
+                                <br>
+                                <br>
+
+                                <ul class="smaller-text mb-3">
+                                    <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Grammar</span> <span class="badge badge-success">Yes</span>
+
+                                    <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Fluency</span> <span class="badge badge-dark">Somewhat</span> ("waste - water heater" is a bit awkward)
+
+                                    <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Meaningfulness</span> <span class="badge badge-dark">Somewhat</span> (question uses all the keywords, but "waste - water heater" is ambiguous)
+
+                                    <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Overall</span> <span class="badge badge-dark">Ok</span>
+                                </ul>
+                                <br>
+                            </div>
+
+                            <div class="col-12 mt-1 bg-light border" style="padding: 10px">
+                                <strong class="source-sentence">Keywords</strong>: <b>weaver | converted | restaurant</b>
+                                <br>
+                                <strong class="paraphrase-sentence">Question</strong>: Which weaver was later converted into a restaurant. You want me to play golf?
+                                <br>
+                                <br>
+
+                                <ul class="smaller-text mb-3">
+                                    <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Grammar</span> <span class="badge badge-success">Yes</span>
+
+                                    <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Fluency</span> <span class="badge badge-success">Yes</span>
+
+                                    <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Meaningfulness</span> <span class="badge badge-danger">No</span> ("weaver was later converted into a restaurant" is nonsensical, and "you want me to play golf?" doesn't use any keywords)
+
+                                    <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Overall</span> <span class="badge badge-danger">Bad</span>
+                                </ul>
+                                <br>
+                            </div>
+
+                            <div class="col-12 mt-1 bg-light border" style="padding: 10px">
+                                <strong class="source-sentence">Keywords</strong>: <b>math | concept | work</b>
+                                <br>
+                                <strong class="paraphrase-sentence">Question</strong>: How does math concept work?
+                                <br>
+                                <br>
+
+                                <ul class="smaller-text mb-3">
+                                    <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Grammar</span> <span class="badge badge-dark">Somewhat</span> (missing article "the math concept")
+
+                                    <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Fluency</span> <span class="badge badge-success">Yes</span>
+
+                                    <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Meaningfulness</span> <span class="badge badge-success">Yes</span>
+
+                                    <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Overall</span> <span class="badge badge-success">Good</span>
+                                </ul>
+                                <br>
+                            </div>
+
+                            <div class="col-12 mt-1 bg-light border" style="padding: 10px">
+                                <strong class="source-sentence">Keywords</strong>: <b>kind | education | Victoria</b>
+                                <br>
+                                <strong class="paraphrase-sentence">Question</strong>: Who is Victoria, and what kind of education did she have?
+                                <br>
+                                <br>
+
+                                <ul class="smaller-text mb-3">
+                                    <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Grammar</span> <span class="badge badge-success">Yes</span>
+
+                                    <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Fluency</span> <span class="badge badge-success">Yes</span>
+
+                                    <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Meaningfulness</span> <span class="badge badge-success">Yes</span>
+
+                                    <li><span class="font-weight-bold pl-2 pr-2 border border-secondary">Overall</span> <span class="badge badge-success">Good</span>
+                                </ul>
+                                <br>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- EXAMPLES END -->
+        </div>
+
+
+        <!-- MTURK INPUT START -->
+        <div class="col-12 mt-5 mb-1 border-top">
+            <form name='mturk_form' method='post' id='mturk_form' >
+                <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+                <input type='hidden' name='tm' id='tm'/>
+
+
+
+                <!-- QUESTION MACRO START -->
+                <div id="question">
+
+
+                    <div id="question_set" class="col-12 border-bottom mb-3 pb-5">
+                        <div class="row pb-4">
+                            <div class="col-12 mt-2 ml-3">
+                                <div class="row col-3 key-term" style="padding: 8px;">List of Keywords:</div>
+                                <div class="row border-source col-10 mb-3 ml-3 pl-2" style="padding: 8px;">${source}</div>
+                                <div class="row col-3 key-term" style="padding: 8px;">Question:</div>
+                                <div class="row border-paraphrase col-10 ml-3 pl-2" style="padding: 8px;">${generation}</div>
+                            </div>
+                        </div>
+
+
+                        <div class="row col-12 pt-5 mb-1">
+                            <div class="col-12">
+                                <strong>Q1.</strong>
+                                <span class="font-weight-bold pl-2 pr-2 border border-secondary">Grammar</span>
+                                    Is the <span class="paraphrase-sentence">question</span> written in a <span class="key-term">grammatically correct</span> way?
+
+                            </div>
+                        </div>
+                        <div class="row col-12 pt-2 pl-4" style="font-size:90%">
+                            <div class="col-10">
+
+                                <div class="col-12">
+                                    <input type="radio" name="grammar" id="grammar_1"  value="2" required>
+                                    <label>
+                                        <span class="badge badge-success">Yes</span> It is <b>entirely</b> or <b>mostly</b> grammatically correct, with <b>no</b> or <b>minimal</b> grammatical mistakes.
+                                    </label>
+                                </div>
+
+                                <div class="col-12">
+                                    <input type="radio" name="grammar" id="grammar_2"  value="0" required>
+                                    <label>
+                                        <span class="badge badge-dark">Somewhat</span> It is <b>partially</b> grammatically correct, with <b>some</b> grammatical mistakes.
+                                    </label>
+                                </div>
+
+                                <div class="col-12">
+                                    <input type="radio" name="grammar" id="grammar_3"  value="-2" required>
+                                    <label>
+                                        <span class="badge badge-danger">No</span> It is <b>mostly not</b> grammatically correct, with <b>many</b> grammatical mistakes.
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="row col-12 pt-5 mb-1">
+                            <div class="col-12">
+                                <strong>Q2.</strong>
+                                <span class="font-weight-bold pl-2 pr-2 border border-secondary">Fluency</span>
+                                    Is the <span class="paraphrase-sentence">question</span> written in a <span class="key-term">fluent</span> and <span class="key-term">understandable</span> way?
+
+                            </div>
+                        </div>
+                        <div class="row col-12 pt-2 pl-4" style="font-size:90%">
+                            <div class="col-10">
+
+                                <div class="col-12">
+                                    <input type="radio" name="fluency" id="fluency_1"  value="2" required>
+                                    <label>
+                                        <span class="badge badge-success">Yes</span> It is <b>entirely</b> or <b>mostly</b> fluent and understandable.
+                                    </label>
+                                </div>
+
+                                <div class="col-12">
+                                    <input type="radio" name="fluency" id="fluency_2"  value="0" required>
+                                    <label>
+                                        <span class="badge badge-dark">Somewhat</span> It is <b>somewhat</b> fluent and understandable, but it reads <b>a bit awkward</b>.
+                                    </label>
+                                </div>
+
+                                <div class="col-12">
+                                    <input type="radio" name="fluency" id="fluency_3"  value="-2" required>
+                                    <label>
+                                        <span class="badge badge-danger">No</span> It is <b>mostly poorly written</b> and hard to understand.
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="row col-12 pt-5 mb-1">
+                            <div class="col-12">
+                                <strong>Q3.</strong>
+                                <span class="font-weight-bold pl-2 pr-2 border border-secondary">Meaningfulness</span>
+                                    Does the given <span class="paraphrase-sentence">question</span> sentence ask a <span class="key-term">meaningful</span> question?
+
+                            </div>
+                        </div>
+                        <div class="row col-12 pt-2 pl-4" style="font-size:90%">
+                            <div class="col-10">
+
+                                <div class="col-12">
+                                    <input type="radio" name="meaningful" id="meaningful_1"  value="2" required>
+                                    <label>
+                                        <span class="badge badge-success">Yes</span> It is an <b>entirely</b> or <b>mostly</b> meaningful question.
+                                    </label>
+                                </div>
+
+                                <div class="col-12">
+                                    <input type="radio" name="meaningful" id="meaningful_2"  value="0" required>
+                                    <label>
+                                        <span class="badge badge-dark">Somewhat</span> It is a <b>somewhat</b> meaningful question, but it might be <b>a bit unclear</b>.
+                                    </label>
+                                </div>
+
+                                <div class="col-12">
+                                    <input type="radio" name="meaningful" id="meaningful_3"  value="-2" required>
+                                    <label>
+                                        <span class="badge badge-danger">No</span> It is <b>mostly not</b> a meaningful question.
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="row col-12 pt-5 mb-1">
+                            <div class="col-12">
+                                <strong>Q4.</strong>
+                                <span class="font-weight-bold pl-2 pr-2 border border-secondary">Overall</span>
+                                    Consider <span class="font-weight-bold pl-2 pr-2 border border-secondary">grammar</span>, <span class="font-weight-bold pl-2 pr-2 border border-secondary">fluency</span> and <span class="font-weight-bold pl-2 pr-2 border border-secondary">meaningfulness</span>, overall, what's the quality of the <span class="paraphrase-sentence">question</span>?
+
+                            </div>
+                        </div>
+                        <div class="row col-12 pt-2 pl-4" style="font-size:90%">
+                            <div class="col-10">
+
+                                <div class="col-12">
+                                    <input type="radio" name="overall" id="overall_1"  value="2" required>
+                                    <label>
+                                        <span class="badge badge-success">Good</span> The overall quality is <b>high</b>.
+                                    </label>
+                                </div>
+
+                                <div class="col-12">
+                                    <input type="radio" name="overall" id="overall_2"  value="0" required>
+                                    <label>
+                                        <span class="badge badge-dark">Ok</span> The overall quality is <b>ok</b>.
+                                    </label>
+                                </div>
+
+                                <div class="col-12">
+                                    <input type="radio" name="overall" id="overall_3"  value="-2" required>
+                                    <label>
+                                        <span class="badge badge-danger">Bad</span> The overall quality is <b>low</b>.
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OPTIONAL FEEDBACK -->
+                <div class="row mt-5">
+                    <div class="col-8 offset-2 col-lg-6 offset-lg-3">
+                        <p>(Optional) Please let us know if anything was unclear, if you experienced any issues, or if you have any other feedback for us. If you found this HIT difficult to answer, <b>please let us know why</b>.</p>
+                        <textarea id="feedback" name="feedback" rows=3></textarea>
+                    </div>
+                </div>
+
+                <!-- SUBMIT BUTTON -->
+                <div class="row mt-5">
+                    <div class="col-2 offset-5">
+                        <input id="submitButton" onclick="getnext()" type="submit" value="Submit">
+                    </div>
+                </div>
+
+            </form>
+            <script language='Javascript'>turkSetAssignmentID();</script>
+        </div>
+        <!-- MTURK INPUT END -->
+
+    </div>
+<!-- HIT END -->
+
+<!-- BOOSTRAP JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<!-- HITPUB JS -->
+<script id="hitpub_js">
+    // TimeMe.js
+    (function () { var e, t; e = this, t = function () { var r = { startStopTimes: {}, idleTimeoutMs: 3e4, currentIdleTimeMs: 0, checkStateRateMs: 250, active: !1, idle: !1, currentPageName: "default-page-name", timeElapsedCallbacks: [], userLeftCallbacks: [], userReturnCallbacks: [], trackTimeOnElement: function (e) { var t = document.getElementById(e); t && (t.addEventListener("mouseover", function () { r.startTimer(e) }), t.addEventListener("mousemove", function () { r.startTimer(e) }), t.addEventListener("mouseleave", function () { r.stopTimer(e) }), t.addEventListener("keypress", function () { r.startTimer(e) }), t.addEventListener("focus", function () { r.startTimer(e) })) }, getTimeOnElementInSeconds: function (e) { var t = r.getTimeOnPageInSeconds(e); return t || 0 }, startTimer: function (e, t) { if (e || (e = r.currentPageName), void 0 === r.startStopTimes[e]) r.startStopTimes[e] = []; else { var n = r.startStopTimes[e], i = n[n.length - 1]; if (void 0 !== i && void 0 === i.stopTime) return } r.startStopTimes[e].push({ startTime: t || new Date, stopTime: void 0 }), r.active = !0, r.idle = !1 }, stopAllTimers: function () { for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++)r.stopTimer(e[t]) }, stopTimer: function (e, t) { e || (e = r.currentPageName); var n = r.startStopTimes[e]; void 0 !== n && 0 !== n.length && (void 0 === n[n.length - 1].stopTime && (n[n.length - 1].stopTime = t || new Date), r.active = !1) }, getTimeOnCurrentPageInSeconds: function () { return r.getTimeOnPageInSeconds(r.currentPageName) }, getTimeOnPageInSeconds: function (e) { var t = r.getTimeOnPageInMilliseconds(e); return void 0 === t ? void 0 : t / 1e3 }, getTimeOnCurrentPageInMilliseconds: function () { return r.getTimeOnPageInMilliseconds(r.currentPageName) }, getTimeOnPageInMilliseconds: function (e) { var t = r.startStopTimes[e]; if (void 0 !== t) { for (var n = 0, i = 0; i < t.length; i++) { var s = t[i].startTime, o = t[i].stopTime; void 0 === o && (o = new Date), n += o - s } return Number(n) } }, getTimeOnAllPagesInSeconds: function () { for (var e = [], t = Object.keys(r.startStopTimes), n = 0; n < t.length; n++) { var i = t[n], s = r.getTimeOnPageInSeconds(i); e.push({ pageName: i, timeOnPage: s }) } return e }, setIdleDurationInSeconds: function (e) { var t = parseFloat(e); if (!1 !== isNaN(t)) throw { name: "InvalidDurationException", message: "An invalid duration time (" + e + ") was provided." }; return r.idleTimeoutMs = 1e3 * e, this }, setCurrentPageName: function (e) { return r.currentPageName = e, this }, resetRecordedPageTime: function (e) { delete r.startStopTimes[e] }, resetAllRecordedPageTimes: function () { for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++)r.resetRecordedPageTime(e[t]) }, resetIdleCountdown: function () { r.idle && r.triggerUserHasReturned(), r.idle = !1, r.currentIdleTimeMs = 0 }, callWhenUserLeaves: function (e, t) { this.userLeftCallbacks.push({ callback: e, numberOfTimesToInvoke: t }) }, callWhenUserReturns: function (e, t) { this.userReturnCallbacks.push({ callback: e, numberOfTimesToInvoke: t }) }, triggerUserHasReturned: function () { if (!r.active) for (var e = 0; e < this.userReturnCallbacks.length; e++) { var t = this.userReturnCallbacks[e], n = t.numberOfTimesToInvoke; (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback()) } r.startTimer() }, triggerUserHasLeftPage: function () { if (r.active) for (var e = 0; e < this.userLeftCallbacks.length; e++) { var t = this.userLeftCallbacks[e], n = t.numberOfTimesToInvoke; (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback()) } r.stopAllTimers() }, callAfterTimeElapsedInSeconds: function (e, t) { r.timeElapsedCallbacks.push({ timeInSeconds: e, callback: t, pending: !0 }) }, checkState: function () { for (var e = 0; e < r.timeElapsedCallbacks.length; e++)r.timeElapsedCallbacks[e].pending && r.getTimeOnCurrentPageInSeconds() > r.timeElapsedCallbacks[e].timeInSeconds && (r.timeElapsedCallbacks[e].callback(), r.timeElapsedCallbacks[e].pending = !1); !1 === r.idle && r.currentIdleTimeMs > r.idleTimeoutMs ? (r.idle = !0, r.triggerUserHasLeftPage()) : r.currentIdleTimeMs += r.checkStateRateMs }, visibilityChangeEventName: void 0, hiddenPropName: void 0, listenForVisibilityEvents: function () { void 0 !== document.hidden ? (r.hiddenPropName = "hidden", r.visibilityChangeEventName = "visibilitychange") : void 0 !== document.mozHidden ? (r.hiddenPropName = "mozHidden", r.visibilityChangeEventName = "mozvisibilitychange") : void 0 !== document.msHidden ? (r.hiddenPropName = "msHidden", r.visibilityChangeEventName = "msvisibilitychange") : void 0 !== document.webkitHidden && (r.hiddenPropName = "webkitHidden", r.visibilityChangeEventName = "webkitvisibilitychange"), document.addEventListener(r.visibilityChangeEventName, function () { document[r.hiddenPropName] ? r.triggerUserHasLeftPage() : r.triggerUserHasReturned() }, !1), window.addEventListener("blur", function () { r.triggerUserHasLeftPage() }), window.addEventListener("focus", function () { r.triggerUserHasReturned() }), document.addEventListener("mousemove", function () { r.resetIdleCountdown() }), document.addEventListener("keyup", function () { r.resetIdleCountdown() }), document.addEventListener("touchstart", function () { r.resetIdleCountdown() }), window.addEventListener("scroll", function () { r.resetIdleCountdown() }), setInterval(function () { r.checkState() }, r.checkStateRateMs) }, websocket: void 0, websocketHost: void 0, setUpWebsocket: function (e) { if (window.WebSocket && e) { var t = e.websocketHost; try { r.websocket = new WebSocket(t), window.onbeforeunload = function () { r.sendCurrentTime(e.appId) }, r.websocket.onopen = function () { r.sendInitWsRequest(e.appId) }, r.websocket.onerror = function (e) { console && console.log("Error occurred in websocket connection: " + e) }, r.websocket.onmessage = function (e) { console && console.log(e.data) } } catch (e) { console && console.error("Failed to connect to websocket host.  Error:" + e) } } return this }, websocketSend: function (e) { r.websocket.send(JSON.stringify(e)) }, sendCurrentTime: function (e) { var t = { type: "INSERT_TIME", appId: e, timeOnPageMs: r.getTimeOnCurrentPageInMilliseconds(), pageName: r.currentPageName }; r.websocketSend(t) }, sendInitWsRequest: function (e) { var t = { type: "INIT", appId: e }; r.websocketSend(t) }, initialize: function (e) { var t = r.idleTimeoutMs || 30, n = r.currentPageName || "default-page-name", i = void 0, s = void 0; e && (t = e.idleTimeoutInSeconds || t, n = e.currentPageName || n, i = e.websocketOptions, s = e.initialStartTime), r.setIdleDurationInSeconds(t).setCurrentPageName(n).setUpWebsocket(i).listenForVisibilityEvents(), r.startTimer(void 0, s) } }; return r }, "undefined" != typeof module && module.exports ? module.exports = t() : "function" == typeof define && define.amd ? define([], function () { return e.TimeMe = t() }) : e.TimeMe = t() }).call(this);
+
+    TimeMe.initialize({
+        currentPageName: "task",
+        idleTimeoutInSeconds: 30
+    });
+
+    $(document).ready(function() {
+        $('#submitButton').click(function () {
+            try {
+                $('input[name=tm]').attr('value', TimeMe.getTimeOnCurrentPageInSeconds());
+            } catch {
+            }
+            return true;
+        });
+    });
+</script>

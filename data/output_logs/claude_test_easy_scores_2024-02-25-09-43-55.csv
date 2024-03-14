@@ -1,0 +1,13 @@
+project,all,checkbox,radio,select,text,textarea
+ANLI Generation Eval - Reflective_ACL_1,0.0625,,0.0625,,,
+ATOMIC - Object Rationale 13,0.11614079326446643,,,,,0.11614079326446643
+Arch - Rel Eval 3,0.396,,0.396,,,
+Compression HIT,0.06458333333333334,,,0.06458333333333334,,
+Formalize this,0.0,,,,,0.0
+JiminyCricket-HumanVal-b10,0.36666666666666664,0.65,0.45,,,0.0
+Missing Adjective FITB,0.3455952380952381,,,,0.3455952380952381,
+Simplicity HIT,0.06903765690376569,,,0.06903765690376569,,
+Step 3 Creating Answers Given Questions 23,0.26417103912751144,,,,0.26417103912751144,
+Word Formality Annotation,0.1275,,,0.1275,,
+atomic_event2event-effects 4,0.025,,0.025,,,
+winogrande validation (grammar) additional_ph,0.825,1.0,0.65,,,

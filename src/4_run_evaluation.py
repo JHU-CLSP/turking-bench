@@ -81,11 +81,7 @@ if __name__ == "__main__":
     )
 
     # Check if task is empty
-    if args.task: 
+    if args.task:
         eval.enumerate_tasks(max_instance_count, task=args.task)
     else:
         eval.enumerate_tasks(max_instance_count)
-    # Debugging mode
-    # eval.enumerate_tasks(max_instance_count, task="ethics_sbic dialogue 2nd 0", first_instance_only=True)
-    # Collecting example code: python 4_run_evaluation.py --no-do_eval --headless > extract.txt
-    # eval.enumerate_tasks(max_instance_count, task="ethics_sbic dialogue 2nd 0", first_instance_only=True, input_name="norm")

@@ -1,0 +1,936 @@
+            <html lang="en">
+
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+
+
+                    <!-- BOOTSTRAP CSS -->
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+                    <!-- HITPUB CSS -->
+                    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
+                    <style id="hitpub_css">
+                        /***********************************************
+                        MOSAIC BOOSTRAP OVERWRITES
+                        ***********************************************/
+                        #hitinfo .card {
+                            border-radius: 0;
+                        }
+                        #hitinfo .card:first-child {
+                            border-bottom: 0;
+                        }
+                         #hitinfo button.btn-link {
+                            color: #06486F;
+                            text-decoration: none;
+                         }
+                        #hitinfo button.btn-link:hover {
+                            text-decoration: none;
+                        }
+                        #hit ul.question-choice {
+                            list-style-type: none;
+                        }
+                        #hit #mturk_form .card {
+                            border: none;
+                            background-color: inherit;
+                        }
+                        #hit .accordion .card-header {
+                            background-color: #E5E5E5;
+                            border: none;
+                        }
+                        #hit .card {
+                            border: none;
+                        }
+                        /***********************************************
+                        MOSAIC GENERAL STYLING
+                        ***********************************************/
+                        #hit {
+                            background-color: rgba(0,0,0,.03);
+                            padding-bottom: 4rem;
+                        }
+                         body {
+                             font-family: "Open Sans", "Roboto", sans-serif;
+                         }
+                        textarea#feedback {
+                            width: 100%;
+                            border: 1px solid #ddd;
+                        }
+                        textarea#feedback:focus {
+                            outline: none !important;
+                            border-color: #85c8ea;
+                        }
+                        input#submitButton {
+                            margin: auto;
+                            display: block;
+                            background-color: #2172a4;
+                            color: #fff;
+                            font-size: 1.125rem;
+                            padding: .5rem 1rem;
+                            cursor: pointer;
+                            border-radius: 1rem;
+                        }
+                        input#submitButton:hover {
+                            background-color: #06486F;
+                        }
+                        #event, div.question {
+                            //border-bottom: solid 1px #ccc;
+                        }
+                        .event-container h4 {
+                            padding: 1rem 1.5rem;
+                        }
+                        .event {
+                            background-color: rgba(0,0,0,.03);
+                            border-radius: 1rem;
+                        }
+                        input.inline_blank {
+                            border: none;
+                            border-bottom: solid 1px #ccc;
+                            background-color: inherit;
+                            text-align: center;
+                        }
+                        input.inline_blank:focus {
+                            outline: none;
+                        }
+                        .optional span.obj-num, .optional span.indicator {
+                            color: #aaa;
+                        }
+                        span.optional {
+                            font-style: italic;
+                        }
+                        div.question-field-group .card-body {
+                            padding: 2rem 0 0;
+                        }
+                        div.form-check, div.form-check label, div.form-check input {
+                            cursor: pointer;
+                        }
+                        .example {
+                            padding: 2rem 0;
+                            border-bottom: solid 1px #ccc;
+                        }
+                        div.example:last-child {
+                            border-bottom: none;
+                        }
+                        div.question-container{
+                            padding: 5rem 0;
+                            border-bottom: solid 1px #ccc;
+                        }
+                        div.question-container:first-child{
+                            padding: 0 0 5rem;
+                        }
+                        li {
+                            margin-top: 0;
+                        }
+                        li.level1 {
+                            margin-top: 1rem;
+                        }
+                        #instructions li.warning {
+                            color: green;
+                        }
+                        #instructions li.sub-warning {
+                            color: black;
+                        }
+                        #instructions li.good {
+                            color: green;
+                        }
+                        #instructions li.bad {
+                            color: darkred;
+                        }
+                    </style>
+                <!-- HIT START -->
+                <div id="hit" class="container">
+
+                        <!-- ACCORDION HEADER START -->
+                        <div class="accordion col-10 offset-1" id="hitinfo">
+                            <!-- INSTRUCTIONS START -->
+                            <div class="card">
+                                <div class="card-header id="instructionsHeading">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#instructions" aria-expanded="true" aria-controls="instructions">
+                                            Instructions (click to expand)
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div class="collapse show" id="instructions" aria-labelledby="instructionsHeading" data-parent="#hitinfo">
+                                    <div class="card-body">
+                                        <p>Thanks for participating in this HIT!</p>
+                                        <p>For this task, you will read a short sentence fragment depicting an event. The names of specific people have been replaced by generic words (e.g. "PersonX", "PersonY").</p>
+                                        <p><b>You will then:</b></p>
+                                        <ol type="a">
+                                            <li class="level1"><b>Determine if the event makes sense.</b>
+                                                <ul>
+                                                    <li>Does the event make sense as an independent phrase?</li>
+                                                </ul>
+                                            </li>
+                                            <li class="level1"><b>Determine if PersonX needs any objects to complete the event.</b>
+                                                <ul>
+                                                    <li>What do they need to start the event?</li>
+                                                    <li>What do they need during the event?</li>
+                                                    <li>What do they need to finish the event?</li>
+                                                </ul>
+                                            </li>
+                                            <li class="level1"><b>If they do: list 2-4 objects PersonX would need, and WHY.</b>
+                                                <ul>
+                                                    <li>What would they need to use each object for?</li>
+                                                    <li class="warning"><span color="green">Try to avoid listing objects from the event.</span>
+                                                        <ul>
+                                                            <li class="sub-warning">If you can, list required objects not mentioned in the event. Or use different names for objects, if possible.</li>
+                                                            <li class="sub-warning">For example - given the event, "PersonX throws a stone in the lake.":
+                                                                <ul>
+                                                                    <li class="good">Good: PersonX needs...a rock to throw in the lake.</li>
+                                                                    <li class="bad">Bad: PersonX needs...a stone to throw in the lake.</li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li class="warning"><span color="green">Try to be specific when describing object uses.</span>
+                                                        <ul>
+                                                            <li class="sub-warning">If you can, try to use more than one word.</li>
+                                                            <li class="sub-warning">For example - given the event, "PersonX practices piano for hours.":
+                                                                <ul>
+                                                                    <li class="good">Good: PersonX needs...a keyboard to practice playing music.</li>
+                                                                    <li class="bad">Bad: PersonX needs...a keyboard to practice.</li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- INSTRUCTIONS END -->
+
+                            <!-- EXAMPLES START -->
+                            <div class="card">
+                                <div class="card-header id="examplesHeading">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#examples" aria-expanded="true" aria-controls="examples">
+                                            Examples (click to expand)
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div class="collapse" id="examples" aria-labelledby="examplesHeading" data-parent="#hitinfo">
+                                    <div class="card-body">
+
+
+                                        <div class="example">
+                                            <div class="event-container row justify-content-center mb-4">
+                                                <h4 class="event col-8">PersonX buys PersonY coffee.</h4>
+                                            </div>
+                                            <div id="req-objs" class="question">
+                                                <div class="radio-toggle-question row mt-4">
+                                                    <div class="col-8 offset-2">
+                                                        <div class="mb-2">Does this event make sense?</div>
+                                                        <div class="radio-toggle-container offset-1">
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="radio" value="1" disabled checked>
+                                                                <label class="form-check-label"><em>Yes.</em></label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="radio" value="0" disabled >
+                                                                <label class="form-check-label"><em>No.</em></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="radio-toggle-question row mt-4">
+                                                    <div class="col-8 offset-2">
+                                                        <div class="mb-2">Does PersonX need any objects to complete this event?</div>
+                                                        <div class="radio-toggle-container offset-1">
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="radio" value="1" disabled checked>
+                                                                <label class="form-check-label"><em>Yes.</em></label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="radio" value="0" disabled >
+                                                                <label class="form-check-label"><em>No.</em></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="question-field-group collapse show">
+                                                    <div class="card card-body">
+
+                                                        <div>
+                                                            <div class="row mb-2">
+                                                                <div class="col-8 offset-2">PersonX needs...</div>
+                                                            </div>
+                                                            <div class="col-10 offset-2">
+
+
+                                                                <div class="required_obj_field ">
+                                                                    <span class="col-1 text-right">
+                                                                        <span class="obj-num">1)</span>
+                                                                    </span>
+                                                                    <input type="text" class="inline_blank col-3 text-center" value="wallet" disabled>
+                                                                    <span class="col-2"> to </span>
+                                                                    <input type="text" class="inline_blank col-4 text-center" value="hold money" disabled>
+                                                                    <span class="indicator col-1 text-left">
+                                                                        [required]
+                                                                    </span>
+                                                                </div>
+
+                                                                <div class="required_obj_field ">
+                                                                    <span class="col-1 text-right">
+                                                                        <span class="obj-num">2)</span>
+                                                                    </span>
+                                                                    <input type="text" class="inline_blank col-3 text-center" value="money" disabled>
+                                                                    <span class="col-2"> to </span>
+                                                                    <input type="text" class="inline_blank col-4 text-center" value="pay for beverage" disabled>
+                                                                    <span class="indicator col-1 text-left">
+                                                                        [required]
+                                                                    </span>
+                                                                </div>
+
+                                                                <div class="required_obj_field optional">
+                                                                    <span class="col-1 text-right">
+                                                                        <span class="obj-num">3)</span>
+                                                                    </span>
+                                                                    <input type="text" class="inline_blank col-3 text-center" value="phone" disabled>
+                                                                    <span class="col-2"> to </span>
+                                                                    <input type="text" class="inline_blank col-4 text-center" value="pay for drink" disabled>
+                                                                    <span class="indicator col-1 text-left">
+                                                                        [optional]
+                                                                    </span>
+                                                                </div>
+
+                                                                <div class="required_obj_field optional">
+                                                                    <span class="col-1 text-right">
+                                                                        <span class="obj-num">4)</span>
+                                                                    </span>
+                                                                    <input type="text" class="inline_blank col-3 text-center" value="mug" disabled>
+                                                                    <span class="col-2"> to </span>
+                                                                    <input type="text" class="inline_blank col-4 text-center" value="refill with coffee" disabled>
+                                                                    <span class="indicator col-1 text-left">
+                                                                        [optional]
+                                                                    </span>
+                                                                </div>
+
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="example">
+                                            <div class="event-container row justify-content-center mb-4">
+                                                <h4 class="event col-8">PersonX drives the car to the city.</h4>
+                                            </div>
+                                            <div id="req-objs" class="question">
+                                                <div class="radio-toggle-question row mt-4">
+                                                    <div class="col-8 offset-2">
+                                                        <div class="mb-2">Does this event make sense?</div>
+                                                        <div class="radio-toggle-container offset-1">
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="radio" value="1" disabled checked>
+                                                                <label class="form-check-label"><em>Yes.</em></label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="radio" value="0" disabled >
+                                                                <label class="form-check-label"><em>No.</em></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="radio-toggle-question row mt-4">
+                                                    <div class="col-8 offset-2">
+                                                        <div class="mb-2">Does PersonX need any objects to complete this event?</div>
+                                                        <div class="radio-toggle-container offset-1">
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="radio" value="1" disabled checked>
+                                                                <label class="form-check-label"><em>Yes.</em></label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="radio" value="0" disabled >
+                                                                <label class="form-check-label"><em>No.</em></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="question-field-group collapse show">
+                                                    <div class="card card-body">
+
+                                                        <div>
+                                                            <div class="row mb-2">
+                                                                <div class="col-8 offset-2">PersonX needs...</div>
+                                                            </div>
+                                                            <div class="col-10 offset-2">
+
+
+                                                                <div class="required_obj_field ">
+                                                                    <span class="col-1 text-right">
+                                                                        <span class="obj-num">1)</span>
+                                                                    </span>
+                                                                    <input type="text" class="inline_blank col-3 text-center" value="gas" disabled>
+                                                                    <span class="col-2"> to </span>
+                                                                    <input type="text" class="inline_blank col-4 text-center" value="fuel car" disabled>
+                                                                    <span class="indicator col-1 text-left">
+                                                                        [required]
+                                                                    </span>
+                                                                </div>
+
+                                                                <div class="required_obj_field ">
+                                                                    <span class="col-1 text-right">
+                                                                        <span class="obj-num">2)</span>
+                                                                    </span>
+                                                                    <input type="text" class="inline_blank col-3 text-center" value="parking space" disabled>
+                                                                    <span class="col-2"> to </span>
+                                                                    <input type="text" class="inline_blank col-4 text-center" value="keep car" disabled>
+                                                                    <span class="indicator col-1 text-left">
+                                                                        [required]
+                                                                    </span>
+                                                                </div>
+
+                                                                <div class="required_obj_field optional">
+                                                                    <span class="col-1 text-right">
+                                                                        <span class="obj-num">3)</span>
+                                                                    </span>
+                                                                    <input type="text" class="inline_blank col-3 text-center" value="" disabled>
+                                                                    <span class="col-2"> to </span>
+                                                                    <input type="text" class="inline_blank col-4 text-center" value="" disabled>
+                                                                    <span class="indicator col-1 text-left">
+                                                                        [optional]
+                                                                    </span>
+                                                                </div>
+
+                                                                <div class="required_obj_field optional">
+                                                                    <span class="col-1 text-right">
+                                                                        <span class="obj-num">4)</span>
+                                                                    </span>
+                                                                    <input type="text" class="inline_blank col-3 text-center" value="" disabled>
+                                                                    <span class="col-2"> to </span>
+                                                                    <input type="text" class="inline_blank col-4 text-center" value="" disabled>
+                                                                    <span class="indicator col-1 text-left">
+                                                                        [optional]
+                                                                    </span>
+                                                                </div>
+
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="example">
+                                            <div class="event-container row justify-content-center mb-4">
+                                                <h4 class="event col-8">PersonX shakes PersonY's hand.</h4>
+                                            </div>
+                                            <div id="req-objs" class="question">
+                                                <div class="radio-toggle-question row mt-4">
+                                                    <div class="col-8 offset-2">
+                                                        <div class="mb-2">Does this event make sense?</div>
+                                                        <div class="radio-toggle-container offset-1">
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="radio" value="1" disabled checked>
+                                                                <label class="form-check-label"><em>Yes.</em></label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="radio" value="0" disabled >
+                                                                <label class="form-check-label"><em>No.</em></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="radio-toggle-question row mt-4">
+                                                    <div class="col-8 offset-2">
+                                                        <div class="mb-2">Does PersonX need any objects to complete this event?</div>
+                                                        <div class="radio-toggle-container offset-1">
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="radio" value="1" disabled >
+                                                                <label class="form-check-label"><em>Yes.</em></label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="radio" value="0" disabled checked>
+                                                                <label class="form-check-label"><em>No.</em></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="question-field-group collapse show">
+                                                    <div class="card card-body">
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="example">
+                                            <div class="event-container row justify-content-center mb-4">
+                                                <h4 class="event col-8">PersonX fights leg to shoulder.</h4>
+                                            </div>
+                                            <div id="req-objs" class="question">
+                                                <div class="radio-toggle-question row mt-4">
+                                                    <div class="col-8 offset-2">
+                                                        <div class="mb-2">Does this event make sense?</div>
+                                                        <div class="radio-toggle-container offset-1">
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="radio" value="1" disabled >
+                                                                <label class="form-check-label"><em>Yes.</em></label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="radio" value="0" disabled checked>
+                                                                <label class="form-check-label"><em>No.</em></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- EXAMPLES END -->
+
+                        </div>
+                    <!-- ACCORDION HEADER END -->
+
+                    <!-- MTURK INPUT START -->
+                    <div class="col-8 offset-2 mt-3">
+                        <form name='mturk_form' method='post' id='mturk_form' autocomplete="off" >
+                            <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+
+
+
+
+                            <div class="question-container">
+                                <!-- EVENT -->
+                                <div class="event-container row mb-4">
+                                    <input type='hidden' value='${event0}' name='input_event' id='inputEvent'/>
+                                    <h4 class="col-2 text-right">1)</h4>
+                                    <h4 class="event col-8">${event0}</h4>
+                                </div>
+
+                                <!-- REQ OBJS START -->
+                                <div id='req-objs1' class="question">
+                                    <div class="radio-toggle-question row mt-4">
+                                        <div class="col-8 offset-2">
+                                            <div class="mb-2">Does this event make sense?</div>
+                                            <div class="radio-toggle-container offset-1">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" id="req-objs1-sense-show" name="req-obj1-sense" value=1>
+                                                    <label class="form-check-label" for="req-objs1-sense-show"><em>Yes.</em></label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" id="req-objs1-sense-hide" name="req-obj1-sense" value=0>
+                                                    <label class="form-check-label" for="req-objs1-sense-hide"><em>No.</em></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="collapse show" id="req-objs1-sense-container">
+                                        <div class="radio-toggle-question row mt-4">
+                                            <div class="col-8 offset-2">
+                                                <div class="mb-2">Does PersonX need any objects to complete this event?</div>
+                                                <div class="radio-toggle-container offset-1">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" id="req-objs1-show" name="req-obj1-na" value=1>
+                                                        <label class="form-check-label" for="req-objs1-show"><em>Yes.</em></label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" id="req-objs1-hide" name="req-obj1-na" value=0>
+                                                        <label class="form-check-label" for="req-objs1-hide"><em>No.</em></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="collapse show question-field-group" id="req-objs1-container">
+                                            <div class="card card-body">
+                                                <div>
+                                                    <div class="row mb-2">
+                                                        <div class="col-2 text-right"></div>
+                                                        <div class="col-8">PersonX needs...</div>
+                                                    </div>
+                                                    <div class="col-10 offset-2">
+
+
+                                                        <div class="required_obj_field ">
+                                                            <span class="col-1 text-right">
+                                                                <span class="obj-num">1)</span>
+                                                            </span>
+                                                            <input type="text" class="inline_blank col-3 text-center" name="q1-obj1">
+                                                            <span class="col-2"> to </span>
+                                                            <input type="text" class="inline_blank col-4 text-center" name="q1-obj-use1">
+                                                            <span class="indicator col-1 text-left">
+
+                                                                [required]
+
+                                                            </span>
+                                                        </div>
+
+
+                                                        <div class="required_obj_field ">
+                                                            <span class="col-1 text-right">
+                                                                <span class="obj-num">2)</span>
+                                                            </span>
+                                                            <input type="text" class="inline_blank col-3 text-center" name="q1-obj2">
+                                                            <span class="col-2"> to </span>
+                                                            <input type="text" class="inline_blank col-4 text-center" name="q1-obj-use2">
+                                                            <span class="indicator col-1 text-left">
+
+                                                                [required]
+
+                                                            </span>
+                                                        </div>
+
+
+                                                        <div class="required_obj_field optional">
+                                                            <span class="col-1 text-right">
+                                                                <span class="obj-num">3)</span>
+                                                            </span>
+                                                            <input type="text" class="inline_blank col-3 text-center" name="q1-obj3">
+                                                            <span class="col-2"> to </span>
+                                                            <input type="text" class="inline_blank col-4 text-center" name="q1-obj-use3">
+                                                            <span class="indicator col-1 text-left">
+
+                                                                [optional]
+
+                                                            </span>
+                                                        </div>
+
+
+                                                        <div class="required_obj_field optional">
+                                                            <span class="col-1 text-right">
+                                                                <span class="obj-num">4)</span>
+                                                            </span>
+                                                            <input type="text" class="inline_blank col-3 text-center" name="q1-obj4">
+                                                            <span class="col-2"> to </span>
+                                                            <input type="text" class="inline_blank col-4 text-center" name="q1-obj-use4">
+                                                            <span class="indicator col-1 text-left">
+
+                                                                [optional]
+
+                                                            </span>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- REQ OBJS END -->
+                            </div>
+
+
+
+                            <div class="question-container">
+                                <!-- EVENT -->
+                                <div class="event-container row mb-4">
+                                    <input type='hidden' value='${event1}' name='input_event' id='inputEvent'/>
+                                    <h4 class="col-2 text-right">2)</h4>
+                                    <h4 class="event col-8">${event1}</h4>
+                                </div>
+
+                                <!-- REQ OBJS START -->
+                                <div id='req-objs2' class="question">
+                                    <div class="radio-toggle-question row mt-4">
+                                        <div class="col-8 offset-2">
+                                            <div class="mb-2">Does this event make sense?</div>
+                                            <div class="radio-toggle-container offset-1">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" id="req-objs2-sense-show" name="req-obj2-sense" value=1>
+                                                    <label class="form-check-label" for="req-objs2-sense-show"><em>Yes.</em></label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" id="req-objs2-sense-hide" name="req-obj2-sense" value=0>
+                                                    <label class="form-check-label" for="req-objs2-sense-hide"><em>No.</em></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="collapse show" id="req-objs2-sense-container">
+                                        <div class="radio-toggle-question row mt-4">
+                                            <div class="col-8 offset-2">
+                                                <div class="mb-2">Does PersonX need any objects to complete this event?</div>
+                                                <div class="radio-toggle-container offset-1">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" id="req-objs2-show" name="req-obj2-na" value=1>
+                                                        <label class="form-check-label" for="req-objs2-show"><em>Yes.</em></label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" id="req-objs2-hide" name="req-obj2-na" value=0>
+                                                        <label class="form-check-label" for="req-objs2-hide"><em>No.</em></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="collapse show question-field-group" id="req-objs2-container">
+                                            <div class="card card-body">
+                                                <div>
+                                                    <div class="row mb-2">
+                                                        <div class="col-2 text-right"></div>
+                                                        <div class="col-8">PersonX needs...</div>
+                                                    </div>
+                                                    <div class="col-10 offset-2">
+
+
+                                                        <div class="required_obj_field ">
+                                                            <span class="col-1 text-right">
+                                                                <span class="obj-num">1)</span>
+                                                            </span>
+                                                            <input type="text" class="inline_blank col-3 text-center" name="q2-obj1">
+                                                            <span class="col-2"> to </span>
+                                                            <input type="text" class="inline_blank col-4 text-center" name="q2-obj-use1">
+                                                            <span class="indicator col-1 text-left">
+
+                                                                [required]
+
+                                                            </span>
+                                                        </div>
+
+
+                                                        <div class="required_obj_field ">
+                                                            <span class="col-1 text-right">
+                                                                <span class="obj-num">2)</span>
+                                                            </span>
+                                                            <input type="text" class="inline_blank col-3 text-center" name="q2-obj2">
+                                                            <span class="col-2"> to </span>
+                                                            <input type="text" class="inline_blank col-4 text-center" name="q2-obj-use2">
+                                                            <span class="indicator col-1 text-left">
+
+                                                                [required]
+
+                                                            </span>
+                                                        </div>
+
+
+                                                        <div class="required_obj_field optional">
+                                                            <span class="col-1 text-right">
+                                                                <span class="obj-num">3)</span>
+                                                            </span>
+                                                            <input type="text" class="inline_blank col-3 text-center" name="q2-obj3">
+                                                            <span class="col-2"> to </span>
+                                                            <input type="text" class="inline_blank col-4 text-center" name="q2-obj-use3">
+                                                            <span class="indicator col-1 text-left">
+
+                                                                [optional]
+
+                                                            </span>
+                                                        </div>
+
+
+                                                        <div class="required_obj_field optional">
+                                                            <span class="col-1 text-right">
+                                                                <span class="obj-num">4)</span>
+                                                            </span>
+                                                            <input type="text" class="inline_blank col-3 text-center" name="q2-obj4">
+                                                            <span class="col-2"> to </span>
+                                                            <input type="text" class="inline_blank col-4 text-center" name="q2-obj-use4">
+                                                            <span class="indicator col-1 text-left">
+
+                                                                [optional]
+
+                                                            </span>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- REQ OBJS END -->
+                            </div>
+
+
+
+                            <div class="question-container">
+                                <!-- EVENT -->
+                                <div class="event-container row mb-4">
+                                    <input type='hidden' value='${event2}' name='input_event' id='inputEvent'/>
+                                    <h4 class="col-2 text-right">3)</h4>
+                                    <h4 class="event col-8">${event2}</h4>
+                                </div>
+
+                                <!-- REQ OBJS START -->
+                                <div id='req-objs3' class="question">
+                                    <div class="radio-toggle-question row mt-4">
+                                        <div class="col-8 offset-2">
+                                            <div class="mb-2">Does this event make sense?</div>
+                                            <div class="radio-toggle-container offset-1">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" id="req-objs3-sense-show" name="req-obj3-sense" value=1>
+                                                    <label class="form-check-label" for="req-objs3-sense-show"><em>Yes.</em></label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" id="req-objs3-sense-hide" name="req-obj3-sense" value=0>
+                                                    <label class="form-check-label" for="req-objs3-sense-hide"><em>No.</em></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="collapse show" id="req-objs3-sense-container">
+                                        <div class="radio-toggle-question row mt-4">
+                                            <div class="col-8 offset-2">
+                                                <div class="mb-2">Does PersonX need any objects to complete this event?</div>
+                                                <div class="radio-toggle-container offset-1">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" id="req-objs3-show" name="req-obj3-na" value=1>
+                                                        <label class="form-check-label" for="req-objs3-show"><em>Yes.</em></label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" id="req-objs3-hide" name="req-obj3-na" value=0>
+                                                        <label class="form-check-label" for="req-objs3-hide"><em>No.</em></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="collapse show question-field-group" id="req-objs3-container">
+                                            <div class="card card-body">
+                                                <div>
+                                                    <div class="row mb-2">
+                                                        <div class="col-2 text-right"></div>
+                                                        <div class="col-8">PersonX needs...</div>
+                                                    </div>
+                                                    <div class="col-10 offset-2">
+
+
+                                                        <div class="required_obj_field ">
+                                                            <span class="col-1 text-right">
+                                                                <span class="obj-num">1)</span>
+                                                            </span>
+                                                            <input type="text" class="inline_blank col-3 text-center" name="q3-obj1">
+                                                            <span class="col-2"> to </span>
+                                                            <input type="text" class="inline_blank col-4 text-center" name="q3-obj-use1">
+                                                            <span class="indicator col-1 text-left">
+
+                                                                [required]
+
+                                                            </span>
+                                                        </div>
+
+
+                                                        <div class="required_obj_field ">
+                                                            <span class="col-1 text-right">
+                                                                <span class="obj-num">2)</span>
+                                                            </span>
+                                                            <input type="text" class="inline_blank col-3 text-center" name="q3-obj2">
+                                                            <span class="col-2"> to </span>
+                                                            <input type="text" class="inline_blank col-4 text-center" name="q3-obj-use2">
+                                                            <span class="indicator col-1 text-left">
+
+                                                                [required]
+
+                                                            </span>
+                                                        </div>
+
+
+                                                        <div class="required_obj_field optional">
+                                                            <span class="col-1 text-right">
+                                                                <span class="obj-num">3)</span>
+                                                            </span>
+                                                            <input type="text" class="inline_blank col-3 text-center" name="q3-obj3">
+                                                            <span class="col-2"> to </span>
+                                                            <input type="text" class="inline_blank col-4 text-center" name="q3-obj-use3">
+                                                            <span class="indicator col-1 text-left">
+
+                                                                [optional]
+
+                                                            </span>
+                                                        </div>
+
+
+                                                        <div class="required_obj_field optional">
+                                                            <span class="col-1 text-right">
+                                                                <span class="obj-num">4)</span>
+                                                            </span>
+                                                            <input type="text" class="inline_blank col-3 text-center" name="q3-obj4">
+                                                            <span class="col-2"> to </span>
+                                                            <input type="text" class="inline_blank col-4 text-center" name="q3-obj-use4">
+                                                            <span class="indicator col-1 text-left">
+
+                                                                [optional]
+
+                                                            </span>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- REQ OBJS END -->
+                            </div>
+
+
+
+                            <!-- OPTIONAL FEEDBACK -->
+                            <div class="row mt-5">
+                                <div class="col-8 offset-2">
+                                    <p>(Optional) Please let us know if anything was unclear, if you experienced any issues, or if you have any other fedback for us.</p>
+                                    <textarea id="feedback" name="feedback" rows=3></textarea>
+                                </div>
+                            </div>
+
+                            <!-- SUBMIT BUTTON -->
+                            <div class="row mt-5">
+                                <div class="col-2 offset-5">
+                                    <input id="submitButton" onclick="getnext()" type="submit" value="Submit">
+                                </div>
+                            </div>
+
+                        </form>
+                        <script language='Javascript'>turkSetAssignmentID();</script>
+                    </div>
+                    <!-- MTURK INPUT END -->
+
+                </div>
+                <!-- HIT END -->
+
+                <!-- BOOSTRAP JS -->
+                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+                <!-- HITPUB JS -->
+                <script id="hitpub_js">
+                    // radio toggle collapse function
+                    function addRadioToggleListeners(target_id, toggle_show_id, toggle_hide_id) {
+                        var targetElement = document.getElementById(target_id);
+                        var targetCollapse = $("#" + target_id);
+                        document.getElementById(toggle_show_id).addEventListener("click", function() {
+                            if (!targetElement.classList.contains("show")) {
+                                console.log('show')
+                                targetCollapse.collapse('toggle');
+                            }
+                        });
+                        document.getElementById(toggle_hide_id).addEventListener("click", function() {
+                            if (targetElement.classList.contains("show")) {
+                                console.log('hide')
+                                targetCollapse.collapse('toggle');
+                            }
+                        });
+                    }
+
+                    // add toggle listeners to question elements
+                    var questions = document.getElementById("mturk_form").getElementsByClassName("question");
+                    for (var i = 1; i <= questions.length; i++) {
+                        var containerId = "req-objs" + i + "-container";
+                        var showToggleId = "req-objs" + i + "-show";
+                        var hideToggleId = "req-objs" + i + "-hide";
+                        addRadioToggleListeners(containerId, showToggleId, hideToggleId);
+
+                        var senseContainerId = "req-objs" + i + "-sense-container";
+                        var senseShowToggleId = "req-objs" + i + "-sense-show";
+                        var senseHideToggleId = "req-objs" + i + "-sense-hide";
+                        addRadioToggleListeners(senseContainerId, senseShowToggleId, senseHideToggleId);
+                    }
+                </script>

@@ -1,20 +1,20 @@
-ROT Details [m=50] rocstories - 0 - 99
+Ethical rule-of-thumb quality
 Associate countries and languages with Ethnologue
 Radiology Report Sentence Classification
-Reddit In-group Analysis Comment annotation 3
+Reddit In-group Analysis
 Scalar Adjectives Identification
-Script KD eval LONG V2 - disc result eval 1
-Sherlock IMG 2 TXT Eval 15
-wikiHow step-goal linking pilot cleanse-url
-Arch - Rel Eval 3
-Compression HIT
-Formalize this
-JiminyCricket-HumanVal-b10
-winogrande validation (grammar) additional_ph
-atomic_event2event-effects 4
-ANLI Generation Eval - Reflective_ACL_1
-ATOMIC - Object Rationale 13
-Missing Adjective FITB
-Simplicity HIT
-Step 3 Creating Answers Given Questions 23
+Goal feasibility
+Image captioning
+WikiHow goal linking
+Story Relations
+Sentence Compression
+Formalize sentence
+Text Game Eval
+Winogrande plausiblity
+Event effect
+ANLI Generation
+ATOMIC - Object Rationale
+Missing Adjective
+Simplicity rating
+Creating Answers to Questions
 Word Formality Annotation

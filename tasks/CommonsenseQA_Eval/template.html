@@ -1,0 +1,358 @@
+<!-- HIT template: DataCollection-v3.0 --><!-- The following snippet enables the 'responsive' behavior on smaller screens -->
+<link href="https://s3.amazonaws.com/mturk-public/bs30/css/bootstrap.min.css" rel="stylesheet" /><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+    </style>
+</script>
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<section class="container" id="DataCollection"><!-- Instructions -->
+<div class="row">
+<div class="col-xs-12 col-md-12">
+<div class="panel panel-primary"><a class="panel-heading" href="javascript:void(0);" id="collapseTrigger">Read this instruction and sample questions and answers, if you do this task for the first time! <span class="collapse-text">(CLICK HERE TO EXPAND)</span></a>
+<div class="panel-body" id="instructionBody">
+<h4><strong>What this task is about:</strong></h4>
+
+<ul>
+	<li>The goal is to write questions and answers that are <u>easy for humans</u> and <u>hard for AI machines</u>!.</li>
+	<li>The questions should be related to the given context, and the answers can be reasoned according to the <u>context and commonsense knowledge</u></li>
+	<li>This is part of a series of small pilot studies. Our goal is to launch an extremely large-scale task (50k - 100k, if turkers seem to do well on our task).</li>
+</ul>
+
+<h4>&nbsp;</h4>
+
+<h4><strong>How to make the problem <u><span style="color:#0000FF;"><em>easy for humans:</em></span></u></strong></h4>
+
+<ul>
+	<li>Make sure your question can be answered correctly by most people according to the context and common sense.</li>
+	<li>Do not ask a question that is <em><strong>irrelevant</strong></em> to the context and can be directly answered using common sense.</li>
+	<li>Do not ask a question that requires very specialized knowledge that is <em><strong>not</strong></em> common sense.</li>
+</ul>
+
+<h4><strong>How to make the problem <span style="color:#FF0000;"><em><u>hard for AI:</u></em></span></strong></h4>
+
+<ul>
+	<li><span style="font-family:comic sans ms,cursive;">Ask a <span style="color:#FF8C00;"><strong><em><u>question</u></em></strong></span> that requires commonsense reasoning .&nbsp; </span></li>
+	<li><span style="font-family:comic sans ms,cursive;">Craft the <span style="color:#FF0000;"><u><em>correct</em></u></span> and <span style="color:#FF0000;"><u><em>incorrect</em></u></span> answers as <span style="color:#FF0000;"><strong><em>relevant</em></strong></span> to the context as possible!</span></li>
+	<li><span style="font-family:comic sans ms,cursive;">Craft the <span style="color:#0000FF;"><em><u>correct</u></em></span> answer as <span style="color:#0000FF;"><strong><em>non-stereotypical </em></strong></span>as possible!</span></li>
+	<li><span style="font-family:comic sans ms,cursive;">Craft the <span style="color:#FF0000;"><u><em>incorrect</em></u></span> answers as <span style="color:#FF0000;"><strong><em>appealing </em></strong></span>as possible!</span></li>
+</ul>
+
+<h4>&nbsp;</h4>
+
+<h4><strong>Good / Bad Examples:</strong></h4>
+
+<p><u>Context</u>: <strong>I was told , in person over the phone , that my shoes were on their way . They have my money . I have no shoes .</strong></p>
+<u>Question 1</u>: What may happen before I called them?
+
+<ol>
+	<li>I found the money was charged but I still have not got the shoes. (correct answer) &nbsp;&nbsp; <span style="color:#FF0000;"><-- many turkers write the correct answer longer with more details!!! please make all answers as similar as possible.</span></li>
+	<li>I cooked my dinner. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:#FF0000;"><-- <strong><u>Bad</u></strong> incorrect answer (AI can easily detect): as it is too short and obviously off-topic</span></li>
+	<li>I found the <strong>shoes were still on the way</strong> after several days. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:#0000FF;"><-- <strong><u>Excellent</u></strong> incorrect answer: as it includes topically relevant words while still being incorrect.</span></li>
+	<li>I felt happy though I <strong>paid money and have not got the shoes</strong>. &nbsp;&nbsp; <span style="color:#0000FF;"><-- <strong><u>Excellent</u></strong> incorrect answer: as it includes topically relevant words and close to the correct answer.</span></li>
+</ol>
+<u>Question 2</u>: What may happen after the call?
+
+<ol>
+	<li>I will <strong>pay them money</strong> after I receive the shoes. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:#0000FF;"><-- <strong><u>Excellent</u></strong> incorrect answer: as it includes topically relevant words and temporal logic error</span></li>
+	<li>I will return the money and get back the shoes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:#FF0000;"><-- <strong><u>Bad</u></strong>. Please do not create any nonsensical negative answers.</span></li>
+	<li>I will return the shoes and get back the money (correct answer) &nbsp;&nbsp; <span style="color:#0000FF;"><-- <strong><u>Excellent</u></strong> correct answer: as it presents a non-stereotypical solution involving "return"</span></li>
+	<li>I will return the <span style="color:#FF0000;"><strong>clothes</strong></span> and get back the money. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:#FF0000;"><-- <strong><u>Bad</u></strong>. Please do not insert obviously off-topic words as they are easily detectable by AI.</span></li>
+</ol>
+
+<p>&nbsp;</p>
+
+<p><u>Context</u>: <strong>GPS technology dates back to the time when first ever satellite was launched in the sky in 1979 . The era of global positioning started then .</strong></p>
+<u>Question 1</u>: What was launched in the sky in 1979? &nbsp;&nbsp; <span style="color:#FF0000;"><-- <strong><u>Bad</u></strong> question: as it can be directly answered with a span of the context and does not require any commonsense reasoning.</span>
+
+<ol>
+	<li>GPS</li>
+	<li>Satellite</li>
+	<li>Sky</li>
+	<li>technology</li>
+</ol>
+
+<p>&nbsp;</p>
+
+<p><u>Context</u>: <strong>you see , at my age relationship is kind of important and i thought i got the one after all these years . i noticed that once again i was wrong . i was good simply because i was good , i was caring , helping , supportive , bla bla blaaa .</strong></p>
+<u>Question 1</u>: What may happen to me?
+
+<ol>
+	<li>I broke up with my friend. (correct answer)</li>
+	<li>I got one important relationship.</li>
+	<li>I got a friend who is good, caring, helping and supportive.</li>
+	<li>I got many good friends. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:#0000FF;"><------- <strong><u>Excellent</u></strong>: This answer set is all around great for its details and complexity</span></li>
+</ol>
+
+<h5>&nbsp;</h5>
+
+<h4><span style="color:#FF0000;"><strong>WARNING: </strong></span><strong>AI is very good at solving your questions correctly based on subtle stylistic cues!</strong><br />
+<strong>Here are </strong><span style="color:#FF0000;"><strong>some common mistakes to avoid: </strong></span></h4>
+
+<ol>
+	<li>DO NOT craft a question that can be directly answered with a span from the context without commonsense reasoning.</li>
+	<li>Many turkers subconsciously write <em><strong>longer</strong></em> and more <em><strong>detailed</strong></em> sentences for the correct answer, which AI can easily detect. DO balance your answers.</li>
+	<li>People subconsciously use <em><strong>exaggerated</strong></em> or <strong><em>extreme</em></strong> language when writing the incorrect answers, which AI can easily detect. DO NOT use exagerated or extreme wordings (e.g., "completely", "not at all", "never", "as much as possible", "as long as possible", "only") unless you use them equally in the correct answer as well.</li>
+	<li>Many turkers subconsicouly use<span style="color:#FF8C00;"> <em><strong>negative sentiment</strong></em></span> or <span style="color:#FF8C00;"><em><strong>informal language</strong></em></span> <u>more often when writing the incorrect answers</u>, which AI can easily detect. If you use negative sentiment or informal language for the incorrect answers, try to use the same amount for the correct answer as well.</li>
+	<li>AI can easy solve your problem if your incorrect answer consists of words that are obviously <em><strong>IRRELEVANT</strong></em> with the context. Therefore, try to incorporate words from context as more as possible, but make them incorrect to the question.</li>
+	<li>AI can easy solve your problem if your incorrect answer consists of words that are obviously very <em><strong>DISASSOCIATED</strong></em> with the correct answer. Therefore, try to incorporate words that are <em><strong>ASSOCIATED</strong></em> with the correct answer as much as possible, but make them incorrect by adding extra details.</li>
+	<li>AI is also very good at memoryzing specific language patterns associated with incorrect answers, so please <em><strong>vary your language</strong></em> for each HIT and <span style="color:#FF0000;"><strong><em>be less predictable or repetitive.</em></strong></span></li>
+	<li>DO try to <span style="color:#FF0000;">keep <u>both the length and the style</u> as <strong><em>similar</em></strong> as possible</span> between the correct and the incorrect answer.</li>
+</ol>
+</div>
+</div>
+</div>
+<!--<p style="font-weight: bold;font-size: 13pt;"> Input Contexts: <b style="font-size: 15pt;color: crimson;"> ${context} </b> </p>-->
+
+<h4><strong>Good / Bad Examples:</strong></h4>
+
+<div style="padding-left: 3em; border:solid #000; border-width: 1px;">
+<p><u>Context</u>: <strong>I was told , in person over the phone , that my shoes were on their way . They have my money . I have no shoes .</strong></p>
+<u>Question 1</u>: What may happen after the call?
+
+<ol>
+	<li>I will <strong>pay them money</strong> after I receive the shoes. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:#0000FF;"><-- <strong><u>Excellent</u></strong> incorrect answer: as it includes topically relevant words and temporal logic error</span></li>
+	<li>I will return the money and get back the shoes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:#FF0000;"><-- <strong><u>Bad</u></strong>. Please do not create any nonsensical negative answers.</span></li>
+	<li>I will return the shoes and get back the money (correct answer) &nbsp;&nbsp; <span style="color:#0000FF;"><-- <strong><u>Excellent</u></strong> correct answer: as it presents a non-stereotypical solution involving "return"</span></li>
+	<li>I will return the <span style="color:#FF0000;"><strong>clothes</strong></span> and get back the money. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:#FF0000;"><-- <strong><u>Bad</u></strong>. Please do not insert obviously off-topic words as they are easily detectable by AI.</span></li>
+</ol>
+<u>Question 2</u>: What is on the way to my home? &nbsp;&nbsp; <span style="color:#FF0000;"><-- <strong><u>Bad</u></strong> question: as it can be directly answered with a span of the context and does not require any commonsense reasoning.</span>
+
+<ol>
+	<li>shoes</li>
+	<li>money</li>
+	<li>phone</li>
+	<li>food</li>
+</ol>
+<h7>&nbsp;</h7>
+
+<p><u>Context</u>: <strong> our next dive was about 29 ft for 20 mins . we went up and down 2 or 3 times with no ear problems , which i was happy about . the drygloves made a huge difference , and there was no leak in my suit to get me wet . </strong></p>
+<u>Question 1</u>: Where did you go diving? &nbsp;&nbsp; <span style="color:#FF0000;"><-- <strong><u>Bad</u></strong> question: as it can be directly answered without looking at the context.</span>
+
+<ol>
+	<li>We went wreck diving in Bali</li>
+	<li>We went diving in the Sahara.</li>
+	<li>We went to Bali to try the food.</li>
+	<li>We were in a bad wreck in Bali.</li>
+</ol>
+<h7>&nbsp;</h7>
+
+<p><u>Context</u>: <strong>you see , at my age relationship is kind of important and i thought i got the one after all these years . i noticed that once again i was wrong . i was good simply because i was good , i was caring , helping , supportive , bla bla blaaa .</strong></p>
+<u>Question 1</u>: What may happen to me before I noticed that I was wrong?
+
+<ol>
+	<li>I broke up with my friend. (correct answer)</li>
+	<li>I got one important relationship which will never end.</li>
+	<li>I got a friend who is good, caring, helping and supportive.</li>
+	<li>I got many good friends. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:#0000FF;"><------- <strong><u>Excellent</u></strong>. This answer set is all around great for its details and complexity</span></li>
+</ol>
+
+<h5>&nbsp;</h5>
+</div>
+
+<hr />
+<h4><strong>Part 1. Read the following context: </strong></h4>
+
+<p hidden="">${doc_id}</p>
+
+<p style="font-weight: bold;font-size: 15pt;color: crimson;"><b>${context} </b></p>
+<h7>&nbsp;</h7>
+
+<h4><strong>Part 2. Craft at least one commonsense question that is <u>related to the context</u> and can be <u>answered using common sense</u>:</strong></h4>
+<h7>&nbsp;</h7>
+
+<div style="padding-left: 3em;"><input id="noqu" name="noqu" type="checkbox" value="noqu" /> <span style="font-size: 13pt;font-family:comic sans ms,cursive;"><strong><em><span style="color:#E70CE7;">Check</span> this checkbox if the context is <u>inappropriate</u> (e.g., pornographic) or <u>nonsensical</u> (e.g., cannot determine what happenings the context is about) or you cannot come up with any questions for the given context.</em></strong></span></div>
+<h7>&nbsp;</h7>
+
+<ol>
+	<li>Your question must be related to the <em><strong>context</strong></em> and answerable with <strong><em>common sense</em></strong>.</li>
+	<li>Your question should <strong><em>not be answerable</em></strong> without looking at the context.</li>
+	<li><em><strong>DO NOT</strong></em> craft a question of which the correct answer can be <strong><em>directly extracted</em></strong> from the context.</li>
+	<li>Try to formulate your problem so that it is <strong>easy for humans</strong>, while <strong><em>difficult to AI</em></strong>. Check examples in the expandable instructions on top of this page.</li>
+	<li><strong><em>Without</em></strong> the context, both your <strong><em>correct and incorrect</em></strong> answers should be <strong><em>possible answers</em></strong> to your question.</li>
+	<li>Feel free to create <strong>any reasonable</strong> questions. Here are some <strong><em><u>suggested question types</u></em></strong>. (please <span style="color:#FF8C00;">rephrase</span> them according to the contexts):
+	<ul>
+		<li>What <strong><em>may (or may not)</em></strong> be the <strong><em>plausible reason</em></strong> for an event?</li>
+		<li>What <strong><em>may (or may not) happen</em></strong> before (or after, or during) an event?</li>
+		<li>What <strong><em>may (or may not) be a plausible fact</em></strong> about someone (or something)?</li>
+		<li>What <strong><em>may (or may not) happen if</em></strong> an event happens (or did not happen)?</li>
+	</ul>
+	</li>
+</ol>
+
+<div style="padding-left: 3em;">&nbsp;</div>
+
+<div style="padding-left: 3em;"><span style="font-family:comic sans ms,cursive;"><strong>Question-1: </strong> Ask a <span style="color:#FF8C00;"><strong><em><u>question</u></em></strong></span> (from the four suggested question types or other) that is <strong><em> <span style="color:#FF8C00;">related to the context</span> </em> </strong> and can be answered with <strong><em><span style="color:#FF8C00;">common sense</span></em></strong>. Please make your sentence <strong><em>LONG</em></strong>, <em><strong>INTERESTING</strong></em>, and <em><strong>COMPLEX</strong></em>. <u><strong><em><span style="color:#FF8C00;">DO NOT</span></em></strong></u> make your question answerable <u><em><strong>without</strong></em> looking at the <em><strong>context</strong></em></u>. </span></div>
+
+<div class="form-group" style="padding-left: 3em;"><select class="form-control" name="q1_types"><option style="font-size: 14pt;" value="no_answer">select the type of the question</option><option style="font-size: 14pt;" value="q1_type1_">what may (or may not) be the plausible reason for an event?</option><option style="font-size: 14pt;" value="q1_type2">what may (or may not) happen before (or after, or during) an event?</option><option style="font-size: 14pt;" value="q1_type3">what may (or may not) be a plausible fact about someone (or something)?</option><option style="font-size: 14pt;" value="q1_type4">what may (or may not) happen if an event happens (or did not happen)?</option><option style="font-size: 14pt;" value="q1_type5">other type of question</option> </select></div>
+
+<div class="form-group" style="padding-left: 3em;"><label class="sr-only" for="qu1">Question</label> <input class="form-control" id="qu1" name="question1" placeholder="write the question here" type="text" /></div>
+
+<div style="padding-left: 3em;"><strong>Correct Answer: </strong> Craft<span style="font-family:comic sans ms,cursive;"> at least one <span style="color:#0000FF;"><em><u>correct</u></em></span> answer. Try to confuse AI by using <span style="color:#0000FF;"><strong><em>interesting</em></strong></span> or slightly <span style="color:#0000FF;"><strong><em>non-stereotypical</em></strong></span> language if possible. Make sure your correct answer is <span style="color:#0000FF;"><strong><em>consistent with the context</em></strong></span> and reasonably long, and is reasoned with <span style="color:#0000FF;"><strong><em>common sense</em></strong></span> instead of <span style="color:#FF0000;"><strong><em>directly extracted</em></strong></span> from the context.</span></div>
+
+<div class="form-group" style="padding-left: 3em;"><input class="form-control" id="q1a1" name="q1correct" placeholder="write the correct answer here" type="text" /></div>
+
+<div class="form-group" style="padding-left: 3em;"><input class="form-control" id="q1a11" name="q1correct1" placeholder="write another correct answer if possible" type="text" /></div>
+
+<div style="padding-left: 3em;"><strong>Incorrect Answers: </strong>Craft<span style="font-family:comic sans ms,cursive;"> <span style="color:#FF0000;">three <u><em>incorrect</em></u></span> answers. Make these answers <span style="color:#0000FF;"><strong><em>appealing</em></strong></span></span> <span style="font-family:comic sans ms,cursive;">by using words from the <span style="color:#0000FF;"><strong><em>context</em></strong></span> as more as possible, or by using <span style="color:#0000FF;"><strong><em>similar words </em></strong></span> used in the correct answer.</span> <span style="color:#FF0000;"><strong><em>DO NOT</em></strong></span> craft <span style="color:#FF0000;"><strong><em>nonsensical</em></strong></span> incorrect answers, such that the <u>incorrect answers can be <span style="color:#FF0000;"><strong><em>directly excluded</em></strong></span> without reasoning according to the context</u>.</div>
+
+<div class="form-group" style="padding-left: 3em;"><input class="form-control" id="q1a2" name="q1incorrect1" placeholder="write the first incorrect answer here" type="text" /></div>
+
+<div class="form-group" style="padding-left: 3em;"><input class="form-control" id="q1a3" name="q1incorrect2" placeholder="write the second incorrect answer here" type="text" /></div>
+
+<div class="form-group" style="padding-left: 3em;"><input class="form-control" id="q1a4" name="q1incorrect3" placeholder="write the third incorrect answer here" type="text" /></div>
+
+<div style="padding-left: 3em;">&nbsp;</div>
+
+<div style="padding-left: 3em;"><span style="font-family:comic sans ms,cursive;"><strong>Question-2: </strong></span></div>
+
+<div class="form-group" style="padding-left: 3em;"><!--<label class="col-md-4 control-label" for="q2_types">Question Type: </label>--><select class="form-control" name="q2_types"><option style="font-size: 14pt;" value="no_answer">select the type of the question</option><option style="font-size: 14pt;" value="q2_type1_">what may (or may not) be the plausible reason for an event?</option><option style="font-size: 14pt;" value="q2_type2">what may (or may not) happen before (or after, or during) an event?</option><option style="font-size: 14pt;" value="q2_type3">what may (or may not) be a plausible fact about someone (or something)?</option><option style="font-size: 14pt;" value="q2_type4">what may (or may not) happen if an event happens (or did not happen)?</option><option style="font-size: 14pt;" value="q2_type5">other type of question</option> </select></div>
+
+<div class="form-group" style="padding-left: 3em;"><input class="form-control" id="qu2" name="question2" placeholder="write another question if possible" type="text" /></div>
+
+<div style="padding-left: 3em;"><strong>Correct Answer: </strong></div>
+
+<div class="form-group" style="padding-left: 3em;"><input class="form-control" id="q2a1" name="q2correct" placeholder="write the correct answer here" type="text" /></div>
+
+<div class="form-group" style="padding-left: 3em;"><input class="form-control" id="q2a11" name="q2correct1" placeholder="write another correct answer if possible" type="text" /></div>
+
+<div style="padding-left: 3em;"><strong>Incorrect Answers: </strong></div>
+
+<div class="form-group" style="padding-left: 3em;"><input class="form-control" id="q2a2" name="q2incorrect1" placeholder="write the first incorrect answer here" type="text" /></div>
+
+<div class="form-group" style="padding-left: 3em;"><input class="form-control" id="q2a3" name="q2incorrect2" placeholder="write the second incorrect answer here" type="text" /></div>
+
+<div class="form-group" style="padding-left: 3em;"><input class="form-control" id="q2a4" name="q2incorrect3" placeholder="write the third incorrect answer here" type="text" /></div>
+<h7>&nbsp;</h7>
+
+<h4><strong>Part 3. <strong><em>Check</em></strong> your Questions and Answers and confirm that they <u>meet the following requirements</u>:</strong></h4>
+
+<ol>
+	<li>Your question is <strong><em><span style="color:#FF00BF;">not answerable</span></em></strong> without looking at the context.</li>
+	<li>Your question is related to the <strong><em><span style="color:#FF00BF;">context</span></em></strong> and answerable with <strong><em><span style="color:#FF00BF;">common sense</span></em></strong>.</li>
+	<li>Your answers are <strong><em><span style="color:#FF00BF;">not directly extracted</span></em></strong> from the context.</li>
+	<li><strong><em><span style="color:#FF00BF;">Without</span></em></strong> the context, both your <strong><em><span style="color:#FF00BF;">correct and incorrect</span></em></strong> answers could be <strong><em><span style="color:#FF00BF;">possible answers</span></em></strong> to your question.</li>
+</ol>
+
+<h4>Please <em><strong><span style="color:#E70CE7;">re-edit</span></strong></em> your questions and answers if they <em><strong><span style="color:#E70CE7;">don't meet</span></strong></em> all these requirements!!</h4>
+
+<h4>&nbsp;</h4>
+
+<div style="border:solid #000; border-width: 1px;">
+<h4 style="padding-left: 1em;"><span style="color:#FF0000;"><strong>WARNING: AI is very good at solving your questions correctly based on subtle stylistic cues. Here are some common mistakes to avoid: </strong></span></h4>
+
+<p style="padding-left: 3em;">(1) <strong>DO NOT</strong> make your correct answers <span style="color:#FF8C00;"><em><strong>suspiciously longer and more detailed</strong></em></span>, because AI can pick out the correct answer based on the length or detail bias.<br />
+(2) <strong>DO NOT</strong> use <span style="color:#FF8C00;"><em><strong>exaggerated or extreme wordings</strong></em></span> (e.g., "completely", "not at all", "never", "as much as possible", "as long as possible", "only") ) more often for the incorrect answer, as AI can pick out this type of style cues.<br />
+(3) AI can easy solve your problem if your incorrect answer consists of words that are obviously <span style="color:#FF8C00;"><em><strong>irrelevant with the context</strong></em></span>. Therefore, try to incorporate words from context as more as possible, but make them incorrect to the question.<br />
+(4) AI can easy solve your problem if your incorrect answer consists of words that are obviously very <span style="color:#FF8C00;"><em><strong>disassociated with the correct answer</strong></em></span>. Therefore, try to incorporate words that are ASSOCIATED with the correct answer as much as possible, but make them incorrect by adding extra details.<br />
+(5) AI is also very good at memorizing <span style="color:#FF8C00;"><em><strong>specific language patterns</strong></em></span> associated with incorrect answers, so please vary your language for each HIT and be less predictable :)<br />
+(6) <strong>DO</strong> try to keep both the <span style="color:#FF8C00;"><em><strong>length and the style</strong></em></span> as similar as possible between the correct and the incorrect answers.<br />
+(7) <strong>DO NOT</strong> ask <span style="color:#FF8C00;"><em><strong>too simple or too short</strong></em></span> questions.<br />
+(8) <strong>DO NOT</strong> make your incorrect answers incorrect by adding one word that is <span style="color:#FF8C00;"><em><strong>obviously off-topic</strong></em></span>. Try to add more variations and complexity.<br />
+(9) <strong>DO NOT</strong> craft a question that can be <span style="color:#FF8C00;"><em><strong>directly answered with a span</strong></em></span> from the context <u>without commonsense reasoning</u>.<br />
+(10) <strong>DO NOT</strong> use <span style="color:#FF8C00;"><em><strong>negative sentiment</strong></em></span> or <span style="color:#FF8C00;"><strong><em>informal language</em></strong></span> <u>noticeably more often more the <strong><em>incorrect</em></strong> answers</u>.</p>
+
+<h4 style="padding-left: 1em;"><span style="color:#FF0000;">See additional good and bad examples provided inside the expandable instruction box</span> and make your questions at least as complex.</h4>
+</div>
+
+<p style="padding-left: 5em;">&nbsp;</p>
+
+<h5>(Optional) Please leave any comment or feedback. Thank you very much for your contribution!</h5>
+
+<div class="form-group" style="padding-left: 3em;"><input class="form-control" id="feedback" name="feedback" placeholder="Your comments here (optional)." type="text" /></div>
+
+<div class="form-group">&nbsp;</div>
+</div>
+<style type="text/css">.btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
+            color: black !important;
+            background-color: lightyellow  !important;
+        }
+        .btn-success:active, .btn-success.active, .open .dropdown-toggle.btn-success {
+            color: black !important;
+            background-color: lightyellow !important;
+        }
+        .btn-warning:active, .btn-warning.active, .open .dropdown-toggle.btn-warning {
+            color: black !important;
+            background-color: lightyellow !important;
+        }
+</style>
+</section>
+<!-- End Data Collection Layout --><!-- Please note that Bootstrap CSS/JS and JQuery are 3rd party libraries that may update their url/code at any time. Amazon Mechanical Turk (MTurk) is including these libraries as a default option for you, but is not responsible for any changes to the external libraries --><!-- External CSS references -->
+<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" integrity="sha384-IS73LIqjtYesmURkDE9MXKbXqYA8rvKEp/ghicjem7Vc3mGRdQRptJSz60tvrB6+" rel="stylesheet" /><!-- Open internal style sheet -->
+<style type="text/css">#collapseTrigger{
+    color:#fff;
+    display: block;
+    text-decoration: none;
+}
+#submitButton{
+    white-space: normal;
+}
+.image{
+    margin-bottom: 15px;
+}
+</style>
+<!-- End internal style sheet --><!-- External JS references --><script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js" integrity="sha384-s1ITto93iSMDxlp/79qhWHi+LsIi9Gx6yL+cOKDuymvihkfol83TYbLbOw+W/wv4" crossorigin="anonymous"></script><!-- Open internal javascript --><script>
+    $(document).ready(function() {
+        // Instructions expand/collapse
+        var content = $('#instructionBody');
+        var trigger = $('#collapseTrigger');
+        content.hide();
+        $('.collapse-text').text('(Click here to expand)');
+        trigger.click(function(){
+            content.toggle();
+            var isVisible = content.is(':visible');
+            if(isVisible){
+                $('.collapse-text').text('(Click here to collapse)');
+            }else{
+                $('.collapse-text').text('(Click here to expand)');
+            }
+        });
+        // end expand/collapse
+    });
+</script><!-- Close internal javascript --><script>
+window.onload = function() {document.getElementById('submitButton').setAttribute('onClick', 'return validateForm()'); }
+
+function validateForm(){
+    var flag = true;
+    check_value = document.getElementById('noqu').checked;
+
+    q1_value = document.getElementById('qu1').value;
+    q1_correct_ans_value = document.getElementById('q1a1').value;
+    q1_incorrect_ans1_value = document.getElementById('q1a2').value;
+    q1_incorrect_ans2_value = document.getElementById('q1a3').value;
+    q1_incorrect_ans3_value = document.getElementById('q1a4').value;
+
+    q2_value = document.getElementById('qu2').value;
+    q2_correct_ans_value = document.getElementById('q2a1').value;
+    q2_incorrect_ans1_value = document.getElementById('q2a2').value;
+    q2_incorrect_ans2_value = document.getElementById('q2a3').value;
+    q2_incorrect_ans3_value = document.getElementById('q2a4').value;
+
+    feedback_value = document.getElementById('feedback').value;
+
+    if(check_value==false && q1_value==""){
+        alert("Please Check the Checkbox or Provide Your Questions and Answers!!")
+        flag = false;
+    }
+    if(check_value==true && feedback_value==""){
+        alert("Please Provide your Feedback about Why the Context is Nonsensical!!")
+        flag = false;
+    }
+    if(q1_value!=""){
+        if(q1_correct_ans_value=="" || q1_incorrect_ans1_value=="" || q1_incorrect_ans2_value=="" || q1_incorrect_ans3_value==""){
+            alert("Please Provide at least One Correct Answer and Three Incorrect Answers!!")
+            flag = false;
+        }
+    }
+    if(q2_value!=""){
+        if(q2_correct_ans_value=="" || q2_incorrect_ans1_value=="" || q2_incorrect_ans2_value=="" || q2_incorrect_ans3_value==""){
+            alert("Please Provide at least One Correct Answer and Three Incorrect Answers!!")
+            flag = false;
+        }
+    }
+    if(q2_correct_ans_value!="" && q2_incorrect_ans1_value!=""){
+        if(q2_value==""){
+            alert("Please Provide Both Questions and Answers!!")
+            flag = false;
+        }
+    }
+    return flag;
+}
+</script>

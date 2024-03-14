@@ -1,0 +1,459 @@
+<script>
+//
+// This method Gets URL Parameters (GUP)
+//
+function gup( name )
+{
+  var regexS = "[\\?&]"+name+"=([^&#]*)";
+  var regex = new RegExp( regexS );
+  var tmpURL = window.location.href;
+  var results = regex.exec( tmpURL );
+  if( results == null )
+    return "";
+  else
+    return results[1];
+}
+function decode(strToDecode)
+{
+  var encoded = strToDecode;
+  return unescape(encoded.replace(/\+/g,  " "));
+}
+
+window.onload = function() {
+  if (!window.jQuery) {
+    // jQuery is not loaded
+    alert("Warning: it seems that jquery is disabled on your browser.  This HIT might not work properly without javascript and jquery code enabled (if you have extensions that block jquery or an old browser version, this may prevent the dynamic elements of the HIT from functioning). Please ensure that you have jquery enabled by temporarily disabling extensions that interfere with jquery and/or trying a different browser version.");
+  }
+}
+</script><!-- Bootstrap v3.3.7 -->
+<link href="https://s3.amazonaws.com/mturk-public/bs30/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" rel="stylesheet" /><!--link href="https://infra.clarin.eu/content/libs/DataTables-1.10.4/media/css/jquery.dataTables.css" rel="stylesheet" /-->
+<section class="container" id="Other" style="margin-bottom:0px; padding: 0px 10px; font-family: Verdana, Geneva, sans-serif; color:#333333; font-size:0.9em;">
+<div class="panel panel-primary" style="border-color: #228B22;">
+<div class="panel-heading" style="border-color: #228B22;background-color: #228B22;"><strong>Instructions</strong></div>
+
+<div class="panel-body">${title}</div>
+</section>
+<!-- End Instructions --><!-- Content Body --><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><!--script src="https://infra.clarin.eu/content/libs/DataTables-1.10.4/media/js/jquery.dataTables.js" type="text/javascript"></script-->
+
+<section class="container">
+<fieldset>
+<div class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h4 class="panel-title" style="font-weight: bold">Full Instructions &nbsp; &nbsp; <a data-toggle="collapse" href="#collapse0" style="color:#0080ff;font-weight:normal;text-decoration: underline;">(Expand/Collapse)</a></h4>
+</div>
+
+<div class="panel-collapse " id="collapse0" style="margin:10px">
+<p>You will read a sentence fragment depicting an event, and be asked to <strong>${task}</strong>.</p>
+
+<p>Events are short phrases possibly involving participants. The names of specific people have been replaced by generic words (e.g. PersonX, PersonY, PersonZ). PersonX is always the subject of the event. The phrase may also contain "___", a placeholder that can be an object, a person, and/or an action.</p>
+
+${instruction}
+
+<p><em>Notes on the events</em>: some of the events may be figurative, and should not be taken literally<br>
+          <small>(e.g., "PersonX kills two birds with one stone" does *not* make PersonX "murderous")</small></p>
+
+<div class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h4 class="panel-title" style="font-weight: bold">Examples &nbsp; &nbsp; <a data-toggle="collapse" href="#collapse1" style="color:#0080ff;font-weight:normal;text-decoration: underline;">(Expand/Collapse)</a></h4>
+</div>
+
+<div class="panel-collapse collapse in" id="collapse1" style="margin:10px">
+
+    ${examples}
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!--<h3>Task</h3>-->
+
+<div class="story-excerpt">
+<h4>Event</h4>
+
+<p style="padding-left: 20px; font-size: 14pt;">${event}</p>
+</div>
+
+<div class="story-excerpt">
+<h4 style="color: red;">Please note that this batch of study contains questions with different requirements. Please read the following question <b>carefully</b> to provide proper answers.</h4>
+</div>
+
+<div class="display:table">
+<div>
+    <h3>${question}</h3>
+    <br/>
+    ${note}
+
+<div class="col-2 qline btn-group-vertical" id="xAttBtnGrp" onclick="validate();">
+    <label class="btn zero" for="xAtt0">
+        <input data-toggle="button" id="xAtt0" name="qxAtt" type="checkbox" value="${xAtt0}"/>${xAtt0}</label>
+    <label class="btn zero" for="xAtt1">
+        <input data-toggle="button" id="xAtt1" name="qxAtt" type="checkbox" value="${xAtt1}"/>${xAtt1}</label>
+    <label class="btn zero" for="xAtt2">
+        <input data-toggle="button" id="xAtt2" name="qxAtt" type="checkbox" value="${xAtt2}"/>${xAtt2}</label>
+    <label class="btn zero" for="xAtt3">
+        <input data-toggle="button" id="xAtt3" name="qxAtt" type="checkbox" value="${xAtt3}"/>${xAtt3}</label>
+    <label class="btn zero" for="xAtt4">
+        <input data-toggle="button" id="xAtt4" name="qxAtt" type="checkbox" value="${xAtt4}"/>${xAtt4}</label>
+    <label class="btn zero" for="xAtt5">
+        <input data-toggle="button" id="xAtt5" name="qxAtt" type="checkbox" value="${xAtt5}"/>${xAtt5}</label>
+    <label class="btn zero" for="xAtt6">
+        <input data-toggle="button" id="xAtt6" name="qxAtt" type="checkbox" value="${xAtt6}"/>${xAtt6}</label>
+    <label class="btn zero" for="xAtt7">
+        <input data-toggle="button" id="xAtt7" name="qxAtt" type="checkbox" value="${xAtt7}"/>${xAtt7}</label>
+    <label class="btn zero" for="xAtt8">
+        <input data-toggle="button" id="xAtt8" name="qxAtt" type="checkbox" value="${xAtt8}"/>${xAtt8}</label>
+    <label class="btn zero" for="xAtt9">
+        <input data-toggle="button" id="xAtt9" name="qxAtt" type="checkbox" value="${xAtt9}"/>${xAtt9}</label>
+    <label class="btn zero" for="xAtt10">
+        <input data-toggle="button" id="xAtt10" name="qxAtt" type="checkbox" value="${xAtt10}"/>${xAtt10}</label>
+    <label class="btn zero" for="xAtt11">
+        <input data-toggle="button" id="xAtt11" name="qxAtt" type="checkbox" value="${xAtt11}"/>${xAtt11}</label>
+    <label class="btn zero" for="xAtt12">
+        <input data-toggle="button" id="xAtt12" name="qxAtt" type="checkbox" value="${xAtt12}"/>${xAtt12}</label>
+    <label class="btn zero" for="xAtt13">
+        <input data-toggle="button" id="xAtt13" name="qxAtt" type="checkbox" value="${xAtt13}"/>${xAtt13}</label>
+    <label class="btn zero" for="xAtt14">
+        <input data-toggle="button" id="xAtt14" name="qxAtt" type="checkbox" value="${xAtt14}"/>${xAtt14}</label>
+    <label class="btn zero" for="xAtt15">
+        <input data-toggle="button" id="xAtt15" name="qxAtt" type="checkbox" value="${xAtt15}"/>${xAtt15}</label>
+    <label class="btn zero" for="xAtt16">
+        <input data-toggle="button" id="xAtt16" name="qxAtt" type="checkbox" value="${xAtt16}"/>${xAtt16}</label>
+    <label class="btn zero" for="xAtt17">
+        <input data-toggle="button" id="xAtt17" name="qxAtt" type="checkbox" value="${xAtt17}"/>${xAtt17}</label>
+    <label class="btn zero" for="xAtt18">
+        <input data-toggle="button" id="xAtt18" name="qxAtt" type="checkbox" value="${xAtt18}"/>${xAtt18}</label>
+    <label class="btn zero" for="xAtt19">
+        <input data-toggle="button" id="xAtt19" name="qxAtt" type="checkbox" value="${xAtt19}"/>${xAtt19}</label>
+    <label class="btn zero" for="xAtt20">
+        <input data-toggle="button" id="xAtt20" name="qxAtt" type="checkbox" value="${xAtt20}"/>${xAtt20}</label>
+    <label class="btn zero" for="xAtt21">
+        <input data-toggle="button" id="xAtt21" name="qxAtt" type="checkbox" value="${xAtt21}"/>${xAtt21}</label>
+    <label class="btn zero" for="xAtt22">
+        <input data-toggle="button" id="xAtt22" name="qxAtt" type="checkbox" value="${xAtt22}"/>${xAtt22}</label>
+    <label class="btn zero" for="xAtt23">
+        <input data-toggle="button" id="xAtt23" name="qxAtt" type="checkbox" value="${xAtt23}"/>${xAtt23}</label>
+    <label class="btn zero" for="xAtt24">
+        <input data-toggle="button" id="xAtt24" name="qxAtt" type="checkbox" value="${xAtt24}"/>${xAtt24}</label>
+
+    <label class="btn zero" for="xAttOther" style="font-weight: lighter;">
+        <input data-toggle="button" id="xAttOther" name="qxAtt" onclick="disableOtherTxt('xAtt');" type="checkbox" value="xAttOther"/>Other/None of the above<br />
+        <input disabled="disabled" id="xAttOtherText" minlength="3" name="qxAttOtherText" oninput="validate();" type="text"/>
+    </label>
+</div>
+
+
+
+<div class="qline">
+    <label class="btn zero" for="xAttNone">
+        <input data-toggle="button" id="xAttNone" name="qxAttNone" onclick="disableBtnGrp('xAtt',this.id);validate();" type="checkbox"/> None
+        <small>${none}</small>
+    </label>
+</div>
+
+</div>
+</div>
+
+<div>
+<p style="font-size:10pt;width:600pt">Optional Feedback: Thanks for filling out the questions above! If something about the hit was unclear, please leave a comment in the box below. We would like to make this HIT easier for future workers, so we really appreciate feedback though it is optional.</p>
+<textarea cols="100" name="commentbox" rows="1" style="margin-left:10px;margin-top:10px"></textarea><br />
+<br/>
+&nbsp;
+<center>
+<div class="alert alert-danger" id="alert" role="alert" style="display: none;width:500px; transition: opacity 2s ease-in;">Please fill out all the questions.</div>
+<input class="btn btn-primary" disabled="disabled" id="submitButton" type="submit" value="Submit" /></center>
+</div>
+</fieldset>
+</section>
+<script type="text/javascript">
+  var validationGroups = {
+    xAtt: false
+  };
+  window.onload = layout;
+  function layout(){
+    /* Hiding UNKs & Nones*/
+    $('label:contains("_UNK_")').hide();
+    $('label:contains("_no_none_")').hide();
+    $('label:contains("_none_")').hide();
+
+    /*Disabling checked / uncheck examples*/
+    $("td > label > input").prop("disabled",true);
+  }
+  function disableBtnGrp(grp,id){
+    var noneBtn, otherBtn, disabled, otherTxtDisabled;
+    console.log(grp);
+    noneBtn = '#'+grp+'None';
+    otherBtn = '#'+grp+'Other';
+    disabled = $(noneBtn).is(':checked');
+    otherTxtDisabled = $(noneBtn).is(':checked') || !$(otherBtn).is(':checked');
+    $('#'+grp+'BtnGrp input[type="checkbox"]').prop('disabled',disabled);
+    $('#'+grp+'BtnGrp input[type="text"]').prop("disabled",otherTxtDisabled);
+    if (disabled){
+      // Clear all data too
+      $('#'+grp+'BtnGrp input[type="checkbox"]').prop('checked',false);
+      $('#'+grp+'BtnGrp .active').removeClass("active");
+      $('#'+grp+'BtnGrp input[type="text"]').prop("value","");
+    }
+  }
+  function disableOtherTxt(grp){
+    var otherBtn = '#'+grp+'Other';
+    var otherTxt = '#'+grp+'OtherText';
+    $(otherTxt).prop('disabled',!$(otherBtn).is(':checked'));
+    if (!$(otherBtn).is(':checked'))
+      $(otherTxt).prop("value","");
+  }
+  function validate(){
+    var sat = true;
+    var missingQs = [];
+    var ixs = {xAtt: 1};
+    for (var grp in validationGroups){
+      var noneBtn = '#'+grp+'None';
+      var otherBtn = '#'+grp+'Other';
+      var otherTxt = '#'+grp+'OtherText';
+      var valid = $(noneBtn).is(':checked');
+      valid = valid || ($('#'+grp+'BtnGrp input[type="checkbox"]:checked').length > 0 && (!$(otherBtn).is(':checked') || ($(otherBtn).is(':checked') && $(otherTxt).prop("value").length > 3)));
+
+      validationGroups[grp] = valid;
+      sat = sat && valid;
+      if (!valid){
+        missingQs.push(ixs[grp]);
+      }
+    };
+    if (sat){
+      $("#submitButton").prop("disabled",false);
+      $("#alert").hide();
+    } else {
+      $("#alert").prop("innerText","Please fill in question "+missingQs);
+      $("#alert").show();
+      $("#submitButton").prop("disabled",true);
+    }
+    //$('#'+grp+'BtnGrp input[type="text"]').prop("value","");
+    //$('#'+grp+'BtnGrp input[type="checkbox"]').prop('checked',false);
+  }
+   var firstclick = true;
+   function checkoverlap(id){
+      var str= document.getElementById(id).value.toLowerCase().split(/\W+/);
+      var s1 = document.getElementById("sentence1").innerText.toLowerCase().split(/\W+/);
+      console.log(str);
+      diff = 0;
+      for (var i =0; i < str.length; i++){
+         if (!s1.includes(str[i])){
+            diff += 1;
+         }
+      }
+      if (diff <= str.length/2){
+         alert("Please try to rephrase the answer to the free response if you can, so that you aren't reusing so many words from the story.");
+      }
+   }
+   function toggle(id){
+      var elem = document.getElementById(id);
+      if (elem.disabled){
+         elem.disabled = false;
+         if (id == "freetext1" || id == "freetext2"){
+            elem.required = true;
+         }
+         elem.value = "";
+         elem.style.color = "black";
+      }
+      else{
+         elem.disabled = true;
+         elem.required = false;
+         elem.value = "Nothing";
+         elem.style.color = "grey";
+      }
+   }
+
+   function show(id){
+      document.getElementById(id).style.display="block";
+      firstclick=true;
+      var str = ["freetext1", "freetext1b", "freetext1c"];
+      for (var i =0; i < str.length; i++){
+         var elem = document.getElementById(str[i]);
+         elem.disabled = false;
+         elem.value = "";
+         elem.style.color = "black";
+      }
+      document.getElementById("freetext1").value = "to (be)";
+      document.getElementById("freetext1").required = true;
+      document.getElementById("freetext1").style.color = "grey";
+   }
+
+   function hide(id){
+      document.getElementById(id).style.display="none";
+      var str = ["freetext1", "freetext1b", "freetext1c"];
+      for (var i =0; i < str.length; i++){
+         var elem = document.getElementById(str[i]);
+         elem.disabled = true;
+         elem.required = false;
+         elem.value = "Nothing";
+         elem.style.color = "grey";
+      }
+      document.getElementById("check1").checked = false;
+   }
+
+
+    function wipeclean(){
+     if (firstclick){
+       firstclick = false;
+       document.getElementById("freetext1").value = "";
+       document.getElementById("freetext1").style.color = "black";
+     }
+    }
+</script><!-- End Content Body --><!-- close container -->
+<style type="text/css">.zero {
+  text-align: left;
+  padding-left: 30px;
+  margin-bottom:0px;
+  white-space: normal;
+  color: black;
+  border-color: #999;
+}
+.zero:hover,
+.zero:focus,
+.zero:checked,
+.zero.active {
+  color: #141411;
+  background-color: #d8d8d4;
+  border-color: #999;
+}
+input[type=checkbox]{
+  margin: 5px;
+}
+
+td > label {
+  min-width: 10px;
+}
+
+label > input[type="text"] {
+  margin: 5px;
+  width: 230px;
+}
+
+input[type="text"]:invalid {
+  color: #a94442;
+  background-color: #f2dede;
+}
+
+fieldset { padding: 10px; background:#fbfbfb; border-radius:5px; margin-bottom:5px; }
+.columns{
+    list-style-type: none;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    columns: 2;
+    list-style-position: inside;//this is important addition
+}
+.unbulleted{
+    list-style-type: none;
+    padding:7px;
+    margin:0px;
+}
+
+th, td{
+   border: 0px solid grey;
+   padding-left:15px;
+   padding-right:15px;
+   padding-top:5px;
+   padding-bottom:5px;
+}
+span.question {
+  cursor: pointer;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-color: #445266;
+  line-height: 16px;
+  color: White;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+}
+span.question:hover {
+  background-color: #3D6199;
+}
+
+.example-table td, .example-table th{
+   border:1px solid grey;
+   text-align:left;
+   font-size: 10pt;
+   max-width:400px;
+
+}
+.example-table td > label {
+  min-width: 60px;
+}
+.story-excerpt {
+   margin: 40px auto;
+   min-width: 500px;
+   border:2px #333333;
+   background-color: #f2f2f2;
+   border-style: solid;
+   padding-right:10px;
+   padding-left:10px;
+   display:table;
+   border-radius:15px;
+}
+.title{
+   border-left: 2px solid #eaeaea;
+   border-right: 2px solid #eaeaea;
+
+
+}
+.qline{
+   display:table;
+   min-width:300px;
+   margin-top:10px;
+   margin-bottom: 20px;
+   margin-left:20px;
+   border:0px solid grey;
+}
+
+.reasoning{
+   font-size: 8pt;
+}
+.wrapper {
+     height: 100%;
+     width: 100%;
+     display: table;
+ }
+
+.page {
+    width: 100%;
+    display: table-cell;
+    vertical-align: top;
+}
+
+.cell {
+    margin: 0 auto;
+    width: 100%;
+    padding: 10px;
+}
+
+#pagenum {
+    text-align: center;
+    font-style: italic;
+}
+.widercell{
+   max-width: 600px;
+}
+.freediv{
+   margin-left:20px;
+}
+.instructionfont{
+   padding-left:2px;
+   font-size:8pt;
+   color:gray;
+}
+.tobe{
+   font-size:8pt;
+   color:gray;
+}
+input[type=checkbox]:disabled:checked{filter:brightness(-10%); }
+</style>

@@ -11,9 +11,6 @@ evaluation = evaluation_class.Evaluation(solver_type="oracle", tasks="CI_tasks",
 
 def test_actions():
     baseline = Baseline(driver=evaluation.driver, actions=evaluation.actions)
-    action_list = baseline.get_action_list()
-    print(action_list)
-    assert len(action_list) > 0, f"The action list should not be empty: {action_list}"
 
     # Dummy input
     dummy_input = Input(

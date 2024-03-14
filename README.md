@@ -1,4 +1,4 @@
-# Web-Grounded Natural Language Instructions
+# TurkingTest: Challenging AI Agents with Web-based Tasks 
 
 <hr>
 
@@ -9,12 +9,15 @@ visual information.
 Here are two example tasks:
 ![Screen Shot 2023-02-20 at 12 21 22 PM](https://user-images.githubusercontent.com/2441454/220168815-10c22ddd-2deb-422f-b41e-2203bee25e25.png)
 
+You can also see a demo of the oracle model on this page: https://turkingtest.github.io/
+
 **Where can I see more tasks?**
 You can see the instructions for each task [here](https://jhu-clsp.github.io/turk-instructions/mturk.html).
 Note, in this visualization, the variables are not filled in with any variables.
 During the evaluation, the variables are filled in with the input instances.
 We have prepared the necessary scripts for simulating the interaction with the templates (see below).
 
+**Note:** The repository expects Python 3.10 or later.
 
 Background
 --- 
@@ -81,16 +84,6 @@ following visualization:
 
 ![Screenshot](data/screenshot.png)
 
-# Obtaining Statistics
-
-Overall, the repository contains about xx tasks. Of this, about 20 tasks are part of our evaluation. You can see the
-evaluation tasks [here](data/splits/evaluation_tasks.txt).
-
-The data contains a variety of input fields, though their distribution is not uniform. Here is the distribution of the
-input fields:
-![field-dist.png](data%2Ffield-dist.png)
-Last but not least, the data contains various modalities of data. Take a look at our paper (bottom of the page) for the details. 
-
 
 # Interacting with the tasks and evaluating the oracle baselines
 <img style="float: right;" src="data/llm-python-browser-interaction.png" width="30%">
@@ -106,49 +99,52 @@ the browser. The Python library will then return the results back to the AI syst
 A quick way to see how the model execution is expected to look like is to run our oracle baseline which has access to the ground-truth labels. 
 Run the script for evaluating the baseline by passing in the names of the
 tasks: 
-```python
-# prepare the evaluation 
-eval = __import__('4_run_evaluation')
-
-evaluation = eval.Evaluation(
-    solver_type="oracle", # the choice of the model 
-    tasks="all", # whether to look over all tasks 
-    do_eval=True, # whether to evaluate the model
-    dump_features=False, # whether to dump input-output features that will be used for training models  
-    report_field_stats=True, # whether to report the field statistics after the run is finished 
-    headless=False # whether to show the browser 
-)
-
-# execute 
-evaluation.enumerate_tasks(max_instance_count=1)
+```bash
+python3 4_run_evaluation.py --solver_type oracle  --tasks test_easy  --max_instance_count 20
 ```
+
+This open a browser and show the execusion of the oracle model on the test tasks. 
 Under the hood, the oracle model is generate a sequence of commands (Python commands from our action library) that ultimately get executed on each task (web page). The picture below shows this idea: 
 
 ![Screen Shot 2023-02-20 at 12 22 37 PM](https://user-images.githubusercontent.com/2441454/220168960-9080b552-446b-4385-bca3-7f662ce95e20.png)
 
+After this is done, the code will dump a JSON and a CSV file containing the results of the oracle model.
+If you want to run this faster without the visualization, you can set `--headless` flag.
+
 **Note:** To use Chrome as your webdriver, you need to first download the ChromeDriver executable from the ChromeDriver website and make sure it’s in your system’s `PATH`.
 
-## Dumping the training features 
+## The existing baseline models and evaluating them 
+You can find a list of baseine models here: [baselines.py](src%2Fevaluation%2Fbaselines.py)
+You can run these existing baselines by specifying the `solver_type` argument in the above script.
+You can also add your own models by adding a new class to the `baselines.py` file.
+
+## Optional: Dumping the input/output data for offline training/evaluation  
+There are scenarios that you may want to build a model that is trained on the input/output pairs of the tasks.
+But doing this is not efficient when you need to interact with thr browser for each task.
+As a result, we have created a functionality that allows you to dump the features of the tasks.
 The oracle model can be used to dump the training features that can be used for training other models.
 All need to be done is to set `dump_features=True` in the above script.
 You can find our script in `src/5_dump_features.py` that dumps the features for all tasks.
-
-## Training models
 The dumped features contain both visual content as well as the HTML content of the tasks.
 One can basically use either source of signals depending on the model.
-
 The output of these models will be strings (sequence of Python actions) that will be executed on the browser.
+ 
+Upon training an offline training of the model, you can also generate predictions of your model and evaluate these predictions. 
+This functionality is implemented in `4_run_evaluation.py` by specifying the solver to be "offline_predictions". 
+In this setting, you also will need to pass in the address of a file that contains the predictions of your model.  
 
-## Evaluating the predictions of a model 
-TODO 
 
 # Citation
 If you fnd this data useful, please cite this repository.
-
-<!-- 
-Publication 
---- 
-Feel free to cite us.  -->
+```bibtex
+@article{turkingtest2024xu,
+     title={TurkingTest: A Challenge Benchmark for Web Agents},
+     author={Xu, Kevin and Kordi, Yeganeh and Sanders, Kate and Wang, Yizhong and Byerly, Adam and Zhang, Jack and Van Durme, Benjamin and Khashabi, Daniel},
+     year={2024},
+     eprint={TBD},
+     archivePrefix={arXiv},
+}
+```
 
 License
 --- 

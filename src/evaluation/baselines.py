@@ -37,20 +37,6 @@ class Baseline:
         # TODO decide what the output of this function should be
         raise NotImplementedError("This method should be implemented by the subclass.")
 
-    def get_action_list(self):
-        """
-        This function returns the list of actions that can be performed on a HTML page as implemented in the Actions class.
-        This list is particularly useful for designing "tool" (actin)-augmented web-browsing agents.
-        """
-        # get the list of methods in the Actions class
-        action_list = [method for method in dir(MyActions) if not method.startswith('_')]
-        # include their docstrings as well
-        action_list = [(method, getattr(MyActions, method).__doc__) for method in action_list]
-        return action_list
-
-
-
-
 
 class NewBaseline(Baseline):
 
@@ -177,6 +163,7 @@ class OracleBaseline(Baseline):
 class RandomBaseline(Baseline):
     """
     This baseline randomly selects an action from the list of actions that can be performed on a HTML page.
+    Because this is somewhat of a complex implementation, we prefer to use the `DoNothingBaseline` instead.
     """
 
     def solve(self, input: Input, **kwargs):
@@ -245,6 +232,7 @@ class RandomBaseline(Baseline):
 
             print("random choices options:", options)
             return random.choice(options)
+
 
 class DoNothingBaseline(Baseline):
     """
@@ -354,7 +342,7 @@ class TextBaseline(Baseline):
 
         # extract HTML
         html = self.get_html(input, kwargs['url'])
-        
+
         command = self.model.get_text_baseline_action(input.name, html, self.num_demonstrations, self.use_relevant_html)
 
         # find the index of "self.actions(" and drop anything before it.

@@ -286,7 +286,7 @@ class Evaluation:
                         inputs.append(element)
                 except:
                     # the reason that we have try-catch here is becuase elements exists in CSV but they're not created
-                    # in HTML (they're created dynamically via JS). An exmaple task is "HTER - longer sentences -27 Sep 1129"
+                    # in HTML (they're created dynamically via JS). An exmaple task is "HTER - longer sentences"
                     print(f"{Fore.RED}Could not find input field with name `{name}`")
         else:
             inputs = self.driver.find_elements(By.XPATH, '//input | //textarea | //select')

@@ -3,15 +3,15 @@ Compile list of area chairs
 Elicitation obj
 Elicitation subj
 Gun violence structured extraction
-Rationale Generation 5
+Rationale Generation
 Photo Collection GVDB
-ESNLI Rationale Generation 4
+ESNLI Rationale Generation
 JJ-NN HIT
-COMET2020 ATOMIC Inference Vp 5
+COMET2020 ATOMIC Inference Vp
 neural-pop (PLAN evaluation) t5-human-test b
-VQA Rationale Generation 5
+VQA Rationale Generation
 Lattice
-What breaks the flow - no categories 4
+What breaks the flow - no categories
 Spanish Word Alignment
-BiSECT Human Evaluation II (2)
-NER - Task scruples 26,200 - 30,922
+BiSECT Human Evaluation
+NER - Scruples
