@@ -36,20 +36,6 @@ class Baseline:
         # TODO decide what the output of this function should be
         raise NotImplementedError("This method should be implemented by the subclass.")
 
-    def get_action_list(self):
-        """
-        This function returns the list of actions that can be performed on a HTML page as implemented in the Actions class.
-        This list is particularly useful for designing "tool" (actin)-augmented web-browsing agents.
-        """
-        # get the list of methods in the Actions class
-        action_list = [method for method in dir(MyActions) if not method.startswith('_')]
-        # include their docstrings as well
-        action_list = [(method, getattr(MyActions, method).__doc__) for method in action_list]
-        return action_list
-
-
-
-
 
 class NewBaseline(Baseline):
 
@@ -176,6 +162,7 @@ class OracleBaseline(Baseline):
 class RandomBaseline(Baseline):
     """
     This baseline randomly selects an action from the list of actions that can be performed on a HTML page.
+    Because this is somewhat of a complex implementation, we prefer to use the `DoNothingBaseline` instead.
     """
 
     def solve(self, input: Input, **kwargs):
@@ -245,6 +232,7 @@ class RandomBaseline(Baseline):
             print("random choices options:", options)
             return random.choice(options)
 
+
 class DoNothingBaseline(Baseline):
     """
     This baseline randomly does nothing!
@@ -253,6 +241,7 @@ class DoNothingBaseline(Baseline):
 
     def solve(self, input: Input, **kwargs):
         pass
+
 
 class OfflineModelPredictionsBaseline(Baseline):
     """
@@ -285,6 +274,7 @@ class OfflineModelPredictionsBaseline(Baseline):
             print(f"failed to execute an action {output}, error: {error}")
 
         return error_flag
+
 
 class GPT4TextBaseline(Baseline):
     """
@@ -328,10 +318,12 @@ class GPT4TextBaseline(Baseline):
         except Exception as error:
             print(f"{Fore.RED}Failed to execute an action {command}, error: {error}")
 
+
 class VisionTextBaseline(Baseline):
     """
     Interactive calls to a VLM to solve the task
     """
+
     def __init__(self, actions: MyActions, driver, model: str):
         super().__init__(actions, driver)
         self.model = model
@@ -384,7 +376,7 @@ class VisionTextBaseline(Baseline):
         relevant_html = self.get_relevant_html(input)
         actions = Actions()
         image_path = actions.capture_screen("screenshot.png")
-        
+
         match self.model:
             case "gpt4v":
                 model = GPT4VModel()
