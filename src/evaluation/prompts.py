@@ -1,5 +1,7 @@
 import os
 from typing import List, Tuple
+from transformers import AutoTokenizer
+from itertools import islice
 
 def text_oracle_instructions() -> str:
   return """
@@ -10,8 +12,9 @@ def text_oracle_instructions() -> str:
   self.modify_select(input_name: str, input_value)
   self.modify_range(input_name: str, input_value)
 
-  Here are a few examples:
+  It is extremely important that before the specific method (modify_select, modify_range, etc.) you prepend self.actions.
 
+  I expect to be given a specific input to modify and the HTML code of the webpage. I will have to generate a command from the list above to modify the input. 
   """
 
 def text_vision_oracle_instructions() -> str:
@@ -28,9 +31,26 @@ def text_vision_oracle_instructions() -> str:
   I expect to be given a specific input to modify, and the HTML code of the webpage, and a screenshot of the webpage. I will have to generate a command from the list above to modify the input. 
   """
 
+def text_vision_ollava_instructions() -> str:
+  return """
+  I am a system that generates a Python API call onto a HTML page that will do something on the page. 
+  I expect to be given a specific input to modify, and the HTML code of the webpage, and a screenshot of the webpage. I will have to generate a command from the list below to modify the input. That will be the ONLY text I generate. Do not include an explanation for the outputted python codeblock.
+  Here are the list of valid commands. From this list, I will output one of them following this format:
+  self.actions.modify_text(input_name: str, input_value)
+  self.actions.modify_checkbox(input_name: str, input_value)
+  self.actions.modify_radio(input_name: str, input_value)
+  self.actions.modify_select(input_name: str, input_value)
+  self.actions.modify_range(input_name: str, input_value)
+
+  It is extremely important that before the specific method (modify_select, modify_range, etc.) you prepend self.actions.
+
+  An example command would be:
+  ASSISTANT: self.actions.modify_checkbox("range1", "on")
+  """
+
 def few_shot_examples() -> List[Tuple[str, str, str]]:
   """
-  Returns a list of few-shot examples in their own array index of type [Input/HTML Code, Image Path, Output Line]
+  Returns a list of few-shot examples in their own array index of type [Input/HTML Code, Image Path, Output Line, Input/Relevant HTML]
 
   Output Line Format:
   self.actions.modify_checkbox('q1-quant', 'nan')
@@ -165,7 +185,26 @@ def few_shot_examples() -> List[Tuple[str, str, str]]:
     </body></html>
     """,
     os.path.join("img", "ex1.png"),
-    "self.actions.modify_checkbox('q1-quant', 'nan')"
+    "self.actions.modify_checkbox('q1-quant', 'nan')",
+    """
+    Input name: candidate2
+    HTML: 
+          <input name="q1-law" type="checkbox" value="q1-law"> Law<br>
+          <input name="q1-org" type="checkbox" value="q1-org"> Organization<br>
+          <input name="q1-date" type="checkbox" value="q1-date"> Date<br>
+          <input name="q1-time" type="checkbox" value="q1-time"> Time<br>
+          <input name="q1-money" type="checkbox" value="q1-money"> Money<br>
+          <input name="q1-quant" type="checkbox" value="q1-quant"> Quantity<br>
+          <input name="q1-desc" type="checkbox" value="1-desc" checked=""> Description<br>
+          <input name="q1-abbrv" type="checkbox" value="q1-abbrv"> Abbreviation<br>
+          <input name="q1-other" type="checkbox" value="q1-other"> Other</td>
+        </tr>
+      </tbody>
+    </table>
+
+    </section>
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" integrity="sha384-IS73LIqjtYesmURkDE9MXKbXqYA8rvKEp/ghicjem7Vc3mGRdQRptJSz60tvrB6+" rel="stylesheet">
+    """
   ]
 
   instance_2 = [
@@ -255,7 +294,29 @@ def few_shot_examples() -> List[Tuple[str, str, str]]:
     </body></html>
     """,
     os.path.join("img", "ex2.png"),
-    "self.actions.modify_checkbox('0-0', 'on')"
+    "self.actions.modify_checkbox('0-0', 'on')",
+    """
+    Input name: 0-0
+    HTML:
+    <h4>For the following paragraph, select <u>all</u> the correct answer(s).</h4>
+
+    <h4>There might be&nbsp;<span style="background-color: rgb(240, 248, 255); color: red;">more than one correct answer; </span><span style="background-color: rgb(240, 248, 255);">in which case,&nbsp;</span><span style="background-color: rgb(240, 248, 255); color: red;">please select <strong><u>all</u></strong>&nbsp;the options that&nbsp;apply to the question.&nbsp;</span></h4>
+
+    <div id="userInputBox">
+    <div class="boxedBig"><b>Paragraph: </b> <b>Sent 1: </b>Low-income domestic violence victims may find long-term legal help -- representation in divorces or child-custody disputes -- hard to come by, if two organizations now providing such help can't replace their lost funding.<br><b>Sent 2: </b>The Legal Aid Society of Salt Lake and Utah Legal Services are already facing cutbacks after they were refused a federal grant of more than $450,000 in September.<br><b>Sent 3: </b>The board overseeing the state Office of Crime Victim Reparations [CVR] has voted to deny a stopgap funding request from the two organizations.<br><b>Sent 4: </b>While describing the request as a worthy cause, board members agreed Tuesday that funding divorces or custody disputes was outside their focus -- providing direct services for crime victims.<br><b>Sent 5: </b>The $175,000 requested would have allowed the legal aid groups to maintain a skeleton staff to continue providing help beyond emergency protective orders for victims, completing existing cases and offering services in limited cases.<br><b>Sent 6: </b>The groups also plan to enlist more pro bono attorneys through coordination with the Utah State Bar. "We don't have a lot more options," said Anne Milne, executive director of Utah Legal Services, after learning of the CVR refusal Wednesday.<br><b>Sent 7: </b>The organization has already lost some staff through attrition and has turned away some cases, she said.<br><b>Sent 8: </b>Milne said she may ask the board overseeing her organization to give her until November to seek funding from additional sources.<br><b>Sent 9: </b>Without additional funding, the outlook for longer-term legal help is unclear.<br><b>Sent 10: </b>For two years, the groups had received 18-month civil legal assistance grants from the U.S. Department of Justice and had used them to provide such assistance.<br><b>Sent 11: </b>But last month, a third request was denied.<br><b>Sent 12: </b>Funding used to help victims obtain emergency protective orders remains in place, said Milne and Stewart Ralphs, executive director of the Legal Aid Society of Salt Lake.<br><b>Sent 13: </b>Although an order's requirements that an abuser stay away from a victim may remain in effect for years, protective orders only settle issues such as child custody, child support, custody and property arrangements for 150 days.<br><b>Sent 14: </b>Many judges are reluctant to address those issues in emergency protective orders, since the decrees stay in effect for such a short time, Milne and Ralphs said.<br><b>Sent 15: </b>"The likelihood a victim will return to her abuser increases if she cannot permanently sever the relationship and establish workable support, custody and property arrangements," the funding request to CVR said.<br><b>Sent 16: </b>The Department of Justice said it denied the grant application, in part, because evaluators did not see enough collaboration between the organizations and victims' advocates, Ralphs and Milne told CVR board members.<br><b>Sent 17: </b>While the two said they believe their organizations coordinate well, the organizations cannot appeal the grant denial.<br><b>Sent 18: </b>Although CVR board members considered giving the money as a loan, not a grant, their vote on the funding request -- taken after Milne and Ralphs left the meeting -- was unanimous.<br></div>
+    <div class="boxedBig"><b>Question: </b> When a judge issues an emergency protective order is it long or short term and how many days does it cover?  &nbsp; &nbsp; &nbsp; &nbsp; <div class="form-group"><div class="col-lg-10"><label class="checkbox-inline"><input type="checkbox" name="0-0"> Emergency protective orders are short term and it lasts for a 150 days </label> &nbsp; &nbsp; &nbsp; &nbsp; <br><label class="checkbox-inline"><input type="checkbox" name="0-1"> These are shorter orders and stay for 150 days </label> &nbsp; &nbsp; &nbsp; &nbsp; <br><label class="checkbox-inline"><input type="checkbox" name="0-2"> Emergency protective orders are long term </label> &nbsp; &nbsp; &nbsp; &nbsp; <br><label class="checkbox-inline"><input type="checkbox" name="0-3"> Short term </label> &nbsp; &nbsp; &nbsp; &nbsp; <br></div></div> <br><br><br><br> </div></div>
+    <input class="form-control" id="hiddenQuestion" name="hiddenName" type="text"><br>
+    <br>
+    &nbsp;</div>
+    </section>
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" integrity="sha384-IS73LIqjtYesmURkDE9MXKbXqYA8rvKEp/ghicjem7Vc3mGRdQRptJSz60tvrB6+" rel="stylesheet">
+    </style>
+
+
+          <p class="text-center">
+            <input type="submit" id="submitButton" class="btn btn-primary" disabled="" value="You must ACCEPT the Task before you can submit the results.">
+          </p>
+"""
   ]
 
   instance_3 = [
@@ -440,7 +501,26 @@ def few_shot_examples() -> List[Tuple[str, str, str]]:
     </body></html>
     """,
     os.path.join("img", "ex3.png"),
-    "self.actions.modify_radio('candidate2', '4')"
+    "self.actions.modify_radio('candidate2', '4')",
+    """
+    Input name: candidate2
+    HTML: 
+      </div>
+      <p>Which action is the most likely to help accomplish the goal?</p>
+      <div class="col-md-4">
+        <div class="radio">
+          <label for="radios-0">
+            <input type="radio" name="candidate2" value="1" required="">
+            <b>Sew the pieces together using the following method until you have a binding strip long enough to outline the perimeter of your quilt:</b>
+          </label>
+        </div>
+        <div class="radio">
+          <label for="radios-1">
+            <input type="radio" name="candidate2" value="2" required="">
+            <b>Cut the excess fabric off using fabric scissors, using the line you drew as a guide.</b>
+          </label>
+        </div>
+"""
   ]
 
   instance_4 = [
@@ -1080,9 +1160,28 @@ HTML:
   
 
 </body></html>
-""",
-  os.path.join("img", "ex4.png"),
-"self.actions.modify_checkbox('weakener_rationale1_relevant', 'on')"
+  """,
+    os.path.join("img", "ex4.png"),
+  "self.actions.modify_checkbox('weakener_rationale1_relevant', 'on')",
+  """
+Input name: weakener_rationale1_relevant
+HTML:
+        <input id="weakener_rationale1_understandable" name="weakener_rationale1_gibberish_understandable_grammatical" onclick="toggle_gibberish('weakener_rationale1')" type="radio" value="understandable"> <label for="understandable">The rationale is not perfectly grammatical, but I can understand it.</label><br>
+        <input id="weakener_rationale1_grammatical" name="weakener_rationale1_gibberish_understandable_grammatical" onclick="toggle_gibberish('weakener_rationale1')" type="radio" value="grammatical" checked=""> <label for="grammatical">The rationale is grammatical.</label></div>
+        </td>
+      </tr>
+      <tr>
+        <td><input id="weakener_rationale1_relevant" name="weakener_rationale1_relevant" type="checkbox" checked=""> The rationale is on topic with respect to the premise and hypothesis.</td>
+      </tr>
+      <tr>
+        <td><input id="weakener_rationale1_correct" name="weakener_rationale1_correct" type="checkbox"> The rationale is factually correct or likely true.</td>
+      </tr>
+      <tr>
+        <td><input id="weakener_rationale1_explains" name="weakener_rationale1_explains" type="checkbox"> The rationale may explain why the rationale weakens the hypothesis.</td>
+      </tr>
+    </tbody>
+  </table>
+  """
   ]
 
   instance_5 = [
@@ -1590,15 +1689,29 @@ The city was also the site of the first major slave-owned plantation in the Sout
                         });
 
                     </script>
-
-      
-    
-  
-
 </body></html>
 """,
   os.path.join("img", "ex5.png"),
-"self.actions.modify_range('coherence', '4.0')"
+"self.actions.modify_range('coherence', '4.0')",
+"""
+Input name: coherence
+HTML:
+                                            <small> <em> Is the system's generation <u>aligned in meaning and topic with the prompt?</u></em> </small>
+                                            <br>
+                                            <label class="float-left" style="color:red;">Bad</label>
+                                            <label class="float-right" style="color:green;">Excellent</label>
+                                            <br>
+                                            <input type="range" class="form-control-range" id="coherence" name="coherence" min="1" max="5" step="1" value="4" list="coherence_list">
+                                            <datalist id="coherence_list">
+                                                <option value="1" label="bad">
+                                                </option><option value="2" label="mediocre">
+                                                </option><option value="3" label="okay">
+                                                </option><option value="4" label="good">
+                                                </option><option value="5" label="excellent">
+                                            </option></datalist>
+                                            <small id="coherenceHelp" class="form-text text-muted" style="min-height:70px;">
+                                               The system's result is, to some extent, relevant to the prompt, but there are some errors/irrelevant parts that stray from what a human might write.
+"""
   ]
 
   instance_6 = [
@@ -1783,7 +1896,27 @@ HTML:
 </body></html>
 """,
   os.path.join("img", "ex6.png"),
-"self.actions.modify_text('story1', 'Fred's boss started to yell at him.')"
+"self.actions.modify_text('story1', 'Fred's boss started to yell at him.')",
+"""
+Input name: story1
+HTML:
+			<th>Ending</th>
+		</tr>
+		<tr>
+			<td>"Fred's boss called him into the office at the propane filling station."</td>
+			<td align="center"><font size="100">→</font></td>
+			<td><textarea cols="30" id="story1" name="story1" rows="4">Fred's boss started to yell at him.</textarea></td>
+			<td align="center"><font size="100">→</font></td>
+			<td>"Fred's boss gave him a large hug."</td>
+		</tr>
+		<tr>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<p align="center"><input id="submitButton" type="submit" value="Submit"></p>
+"""
   ]
 
   instance_7 = [
@@ -2105,7 +2238,26 @@ span.s1 {font-variant-ligatures: no-common-ligatures}
 </body></html>
 """,
   os.path.join("img", "ex7.png"),
-"self.actions.modify_text('story1', 'He was a nascar driver.')"
+"self.actions.modify_text('story1', 'He was a nascar driver.')",
+"""
+Input name: story1
+HTML:
+			<p>&nbsp;</p>
+
+			<p><span style="color:#FF8C00;"><strong>Original middle:&nbsp;"John carelessly crashed into an elderly woman."</strong></span></p>
+
+			<p><span style="color:#0000CD;"><strong>Your version:</strong></span></p>
+			<textarea cols="30" id="story1" name="story1" required="" rows="4">He was a nascar driver.</textarea>
+
+			<p><input id="InconsistentOriginalMiddle" name="InconsistentOriginalMiddle" type="checkbox" value="yes"><label for="InconsistentOriginalMiddle">&nbsp;The <span style="color:#FF8C00;">original middle</span> does <span style="color:#FF0000;">not</span> make a plausible story.</label></p>
+			</td>
+			<td align="center"><font size="100">→</font></td>
+			<td>"John drove more carefully from then on."</td>
+		</tr>
+		<tr>
+		</tr>
+	</tbody>
+"""
   ]
 
   instance_8 = [
@@ -2387,7 +2539,26 @@ getUserInfo();
 </body></html>
 """,
   os.path.join("img", "ex8.png"),
-"self.actions.modify_radio('radio0_9', '1')"
+"self.actions.modify_radio('radio0_9', '1')",
+"""
+Input name: radio0_9
+HTML:
+	}
+}
+writeParaphraseTables();
+$("tr:odd").addClass("odd");
+</script><p></p><table><tbody><tr>
+<td colspan="2">What is a fuel cell?</td><td colspan="2"><b>Possible Answer:</b> electrochemical device electrical generators phosphoric acid molten carbon(ate)? hydrogen.*fuels? naphtha-based phosphate provide electrical power polymer electrolyte takes natural gas solid oxide use.*(butane|propane) hydrogen and oxygen converts gas to electricity proven technology convert combustible liquids chemical</td></tr><tr class="odd"><th colspan="2">Does the following sentence answer the question:</th><th>Yes</th><th>No</th></tr><tr><td>1. </td><td>Fuel cells, which work at low temperatures and do not rely on the burning of fossil fuels, produce no oxides of nitrogen or sulphur (the causes of acid rain), need no batteries which would have to be recharged or recycled and can obtain hydrogen from such different fuels as natural gas, methanol, biomass gas, methane and other gases.</td><td align="center"><input type="radio" name="radio0_9" value="1" checked=""></td><td align="center"><input type="radio" name="radio0_9" value="0"></td></tr><tr class="odd"><td>2. </td><td>The fuel cell system consists of a hydrogen dissociation type reformer that directly manufactures very pure hydrogen from city gas (natural gas) and a solid polymer fuel cell manufactured by Mitsubishi Heavy Industries.</td><td align="center"><input type="radio" name="radio0_2" value="1"></td><td align="center"><input type="radio" name="radio0_2" value="0"></td></tr><tr><td>3. </td><td>R&amp;amp;D are progressing at present on three types of fuel cells, namely: molten carbonate fuel cells (MCFC), solid oxide fuel cells (SOFC) and polymer electrolyte fuel cells (PEFC).</td><td align="center"><input type="radio" name="radio0_3" value="1"></td><td align="center"><input type="radio" name="radio0_3" value="0"></td></tr><tr class="odd"><td>4. </td><td>One such technology is the fuel cell, which uses a chemical reaction to produce electricity from methanol, natural gas or hydrogen.</td><td align="center"><input type="radio" name="radio0_0" value="1"></td><td align="center"><input type="radio" name="radio0_0" value="0"></td></tr><tr><td>5. </td><td>The company's solid oxide fuel cell has already been sold for testing purposes to Japanese natural gas companies.</td><td align="center"><input type="radio" name="radio0_6" value="1"></td><td align="center"><input type="radio" name="radio0_6" value="0"></td></tr><tr class="odd"><td>6. </td><td>Fuel Cell Power    Heat Pumps               Superconductor Power          Ceramic Gas Turbine         Secondary Battery Generation                                  Applications Technology                                   Development Technology  Japan      Phosphoric acid    --In process of          Superconductive electrical    (For power                  Na/S, Zn/Br batteries: fuel cells: Have   developing 1,000kW       generator: Developing a 7kW   generation)Manufacturing    Completed development of developed basic    heat pump (super heat    model superconducting         a prototype of a 300kW      batteries for a 1,000kW plant              pump).For heating        generator in line with        basic ceramic gas turbine   pilot plant (first in technologies.</td><td align="center"><input type="radio" name="radio0_1" value="1"></td><td align="center"><input type="radio" name="radio0_1" value="0"></td></tr><tr><td>7. </td><td>Among the project's programs: huge new batteries that store power generated at night to sell during peak-demand daytime hours; "fuel cells" that use chemical reactions to turn fuels into electricity; and a new motor called the Stirling Cycle engine that runs on oil, natural gas, or coal and can power anything from air conditioners to buses.</td><td align="center"><input type="radio" name="radio0_4" value="1"></td><td align="center"><input type="radio" name="radio0_4" value="0"></td></tr><tr class="odd"><td>8. </td><td>Polymer Electrolyte Fuel Cells (PEFC)                                     | ------------------------------------------------------------------------------- |Item                                               |1kW class module         | ------------------------------------------------------------------------------- |Output                                             |1kW                      | ------------------------------------------------------------------------------- |Fuel                                               |Hydrogen-air (pressurize-| |                                                   |d)                       | ------------------------------------------------------------------------------- |Average performance of cell                        |Initial characteristics 0| |                                                   |.3W/cm&amp;lt;sup&amp;gt; 2&amp;lt;/sup&amp;gt;        | -------------------------------------------------------------------------------   The present schedule calls for the development by fiscal 1995 of solid oxide fuel cells of several kilowatts, which raises hope for an effective utilization of waste heat produced from high output density and high temperature operation in addition to the same excellent features as MCFC.</td><td align="center"><input type="radio" name="radio0_7" value="1"></td><td align="center"><input type="radio" name="radio0_7" value="0"></td></tr><tr><td>9. </td><td>(A fuel cell takes natural gas -- or gas from garbage, wood chips and other so-called biomass material -- and efficiently turns it into electricity through a chemical reaction.</td><td align="center"><input type="radio" name="radio0_5" value="1"></td><td align="center"><input type="radio" name="radio0_5" value="0"></td></tr><tr class="odd"><td>10. </td><td>Molten Carbonate Fuel Cells (MCFC)                                        | ------------------------------------------------------------------------------- |Item                     |1,000kW Class System     |100kW Class Stack for In-| |                         |                         |termediate Evaluation    | ------------------------------------------------------------------------------- |Output                   |1,000kW (AC)             |30-100kW                 | ------------------------------------------------------------------------------- |Power generation efficie-|Above 45%                |                         | |ncy                      |                         |                         | ------------------------------------------------------------------------------- |Fuel                     |LNG                      |Reformed natural gas or  | |                         |                         |coal gas (refined) (ordi-| |                         |                         |nary pressure or pressur-| |                         |                         |ized)                    | ------------------------------------------------------------------------------- |Environment load         |Below legal standard     |--                       | ------------------------------------------------------------------------------- |Average performance of c-|--                       |Initial characteristics 0| |ell                      |                         |.8 V/150 mA/cm&amp;lt;sup&amp;gt; 2     | |                         |                         |&amp;lt;/sup&amp;gt; Temporal deteriora-| |                         |                         |tion Below 1%/1,000 hr   | ------------------------------------------------------------------------------- |2.</td><td align="center"><input type="radio" name="radio0_8" value="1"></td><td align="center"><input type="radio" name="radio0_8" value="0"></td></tr></tbody></table><p></p><p></p><table><tbody><tr>
+<td colspan="2">What is the deepest lake in the US?</td><td colspan="2"><b>Possible Answer:</b> crater</td></tr><tr class="odd"><th colspan="2">Does the following sentence answer the question:</th><th>Yes</th><th>No</th></tr><tr><td>1. </td><td>Crater Lake, the nation's deepest _ 1,932 feet _ and clearest lake, was formed when the Mount Mazama volcano erupted about 6,800 years ago and collapsed to form a gigantic bowl called a caldera.</td><td align="center"><input type="radio" name="radio1_0" value="1"></td><td align="center"><input type="radio" name="radio1_0" value="0"></td></tr><tr class="odd"><td>2. </td><td>``It was very rough terrain down there,'' said Jim Milestone, natural resource management specialist for the National Park Service at Crater Lake.</td><td align="center"><input type="radio" name="radio1_5" value="1"></td><td align="center"><input type="radio" name="radio1_5" value="0"></td></tr><tr><td>3. </td><td> Scientists using a one-person submersible craft plan Wednesday to make the first of 20 dives looking for hot springs at the bottom of Crater Lake, the deepest lake in the United States.</td><td align="center"><input type="radio" name="radio1_1" value="1"></td><td align="center"><input type="radio" name="radio1_1" value="0"></td></tr><tr class="odd"><td>4. </td><td>Three weeks of dives from Wizard Island were to begin today in the 1,932-foot-deep lake, the centerpiece of Crater Lake National Park in the Cascade Mountains.</td><td align="center"><input type="radio" name="radio1_9" value="1"></td><td align="center"><input type="radio" name="radio1_9" value="0"></td></tr><tr><td>5. </td><td>Wallace Stegner, Pulitzer Prize-winning author of the novel "Angle of Repose" and of many volumes of Western history, considers Crater Lake National Park in southwest Oregon, established in 1915, a classic of the genre.</td><td align="center"><input type="radio" name="radio1_7" value="1"></td><td align="center"><input type="radio" name="radio1_7" value="0"></td></tr><tr class="odd"><td>6. </td><td>We chose Ruapehu, which, unusually, has a lake in its crater.</td><td align="center"><input type="radio" name="radio1_6" value="1"></td><td align="center"><input type="radio" name="radio1_6" value="0"></td></tr><tr><td>7. </td><td>``We found the temperatures we've been looking for for three years,'' said Crater Lake National Park biologist Jim Milestone.</td><td align="center"><input type="radio" name="radio1_4" value="1"></td><td align="center"><input type="radio" name="radio1_4" value="0"></td></tr><tr class="odd"><td>8. </td><td> An Oregon State University oceanographer piloting a one-man submarine has become the first person to see the bottom of Crater Lake, the nation's deepest lake.</td><td align="center"><input type="radio" name="radio1_2" value="1"></td><td align="center"><input type="radio" name="radio1_2" value="0"></td></tr><tr><td>9. </td><td>Timberline's bikers will visit 28 national parks and monuments during 1990, including Yellowstone, the Grand Tetons, Glacier Bay, Lucky Mountain, Mesa Verde, Grand Canyon, Bryce, Zion, Canyonlands, Crater Lake, Mt.</td><td align="center"><input type="radio" name="radio1_8" value="1"></td><td align="center"><input type="radio" name="radio1_8" value="0"></td></tr><tr class="odd"><td>10. </td><td> A helicopter lifted a one-man submarine to Wizard Island in the prelude to man's first in-person look at the bottom of Crater Lake, the deepest lake in the United States.</td><td align="center"><input type="radio" name="radio1_3" value="1"></td><td align="center"><input type="radio" name="radio1_3" value="0"></td></tr></tbody></table><p></p><p></p><table><tbody><tr>
+<td colspan="2">What is pneumonia?</td><td colspan="2"><b>Possible Answer:</b> respiratory diseases? inflammation dangerous infection common cause of death most frequent killer of aids patients common killer of people common infections? most common aids - related influenza virus pneumocystis carinii infections? pneumococcus bacteria pcp caused by bacteria fatal complication life-threatening infect(ion)?</td></tr><tr class="odd"><th colspan="2">Does the following sentence answer the question:</th><th>Yes</th><th>No</th></tr><tr><td>1. </td><td>PCP, or pneumocystis carinii pneumonia, is the most common AIDS-related infection and has been considered one of the most quickly fatal diseases that can overwhelm the damaged immune systems of people with AIDS.</td><td align="center"><input type="radio" name="radio2_0" value="1"></td><td align="center"><input type="radio" name="radio2_0" value="0"></td></tr><tr class="odd"><td>2. </td><td>The aerosol drug approved in June is used to ward off pneumocystis carinii pneumonia, the leading cause of death among AIDS patients.</td><td align="center"><input type="radio" name="radio2_3" value="1"></td><td align="center"><input type="radio" name="radio2_3" value="0"></td></tr><tr><td>3. </td><td>Pneumocystis carinii pneumonia is the most common infection that kills AIDS patients.</td><td align="center"><input type="radio" name="radio2_8" value="1"></td><td align="center"><input type="radio" name="radio2_8" value="0"></td></tr><tr class="odd"><td>4. </td><td>Prophylactic use of aerosol pentamidine can prevent PCP (Pneumocystis carinii pneumonia), a potentially lethal opportunistic infection for people with AIDS.</td><td align="center"><input type="radio" name="radio2_5" value="1"></td><td align="center"><input type="radio" name="radio2_5" value="0"></td></tr><tr><td>5. </td><td>The most common cause of death in AIDS patients, for example, is a pneumonia caused by a microbe known as pneumocystis carinii, which rarely afflicts healthy persons.</td><td align="center"><input type="radio" name="radio2_1" value="1"></td><td align="center"><input type="radio" name="radio2_1" value="0"></td></tr><tr class="odd"><td>6. </td><td>     Since pneumonia can be caused by influenza virus, pneumococcus bacteria or a variety of other infections, you should get the flu and pneumonia vaccine if you are over 65, a smoker and/or suffer from any chronic cardiovascular or respiratory condition.</td><td align="center"><input type="radio" name="radio2_2" value="1"></td><td align="center"><input type="radio" name="radio2_2" value="0"></td></tr><tr><td>7. </td><td>Empire Blue Cross and Blue Shield of New York often goes to court to resist claims submitted by current policyholders, arguing, for example, that a case of Kaposi's Sarcoma or pneumocystis carinii pneumonia, both AIDS diseases, indicates an uninsured "pre-existing condition" of AIDS virus infection.</td><td align="center"><input type="radio" name="radio2_9" value="1"></td><td align="center"><input type="radio" name="radio2_9" value="0"></td></tr><tr class="odd"><td>8. </td><td>Since 1984, Lyphomed has produced an injectable form of the drug for use in patients who already have contracted pneumocystis carinii pneumonia, a life-threatening form of pneumonia that is the leading cause of death among AIDS patients.</td><td align="center"><input type="radio" name="radio2_4" value="1"></td><td align="center"><input type="radio" name="radio2_4" value="0"></td></tr><tr><td>9. </td><td>Pollock became ill in December with his first bout of pneumocystis carinii pneumonia, the most common killer of people with acquired immune deficiency syndrome, which weakens a person's immune system and leaves them susceptible to numerous infections.</td><td align="center"><input type="radio" name="radio2_6" value="1"></td><td align="center"><input type="radio" name="radio2_6" value="0"></td></tr><tr class="odd"><td>10. </td><td>Pneumocystis carinii pneumonia is the most common infection that kills AIDS patients.</td><td align="center"><input type="radio" name="radio2_7" value="1"></td><td align="center"><input type="radio" name="radio2_7" value="0"></td></tr></tbody></table><p></p>
+<p>&nbsp;Please provide any comments that you have about this HIT. We appreciate your input!</p>
+<p><textarea rows="4" cols="80" name="comment"> </textarea>&nbsp;</p>
+<p>&nbsp;</p>
+<p><input type="submit" value="Submit" onclick="return checkedRadios()" name="submitit"></p>
+<p>&nbsp;</p>
+<p><input type="hidden" name="userDisplayLanguage" value="en-US"> <input type="hidden" name="browserInfo" value="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/119.0.0.0 Safari/537.36"> <input type="hidden" name="ipAddress"> <input type="hidden" name="country" value="United States"> <input type="hidden" name="city" value="Pittsburgh"> <input type="hidden" name="region" value="Pennsylvania"></p>
+<script language="Javascript" src="http://gd.geobytes.com/gd?after=-1&amp;variables=GeobytesCountry,GeobytesCity,GeobytesRegion,GeobytesIpAddress">
+"""
   ]
 
   instance_9 = [
@@ -3661,7 +3832,26 @@ HTML:
 <div id="lightboxOverlay" tabindex="-1" class="lightboxOverlay" style="display: none;"></div><div id="lightbox" tabindex="-1" class="lightbox" style="display: none;"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt=""><div class="lb-nav"><a class="lb-prev" aria-label="Previous image" href=""></a><a class="lb-next" aria-label="Next image" href=""></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div></body></html>
 """,
   os.path.join("img", "ex9.png"),
-"self.actions.modify_radio('norm', 's1')"
+"self.actions.modify_radio('norm', 's1')",
+"""
+Input name: norm
+HTML:
+                           <li>there was nothing socially problematic (unethical, rude, biased, disturbing, dangerous) in the dialogue at all</li>
+                        </ul> -->
+                     </ul>
+                   <div class="imessage">
+                        <div class="form-check">
+                           <p class="from-social no-tail"><label class="btn form-check-label bg-transparent text-dark"><input class="form-check-input" id="s6" name="norm" type="radio" value="s6" required="">
+                              <span><strong>A new rule-of-thumb is implied in my response</strong></span>
+                           </label>
+                           <textarea class="form-control" style="background-color:white" id="socialnew" name="socialnew" placeholder="Please write your rule-of-thumb here" rows="2"></textarea>
+                        </p>
+                        </div>
+                        <div class="form-check">
+                           <p class="from-social no-tail">
+                              <label class="btn form-check-label bg-transparent text-dark text-left"><input class="form-check-input" id="s1" name="norm" type="radio" value="s1" required="" checked="">
+                                 <span><strong>The previously chosen RoTs are implied in my response</strong></span><br>
+"""
   ]
 
   return [instance_1, instance_2, instance_3, instance_4, instance_5, instance_6, instance_7, instance_8, instance_9]
@@ -3689,3 +3879,44 @@ def get_encoded_input_prompt(input_name: str, html_code: str = None):
   ret += current_instance(input_name, html_code)
 
   return ret
+
+class GPTTokenizer:
+  def __init__(self):
+    self.gpt_tokenizer = AutoTokenizer.from_pretrained("gpt2", max_length=1e5)
+
+  def tokenize(self, s: str):
+    tokens = self.gpt_tokenizer.tokenize(s)
+    # GPT2 uses Byte-level BPE, which will include space as part of the word.
+    # But for the first word of a sentence, there is no space before it.
+    # So, we remove all the added spaces ("Ġ").
+    tokens = [t.lstrip("Ġ") for t in tokens]
+    return tokens
+
+if __name__ == "__main__":
+  xlingual_tokenizer = GPTTokenizer()
+  use_relevant_html = 3
+
+  num_demonstrations = 1
+  num_tokens = 0
+  for idx, instance in enumerate(islice(few_shot_examples(), num_demonstrations)):
+    num_tokens += len(xlingual_tokenizer.tokenize(instance[use_relevant_html]))
+
+  print(f"{num_demonstrations} demonstration: {num_tokens}")
+
+  num_demonstrations = 3
+  num_tokens = 0
+  for idx, instance in enumerate(islice(few_shot_examples(), num_demonstrations)):
+    num_tokens += len(xlingual_tokenizer.tokenize(instance[use_relevant_html]))
+
+  print(f"{num_demonstrations} demonstration: {num_tokens}")
+
+  num_demonstrations = 7
+  num_tokens = 0
+  for idx, instance in enumerate(islice(few_shot_examples(), num_demonstrations)):
+    num_tokens += len(xlingual_tokenizer.tokenize(instance[use_relevant_html]))
+
+  print(f"{num_demonstrations} demonstration: {num_tokens}")
+
+  print(f"text_instructions {len(xlingual_tokenizer.tokenize(text_oracle_instructions()))}")
+  print(f"text_vision_instructions {len(xlingual_tokenizer.tokenize(text_vision_oracle_instructions()))}")
+  pass

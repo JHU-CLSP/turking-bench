@@ -7,13 +7,20 @@ import io
 import subprocess
 import Xlib.display
 from PIL import Image, ImageDraw, ImageFont, ImageGrab
-import pyautogui
+try:
+    import pyautogui
+    pyautogui_installed = True
+except Exception as e:
+    print(f"Error importing pyautogui {e}")
+    pyautogui_installed = False
 from openai import OpenAI
 from typing import List, Tuple
 import base64
 from dotenv import load_dotenv
 import copy
-from evaluation.prompts import text_vision_oracle_instructions, few_shot_examples
+from evaluation.prompts import text_vision_oracle_instructions, text_vision_ollava_instructions, few_shot_examples
+from itertools import islice
+import time
 
 import requests
 import json
@@ -33,7 +40,8 @@ class Actions:
         self.platform = platform.system()
 
         # if (self.platform == "Darwin" or self.platform == "Windows"):
-        self.width, self.height = pyautogui.size()
+        if pyautogui_installed:
+            self.width, self.height = pyautogui.size()
 
         self.dir = "screenshots"
 
@@ -41,6 +49,9 @@ class Actions:
         """
         This function clicks on a percentage of the screen
         """
+        if not pyautogui_installed:
+            raise Exception("Pyautogui is not installed")
+
         x_pixel = int(self.width * x_percent)
         y_pixel = int(self.height * y_percent)
 
@@ -54,6 +65,9 @@ class Actions:
         """
         This function types the given text
         """
+        if not pyautogui_installed:
+            raise Exception("Pyautogui is not installed")
+
         text = text.replace("\\n", "\n")
         for char in text:
             pyautogui.write(char)
@@ -156,18 +170,20 @@ class VisionModel:
         Params:
         objective - User inputted objective
         """
-        assistant_message = {
-            "role": "assistant",
-            "content": "Hello, I am your assistant. How can I help you?"
-        }
-        user_message = {
-            "role": "user",
-            "content": self.get_main_prompt(objective)
-        }
-
-        messages = [assistant_message, user_message]
+        image_path = self.actions.capture_screen("screenshot.png")
 
         if False:
+            assistant_message = {
+                "role": "assistant",
+                "content": "Hello, I am your assistant. How can I help you?"
+            }
+            user_message = {
+                "role": "user",
+                "content": self.get_main_prompt(objective)
+            }
+
+            messages = [assistant_message, user_message]
+
             while True:
                 try:
                     response = self.get_next_action(messages)
@@ -237,7 +253,13 @@ class VisionModel:
             case _:
                 raise ValueError("This action type is not implemented yet.")
 
-class OLlamaModel(VisionModel):
+    def get_vision_text_baseline_action(self, input_name: str, html_code: str, image_path: str, num_demonstrations: int, use_relevant_html: bool) -> str:
+        """
+        This function is used in baselines for the text-vision benchmarks
+        """
+        raise NotImplementedError("This method should be implemented by the subclass.")
+
+class OLlamaVisionModel(VisionModel):
     def __init__(self, model: str):
         super().__init__(Models.OLlama)
         self.model = model
@@ -245,21 +267,20 @@ class OLlamaModel(VisionModel):
     def get_main_prompt(self, objective: str) -> str:
         pass
 
-    def get_vision_text_baseline_action(self, input_name: str, html_code: str, image_path: str) -> str:
+    def get_vision_text_baseline_action(self, input_name: str, html_code: str, image_path: str, num_demonstrations: int, use_relevant_html: bool) -> str:
         with Image.open(image_path) as img:
             new_size = (int(img.width // 2.11), int(img.height // 2.11))
             resized_img = img.resize(new_size, Image.ANTIALIAS)
 
             buffer = io.BytesIO()
-            resized_img.save(buffer, format="JPEG")  
+            resized_img.save(buffer, format="PNG")  
             img_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
 
-        prompt = f"""
-                {text_vision_oracle_instructions()}
-                Input name: {input_name}
-                HTML:
-                {html_code}
-                """
+        prompt = "\{\{" + text_vision_ollava_instructions() + "\}\}\nUSER: \{\{" + f"""
+Input name: {input_name}
+HTML:
+{html_code}
+ASSISTANT:"""
         url = "http://localhost:11434/api/generate"
         payload = {
             "model": self.model,
@@ -270,12 +291,9 @@ class OLlamaModel(VisionModel):
 
         response = requests.post(url, data=json.dumps(payload))
         model_response = (json.loads(response.text))["response"]
-        print(f"OLlama response {model_response}")
+        print(f"OLlama Vision response {model_response}")
 
         return model_response
-
-    def get_next_action(self, messages: List[str], image_path: str) -> str:
-        pass
 
 class GPT4VModel(VisionModel):
     """
@@ -290,13 +308,13 @@ class GPT4VModel(VisionModel):
     def get_main_prompt(self, objective: str):
         pass
 
-    def get_vision_text_baseline_action(self, input_name: str, html_code: str, image_path: str) -> str:
+    def get_vision_text_baseline_action(self, input_name: str, html_code: str, image_path: str, num_demonstrations: int, use_relevant_html: bool) -> str:
         messages = [{
             "role": "assistant",
             "content": text_vision_oracle_instructions()
         }]
 
-        for instance in few_shot_examples():
+        for idx, instance in enumerate(islice(few_shot_examples(), num_demonstrations)):
             with Image.open(instance[1]) as img:
                 new_size = (int(img.width // 2.11), int(img.height // 2.11))
                 resized_img = img.resize(new_size, Image.ANTIALIAS)
@@ -310,7 +328,7 @@ class GPT4VModel(VisionModel):
                 "content": [
                     {
                         "type": "text",
-                        "text": instance[0]
+                        "text": instance[3] if use_relevant_html else instance[0]
                     },
                     {
                         "type": "image_url",
@@ -335,7 +353,7 @@ class GPT4VModel(VisionModel):
             resized_img = img.resize(new_size, Image.ANTIALIAS)
 
             buffer = io.BytesIO()
-            resized_img.save(buffer, format="JPEG")  
+            resized_img.save(buffer, format="PNG")  
             img_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
 
         new_message = {
@@ -362,7 +380,7 @@ class GPT4VModel(VisionModel):
 
         fail_count = 0
         response = None 
-        while fail_count < 5:
+        while fail_count < 20:
             try: 
                 response = self.client.chat.completions.create(
                     model="gpt-4-vision-preview",
@@ -377,6 +395,7 @@ class GPT4VModel(VisionModel):
                 break
             except Exception as e:
                 fail_count += 1
+                time.sleep(30)
                 print(f"Error getting action from GPT4V model {e}, trying again, current fail_count is {fail_count}")
 
         return response.choices[0].message.content
@@ -431,5 +450,5 @@ class GPT4VModel(VisionModel):
         pass
 
 if __name__ == "__main__":
-    model = GPT4VModel()
+    model = OLlamaVisionModel(model="llava")
     model.main("test")

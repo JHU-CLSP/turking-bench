@@ -12,7 +12,8 @@ from evaluation.actions import MyActions
 from evaluation.actions import ActionUtils
 from evaluation.input import Input
 from evaluation.prompts import get_encoded_input_prompt
-from evaluation.vision import Actions, GPT4VModel, OLlamaModel
+from evaluation.vision import GPT4VModel, OLlamaVisionModel
+from evaluation.text import GPT4Model, OLlamaTextModel, ClaudeTextModel
 import logging
 from typing import List
 from utils.cleaning import clean_values
@@ -286,61 +287,37 @@ class OfflineModelPredictionsBaseline(Baseline):
 
         return error_flag
 
-class GPT4TextBaseline(Baseline):
-    """
-    Interactive calls to GPT4 to solve the task
-    """
-
-    def solve(self, input: Input, **kwargs) -> None:
-        """
-        Communicate with GPT4 to solve the task
-        """
-
-        print("input:", input)
-        self.actions.wait_for_element(input.name)
-
-        # wait 0.1 sec for the page to fully load
-        sleep(0.1)
-        self.actions.maximize_window()
-        self.actions.scroll_to_element(input.name)
-        print("about to try executing one action, on the following input:", input.name)
-
-        # extract HTML
-        url = kwargs['url']
-        html = self.actions.get_html(url)
-
-        # simplify HTML
-        # simplified_html = ActionUtils.simplify_html(html)
-        simplified_html = html
-        text_prompt = get_encoded_input_prompt(input.name, simplified_html)
-        command = ActionUtils.openai_call(text_prompt)
-
-        # find the index of "self.actions(" and drop anything before it.
-        # This is because the GPT4 model sometimes outputs a lot of text before the actual command
-        if not command.startswith("self.actions.") and "self.actions." in command:
-            command = command[command.find("self.actions."):]
-        if "```" in command:
-            command = command.replace("```", "")
-
-        try:
-            print(f"{Fore.BLUE}Executing one action: {command}")
-            exec(command)
-        except Exception as error:
-            print(f"{Fore.RED}Failed to execute an action {command}, error: {error}")
-
-class VisionTextBaseline(Baseline):
+class TextBaseline(Baseline):
     """
     Interactive calls to a VLM to solve the task
     """
-    def __init__(self, actions: MyActions, driver, model: str):
+    def __init__(self, actions: MyActions, driver, model: str, num_demonstrations: int, use_relevant_html: bool, ollama_model: str = "llava"):
         super().__init__(actions, driver)
-        self.model = model
+        if model == "ollama":
+            self.ollama_model = ollama_model
 
-    def get_relevant_html(self, input: Input):
+        match model:
+            case "gpt4-text":
+                self.model = GPT4Model()
+            case "ollama":
+                self.model = OLlamaTextModel(self.ollama_model)
+            case "claude":
+                self.model = ClaudeTextModel()
+            case _:
+                raise ValueError(f"Model {self.model} is not supported")
+
+        self.num_demonstrations = num_demonstrations
+        self.use_relevant_html = use_relevant_html
+
+    def get_html(self, input: Input, url: str = None) -> str:
         """
+        Depending on self.use_relevant_html, if false it is the entire HTML, otherwise:
         This function returns an array of the the relevant HTML lines for a given input field.
         If you want it to be a string of HTML, just to_string this list concatenating one after another
         """
+
+        if not self.use_relevant_html:
+            return self.actions.get_html(url)
 
         print("input", input)
         target_element = self.driver.execute_script(f"return document.getElementsByName('{input.name}')[0].outerHTML")
@@ -359,11 +336,11 @@ class VisionTextBaseline(Baseline):
         for i in range(max(0, mid_idx - upper_bound), min(len(HTML_arr), mid_idx + lower_bound)):
             relevant_html.append(HTML_arr[i])
 
-        return relevant_html
+        return "\n".join(relevant_html)
 
     def solve(self, input: Input, **kwargs) -> None:
         """
-        Communicate with GPT4 to solve the task
+        Communicate with TextModel to solve the task
         """
 
         print("input:", input)
@@ -376,24 +353,93 @@ class VisionTextBaseline(Baseline):
         print("about to try executing one action, on the following input:", input.name)
 
         # extract HTML
-        url = kwargs['url']
-        html = self.actions.get_html(url)
+        html = self.get_html(input, kwargs['url'])
+        
+        command = self.model.get_text_baseline_action(input.name, html, self.num_demonstrations, self.use_relevant_html)
 
-        # simplify HTML
-        # simplified_html = ActionUtils.simplify_html(html)
-        relevant_html = self.get_relevant_html(input)
-        actions = Actions()
-        image_path = actions.capture_screen("screenshot.png")
+        # find the index of "self.actions(" and drop anything before it.
+        # This is because the GPT4 model sometimes outputs a lot of text before the actual command
+        if not command.startswith("self.actions.") and "self.actions." in command:
+            command = command[command.find("self.actions."):]
+        if "```" in command:
+            command = command.replace("```", "")
+
+        try:
+            print(f"{Fore.BLUE}Executing one action: {command}")
+            exec(command)
+        except Exception as error:
+            print(f"{Fore.RED}Failed to execute an action {command}, error: {error}")
+
+class VisionTextBaseline(Baseline):
+    """
+    Interactive calls to a VLM to solve the task
+    """
+    def __init__(self, actions: MyActions, driver, model: str, screenshot_path: str, num_demonstrations: int, use_relevant_html: bool, ollama_model: str = "llava"):
+        super().__init__(actions, driver)
+        self.model = model
+        if self.model == "ollama":
+            self.ollama_model = ollama_model
+        self.screenshot_path = os.path.join("screenshots", screenshot_path)
+
+        self.num_demonstrations = num_demonstrations
+        self.use_relevant_html = use_relevant_html
+
+    def get_html(self, input: Input, url: str = None) -> str:
+        """
+        Depending on self.use_relevant_html, if false it is the entire HTML, otherwise:
+        This function returns an array of the the relevant HTML lines for a given input field.
+        If you want it to be a string of HTML, just to_string this list concatenating one after another
+        """
+
+        if not self.use_relevant_html:
+            return self.actions.get_html(url)
+
+        print("input", input)
+        target_element = self.driver.execute_script(f"return document.getElementsByName('{input.name}')[0].outerHTML")
+        unfiltered_HTML = self.driver.execute_script(
+            f"return document.getElementsByName('{input.name}')[0].parentElement.parentElement.outerHTML")
+        HTML_arr = unfiltered_HTML.split(">")
+        mid_idx = -1
+        for idx, i in enumerate(HTML_arr):
+            HTML_arr[idx] = i + ">"
+            if HTML_arr[idx] == target_element:
+                mid_idx = idx
+
+        relevant_html = []
+        upper_bound = 5
+        lower_bound = 10
+        for i in range(max(0, mid_idx - upper_bound), min(len(HTML_arr), mid_idx + lower_bound)):
+            relevant_html.append(HTML_arr[i])
+
+        return "\n".join(relevant_html)
+
+    def solve(self, input: Input, **kwargs) -> None:
+        """
+        Communicate with VLM to solve the task
+        """
+
+        print("input:", input)
+        self.actions.wait_for_element(input.name)
+
+        # wait 0.1 sec for the page to fully load
+        sleep(0.1)
+        self.actions.maximize_window()
+        self.actions.scroll_to_element(input.name)
+        print("about to try executing one action, on the following input:", input.name)
+
+        # extract HTML
+        html = self.get_html(input, kwargs['url'])
+        self.driver.save_screenshot(self.screenshot_path)
         
         match self.model:
-            case "gpt4v":
+            case "gpt4-text-vision":
                 model = GPT4VModel()
             case "ollama":
-                model = OLlamaModel(model="llava")
+                model = OLlamaVisionModel(self.ollama_model)
             case _:
                 raise ValueError(f"Model {self.model} is not supported")
 
-        command = model.get_vision_text_baseline_action(input.name, relevant_html, image_path)
+        command = model.get_vision_text_baseline_action(input.name, html, self.screenshot_path, self.num_demonstrations, self.use_relevant_html)
 
         # find the index of "self.actions(" and drop anything before it.
         # This is because the GPT4 model sometimes outputs a lot of text before the actual command

@@ -6,8 +6,19 @@ if __name__ == "__main__":
     # user argparser to recive he input parameter
     parser = argparse.ArgumentParser()
     parser.add_argument("--solver_type",
-                        help="donothing, random, oracle, offline_predictions, gpt4-text",
+                        help="donothing, random, oracle, offline_predictions, gpt4-text, gpt4-text-vision, text, text-vision, claude",
                         default="oracle")
+    parser.add_argument("--ollama_model",
+                        help="llava",
+                        default="llava")
+    parser.add_argument("--num_demonstrations",
+                        help="number of demonstrations for few shot example per input",
+                        type=int,
+                        default=0)
+    parser.add_argument("--use_relevant_html",
+                        help="whether to give only relevant HTML as context to the model",
+                        action=argparse.BooleanOptionalAction)
+    parser.parse_args(['--no-use_relevant_html'])
     parser.add_argument("--tasks",
                         help="train, test_easy, test_hard, all, or subjective_test",
                         default="test_easy")
@@ -31,6 +42,16 @@ if __name__ == "__main__":
                         help="whether to collect statistics for the HTML fields",
                         action="store_true",
                         default=False)
+    parser.add_argument("--server",
+                        help="whether we are running on a virtual server with xvfb and xserver-xephyr installed",
+                        action=argparse.BooleanOptionalAction)
+    parser.parse_args(['--no-server'])
+    parser.add_argument("--screenshot_path",
+                        help="file name where screenshots are saved",
+                        default="screenshot.png")
+    parser.add_argument("--task",
+                        help="Overwrite tasks to just do one specific task",
+                        default="")
 
     args = parser.parse_args()
     print(f"{Fore.BLUE}Solver: {args.solver_type}")
@@ -51,9 +72,20 @@ if __name__ == "__main__":
         do_eval=args.do_eval,
         dump_features=dump_features,
         report_field_stats=report_field_stats,
-        headless=args.headless
+        headless=args.headless,
+        on_server=args.server,
+        ollama_model=args.ollama_model,
+        screenshot_path=args.screenshot_path,
+        num_demonstrations=args.num_demonstrations,
+        use_relevant_html=args.use_relevant_html
     )
 
-    eval.enumerate_tasks(max_instance_count)
+    # Check if task is empty
+    if args.task: 
+        eval.enumerate_tasks(max_instance_count, task=args.task)
+    else:
+        eval.enumerate_tasks(max_instance_count)
+    # Debugging mode
+    # eval.enumerate_tasks(max_instance_count, task="ethics_sbic dialogue 2nd 0", first_instance_only=True)
     # Collecting example code: python 4_run_evaluation.py --no-do_eval --headless > extract.txt
     # eval.enumerate_tasks(max_instance_count, task="ethics_sbic dialogue 2nd 0", first_instance_only=True, input_name="norm")

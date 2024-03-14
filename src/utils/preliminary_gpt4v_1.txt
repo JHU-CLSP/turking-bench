@@ -1,0 +1,10 @@
+Arch - Rel Eval 3: {'all': 0.3620000000000001, 'radio': 0.362}
+Associate countries and languages with Ethnologue: {'all': 0.20820707070707073, 'text': 0.027272727272727275, 'select': 0.75, 'textarea': 0.005555555555555556, 'checkbox': 0.05}
+Compression HIT: {'all': 0.05, 'select': 0.05}
+ROT Details [m=50] rocstories - 0 - 99: {'all': 0.6843030900723209, 'radio': 0.5633802816901409, 'checkbox': 0.95, 'text': 0.7576923076923077}
+Radiology Report Sentence Classification: {'all': 0.1, 'radio': 0.1}
+Reddit In-group Analysis Comment annotation 3: {'all': 0.37000000000000005, 'radio': 0.37}
+Scalar Adjectives Identification: {'all': 0.490625, 'radio': 0.490625}
+Script KD eval LONG V2 - disc result eval 1: {'all': 0.325, 'radio': 0.325}
+Sherlock IMG 2 TXT Eval 15: {'all': 0.28500000000000003, 'radio': 0.285}
+wikiHow step-goal linking pilot cleanse-url: {'all': 0.06666666666666667, 'radio': 0.06666666666666667}
