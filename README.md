@@ -9,7 +9,7 @@ visual information.
 Here are two example tasks:
 ![Screen Shot 2023-02-20 at 12 21 22 PM](https://user-images.githubusercontent.com/2441454/220168815-10c22ddd-2deb-422f-b41e-2203bee25e25.png)
 
-You can also see a demo of the oracle model on this page: https://turkament.github.io/
+You can also see a demo of the oracle model on this page: https://turkingtest.github.io/
 
 **Where can I see more tasks?**
 You can see the instructions for each task [here](https://jhu-clsp.github.io/turk-instructions/mturk.html).
