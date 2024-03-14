@@ -1,0 +1,33 @@
+<!-- Bootstrap v3.0.3 -->
+<link href="https://s3.amazonaws.com/mturk-public/bs30/css/bootstrap.min.css" rel="stylesheet" />
+<section class="container" id="Other" style="margin-bottom: 15px; padding: 10px;">
+<div class="row col-xs-12 col-md-12"><!-- Instructions -->
+<div class="panel panel-primary">
+<div class="panel-heading" style="color: rgb(51, 51, 51); font-family: Verdana, Geneva, sans-serif; font-size: 0.9em;"><strong>Instructions</strong></div>
+
+<div class="panel-body">
+<p>In this experiment we will answer a simple science questions.&nbsp;</p>
+
+<p>For each question, we intentionally&nbsp;drop a couple of terms and replace them with ***, in order to assess the importance of&nbsp;terms dropped or remained. Note that&nbsp;depending on the experiment, very few or all&nbsp;the words might be dropped.&nbsp;</p>
+
+<p>Clearly if terms dropped are important, the modified question will be impossible to asnwer.&nbsp;</p>
+
+<p>Please indicate the correct answer (and if it is not answerable, choose the last option "I don't know; the information is not enough").&nbsp;</p>
+</div>
+</div>
+<!-- End Instructions --><!-- Content Body -->
+
+<fieldset style="color: rgb(51, 51, 51); font-family: Verdana, Geneva, sans-serif; font-size: 0.9em;">
+<p><span style="font-size: 0.9em; line-height: 1.6em;">${QUESTION}</span></p>
+
+<p>Selected Anwer: &nbsp;<select name="options"><option value="a">(A)</option><option value="b">(B)</option><option value="c">(C)</option><option value="d">(D)</option><option value="e">I don't know; the information is not enough</option></select></p>
+</fieldset>
+
+<p>&nbsp;</p>
+
+<p><font face="Verdana, Geneva, sans-serif"><span style="font-size: 0.9em;"><input name="SPANS2" type="hidden" value="SPANS2" /></span></font></p>
+</div>
+</section>
+<!-- End Content Body --><!-- close container -->
+<style type="text/css">fieldset { padding: 10px; background:#fbfbfb; border-radius:5px; margin-bottom:5px; }
+</style>

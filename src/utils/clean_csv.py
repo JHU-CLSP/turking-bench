@@ -28,7 +28,7 @@ def clean_checkboxes(csv_file):
 # cleaning cases where the checkbox solutions are like q1.1 q1.2 q1.3 where these are question 1 answer 1 answer 2 answer 3 etc.
 # and there is False in all the ones except a True in the right answer, like True in answer 2
 # Replace with q1 value of 2
-# This was used to get the answers (last few columns) for the wikiHow Step Membership Task
+# This was used to get the answers (last few columns) for the WikiHow Step Membership Task
 def clean_checkboxes_true(csv_file):
     true = [True, "True"]
     df = pd.read_csv(csv_file, low_memory=False)

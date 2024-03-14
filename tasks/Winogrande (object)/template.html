@@ -1,0 +1,2186 @@
+<script type='text/javascript'
+        src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="https://s3.amazonaws.com/mturk-public/bs30/css/bootstrap.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/bootstrap-slider.js"></script>
+
+<style>
+
+    body {
+        font-family: 'Helvetica', 'Arial', sans-serif;
+        color: #444444;
+        font-size: 12pt;
+        background-color: #FAFAFA;
+    }
+
+    mark {
+        /*background-color: #cafad5;*/
+        background-color: transparent;
+        color: black;
+        padding-left: 3px;
+        padding-right: 3px;
+
+    }
+
+    ul {
+        text-align: left;
+        list-style-position: outside;
+    }
+
+    textarea {
+        font-size: 18px;
+        margin: 0 auto;
+        display: block;
+        resize: none;
+    }
+
+    .attribute{
+        text-align: left;
+        border-right: #2a323f;
+        border-right-style: dashed;
+        border-right-width: 1px;
+    }
+
+    /*
+    #submitButton {
+        margin: auto;
+        display: block;
+        width: auto;
+        background-color: #2172a4;
+        color: #fff;
+        font-size: 20pt;
+        padding: .5rem;
+        cursor: pointer;
+        border-radius: .75rem;
+    }
+    */
+
+    #submitButton {
+        font-size: 20pt;
+        padding: .5rem;
+        cursor: pointer;
+    }
+
+    #validbutton {
+        font-size: 14pt;
+        padding: .5rem;
+        cursor: pointer;
+    }
+
+    table {
+        border-spacing: 5px;
+    }
+
+    td.min {
+        width: 1%;
+        white-space: nowrap;
+    }
+
+    .examples {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+    }
+
+    .twin {
+        background-color: #bae9fa;
+        color: black;
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+
+    .context {
+        background-color: #ffba93;
+        color: black;
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+
+    .contrast {
+        font-style: italic;
+        font-weight: bold;
+        color: blue;
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+
+
+    .accordion {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: 0.4s;
+    }
+
+    .active, .accordion:hover {
+        background-color: #ccc;
+    }
+
+    .accordion:after {
+        content: '\002B';
+        color: #777;
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
+    }
+
+    .active:after {
+        content: "\2212";
+    }
+
+    .panel {
+        padding: 0 18px;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+    }
+
+    /************************************
+    SLIDER STYLING
+    Taken from: https://www.w3schools.com/howto/howto_js_rangeslider.asp
+    ************************************/
+    .slidecontainer {
+        width: 50%; /* Width of the outside container */
+        display: block;
+        margin: auto;
+        position: relative;
+    }
+    .slidecontainer:before {
+        content: "\2796";
+        position: absolute;
+        left: -2rem;
+        top: 0;
+    }
+    .slidecontainer:after {
+        content: '\02795';
+        position: absolute;
+        right: -2rem;
+        top: 0;
+    }
+
+    /* The slider itself */
+    .slider {
+        -webkit-appearance: none;  /* Override default CSS styles */
+        appearance: none;
+        background-size: 95%;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 100%; /* Full-width */
+        height: 1rem;
+        outline: none; /* Remove outline */
+        opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+        -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+        transition: opacity .2s;
+    }
+
+    /* Mouse-over effects */
+    .slider:hover {
+        opacity: 1; /* Fully shown on mouse-over */
+    }
+
+    /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Override default look */
+        appearance: none;
+        width: 2.1rem; /* Set a specific slider handle width */
+        height: 2.1rem;
+        border-radius: 50%;
+        background: #06486F;
+        cursor: pointer; /* Cursor on hover */
+    }
+
+    .slider::-moz-range-thumb {
+        width: 2.1rem; /* Set a specific slider handle width */
+        height: 2.1rem;
+        border-radius: 50%;
+        background: #06486F;
+        cursor: pointer; /* Cursor on hover */
+    }
+
+    .sliderticks {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 10px;
+    }
+
+    .sliderticks p {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: 1px;
+        background: #D3D3D3;
+        height: 10px;
+        line-height: 40px;
+        margin: 0 0 20px 0;
+    }
+
+</style>
+
+<script>
+    var min_len = 15;
+    var max_len = 30;
+
+    var funcwords = [
+        "a",
+        "a's",
+        "able",
+        "about",
+        "above",
+        "according",
+        "accordingly",
+        "across",
+        "actually",
+        "after",
+        "afterwards",
+        "again",
+        "against",
+        "ain't",
+        "all",
+        "allow",
+        "allows",
+        "almost",
+        "alone",
+        "along",
+        "already",
+        "also",
+        "although",
+        "always",
+        "am",
+        "among",
+        "amongst",
+        "an",
+        "and",
+        "another",
+        "any",
+        "anybody",
+        "anyhow",
+        "anyone",
+        "anything",
+        "anyway",
+        "anyways",
+        "anywhere",
+        "apart",
+        "appear",
+        "appreciate",
+        "appropriate",
+        "are",
+        "aren't",
+        "around",
+        "as",
+        "aside",
+        "ask",
+        "asking",
+        "associated",
+        "at",
+        "available",
+        "away",
+        "awfully",
+        "b",
+        "be",
+        "became",
+        "because",
+        "become",
+        "becomes",
+        "becoming",
+        "been",
+        "before",
+        "beforehand",
+        "behind",
+        "being",
+        "believe",
+        "below",
+        "beside",
+        "besides",
+        "best",
+        "better",
+        "between",
+        "beyond",
+        "both",
+        "brief",
+        "but",
+        "by",
+        "c",
+        "c'mon",
+        "c's",
+        "came",
+        "can",
+        "can't",
+        "cannot",
+        "cant",
+        "cause",
+        "causes",
+        "certain",
+        "certainly",
+        "changes",
+        "clearly",
+        "co",
+        "com",
+        "come",
+        "comes",
+        "concerning",
+        "consequently",
+        "consider",
+        "considering",
+        "contain",
+        "containing",
+        "contains",
+        "corresponding",
+        "could",
+        "couldn't",
+        "course",
+        "currently",
+        "d",
+        "definitely",
+        "described",
+        "despite",
+        "did",
+        "didn't",
+        "different",
+        "do",
+        "does",
+        "doesn't",
+        "doing",
+        "don't",
+        "done",
+        "down",
+        "downwards",
+        "during",
+        "e",
+        "each",
+        "edu",
+        "eg",
+        "eight",
+        "either",
+        "else",
+        "elsewhere",
+        "enough",
+        "entirely",
+        "especially",
+        "et",
+        "etc",
+        "even",
+        "ever",
+        "every",
+        "everybody",
+        "everyone",
+        "everything",
+        "everywhere",
+        "ex",
+        "exactly",
+        "example",
+        "except",
+        "f",
+        "far",
+        "few",
+        "fifth",
+        "first",
+        "five",
+        "followed",
+        "following",
+        "follows",
+        "for",
+        "former",
+        "formerly",
+        "forth",
+        "four",
+        "from",
+        "further",
+        "furthermore",
+        "g",
+        "get",
+        "gets",
+        "getting",
+        "given",
+        "gives",
+        "go",
+        "goes",
+        "going",
+        "gone",
+        "got",
+        "gotten",
+        "greetings",
+        "h",
+        "had",
+        "hadn't",
+        "happens",
+        "hardly",
+        "has",
+        "hasn't",
+        "have",
+        "haven't",
+        "having",
+        "he",
+        "he's",
+        "hello",
+        "help",
+        "hence",
+        "her",
+        "here",
+        "here's",
+        "hereafter",
+        "hereby",
+        "herein",
+        "hereupon",
+        "hers",
+        "herself",
+        "hi",
+        "him",
+        "himself",
+        "his",
+        "hither",
+        "hopefully",
+        "how",
+        "howbeit",
+        "however",
+        "i",
+        "i'd",
+        "i'll",
+        "i'm",
+        "i've",
+        "ie",
+        "if",
+        "ignored",
+        "immediate",
+        "in",
+        "inasmuch",
+        "inc",
+        "indeed",
+        "indicate",
+        "indicated",
+        "indicates",
+        "inner",
+        "insofar",
+        "instead",
+        "into",
+        "inward",
+        "is",
+        "isn't",
+        "it",
+        "it'd",
+        "it'll",
+        "it's",
+        "its",
+        "itself",
+        "j",
+        "just",
+        "k",
+        "keep",
+        "keeps",
+        "kept",
+        "know",
+        "knows",
+        "known",
+        "l",
+        "last",
+        "lately",
+        "later",
+        "latter",
+        "latterly",
+        "least",
+        "less",
+        "lest",
+        "let",
+        "let's",
+        "like",
+        "liked",
+        "likely",
+        "little",
+        "look",
+        "looking",
+        "looks",
+        "ltd",
+        "m",
+        "mainly",
+        "many",
+        "may",
+        "maybe",
+        "me",
+        "mean",
+        "meanwhile",
+        "merely",
+        "might",
+        "more",
+        "moreover",
+        "most",
+        "mostly",
+        "much",
+        "must",
+        "my",
+        "myself",
+        "n",
+        "name",
+        "namely",
+        "nd",
+        "near",
+        "nearly",
+        "necessary",
+        "need",
+        "needs",
+        "neither",
+        "never",
+        "nevertheless",
+        "new",
+        "next",
+        "nine",
+        "no",
+        "nobody",
+        "non",
+        "none",
+        "noone",
+        "nor",
+        "normally",
+        "not",
+        "nothing",
+        "novel",
+        "now",
+        "nowhere",
+        "o",
+        "obviously",
+        "of",
+        "off",
+        "often",
+        "oh",
+        "ok",
+        "okay",
+        "old",
+        "on",
+        "once",
+        "one",
+        "ones",
+        "only",
+        "onto",
+        "or",
+        "other",
+        "others",
+        "otherwise",
+        "ought",
+        "our",
+        "ours",
+        "ourselves",
+        "out",
+        "outside",
+        "over",
+        "overall",
+        "own",
+        "p",
+        "particular",
+        "particularly",
+        "per",
+        "perhaps",
+        "placed",
+        "please",
+        "plus",
+        "possible",
+        "presumably",
+        "probably",
+        "provides",
+        "q",
+        "que",
+        "quite",
+        "qv",
+        "r",
+        "rather",
+        "rd",
+        "re",
+        "really",
+        "reasonably",
+        "regarding",
+        "regardless",
+        "regards",
+        "relatively",
+        "respectively",
+        "right",
+        "s",
+        "said",
+        "same",
+        "saw",
+        "say",
+        "saying",
+        "says",
+        "second",
+        "secondly",
+        "see",
+        "seeing",
+        "seem",
+        "seemed",
+        "seeming",
+        "seems",
+        "seen",
+        "self",
+        "selves",
+        "sensible",
+        "sent",
+        "serious",
+        "seriously",
+        "seven",
+        "several",
+        "shall",
+        "she",
+        "should",
+        "shouldn't",
+        "since",
+        "six",
+        "so",
+        "some",
+        "somebody",
+        "somehow",
+        "someone",
+        "something",
+        "sometime",
+        "sometimes",
+        "somewhat",
+        "somewhere",
+        "soon",
+        "sorry",
+        "specified",
+        "specify",
+        "specifying",
+        "still",
+        "sub",
+        "such",
+        "sup",
+        "sure",
+        "t",
+        "t's",
+        "take",
+        "taken",
+        "tell",
+        "tends",
+        "th",
+        "than",
+        "thank",
+        "thanks",
+        "thanx",
+        "that",
+        "that's",
+        "thats",
+        "the",
+        "their",
+        "theirs",
+        "them",
+        "themselves",
+        "then",
+        "thence",
+        "there",
+        "there's",
+        "thereafter",
+        "thereby",
+        "therefore",
+        "therein",
+        "theres",
+        "thereupon",
+        "these",
+        "they",
+        "they'd",
+        "they'll",
+        "they're",
+        "they've",
+        "think",
+        "third",
+        "this",
+        "thorough",
+        "thoroughly",
+        "those",
+        "though",
+        "three",
+        "through",
+        "throughout",
+        "thru",
+        "thus",
+        "to",
+        "together",
+        "too",
+        "took",
+        "toward",
+        "towards",
+        "tried",
+        "tries",
+        "truly",
+        "try",
+        "trying",
+        "twice",
+        "two",
+        "u",
+        "un",
+        "under",
+        "unfortunately",
+        "unless",
+        "unlikely",
+        "until",
+        "unto",
+        "up",
+        "upon",
+        "us",
+        "use",
+        "used",
+        "useful",
+        "uses",
+        "using",
+        "usually",
+        "uucp",
+        "v",
+        "value",
+        "various",
+        "very",
+        "via",
+        "viz",
+        "vs",
+        "w",
+        "want",
+        "wants",
+        "was",
+        "wasn't",
+        "way",
+        "we",
+        "we'd",
+        "we'll",
+        "we're",
+        "we've",
+        "welcome",
+        "well",
+        "went",
+        "were",
+        "weren't",
+        "what",
+        "what's",
+        "whatever",
+        "when",
+        "whence",
+        "whenever",
+        "where",
+        "where's",
+        "whereafter",
+        "whereas",
+        "whereby",
+        "wherein",
+        "whereupon",
+        "wherever",
+        "whether",
+        "which",
+        "while",
+        "whither",
+        "who",
+        "who's",
+        "whoever",
+        "whole",
+        "whom",
+        "whose",
+        "why",
+        "will",
+        "willing",
+        "wish",
+        "with",
+        "within",
+        "without",
+        "won't",
+        "wonder",
+        "would",
+        "would",
+        "wouldn't",
+        "x",
+        "y",
+        "yes",
+        "yet",
+        "you",
+        "you'd",
+        "you'll",
+        "you're",
+        "you've",
+        "your",
+        "yours",
+        "yourself",
+        "yourselves",
+        "z",
+        "zero"];
+
+    var animates = [
+        "alligator",
+        "alligators",
+        "ant",
+        "ants",
+        "bear",
+        "bears",
+        "bee",
+        "bees",
+        "bird",
+        "birds",
+        "camel",
+        "camels",
+        "cat",
+        "cats",
+        "cheetah",
+        "cheetahs",
+        "chicken",
+        "chickens",
+        "chimpanzee",
+        "chimpanzees",
+        "cow",
+        "kine",
+        "crocodile",
+        "crocodiles",
+        "deer",
+        "deer",
+        "dog",
+        "dogs",
+        "dolphin",
+        "dolphins",
+        "duck",
+        "ducks",
+        "eagle",
+        "eagles",
+        "elephant",
+        "elephants",
+        "fish",
+        "fish",
+        "fly",
+        "flies",
+        "fox",
+        "foxes",
+        "frog",
+        "frogs",
+        "giraffe",
+        "giraffes",
+        "goat",
+        "goats",
+        "goldfish",
+        "goldfish",
+        "hamster",
+        "hamsters",
+        "hippopotamus",
+        "hippopotamuss",
+        "horse",
+        "horses",
+        "kangaroo",
+        "kangaroos",
+        "kitten",
+        "kittens",
+        "lion",
+        "lions",
+        "lobster",
+        "lobsters",
+        "monkey",
+        "monkeys",
+        "octopus",
+        "octopodes",
+        "owl",
+        "owls",
+        "panda",
+        "pandas",
+        "pig",
+        "pigs",
+        "puppy",
+        "puppies",
+        "rabbit",
+        "rabbits",
+        "rat",
+        "rats",
+        "scorpion",
+        "scorpions",
+        "seal",
+        "seals",
+        "shark",
+        "sharks",
+        "sheep",
+        "sheep",
+        "snail",
+        "snails",
+        "snake",
+        "snakes",
+        "spider",
+        "spiders",
+        "squirrel",
+        "squirrels",
+        "tiger",
+        "tigers",
+        "turtle",
+        "turtles",
+        "wolf",
+        "wolves",
+        "zebra",
+        "zebras",
+        "baby",
+        "babies",
+        "boy",
+        "boys",
+        "brother",
+        "brethren",
+        "child",
+        "children",
+        "daughter",
+        "daughters",
+        "doctor",
+        "doctors",
+        "father",
+        "fathers",
+        "friend",
+        "friends",
+        "girl",
+        "girls",
+        "grandparent",
+        "grandparents",
+        "man",
+        "men",
+        "mother",
+        "mothers",
+        "nurse",
+        "nurses",
+        "sister",
+        "sisters",
+        "son",
+        "sons",
+        "student",
+        "students",
+        "teacher",
+        "teachers",
+        "woman",
+        "women",
+        "presenter",
+        "presenters",
+        "driver",
+        "drivers",
+        "actor",
+        "actors",
+        "translator",
+        "translators",
+        "investigator",
+        "investigators",
+        "librarian",
+        "librarians",
+        "politician",
+        "politicians",
+        "optician",
+        "opticians",
+        "journalist",
+        "journalists",
+        "receptionist",
+        "receptionists",
+        "dentist",
+        "dentists",
+        "accountant",
+        "accountants",
+        "baker",
+        "bakers",
+        "barber",
+        "barbers",
+        "bartender",
+        "bartenders",
+        "builder",
+        "builders",
+        "butcher",
+        "butchers",
+        "carpenter",
+        "carpenters",
+        "cashier",
+        "cashiers",
+        "chef",
+        "chefs",
+        "accountant",
+        "accountants",
+        "electrician",
+        "electricians",
+        "engineer",
+        "engineers",
+        "lawyer",
+        "lawyers",
+        "musician",
+        "musicians",
+        "photographer",
+        "photographers",
+        "painter",
+        "painters",
+        "scientist",
+        "scientists",
+        "technician",
+        "technicians",
+    ];
+
+    var states = [
+        "alabama",
+        "alaska",
+        "arizona",
+        "arkansas",
+        "california",
+        "colorado",
+        "connecticut",
+        "delaware",
+        "florida",
+        "georgia",
+        "hawaii",
+        "idaho",
+        "illinois",
+        "indiana",
+        "iowa",
+        "kansas",
+        "kentucky",
+        "louisiana",
+        "maine",
+        "maryland",
+        "massachusetts",
+        "michigan",
+        "minnesota",
+        "mississippi",
+        "missouri",
+        "montana",
+        "nebraska",
+        "nevada",
+        "new hampshire",
+        "new jersey",
+        "new mexico",
+        "new york",
+        "north carolina",
+        "north dakota",
+        "ohio",
+        "oklahoma",
+        "oregon",
+        "pennsylvania",
+        "rhode island",
+        "south carolina",
+        "south dakota",
+        "tennessee",
+        "texas",
+        "utah",
+        "vermont",
+        "virginia",
+        "washington",
+        "west virginia",
+        "wisconsin",
+        "wyoming",
+    ];
+
+
+    function init() {
+
+        // do something initially (if necessary)
+        // verification button
+        $('.btn-warning').click(function () {
+            validation();
+        });
+
+        document.getElementById("submitButton").disabled = true;
+
+        // slider
+        //var slider = document.getElementById("mySlider");
+        //var output = document.getElementById("sliderValue");
+        //output.innerHTML = slider.value;
+
+        //slider.oninput = function() {
+        //    output.innerHTML = this.value;
+        //};
+        var sent_question = "Write a valid pair of twin sentences with a context word: ";
+        //var sent_question2 = "You may change the word form (e.g., go \u2192 went, cat \u2192 cats, paris \u2192 Paris).";
+        var sent_question2 = "";
+        var date = "";
+        //var date = "";
+        var blank = "_";
+        var blank_inst = "___";
+
+        var nameElements = document.getElementsByTagName("span");
+        for (var i = 0; i < nameElements.length; i++) {
+            if (nameElements[i].className == "sent_question") {
+                nameElements[i].innerText = sent_question;
+            }
+            else if (nameElements[i].className == "sent_question2") {
+                nameElements[i].innerText = sent_question2;
+            }
+            else if (nameElements[i].className == "blank") {
+                nameElements[i].innerText = blank;
+            }
+            else if (nameElements[i].className == "blank_inst") {
+                nameElements[i].innerText = blank_inst;
+            }
+            else if (nameElements[i].className == "min_len") {
+                nameElements[i].innerText = min_len.toString();
+            }
+            else if (nameElements[i].className == "max_len") {
+                nameElements[i].innerText = max_len.toString();
+            }
+            else if (nameElements[i].className == "date") {
+                nameElements[i].innerText = date;
+            }
+        }
+    }
+
+
+    function check_ctx() {
+        var ctx = document.getElementById("ctx").value.trim();
+        // check if ctx is not in our function word list.
+        if (funcwords.includes(ctx.toLowerCase())) {
+            ctx_long = "The word(s) you selected is in our function word list. Please select another content word.";
+            alert(ctx_long);
+            ctx = "[Please choose a different context word in Part1.]";
+            document.getElementById("context").innerHTML = ctx;
+            document.getElementById("context_below").innerHTML = ctx_long;
+        }
+        else {
+            document.getElementById("context").innerHTML = ctx;
+            document.getElementById("context_below").innerHTML = "";
+        }
+
+    }
+
+    function levenshteinDistance(a, b) {
+
+        const ins_cost = 1; // insertion cost
+        const del_cost = 1; // deletion cost
+        const sub_cost = 1; // substitution cost
+
+        a.unshift("#");
+        b.unshift("#");
+
+        var distanceMatrix = new Array(b.length).fill().map(() => Array(a.length).fill(0));
+        //console.log(distanceMatrix);
+
+        var edMatrix = new Array(b.length).fill().map(() => Array(a.length).fill(0));
+
+        //initialize Matrices
+
+        distanceMatrix[0][0] = 0;
+        edMatrix[0][0] = "#";
+
+        for (var i = 1; i < a.length; i++) {
+            distanceMatrix[0][i] = i;
+            edMatrix[0][i] = "I";
+        }
+        for (var j = 1; j < b.length; j++) {
+            distanceMatrix[j][0] = j;
+            edMatrix[j][0] = "D";
+        }
+
+        for (var j = 1; j < a.length; j++) {
+            for (var i = 1; i < b.length; i++) {
+
+                var cost1 = distanceMatrix[i][j-1] + ins_cost;
+                var cost2 = distanceMatrix[i-1][j] + del_cost;
+
+                var cost3 = null;
+                if (a[j] == b[i]) {
+                    cost3 = distanceMatrix[i-1][j-1];
+                } else {
+                    cost3 = distanceMatrix[i-1][j-1] + sub_cost;
+                }
+
+                if (Math.min(cost1, cost2, cost3) == cost3) {
+                    distanceMatrix[i][j] = cost3;
+                    edMatrix[i][j] = "R";
+                } else if (Math.min(cost1, cost2, cost3) == cost2) {
+                    distanceMatrix[i][j] = cost2;
+                    edMatrix[i][j] = "D";
+                } else {
+                    distanceMatrix[i][j] = cost1;
+                    edMatrix[i][j] = "I";
+                }
+            }
+        }
+
+        //console.log(distanceMatrix);
+
+        // get edits
+        j = a.length-1;
+        i = b.length-1;
+        var prev_edit = edMatrix[i][j];
+        var edits = [prev_edit];
+        while (prev_edit != "#") {
+            if (prev_edit == "I") {
+                prev_edit = edMatrix[i][j-1];
+                j = j-1 ;
+                edits.unshift("I");
+            } else if (prev_edit == "D") {
+                prev_edit = edMatrix[i-1][j];
+                i = i-1;
+                edits.unshift("D");
+            } else {
+
+                if (distanceMatrix[i][j] == distanceMatrix[i-1][j-1]) {
+                    edits.unshift("_");
+                } else {
+                    edits.unshift("R");
+                }
+                prev_edit = edMatrix[i-1][j-1];
+                j = j-1;
+                i = i-1;
+            }
+        }
+
+        var ed = parseInt(distanceMatrix[b.length-1][a.length-1]);
+        edits.pop();
+        return [ed, edits];
+    }
+
+
+    // validation_false
+    function validation_failed(alert_msg){
+        var warnings = document.getElementById("warnings");
+        alert(alert_msg);
+        warnings.innerHTML = '<span style="color:red;">' + alert_msg + '</span>';
+        document.getElementById("validbutton").disabled = false;
+        document.getElementById("submitButton").disabled = true;
+    }
+
+    // below some useful (?) functions
+    function validation() {
+        console.log("validation");
+        var warnings = document.getElementById("warnings");
+        var pre_warnings = document.getElementById("pre_warnings");
+
+        // check context word
+        var ctx = document.getElementById("ctx").value.trim();
+        if (ctx.length < 1){
+            var alert_msg = "The context word (in part 1) looks blank.";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        // check if ctx is not in our function word list.
+        if (funcwords.includes(ctx.toLowerCase())){
+            ctx_long = "The word(s) you selected is in our function word list. Please select another content word.";
+            alert(ctx_long);
+            ctx = "[Please choose a different context word in Part1.]";
+            document.getElementById("context").innerHTML = ctx;
+            document.getElementById("context_below").innerHTML = ctx_long;
+            return false;
+        }
+        else{
+            document.getElementById("context").innerHTML = ctx;
+            document.getElementById("context_below").innerHTML = "";
+        }
+
+
+        // check if the URL is NOT blank
+        var url = document.getElementById("url").value.trim();
+        if (url.length < 1){
+            var alert_msg = "The URL (in part 1) looks blank. Please copy the actual URL you visited.";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        if (! url.startsWith("https://www.wikihow.com/")){
+            var alert_msg = "The URL (in part 1) must start with https://www.wikihow.com/";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        // obtain twins
+        var twin1 = document.getElementById("twin1").value.trim();
+        var twin2 = document.getElementById("twin2").value.trim();
+        var objx = document.getElementById("objx").value.trim();
+        var objy = document.getElementById("objy").value.trim();
+
+        if (objx.length < 1){
+            var alert_msg = "Your choice of ObjectX (in part 2) looks empty.";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        if (objy.length < 1){
+            var alert_msg = "Your choice of ObjectY (in part 2) looks empty.";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+
+        var objxy_lower = ["objectx", "objecty"];
+        if (objxy_lower.includes(objx.toLowerCase()) || objxy_lower.includes(objy.toLowerCase())){
+            var alert_msg = "Your choice of ObjectX and Y (in part 2) look wrong. They should be English nouns rather than 'ObjectX' or 'ObjectY'. See examples above.";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+
+        if (objx.toLowerCase() === objy.toLowerCase()){
+            var alert_msg = "Your choice of ObjectX and Y (in part 2) looks the same. They should be different.";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+
+        if (funcwords.includes(objx.toLowerCase())){
+            var alert_msg = "Your choice of ObjextX (in part 2) is in our function word list. Please select another content word.";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        if (funcwords.includes(objy.toLowerCase())){
+            var alert_msg = "Your choice of ObjextY (in part 2) is in our function word list. Please select another content word.";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        if (animates.includes(objx.toLowerCase()) || animates.includes(objy.toLowerCase())){
+            var alert_msg = "Your choice of ObjextX or Y (in part 2) looks animate object(s). Please choose 'inanimate' objects (e.g., desk, car, book, food,...).";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        if (states.includes(objx.toLowerCase()) || states.includes(objy.toLowerCase())){
+            var alert_msg = "Your choice of ObjextX or Y (in part 2) looks a proper noun. Please do not choose a proper noun as ObjectX and ObjectY.";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+
+        if (objx.toLowerCase().startsWith('personx') || objx.toLowerCase().startsWith('persony') ){
+            var alert_msg = "This is a different HIT asking ObjectX and ObjectY (instead of PersonX and PersonY). Please read the instructions and examples carefully. Thank you.";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        if (objy.toLowerCase().startsWith('personx') || objy.toLowerCase().startsWith('persony') ){
+            var alert_msg = "This is a different HIT asking ObjectX and ObjectY (instead of PersonX and PersonY). Please read the instructions and examples carefully. Thank you.";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        if (objx.toLowerCase().startsWith('the ') || objx.toLowerCase().startsWith('a ') || objx.toLowerCase().startsWith('an ')){
+            var alert_msg = "ObjectX (in part 2) does not need to start with an article 'the / a / an'.  (See examples)";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        if (objy.toLowerCase().startsWith('the ') || objy.toLowerCase().startsWith('a ') || objy.toLowerCase().startsWith('an ')){
+            var alert_msg = "ObjectY (in part 2) does not need to start with an article 'the / a / an'. (See examples)";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+
+
+        if (twin1 === twin2){
+            var alert_msg = "The first and second sentences look identical. Twin sentences must have contrast word(s).";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        var symbols = [".", "!", "?"];
+        for (var i = 0; i < symbols.length; i++) {
+            if (objx.includes(symbols[i]) || objy.includes(symbols[i])){
+                var alert_msg = "Your choice of Object X and Y should not include symbols such as '.', '!', and '?'.";
+                validation_failed(alert_msg);
+                return false;
+            }
+        }
+
+        // additional heuristic filters
+        var ng_words = ["small", "large", "big", "but not", "too", "is full", "was full", "is empty", "was empty", "weak", "strong"];
+        for (var i = 0; i < ng_words.length; i++) {
+            if (twin1.toLowerCase().includes(ng_words[i])){
+                var alert_msg = "The first sentence includes a word and phrase which is too frequently used by other workers (small, large, big, but not, too, full, empty, weak, strong, etc.). Please paraphrase your twin sentences without these words or phrases.";
+                validation_failed(alert_msg);
+                return false;
+            }
+            if (twin2.toLowerCase().includes(ng_words[i])){
+                var alert_msg = "The second sentence includes a word and phrase which is too frequently used by other workers (small, large, big, but not, too, full, empty, weak, strong, etc.). Please paraphrase your twin sentences without these words or phrases.";
+                validation_failed(alert_msg);
+                return false;
+            }
+        }
+
+
+        // for local debugging
+        //twin1 = "ObjectX bought ObjectY a bike helmet as a gift, so _ can ride safely.";
+        //twin2 = "Object bought ObjectY bike helmet as a gift, so _ can ride safely.";
+
+        // tokenize
+        var twin1_tokens = twin1.split(' ');
+        var twin2_tokens = twin2.split(' ');
+
+        // check length
+        if  (twin1_tokens.length < min_len) {
+            var alert_msg = "The first sentence looks too short. Please read the instructions. ";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        if  (twin2_tokens.length < min_len) {
+            var alert_msg = "The second sentence looks too short. Please read the instructions.";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        if  (twin1_tokens.length > max_len) {
+            var alert_msg = "The first sentence looks too long. Please read the instructions.";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        if  (twin2_tokens.length > max_len) {
+            var alert_msg = "The second sentence looks too long. Please read the instructions.";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+
+        // must ends with period.
+        if (! twin1.endsWith('.')){
+            var alert_msg = "The first sentence must end with '.'";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        if (! twin2.endsWith('.')){
+            var alert_msg = "The second sentence must end with '.'";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+
+        // one blank, objectX, objectY (not twice or more)
+        var match = twin1.toLowerCase().match(objx.toLowerCase());
+        if (match === null || match.length != 1) {
+            var alert_msg = "The first sentence must contain your choice of ObjectX once.";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        match = twin1.toLowerCase().match(objy.toLowerCase());
+        if (match === null || match.length != 1) {
+            var alert_msg = "The first sentence must contain your choice of ObjectY once.";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        match = twin1.toLowerCase().match(/ _ /g);
+        if (match === null || match.length != 1) {
+            var alert_msg = "The first sentence must use a blank _ once. (with spaces) ";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        match = twin1.toLowerCase().match(/the _ /g);
+        if (match === null || match.length != 1) {
+            var alert_msg = "In the first sentence, the blank _ must be preceded by 'the' (i.e., the _ ).";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+
+        var match = twin2.toLowerCase().match(objx.toLowerCase());
+        if (match === null || match.length != 1) {
+            var alert_msg = "The second sentence must contain your choice of ObjectX once.";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        match = twin2.toLowerCase().match(objy.toLowerCase());
+        if (match === null || match.length != 1) {
+            var alert_msg = "The second sentence must contain your choice of ObjectY once.";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        match = twin2.toLowerCase().match(/ _ /g);
+        if (match === null || match.length != 1) {
+            var alert_msg = "The second sentence must use a blank _ once. (with spaces) ";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        match = twin2.toLowerCase().match(/the _ /g);
+        if (match === null || match.length != 1) {
+            var alert_msg = "In the second sentence, the blank _ must be preceded by 'the' (i.e., the _ ).";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+
+        //// ObjectX comes first?
+        //if (twin1.toLowerCase().indexOf("objectx") > twin1.toLowerCase().indexOf("objecty")){
+        //    var alert_msg = "ObjectX must appear before ObjectY. (first sentence)");
+        //    warnings.innerHTML = '<span style="color:red;">In the first sentence, ObjectX must appear before ObjectY."';
+        //    document.getElementById("validbutton").disabled = false;
+        //    document.getElementById("submitButton").disabled = true;
+        //    return false;
+        //}
+        //if (twin2.toLowerCase().indexOf("objectx") > twin2.toLowerCase().indexOf("objecty")){
+        //    var alert_msg = "ObjectX must appear before ObjectY. (second sentence)");
+        //    warnings.innerHTML = '<span style="color:red;">In the second sentence, ObjectX must appear before ObjectY."';
+        //    document.getElementById("validbutton").disabled = false;
+        //    document.getElementById("submitButton").disabled = true;
+        //    return false;
+        //}
+
+
+        // check edit distance
+        var l_dist = levenshteinDistance(twin1_tokens, twin2_tokens);
+        var edit_dist = l_dist[0];
+        var edits = l_dist[1];
+        var min_sent_length = Math.min(twin1_tokens.length, twin2_tokens.length);
+        console.log("edit_distance: " + edit_dist);
+        console.log("min_sent_length: " + min_sent_length);
+        console.log("ratio: " + edit_dist/min_sent_length);
+        if (edit_dist/min_sent_length >= 0.2){
+            var alert_msg = "Twin sentences look too different. They must overlap 80% or more words.";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        if (edit_dist == 1){
+            if (edits.includes('I') || edits.includes('D')){
+                var alert_msg = "Contrast words look missing. Please use contrast words in BOTH sentences, rather than just inserting or deleting a single word.";
+                validation_failed(alert_msg);
+                return false;
+            }
+        }
+
+        // context word is included?
+        if (!twin1.toLowerCase().includes(ctx.toLowerCase())){
+            var alert_msg = "The first sentence does not include the context word.";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        if (!twin2.toLowerCase().includes(ctx.toLowerCase())){
+            var alert_msg = "The second sentence does not include the context word.";
+            validation_failed(alert_msg);
+            return false;
+        }
+
+        if (objx.toLowerCase().endsWith('s') !== objy.toLowerCase().endsWith('s')){
+            var alert_msg = "[warning] Are the objextX and objectY same number (singular or plural)? They must be the same number.";
+            pre_warnings.innerHTML = '<span style="color:darkorchid;">' + alert_msg + '</span>';
+            document.getElementById("validbutton").disabled = false;
+            document.getElementById("submitButton").disabled = false;
+            return true;
+        }
+
+        pre_warnings.innerHTML = '';
+        warnings.innerHTML = '<span style="color:blue;">Your answers look good. You can proceed to submission!</span>';
+        document.getElementById("validbutton").disabled = false;
+        document.getElementById("submitButton").disabled = false;
+        return true;
+
+    }
+
+
+    function isValid() {
+        if (!validation()){
+            //document.getElementById("validbutton").disabled = false;
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function toggle() {
+        var examples = document.getElementsByClassName("examples")[0];
+        console.log(examples);
+        if (examples.style.maxHeight){
+            examples.style.maxHeight = null;
+        } else {
+            examples.style.maxHeight = examples.scrollHeight + "px";
+        }
+    }
+
+</script>
+
+</head>
+
+<body onload="init()">
+<form name='mturk_form' method='post' id='mturk_form' action='/mturk/externalSubmit'
+      onsubmit="return isValid()">
+    <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+
+    <div class="container">
+        <!-- Title -->
+        <h1 align="center">Write twin sentences - <span style="color:cornflowerblue;">Object</span> X and Y (<span style="color:cornflowerblue">ver.&#x26BD</span> <span class="date"></span>)<br/></h1>
+        <h4 align="center">Thank you for your participation. Please read the instructions and examples carefully.</h4>
+        <h3 align="center" style="color:white; background-color: orange;">[Warning] This HIT is DIFFERENT from the one asking writing twins of <i>PersonX & Y</i>. </h3>
+
+
+        <button type="button" class="accordion"><span style="font-size: x-large ">Instructions <span style="color:red"><span class="date"></span></span></span></button>
+        <div class="panel">
+            <p></p>
+            <h3>Task Overview:</h3>
+            <p>In this HIT, you are asked to create a pair of <span class="twin">twin sentences</span> as shown in the following.</p>
+            <ul>
+                <li>1a. The trophy doesn't fit into the brown suitcase because <span class="blank"></span> is too <span class="contrast">large</span>. ( <span class="blank_inst"></span> must refer to <b>the trophy</b>.) </li>
+                <li>1b. The trophy doesn't fit into the brown suitcase because <span class="blank"></span> is too <span class="contrast">small</span>. ( <span class="blank_inst"></span> must refer to <b>the suitcase</b>.) </li>
+            </ul>
+              <ul>
+                  <li>2a. Grace was happy to trade me her sweater for my jacket. She thinks <span class="blank"></span> looks <span class="contrast">dowdy</span> on her. (<span class="blank_inst"></span> must refer to <b>the sweater</b>.) </li>
+                  <li>2b. Grace was happy to trade me her sweater for my jacket. She thinks <span class="blank"></span> looks <span class="contrast">great</span> on her. (<span class="blank_inst"></span> must refer to <b>the jacket</b>.) </li>
+            </ul>
+
+            <p>As you can see, <span class="twin">twin sentences</span> have the following characteristics.</p>
+            <ol>
+                <li>In the twin sentences, there are two objects <b>ObjectX & ObjectY</b> (such as <b> trophy & suitcase</b> or <b>sweater & jacket</b>) and one blank (<span class="blank"></span>).</li>
+                <li>The blanks are <b>not</b> be easily filled by <b>association</b> (see BAD examples below). </li>
+                <li>Twin sentences have <span class="contrast"> contrast word(s)</span>, which changes the <span class="blank_inst"></span> to be filled.</li>
+                <li>For each sentence, most people will agree with which object should be in the blank <span class="blank_inst"></span> (e.g., either ObjectX or ObjectY). When both ObjectX and ObjectY sound equally likely in the blank, the pair of sentences are <b>NOT</b> a twin. </li>
+            </ol>
+
+
+            <h3>Rules and Tips:</h3>
+            <p>Rules (for <b style="color:red">keeping your qualification</b>) :</p>
+            <ol>
+                <li>The twin sentences must have the characteristics described above. See more GOOD examples below. </li>
+                <li>The <b>most important rule</b> in this HIT is to <b>avoid word association</b>. See the BAD exmaples below. </li>
+                <li>Both twin sentences must have <b><span class="min_len"></span> or more</b> words.</li>
+                <li>Both twin sentences must have <b><span class="max_len"></span> or fewer</b> words.</li>
+                <li>Twin sentences must <b>overlap 80% or more words</b>. (e.g., 8 out of 10 words should be overlapped.) This will be automatically validated checked before submitting. </li>
+                <li>In Part 1, you will choose a <span class="context">context word(s)</span> that should be used in writing the twin sentences (Part 2).</li>
+                <li>The twin sentences must include <b>ONE blank</b>, written as <span class="blank"></span> .</li>
+                <!--<li>"ObjectX" and "ObjectY" should be <b>used ONCE</b> in each sentence.</li>-->
+                <li>The twin sentences should <b>NOT</b> contain potentially <b>explicit, offensive, or adult content</b>.</li>
+                <li>ObjectX and Y have the <b>same number</b>. When ObjectX is singular, Object Y must be singular.</li>
+                <li>ObjectX and Y are both <b>inanimate</b> objects. <b>Animals are NOT allowed either.</b></li>
+                <li>ObjectX and Y should <b>not</b> be a <b>proper noun</b> (e.g., New York, Macbook, Jeff Bezos, McDonald's, ...).</li>
+                <li>
+                   When submitting multiple HITs, please <b>avoid repeating the same style (e.g., using the same contrastive words or patterns all the time)</b>.
+                </li>
+
+            </ol>
+
+            <p>Tips:</p>
+            <ol>
+                <li>Good twin sentences for ObjectX and Y often (but not always) have <b>contrastive expressions</b> such as (dowdy vs. great, large vs. small) with different conjunctions (e.g., so, but, although, after, while, ...).
+                We provide some examples of <b>contrastive adjectives</b> below for reference. </li>
+                <li>Good twin sentences tend to use <b>concrete expressions</b> (e.g., <i>monthly</i> magazine) and/or <b>indirect expressions</b> (e.g., <i>mixing butter and flour for dough</i> instead of just <i>cooking</i>.
+                    Using <b>numerical expressions</b> (e.g., a <i>4:15 am</i> flight, the fish is <i>ten meters</i> long) may also be helpful.
+                </li>
+                <li>You can use names (e.g., James) but they should not be the ObjectX or ObjectY. (see the good example #5) </li>
+                <li>
+                    To write various styles of twin sentences, they don't have to start with PersonX. Also, using good contrastive words (e.g., short-tall, slow-fast, fat-slim) with different conjunctions (e.g., so, but, although, before, ...) will be helpful.
+                </li>
+            </ol>
+            <!--<p>Notes:</p>
+            <ol>
+                <li><span style="color: red;">We are looking for good twin sentence writers. Bonus will be paid based on <b>the total number and the quality</b> of the twin sentences submitted. For writing good twins sentences, please read the instructions (rules and tips) and examples carefully.</span></li>
+            </ol>
+            -->
+
+        </div>
+
+        <button type="button" class="accordion"><span style="font-size: x-large ">Examples <span style="color:red"><span class="date"></span></span></span></button>
+        <div class="panel">
+
+            <p></p>
+            <h4><span style=color:red;>BAD examples:</span></h4>
+
+            <h4><span style=color:red;>#1</span></h4>
+
+            <p><span class="sent_question"></span> <span class="context">reported</span>. <span class="sent_question2"></span></p>
+             <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <td style="border:1px solid gray;"><i>Twin sentences</i></td>
+                    <td style="border:1px solid gray;"><i>The <span class="blank"></span> must refer to the</i> </td>
+                </tr>
+                <tr>
+                    <td style="border:3px solid red;">
+                        Jill's dog was knocked over by a car, and she reported it to the authorities. But the <span class="blank"></span> <span class="contrast">died</span>.
+                    </td>
+                    <td style="border:3px solid red;">
+                        dog
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border:3px solid red;">
+                        Jill's dog was knocked over by a car, and she reported it to the authorities. But the <span class="blank"></span> <span class="contrast">got away</span>.
+                    </td>
+                    <td style="border:3px solid red;">
+                        car
+                    </td>
+                </tr>
+                <tr><td colspan="2">Reason: The blanks can be answered by <b> word association</b>. Namely, the blank can be answered <b>without reading the entire sentence</b>. In this example, the blanks can be answered by just looking at the phrase "<span class="blank"></span> died / got away." and the answer candidates: "dog / car", because the word pair "dog" and "died" is more strongly correlated than "dog" and "got away" (and vice versa). In other words, the <i>being knocked over</i> context is not necessary to fill in the blanks. This type of sentences <b>should be avoided</b> in this HIT. (see good examples in the instructions for comparison.)
+                </td>
+                </tr>
+                </tbody>
+            </table>
+
+
+            <h4><span style=color:red;>#2</span></h4>
+
+            <p><span class="sent_question"></span> <span class="context">zoom</span>. <span class="sent_question2"></span></p>
+             <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <td style="border:1px solid gray;"><i>Twin sentences</i></td>
+                    <td style="border:1px solid gray;"><i>The <span class="blank"></span> must refer to the</i> </td>
+                </tr>
+                <tr>
+                    <td style="border:3px solid red;">
+                        The racecar zoomed by the school bus because the <span class="blank"></span> was going so <span class="contrast">fast</span>.
+                    </td>
+                    <td style="border:3px solid red;">
+                        racecar
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="border:3px solid red;">
+                        The racecar zoomed by the school bus because the <span class="blank"></span> was going so <span class="contrast">slow</span>.
+                    </td>
+                    <td style="border:3px solid red;">
+                        school bus
+                    </td>
+                </tr>
+                <tr><td colspan="2">Reason: This is another bad example which can be answered by <b>word association</b>.  The word pair "racecar" and "fast" (and "school bus" and "slow") is strongly associated. (that is, <i>"racecar"</i> is more likely to be <i>fast</i> without the <i>zooming</i> context.)
+                </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h4><span style=color:red;>#3</span></h4>
+
+            <p><span class="sent_question"></span> <span class="context">cafe</span>. <span class="sent_question2"></span></p>
+             <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <td style="border:1px solid gray;"><i>Twin sentences</i></td>
+                    <td style="border:1px solid gray;"><i>The <span class="blank"></span> must refer to the</i> </td>
+                </tr>
+                <tr>
+                    <td style="border:3px solid red;">
+                        The cafe had a new menu item, so the family <span class="contrast">visited</span> the <span class="blank"></span>.</span>
+                    </td>
+                    <td style="border:3px solid red;">
+                        cafe
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border:3px solid red;">
+                        The cafe had a new menu item, so the family <span class="contrast">ordered</span> the <span class="blank"></span>.</span>
+                    </td>
+                    <td style="border:3px solid red;">
+                        menu item
+                    </td>
+
+                </tr>
+
+                <tr><td colspan="2">Reason: "Menu items" cannot be visited, and "cafes" cannot be ordered. This is another (extreme) case of word association we should avoid. </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h4><span style=color:red;>#4</span></h4>
+
+            <p><span class="sent_question"></span> <span class="context">buy</span>. <span class="sent_question2"></span></p>
+             <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <td style="border:1px solid gray;"><i>Twin sentences</i></td>
+                    <td style="border:1px solid gray;"><i>The <span class="blank"></span> must refer to the</i> </td>
+                </tr>
+                <tr>
+                    <td style="border:3px solid red;">
+                        Bill bought a new jacket and sweater, but the <span class="blank"></span> was too <span class="contrast">small</span>.
+                    </td>
+                    <td style="border:3px solid red;">
+                        jacket
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="border:3px solid red;">
+                        Bill bought a new jacket and sweater, but the <span class="blank"></span> was too <span class="contrast">large</span>.
+                    </td>
+                    <td style="border:3px solid red;">
+                        sweater
+                    </td>
+                </tr>
+                <tr><td colspan="2">Reason: The blanks are ambiguous. Both PersonX and PersonY can fit equally likely.</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h4><span style=color:red;>#5</span></h4>
+
+            <p><span class="sent_question"></span> <span class="context">people</span>. <span class="sent_question2"></span></p>
+             <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <td style="border:1px solid gray;"><i>Twin sentences</i></td>
+                    <td style="border:1px solid gray;"><i>The <span class="blank"></span> must refer to the</i> </td>
+                </tr>
+                <tr>
+                    <td style="border:3px solid red;">
+                        More people vacationed in California than Michigan, since <span class="blank"></span> had much <span class="contrast">warmer</span> weather in the spring.
+                    </td>
+                    <td style="border:3px solid red;">
+                        California
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="border:3px solid red;">
+                        More people vacationed in California than Michigan, since <span class="blank"></span> had much <span class="contrast">colder</span> weather in the spring.
+                    </td>
+                    <td style="border:3px solid red;">
+                        Michigan
+                    </td>
+                </tr>
+                <tr><td colspan="2">Reason: This example violates two rules. First, ObjectX and Y should not be proper nouns. Second, the ObjectX and Y have strong word association with the contrast words (warmer and colder). Namely, people can fill in the blanks just by reading "_ had much warmer/colder". </td>
+                </tr>
+                </tbody>
+            </table>
+
+
+            <hr/>
+            <hr/>
+
+            <h4><span style=color:blue;>GOOD examples:</span></h4>
+
+            <h4><span style=color:blue;>#1</span></h4>
+            <p><span class="sent_question"></span> <span class="context">carpet</span>. <span class="sent_question2"></span></p>
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <td style="border:1px solid gray;"><i>Twin sentences</i></td>
+                    <td style="border:1px solid gray;"><i>The <span class="blank"></span> must refer to the</i> </td>
+                </tr>
+                <tr>
+                    <td style="border:3px solid blue;">
+                        While redecorating her home, Sam took out the carpet and replaced it with wood floors. The <span class="blank"></span> was <span class="contrast">old</span>.
+                    </td>
+                    <td style="border:3px solid blue;">
+                        carpet
+
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border:3px solid blue;">
+                        While redecorating her home, Sam took out the carpet and replaced it with wood floors. The <span class="blank"></span> was <span class="contrast">trendy</span>.
+                    </td>
+                    <td style="border:3px solid blue;">
+                        wood
+                    </td>
+                </tr>
+                <tr><td colspan="2">Tip: It is allowed to use the context word as ObjextX or ObjectY.</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h4><span style=color:blue;>#2</span></h4>
+            <p><span class="sent_question"></span> <span class="context">fit</span>. <span class="sent_question2"></span></p>
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <td style="border:1px solid gray;"><i>Twin sentences</i></td>
+                    <td style="border:1px solid gray;"><i>The <span class="blank"></span> must refer to the</i> </td>
+                </tr>
+                <tr>
+                    <td style="border:3px solid blue;">
+                        The table won't fit through the doorway because the <span class="blank"></span> is too <span class="contrast">wide</span>.
+                    </td>
+                    <td style="border:3px solid blue;">
+                        table
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border:3px solid blue;">
+                        The table won't fit through the doorway because the <span class="blank"></span> is too <span class="contrast">narrow</span>.
+                    </td>
+                    <td style="border:3px solid blue;">
+                        doorway
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+
+            <h4><span style=color:blue;>#3</span></h4>
+            <p><span class="sent_question"></span> <span class="context">water</span>. <span class="sent_question2"></span></p>
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <td style="border:1px solid gray;"><i>Twin sentences</i></td>
+                    <td style="border:1px solid gray;"><i>The <span class="blank"></span> must refer to the</i> </td>
+                </tr>
+                <tr>
+                    <td style="border:3px solid blue;">
+                        I poured water from the bottle into the cup until the <span class="blank"></span> was <span class="contrast">empty</span>.
+                    </td>
+                    <td style="border:3px solid blue;">
+                        bottle
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="border:3px solid blue;">
+                        I poured water from the bottle into the cup until the <span class="blank"></span> was <span class="contrast">full</span>.
+                    </td>
+                    <td style="border:3px solid blue;">
+                        cup
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h4><span style=color:blue;>#4</span></h4>
+            <p><span class="sent_question"></span> <span class="context">catch</span>. <span class="sent_question2"></span></p>
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <td style="border:1px solid gray;"><i>Twin sentences</i></td>
+                    <td style="border:1px solid gray;"><i>The <span class="blank"></span> must refer to the</i> </td>
+                </tr>
+                <tr>
+                    <td style="border:3px solid blue;">
+                        My meeting started at 4:00 and I needed to catch the train at 4:30, so there wasn't much time. Luckily, the <span class="blank"></span> was <span class="contrast">short</span>, so it worked out.
+                    </td>
+                    <td style="border:3px solid blue;">
+                        meeting
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="border:3px solid blue;">
+                        My meeting started at 4:00 and I needed to catch the train at 4:30, so there wasn't much time. Luckily, the <span class="blank"></span> was <span class="contrast">delayed</span>, so it worked out.
+                    </td>
+                    <td style="border:3px solid blue;">
+                        train
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+             <h4><span style=color:blue;>#5</span></h4>
+            <p><span class="sent_question"></span> <span class="context">candle</span>. <span class="sent_question2"></span></p>
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <td style="border:1px solid gray;"><i>Twin sentences</i></td>
+                    <td style="border:1px solid gray;"><i>The <span class="blank"></span> must refer to the</i> </td>
+                </tr>
+                <tr>
+                    <td style="border:3px solid blue;">
+                        James wanted to light the candle in the wind when on a date but the <span class="blank"></span> is too <span class="contrast">weak</span>.
+                    </td>
+                    <td style="border:3px solid blue;">
+                        light
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="border:3px solid blue;">
+                        James wanted to light the candle in the wind when on a date but the <span class="blank"></span> is too <span class="contrast">strong</span>.
+                    </td>
+                    <td style="border:3px solid blue;">
+                        wind
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <p></p>
+
+
+        </div>
+
+       <button type="button" class="accordion"><span style="font-size: x-large ">(Reference) Contrastive expressions for objects</span></button>
+        <div class="panel">
+            <p></p>
+            Here is the list of contrastive expressions that may be helpful.
+            <p></p>
+
+
+            <table class="table table-striped">
+            <thead><tr><th class="attribute">Attribute </th><th colspan="1" style="text-align: right">Contrastive expressions </th></tr></thead><tbody>
+            <tr><td class="attribute">age</td><td>old</td><td>new</td></tr>
+            <tr><td class="attribute">altitude</td><td>low</td><td>high</td></tr>
+            <tr><td class="attribute">area</td><td>small</td><td>vast</td></tr>
+            <tr><td class="attribute">brightness</td><td>dark</td><td>light</td></tr>
+            <tr><td class="attribute">clarity</td><td>obscure</td><td>clear</td></tr>
+            <tr><td class="attribute">cleanness</td><td>dirty</td><td>clean</td></tr>
+            <tr><td class="attribute">complexity</td><td>simple</td><td>complex</td></tr>
+            <tr><td class="attribute">cost</td><td>cheap</td><td>expensive</td></tr>
+            <tr><td class="attribute">density</td><td>sparse</td><td>dense</td></tr>
+            <tr><td class="attribute">depth</td><td>shallow</td><td>deep</td></tr>
+            <tr><td class="attribute">distance</td><td>near</td><td>far</td></tr>
+            <tr><td class="attribute">electric conductivity</td><td>low</td><td>high</td></tr>
+            <tr><td class="attribute">flexibility</td><td>rigid</td><td>flexible</td></tr>
+            <tr><td class="attribute">granularity</td><td>fine</td><td>coarse</td></tr>
+            <tr><td class="attribute">hardness</td><td>soft</td><td>hard</td></tr>
+            <tr><td class="attribute">length</td><td>short</td><td>long</td></tr>
+            <tr><td class="attribute">magnitude</td><td>small</td><td>large</td></tr>
+            <tr><td class="attribute">mass</td><td>small</td><td>large</td></tr>
+            <tr><td class="attribute">odor</td><td>weak</td><td>strong</td></tr>
+            <tr><td class="attribute">pressure</td><td>low</td><td>high</td></tr>
+            <tr><td class="attribute">resistance</td><td>low</td><td>high</td></tr>
+            <tr><td class="attribute">shape</td><td>round, flat</td><td>sharp, spiky</td></tr>
+            <tr><td class="attribute">size</td><td>small</td><td>large</td></tr>
+            <tr><td class="attribute">sound</td><td>quiet</td><td>loud</td></tr>
+            <tr><td class="attribute">sound pitch</td><td>low</td><td>high</td></tr>
+            <tr><td class="attribute">speed</td><td>slow</td><td>fast</td></tr>
+            <tr><td class="attribute">stability</td><td>unstable</td><td>stable</td></tr>
+            <tr><td class="attribute">strength</td><td>weak</td><td>strong</td></tr>
+            <tr><td class="attribute">temperature</td><td>low</td><td>high</td></tr>
+            <tr><td class="attribute">texture</td><td>smooth</td><td>rough</td></tr>
+            <tr><td class="attribute">thermal conductivity</td><td>low</td><td>high</td></tr>
+            <tr><td class="attribute">thickness</td><td>thin</td><td>thick</td></tr>
+            <tr><td class="attribute">volume</td><td>small</td><td>large</td></tr>
+            <tr><td class="attribute">weight</td><td>light</td><td>heavy</td></tr>
+            <tr><td class="attribute">width</td><td>narrow</td><td>wide</td></tr>
+            <tr><td class="attribute">location</td><td>in / up / above / on / to</td><td>out / down / below / off / from</td></tr>
+            </tbody></table>
+
+        </div>
+
+
+        <hr/>
+
+        <h3 align="left">Question</h3>
+
+        <h3 align="center" style="color:white; background-color: orange;">[Warning] This HIT is DIFFERENT from the one asking writing twins of <i>PersonX & Y</i>.</h3>
+        <!-- put hidden variables such as -->
+        <input type='hidden' value="${qid}" name='qid' id='qid'/>
+
+        <div style="width:1048px; margin:0 auto;">
+
+            <h3><u>Part 1</u></h3>
+            <p>We are collecting twins in various topics: <a href="https://www.wikihow.com/Special:Randomizer" target="_blank" class="btn btn-info btn-sm" type="button">Click me</a> to find a unique topic. <br/>(You don't need to look at the entire content of the page. Just skim the page around 15 seconds.) </p>
+
+            <p>Choose any word or phrase with topic content word you saw in the page (e.g., dog, clean, stain, running).<br/> <span style="color:red">Do NOT choose very common English function words (e.g., she, therefore, on, is, has).</span>
+                <textarea id="ctx" class="form-control" cols="20" name="ctx" rows="1" onchange="check_ctx()"></textarea></p>
+            </p>
+            <p id="context_below" style="background-color: #ff9ea0;"></p>
+            <p>Please copy the actual URL you visited here (it should start with https://www.wikihow.com/) : <textarea id="url" class="form-control" cols="40" name="url" rows="1"></textarea></p>
+
+
+            <h3><u>Part 2</u></h3>
+            <p><span class="sent_question"></span> <span class="context" id="context"></span>. <span class="sent_question2"></span></p>
+            <p>It is <b>NOT necessary to highlight <span class="contrast">contrast word(s)</span></b> in your answer.</p>
+            <!--<p><span style="color:red">[Very important rule for qualification]: When submitting multiple HITs, people tend to use positive constrast words (e.g., more, strong, fast, because ...) for the first sentence and negative ones (e.g., less, weak, slow, although, ...) for the second. Please avoid this type of bias (not in a single HIT but in total). </span></p>-->
+
+            <p>Tips for writing various twin sentences for ObjectX and Y:</p>
+            <ol>
+                <li>Good twin sentences for ObjectX and Y often (but not always) have <b>contrastive expressions</b> such as (dowdy vs. great, large vs. small) with different conjunctions (e.g., so, but, although, after, while, ...).
+                We provide some examples of <b>contrastive adjectives</b> below for reference. </li>
+                <li>Good twin sentences tend to have <b>concrete expressions</b> (e.g., <i>monthly</i> magazine) and/or <b>indirect expressions</b> (e.g., <i>mixing butter and flour for dough</i> instead of just <i>cooking</i>.
+                    Using <b>numerical expressions</b> (e.g., a <i>4:15 am</i> flight, the fish is <i>ten meters</i> long) may also be helpful.
+                </li>
+                <li>You can use names (e.g., James) but they should not be the ObjectX or ObjectY. (see the good example #5) </li>
+            </ol>
+
+            <table class="table table-bordered">
+                <tbody>
+                <col width="750">
+                <col width="250">
+                <tr>
+                    <td style="border:1px solid gray;"><i>Twin sentences</i></td>
+                    <td style="border:1px solid gray;"><i>The <span class="blank"></span> must refer to the</i> </td>
+                </tr>
+                <tr>
+                    <td style="border:3px solid blue;">
+                        <textarea id="twin1" class="form-control" cols="80" name="twin1" rows="1"></textarea>
+                    </td>
+                    <td style="border:3px solid blue;">
+                        <textarea id="objx" class="form-control" cols="20" name="objx" rows="1"></textarea>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="border:3px solid blue;">
+                        <textarea id="twin2" class="form-control" cols="80" name="twin2" rows="1"></textarea>
+                    </td>
+                    <td style="border:3px solid blue;">
+                        <textarea id="objy" class="form-control" cols="20" name="objy" rows="1"></textarea>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+
+            <p><u>Before submissoin/validaion, please check the <b style="color:red;">rules of this HIT for keeping your qualificaton</b>. In particular,</u></p>
+            <ul>
+                <li>
+                    ObjectX and Y <b>must be inanimate</b>. In this HIT, animals are <b>NOT</b> allowed either.
+                </li>
+                <li>
+                    ObjectX and Y must be the <b>same grammatical number (singular or plural)</b>.
+                </li>
+                <li>
+                    ObjectX and Y should <b>NOT</b> be a proper noun (e.g., New York, Macbook, Jeff Bezos, McDonald's, ...).
+                </li>
+                <li>
+                    Please make sure whether <b>most people will agree</b> which object (X or Y) is filled in the blank (<span class="blank"></span>) for each sentence.
+                </li>
+
+                <!--<li>
+                    When submitting multiple HITs, please <b>avoid the positive/negative bias </b> described in the beginning of Part 2.
+                </li>-->
+                <li>
+                    When submitting multiple HITs, please <b>avoid repeating the same style (e.g., using the same contrastive words or patterns all the time)</b>.
+                </li>
+
+                <li>
+                    <b style="color:red">Most importantly, please avoid word association. (See the bad examples above for more details.)</b>
+                    <ul>
+                        <li>Simple way to check if your sentence has word association bias:</li>
+                        <li>step 1: Hide all words except the blank ( <span class="blank"></span> ) and the surrounding clause. </li>
+                            <ul>
+                                <li>e.g., <span style="text-decoration:line-through; color:lightslategray">The trophy doesn't fit into the brown suitcase</span> <b>because _ is too large</b>. (ObjectX = trophy, ObjectY = suitcase)</li>
+                            </ul>
+                        <li>step 2: If you can still choose the blank (either object X or Y) correctly, the sentence <b>has word association that you must avoid</b>. </li>
+
+                    </ul>
+                </li>
+            </ul>
+
+            <hr/>
+
+            <p>Comments and feedback
+                (Please leave a comment if you have any questions, suggestions, etc.)</p>
+            <span><textarea class="form-control" cols="120" name="Comments" rows="5"></textarea></span>
+            <br/>
+
+        </div>
+    </div>
+
+    <div class="container">
+
+
+    <p align="center">Before submission, please check the format of your answers.</p>
+    <p align="center" style="background-color: orangered; color: white">Note that the validation isn't perfect. Please check if your twin sentences follow the rules in the instructions.</p>
+        <hr>
+    <div align="center">
+        <p>
+            <button id="validbutton" name="validbutton" type="button" class="btn btn-warning" onclick="this.disabled=true;">Check format of the answers.</button>
+        </p>
+    </div>
+    <p align="center">
+    <div align="center" id="pre_warnings" style="color:purple"></div>
+    <div align="center" id="warnings" style="color:red"></div>
+    </p>
+
+    <p align="center">By clicking Submit, you agree that you have read the instructions and examples.</p>
+    <!--<p align="center" style="color:white; background-color: red;">If many of your submissions didn't follow the rules in the instructions, the submissions would be rejected and the worker would be disqualified.</p>-->
+    <p align="center">
+        <button id="submitButton" type="submit" class="btn btn-success">Submit</button>
+    </p>
+
+    </div>
+</form>
+
+<script language='Javascript'>turkSetAssignmentID();</script>
+<script>
+    // accordion
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight){
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+
+
+</script>
+
+
+</body>

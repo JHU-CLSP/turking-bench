@@ -1,0 +1,697 @@
+<html lang="en">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+
+
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- HITPUB CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
+    <style id="hitpub_css">
+        /***********************************************
+        MOSAIC BOOSTRAP OVERWRITES
+        ***********************************************/
+        #hitinfo .card {
+            border-radius: 0;
+        }
+        #hitinfo button.btn-link {
+            color: #fff;
+            text-decoration: none;
+        }
+
+
+        #hitinfo button.btn-link:hover {
+            text-decoration: none;
+        }
+        #hit ul.question-choice {
+            list-style-type: none;
+        }
+
+        /***********************************************
+        MOSAIC GENERAL STYLING
+        ***********************************************/
+        body {
+            font-family: "Open Sans", "Roboto", sans-serif;
+            line-height: 1.25;
+        }
+        textarea#feedback {
+            width: 100%
+        }
+        input#submitButton {
+            margin: auto;
+            display: block;
+            background-color: #2172a4;
+            color: #fff;
+            font-size: 1.125rem;
+            padding: .5rem 1rem;
+            cursor: pointer;
+            border-radius: 1rem;
+        }
+        input#submitButton:hover {
+            background-color: #06486F;
+        }
+
+        input[type="radio"] {
+            cursor: pointer;
+        }
+
+        div.goal-category {
+            border-bottom: solid 1px #ccc;
+            padding: 1rem 1rem;
+        }
+
+        li {
+            margin:0.6em;
+        }
+
+        table {
+            width: 80%;
+            margin: 5px;
+        }
+
+        tr {
+            border:1px solid #ccc;
+        }
+
+        th {
+            width:20%;
+            background-color:#fff;
+            font-weight:normal;
+            text-align: center;
+            padding:0.5em;
+        }
+
+
+        td {
+            padding-left:20px;
+            padding-right:10px;
+        }
+
+
+
+
+        /***********************************************
+        HIT CUSTOM GENERAL STYLING
+        ***********************************************/
+        div.card-header {
+            background-color: #06486F;
+        }
+        div.card-header h5 {
+            color: #fff !important;
+        }
+
+
+        .question-choice-container label.btn {
+            background-color: #eee;
+            border: #ccc 1px solid;
+            margin-left: 0 !important;
+            color: black;
+        }
+
+
+        .legend {
+            margin-top: .33rem;
+            font-weight: normal;
+            padding-left: 40px;
+        }
+        .legend .label{
+            font-style: italic;
+        }
+
+        .emphasize {
+            font-weight: bold;
+            color: black;
+            font-style: italic;
+        }
+
+        .btn-group-container {
+            align:left;
+            padding:0;
+        }
+
+        .example {
+            pointer-events:none;
+        }
+
+        .title {
+            font-style: italic;
+        }
+
+        .entity {
+            color: blue;
+            font-weight: bold;
+        }
+
+        .use {
+            color: purple;
+            font-weight: bold;
+        }
+
+        .btn-group-xs > .btn, .btn-xs {
+            padding: .4rem .4rem;
+            font-size: .8rem;
+            line-height: 1.2;
+            border-radius: .2rem;
+        }
+
+        .card-body {
+            background-color:#fbfbfb;
+        }
+
+        .concept_a {
+            color: #0072B2;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .concept_b {
+            color: #D55E00;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .concept_c {
+            color: #aa00d5;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .concept_d {
+            color: #008d4b;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .sm-bold {
+            font-weight:bold;
+            font-style: italic;
+            font-size: 80%;
+        }
+
+
+        label[for="2"]:hover, label[for="2"].active {
+            background-color:  #c20000 !important;
+            color: white;
+        }
+        label[for="1"]:hover, label[for="1"].active {
+            background-color: #03b630 !important;
+            color: white;
+        }
+        label[for="3"]:hover, label[for="3"].active {
+            background-color: rgb(73, 73, 73) !important;
+            color: white;
+        }
+
+        .one-background {background-color: #03b630;}
+        .two-background {background-color: #c20000;}
+        .neither-background {background-color: rgb(73, 73, 73);}
+
+    </style>
+
+    <!-- HIT START -->
+    <div id="hit" class="container">
+
+        <!-- ACCORDION START -->
+        <div class="col-12 accordion" id="hitinfo">
+
+            <!-- INSTRUCTIONS START -->
+            <div class="card">
+                <div class="card-header" id="instructionsHeading">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#instructions" aria-expanded="true" aria-controls="instructions">
+                            Instructions (click to expand/collapse)
+                        </button>
+                    </h5>
+                </div>
+                <div class="collapse show" id="instructions" aria-labelledby="instructionsHeading" data-parent="#hitinfo">
+                    <div class="card-body">
+                        <div class="card-content">
+                            <div class="border p-2 bg-white mb-4 col-9">
+                                For those of you who have done recently completed this task from us, please note: <br><br>
+
+                                Instructions and examples have been updated.
+                                <br> Please <b>make sure</b> you know the difference between the four relationship labels before proceeding. Thank you!
+                            </div>
+
+                            <p>Thanks for participating in this HIT! Please read the instructions and examples below, then complete the HIT (5 questions).</p>
+
+                            <p class="mb-2"><b>In this HIT, you will be asked to label the relationship between statements (called Natural Language Inference).</p></em></b></p>
+                            <p class="mb-2">For each question, you will be given 2 sentences:
+                            <div class="legend">
+                                <div class="row"><span class="label col-2 concept_a">Premise</span><span class="col-9">Sentence describing a real-world situation, always assumed to be true.</span></div>
+                                <div class="row"><span class="label col-2 concept_b">Hypothesis</span><span class="col-9"> A hypothesis assumption or inference that we might make about the situation having read the premise. </span></div>
+                            </div></p>
+
+                            <p class="mb-2">For each question, your goal is to select the best <span class="concept_c">Relationship</span> between the two statements:
+                            <div class="legend">
+                                <div class="row pb-3">
+                                    <span class="col-2"><span class="badge badge-success w-100" style="font-size:110%">Entails</span></span>
+                                    <span class="col-9">
+                                        The hypothesis can <b>definitely be assumed CORRECT</b> given the premise. If premise is true, hypothesis <span class="text-success">MUST also be true</span> .
+                                        <div class="border mt-1 pt-1 pl-1 pb-1">
+                                        <b>Example:</b> If we assume premise <span class="concept_a">Typically birds fly long distances.</span> to be true, then the hypothesis <span class="concept_b">Typically birds fly</span> must also be true.
+                                    </span>
+                                </div></div>
+                                <div class="row pb-3">
+                                    <span class="col-2"><span class="badge badge-danger w-100" style="font-size:110%">Contradicts</span></span>
+                                    <span class="col-9">
+                                        The hypothesis can <b>definitely be assumed WRONG</b> given the premise. If the premise is true, hypothesis <span class="text-danger">MUST be false</span>.
+                                        <div class="border mt-1 pt-1 pl-1 pb-1">
+                                        <b>Example:</b> If we assume premise <span class="concept_a">Typically birds fly.</span> to be true, then the hypothesis <span class="concept_b">Birds can only walk</span> must be false.
+                                    </span>
+                                </div></div>
+                                <div class="row pb-3">
+                                    <span class="col-2"><span class="badge badge-info w-100" style="font-size:110%">Neutral</span></span>
+                                    <span class="col-9">
+                                        The hypothesis <b>might be true</b> given premise, but the <u class="text-info">relationship isn't direct</u>. For example, both the    premise and the hypothesis can be true for differing reasons. More context is needed to determine the two statement's relationship.
+                                        <div class="border mt-1 pt-1 pl-1 pb-1">
+                                        <b>Example:</b> Assuming the truth of premise <span class="concept_a">Typically birds fly.</span> <u>cannot</u> help us decide if the hypothesis <span class="concept_b">Typically birds eat bugs.</span> is true or false. Birds eating bugs is not directly related to their ability to fly. The fact both statements are correct is a coincidence.</span>
+                                </div></div>
+                                <div class="row">
+                                    <span class="col-2"><span class="badge badge-warning w-100" style="font-size:110%">HUH?!</span></span>
+                                    <span class="col-9">Cannot judge. The hypothesis and/or the premise does not make sense; OR
+                                I don't know enough about what the statements are saying to judge.</span></div>
+                            </div></p>
+
+
+                            <p class="mb-2"><b>RULE of THUMB:</b></p>
+                            <ul>
+                                <li>Please <b>assume</b> that the <span class="concept_a">premise</span> is true, THEN decide its relationship to the hypothesis. (See Example 5 below)
+                                <li>If you can't understand what either of the statement is saying, you have a <span class="badge badge-warning">HUH?!</span> siutation.
+                                <li>If the two statements basically say the same thing, then you know you have a <span class="badge badge-success">Entails</span> relationship.
+                                <li>If the two statements cannot co-exist in the real world, then you know you have a <span class="badge badge-danger">Contradicts</span> relationship.
+                                <li>If your answer is "depends", then you likely have a <span class="badge badge-info">Neutral</span> relationship.
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- INSTRUCTIONS END -->
+            <!-- EXAMPLES START -->
+            <div class="card">
+                <div class="card-header" id="examplesHeading">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#examples" aria-expanded="true" aria-controls="examples">
+                            Examples (click to expand/collapse)
+                        </button>
+                    </h5>
+                </div>
+                <div class="collapse" id="examples" aria-labelledby="examplesHeading" data-parent="#hitinfo">
+                    <div class="card-body">
+                        <div class="card-content col-12">
+                            <!-- EXAMPLE MACRO START -->
+
+                            <!-- EXAMPLE MACRO END -->
+
+                             <div id="ex1" class="row border-bottom pt-2 pb-2">
+                                <div class="col col-1"><b>EX #1</b></div>
+                                <div class="col col-5">
+                                    <span class="concept_a">Premise:</span> A man sits on a couch reading a book.<br>
+                                    <span class="concept_b">Hypothesis:</span> The man is asleep.<br>
+                                </div>
+                                <div class="col col-1">
+                                    <span class="badge badge-danger">Contradicts</span>
+                                </div>
+                                <div class="col">
+                                    If it is true that the man is reading a book, the man cannot be sleeping at the same time.
+                                 </div>
+                            </div>
+
+                             <div id="ex2" class="row border-bottom pt-2 pb-2">
+                                <div class="col col-1"><b>EX #2</b></div>
+                                <div class="col col-5">
+                                    <span class="concept_a">Premise:</span> Children smiling and waving at camera.<br>
+                                    <span class="concept_b">Hypothesis:</span> They are smiling at their parents<br>
+                                </div>
+                                <div class="col col-1">
+                                    <span class="badge badge-info">Neutral</span>
+                                </div>
+                                <div class="col">
+                                    It is possible, but cannot be concluded without more information. The conclusion would depend on who is behind the camera, for example.
+                                </div>
+                            </div>
+
+                            <div id="ex3" class="row border-bottom pt-2 pb-2">
+                                <div class="col col-1"><b>EX #3</b></div>
+                                <div class="col col-5">
+                                    <span class="concept_a">Premise:</span> A boy is jumping on skateboard in the middle of a red bridge.<br>
+                                    <span class="concept_b">Hypothesis:</span> The boy does a skateboarding trick.<br>
+                                </div>
+                                <div class="col col-1">
+                                    <span class="badge badge-success">Entails</span>
+                                </div>
+                                <div class="col">
+                                    Jumping on a skateboard is a skateboarding trick.
+                                </div>
+                            </div>
+
+                            <div id="ex4" class="row border-bottom pt-2 pb-2">
+                                <div class="col col-1"><b>EX #4</b></div>
+                                <div class="col col-5">
+                                    <span class="concept_a">Premise:</span> Typically, a bicycle has two wheels.<br>
+                                    <span class="concept_b">Hypothesis:</span> Typically, a bicycle has wheels.<br>
+                                </div>
+                                <div class="col col-1">
+                                    <span class="badge badge-success">Entails</span>
+                                </div>
+                                <div class="col">
+                                    If there are two wheels, you can safely assume that there are wheels, in the first place.
+                                </div>
+                            </div>
+
+                           <div id="ex5" class="row border-bottom pt-2 pb-2">
+                                <div class="col col-1"><b>EX #5</b></div>
+                                <div class="col col-5">
+                                    <span class="concept_a">Premise:</span> Typically, a bicycle has four wheels.<br>
+                                    <span class="concept_b">Hypothesis:</span> Typically, a bicycle an odd number of wheels.<br>
+                                </div>
+                                <div class="col col-1">
+                                    <span class="badge badge-danger">Contradicts</span>
+                                </div>
+                                <div class="col">
+                                    If there are four wheels, you have an even (not odd!) number of wheels. Note, we aren't asking you to judge the truthfulness of the statements.
+                                </div>
+                            </div>
+
+
+                            <div id="ex6" class="row border-bottom pt-2 pb-2">
+                                <div class="col col-1"><b>EX #6</b></div>
+                                <div class="col col-5">
+                                    <span class="concept_a">Premise:</span> Typically, a bicycle has two wheels. <br>
+                                    <span class="concept_b">Hypothesis:</span> Bicycles can come in road, mountain, or cruiser varieties.<br>
+                                </div>
+                                <div class="col col-1">
+                                    <span class="badge badge-info">Neutral</span>
+                                </div>
+                                <div class="col">
+                                    Both statements are reasonable statements about bikes, but they have no relationship to each other. Varieties of bicycles cannot be derived simply by knowing how many wheels it has. The hypothesis doesn't contradict the premise. And the premise doesn't entail the premise either: hypothesis can be true even if the premise is false (a broken bike with missing wheels, say).
+                                </div>
+                            </div>
+
+
+                            <div id="ex8" class="row border-bottom pt-2 pb-2">
+                                <div class="col col-1"><b>EX #8</b></div>
+                                <div class="col col-5">
+                                    <span class="concept_a">Premise:</span> Typically, fructose is found in fruit juice.<br>
+                                    <span class="concept_b">Hypothesis:</span> Typically, fructose is contained in fruit juice.<br>
+                                </div>
+                                <div class="col col-1">
+                                    <span class="badge badge-success">Entails</span>
+                                </div>
+                                <div class="col">
+                                    The two statements say the exact same thing in two ways.
+                                </div>
+                            </div>
+
+                            <div id="ex9" class="row border-bottom pt-2 pb-2">
+                                <div class="col col-1"><b>EX #9</b></div>
+                                <div class="col col-5">
+                                    <span class="concept_a">Premise:</span> Wildcats are known for their agressive behavior.<br>
+                                    <span class="concept_b">Hypothesis:</span> Typically, a wildcat, or wild cat.<br>
+                                </div>
+                                <div class="col col-1">
+                                    <span class="badge badge-warning">HUH?!</span>
+                                </div>
+                                <div class="col">
+                                    It is not entirely clear what the hypothesis is saying, so the judgement cannot be made.
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!-- EXAMPLES END -->
+        <!-- ACCORDION END -->
+
+        <!-- MTURK INPUT START -->
+
+
+        <div class="col-12 mt-3 mb-1" >
+                <span style="background-color: #FFFF00"> Note: Some questions are used for detecting random clickers (quality control).</span>
+        </div>
+        <div class="col-12 mt-3 mb-1 border-top">
+
+            <form name='mturk_form' method='post' id='mturk_form' >
+                <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+                <input type='hidden' name='ee' id='ee'/>
+
+                <input type='hidden' name='ee' id='ee'/>
+                <input type='hidden' value="${concept_1}" name='concept_1' id='concept_1'/>
+                <input type='hidden' value="${concept_2}" name='concept_2' id='concept_2'/>
+                <input type='hidden' value="${concept_3}" name='concept_3' id='concept_3'/>
+                <input type='hidden' value="${concept_4}" name='concept_4' id='concept_4'/>
+                <input type='hidden' value="${concept_5}" name='concept_5' id='concept_5'/>
+
+
+                <!-- QUESTION MACRO START -->
+
+                <!-- GOAL CATEGORY MACRO END -->
+
+                <!-- GOAL CAT START -->
+
+
+                <div id="question-1" class="question">
+                    <div class="question-header question-choice-container pl-5 mb-2 pt-2 pb-2 border-bottom">
+
+                        <div class="row pt-2 pb-3">
+                            <div class="col col-1">1)</div>
+                            <div class="col">
+                                <span class="concept_a">Premise:</span> <b>${premise_1}</b><br>
+                                <span class="concept_b">Hypothesis:</span> <b>${hypothesis_1}</b><br>
+                            </div>
+                        </div>
+
+                        <div class="row row-12 pl-3 pt-2 pb-2">
+                            <strong>What is the <span class="concept_c">Relationship</span> between the <span class="concept_a">Premise</span> and <span class="concept_b">Hypothesis</span>?</strong>
+                        </div>
+                        <div class="row pl-5">
+                            <div class="w-100 pt-1 form-check">
+                                <input class="form-check-input" type="radio" name="q1_valid" id="q1_valid_1" value="1" required>
+                                <label class="form-check-label" for="q1_valid_1"><span class="badge badge-success">Entails</span>:
+                                    If premise is true, hypothesis is <span class="text-success">also definitely TRUE</span> .</label>
+                            </div>
+                            <div class="w-100 pt-1 form-check">
+                                <input class="form-check-input" type="radio" name="q1_valid" id="q1_valid_2" value="2" required>
+                                <label class="form-check-label" for="q1_valid_2"><span class="badge badge-danger">Contradicts</span>:
+                                    If premise is true, hypothesis is <span class="text-danger"> definitely FALSE</label>
+                            </div>
+                            <div class="w-100 pt-1 form-check">
+                                <input class="form-check-input" type="radio" name="q1_valid" id="q1_valid_3" value="3" required>
+                                <label class="form-check-label" for="q1_valid_3"><span class="badge badge-info">Neutral</span>:
+                                    The hypothesis <span class="text-info">may or not may not be true</span> given the premise. The two statements are NOT directly related.</label>
+                            </div>
+                            <div class="w-100 pt-1 form-check">
+                                <input class="form-check-input" type="radio" name="q1_valid" id="q1_valid_4" value="4" required>
+                                <label class="form-check-label" for="q1_valid_4"><span class="badge badge-warning">HUH?!</span>: Cannot judge. Either the hypothesis/premise does not make sense, or I don't know enough about the statements to judge.</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="question-2" class="question">
+                    <div class="question-header question-choice-container pl-5 mb-2 pt-2 pb-2 border-bottom">
+
+                        <div class="row pt-2 pb-3">
+                            <div class="col col-1">2)</div>
+                            <div class="col">
+                                <span class="concept_a">Premise:</span> <b>${premise_2}</b><br>
+                                <span class="concept_b">Hypothesis:</span> <b>${hypothesis_2}</b><br>
+                            </div>
+                        </div>
+
+                        <div class="row row-12 pl-3 pt-2 pb-2">
+                            <strong>What is the <span class="concept_c">Relationship</span> between the <span class="concept_a">Premise</span> and <span class="concept_b">Hypothesis</span>?</strong>
+                        </div>
+                        <div class="row pl-5">
+                            <div class="w-100 pt-1 form-check">
+                                <input class="form-check-input" type="radio" name="q2_valid" id="q2_valid_1" value="1" required>
+                                <label class="form-check-label" for="q2_valid_1"><span class="badge badge-success">Entails</span>:
+                                    If premise is true, hypothesis is <span class="text-success">also definitely TRUE</span> .</label>
+                            </div>
+                            <div class="w-100 pt-1 form-check">
+                                <input class="form-check-input" type="radio" name="q2_valid" id="q2_valid_2" value="2" required>
+                                <label class="form-check-label" for="q2_valid_2"><span class="badge badge-danger">Contradicts</span>:
+                                    If premise is true, hypothesis is <span class="text-danger"> definitely FALSE</label>
+                            </div>
+                            <div class="w-100 pt-1 form-check">
+                                <input class="form-check-input" type="radio" name="q2_valid" id="q2_valid_3" value="3" required>
+                                <label class="form-check-label" for="q2_valid_3"><span class="badge badge-info">Neutral</span>:
+                                    The hypothesis <span class="text-info">may or not may not be true</span> given the premise. The two statements are NOT directly related.</label>
+                            </div>
+                            <div class="w-100 pt-1 form-check">
+                                <input class="form-check-input" type="radio" name="q2_valid" id="q2_valid_4" value="4" required>
+                                <label class="form-check-label" for="q2_valid_4"><span class="badge badge-warning">HUH?!</span>: Cannot judge. Either the hypothesis/premise does not make sense, or I don't know enough about the statements to judge.</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="question-3" class="question">
+                    <div class="question-header question-choice-container pl-5 mb-2 pt-2 pb-2 border-bottom">
+
+                        <div class="row pt-2 pb-3">
+                            <div class="col col-1">3)</div>
+                            <div class="col">
+                                <span class="concept_a">Premise:</span> <b>${premise_3}</b><br>
+                                <span class="concept_b">Hypothesis:</span> <b>${hypothesis_3}</b><br>
+                            </div>
+                        </div>
+
+                        <div class="row row-12 pl-3 pt-2 pb-2">
+                            <strong>What is the <span class="concept_c">Relationship</span> between the <span class="concept_a">Premise</span> and <span class="concept_b">Hypothesis</span>?</strong>
+                        </div>
+                        <div class="row pl-5">
+                            <div class="w-100 pt-1 form-check">
+                                <input class="form-check-input" type="radio" name="q3_valid" id="q3_valid_1" value="1" required>
+                                <label class="form-check-label" for="q3_valid_1"><span class="badge badge-success">Entails</span>:
+                                    If premise is true, hypothesis is <span class="text-success">also definitely TRUE</span> .</label>
+                            </div>
+                            <div class="w-100 pt-1 form-check">
+                                <input class="form-check-input" type="radio" name="q3_valid" id="q3_valid_2" value="2" required>
+                                <label class="form-check-label" for="q3_valid_2"><span class="badge badge-danger">Contradicts</span>:
+                                    If premise is true, hypothesis is <span class="text-danger"> definitely FALSE</label>
+                            </div>
+                            <div class="w-100 pt-1 form-check">
+                                <input class="form-check-input" type="radio" name="q3_valid" id="q3_valid_3" value="3" required>
+                                <label class="form-check-label" for="q3_valid_3"><span class="badge badge-info">Neutral</span>:
+                                    The hypothesis <span class="text-info">may or not may not be true</span> given the premise. The two statements are NOT directly related.</label>
+                            </div>
+                            <div class="w-100 pt-1 form-check">
+                                <input class="form-check-input" type="radio" name="q3_valid" id="q3_valid_4" value="4" required>
+                                <label class="form-check-label" for="q3_valid_4"><span class="badge badge-warning">HUH?!</span>: Cannot judge. Either the hypothesis/premise does not make sense, or I don't know enough about the statements to judge.</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="question-4" class="question">
+                    <div class="question-header question-choice-container pl-5 mb-2 pt-2 pb-2 border-bottom">
+
+                        <div class="row pt-2 pb-3">
+                            <div class="col col-1">4)</div>
+                            <div class="col">
+                                <span class="concept_a">Premise:</span> <b>${premise_4}</b><br>
+                                <span class="concept_b">Hypothesis:</span> <b>${hypothesis_4}</b><br>
+                            </div>
+                        </div>
+
+                        <div class="row row-12 pl-3 pt-2 pb-2">
+                            <strong>What is the <span class="concept_c">Relationship</span> between the <span class="concept_a">Premise</span> and <span class="concept_b">Hypothesis</span>?</strong>
+                        </div>
+                        <div class="row pl-5">
+                            <div class="w-100 pt-1 form-check">
+                                <input class="form-check-input" type="radio" name="q4_valid" id="q4_valid_1" value="1" required>
+                                <label class="form-check-label" for="q4_valid_1"><span class="badge badge-success">Entails</span>:
+                                    If premise is true, hypothesis is <span class="text-success">also definitely TRUE</span> .</label>
+                            </div>
+                            <div class="w-100 pt-1 form-check">
+                                <input class="form-check-input" type="radio" name="q4_valid" id="q4_valid_2" value="2" required>
+                                <label class="form-check-label" for="q4_valid_2"><span class="badge badge-danger">Contradicts</span>:
+                                    If premise is true, hypothesis is <span class="text-danger"> definitely FALSE</label>
+                            </div>
+                            <div class="w-100 pt-1 form-check">
+                                <input class="form-check-input" type="radio" name="q4_valid" id="q4_valid_3" value="3" required>
+                                <label class="form-check-label" for="q4_valid_3"><span class="badge badge-info">Neutral</span>:
+                                    The hypothesis <span class="text-info">may or not may not be true</span> given the premise. The two statements are NOT directly related.</label>
+                            </div>
+                            <div class="w-100 pt-1 form-check">
+                                <input class="form-check-input" type="radio" name="q4_valid" id="q4_valid_4" value="4" required>
+                                <label class="form-check-label" for="q4_valid_4"><span class="badge badge-warning">HUH?!</span>: Cannot judge. Either the hypothesis/premise does not make sense, or I don't know enough about the statements to judge.</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="question-5" class="question">
+                    <div class="question-header question-choice-container pl-5 mb-2 pt-2 pb-2 border-bottom">
+
+                        <div class="row pt-2 pb-3">
+                            <div class="col col-1">5)</div>
+                            <div class="col">
+                                <span class="concept_a">Premise:</span> <b>${premise_5}</b><br>
+                                <span class="concept_b">Hypothesis:</span> <b>${hypothesis_5}</b><br>
+                            </div>
+                        </div>
+
+                        <div class="row row-12 pl-3 pt-2 pb-2">
+                            <strong>What is the <span class="concept_c">Relationship</span> between the <span class="concept_a">Premise</span> and <span class="concept_b">Hypothesis</span>?</strong>
+                        </div>
+                        <div class="row pl-5">
+                            <div class="w-100 pt-1 form-check">
+                                <input class="form-check-input" type="radio" name="q5_valid" id="q5_valid_1" value="1" required>
+                                <label class="form-check-label" for="q5_valid_1"><span class="badge badge-success">Entails</span>:
+                                    If premise is true, hypothesis is <span class="text-success">also definitely TRUE</span> .</label>
+                            </div>
+                            <div class="w-100 pt-1 form-check">
+                                <input class="form-check-input" type="radio" name="q5_valid" id="q5_valid_2" value="2" required>
+                                <label class="form-check-label" for="q5_valid_2"><span class="badge badge-danger">Contradicts</span>:
+                                    If premise is true, hypothesis is <span class="text-danger"> definitely FALSE</label>
+                            </div>
+                            <div class="w-100 pt-1 form-check">
+                                <input class="form-check-input" type="radio" name="q5_valid" id="q5_valid_3" value="3" required>
+                                <label class="form-check-label" for="q5_valid_3"><span class="badge badge-info">Neutral</span>:
+                                    The hypothesis <span class="text-info">may or not may not be true</span> given the premise. The two statements are NOT directly related.</label>
+                            </div>
+                            <div class="w-100 pt-1 form-check">
+                                <input class="form-check-input" type="radio" name="q5_valid" id="q5_valid_4" value="4" required>
+                                <label class="form-check-label" for="q5_valid_4"><span class="badge badge-warning">HUH?!</span>: Cannot judge. Either the hypothesis/premise does not make sense, or I don't know enough about the statements to judge.</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GOAL CAT END -->
+
+                <!-- OPTIONAL FEEDBACK -->
+                <div class="row mt-5">
+                    <div class="col-8 offset-2 col-lg-6 offset-lg-3">
+                        <p>(Optional) Please let us know if anything was unclear, if you experienced any issues, or if you have any other feedback for us.</p>
+                        <textarea id="feedback" name="feedback" rows=3></textarea>
+                    </div>
+                </div>
+
+                <!-- SUBMIT BUTTON -->
+                <div class="row mt-5">
+                    <div class="col-2 offset-5">
+                        <input id="submitButton" onclick="getnext()" type="submit" value="Submit">
+                    </div>
+                </div>
+
+            </form>
+            <script language='Javascript'>turkSetAssignmentID();</script>
+        </div>
+        <!-- MTURK INPUT END -->
+
+    </div>
+<!-- HIT END -->
+
+<!-- BOOSTRAP JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<!-- HITPUB JS -->
+<script id="hitpub_js">
+    // TimeMe.js
+    (function () { var e, t; e = this, t = function () { var r = { startStopTimes: {}, idleTimeoutMs: 3e4, currentIdleTimeMs: 0, checkStateRateMs: 250, active: !1, idle: !1, currentPageName: "default-page-name", timeElapsedCallbacks: [], userLeftCallbacks: [], userReturnCallbacks: [], trackTimeOnElement: function (e) { var t = document.getElementById(e); t && (t.addEventListener("mouseover", function () { r.startTimer(e) }), t.addEventListener("mousemove", function () { r.startTimer(e) }), t.addEventListener("mouseleave", function () { r.stopTimer(e) }), t.addEventListener("keypress", function () { r.startTimer(e) }), t.addEventListener("focus", function () { r.startTimer(e) })) }, getTimeOnElementInSeconds: function (e) { var t = r.getTimeOnPageInSeconds(e); return t || 0 }, startTimer: function (e, t) { if (e || (e = r.currentPageName), void 0 === r.startStopTimes[e]) r.startStopTimes[e] = []; else { var n = r.startStopTimes[e], i = n[n.length - 1]; if (void 0 !== i && void 0 === i.stopTime) return } r.startStopTimes[e].push({ startTime: t || new Date, stopTime: void 0 }), r.active = !0, r.idle = !1 }, stopAllTimers: function () { for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++)r.stopTimer(e[t]) }, stopTimer: function (e, t) { e || (e = r.currentPageName); var n = r.startStopTimes[e]; void 0 !== n && 0 !== n.length && (void 0 === n[n.length - 1].stopTime && (n[n.length - 1].stopTime = t || new Date), r.active = !1) }, getTimeOnCurrentPageInSeconds: function () { return r.getTimeOnPageInSeconds(r.currentPageName) }, getTimeOnPageInSeconds: function (e) { var t = r.getTimeOnPageInMilliseconds(e); return void 0 === t ? void 0 : t / 1e3 }, getTimeOnCurrentPageInMilliseconds: function () { return r.getTimeOnPageInMilliseconds(r.currentPageName) }, getTimeOnPageInMilliseconds: function (e) { var t = r.startStopTimes[e]; if (void 0 !== t) { for (var n = 0, i = 0; i < t.length; i++) { var s = t[i].startTime, o = t[i].stopTime; void 0 === o && (o = new Date), n += o - s } return Number(n) } }, getTimeOnAllPagesInSeconds: function () { for (var e = [], t = Object.keys(r.startStopTimes), n = 0; n < t.length; n++) { var i = t[n], s = r.getTimeOnPageInSeconds(i); e.push({ pageName: i, timeOnPage: s }) } return e }, setIdleDurationInSeconds: function (e) { var t = parseFloat(e); if (!1 !== isNaN(t)) throw { name: "InvalidDurationException", message: "An invalid duration time (" + e + ") was provided." }; return r.idleTimeoutMs = 1e3 * e, this }, setCurrentPageName: function (e) { return r.currentPageName = e, this }, resetRecordedPageTime: function (e) { delete r.startStopTimes[e] }, resetAllRecordedPageTimes: function () { for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++)r.resetRecordedPageTime(e[t]) }, resetIdleCountdown: function () { r.idle && r.triggerUserHasReturned(), r.idle = !1, r.currentIdleTimeMs = 0 }, callWhenUserLeaves: function (e, t) { this.userLeftCallbacks.push({ callback: e, numberOfTimesToInvoke: t }) }, callWhenUserReturns: function (e, t) { this.userReturnCallbacks.push({ callback: e, numberOfTimesToInvoke: t }) }, triggerUserHasReturned: function () { if (!r.active) for (var e = 0; e < this.userReturnCallbacks.length; e++) { var t = this.userReturnCallbacks[e], n = t.numberOfTimesToInvoke; (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback()) } r.startTimer() }, triggerUserHasLeftPage: function () { if (r.active) for (var e = 0; e < this.userLeftCallbacks.length; e++) { var t = this.userLeftCallbacks[e], n = t.numberOfTimesToInvoke; (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback()) } r.stopAllTimers() }, callAfterTimeElapsedInSeconds: function (e, t) { r.timeElapsedCallbacks.push({ timeInSeconds: e, callback: t, pending: !0 }) }, checkState: function () { for (var e = 0; e < r.timeElapsedCallbacks.length; e++)r.timeElapsedCallbacks[e].pending && r.getTimeOnCurrentPageInSeconds() > r.timeElapsedCallbacks[e].timeInSeconds && (r.timeElapsedCallbacks[e].callback(), r.timeElapsedCallbacks[e].pending = !1); !1 === r.idle && r.currentIdleTimeMs > r.idleTimeoutMs ? (r.idle = !0, r.triggerUserHasLeftPage()) : r.currentIdleTimeMs += r.checkStateRateMs }, visibilityChangeEventName: void 0, hiddenPropName: void 0, listenForVisibilityEvents: function () { void 0 !== document.hidden ? (r.hiddenPropName = "hidden", r.visibilityChangeEventName = "visibilitychange") : void 0 !== document.mozHidden ? (r.hiddenPropName = "mozHidden", r.visibilityChangeEventName = "mozvisibilitychange") : void 0 !== document.msHidden ? (r.hiddenPropName = "msHidden", r.visibilityChangeEventName = "msvisibilitychange") : void 0 !== document.webkitHidden && (r.hiddenPropName = "webkitHidden", r.visibilityChangeEventName = "webkitvisibilitychange"), document.addEventListener(r.visibilityChangeEventName, function () { document[r.hiddenPropName] ? r.triggerUserHasLeftPage() : r.triggerUserHasReturned() }, !1), window.addEventListener("blur", function () { r.triggerUserHasLeftPage() }), window.addEventListener("focus", function () { r.triggerUserHasReturned() }), document.addEventListener("mousemove", function () { r.resetIdleCountdown() }), document.addEventListener("keyup", function () { r.resetIdleCountdown() }), document.addEventListener("touchstart", function () { r.resetIdleCountdown() }), window.addEventListener("scroll", function () { r.resetIdleCountdown() }), setInterval(function () { r.checkState() }, r.checkStateRateMs) }, websocket: void 0, websocketHost: void 0, setUpWebsocket: function (e) { if (window.WebSocket && e) { var t = e.websocketHost; try { r.websocket = new WebSocket(t), window.onbeforeunload = function () { r.sendCurrentTime(e.appId) }, r.websocket.onopen = function () { r.sendInitWsRequest(e.appId) }, r.websocket.onerror = function (e) { console && console.log("Error occurred in websocket connection: " + e) }, r.websocket.onmessage = function (e) { console && console.log(e.data) } } catch (e) { console && console.error("Failed to connect to websocket host.  Error:" + e) } } return this }, websocketSend: function (e) { r.websocket.send(JSON.stringify(e)) }, sendCurrentTime: function (e) { var t = { type: "INSERT_TIME", appId: e, timeOnPageMs: r.getTimeOnCurrentPageInMilliseconds(), pageName: r.currentPageName }; r.websocketSend(t) }, sendInitWsRequest: function (e) { var t = { type: "INIT", appId: e }; r.websocketSend(t) }, initialize: function (e) { var t = r.idleTimeoutMs || 30, n = r.currentPageName || "default-page-name", i = void 0, s = void 0; e && (t = e.idleTimeoutInSeconds || t, n = e.currentPageName || n, i = e.websocketOptions, s = e.initialStartTime), r.setIdleDurationInSeconds(t).setCurrentPageName(n).setUpWebsocket(i).listenForVisibilityEvents(), r.startTimer(void 0, s) } }; return r }, "undefined" != typeof module && module.exports ? module.exports = t() : "function" == typeof define && define.amd ? define([], function () { return e.TimeMe = t() }) : e.TimeMe = t() }).call(this);
+
+    TimeMe.initialize({
+        currentPageName: "task",
+        idleTimeoutInSeconds: 30
+    });
+
+    $(document).ready(function() {
+        $('#submitButton').click(function () {
+            try {
+                $('input[name=ee]').attr('value', TimeMe.getTimeOnCurrentPageInSeconds());
+            } catch {
+            }
+            return true;
+        });
+    });
+</script>

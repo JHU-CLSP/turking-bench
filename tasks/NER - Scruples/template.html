@@ -1,0 +1,732 @@
+<!--
+NER: Identifying people involved in a sentence.
+
+Generate the legit file with:
+    python -m sc.mturk.layout.ner
+ -->
+
+<!-- Enable responsive behavior on smaller screens -->
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+
+<!--CSS -->
+<link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
+<style type="text/css">
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        color: #212529;
+        line-height: 1.5;
+    }
+
+    .container {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .card {
+        margin: 1rem;
+        background-color: #f8f9fa;
+        border: 1px solid #d9dadb;
+        border-radius: 4px;
+
+        max-width: 1140px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card-header {
+        width: 100%;
+        color: #157ffb;
+        background-color: rgba(0, 0, 0, .03);
+        text-decoration: none;
+        padding: .75rem 1.25rem;
+        border-bottom: 1px solid #d9dadb;
+        display: flex;
+    }
+
+    .card-header:hover {
+        color: #0a4d99;
+        text-decoration: underline;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .mf-textarea {
+        width: 100%;
+        max-width: 500px;
+        height: 80px;
+        margin-top: 0px;
+    }
+
+    .inputs li {
+        /* float: left; */
+        list-style-type: none;
+        padding: 5px;
+        margin-right: 5px;
+    }
+
+    .f7 {
+        font-size: 0.5 rem;
+    }
+
+    hr {
+        border-top: 1px solid #dfe0e1;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+</style>
+
+
+<!-- JS -->
+<!-- Live reloading -->
+<!-- <script type="text/javascript" src="http://livejs.com/live.js"></script> -->
+<!-- Timeme (inject locally) -->
+<script>
+    (function () { var e, t; e = this, t = function () { var r = { startStopTimes: {}, idleTimeoutMs: 3e4, currentIdleTimeMs: 0, checkStateRateMs: 250, active: !1, idle: !1, currentPageName: "default-page-name", timeElapsedCallbacks: [], userLeftCallbacks: [], userReturnCallbacks: [], trackTimeOnElement: function (e) { var t = document.getElementById(e); t && (t.addEventListener("mouseover", function () { r.startTimer(e) }), t.addEventListener("mousemove", function () { r.startTimer(e) }), t.addEventListener("mouseleave", function () { r.stopTimer(e) }), t.addEventListener("keypress", function () { r.startTimer(e) }), t.addEventListener("focus", function () { r.startTimer(e) })) }, getTimeOnElementInSeconds: function (e) { var t = r.getTimeOnPageInSeconds(e); return t || 0 }, startTimer: function (e, t) { if (e || (e = r.currentPageName), void 0 === r.startStopTimes[e]) r.startStopTimes[e] = []; else { var n = r.startStopTimes[e], i = n[n.length - 1]; if (void 0 !== i && void 0 === i.stopTime) return } r.startStopTimes[e].push({ startTime: t || new Date, stopTime: void 0 }), r.active = !0, r.idle = !1 }, stopAllTimers: function () { for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++)r.stopTimer(e[t]) }, stopTimer: function (e, t) { e || (e = r.currentPageName); var n = r.startStopTimes[e]; void 0 !== n && 0 !== n.length && (void 0 === n[n.length - 1].stopTime && (n[n.length - 1].stopTime = t || new Date), r.active = !1) }, getTimeOnCurrentPageInSeconds: function () { return r.getTimeOnPageInSeconds(r.currentPageName) }, getTimeOnPageInSeconds: function (e) { var t = r.getTimeOnPageInMilliseconds(e); return void 0 === t ? void 0 : t / 1e3 }, getTimeOnCurrentPageInMilliseconds: function () { return r.getTimeOnPageInMilliseconds(r.currentPageName) }, getTimeOnPageInMilliseconds: function (e) { var t = r.startStopTimes[e]; if (void 0 !== t) { for (var n = 0, i = 0; i < t.length; i++) { var s = t[i].startTime, o = t[i].stopTime; void 0 === o && (o = new Date), n += o - s } return Number(n) } }, getTimeOnAllPagesInSeconds: function () { for (var e = [], t = Object.keys(r.startStopTimes), n = 0; n < t.length; n++) { var i = t[n], s = r.getTimeOnPageInSeconds(i); e.push({ pageName: i, timeOnPage: s }) } return e }, setIdleDurationInSeconds: function (e) { var t = parseFloat(e); if (!1 !== isNaN(t)) throw { name: "InvalidDurationException", message: "An invalid duration time (" + e + ") was provided." }; return r.idleTimeoutMs = 1e3 * e, this }, setCurrentPageName: function (e) { return r.currentPageName = e, this }, resetRecordedPageTime: function (e) { delete r.startStopTimes[e] }, resetAllRecordedPageTimes: function () { for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++)r.resetRecordedPageTime(e[t]) }, resetIdleCountdown: function () { r.idle && r.triggerUserHasReturned(), r.idle = !1, r.currentIdleTimeMs = 0 }, callWhenUserLeaves: function (e, t) { this.userLeftCallbacks.push({ callback: e, numberOfTimesToInvoke: t }) }, callWhenUserReturns: function (e, t) { this.userReturnCallbacks.push({ callback: e, numberOfTimesToInvoke: t }) }, triggerUserHasReturned: function () { if (!r.active) for (var e = 0; e < this.userReturnCallbacks.length; e++) { var t = this.userReturnCallbacks[e], n = t.numberOfTimesToInvoke; (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback()) } r.startTimer() }, triggerUserHasLeftPage: function () { if (r.active) for (var e = 0; e < this.userLeftCallbacks.length; e++) { var t = this.userLeftCallbacks[e], n = t.numberOfTimesToInvoke; (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback()) } r.stopAllTimers() }, callAfterTimeElapsedInSeconds: function (e, t) { r.timeElapsedCallbacks.push({ timeInSeconds: e, callback: t, pending: !0 }) }, checkState: function () { for (var e = 0; e < r.timeElapsedCallbacks.length; e++)r.timeElapsedCallbacks[e].pending && r.getTimeOnCurrentPageInSeconds() > r.timeElapsedCallbacks[e].timeInSeconds && (r.timeElapsedCallbacks[e].callback(), r.timeElapsedCallbacks[e].pending = !1); !1 === r.idle && r.currentIdleTimeMs > r.idleTimeoutMs ? (r.idle = !0, r.triggerUserHasLeftPage()) : r.currentIdleTimeMs += r.checkStateRateMs }, visibilityChangeEventName: void 0, hiddenPropName: void 0, listenForVisibilityEvents: function () { void 0 !== document.hidden ? (r.hiddenPropName = "hidden", r.visibilityChangeEventName = "visibilitychange") : void 0 !== document.mozHidden ? (r.hiddenPropName = "mozHidden", r.visibilityChangeEventName = "mozvisibilitychange") : void 0 !== document.msHidden ? (r.hiddenPropName = "msHidden", r.visibilityChangeEventName = "msvisibilitychange") : void 0 !== document.webkitHidden && (r.hiddenPropName = "webkitHidden", r.visibilityChangeEventName = "webkitvisibilitychange"), document.addEventListener(r.visibilityChangeEventName, function () { document[r.hiddenPropName] ? r.triggerUserHasLeftPage() : r.triggerUserHasReturned() }, !1), window.addEventListener("blur", function () { r.triggerUserHasLeftPage() }), window.addEventListener("focus", function () { r.triggerUserHasReturned() }), document.addEventListener("mousemove", function () { r.resetIdleCountdown() }), document.addEventListener("keyup", function () { r.resetIdleCountdown() }), document.addEventListener("touchstart", function () { r.resetIdleCountdown() }), window.addEventListener("scroll", function () { r.resetIdleCountdown() }), setInterval(function () { r.checkState() }, r.checkStateRateMs) }, websocket: void 0, websocketHost: void 0, setUpWebsocket: function (e) { if (window.WebSocket && e) { var t = e.websocketHost; try { r.websocket = new WebSocket(t), window.onbeforeunload = function () { r.sendCurrentTime(e.appId) }, r.websocket.onopen = function () { r.sendInitWsRequest(e.appId) }, r.websocket.onerror = function (e) { console && console.log("Error occurred in websocket connection: " + e) }, r.websocket.onmessage = function (e) { console && console.log(e.data) } } catch (e) { console && console.error("Failed to connect to websocket host.  Error:" + e) } } return this }, websocketSend: function (e) { r.websocket.send(JSON.stringify(e)) }, sendCurrentTime: function (e) { var t = { type: "INSERT_TIME", appId: e, timeOnPageMs: r.getTimeOnCurrentPageInMilliseconds(), pageName: r.currentPageName }; r.websocketSend(t) }, sendInitWsRequest: function (e) { var t = { type: "INIT", appId: e }; r.websocketSend(t) }, initialize: function (e) { var t = r.idleTimeoutMs || 30, n = r.currentPageName || "default-page-name", i = void 0, s = void 0; e && (t = e.idleTimeoutInSeconds || t, n = e.currentPageName || n, i = e.websocketOptions, s = e.initialStartTime), r.setIdleDurationInSeconds(t).setCurrentPageName(n).setUpWebsocket(i).listenForVisibilityEvents(), r.startTimer(void 0, s) } }; return r }, "undefined" != typeof module && module.exports ? module.exports = t() : "function" == typeof define && define.amd ? define([], function () { return e.TimeMe = t() }) : e.TimeMe = t() }).call(this);
+
+    TimeMe.initialize({
+        currentPageName: "task",
+        idleTimeoutInSeconds: 30
+    });
+
+    // update debug display
+    // setInterval(function () {
+    //     document.getElementById('timing-debug').innerText = TimeMe.getTimeOnCurrentPageInSeconds();
+    // }, 0.1);
+</script>
+<!-- The ol big boy, jQ -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script>
+    function str2bool(s) {
+        return s === 'true';
+    }
+
+    $(document).ready(function () {
+        let worklist = ['Instructions', 'Motivation', 'Examples', 'Feedback']
+        for (let w of worklist) {
+            var content = $('#body' + w);
+            var trigger = $('#collapseTrigger' + w);
+
+            if (content == null || trigger == null) {
+                continue;
+            }
+            if (str2bool(trigger.attr('start-hidden'))) {
+                content.hide();
+            }
+            trigger.click(function () {
+                $('#body' + w).toggle();
+                let isVisible = $('#body' + w).is(':visible');
+            });
+        }
+
+        $('#submitButton').click(function () {
+            try {
+                $('input[name=te]').attr('value', TimeMe.getTimeOnCurrentPageInSeconds());
+            } catch {
+
+            }
+            // NOTE: Can add validation here if desired.
+            return true;
+        });
+    });
+
+    var n_situations = 10;
+</script>
+
+<script>
+/**
+ * Map from selection id (e.g., "selection-1") to the Characters
+ */
+class AllCharacters {
+    constructor() {
+        this.situations = new Map();
+    }
+    init(sids) {
+        for (let sid of sids) {
+            this.situations.set(sid, new Characters(sid));
+        }
+    }
+    add(sid, cs) {
+        if (!this.situations.has(sid)) {
+            console.warn('Situation ' + sid + ' not found in map?');
+            return;
+        }
+        this.situations.get(sid).add(cs);
+    }
+    remove(sid, cs) {
+        if (!this.situations.has(sid)) {
+            console.warn('Situation ' + sid + ' not found in map?');
+            return;
+        }
+        this.situations.get(sid).remove(cs);
+    }
+    /**
+     * Fully refresh state.
+     */
+    update() {
+        this.render();
+        this.serialize();
+    }
+    render() {
+        for (let situation of this.situations.values()) {
+            situation.render();
+        }
+    }
+    serialize() {
+        for (let situation of this.situations.values()) {
+            situation.serialize();
+        }
+    }
+}
+/**
+ * What's selected.
+ */
+class Characters {
+    constructor(situationID) {
+        this.situationID = situationID;
+        this.data = [];
+        this.colors = ['blue', 'green', 'red', 'purple', 'pink', 'gold', 'navy', 'orange'];
+        this.displayID = situationID + '-display';
+        this.serializeID = situationID + '-serialize';
+    }
+    add(newCS) {
+        // check for duplicates and add if it's not there.
+        for (let oldCS of this.data) {
+            if (oldCS.equals(newCS)) {
+                // animate it to show it exists.
+                oldCS.noticeMeSenpai = true;
+                return;
+            }
+        }
+        this.data.push(newCS);
+    }
+    remove(cs) {
+        for (let i = this.data.length - 1; i >= 0; i--) {
+            if (this.data[i].equals(cs)) {
+                this.data.splice(i, 1);
+            }
+        }
+    }
+    render() {
+        let display = $('#' + this.displayID).empty();
+        for (let i = 0; i < this.data.length; i++) {
+            display.append(this.data[i].render(this.situationID, this.colors[i % this.colors.length]));
+        }
+    }
+    serialize() {
+        let serialize = $('#' + this.serializeID);
+        let strings = [];
+        for (let character of this.data) {
+            strings.push(character.serialize());
+        }
+        let vals = strings.join(',');
+        serialize.attr('value', '[' + vals + ']');
+    }
+}
+class CharacterSelection {
+    constructor(start, end) {
+        this.start = start;
+        this.end = end;
+        /**
+         * Not serialized.
+         *
+         * ...
+         *
+         * ...
+         *
+         * notice MEEEEEEEEEEE
+         */
+        this.noticeMeSenpai = true;
+    }
+    equals(other) {
+        return this.start == other.start && this.end == other.end;
+    }
+    render(situationID, color) {
+        let start = this.start, end = this.end; // so they go in the closure
+        let txt = $('#' + situationID).text().substring(start, end);
+        let removeButton = $('<button></button>')
+            .addClass('bg-transparent white bn hover-black hover-bg-white br-pill mr1')
+            .append('✘')
+            .on('click', function () {
+            AC.remove(situationID, new CharacterSelection(start, end));
+            AC.update();
+        });
+        let span = $('<span></span>')
+            .addClass('b bg-' + color + ' white pa2 ma1 br-pill dib')
+            .append(removeButton)
+            .append(txt);
+        // if the character needs to be noticed, abide.
+        if (this.noticeMeSenpai) {
+            this.noticeMeSenpai = false;
+            span.addClass("animated bounce faster");
+            setTimeout(function () {
+                span.removeClass('animated bounce faster');
+            }, 1000);
+        }
+        return span;
+    }
+    serialize() {
+        return '[' + this.start + ',' + this.end + ']';
+    }
+}
+// globals
+let AC = new AllCharacters();
+// provided externally to the script!
+var n_situations;
+// script
+$(document).ready(function () {
+    // build up elements we're working with
+    let situationIDs = [], situationIDsJquery = [];
+    // we have 2 as default for running this script independently during development
+    let local_n_situations = n_situations || 2;
+    for (let i = 0; i < local_n_situations; i++) {
+        situationIDs.push('situation-' + i);
+        situationIDsJquery.push('#situation-' + i);
+    }
+    // initialize our data structures NOTE: later we'll have to add data that's loaded
+    // into the page (the machine's default guesses). or... maybe we won't?
+    AC.init(situationIDs);
+    $(situationIDsJquery.join(',')).on('mouseup', function (e) {
+        let selection = window.getSelection();
+        if (selection.anchorNode != selection.focusNode) {
+            // highlight across spans
+            return;
+        }
+        let range = selection.getRangeAt(0);
+        let [start, end] = [range.startOffset, range.endOffset];
+        if (start == end) {
+            // disable on single clicks
+            return;
+        }
+        // manipulate start and end to try to respect word boundaries and remove
+        // whitespace.
+        end -= 1; // move to inclusive model for these computations.
+        let situationID = e.target.id;
+        let txt = $('#' + situationID).text();
+        while (txt.charAt(start) == ' ') {
+            start += 1; // remove whitespace
+        }
+        while (start - 1 >= 0 && txt.charAt(start - 1) != ' ') {
+            start -= 1; // find word boundary
+        }
+        while (txt.charAt(end) == ' ') {
+            end -= 1; // remove whitespace
+        }
+        while (end + 1 <= txt.length - 1 && txt.charAt(end + 1) != ' ') {
+            end += 1; // find word boundary
+        }
+        // move end back to exclusive model
+        end += 1;
+        // stop if empty or invalid range after movement
+        if (start >= end) {
+            return;
+        }
+        // add any characters. (moving end back to exclusive model)
+        AC.add(situationID, new CharacterSelection(start, end));
+        // remove the selection span?
+        selection.empty();
+        // re-render
+        AC.update();
+    });
+});
+</script>
+
+<!-- HTML (finally!) -->
+
+<body>
+    <div class="container">
+
+        <!-- Instructions Card -->
+        <div class="card mb-3">
+
+            <!-- Card Heading -->
+            <a class="card-header" href="javascript:void(0);" id="collapseTriggerInstructions"
+                start-hidden="true">
+                <strong>Instructions (UPDATED 2/14/20)</strong>
+                <span class="ml1" id="collapseTextInstructions">(Click to expand/collapse)</span>
+            </a>
+
+            <!-- Card Content -->
+            <div class="card-body" id="bodyInstructions">
+
+                <h3>Instructions</h3>
+                <p class="measure-wide f5">
+                    Highlight the people that are mentioned in a sentence.
+                    Please don't include the narrator, but select everyone else
+                    that is mentioned.
+                </p>
+
+                <h4 class="mb0">How to do it</h4>
+                <ul class="mt0">
+                    <li class="measure-wide">Select people by highlighting them in the sentence.</li>
+                    <li class="measure-wide">Your selections will appear below the sentence as colored bubbles.</li>
+                    <li class="measure-wide">If you need to delete a selection you made, simply click the "✘" mark on
+                        it.</li>
+                    <li class="measure-wide">Don't worry about highlighting the
+                        entire word, or accidentally highlighting spaces. The interface
+                        automatically expands to word boundaries and trims
+                        whitespace.</li>
+                    <li class="measure-wide">Don't worry about the order you
+                        pick the people, as long as you only pick each person once
+                        using the correct phrase!</li>
+                </ul>
+
+                <h4 class="mb0">How to get it right</h4>
+                <ul class="mt0">
+                    <li class="measure-wide mb2">
+                        <span class="b">Don't include the (first person) narrator.</span>
+                        For example, "I ate pizza" would have no people highlighted.
+                    </li>
+                    <li class="measure-wide mb2">
+                        <span class="b">Only include people.</span>
+                        For example, "My horse George provides good conversation" would have no people highlighted.
+                    </li>
+                    <li class="measure-wide mb2">
+                        <span class="b">Only highlight each person once.</span>
+                        For example, <span class="i">"I gave my brother a hug, I like him, he's so nice"</span>, we
+                        would only include
+                        <span class="b bg-blue white pa1 br-pill dib">my brother</span>, not "him" or "he".
+                    </li>
+                    <li class="measure-wide mb2">
+                        <span class="b">Highlight the most descriptive mention of a person.</span>
+                        For example, <span class="i">"I can't stand him, my brother is so mean."</span>, we
+                        would pick <span class="b bg-blue white pa1 br-pill dib">my brother</span> even though it comes
+                        after "him". (Usually this won't be an issue.)
+                    </li>
+                    <li class="measure-wide mb2">
+                        <span class="b">Include the full phrase referring to the person.</span>
+                        Include words like "a", "the", "my", and longer phrases.
+                        For example, <span class="i">"The strange guy talked to
+                            my brother and my oldest uncle."</span>, we would pick
+                        <span class="b bg-blue white pa1 br-pill dib">The strange guy</span>,
+                        <span class="b bg-green white pa1 br-pill dib">my brother</span>,
+                        and
+                        <span class="b bg-red white pa1 br-pill dib">my oldest uncle</span>,
+                        instead of just "guy", "brother", and "uncle".
+                    </li>
+                    <li class="measure-wide mb2">
+                        <span class="b">Don't include phrases where a generic
+                            person-looking word is used without referring to a particular person.</span> This often
+                        happens when describing a place or thing.
+                        For example, <span class="i">"I walked into the men's
+                            room</span>, we would not pick anything, because <span class="i">"mens' room"</span> is a
+                        generic phrase. Similarly, we
+                        would not pick anything for, <span class="i">"I am a
+                            child"</span>, because <span class="i">"child"</span> is just
+                        used as a description. But for, <span class="i">"I walked into my
+                            brother's room"</span>, we would pick
+                        <span class="b bg-blue white pa1 br-pill dib">my brother</span>.
+                    </li>
+                    <li class="measure-wide mb2">
+                        <span class="b">Include people used to refer to someone.</span>
+                        For example, <span class="i">"My brother's girlfriend is so cool."</span>, we
+                        would pick both
+                        <span class="b bg-blue white pa1 br-pill dib">my brother</span>
+                        and
+                        <span class="b bg-green white pa1 br-pill dib">my brother's girlfriend</span>.
+                    </li>
+                    <li class="measure-wide mb2">
+                        <span class="bg-yellow black b br-pill dib ph2">NEW</span>
+                        <span class="b">DO include pronouns (she, her, hers, etc.)
+                            IF they're the most specific word available.</span>
+                        For example, in a sentence like
+                        <span class="i">"I love him,"</span> we would pick
+                        <span class="b bg-blue white pa1 br-pill dib">him</span>.
+                        However, for a sentence like,
+                        <span class="i">
+                            "I love my brother, I can always talk to him."
+                        </span>
+                        we would instead pick <span class="b bg-blue white pa1 br-pill dib">my brother</span>
+                        because it's more specific.
+                    </li>
+                    <li class="measure-wide mb2">
+                        <span class="bg-yellow black b br-pill dib ph2">NEW</span>
+                        <span class="b">Yes, DO include pronouns like "they" and "them", also
+                            IF they're the most specific word available.</span>
+                        For example, if we had the sentence
+                        <span class="i">
+                            "They went to the party."
+                        </span>
+                        we would pick <span class="b bg-blue white pa1 br-pill dib">they</span>.
+                        However, if we had the sentence
+                        <span class="i">
+                            "My friends went to the party and they had a good time."
+                        </span>
+                        we would instead pick <span class="b bg-blue white pa1 br-pill dib">My friends</span>
+                        since it is more specific.
+                    </li>
+                    <li class="measure-wide mb2">
+                        <span class="bg-yellow black b br-pill dib ph2">NEW</span>
+                        <span class="b">DO include plural first person pronouns (us, we, etc.) once.</span>
+                        For example, in a sentence like
+                        <span class="i">"We went to the park."</span> we would pick
+                        <span class="b bg-blue white pa1 br-pill dib">we</span>.
+                        Or for a sentence like
+                        <span class="i">
+                            "They spent hours talking to us and we had a good time."
+                        </span>
+                        we would pick
+                        <span class="b bg-blue white pa1 br-pill dib">they</span>
+                        and
+                        <span class="b bg-green white pa1 br-pill dib">us</span>.
+                        Important: notice in the second example, we do NOT pick "we", because it's already covered by
+                        "us"!
+                    </li>
+                    <li class="measure-wide mb2">
+                        <span class="bg-yellow black b br-pill dib ph2">NEW</span>
+                        <span class="b">DON'T include the narrator, even if they're named.</span>
+                        For example, in a sentence like
+                        <span class="i">"My name is Max and I love curry,"</span> we
+                        would not pick anything.
+                    </li>
+                    <li class="measure-wide mb2">
+                        <span class="bg-yellow black b br-pill dib ph2">NEW</span>
+                        <span class="b">DO also include other groups of people like "her siblings," "their class," and
+                            "his team".</span>
+                        For example, in a sentence like
+                        <span class="i">"I talked to all of his uncles for a while."</span> we
+                        would pick both
+                        <span class="b bg-blue white pa1 br-pill dib">his</span>
+                        and
+                        <span class="b bg-green white pa1 br-pill dib">his uncles</span>.
+                    </li>
+                    <li class="measure-wide mb2">
+                        <span class="bg-yellow black b br-pill dib ph2">NEW</span>
+                        <span class="b">DO include proper names of people that aren't the narrator.</span>
+                        For example, in a sentence like
+                        <span class="i">"Mary chased John at the park."</span> we
+                        assume they are people (unless otherwise specified), and we would pick both
+                        <span class="b bg-blue white pa1 br-pill dib">Mary</span>
+                        and
+                        <span class="b bg-green white pa1 br-pill dib">John</span>.
+                    </li>
+                    <li class="measure-wide mb2">
+                        <span class="bg-yellow black b br-pill dib ph2">NEW</span>
+                        <span class="b">DO include people with titles like "the policeman" and "the mailman".</span>
+                        For example, in the sentence
+                        <span class="i">"I chased the store clerk."</span> we would select
+                        <span class="b bg-blue white pa1 br-pill dib">the store clerk</span>.
+                    </li>
+                    <li class="measure-wide mb2">
+                        <span class="bg-yellow black b br-pill dib ph2">NEW</span>
+                        <span class="b">DO include words like "someone" and "everyone".</span>
+                        For example, in the sentence
+                        <span class="i">"I am going to dinner with someone."</span> we would select
+                        <span class="b bg-blue white pa1 br-pill dib">someone</span>.
+                    </li>
+                </ul>
+
+                <!-- Disclaimer -->
+                <p class="measure-wide f6 i mt4">
+                    Please note: Current employees or students of the University
+                    of Washington are not eligible to complete this HIT.
+                </p>
+
+            </div>
+        </div>
+
+
+        <!-- Examples Card -->
+        <div class="card mb-3">
+
+            <!-- Card Heading -->
+            <a class="card-header" href="javascript:void(0);" id="collapseTriggerExamples"
+                start-hidden="true">
+                <strong>Examples (UPDATED 2/14/20)</strong>
+                <span class="ml1" id="collapseTextExamples">(Click to expand/collapse)</span>
+            </a>
+
+            <!-- Card Content -->
+            <div class="card-body" id="bodyExamples">
+
+                <h3>Examples</h3>
+
+                <p class="measure-wide f4 outline pa4 mt5">being upset that my wife told me she hated the necklace my kids and I picked out for her for Mother 's Day</p>
+
+
+<span class="b bg-blue white pa2 ma1 br-pill dib">my wife</span>
+
+<span class="b bg-green white pa2 ma1 br-pill dib">my kids</span>
+
+<p class="measure-wide f4 outline pa4 mt5">eating what I thought was a pop - tart .</p>
+
+
+<p class="measure-wide f4 outline pa4 mt5">giving a homeless guy $ 80</p>
+
+
+<span class="b bg-blue white pa2 ma1 br-pill dib">a homeless guy</span>
+
+<p class="measure-wide f4 outline pa4 mt5">I tried to facebook creep my boyfriend 's ex girlfriend</p>
+
+
+<span class="b bg-blue white pa2 ma1 br-pill dib">my boyfriend</span>
+
+<span class="b bg-green white pa2 ma1 br-pill dib">my boyfriend 's ex girlfriend</span>
+
+<p class="measure-wide f4 outline pa4 mt5">not correcting my cashier that an omelette is not called oatmeal for 3 days in a row ? I ’ve saved $ 6 and seems like sky ’s the limit</p>
+
+
+<span class="b bg-blue white pa2 ma1 br-pill dib">my cashier</span>
+
+<p class="measure-wide f4 outline pa4 mt5">contacting the mom of my daughter 's boyfriend regarding their current relationship</p>
+
+
+<span class="b bg-blue white pa2 ma1 br-pill dib">the mom of my daughter 's boyfriend</span>
+
+<span class="b bg-green white pa2 ma1 br-pill dib">my daughter</span>
+
+<span class="b bg-red white pa2 ma1 br-pill dib">my daughter 's boyfriend</span>
+
+<p class="measure-wide f4 outline pa4 mt5">I love both him and her equally</p>
+
+
+<span class="b bg-blue white pa2 ma1 br-pill dib">him</span>
+
+<span class="b bg-green white pa2 ma1 br-pill dib">her</span>
+
+<p class="measure-wide f4 outline pa4 mt5">I, Max, know nothing about life</p>
+
+
+<p class="measure-wide f4 outline pa4 mt5">I met her parents and her friends</p>
+
+
+<span class="b bg-blue white pa2 ma1 br-pill dib">her</span>
+
+<span class="b bg-green white pa2 ma1 br-pill dib">her parents</span>
+
+<span class="b bg-red white pa2 ma1 br-pill dib">her friends</span>
+
+<p class="measure-wide f4 outline pa4 mt5">I went on a cruise with them</p>
+
+
+<span class="b bg-blue white pa2 ma1 br-pill dib">them</span>
+
+<p class="measure-wide f4 outline pa4 mt5">They went to the biggest party in town</p>
+
+
+<span class="b bg-blue white pa2 ma1 br-pill dib">they</span>
+
+<p class="measure-wide f4 outline pa4 mt5">Alex and his brother found out about my sister</p>
+
+
+<span class="b bg-blue white pa2 ma1 br-pill dib">Alex</span>
+
+<span class="b bg-green white pa2 ma1 br-pill dib">his brother</span>
+
+<span class="b bg-red white pa2 ma1 br-pill dib">my sister</span>
+
+<p class="measure-wide f4 outline pa4 mt5">We talked to my friends for hours, and then we went bowling with them.</p>
+
+
+<span class="b bg-blue white pa2 ma1 br-pill dib">We</span>
+
+<span class="b bg-green white pa2 ma1 br-pill dib">my friends</span>
+
+<p class="measure-wide f4 outline pa4 mt5">Their class jumped up and down to avoid the mailman and the spiders</p>
+
+
+<span class="b bg-blue white pa2 ma1 br-pill dib">Their class</span>
+
+<span class="b bg-green white pa2 ma1 br-pill dib">the mailman</span>
+
+<p class="measure-wide f4 outline pa4 mt5">Adam was looking for someone yesterday</p>
+
+
+<span class="b bg-blue white pa2 ma1 br-pill dib">Adam</span>
+
+<span class="b bg-green white pa2 ma1 br-pill dib">someone</span>
+
+            </div>
+        </div>
+
+
+        <!-- Task -->
+        <div class="card bg-light mb-3">
+
+            <!--Heading -->
+            <a class="card-header">
+                <strong>Task</strong>
+            </a>
+
+            <!-- Content -->
+            <div class="card-body">
+
+
+                <p id="situation-0" class="f3 outline pa4 mt5">${situation_0}</p>
+<div id="situation-0-display"></div>
+<input type="hidden" name="situation-0" id="situation-0-serialize">
+<input type="hidden" name="situation-0-source-id" value="${situation_0_source}">
+<p id="situation-1" class="f3 outline pa4 mt5">${situation_1}</p>
+<div id="situation-1-display"></div>
+<input type="hidden" name="situation-1" id="situation-1-serialize">
+<input type="hidden" name="situation-1-source-id" value="${situation_1_source}">
+<p id="situation-2" class="f3 outline pa4 mt5">${situation_2}</p>
+<div id="situation-2-display"></div>
+<input type="hidden" name="situation-2" id="situation-2-serialize">
+<input type="hidden" name="situation-2-source-id" value="${situation_2_source}">
+<p id="situation-3" class="f3 outline pa4 mt5">${situation_3}</p>
+<div id="situation-3-display"></div>
+<input type="hidden" name="situation-3" id="situation-3-serialize">
+<input type="hidden" name="situation-3-source-id" value="${situation_3_source}">
+<p id="situation-4" class="f3 outline pa4 mt5">${situation_4}</p>
+<div id="situation-4-display"></div>
+<input type="hidden" name="situation-4" id="situation-4-serialize">
+<input type="hidden" name="situation-4-source-id" value="${situation_4_source}">
+<p id="situation-5" class="f3 outline pa4 mt5">${situation_5}</p>
+<div id="situation-5-display"></div>
+<input type="hidden" name="situation-5" id="situation-5-serialize">
+<input type="hidden" name="situation-5-source-id" value="${situation_5_source}">
+<p id="situation-6" class="f3 outline pa4 mt5">${situation_6}</p>
+<div id="situation-6-display"></div>
+<input type="hidden" name="situation-6" id="situation-6-serialize">
+<input type="hidden" name="situation-6-source-id" value="${situation_6_source}">
+<p id="situation-7" class="f3 outline pa4 mt5">${situation_7}</p>
+<div id="situation-7-display"></div>
+<input type="hidden" name="situation-7" id="situation-7-serialize">
+<input type="hidden" name="situation-7-source-id" value="${situation_7_source}">
+<p id="situation-8" class="f3 outline pa4 mt5">${situation_8}</p>
+<div id="situation-8-display"></div>
+<input type="hidden" name="situation-8" id="situation-8-serialize">
+<input type="hidden" name="situation-8-source-id" value="${situation_8_source}">
+<p id="situation-9" class="f3 outline pa4 mt5">${situation_9}</p>
+<div id="situation-9-display"></div>
+<input type="hidden" name="situation-9" id="situation-9-serialize">
+<input type="hidden" name="situation-9-source-id" value="${situation_9_source}">
+
+                <input type="hidden" name="te" value="-1">
+            </div>
+        </div>
+
+        <!-- Feedback -->
+<div class="card bg-light mb-3">
+
+    <!--Heading -->
+    <a class="card-header" href="javascript:void(0);" id="collapseTriggerFeedback" start-hidden="true">
+        <strong>Optional Feedback &nbsp;</strong>
+        <span class="collapseTextFeedback"> (Click to expand/collapse)</span>
+    </a>
+
+    <!-- Content -->
+    <div class="card-body" id="bodyFeedback">
+
+        <!--Motivation text -->
+        <h3 class="card-title">Optional Feedback</h3>
+        <p class="measure-wide lh-copy f5">
+            If you have any feedback about improving this task, you can let
+            me know here! Completely optional / not required.
+        </p>
+        <textarea id="feedback" name="feedback" class="mf-textarea"></textarea>
+    </div>
+</div>
+
+        <div class="shadowCard">
+    <input type="submit" id="submitButton" class="pa2 mt2 mb4 b white bg-gold" value="Submit">
+</div>
+
+    </div>
+</body>

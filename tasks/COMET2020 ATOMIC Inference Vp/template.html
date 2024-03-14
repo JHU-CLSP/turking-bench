@@ -1,0 +1,907 @@
+<html lang="en">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+
+
+<!-- BOOTSTRAP CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<!-- HITPUB CSS -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
+<style id="hitpub_css">
+    /***********************************************
+    MOSAIC BOOSTRAP OVERWRITES
+    ***********************************************/
+    #hitinfo .card {
+        border-radius: 0;
+    }
+    #hitinfo .card:first-child {
+        border-bottom: 0;
+    }
+     #hitinfo button.btn-link {
+        color: #06486F;
+        text-decoration: none;
+     }
+    #hitinfo button.btn-link:hover {
+        text-decoration: none;
+    }
+    #hit ul.question-choice {
+        list-style-type: none;
+    }
+    /***********************************************
+    MOSAIC GENERAL STYLING
+    ***********************************************/
+    body {
+        font-family: "Open Sans", "Roboto", sans-serif;
+        line-height: 1.25;
+    }
+    textarea#feedback {
+        width: 100%
+    }
+    input#submitButton {
+        margin: auto;
+        display: block;
+        background-color: #2172a4;
+        color: #fff;
+        font-size: 1.125rem;
+        padding: .5rem 1rem;
+        cursor: pointer;
+        border-radius: 1rem;
+    }
+    input#submitButton:hover {
+        background-color: #06486F;
+    }
+    input[type="radio"] {
+        cursor: pointer;
+    }
+    div.question {
+        border-bottom: solid 1px #ccc;
+        padding: 4rem 0;
+    }
+    #instructions, #examples {
+        font-size: 1rem;
+    }
+    #instructions ol.steps li {
+        font-weight: bold;
+        margin: 0 0 .67rem;
+    }
+    #instructions ol.steps .sublist li {
+        font-weight: normal;
+        margin: 0;
+    }
+    /***********************************************
+    HIT CUSTOM GENERAL STYLING
+    ***********************************************/
+    .mturk-form-header {
+        border-bottom: solid 1px #ccc;
+        padding-bottom: 3rem;
+        font-style: italic;
+        text-align: center;
+    }
+    .question-choice-container .prompt {
+        font-style: italic;
+    }
+    .question-choice-container label.btn {
+        background-color: #eee;
+        border: none;
+        margin-left: 0 !important;
+        color: black !important;
+    }
+    label[for="-2"]:hover, label[for="-2"].active {
+        background-color: rgba(139, 0, 0, 0.5) !important;
+    }
+    label[for="-1"]:hover, label[for="-1"].active {
+        background-color: rgba(192, 0, 0, 0.5) !important;
+    }
+    label[for="0"]:hover, label[for="0"].active {
+        background-color: #aaa !important;
+    }
+    label[for="1"]:hover, label[for="1"].active {
+        background-color: rgba(0, 128, 0, 0.5) !important;
+    }
+    label[for="2"]:hover, label[for="2"].active {
+        background-color:  rgba(0, 100, 0, 0.5) !important;
+    }
+    .assertion .bridge {
+        font-style: italic;
+        margin: 1rem 0;
+    }
+    .obj {
+        font-weight: bold;
+    }
+    .legend {
+        margin-top: .33rem;
+        font-weight: normal;
+        padding-left: 40px;
+    }
+    .legend .label{
+        font-style: italic;
+    }
+    #examples .example {
+        padding-bottom: 1.5rem;
+        margin-bottom: 1.5rem;
+        border-bottom: solid 1px #ccc;
+    }
+    #examples .example-header {
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+        border-bottom: solid 1px #ccc;
+    }
+    .step-container, .arrow {
+        color: #777;
+    }
+    .emphasize {
+        font-weight: bold;
+        color: black;
+    }
+    .bold {
+        font-weight: bold;
+    }
+    .italic {
+        font-style: italic;
+    }
+    .top-divider {
+        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+        border-top: dotted 2px #ccc;
+    }
+    .bottom-divider {
+        padding-bottom: 1.5rem;
+        margin-bottom: 1.5rem;
+        border-bottom: dotted 2px #ccc;
+    }
+    .button-multi-choice {
+      margin: 10pt;
+    }
+    textarea {
+        resize: none;
+    }
+</style>
+
+<!-- HIT START -->
+<div id="hit" class="container">
+
+    <!-- ACCORDION START -->
+    <div class="accordion" id="hitinfo">
+
+        <!-- INSTRUCTIONS START -->
+        <div class="card" style="background: pink;">
+            <div class="card-header" id="instructionsHeading">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#instructions" aria-expanded="true" aria-controls="instructions">
+                        Instructions (click to expand)
+                    </button>
+                </h5>
+            </div>
+            <div class="collapse show" id="instructions" aria-labelledby="instructionsHeading" data-parent="#hitinfo">
+                <div class="card-body">
+                    <div class="card-content">
+                        <p>Thanks for participating!</p>
+                        <p><b>In this HIT, you will:</b></p>
+                        <ol class="steps" type="a">
+                            <li>Read a short event or event sequence.
+                                <ul class="sublist">
+                                    <br>
+                                    <li><p><em>Note that the names of specific people have been replaced by generic words (e.g., "PersonX", "PersonY").</em></p></li>
+                                </ul>
+                            </li>
+
+                            <li>Next, you'll be asked to answer a set of questions based on the given event.</li>
+                            <ul class="sublist">
+                                <li><em>For each question, you will be given a list of possible choices. You are asked to choose <b>ALL</b> options that apply.</em></li>
+                                <li><em>You also have the option to formulate <b>your own answers</b>, if the option list is empty, all options do not sound reasonable, or you have a better answer in mind.</em></li>
+                                <li><em>There are <b>NO</b> standard answers for these questions. Feel free to choose or write down <b>anything that makes sense to you.</b></em></li>
+                            </ul>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- INSTRUCTIONS END -->
+
+        <!-- EXAMPLES START -->
+        <div class="card">
+            <div class="card-header" id="examplesHeading">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#examples" aria-expanded="true" aria-controls="examples">
+                        Examples (click to expand)
+                    </button>
+                </h5>
+            </div>
+            <div class="collapse" id="examples" aria-labelledby="examplesHeading" data-parent="#hitinfo">
+                <div class="card-body">
+                    <div class="card-content col-10 offset-1">
+                        <div class="example-header row">
+                            <div class="col-9">Example</div>
+                            <div class="col-3">Explanation</div>
+                        </div>
+                        <div id="xRequiresExamples">
+                            <div class="example row">
+
+                                <div class="question-choice-container col-12">
+
+                                    <div class="sequence-container row bottom-divider">
+                                        <div class="col-2 bold">Event</div>
+                                        <div class="col-7">PersonX eats salad.</div>
+                                        <div class="col-3">An event or an event sequence.</div>
+                                    </div>
+
+                                    <div class="bottom-divider">
+
+                                        <div class="sequence-container row">
+                                            <div class="col-2 bold">Question</div>
+                                            <div class="col-7 italic">What does <b>PersonX</b> need to do before the event?</div>
+                                        </div>
+                                        <br>
+                                        <div class="sequence-container row">
+                                            <div class="col-2 bold">Answer</div>
+                                            <div class="col-7 italic">Before, <b>PersonX</b> needed ____.</div>
+                                        </div>
+                                        <div class="sequence-container row">
+                                            <div class="col-2 bold"></div>
+                                            <div class="col-7 btn-group-container">
+                                                <div class="btn-group btn-group-toggle row">
+                                                    <label class="btn btn-secondary active button-multi-choice" for="2">
+                                                        <input type="radio" autocomplete="off">to buy salad
+                                                    </label>
+
+                                                    <label class="btn btn-secondary active button-multi-choice" for="2">
+                                                        <input type="radio" autocomplete="off">to have salad
+                                                    </label>
+
+                                                    <label class="btn btn-secondary button-multi-choice" for="0">
+                                                        <input type="radio" autocomplete="off">to cook
+                                                    </label>
+
+                                                    <label class="btn btn-secondary active button-multi-choice" for="2">
+                                                        <input type="radio" autocomplete="off">to get salad
+                                                    </label>
+                                                </div>
+                                                <div class="btn-group btn-group-toggle row">
+                                                    <label class="btn btn-secondary active button-multi-choice" for="2">
+                                                        <input type="radio" autocomplete="off">not to cook
+                                                    </label>
+
+                                                    <label class="btn btn-secondary active button-multi-choice" for="2">
+                                                        <input type="radio" autocomplete="off">not to buy burgers
+                                                    </label>
+
+                                                    <label class="btn btn-secondary active button-multi-choice" for="2">
+                                                        <input type="radio" autocomplete="off">to order food
+                                                    </label>
+
+                                                    <label class="btn btn-secondary button-multi-choice" for="0">
+                                                        <input type="radio" autocomplete="off">to order a burger
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">What does <b>PersonX</b> need to do before he/she eats salad? </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="bottom-divider">
+                                        <div class="sequence-container row">
+                                            <div class="col-2 bold">Question</div>
+                                            <div class="col-7 italic">What effects does the event have on <b>PersonX</b>?</div>
+                                        </div>
+                                        <br>
+                                        <div class="sequence-container row">
+                                            <div class="col-2 bold">Answer</div>
+                                            <div class="col-7 italic"><b>PersonX</b> then ____.</div>
+                                        </div>
+
+                                        <div class="sequence-container row">
+                                            <div class="col-2 bold"></div>
+                                            <div class="col-7 btn-group-container">
+                                                <div class="btn-group btn-group-toggle row">
+                                                    <label class="btn btn-secondary active button-multi-choice" for="2">
+                                                        <input type="radio" autocomplete="off">becomes full
+                                                    </label>
+
+                                                    <label class="btn btn-secondary active button-multi-choice" for="2">
+                                                        <input type="radio" autocomplete="off">does not become full
+                                                    </label>
+
+                                                    <label class="btn btn-secondary active button-multi-choice" for="2">
+                                                        <input type="radio" autocomplete="off">does not gain weight
+                                                    </label>
+
+                                                </div>
+                                                <div class="btn-group btn-group-toggle row">
+                                                    <label class="btn btn-secondary button-multi-choice" for="0">
+                                                        <input type="radio" autocomplete="off">gains weight
+                                                    </label>
+
+                                                    <label class="btn btn-secondary button-multi-choice" for="0">
+                                                        <input type="radio" autocomplete="off">gets sick
+                                                    </label>
+
+                                                    <label class="btn btn-secondary active button-multi-choice" for="2">
+                                                        <input type="radio" autocomplete="off">feels empty
+                                                    </label>
+
+                                                    <label class="btn btn-secondary active button-multi-choice" for="2">
+                                                        <input type="radio" autocomplete="off">eats more
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">What may happen to <b>PersonX</b> if he/she eats salad?</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="bottom-divider">
+                                        <div class="sequence-container row">
+                                            <div class="col-2 bold">Question</div>
+                                            <div class="col-7 italic">What effects does the event have on <b>others</b>?</div>
+                                            <div class="col-3">
+
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="sequence-container row">
+                                            <div class="col-2 bold">Answer</div>
+                                            <div class="col-7 italic"><b>Others</b> then ____.</div>
+                                        </div>
+                                        <div class="sequence-container row">
+                                            <div class="col-2 bold"></div>
+                                            <div class="col-7 btn-group-container">
+                                                <div class="btn-group btn-group-toggle row">
+                                                    <label class="btn btn-secondary active button-multi-choice" for="-1">
+                                                        <input type="radio" autocomplete="off">None of these apply
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-3">
+                                              What may happen to <b>others</b> if PersonX eats salad?
+                                              If there's <b>NO</b> appropriate answer, please specify so.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- EXAMPLES END -->
+    </div>
+    <!-- ACCORDION END -->
+
+    <!-- MTURK INPUT START -->
+    <div class="offset-0 col-12 mt-4">
+        <form name='mturk_form' method='post' id='mturk_form' >
+            <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+
+            <div class="col-12 bold" style="color: orange; font-size: 14pt;">Please make sure to read the instructions and the examples carefully before you start doing the following HIT. Several similar studies are being conducted simultaneously. So please make sure you understand the requirements of this task before you move on.</div>
+
+            <!-- QUESTION MACRO START -->
+
+            <!-- QUESTION MACRO END -->
+
+            <!-- QUESTIONS START -->
+
+            <div id="question1" class="question">
+                <div class="row bottom-divider">
+                    <div class="col-2 bold">Event</div>
+                    <div class="col-10">${Logic_Neg_Event}</div>
+                </div>
+
+                <div class="bottom-divider">
+                    <div class="sequence-container row">
+                        <div class="col-2 bold">Question</div>
+                        <div class="col-10 italic" style="color: green; font-size: 14pt;">What does <b>PersonX</b> <b>need</b> to do before the event?</div>
+                    </div>
+                    <br>
+                    <div class="sequence-container row">
+                        <div class="col-2 bold">Answer</div>
+                        <div class="col-10 italic" style="color: green; font-size: 14pt;">Before, <b>PersonX</b> needed ____.</div>
+                    </div>
+
+                    <div class="sequence-container row">
+                        <div class="col-2 bold"></div>
+                        <div class="col-10 question-choice-container btn-group-container">
+                            <div class="btn-group btn-group-toggle row" data-toggle="buttons">
+                                <label class="btn btn-secondary button-multi-choice xNeed-btn" onclick="resetButtons('xNeed-reset')" for="2">
+                                    <input type="checkbox" class="xNeed-input" name="xNeed_1" id="xNeed_1" autocomplete="off">${xNeed_1}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xNeed-btn" onclick="resetButtons('xNeed-reset')" for="2">
+                                    <input type="checkbox" class="xNeed-input" name="xNeed_2" id="xNeed_2" autocomplete="off">${xNeed_2}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xNeed-btn" onclick="resetButtons('xNeed-reset')" for="2">
+                                    <input type="checkbox" class="xNeed-input" name="xNeed_3" id="xNeed_3" autocomplete="off">${xNeed_3}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xNeed-btn" onclick="resetButtons('xNeed-reset')" for="2">
+                                    <input type="checkbox" class="xNeed-input" name="xNeed_4" id="xNeed_4" autocomplete="off">${xNeed_4}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xNeed-btn" onclick="resetButtons('xNeed-reset')" for="2">
+                                    <input type="checkbox" class="xNeed-input" name="xNeed_5" id="xNeed_5" autocomplete="off">${xNeed_5}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xNeed-btn" onclick="resetButtons('xNeed-reset')" for="2">
+                                    <input type="checkbox" class="xNeed-input" name="xNeed_6" id="xNeed_6" autocomplete="off">${xNeed_6}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xNeed-btn" onclick="resetButtons('xNeed-reset')" for="2">
+                                    <input type="checkbox" class="xNeed-input" name="xNeed_7" id="xNeed_7" autocomplete="off">${xNeed_7}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xNeed-btn" onclick="resetButtons('xNeed-reset')" for="2">
+                                    <input type="checkbox" class="xNeed-input" name="xNeed_8" id="xNeed_8" autocomplete="off">${xNeed_8}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xNeed-btn" onclick="resetButtons('xNeed-reset')" for="2">
+                                    <input type="checkbox" class="xNeed-input" name="xNeed_9" id="xNeed_9" autocomplete="off">${xNeed_9}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xNeed-btn" onclick="resetButtons('xNeed-reset')" for="2">
+                                    <input type="checkbox" class="xNeed-input" name="xNeed_10" id="xNeed_10" autocomplete="off">${xNeed_10}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xNeed-btn" onclick="resetButtons('xNeed-reset')" for="2">
+                                    <input type="checkbox" class="xNeed-input" name="xNeed_11" id="xNeed_11" autocomplete="off">${xNeed_11}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xNeed-btn" onclick="resetButtons('xNeed-reset')" for="2">
+                                    <input type="checkbox" class="xNeed-input" name="xNeed_12" id="xNeed_12" autocomplete="off">${xNeed_12}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xNeed-btn" onclick="resetButtons('xNeed-reset')" for="2">
+                                    <input type="checkbox" class="xNeed-input" name="xNeed_13" id="xNeed_13" autocomplete="off">${xNeed_13}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xNeed-btn" onclick="resetButtons('xNeed-reset')" for="2">
+                                    <input type="checkbox" class="xNeed-input" name="xNeed_14" id="xNeed_14" autocomplete="off">${xNeed_14}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xNeed-btn" onclick="resetButtons('xNeed-reset')" for="2">
+                                    <input type="checkbox" class="xNeed-input" name="xNeed_15" id="xNeed_15" autocomplete="off">${xNeed_15}
+                                </label>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sequence-container row">
+                        <div class="col-2 bold"></div>
+                        <div class="col-10 question-choice-container btn-group-container">
+                            <div class="btn-group btn-group-toggle row" data-toggle="buttons">
+                                <label class="btn btn-unique button-multi-choice xNeed-reset-btn" onclick="resetButtons('xNeed')" for="-1">
+                                    <input type="checkbox" class="xNeed-reset-input" name="xNeed_reset" id="xNeed_reset" autocomplete="off">None of these apply
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="sequence-container row">
+                        <div class="col-2 bold">Other</div>
+                        <div class="col-10">
+                            If the option list is empty, no reasonably answer applies, or you have a better answer in mind, please feel free to <b>write down your own answers</b>.
+                        </div>
+                    </div>
+                    <br>
+                    <div class="sequence-container row">
+                        <div class="col-2 bold"></div>
+                        <div class="col-5">
+                            <textarea name="xNeed_other_1" placeholder="" rows=1></textarea>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="sequence-container row">
+                        <div class="col-2 bold"></div>
+                        <div class="col-5">
+                            <textarea name="xNeed_other_2" placeholder="" rows=1></textarea>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="sequence-container row">
+                        <div class="col-2 bold"></div>
+                        <div class="col-5">
+                            <textarea name="xNeed_other_3" placeholder="" rows=1></textarea>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="sequence-container row">
+                        <div class="col-2 bold"></div>
+                        <div class="col-5">
+                            <textarea name="xNeed_other_4" placeholder="" rows=1></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottom-divider">
+                    <div class="sequence-container row">
+                        <div class="col-2 bold">Question</div>
+                        <div class="col-10 italic" style="color: red; font-size: 14pt;">What <b>effects</b> does the event have on <b>PersonX</b>?</div>
+                    </div>
+                    <br>
+                    <div class="sequence-container row">
+                        <div class="col-2 bold">Answer</div>
+                        <div class="col-10 italic" style="color: red; font-size: 14pt;"><b>PersonX</b> then ____.</div>
+                    </div>
+
+                    <div class="sequence-container row">
+                        <div class="col-2 bold"></div>
+                        <div class="col-10 question-choice-container btn-group-container">
+                            <div class="btn-group btn-group-toggle row" data-toggle="buttons">
+                                <label class="btn btn-secondary button-multi-choice xEffect-btn" onclick="resetButtons('xEffect-reset')" for="2">
+                                    <input type="checkbox" class="xEffect-input" name="xEffect_1" id="xEffect_1" autocomplete="off">${xEffect_1}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xEffect-btn" onclick="resetButtons('xEffect-reset')" for="2">
+                                    <input type="checkbox" class="xEffect-input" name="xEffect_2" id="xEffect_2" autocomplete="off">${xEffect_2}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xEffect-btn" onclick="resetButtons('xEffect-reset')" for="2">
+                                    <input type="checkbox" class="xEffect-input" name="xEffect_3" id="xEffect_3" autocomplete="off">${xEffect_3}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xEffect-btn" onclick="resetButtons('xEffect-reset')" for="2">
+                                    <input type="checkbox" class="xEffect-input" name="xEffect_4" id="xEffect_4" autocomplete="off">${xEffect_4}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xEffect-btn" onclick="resetButtons('xEffect-reset')" for="2">
+                                    <input type="checkbox" class="xEffect-input" name="xEffect_5" id="xEffect_5" autocomplete="off">${xEffect_5}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xEffect-btn" onclick="resetButtons('xEffect-reset')" for="2">
+                                    <input type="checkbox" class="xEffect-input" name="xEffect_6" id="xEffect_6" autocomplete="off">${xEffect_6}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xEffect-btn" onclick="resetButtons('xEffect-reset')" for="2">
+                                    <input type="checkbox" class="xEffect-input" name="xEffect_7" id="xEffect_7" autocomplete="off">${xEffect_7}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xEffect-btn" onclick="resetButtons('xEffect-reset')" for="2">
+                                    <input type="checkbox" class="xEffect-input" name="xEffect_8" id="xEffect_8" autocomplete="off">${xEffect_8}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xEffect-btn" onclick="resetButtons('xEffect-reset')" for="2">
+                                    <input type="checkbox" class="xEffect-input" name="xEffect_9" id="xEffect_9" autocomplete="off">${xEffect_9}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xEffect-btn" onclick="resetButtons('xEffect-reset')" for="2">
+                                    <input type="checkbox" class="xEffect-input" name="xEffect_10" id="xEffect_10" autocomplete="off">${xEffect_10}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xEffect-btn" onclick="resetButtons('xEffect-reset')" for="2">
+                                    <input type="checkbox" class="xEffect-input" name="xEffect_11" id="xEffect_11" autocomplete="off">${xEffect_11}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xEffect-btn" onclick="resetButtons('xEffect-reset')" for="2">
+                                    <input type="checkbox" class="xEffect-input" name="xEffect_12" id="xEffect_12" autocomplete="off">${xEffect_12}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xEffect-btn" onclick="resetButtons('xEffect-reset')" for="2">
+                                    <input type="checkbox" class="xEffect-input" name="xEffect_13" id="xEffect_13" autocomplete="off">${xEffect_13}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xEffect-btn" onclick="resetButtons('xEffect-reset')" for="2">
+                                    <input type="checkbox" class="xEffect-input" name="xEffect_14" id="xEffect_14" autocomplete="off">${xEffect_14}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice xEffect-btn" onclick="resetButtons('xEffect-reset')" for="2">
+                                    <input type="checkbox" class="xEffect-input" name="xEffect_15" id="xEffect_15" autocomplete="off">${xEffect_15}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sequence-container row">
+                        <div class="col-2 bold"></div>
+                        <div class="col-10 question-choice-container btn-group-container">
+                            <div class="btn-group btn-group-toggle row" data-toggle="buttons">
+                                <label class="btn btn-unique button-multi-choice xEffect-reset-btn" onclick="resetButtons('xEffect')" for="-1">
+                                    <input type="checkbox" class="xEffect-reset-input" name="xEffect_reset" id="xEffect_reset" autocomplete="off">None of these apply
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="sequence-container row">
+                        <div class="col-2 bold">Other</div>
+                        <div class="col-10">
+                            If the option list is empty, no reasonably answer applies, or you have a better answer in mind, please feel free to <b>write down your own answers</b>.
+                        </div>
+                    </div>
+                    <br>
+                    <div class="sequence-container row">
+                        <div class="col-2 bold"></div>
+                        <div class="col-5">
+                            <textarea name="xEffect_other_1" placeholder="" rows=1></textarea>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="sequence-container row">
+                        <div class="col-2 bold"></div>
+                        <div class="col-5">
+                            <textarea name="xEffect_other_2" placeholder="" rows=1></textarea>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="sequence-container row">
+                        <div class="col-2 bold"></div>
+                        <div class="col-5">
+                            <textarea name="xEffect_other_3" placeholder="" rows=1></textarea>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="sequence-container row">
+                        <div class="col-2 bold"></div>
+                        <div class="col-5">
+                            <textarea name="xEffect_other_4" placeholder="" rows=1></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="">
+                    <div class="sequence-container row">
+                        <div class="col-2 bold">Question</div>
+                        <div class="col-7 italic" style="color: blue; font-size: 14pt;">What <b>effects</b> does the event have on <b>others</b>?</div>
+                    </div>
+                    <br>
+                    <div class="sequence-container row">
+                        <div class="col-2 bold">Answer</div>
+                        <div class="col-7 italic" style="color: blue; font-size: 14pt;"><b>Others</b> then ____.</div>
+                    </div>
+
+                    <div class="sequence-container row">
+                        <div class="col-2 bold"></div>
+                        <div class="col-10 question-choice-container btn-group-container">
+                            <div class="btn-group btn-group-toggle row" data-toggle="buttons">
+                                <label class="btn btn-secondary button-multi-choice oEffect-btn" onclick="resetButtons('oEffect-reset')" for="2">
+                                    <input type="checkbox" class="oEffect-input" name="oEffect_1" id="oEffect_1" autocomplete="off">${oEffect_1}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice oEffect-btn" onclick="resetButtons('oEffect-reset')" for="2">
+                                    <input type="checkbox" class="oEffect-input" name="oEffect_2" id="oEffect_2" autocomplete="off">${oEffect_2}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice oEffect-btn" onclick="resetButtons('oEffect-reset')" for="2">
+                                    <input type="checkbox" class="oEffect-input" name="oEffect_3" id="oEffect_3" autocomplete="off">${oEffect_3}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice oEffect-btn" onclick="resetButtons('oEffect-reset')" for="2">
+                                    <input type="checkbox" class="oEffect-input" name="oEffect_4" id="oEffect_4" autocomplete="off">${oEffect_4}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice oEffect-btn" onclick="resetButtons('oEffect-reset')" for="2">
+                                    <input type="checkbox" class="oEffect-input" name="oEffect_5" id="oEffect_5" autocomplete="off">${oEffect_5}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice oEffect-btn" onclick="resetButtons('oEffect-reset')" for="2">
+                                    <input type="checkbox" class="oEffect-input" name="oEffect_6" id="oEffect_6" autocomplete="off">${oEffect_6}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice oEffect-btn" onclick="resetButtons('oEffect-reset')" for="2">
+                                    <input type="checkbox" class="oEffect-input" name="oEffect_7" id="oEffect_7" autocomplete="off">${oEffect_7}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice oEffect-btn" onclick="resetButtons('oEffect-reset')" for="2">
+                                    <input type="checkbox" class="oEffect-input" name="oEffect_8" id="oEffect_8" autocomplete="off">${oEffect_8}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice oEffect-btn" onclick="resetButtons('oEffect-reset')" for="2">
+                                    <input type="checkbox" class="oEffect-input" name="oEffect_9" id="oEffect_9" autocomplete="off">${oEffect_9}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice oEffect-btn" onclick="resetButtons('oEffect-reset')" for="2">
+                                    <input type="checkbox" class="oEffect-input" name="oEffect_10" id="oEffect_10" autocomplete="off">${oEffect_10}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice oEffect-btn" onclick="resetButtons('oEffect-reset')" for="2">
+                                    <input type="checkbox" class="oEffect-input" name="oEffect_11" id="oEffect_11" autocomplete="off">${oEffect_11}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice oEffect-btn" onclick="resetButtons('oEffect-reset')" for="2">
+                                    <input type="checkbox" class="oEffect-input" name="oEffect_12" id="oEffect_12" autocomplete="off">${oEffect_12}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice oEffect-btn" onclick="resetButtons('oEffect-reset')" for="2">
+                                    <input type="checkbox" class="oEffect-input" name="oEffect_13" id="oEffect_13" autocomplete="off">${oEffect_13}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice oEffect-btn" onclick="resetButtons('oEffect-reset')" for="2">
+                                    <input type="checkbox" class="oEffect-input" name="oEffect_14" id="oEffect_14" autocomplete="off">${oEffect_14}
+                                </label>
+
+                                <label class="btn btn-secondary button-multi-choice oEffect-btn" onclick="resetButtons('oEffect-reset')" for="2">
+                                    <input type="checkbox" class="oEffect-input" name="oEffect_15" id="oEffect_15" autocomplete="off">${oEffect_15}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sequence-container row">
+                        <div class="col-2 bold"></div>
+                        <div class="col-10 question-choice-container btn-group-container">
+                            <div class="btn-group btn-group-toggle row" data-toggle="buttons">
+                                <label class="btn btn-unique button-multi-choice oEffect-reset-btn" onclick="resetButtons('oEffect')" for="-1">
+                                    <input type="checkbox" class="oEffect-reset-input" name="oEffect_reset" id="oEffect_reset" autocomplete="off">None of these apply
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="sequence-container row">
+                        <div class="col-2 bold">Other</div>
+                        <div class="col-10">
+                            If the option list is empty, no reasonably answer applies, or you have a better answer in mind, please feel free to <b>write down your own answers</b>.
+                        </div>
+                    </div>
+                    <br>
+                    <div class="sequence-container row">
+                        <div class="col-2 bold"></div>
+                        <div class="col-5">
+                            <textarea name="oEffect_other_1" placeholder="" rows=1></textarea>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="sequence-container row">
+                        <div class="col-2 bold"></div>
+                        <div class="col-5">
+                            <textarea name="oEffect_other_2" placeholder="" rows=1></textarea>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="sequence-container row">
+                        <div class="col-2 bold"></div>
+                        <div class="col-5">
+                            <textarea name="oEffect_other_3" placeholder="" rows=1></textarea>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="sequence-container row">
+                        <div class="col-2 bold"></div>
+                        <div class="col-5">
+                            <textarea name="oEffect_other_4" placeholder="" rows=1></textarea>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- QUESTIONS END -->
+
+            <!-- OPTIONAL FEEDBACK -->
+            <div class="row mt-5">
+                <div class="col-8 offset-2 col-lg-6 offset-lg-3">
+                    <p>(Optional) Please let us know if anything was unclear, if you experienced any issues, or if you have any other feedback for us.</p>
+                    <textarea id="feedback" name="feedback" rows=3></textarea>
+                </div>
+            </div>
+
+            <!-- SUBMIT BUTTON -->
+            <div class="row mt-5">
+                <div class="col-2 offset-5">
+                    <input id="submitButton" name="submitButtonTimer" onclick="recordTimer(); getnext();" type="submit" value="Submit">
+                </div>
+            </div>
+
+        </form>
+        <script language='Javascript'>turkSetAssignmentID();</script>
+    </div>
+    <!-- MTURK INPUT END -->
+
+</div>
+<!-- HIT END -->
+
+<!-- BOOSTRAP JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script id="timeme.min.js" type="text/javascript">
+    (function(){var e,t;e=this,t=function(){var r={startStopTimes:{},idleTimeoutMs:3e4,currentIdleTimeMs:0,checkStateRateMs:250,active:!1,idle:!1,currentPageName:"default-page-name",timeElapsedCallbacks:[],userLeftCallbacks:[],userReturnCallbacks:[],trackTimeOnElement:function(e){var t=document.getElementById(e);t&&(t.addEventListener("mouseover",function(){r.startTimer(e)}),t.addEventListener("mousemove",function(){r.startTimer(e)}),t.addEventListener("mouseleave",function(){r.stopTimer(e)}),t.addEventListener("keypress",function(){r.startTimer(e)}),t.addEventListener("focus",function(){r.startTimer(e)}))},getTimeOnElementInSeconds:function(e){var t=r.getTimeOnPageInSeconds(e);return t||0},startTimer:function(e,t){if(e=e||r.currentPageName,void 0===r.startStopTimes[e])r.startStopTimes[e]=[];else{var n=r.startStopTimes[e],i=n[n.length-1];if(void 0!==i&&void 0===i.stopTime)return}r.startStopTimes[e].push({startTime:t||new Date,stopTime:void 0}),r.active=!0,r.idle=!1},stopAllTimers:function(){for(var e=Object.keys(r.startStopTimes),t=0;t<e.length;t++)r.stopTimer(e[t])},stopTimer:function(e,t){e=e||r.currentPageName;var n=r.startStopTimes[e];void 0!==n&&0!==n.length&&(void 0===n[n.length-1].stopTime&&(n[n.length-1].stopTime=t||new Date),r.active=!1)},getTimeOnCurrentPageInSeconds:function(){return r.getTimeOnPageInSeconds(r.currentPageName)},getTimeOnPageInSeconds:function(e){var t=r.getTimeOnPageInMilliseconds(e);return void 0===t?void 0:t/1e3},getTimeOnCurrentPageInMilliseconds:function(){return r.getTimeOnPageInMilliseconds(r.currentPageName)},getTimeOnPageInMilliseconds:function(e){var t=r.startStopTimes[e];if(void 0!==t){for(var n=0,i=0;i<t.length;i++){var s=t[i].startTime,o=t[i].stopTime;void 0===o&&(o=new Date),n+=o-s}return Number(n)}},getTimeOnAllPagesInSeconds:function(){for(var e=[],t=Object.keys(r.startStopTimes),n=0;n<t.length;n++){var i=t[n],s=r.getTimeOnPageInSeconds(i);e.push({pageName:i,timeOnPage:s})}return e},setIdleDurationInSeconds:function(e){var t=parseFloat(e);if(!1!==isNaN(t))throw{name:"InvalidDurationException",message:"An invalid duration time ("+e+") was provided."};return r.idleTimeoutMs=1e3*e,this},setCurrentPageName:function(e){return r.currentPageName=e,this},resetRecordedPageTime:function(e){delete r.startStopTimes[e]},resetAllRecordedPageTimes:function(){for(var e=Object.keys(r.startStopTimes),t=0;t<e.length;t++)r.resetRecordedPageTime(e[t])},resetIdleCountdown:function(){r.idle&&r.triggerUserHasReturned(),r.idle=!1,r.currentIdleTimeMs=0},callWhenUserLeaves:function(e,t){this.userLeftCallbacks.push({callback:e,numberOfTimesToInvoke:t})},callWhenUserReturns:function(e,t){this.userReturnCallbacks.push({callback:e,numberOfTimesToInvoke:t})},triggerUserHasReturned:function(){if(!r.active)for(var e=0;e<this.userReturnCallbacks.length;e++){var t=this.userReturnCallbacks[e],n=t.numberOfTimesToInvoke;(isNaN(n)||void 0===n||0<n)&&(--t.numberOfTimesToInvoke,t.callback())}r.startTimer()},triggerUserHasLeftPage:function(){if(r.active)for(var e=0;e<this.userLeftCallbacks.length;e++){var t=this.userLeftCallbacks[e],n=t.numberOfTimesToInvoke;(isNaN(n)||void 0===n||0<n)&&(--t.numberOfTimesToInvoke,t.callback())}r.stopAllTimers()},callAfterTimeElapsedInSeconds:function(e,t){r.timeElapsedCallbacks.push({timeInSeconds:e,callback:t,pending:!0})},checkState:function(){for(var e=0;e<r.timeElapsedCallbacks.length;e++)r.timeElapsedCallbacks[e].pending&&r.getTimeOnCurrentPageInSeconds()>r.timeElapsedCallbacks[e].timeInSeconds&&(r.timeElapsedCallbacks[e].callback(),r.timeElapsedCallbacks[e].pending=!1);!1===r.idle&&r.currentIdleTimeMs>r.idleTimeoutMs?(r.idle=!0,r.triggerUserHasLeftPage()):r.currentIdleTimeMs+=r.checkStateRateMs},visibilityChangeEventName:void 0,hiddenPropName:void 0,listenForVisibilityEvents:function(){void 0!==document.hidden?(r.hiddenPropName="hidden",r.visibilityChangeEventName="visibilitychange"):void 0!==document.mozHidden?(r.hiddenPropName="mozHidden",r.visibilityChangeEventName="mozvisibilitychange"):void 0!==document.msHidden?(r.hiddenPropName="msHidden",r.visibilityChangeEventName="msvisibilitychange"):void 0!==document.webkitHidden&&(r.hiddenPropName="webkitHidden",r.visibilityChangeEventName="webkitvisibilitychange"),document.addEventListener(r.visibilityChangeEventName,function(){document[r.hiddenPropName]?r.triggerUserHasLeftPage():r.triggerUserHasReturned()},!1),window.addEventListener("blur",function(){r.triggerUserHasLeftPage()}),window.addEventListener("focus",function(){r.triggerUserHasReturned()}),document.addEventListener("mousemove",function(){r.resetIdleCountdown()}),document.addEventListener("keyup",function(){r.resetIdleCountdown()}),document.addEventListener("touchstart",function(){r.resetIdleCountdown()}),window.addEventListener("scroll",function(){r.resetIdleCountdown()}),setInterval(function(){r.checkState()},r.checkStateRateMs)},websocket:void 0,websocketHost:void 0,setUpWebsocket:function(t){if(window.WebSocket&&t){var e=t.websocketHost;try{r.websocket=new WebSocket(e),window.onbeforeunload=function(e){r.sendCurrentTime(t.appId)},r.websocket.onopen=function(){r.sendInitWsRequest(t.appId)},r.websocket.onerror=function(e){console&&console.log("Error occurred in websocket connection: "+e)},r.websocket.onmessage=function(e){console&&console.log(e.data)}}catch(e){console&&console.error("Failed to connect to websocket host.  Error:"+e)}}return this},websocketSend:function(e){r.websocket.send(JSON.stringify(e))},sendCurrentTime:function(e){var t={type:"INSERT_TIME",appId:e,timeOnPageMs:r.getTimeOnCurrentPageInMilliseconds(),pageName:r.currentPageName};r.websocketSend(t)},sendInitWsRequest:function(e){var t={type:"INIT",appId:e};r.websocketSend(t)},initialize:function(e){var t=r.idleTimeoutMs||30,n=r.currentPageName||"default-page-name",i=void 0,s=void 0;e&&(t=e.idleTimeoutInSeconds||t,n=e.currentPageName||n,i=e.websocketOptions,s=e.initialStartTime),r.setIdleDurationInSeconds(t).setCurrentPageName(n).setUpWebsocket(i).listenForVisibilityEvents(),r.startTimer(void 0,s)}};return r},"undefined"!=typeof module&&module.exports?module.exports=t():"function"==typeof define&&define.amd?define([],function(){return e.TimeMe=t()}):e.TimeMe=t()}).call(this);
+</script>
+
+
+
+<!-- HITPUB JS -->
+<script id="hitpub_js">
+
+    // Initialize library and start tracking time
+    TimeMe.initialize({
+        currentPageName: "my-home-page", // current page
+        idleTimeoutInSeconds: 30 // seconds
+    });
+
+    // prevent submit on enter key
+    document.getElementById("mturk_form").onkeypress = function(e) {
+        var key = e.charCode || e.keyCode || 0;
+        if (key == 13) {
+          e.preventDefault();
+        }
+    }
+
+    // hide excessive empty options
+    var multi_choice_btns = document.getElementsByClassName("button-multi-choice");
+    for (var i = 0; i < multi_choice_btns.length; i++) {
+        if (multi_choice_btns[i].textContent.trim() === "//".trim()) {
+            multi_choice_btns[i].style.visibility = "hidden";
+        }
+    }
+
+    // hide the "none of the options applies" button if the option list is empty
+    function hideNoneAppliesBtn(group_name) {
+        var btns = document.getElementsByClassName(group_name + '-btn');
+        var num_nonempty_btns = $('.' + group_name + '-btn' + ':not([style*="visibility: hidden"])').length;
+        if (num_nonempty_btns === 0) {
+            document.getElementsByClassName(group_name + "-reset-btn")[0].style.visibility = "hidden";
+        }
+    }
+
+    hideNoneAppliesBtn("xNeed");
+    hideNoneAppliesBtn("xEffect");
+    hideNoneAppliesBtn("oEffect");
+
+    function recordTimer() {
+        // Retrieve time spent on current page
+        var submitBtn = document.getElementById('submitButton');
+        var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
+        submitBtn.value = timeSpentOnPage;
+    }
+
+    // function to display contexts
+    function setContextDisplays(qNum, qType) {
+        // get element containing question, step
+        if (qType == "question") {
+            var questionId = "question" + String(qNum);
+            var stepId = "Step"  + String(qNum);
+        }
+        var questionElement = document.getElementById(questionId);
+        var step = document.getElementById(stepId).getAttribute("value").toLowerCase();
+
+        // add emphasize class to stepElement
+        var stepElement = questionElement.getElementsByClassName(step + " event")[0];
+        stepElement.classList.add("emphasize");
+
+        // set display: none for elements after step
+        var hideSteps = [];
+        if (step == 'beginning') {
+            hideSteps = ['middle', 'end']
+        }
+        else if (step == 'middle') {
+            hideSteps = ['end']
+        }
+        hideSteps.forEach( function (hideStep) {
+            var hideElements = Array.from(questionElement.getElementsByClassName(hideStep));
+            hideElements.forEach( function (hideElement) {
+                hideElement.style.display = "none";
+            })
+        })
+
+        // get prompt and btn-group-container elements
+        var promptId = "prompt" + String(qNum);
+        var promptElement = document.getElementById(promptId);
+
+        var btnGroupContainerId = "btn-group-container" + String(qNum);
+        var btnGroupContainerElement = document.getElementById(btnGroupContainerId);
+
+        // align prompt and radio buttons
+        if (step == 'middle') {
+            promptElement.classList.add("offset-4");
+            btnGroupContainerElement.classList.add("justify-content-center");
+        }
+        else if (step == "end") {
+            promptElement.classList.add("offset-8");
+            btnGroupContainerElement.classList.add("justify-content-end");
+        }
+    }
+
+    // reset selected buttons
+    function resetButtons(buttonGroupName) {
+        $('.' + buttonGroupName + "-btn").removeClass('active');
+        $('.' + buttonGroupName + "-input").each(function(){
+            $(this).prop('checked', false)
+        });
+    }
+
+</script>

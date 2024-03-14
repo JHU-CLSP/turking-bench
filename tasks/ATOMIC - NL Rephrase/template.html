@@ -1,0 +1,628 @@
+            <html lang="en">
+
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+
+                    <!-- BOOTSTRAP CSS -->
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+                    <!-- HITPUB CSS -->
+                    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
+                    <link rel=stylesheet href="https://cdn.jsdelivr.net/npm/@allenai/varnish@0.3.18/theme.css" />
+                    <style id="hitpub_css">
+                        /***********************************************
+                        MOSAIC BOOSTRAP OVERWRITES
+                        ***********************************************/
+                        #hitinfo .card {
+                            border-radius: 0;
+                        }
+                        #hitinfo .card:first-child {
+                            border-bottom: 0;
+                        }
+                         #hitinfo button.btn-link {
+                            color: #06486F;
+                            text-decoration: none;
+                         }
+                        #hitinfo button.btn-link:hover {
+                            text-decoration: none;
+                        }
+                        #hit ul.question-choice {
+                            list-style-type: none;
+                        }
+                        #hit h3 {
+                            font-size: 1.25rem;
+                        }
+                        /***********************************************
+                        MOSAIC GENERAL STYLING
+                        ***********************************************/
+                        body {
+                            font-family: "Open Sans", "Roboto", sans-serif;
+                            background-color: #E9EAED;
+                        }
+                        #hit {
+                            background-color: #fff;
+                            padding-bottom: 2.5rem;
+                        }
+                        textarea#feedback {
+                            width: 100%
+                        }
+                        input#submitButton {
+                            margin: auto;
+                            display: block;
+                            background-color: #2172a4;
+                            color: #fff;
+                            font-size: 1.125rem;
+                            padding: .5rem 1rem;
+                            cursor: pointer;
+                            border-radius: 1rem;
+                        }
+                        input#submitButton:hover {
+                            background-color: #06486F;
+                        }
+                        textarea.inline-input {
+                            display: inline-block;
+                            width: 100%;
+                            border: none;
+                        }
+                        textarea.inline-input:focus {
+                            outline: none;
+                        }
+                        div.prompt {
+                            /*margin-bottom: .82rem;*/
+                        }
+                        div.response, div.response textarea {
+                            font-style: italic;
+                        }
+                        div.question .obj, div.question .use {
+                        }
+                        div.feedback-container {
+                            padding-top: 2.5rem;
+                        }
+                        textarea#feedback {
+                            border: solid 1px #ccc;
+                        }
+                        div.question-container {
+                            border: solid 1px #ccc;
+                            padding: .5rem 0;
+                        }
+                        ul.sublist {
+                            font-style: italic;
+                        }
+                        ul.sublist li {
+                            margin-top: 0;
+                        }
+                        div.fact-example-container div {
+                            font-style: italic;
+                        }
+                        #examples div.question .reason {
+                            font-style: italic;
+                        }
+                        #examples .bad {
+                            color: darkred;
+                        }
+                        #examples .good {
+                            color: green;
+                        }
+                        #examples h3 {
+                            margin-left: 15px;
+                        }
+                        #examples li {
+                            margin-top: 0;
+                        }
+                    </style>
+                    <!-- HIT START -->
+                    <div id="hit" class="container">
+                        <div class="col-10 offset-1">
+                            <div class="accordion" id="hitinfo">
+                                <!-- INSTRUCTIONS START -->
+                                <div class="card">
+                                    <div class="card-header id="instructionsHeading">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#instructions" aria-expanded="true" aria-controls="instructions">
+                                                Instructions (click to expand)
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div class="collapse show" id="instructions" aria-labelledby="instructionsHeading" data-parent="#hitinfo">
+                                        <div class="card-body">
+                                            <h4>Overview</h4>
+                                            <p>Thanks for participating in this HIT!</p>
+                                            <p>For each question, you will be shown two phrases. Your goal is to combine these phrases to create a common sense fact. For example:</p>
+
+
+                                            <div class="row justify-content-center question">
+                                                <div class="row col-11 question-container pt-3 pb-3">
+                                                    <div class="col-1">
+                                                        1)
+                                                    </div>
+                                                    <div class="col-10">
+                                                        <div class="prompt mb-2">
+                                                            <span class="obj">laptop</span>, <span class="use">look for best deals online</span>
+                                                        </div>
+                                                        <div class="response">
+                                                            You can use a laptop to look for deals online.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!--
+
+                                            <div class="row justify-content-center question">
+                                                <div class="row col-11 question-container pt-3 pb-3">
+                                                    <div class="col-1">
+                                                        2)
+                                                    </div>
+                                                    <div class="col-10">
+                                                        <div class="prompt mb-2">
+                                                            <span class="obj">suit</span>, <span class="use">look professional at work</span>
+                                                        </div>
+                                                        <div class="response">
+                                                            Wearing a suit makes you look professional at work.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row justify-content-center question">
+                                                <div class="row col-11 question-container pt-3 pb-3">
+                                                    <div class="col-1">
+                                                        3)
+                                                    </div>
+                                                    <div class="col-10">
+                                                        <div class="prompt mb-2">
+                                                            <span class="obj">shovel</span>, <span class="use">dig holes</span>
+                                                        </div>
+                                                        <div class="response">
+                                                            Shovels are used to dig holes.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row justify-content-center question">
+                                                <div class="row col-11 question-container pt-3 pb-3">
+                                                    <div class="col-1">
+                                                        4)
+                                                    </div>
+                                                    <div class="col-10">
+                                                        <div class="prompt mb-2">
+                                                            <span class="obj">coffee</span>, <span class="use">get caffeine for alertness</span>
+                                                        </div>
+                                                        <div class="response">
+                                                            People often use coffee to get caffeine and stay alert.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row justify-content-center question">
+                                                <div class="row col-11 question-container pt-3 pb-3">
+                                                    <div class="col-1">
+                                                        5)
+                                                    </div>
+                                                    <div class="col-10">
+                                                        <div class="prompt mb-2">
+                                                            <span class="obj">microphone</span>, <span class="use">talk into</span>
+                                                        </div>
+                                                        <div class="response">
+                                                            You can talk into a microphone.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            -->
+                                            <p class="mt-4 mb-4">To clarify: a common sense fact is an independent sentence that describes a general fact about the world. Here are some examples of common sense facts:</p>
+                                            <div class="fact-example-container col-6">
+                                                <div>You can use a bed to lie down on.</div>
+                                                <div>People often wear raincoats when it's raining.</div>
+                                                <div>Instruments are used to make music.</div>
+                                                <div>Golf is played with golf clubs.</div>
+                                                <div>One can use a hammer to hit nails.</div>
+                                            </div>
+
+                                            <h4 class="mt-4">Guidelines</h4>
+                                            <ul>
+                                                <li><b>Use proper grammar.</b></li>
+                                                <li><b>Write independent sentences.</b>
+                                                    <ul class="sublist">
+                                                        <li>Your responses should make sense as stand-alone sentences.</li>
+                                                    </ul>
+                                                </li>
+                                                <li><b>Write general statements.</b>
+                                                    <ul class="sublist">
+                                                        <li>Do not mention specific people or persons (PersonX, they, he, she, etc.)</li>
+                                                        <li>Do not mention specific items ("the piano", "his toys", etc.)</li>
+                                                    </ul>
+                                                </li>
+                                                <li><b>Write in the third person.</b>
+                                                    <ul class="sublist">
+                                                        <li>e.g. "You can...", "One can...", "____ is used for....", etc.</li>
+                                                    </ul>
+                                                </li>
+                                                <li><b>Use a mix of phrase patterns.</b>
+                                                    <ul class="sublist">
+                                                        <li>In other words - don't use the same pattern (e.g. "You can use __ to __") for every response.</li>
+                                                    </ul>
+                                                </li>
+                                                <li><b>Avoid adding new information.</b>
+                                                    <ul class="sublist">
+                                                        <li>e.g. If the phrases are "chair" and "sit on", don't write "Chairs are used to sit on at lunch."</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- INSTRUCTIONS END -->
+
+                                <!-- EXAMPLES START -->
+                                <div class="card">
+                                    <div class="card-header id="examplesHeading">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#examples" aria-expanded="true" aria-controls="examples">
+                                                Examples (click to expand)
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div class="collapse" id="examples" aria-labelledby="examplesHeading" data-parent="#hitinfo">
+                                        <div class="card-body">
+
+                                            <!-- h3>Detailed</h3 -->
+                                            <p class="col-11 mb-1">Please note that each example has:
+                                                <div class="col-11 offset-1">
+                                                    <em>
+                                                    <div class="bad row">
+                                                        <div class="col-2">Bad:</div>
+                                                        <div class="col-10">An example of a bad response.</div>
+                                                    </div>
+                                                    <div class="reason row">
+                                                        <div class="col-2">Reason:</div>
+                                                        <div class="col-10">The reason why the response is bad.</div>
+                                                    </div>
+                                                    <div class="good row">
+                                                        <div class="col-2">Good:</div>
+                                                        <div class="col-10">An example of a good response.</div>
+                                                    </div>
+                                                    </em>
+                                                </div>
+                                            </p>
+
+                                            <div class="row justify-content-center question">
+                                                <div class="row col-11 question-container pb-3 pt-3">
+                                                    <div class="col-1">
+                                                        1)
+                                                    </div>
+                                                    <div class="col-10">
+                                                        <div class="row prompt mb-3">
+                                                            <div class="col-10">
+                                                                <span class="obj">chair</span>, <span class="use">set at the desk</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row response bad">
+                                                            <div class="col-2">Bad:</div>
+                                                            <div class="col-10">Sit in a chair that's set at the desk.</div>
+                                                        </div>
+                                                        <div class="row reason">
+                                                            <div class="col-2">Reason:</div>
+                                                            <div class="col-10">Describes an action, not a fact. Introduces new information (Sit).</div>
+                                                        </div>
+                                                        <div class="row response good mb-2">
+                                                            <div class="col-2">Good:</div>
+                                                            <div class="col-10">A chair can be set at a desk.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row justify-content-center question">
+                                                <div class="row col-11 question-container pb-3 pt-3">
+                                                    <div class="col-1">
+                                                        2)
+                                                    </div>
+                                                    <div class="col-10">
+                                                        <div class="row prompt mb-3">
+                                                            <div class="col-10">
+                                                                <span class="obj">register</span>, <span class="use">ring up PersonX</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row response bad">
+                                                            <div class="col-2">Bad:</div>
+                                                            <div class="col-10">You can ring PersonX up at the register.</div>
+                                                        </div>
+                                                        <div class="row reason">
+                                                            <div class="col-2">Reason:</div>
+                                                            <div class="col-10">Not a general statement. Mentions a specific person (PersonX).</div>
+                                                        </div>
+                                                        <div class="row response good mb-2">
+                                                            <div class="col-2">Good:</div>
+                                                            <div class="col-10">You can use a register to ring someone up.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row justify-content-center question">
+                                                <div class="row col-11 question-container pb-3 pt-3">
+                                                    <div class="col-1">
+                                                        3)
+                                                    </div>
+                                                    <div class="col-10">
+                                                        <div class="row prompt mb-3">
+                                                            <div class="col-10">
+                                                                <span class="obj">electricity</span>, <span class="use">run the component</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row response bad">
+                                                            <div class="col-2">Bad:</div>
+                                                            <div class="col-10">Electricity is needed to run the component.</div>
+                                                        </div>
+                                                        <div class="row reason">
+                                                            <div class="col-2">Reason:</div>
+                                                            <div class="col-10">Not general. Mentions specific item (the component).</div>
+                                                        </div>
+                                                        <div class="row response good mb-2">
+                                                            <div class="col-2">Good:</div>
+                                                            <div class="col-10">Electricity is often needed to run components.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row justify-content-center question">
+                                                <div class="row col-11 question-container pb-3 pt-3">
+                                                    <div class="col-1">
+                                                        4)
+                                                    </div>
+                                                    <div class="col-10">
+                                                        <div class="row prompt mb-3">
+                                                            <div class="col-10">
+                                                                <span class="obj">bucket</span>, <span class="use">fill with sand</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row response bad">
+                                                            <div class="col-2">Bad:</div>
+                                                            <div class="col-10">Use a bucket to fill with sand.</div>
+                                                        </div>
+                                                        <div class="row reason">
+                                                            <div class="col-2">Reason:</div>
+                                                            <div class="col-10">Describes an action, not a fact.</div>
+                                                        </div>
+                                                        <div class="row response good mb-2">
+                                                            <div class="col-2">Good:</div>
+                                                            <div class="col-10">You can fill a bucket with sand.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row justify-content-center question">
+                                                <div class="row col-11 question-container pb-3 pt-3">
+                                                    <div class="col-1">
+                                                        5)
+                                                    </div>
+                                                    <div class="col-10">
+                                                        <div class="row prompt mb-3">
+                                                            <div class="col-10">
+                                                                <span class="obj">coal</span>, <span class="use">put in the grill</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row response bad">
+                                                            <div class="col-2">Bad:</div>
+                                                            <div class="col-10">Coal is put on the grill for heating.</div>
+                                                        </div>
+                                                        <div class="row reason">
+                                                            <div class="col-2">Reason:</div>
+                                                            <div class="col-10">Introduces new information.</div>
+                                                        </div>
+                                                        <div class="row response good mb-2">
+                                                            <div class="col-2">Good:</div>
+                                                            <div class="col-10">Coal can be put in a grill.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row justify-content-center question">
+                                                <div class="row col-11 question-container pb-3 pt-3">
+                                                    <div class="col-1">
+                                                        6)
+                                                    </div>
+                                                    <div class="col-10">
+                                                        <div class="row prompt mb-3">
+                                                            <div class="col-10">
+                                                                <span class="obj">soda</span>, <span class="use">enjoy with the pizza</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row response bad">
+                                                            <div class="col-2">Bad:</div>
+                                                            <div class="col-10">drink soda to enjoy with the pizza</div>
+                                                        </div>
+                                                        <div class="row reason">
+                                                            <div class="col-2">Reason:</div>
+                                                            <div class="col-10">Not grammatically correct. Not an independent sentence. Introduces new information (drink).</div>
+                                                        </div>
+                                                        <div class="row response good mb-2">
+                                                            <div class="col-2">Good:</div>
+                                                            <div class="col-10">People often enjoy pizza with soda.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row justify-content-center question">
+                                                <div class="row col-11 question-container pb-3 pt-3">
+                                                    <div class="col-1">
+                                                        7)
+                                                    </div>
+                                                    <div class="col-10">
+                                                        <div class="row prompt mb-3">
+                                                            <div class="col-10">
+                                                                <span class="obj">I.D badge</span>, <span class="use">get out of the building</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row response bad">
+                                                            <div class="col-2">Bad:</div>
+                                                            <div class="col-10">If a person does not have an I.D. badge they will need to get out of the building</div>
+                                                        </div>
+                                                        <div class="row reason">
+                                                            <div class="col-2">Reason:</div>
+                                                            <div class="col-10">Changes the information.</div>
+                                                        </div>
+                                                        <div class="row response good mb-2">
+                                                            <div class="col-2">Good:</div>
+                                                            <div class="col-10">You need an I.D badge to get out of some buildings.</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- EXAMPLES END -->
+
+                            </div>
+                        </div>
+
+                        <!-- MTURK INPUT START -->
+                        <div class="col-12 mt-4">
+                            <form name='mturk_form' method='post' id='mturk_form' >
+                                <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+                                <h3 class="offset-2 mb-4">Create common sense facts.</h3>
+
+                                <!-- START QUESTION MACRO -->
+
+                                <!-- END QUESTION MACRO -->
+
+                                <!-- START QUESTIONS -->
+
+
+                                <div class="row justify-content-center question">
+                                    <div class="row col-8 question-container pt-3 pb-3">
+                                        <div class="col-1">
+                                            1)
+                                        </div>
+                                        <div class="col-11">
+                                            <div class="prompt mb-2">
+                                                <span class="obj">${Object1}</span>, <span class="use">${Use1}</span>
+                                            </div>
+                                            <div class="response">
+                                                <textarea rows="1" class="inline-input" name="nl_phrase1" placeholder="..." required></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center question">
+                                    <div class="row col-8 question-container pt-3 pb-3">
+                                        <div class="col-1">
+                                            2)
+                                        </div>
+                                        <div class="col-11">
+                                            <div class="prompt mb-2">
+                                                <span class="obj">${Object2}</span>, <span class="use">${Use2}</span>
+                                            </div>
+                                            <div class="response">
+                                                <textarea rows="1" class="inline-input" name="nl_phrase2" placeholder="..." required></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center question">
+                                    <div class="row col-8 question-container pt-3 pb-3">
+                                        <div class="col-1">
+                                            3)
+                                        </div>
+                                        <div class="col-11">
+                                            <div class="prompt mb-2">
+                                                <span class="obj">${Object3}</span>, <span class="use">${Use3}</span>
+                                            </div>
+                                            <div class="response">
+                                                <textarea rows="1" class="inline-input" name="nl_phrase3" placeholder="..." required></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- END QUESTIONS -->
+
+                                <!-- OPTIONAL FEEDBACK -->
+                                <div class="feeback-container row mt-5 pt-3">
+                                    <div class="col-8 offset-2 col-lg-6 offset-lg-3">
+                                        <p>(Optional) Please let us know if anything was unclear, if you experienced any issues, or if you have any other feedback for us.</p>
+                                        <textarea id="feedback" name="feedback" rows=3></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- SUBMIT BUTTON -->
+                                <div class="row mt-5">
+                                    <div class="col-2 offset-5">
+                                        <input id="submitButton" onclick="getnext()" type="submit" value="Submit">
+                                    </div>
+                                </div>
+
+                            </form>
+                            <script language='Javascript'>turkSetAssignmentID();</script>
+                        </div>
+                        <!-- MTURK INPUT END -->
+
+                    </div>
+                    <!-- HIT END -->
+
+                <!-- BOOSTRAP JS -->
+                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+                <!-- HITPUB JS -->
+                <script id="hitpub_js">
+                    // automatically resize textarea fields based on content
+                    var autoExpand = function (field) {
+                    	// Reset field height
+                    	field.style.height = 'inherit';
+                    	// Get the computed styles for the element
+                    	var computed = window.getComputedStyle(field);
+                    	// Calculate the height
+                    	var height = parseInt(computed.getPropertyValue('border-top-width'), 10)
+                    	             + parseInt(computed.getPropertyValue('padding-top'), 10)
+                    	             + field.scrollHeight
+                    	             + parseInt(computed.getPropertyValue('padding-bottom'), 10)
+                    	             + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
+
+                    	field.style.height = height + 'px';
+                    };
+                    // add autoExpand listeners to textarea inputs
+                    document.addEventListener('input', function (event) {
+                    	if (event.target.tagName.toLowerCase() !== 'textarea') return;
+                    	autoExpand(event.target);
+                    }, false);
+
+                    // autoExpand inputs on document load
+                    document.addEventListener('DOMContentLoaded', function(event) {
+                       inputs = document.getElementsByTagName('textarea');
+                       for (var i = 1; i < inputs.length; i++) {
+                           autoExpand(inputs[i]);
+                       }
+                    })
+
+                    // prevent submit on enter key
+                    document.getElementById("mturk_form").onkeypress = function(e) {
+                        var key = e.charCode || e.keyCode || 0;
+                        if (key == 13) {
+                          e.preventDefault();
+                        }
+                    }
+                </script>

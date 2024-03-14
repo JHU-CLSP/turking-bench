@@ -1,0 +1,992 @@
+            <html lang="en">
+
+                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+
+
+                    <!-- BOOTSTRAP CSS -->
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+                    <!-- HITPUB CSS -->
+                    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" rel="stylesheet">
+                    <style id="hitpub_css">
+                        /***********************************************
+                                MOSAIC BOOSTRAP OVERWRITES
+                                ***********************************************/
+                                #hitinfo .card {
+                                    border-radius: 0;
+                                }
+                                 #hitinfo button.btn-link {
+                                    color: #fff;
+                                    text-decoration: none;
+                                 }
+
+
+                                #hitinfo button.btn-link:hover {
+                                    text-decoration: none;
+                                }
+                                #hit ul.question-choice {
+                                    list-style-type: none;
+                                }
+
+                                /***********************************************
+                                MOSAIC GENERAL STYLING
+                                ***********************************************/
+                                body {
+                                    font-family: "Open Sans", "Roboto", sans-serif;
+                                    line-height: 1.25;
+                                }
+                                textarea#feedback {
+                                    width: 100%
+                                }
+                                input#submitButton {
+                                    margin: auto;
+                                    display: block;
+                                    background-color: #2172a4;
+                                    color: #fff;
+                                    font-size: 1.125rem;
+                                    padding: .5rem 1rem;
+                                    cursor: pointer;
+                                    border-radius: 1rem;
+                                }
+                                input#submitButton:hover {
+                                    background-color: #06486F;
+                                }
+
+                                input[type="radio"] {
+                                    cursor: pointer;
+                                    transform:scale(1.5);
+                                    display:inline;
+                                }
+
+                                .form-check {
+                                    text-align:center;
+                                    border-left:1px solid lightgray;
+                                }
+
+                                div.goal-category {
+                                    border-bottom: solid 1px #ccc;
+                                    padding: 1rem 1rem;
+                                }
+
+                                li {
+                                    margin:0.6em;
+                                }
+
+                                table {
+                                    width: 80%;
+                                    margin: 5px;
+                                }
+
+                                tr {
+                                    border:1px solid #ccc;
+                                }
+
+                                th {
+                                    width:20%;
+                                    background-color:#fff;
+                                    font-weight:normal;
+                                    text-align: center;
+                                    padding:0.5em;
+                                }
+
+
+                                td {
+                                    padding-left:20px;
+                                    padding-right:10px;
+                                }
+
+
+
+
+                                /***********************************************
+                                HIT CUSTOM GENERAL STYLING
+                                ***********************************************/
+                                div.card-header {
+                                    background-color: #06486F;
+                                }
+                                div.card-header h5 {
+                                    color: #fff !important;
+                                }
+
+
+                                .question-choice-container label.btn {
+                                    background-color: #eee;
+                                    border: #ccc 1px solid;
+                                    margin-left: 0 !important;
+                                    color: black;
+                                }
+
+
+                                .legend {
+                                    margin-top: .33rem;
+                                    font-weight: normal;
+                                    padding-left: 40px;
+                                }
+                                .legend .label{
+                                    font-style: italic;
+                                }
+
+                                .emphasize {
+                                    font-weight: bold;
+                                    color: black;
+                                    font-style: italic;
+                                }
+
+                                .btn-group-container {
+                                    align:left;
+                                    padding:0;
+                                }
+
+                                .example {
+                                    pointer-events:none;
+                                }
+
+                                .title {
+                                    font-style: italic;
+                                }
+
+                                .entity {
+                                    color: blue;
+                                    font-weight: bold;
+                                }
+
+                                .use {
+                                    color: purple;
+                                    font-weight: bold;
+                                }
+
+                                .btn-group-xs > .btn, .btn-xs {
+                                  padding: .4rem .4rem;
+                                  font-size: .8rem;
+                                  line-height: 1.2;
+                                  border-radius: .2rem;
+                                }
+
+                                .card-body {
+                                    background-color:#fbfbfb;
+                                }
+
+                                .concept_a {
+                                  color: #0072B2;
+                                  font-weight: bold;
+                                  font-style: italic;
+                                }
+
+                                .concept_b {
+                                  color: #D55E00;
+                                  font-weight: bold;
+                                  font-style: italic;
+                                }
+
+                                .sm-bold {
+                                    font-weight:bold;
+                                    font-style: italic;
+                                    font-size: 80%;
+                                }
+
+
+
+                                label[for="2"]:hover, label[for="2"].active {
+                                    background-color:  #02523C !important;
+                                    color: white;
+                                }
+                                label[for="1"]:hover, label[for="1"].active {
+                                    background-color: #047D5C !important;
+                                    color: white;
+                                }
+
+                                label[for="0"]:hover, label[for="0"].active {
+                                    background-color: #999 !important;
+                                    color: white;
+                                }
+                                label[for="-1"]:hover, label[for="-1"].active {
+                                    background-color: #7F0404 !important;
+                                    color: white;
+                                }
+
+                                label[for="-2"]:hover, label[for="-2"].active {
+                                    background-color: #222 !important;
+                                    color: white;
+                                }
+
+                                label[for="-9"]:hover, label[for="-9"].active {
+                                    background-color: #555 !important;
+                                    color: white;
+                                }
+
+
+                                .table td {
+                                    text-align: center;
+                                }
+
+                                .explanation {
+                                    width:45%;
+                                    background-color:#fff;
+                                }
+
+                                .badge-warning {
+                                    background-color:#FFEB2A;
+                                }
+
+                                .bg-yellow {
+                                    background-color:#FFEB2A;
+                                }
+                    </style>
+                <!-- HIT START -->
+                <div class="container" id="hit">
+                <!-- ACCORDION START -->
+                <div class="col-12 accordion" id="hitinfo">
+                <!-- INSTRUCTIONS START -->
+                <div class="card">
+                    <div class="card-header" id="instructionsHeading">
+                        <h5 class="mb-0"><button aria-controls="instructions" aria-expanded="true" class="btn btn-link" data-target="#instructions" data-toggle="collapse" type="button">Instructions (click to expand/collapse)</button></h5>
+                    </div>
+
+                    <div aria-labelledby="instructionsHeading" class="collapse show" data-parent="#hitinfo" id="instructions">
+                    <div class="card-body">
+                    <div class="card-content">
+                        <p class="bg-white p-1 border border-secondary">WARNING: This HIT may contain adult content. Worker discretion is advised.</p>
+
+                        <p>Thanks for participating in this HIT!</p>
+
+                        <p class="mb-2">In this HIT, imagine  you are in the business of teaching people how to go about achieving everyday or life-long goals.
+                        You are handed a <strong>goal</strong> and a <strong>plan</strong> you can use to teach. <br>
+                        <br>Your task is to evaluate them based on their appropriateness, informativeness, and/or utility.</p>
+
+                            <div class="row">
+                                <div class="ml-4 col-1"><strong>Goal</strong></div>
+                                <div class="col-9">A life goal to achieve. Goal can be as simple as "cooking a dinner" to more elaborate "visiting Hawaii".
+                                It can also be fairly ambitious like "travelling to every country in the world" or time-consuming like "becoming the best sushi chef in the country".</div>
+                            </div>
+
+                            <div class="row mt-2">
+                                <div class="ml-4 col-1"><strong>Plan</strong></div>
+                                <div class="col-9">The proposed plan given goal. A list of typical subgoals or steps to achieve the main goal.<br/>
+                                (e.g., for "visit Hawaii": buy ticket to Hawaii, decide what you want to see, book lodging, pack, leave for the airport)</div>
+                            </div>
+
+                        <p class="mb-2 mt-3"><strong>Grade with the following rubric.</strong> We define the <span class="badge badge-success">Definitely</span>,
+                        <span class="badge badge-warning">Somewhat</span>, and <span class="badge badge-danger">Not at all</span>. Use middle values as needed.</p>
+
+                            <ol>
+                            <li><strong>Is the goal achievable?</strong>:
+                                <ul>
+                                <li><span class="badge badge-success">Definitely</span>: The goal is definitely and most certainly achievable with appropriate steps.
+                                <li><span class="badge badge-warning">Somewhat</span>: The goal is tricky or would take some time to achieve, but it could be done.
+                                <li><span class="badge badge-danger">Not at all</span>: The goal is nonsensical or totally unachievable in this current reality.
+                                </ul>
+                            <li><strong>Is the plan on-topic?</strong>:
+                                <ul>
+                                <li><span class="badge badge-success">Definitely</span>: Topic in the plan is relevant and appropriate to the goal.
+                                <li><span class="badge badge-warning">Somewhat</span>: Topic in the plan is wanders a bit from goal, but it is okay overall.
+                                <li><span class="badge badge-danger">Not at all</span>: Topic in the plan is overall irrelevant to the goal.
+                                </ul>
+                            <li><strong>Is the plan well-ordered?</strong>:
+                                <ul>
+                                <li><span class="badge badge-success">Definitely</span>: The ordering is just fine as is.
+                                <li><span class="badge badge-warning">Somewhat</span>: I could see reordering some of these, but it would be more of a stylistic change.
+                                <li><span class="badge badge-danger">Not at all</span>: Ordering is bad or nonsensical.
+                                </ul>
+                            <li><strong>Is the plan complete and informative?</strong>:
+                                <ul>
+                                <li><span class="badge badge-success">Definitely</span>: The plan provides a complete and informative picture of what's needed to achieve the goal.
+                                <li><span class="badge badge-warning">Somewhat</span>: The steps are somewhat general, but you overall you get what you need. You might need a few more minor details.
+                                <li><span class="badge badge-danger">Not at all</span>: The plan is really bland and is dominated by unnecessary, irrelevant, and/or repetitive steps, -or- key steps are missing.
+                                </ul>
+                            </ol>
+                        <p class="mb-2 mt-3">NOTES:</p>
+                            <ul>
+                            <li> Steps are allowed to be general so long as the key information is there. Think: is the plan enough to give students solid grounding to start of asking relevant questions and taking relevant steps to achieve the goal?
+                            <li> Please do not hover too much over fine-grained differences. When in doubt, choose go with your gut instinct.
+                            <li> If the goal is an incomplete thought or is nonsensical, then please choose <span class="badge badge-danger">Not at all</span></li>
+                            </li>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- INSTRUCTIONS END -->
+                <!-- EXAMPLES START -->
+
+                <div class="card">
+                <div class="card-header" id="instructionsHeading">
+                <h5 class="mb-0"><button aria-controls="examples" aria-expanded="true" class="btn btn-link" data-target="#examples" data-toggle="collapse" type="button">Examples (click to expand/collapse)</button></h5>
+                </div>
+
+                <div aria-labelledby="instructionsHeading" class="collapse" data-parent="#hitinfo" id="examples">
+                <div class="card-body">
+                <div class="card-content">
+                    <div class="row border bg-dark">
+                        <div class="col col-3 text-light" style="font-weight:bold">Goal</div>
+                        <div class="col col-9 text-light pl-5" style="font-weight:bold">Plan</div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-3 pt-2">Go outside with the dog</div>
+                        <div class="col col-4 font-size-sm" style="font-size:90%">
+                        <ol>
+                            <li>Go to the door
+                            <li>Open the door
+                            <li>Exit the house
+                        </ol>
+                        </div>
+                        <div class="col col-4 font-size-sm" style="font-size:90%">
+                        <ol start="3">
+                            <li>Look for the dog
+                            <li>Find the dog
+                            <li>Go outside with the dog
+                        </ol>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col offset-1 col-11">
+                            <table class="table table-bordered table-sm" style="font-size:70%">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="h6 text-primary">RESPONSE:</th>
+                                        <th scope="col" class="bg-success text-light font-weight-bold" style="width:5%">
+                                            Definitely
+                                        </th>
+                                        <th scope="col" class="text-dark font-weight-bold" style="background-color:#D6E865;width:5%">
+                                            Mostly
+                                        </th>
+                                        <th scope="col" class="bg-yellow text-dark font-weight-bold" style="width:5%">
+                                            Somewhat
+                                        </th>
+                                        <th scope="col" class="text-light font-weight-bold" style="background-color:#FA8128;width:5%">
+                                            Hardly
+                                        </th>
+                                        <th scope="col" class="bg-danger text-light font-weight-bold" style="width:5%">
+                                            NotAtAll
+                                        </th>
+                                        <th scope="col" class="font-weight-bold">
+                                            Explanation
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is goal achievable?</th>
+                                        <td><input type="radio" name="a1" checked></td>
+                                        <td><input type="radio" name="a1" disabled></td>
+                                        <td><input type="radio" name="a1" disabled></td>
+                                        <td><input type="radio" name="a1" disabled></td>
+                                        <td><input type="radio" name="a1" disabled></td>
+                                        <td class="explanation">Definitely achievable.</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is plan on-topic?</th>
+                                        <td><input type="radio" name="t1" disabled></td>
+                                        <td><input type="radio" name="t1" disabled></td>
+                                        <td><input type="radio" name="t1" checked></td>
+                                        <td><input type="radio" name="t1" disabled></td>
+                                        <td><input type="radio" name="t1" disabled></td>
+                                        <td  class="explanation">Some steps wander away from the topic, but overall it's okay.</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is plan well-ordered?</th>
+                                        <td><input type="radio" name="o1" disabled></td>
+                                        <td><input type="radio" name="o1" disabled></td>
+                                        <td><input type="radio" name="o1" disabled></td>
+                                        <td><input type="radio" name="o1" checked></td>
+                                        <td><input type="radio" name="o1" disabled></td>
+                                        <td class="explanation">You exit the house <em>then</em> go outside? That is just wrong.</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is plan complete/informative?</th>
+                                        <td><input type="radio" name="c1" disabled></td>
+                                        <td><input type="radio" name="c1" disabled></td>
+                                        <td><input type="radio" name="c1" disabled></td>
+                                        <td><input type="radio" name="c1" checked></td>
+                                        <td><input type="radio" name="c1" disabled></td>
+                                        <td class="explanation">
+                                            Relevant key information needed to go outside with a dog would include
+                                            steps like get a dog leash, call your dog, etc. Steps are also repetitive for no good reason.
+                                        </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row border bg-dark">
+                        <div class="col col-3 text-light" style="font-weight:bold">Goal</div>
+                        <div class="col col-9 text-light pl-5" style="font-weight:bold">Plan</div>
+                    </div>
+                    <div class="row border-top">
+                        <div class="col col-3 pt-2">Learn how to scuba dive</div>
+                        <div class="col col-4" style="font-size:90%">
+                        <ol>
+                            <li>Research how to scuba dive
+                            <li>Purchase equipment
+                        </ol>
+                        </div>
+                        <div class="col col-4" style="font-size:90%">
+                        <ol start="3">
+                            <li>Take instruction
+                            <li>Go for a dive
+                        </ol>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col offset-1 col-11">
+                            <table class="table table-bordered table-sm" style="font-size:70%">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="h6 text-primary">RESPONSE:</th>
+                                        <th scope="col" class="bg-success text-light font-weight-bold" style="width:5%">
+                                            Definitely
+                                        </th>
+                                        <th scope="col" class="text-dark font-weight-bold" style="background-color:#D6E865;width:5%">
+                                            Mostly
+                                        </th>
+                                        <th scope="col" class="bg-yellow text-dark font-weight-bold" style="width:5%">
+                                            Somewhat
+                                        </th>
+                                        <th scope="col" class="text-light font-weight-bold" style="background-color:#FA8128;width:5%">
+                                            Hardly
+                                        </th>
+                                        <th scope="col" class="bg-danger text-light font-weight-bold" style="width:5%">
+                                            NotAtAll
+                                        </th>
+                                        <th scope="col" class="font-weight-bold">
+                                            Explanation
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is goal achievable?</th>
+                                        <td><input type="radio" name="a2" checked></td>
+                                        <td><input type="radio" name="a2" disabled></td>
+                                        <td><input type="radio" name="a2" disabled></td>
+                                        <td><input type="radio" name="a2" disabled></td>
+                                        <td><input type="radio" name="a2" disabled></td>
+                                        <td class="explanation">Definitely achievable.</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is plan on-topic?</th>
+                                        <td><input type="radio" name="t2" checked></td>
+                                        <td><input type="radio" name="t2" disabled></td>
+                                        <td><input type="radio" name="t2" disabled></td>
+                                        <td><input type="radio" name="t2" disabled></td>
+                                        <td><input type="radio" name="t2" disabled></td>
+                                        <td class="explanation">Plan is definitely on topic.</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is plan well-ordered?</th>
+                                        <td><input type="radio" name="o2" checked></td>
+                                        <td><input type="radio" name="o2" disabled></td>
+                                        <td><input type="radio" name="o2" disabled></td>
+                                        <td><input type="radio" name="o2" disabled></td>
+                                        <td><input type="radio" name="o2" disabled></td>
+                                        <td class="explanation">Ordering is on point.</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is plan complete/informative?</th>
+                                        <td><input type="radio" name="c2" disabled></td>
+                                        <td><input type="radio" name="c2" checked></td>
+                                        <td><input type="radio" name="c2" disabled></td>
+                                        <td><input type="radio" name="c2" disabled></td>
+                                        <td><input type="radio" name="c2" disabled></td>
+                                        <td class="explanation">Informativeness lacks a little
+                            as the steps are somewhat generic,
+                            nevertheless, they are very much sensible and informative steps one might want to take to learn to scuba dive.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row border bg-dark">
+                        <div class="col col-3 text-light" style="font-weight:bold">Goal</div>
+                        <div class="col col-9 text-light pl-5" style="font-weight:bold">Plan</div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-3  pt-2">Learn to cook a variety of ethnic cuisines</div>
+                        <div class="col col-4" style="font-size:90%">
+                        <ol>
+                            <li>watch videos
+                            <li>find a recipe
+                        </div>
+                        <div class="col col-4" style="font-size:90%">
+                        <ol start="3">
+                            <li>make a grocery list
+                            <li>cook ethnic food
+                        </ol>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col offset-1 col-11">
+                            <table class="table table-bordered table-sm" style="font-size:70%">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="h6 text-primary">RESPONSE:</th>
+                                        <th scope="col" class="bg-success text-light font-weight-bold" style="width:5%">
+                                            Definitely
+                                        </th>
+                                        <th scope="col" class="text-dark font-weight-bold" style="background-color:#D6E865;width:5%">
+                                            Mostly
+                                        </th>
+                                        <th scope="col" class="bg-yellow text-dark font-weight-bold" style="width:5%">
+                                            Somewhat
+                                        </th>
+                                        <th scope="col" class="text-light font-weight-bold" style="background-color:#FA8128;width:5%">
+                                            Hardly
+                                        </th>
+                                        <th scope="col" class="bg-danger text-light font-weight-bold" style="width:5%">
+                                            NotAtAll
+                                        </th>
+                                        <th scope="col" class="font-weight-bold">
+                                            Explanation
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is goal achievable?</th>
+                                        <td><input type="radio" name="a3" checked></td>
+                                        <td><input type="radio" name="a3" disabled></td>
+                                        <td><input type="radio" name="a3" disabled></td>
+                                        <td><input type="radio" name="a3" disabled></td>
+                                        <td><input type="radio" name="a3" disabled></td>
+                                        <td class="explanation">A goal can be achieved with some effort.</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is plan on-topic?</th>
+                                        <td><input type="radio" name="t3" checked></td>
+                                        <td><input type="radio" name="t3" disabled></td>
+                                        <td><input type="radio" name="t3" disabled></td>
+                                        <td><input type="radio" name="t3" disabled></td>
+                                        <td><input type="radio" name="t3" disabled></td>
+                                        <td class="explanation">The plan is on topic.</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is plan well-ordered?</th>
+                                        <td><input type="radio" name="o3" checked></td>
+                                        <td><input type="radio" name="o3" disabled></td>
+                                        <td><input type="radio" name="o3" disabled></td>
+                                        <td><input type="radio" name="o3" disabled></td>
+                                        <td><input type="radio" name="o3" disabled></td>
+                                        <td class="explanation">Ordering is on point.</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is plan complete/informative?</th>
+                                        <td><input type="radio" name="c3" disabled></td>
+                                        <td><input type="radio" name="c3" disabled></td>
+                                        <td><input type="radio" name="c3" disabled></td>
+                                        <td><input type="radio" name="c3" checked></td>
+                                        <td><input type="radio" name="c3" disabled></td>
+                                        <td class="explanation">Cooking ethnic food would require choosing a unfamiliar cuisines,
+                            finding recipes to try out, finding a ethnic grocery store to buy the unfamiliar ingredients etc.
+                            Note that most of the main content of this plan is in step 4 that simply repeats what the
+                            goal is about.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row border bg-dark">
+                        <div class="col col-3 text-light" style="font-weight:bold">Goal</div>
+                        <div class="col col-9 text-light pl-5" style="font-weight:bold">Plan</div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-3 pt-2">Start my own orphanage</div>
+                        <div class="col col-4" style="font-size:90%">
+                        <ol>
+                            <li>Research orphanages in developing countries
+                            <li>Make a budget
+                            <li>Choose a country or region to adopt from
+                        </ol>
+                        </div>
+                        <div class="col col-4" style="font-size:90%">
+                        <ol start="4">
+                            <li>Make application
+                            <li>Be accepted into the orphanage
+                        </ol>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col offset-1 col-11">
+                            <table class="table table-bordered table-sm" style="font-size:70%">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="h6 text-primary">RESPONSE:</th>
+                                        <th scope="col" class="bg-success text-light font-weight-bold" style="width:5%">
+                                            Definitely
+                                        </th>
+                                        <th scope="col" class="text-dark font-weight-bold" style="background-color:#D6E865;width:5%">
+                                            Mostly
+                                        </th>
+                                        <th scope="col" class="bg-yellow text-dark font-weight-bold" style="width:5%">
+                                            Somewhat
+                                        </th>
+                                        <th scope="col" class="text-light font-weight-bold" style="background-color:#FA8128;width:5%">
+                                            Hardly
+                                        </th>
+                                        <th scope="col" class="bg-danger text-light font-weight-bold" style="width:5%">
+                                            NotAtAll
+                                        </th>
+                                        <th scope="col" class="font-weight-bold">
+                                            Explanation
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is goal achievable?</th>
+                                        <td><input type="radio" name="a4" disabled></td>
+                                        <td><input type="radio" name="a4" checked></td>
+                                        <td><input type="radio" name="a4" disabled></td>
+                                        <td><input type="radio" name="a4" disabled></td>
+                                        <td><input type="radio" name="a4" disabled></td>
+                                        <td class="explanation">Mostly achievable.</td>
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is plan on-topic?</th>
+                                        <td><input type="radio" name="t4" disabled></td>
+                                        <td><input type="radio" name="t4" disabled></td>
+                                        <td><input type="radio" name="t4" disabled></td>
+                                        <td><input type="radio" name="t4" disabled></td>
+                                        <td><input type="radio" name="t4" checked></td>
+                                        <td class="explanation">Goal is about starting an orphanage, but the steps are about ... applying to an orphanage?</td>
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is plan well-ordered?</th>
+                                        <td><input type="radio" name="o4" disabled></td>
+                                        <td><input type="radio" name="o4" disabled></td>
+                                        <td><input type="radio" name="o4" disabled></td>
+                                        <td><input type="radio" name="o4" disabled></td>
+                                        <td><input type="radio" name="o4" checked></td>
+                                        <td class="explanation">The order doesn't make any sense.</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is plan complete/informative?</th>
+                                        <td><input type="radio" name="c4" disabled></td>
+                                        <td><input type="radio" name="c4" disabled></td>
+                                        <td><input type="radio" name="c4" checked></td>
+                                        <td><input type="radio" name="c4" disabled></td>
+                                        <td><input type="radio" name="c4" disabled></td>
+                                        <td class="explanation">The steps do not contain appropriate information for opening a new orphanage.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                     </div>
+                    <div class="row border bg-dark">
+                        <div class="col col-3 text-light" style="font-weight:bold">Goal</div>
+                        <div class="col col-9 text-light pl-5" style="font-weight:bold">Plan</div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-3 pt-2">Write a novel about growing up in South America</div>
+                        <div class="col col-4" style="font-size:90%">
+                        <ol>
+                            <li>Choose a topic
+                            <li>Hone your ides
+                        </ol>
+                        </div>
+                        <div class="col col-4" style="font-size:90%">
+                        <ol start="3">
+                            <li>Start writing
+                            <li>Edit, revise, expand
+                        </ol>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col offset-1 col-11">
+                            <table class="table table-bordered table-sm" style="font-size:70%">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="h6 text-primary">RESPONSE:</th>
+                                        <th scope="col" class="bg-success text-light font-weight-bold" style="width:5%">
+                                            Definitely
+                                        </th>
+                                        <th scope="col" class="text-dark font-weight-bold" style="background-color:#D6E865;width:5%">
+                                            Mostly
+                                        </th>
+                                        <th scope="col" class="bg-yellow text-dark font-weight-bold" style="width:5%">
+                                            Somewhat
+                                        </th>
+                                        <th scope="col" class="text-light font-weight-bold" style="background-color:#FA8128;width:5%">
+                                            Hardly
+                                        </th>
+                                        <th scope="col" class="bg-danger text-light font-weight-bold" style="width:5%">
+                                            NotAtAll
+                                        </th>
+                                        <th scope="col" class="font-weight-bold">
+                                            Explanation
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is goal achievable?</th>
+                                        <td><input type="radio" name="a5" disabled></td>
+                                        <td><input type="radio" name="a5" checked></td>
+                                        <td><input type="radio" name="a5" disabled></td>
+                                        <td><input type="radio" name="a5" disabled></td>
+                                        <td><input type="radio" name="a5" disabled></td>
+                                        <td class="explanation">Mostly achievable.</td>
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is plan on-topic?</th>
+                                        <td><input type="radio" name="t5" checked></td>
+                                        <td><input type="radio" name="t5" disabled></td>
+                                        <td><input type="radio" name="t5" disabled></td>
+                                        <td><input type="radio" name="t5" disabled></td>
+                                        <td><input type="radio" name="t5" disabled></td>
+                                        <td class="explanation">Definitely on topic.</td>
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is plan well-ordered?</th>
+                                        <td><input type="radio" name="o5" checked></td>
+                                        <td><input type="radio" name="o5" disabled></td>
+                                        <td><input type="radio" name="o5" disabled></td>
+                                        <td><input type="radio" name="o5" disabled></td>
+                                        <td><input type="radio" name="o5" disabled></td>
+                                        <td class="explanation">Good ordering.</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is plan complete/informative?</th>
+                                        <td><input type="radio" name="c5" disabled></td>
+                                        <td><input type="radio" name="c5" disabled></td>
+                                        <td><input type="radio" name="c5" disabled></td>
+                                        <td><input type="radio" name="c5" disabled></td>
+                                        <td><input type="radio" name="c5" checked></td>
+                                        <td class="explanation">The steps do not contain appropriate information for writing a novel ABOUT growing up in South America.
+                                        This plan applies to any writing task.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                     </div>
+                    <div class="row border bg-dark">
+                        <div class="col col-3 text-light" style="font-weight:bold">Goal</div>
+                        <div class="col col-9 text-light pl-5" style="font-weight:bold">Plan</div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-3 pt-2">Write a novel about growing up in South America</div>
+                        <div class="col col-4" style="font-size:90%">
+                        <ol>
+                            <li>Read biographies about people who grew up in South America
+                            <li>Talk to people who've grown up in South America
+                            <li>Choose which country to focus on
+                        </ol>
+                        </div>
+                        <div class="col col-5" style="font-size:90%">
+                        <ol start="3">
+                            <li>Develop characters and and a plot that reflect the insights you gained.
+                            <li>Write a first draft
+                            <li>Ask friends for feedback
+                            <li>Incorporate feedback into the next draft
+                        </ol>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col offset-1 col-11">
+                            <table class="table table-bordered table-sm" style="font-size:70%">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="h6 text-primary">RESPONSE:</th>
+                                        <th scope="col" class="bg-success text-light font-weight-bold" style="width:5%">
+                                            Definitely
+                                        </th>
+                                        <th scope="col" class="text-dark font-weight-bold" style="background-color:#D6E865;width:5%">
+                                            Mostly
+                                        </th>
+                                        <th scope="col" class="bg-yellow text-dark font-weight-bold" style="width:5%">
+                                            Somewhat
+                                        </th>
+                                        <th scope="col" class="text-light font-weight-bold" style="background-color:#FA8128;width:5%">
+                                            Hardly
+                                        </th>
+                                        <th scope="col" class="bg-danger text-light font-weight-bold" style="width:5%">
+                                            NotAtAll
+                                        </th>
+                                        <th scope="col" class="font-weight-bold">
+                                            Explanation
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is goal achievable?</th>
+                                        <td><input type="radio" name="a6" disabled></td>
+                                        <td><input type="radio" name="a6" checked></td>
+                                        <td><input type="radio" name="a6" disabled></td>
+                                        <td><input type="radio" name="a6" disabled></td>
+                                        <td><input type="radio" name="a6" disabled></td>
+                                        <td class="explanation">Mostly achievable.</td>
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is plan on-topic?</th>
+                                        <td><input type="radio" name="t6" checked></td>
+                                        <td><input type="radio" name="t6" disabled></td>
+                                        <td><input type="radio" name="t6" disabled></td>
+                                        <td><input type="radio" name="t6" disabled></td>
+                                        <td><input type="radio" name="t6" disabled></td>
+                                        <td class="explanation">Definitely on topic.</td>
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is plan well-ordered?</th>
+                                        <td><input type="radio" name="o6" checked></td>
+                                        <td><input type="radio" name="o6" disabled></td>
+                                        <td><input type="radio" name="o6" disabled></td>
+                                        <td><input type="radio" name="o6" disabled></td>
+                                        <td><input type="radio" name="o6" disabled></td>
+                                        <td class="explanation">Good ordering.</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="font-weight-bold">Is plan complete/informative?</th>
+                                        <td><input type="radio" name="c6" checked></td>
+                                        <td><input type="radio" name="c6" disabled></td>
+                                        <td><input type="radio" name="c6" disabled></td>
+                                        <td><input type="radio" name="c6" disabled></td>
+                                        <td><input type="radio" name="c6" disabled></td>
+                                        <td class="explanation">All the key steps are present.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                     </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                <!-- INSTRUCTIONS END -->
+                </div>
+                <!-- ACCORDION END -->
+                <!-- MTURK INPUT START -->
+
+                <div class="col-12 mt-3 mb-1 border-top">
+                <form action="https://www.mturk.com/mturk/externalSubmit" id="mturk_form" method="post" name="mturk_form"><input id="assignmentId" name="assignmentId" type="hidden" value="" />
+                <input id="ee" name="ee" type="hidden" />
+                <div class="question">
+                    <div class="pl-5 mb-2 pt-2 pb-2 border-bottom">
+                        <div class="row">Goal: &nbsp;<strong>${goal}</strong></div>
+                        <div class="row row-12 pt-2">Steps:</div>
+                        <div style="display: none" id="steps-text">${steps_html}</div>
+                        <div class="row"><ol id="steps-list"></ol></div>
+
+                        <table class="table table-bordered table-sm" style="width:80%">
+                            <thead>
+                                <tr>
+                                    <th scope="col"></th>
+                                    <th scope="col" class="bg-success text-light font-weight-bold" style="width:10%">
+                                        Definitely
+                                    </th>
+                                    <th scope="col" class="text-dark font-weight-bold" style="background-color:#D6E865;width:10%">
+                                        Mostly
+                                    </th>
+                                    <th scope="col" class="bg-yellow text-dark font-weight-bold" style="width:10%">
+                                        Somewhat
+                                    </th>
+                                    <th scope="col" class="text-light font-weight-bold" style="background-color:#FA8128;width:10%">
+                                        Hardly
+                                    </th>
+                                    <th scope="col" class="bg-danger text-light font-weight-bold" style="width:10%">
+                                        Not at all
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row" class="font-weight-bold">Is goal achievable?</th>
+                                    <td><input class="form-check-input" type="radio" name="achievable" id="achievable-0" value="2" required></td>
+                                    <td><input class="form-check-input" type="radio" name="achievable" id="achievable-1" value="1"></td>
+                                    <td><input class="form-check-input" type="radio" name="achievable" id="achievable-2" value="0"></td>
+                                    <td><input class="form-check-input" type="radio" name="achievable" id="achievable-3" value="-1"></td>
+                                    <td><input class="form-check-input" type="radio" name="achievable" id="achievable-4" value="-2"></td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="font-weight-bold">Is plan on-topic?</th>
+                                    <td><input class="form-check-input" type="radio" name="on-topic" id="on-topic-0" value="2" required></td>
+                                    <td><input class="form-check-input" type="radio" name="on-topic" id="on-topic-1" value="1"></td>
+                                    <td><input class="form-check-input" type="radio" name="on-topic" id="on-topic-2" value="0"></td>
+                                    <td><input class="form-check-input" type="radio" name="on-topic" id="on-topic-3" value="-1"></td>
+                                    <td><input class="form-check-input" type="radio" name="on-topic" id="on-topic-4" value="-2"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="font-weight-bold">Is plan well-ordered?</th>
+                                    <td><input class="form-check-input" type="radio" name="ordering" id="ordering-0" value="2" required></td>
+                                    <td><input class="form-check-input" type="radio" name="ordering" id="ordering-1" value="1"></td>
+                                    <td><input class="form-check-input" type="radio" name="ordering" id="ordering-2" value="0"></td>
+                                    <td><input class="form-check-input" type="radio" name="ordering" id="ordering-3" value="-1"></td>
+                                    <td><input class="form-check-input" type="radio" name="ordering" id="ordering-4" value="-2"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row" class="font-weight-bold">Is plan complete/informative?</th>
+                                    <td><input class="form-check-input" type="radio" name="complete" id="complete-0" value="2" required></td>
+                                    <td><input class="form-check-input" type="radio" name="complete" id="complete-1" value="1"></td>
+                                    <td><input class="form-check-input" type="radio" name="complete" id="complete-2" value="0"></td>
+                                    <td><input class="form-check-input" type="radio" name="complete" id="complete-3" value="-1"></td>
+                                    <td><input class="form-check-input" type="radio" name="complete" id="complete-4" value="-2"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                </div>
+                <!-- GOAL CAT END --> <!-- OPTIONAL FEEDBACK -->
+
+                <div class="row mt-5">
+                <div class="col-8 offset-2 col-lg-6 offset-lg-3">
+                <p>(Optional) Please let us know if anything was unclear, if you experienced any issues, or if you have any other fedback for us.</p>
+                <textarea id="feedback" name="feedback" rows="3"></textarea></div>
+                </div>
+                <!-- SUBMIT BUTTON -->
+
+                <div class="row mt-5">
+                <div class="col-2 offset-5"><input id="submitButton" onclick="getnext()" type="submit" value="Submit" /></div>
+                </div>
+                </form>
+                <script language='Javascript'>turkSetAssignmentID();</script></div>
+                <!-- MTURK INPUT END -->
+                </div>
+                <!-- HIT END -->
+
+                <!-- BOOSTRAP JS -->
+                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+                <!-- HITPUB JS -->
+                <script id="hitpub_js">
+                    $(document).ready(
+                        function() {
+                            goalScript = $("div#steps-text").text().split(">");
+                            $.each(goalScript, function(index,goalStep) {
+                              $('#steps-list').append('<li><span class="goal-step">'+goalStep+'</span></li>')
+                            })
+                        }
+                    );
+
+
+                    // TimeMe.js
+                    (function () { var e, t; e = this, t = function () { var r = { startStopTimes: {}, idleTimeoutMs: 3e4, currentIdleTimeMs: 0, checkStateRateMs: 250, active: !1, idle: !1, currentPageName: "default-page-name", timeElapsedCallbacks: [], userLeftCallbacks: [], userReturnCallbacks: [], trackTimeOnElement: function (e) { var t = document.getElementById(e); t && (t.addEventListener("mouseover", function () { r.startTimer(e) }), t.addEventListener("mousemove", function () { r.startTimer(e) }), t.addEventListener("mouseleave", function () { r.stopTimer(e) }), t.addEventListener("keypress", function () { r.startTimer(e) }), t.addEventListener("focus", function () { r.startTimer(e) })) }, getTimeOnElementInSeconds: function (e) { var t = r.getTimeOnPageInSeconds(e); return t || 0 }, startTimer: function (e, t) { if (e || (e = r.currentPageName), void 0 === r.startStopTimes[e]) r.startStopTimes[e] = []; else { var n = r.startStopTimes[e], i = n[n.length - 1]; if (void 0 !== i && void 0 === i.stopTime) return } r.startStopTimes[e].push({ startTime: t || new Date, stopTime: void 0 }), r.active = !0, r.idle = !1 }, stopAllTimers: function () { for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++)r.stopTimer(e[t]) }, stopTimer: function (e, t) { e || (e = r.currentPageName); var n = r.startStopTimes[e]; void 0 !== n && 0 !== n.length && (void 0 === n[n.length - 1].stopTime && (n[n.length - 1].stopTime = t || new Date), r.active = !1) }, getTimeOnCurrentPageInSeconds: function () { return r.getTimeOnPageInSeconds(r.currentPageName) }, getTimeOnPageInSeconds: function (e) { var t = r.getTimeOnPageInMilliseconds(e); return void 0 === t ? void 0 : t / 1e3 }, getTimeOnCurrentPageInMilliseconds: function () { return r.getTimeOnPageInMilliseconds(r.currentPageName) }, getTimeOnPageInMilliseconds: function (e) { var t = r.startStopTimes[e]; if (void 0 !== t) { for (var n = 0, i = 0; i < t.length; i++) { var s = t[i].startTime, o = t[i].stopTime; void 0 === o && (o = new Date), n += o - s } return Number(n) } }, getTimeOnAllPagesInSeconds: function () { for (var e = [], t = Object.keys(r.startStopTimes), n = 0; n < t.length; n++) { var i = t[n], s = r.getTimeOnPageInSeconds(i); e.push({ pageName: i, timeOnPage: s }) } return e }, setIdleDurationInSeconds: function (e) { var t = parseFloat(e); if (!1 !== isNaN(t)) throw { name: "InvalidDurationException", message: "An invalid duration time (" + e + ") was provided." }; return r.idleTimeoutMs = 1e3 * e, this }, setCurrentPageName: function (e) { return r.currentPageName = e, this }, resetRecordedPageTime: function (e) { delete r.startStopTimes[e] }, resetAllRecordedPageTimes: function () { for (var e = Object.keys(r.startStopTimes), t = 0; t < e.length; t++)r.resetRecordedPageTime(e[t]) }, resetIdleCountdown: function () { r.idle && r.triggerUserHasReturned(), r.idle = !1, r.currentIdleTimeMs = 0 }, callWhenUserLeaves: function (e, t) { this.userLeftCallbacks.push({ callback: e, numberOfTimesToInvoke: t }) }, callWhenUserReturns: function (e, t) { this.userReturnCallbacks.push({ callback: e, numberOfTimesToInvoke: t }) }, triggerUserHasReturned: function () { if (!r.active) for (var e = 0; e < this.userReturnCallbacks.length; e++) { var t = this.userReturnCallbacks[e], n = t.numberOfTimesToInvoke; (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback()) } r.startTimer() }, triggerUserHasLeftPage: function () { if (r.active) for (var e = 0; e < this.userLeftCallbacks.length; e++) { var t = this.userLeftCallbacks[e], n = t.numberOfTimesToInvoke; (isNaN(n) || void 0 === n || 0 < n) && (t.numberOfTimesToInvoke -= 1, t.callback()) } r.stopAllTimers() }, callAfterTimeElapsedInSeconds: function (e, t) { r.timeElapsedCallbacks.push({ timeInSeconds: e, callback: t, pending: !0 }) }, checkState: function () { for (var e = 0; e < r.timeElapsedCallbacks.length; e++)r.timeElapsedCallbacks[e].pending && r.getTimeOnCurrentPageInSeconds() > r.timeElapsedCallbacks[e].timeInSeconds && (r.timeElapsedCallbacks[e].callback(), r.timeElapsedCallbacks[e].pending = !1); !1 === r.idle && r.currentIdleTimeMs > r.idleTimeoutMs ? (r.idle = !0, r.triggerUserHasLeftPage()) : r.currentIdleTimeMs += r.checkStateRateMs }, visibilityChangeEventName: void 0, hiddenPropName: void 0, listenForVisibilityEvents: function () { void 0 !== document.hidden ? (r.hiddenPropName = "hidden", r.visibilityChangeEventName = "visibilitychange") : void 0 !== document.mozHidden ? (r.hiddenPropName = "mozHidden", r.visibilityChangeEventName = "mozvisibilitychange") : void 0 !== document.msHidden ? (r.hiddenPropName = "msHidden", r.visibilityChangeEventName = "msvisibilitychange") : void 0 !== document.webkitHidden && (r.hiddenPropName = "webkitHidden", r.visibilityChangeEventName = "webkitvisibilitychange"), document.addEventListener(r.visibilityChangeEventName, function () { document[r.hiddenPropName] ? r.triggerUserHasLeftPage() : r.triggerUserHasReturned() }, !1), window.addEventListener("blur", function () { r.triggerUserHasLeftPage() }), window.addEventListener("focus", function () { r.triggerUserHasReturned() }), document.addEventListener("mousemove", function () { r.resetIdleCountdown() }), document.addEventListener("keyup", function () { r.resetIdleCountdown() }), document.addEventListener("touchstart", function () { r.resetIdleCountdown() }), window.addEventListener("scroll", function () { r.resetIdleCountdown() }), setInterval(function () { r.checkState() }, r.checkStateRateMs) }, websocket: void 0, websocketHost: void 0, setUpWebsocket: function (e) { if (window.WebSocket && e) { var t = e.websocketHost; try { r.websocket = new WebSocket(t), window.onbeforeunload = function () { r.sendCurrentTime(e.appId) }, r.websocket.onopen = function () { r.sendInitWsRequest(e.appId) }, r.websocket.onerror = function (e) { console && console.log("Error occurred in websocket connection: " + e) }, r.websocket.onmessage = function (e) { console && console.log(e.data) } } catch (e) { console && console.error("Failed to connect to websocket host.  Error:" + e) } } return this }, websocketSend: function (e) { r.websocket.send(JSON.stringify(e)) }, sendCurrentTime: function (e) { var t = { type: "INSERT_TIME", appId: e, timeOnPageMs: r.getTimeOnCurrentPageInMilliseconds(), pageName: r.currentPageName }; r.websocketSend(t) }, sendInitWsRequest: function (e) { var t = { type: "INIT", appId: e }; r.websocketSend(t) }, initialize: function (e) { var t = r.idleTimeoutMs || 30, n = r.currentPageName || "default-page-name", i = void 0, s = void 0; e && (t = e.idleTimeoutInSeconds || t, n = e.currentPageName || n, i = e.websocketOptions, s = e.initialStartTime), r.setIdleDurationInSeconds(t).setCurrentPageName(n).setUpWebsocket(i).listenForVisibilityEvents(), r.startTimer(void 0, s) } }; return r }, "undefined" != typeof module && module.exports ? module.exports = t() : "function" == typeof define && define.amd ? define([], function () { return e.TimeMe = t() }) : e.TimeMe = t() }).call(this);
+
+                    TimeMe.initialize({
+                        currentPageName: "task",
+                        idleTimeoutInSeconds: 30
+                    });
+
+                    $(document).ready(function() {
+                        $('#submitButton').click(function () {
+                            try {
+                                $('input[name=ee]').attr('value', TimeMe.getTimeOnCurrentPageInSeconds());
+                            } catch {
+                            }
+                            return true;
+                        });
+                    });
+
+
+
+                </script>

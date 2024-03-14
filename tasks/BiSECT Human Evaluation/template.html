@@ -1,0 +1,395 @@
+<link href="https://code.jquery.com/ui/1.11.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css" /><script src="https://code.jquery.com/jquery-2.2.4.min.js"></script><script src = "https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script><script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+<style type="text/css">#slider-1 .ui-slider-range { background: #729fcf; }
+  #slider-1 .ui-slider-handle { border-color: #729fcf; }
+  #slider-2 .ui-slider-range { background: #729fcf; }
+  #slider-2 .ui-slider-handle { border-color: #729fcf; }
+  #slider-3 .ui-slider-range { background: #729fcf; }
+  #slider-3 .ui-slider-handle { border-color: #729fcf; }
+  #slider-4 .ui-slider-range { background: #729fcf; }
+  #slider-4 .ui-slider-handle { border-color: #729fcf; }
+  #slider-5 .ui-slider-range { background: #729fcf; }
+  #slider-5 .ui-slider-handle { border-color: #729fcf; }
+  .alert-info {
+    background-color: #dcecf4;
+    border-radius: 10px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    color: #28697a;
+    font-family: Helvetica;
+  }
+  .btn {
+    width: 60px;
+    height: 30px;
+    border-color: transparent;
+    border-radius: 7px;
+    border-style: solid;
+  }
+  .btn-example {
+    width: 150px;
+    height: 35px;
+    border-color: transparent;
+    border-radius: 7px;
+    border-style: solid;
+  }
+  .btn-primary {
+    background-color: #0777b8;
+    color: white;
+  }
+  .col-sm-12 {
+    border-left: 4px solid;
+    border-color: #cccccc;
+    font-family: Helvetica;
+    font-size: small;
+  }
+  .col-sm-11 {
+      border-left: 4px solid;
+      border-color: #cccccc;
+      color: #28697a;
+      font-family: Helvetica;
+      font-size: small;
+  }
+  .description {
+    color: gray;
+  }
+  .description-example {
+    border-left: 4px solid;
+    border-color: #ffffff;
+    color: #28697a;
+    font-family: Helvetica;
+  }
+  .tooltip {
+      position: relative;
+      display: inline-block;
+  }
+  .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 120px;
+      bottom: 100%;
+      left: 50%;
+      margin-left: -60px;
+      background-color: #d9e7fc;
+      color: black;
+      text-align: center;
+      padding: 5px 0;
+      border-radius: 6px;
+      position: absolute;
+      z-index: 1;
+  }
+  .tooltip:hover .tooltiptext {
+      visibility: visible;
+  }
+  .ui-slider-horizontal {
+    height: 0.5em;
+    width: 35em;
+    left: 100px;
+    margin-left: 7em;
+  }
+  .ui-slider .ui-slider-handle {
+    height: 1em;
+    width: 0.5em;
+    padding-left: 5px;
+  }
+  .ui-slider-tick-mark {
+    display:inline-block;
+    width:2px;
+    background: gray;
+    height:10px;
+    position:absolute;
+    top:-10px;
+  }
+  .ui-slider-tick-num {
+    display: flex;
+    font-size: small;
+    width:7em;
+    color: gray;
+    height:0px;
+    position:absolute;
+    top:-40px;
+    vertical-align: middle;
+    text-align: center;
+  }
+  .ui-slider-label-left {
+    display: flex;
+    font-size: 0.5em;
+    width:7em;
+    color: red;
+    height:0px;
+    position:absolute;
+    top:-8px;
+    left: 10px;
+    vertical-align: middle;
+    text-align: center;
+  }
+  .ui-slider-label-right {
+    display: flex;
+    font-size: 0.5em;
+    width:7em;
+    color: #18be18;
+    height:0px;
+    position:absolute;
+    top:-8px;
+    left: 110px;
+    vertical-align: middle;
+    text-align: center;
+  }
+</style>
+<script>
+
+$(document).ready(function() {
+    $('input[name="start_timestamp"]').val(Date.now()/1000.0);
+    $('#slider-1').slider({orientation: "horizontal", range: "min", change: update_score_1});
+    $('#slider-2').slider({orientation: "horizontal", range: "min", change: update_score_2});
+    $('#slider-3').slider({orientation: "horizontal", range: "min", change: update_score_3});
+    $('#slider-4').slider({orientation: "horizontal", range: "min", change: update_score_4});
+    $('#slider-5').slider({orientation: "horizontal", range: "min", change: update_score_5});
+    $('input[name="fluency-1"]').val(-1);
+    $('input[name="fluency-2"]').val(-1);
+    $('input[name="fluency-3"]').val(-1);
+    $('input[name="fluency-4"]').val(-1);
+    $('input[name="fluency-5"]').val(-1);
+    setSliderTicks('#slider-1');
+    setSliderTicks('#slider-2');
+    setSliderTicks('#slider-3');
+    setSliderTicks('#slider-4');
+    setSliderTicks('#slider-5');
+});
+
+function add_end_timestamp()
+{
+    $('input[name="end_timestamp"]').val(Date.now()/1000.0);
+}
+
+function reset_form()
+{
+    $('input[name="start_timestamp"]').val(Date.now()/1000.0);
+    $('#slider-1').slider('option', 'value', 0);
+    $('#slider-2').slider('option', 'value', 0);
+    $('#slider-3').slider('option', 'value', 0);
+    $('#slider-4').slider('option', 'value', 0);
+    $('input[name="fluency-1"]').val(-1);
+    $('input[name="fluency-2"]').val(-1);
+    $('input[name="fluency-3"]').val(-1);
+    $('input[name="fluency-4"]').val(-1);
+}
+
+function setSliderTicks(s) {
+    var $slider =  $(s);
+    var max =  $slider.slider("option", "max");
+    var min =  $slider.slider("option", "min");
+    var size = 25;
+    var spacing =  100/((max - min)/size);
+    var color = ["#28697a", "#fa7d7d", "#ffe100", "#7fe37f", "#28697a"];
+    var description = ["Completely Different (0)", "", "", "", "Almost Identical (100)"];
+
+    $slider.find('.ui-slider-tick-mark').remove();
+    $('<span class="ui-slider-label-left">Very Low Quality (0)</span>').css({'left': (-12) + '%', 'bottom': (2) + '%'}).appendTo($slider);
+    $('<span class="ui-slider-label-right">Perfect Quality (100)</span>').css({'left': (102) + '%', 'bottom': (2) + '%'}).appendTo($slider);
+    $('<span class="ui-slider-tick-mark"></span>').css('left', (spacing * 0 - 0.2) +  '%').appendTo($slider);
+    $('<span class="ui-slider-tick-mark"></span>').css('left', (spacing * 1 - 0.2) +  '%').appendTo($slider);
+    $('<span class="ui-slider-tick-mark"></span>').css('left', (spacing * 2 - 0.2) +  '%').appendTo($slider);
+    $('<span class="ui-slider-tick-mark"></span>').css('left', (spacing * 3 - 0.2) +  '%').appendTo($slider);
+    $('<span class="ui-slider-tick-mark"></span>').css('left', (spacing * 4 - 0.2) +  '%').appendTo($slider);
+}
+
+function validate_form()
+{
+    var score = 1;
+    score += $('input[name="fluency-1"]').val();
+    score += $('input[name="fluency-2"]').val();
+    score += $('input[name="fluency-3"]').val();
+    score += $('input[name="fluency-4"]').val();
+    if (score.includes("-"))
+    {
+        alert('Please make sure to score all sentences. Thanks!');
+        return false;
+    }
+
+    return true;
+}
+
+function update_score_1()
+{
+    var new_score = $(this).slider('value');
+    $('input[name="fluency-1"]').val(new_score);
+}
+
+function update_score_2()
+{
+    var new_score = $(this).slider('value');
+    $('input[name="fluency-2"]').val(new_score);
+}
+
+function update_score_3()
+{
+    var new_score = $(this).slider('value');
+    $('input[name="fluency-3"]').val(new_score);
+}
+
+function update_score_4()
+{
+    var new_score = $(this).slider('value');
+    $('input[name="fluency-4"]').val(new_score);
+}
+
+function update_score_5()
+{
+    var new_score = $(this).slider('value');
+    $('input[name="fluency-5"]').val(new_score);
+}
+</script><crowd-form answer-format="flatten-objects"> <input name="end_timestamp" type="hidden" value="" /> <input name="start_timestamp" type="hidden" value="" /> <input name="fluency-1" type="hidden" value="-1" /> <input name="fluency-2" type="hidden" value="-1" /> <input name="fluency-3" type="hidden" value="-1" /> <input name="fluency-4" type="hidden" value="-1" /> <input name="fluency-5" type="hidden" value="-1" />
+<div class="alert alert-info">
+<table style="width:100%">
+	<tbody>
+		<tr>
+			<td style="width:33%;text-align:left;"><strong>Quality</strong></td>
+			<td style="width:33%;text-align:center;"><strong>Rate Split Quality</strong></td>
+			<td style="width:33%;text-align:right;"><strong>English</strong></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<div class="row">
+<p>Read the following pairs of texts (source and candidate) and provide ratings between 0 to 100 based on the degree of similarity in <strong><u>meaning</u></strong> and preservation of <strong><u>grammar</u></strong> for each candidate text. Drag or click on the appropriate portion of the slider to provide a rating for each candidate text.</p>
+
+<p><strong>Please refer to the scoring example before starting the first task.</strong></p>
+
+<p><strong><u>Note</u></strong>: There will be a candidate text in each HIT which contains several random words appearing out of context unrelated to the text. Please make sure to score this candidate text in each HIT with <strong>0-25</strong> points. Apart from this, please refer to the table below for scoring the candidate text. You must provide a rating for all examples to proceed.</p>
+</div>
+<button accesskey="2" class="btn-example" onclick="javascript:if(document.getElementById('example').style.display == 'none'){ document.getElementById('example').style.display = 'block'; }else{ document.getElementById('example').style.display = 'none'; }" type="button">Hide/Show Examples</button> <img alt="image_url" height="200em" src="https://web-instruct.s3.amazonaws.com/scoring_table.png" width="800em" />
+<div id="example" style="display:block;">
+<p>&nbsp;</p>
+
+<hr size="1" />
+<h3 style="color: #28697a;">Scoring Example</h3>
+
+<div class="row">
+<div class="col-sm-11">
+<blockquote>
+<p><strong>When David later discovered that washing the plate prevented the picture from darkening over time, photography was ready to take the world by storm.</strong></p>
+
+<p style="color: #3a9cb5"><strong>Later, David discovered that washing the plate prevented the image from darkening over time. Photography was ready to take the world by storm.</strong></p>
+<small>Answer: <span style="color: #18be18">100 (Perfect Split)</span></small></blockquote>
+</div>
+</div>
+
+<div class="row">
+<div class="description-example">
+<blockquote><small>Both sentences are complete, grammatical sentences and they perfectly convey the meaning of the original sentence. <u>Rephrase such as &quot;picture&quot; to &quot;image&quot; are perfectly fine.</u> </small></blockquote>
+</div>
+</div>
+
+<hr style="height:1px; visibility:hidden;" />
+<div class="row">
+<div class="col-sm-11">
+<blockquote>
+<p><strong>When David later discovered that washing the plate prevented the picture from darkening over time, photography was ready to take the world by storm.</strong></p>
+
+<p style="color: #3a9cb5"><strong>When David later discovered that washing the plate prevented the picture from darkening over time. Photography was ready to take the world by storm.</strong></p>
+<small>Answer: <span style="color:#fa7d7d;">75 (Significant Error in Grammar)</span></small></blockquote>
+</div>
+</div>
+
+<div class="row">
+<div class="description-example">
+<blockquote><small>The first sentence is <strong>not</strong> a complete sentence because the sentences are simply split apart, which is a significant grammar error. The meanings are still preserved, so we deduct 25 points. </small></blockquote>
+</div>
+</div>
+
+<hr style="height:1px; visibility:hidden;" />
+<div class="row">
+<div class="col-sm-11">
+<blockquote>
+<p><strong>When David later discovered that washing the plate prevented the picture from darkening over time, photography was ready to take the world by storm.</strong></p>
+
+<p style="color: #3a9cb5"><strong>As David finally found, he <u style="color:red; border-style:solid; border-color:red;">valuables</u> prevent <u style="color:red; border-style:solid; border-color:red;">yours</u> images from darkening by washing the plate. <u style="color:red; border-style:solid; border-color:red;">arms</u> <u style="color:red; border-style:solid; border-color:red;">twenty</u> was ready to take the world by storm.</strong></p>
+<small>Answer: <span style="color:#750800;">0-25 (Random Words)</span></small></blockquote>
+</div>
+</div>
+
+<div class="row">
+<div class="description-example">
+<blockquote><small>There are random words appearing in this example, such as &quot;valuables&quot;, &quot;arms&quot;, &quot;twenty&quot;, etc. We score this example as any score between 0-25 points. </small></blockquote>
+</div>
+</div>
+</div>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<div class="row" style="border: 2px; border-style: solid; border-color: #28697a;">
+<div class="col-sm-12">
+<blockquote>
+<p><strong>${complex}</strong></p>
+</blockquote>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-12">
+<blockquote>
+<p><strong>${simple-1}</strong></p>
+</blockquote>
+</div>
+</div>
+
+<div id="slider-1">&nbsp;</div>
+
+<hr />
+<div class="row">
+<div class="col-sm-12">
+<blockquote>
+<p><strong>${simple-2}</strong></p>
+</blockquote>
+</div>
+</div>
+
+<div id="slider-2">&nbsp;</div>
+
+<hr />
+<div class="row">
+<div class="col-sm-12">
+<blockquote>
+<p><strong>${simple-3}</strong></p>
+</blockquote>
+</div>
+</div>
+
+<div id="slider-3">&nbsp;</div>
+
+<hr />
+<div class="row">
+<div class="col-sm-12">
+<blockquote>
+<p><strong>${simple-4}</strong></p>
+</blockquote>
+</div>
+</div>
+
+<div id="slider-4">&nbsp;</div>
+
+<hr />
+<div class="row">
+<div class="col-sm-12">
+<blockquote>
+<p><strong>${simple-5}</strong></p>
+</blockquote>
+</div>
+</div>
+
+<div id="slider-5">&nbsp;</div>
+
+<hr />
+<div class="actions">
+<table style="width:100%">
+	<tbody>
+		<tr>
+			<td style="width:50%;text-align:left;"><button accesskey="2" class="btn" onclick="javascript:reset_form();" type="reset">Reset</button></td>
+			<td style="width:50%;text-align:right;"><button accesskey="1" class="btn btn-primary" name="submit_button" onclick="javascript:add_end_timestamp(); return validate_form();" type="submit" value="SUBMIT">Submit</button></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+</crowd-form>

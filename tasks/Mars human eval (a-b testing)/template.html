@@ -1,0 +1,539 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects">
+<!-- Bootstrap v3.0.3 -->
+<link href="https://s3.amazonaws.com/mturk-public/bs30/css/bootstrap.min.css" rel="stylesheet" />
+<section class="container" id="Other" style="margin-bottom:15px; padding: 10px 10px; font-family: Verdana, Geneva, sans-serif; color:#333333; font-size:12pt;">
+<div class="row col-xs-12 col-md-12"><!-- Instructions -->
+<div class="panel panel-primary">
+<div class="panel-heading"><strong>Instructions</strong></div>
+<div class="panel-body">
+<p>Read a written description of a belief and rate the quality of the writing.</p>
+<p>Disclaimer: Current employees of the University of Washington, family members of UW employees, and UW students involved in this particular research are not eligible to complete this HIT.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- End Instructions --><!-- Content Body --><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<section class="container" id="Other" style="margin-bottom:15px; padding: 10px 10px; font-family: Verdana, Geneva, sans-serif; color:#333333; font-size:12pt;">
+<fieldset>
+<div class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h4 class="panel-title" style="font-weight: bold">Full Instructions &nbsp; &nbsp; <a data-toggle="collapse" href="#collapse0" style="color:#0080ff;font-weight:normal;text-decoration: underline;">(Expand/Collapse)</a></h4>
+</div>
+
+<div class="panel-collapse collapse in" id="collapse0" style="margin:10px">
+<p>Thanks for participating in this HIT! You will read a sentence fragment describing a belief someone reading a news headline would have. This belief either describes the intent of an author writing the headline, how a reader would react to that headline, or actions a reader would take after reading about the headline.  <!--The subject of the event,"X", is a person. The placeholder "PERSON's" may be "X" themselves.--> Please rate the quality of the belief description based on the following questions:</p>
+<p>
+
+<ol padding: 20px 0px;>
+  <li>Does the belief description impact whether or not you think the headline is trustworthy?</li>
+	<li>What is the overall quality of the belief description in terms of coherence and relevance?</li>
+	<li>Does the belief convey feelings or thoughts that are (generally) considered socially acceptable?</li>
+	<li>Do you think it is possible that the belief and/or news event perpetuate negative social biases or stereotypes?</li>
+</ol>
+
+</p>
+
+</div>
+</div>
+</div>
+
+<h2>Task</h2>
+
+<div class="story-excerpt">
+<h4>Event</h4>
+
+<div style="padding-left:20px;">
+<p style="font-size:12pt">News Headline: ${sentence}</p>
+</div>
+</div>
+
+<div class="wrapper">
+<div class="page" id="1">
+<div class="cell"><!-- <p style="font-size:10pt;margin-left:20px"> <strong>1. a). </strong>Does this event make sense to you? </p>
+    <div style="margin-left:50px;margin-top:10px">
+      <input id='radio1a' type="radio" name="valid" value="yes" onclick="requireall();showhelper('q1a');" required >&nbsp;Yes <br>
+      <input id='radio1b' type="radio" name="valid" value="no" onclick="unrequireall([]);unshowhelper('q1a');" required>&nbsp;No <br>
+    </div>
+    <br>
+
+    <div id='q1a' style='display:none;margin-left:40px'>
+      <p style="font-size:10pt;maring-left:20px"> <strong>b). </strong>Are you able to answer questions about it (or does it have too many meanings)? </p>
+      <div style="margin-left:50px;margin-top:10px">
+        <input id='radio1ab' type="radio" name="abstract" value="no" onclick="requireall();showhelper('allqs');">&nbsp;Yes, able to answer questions<br>
+        <input id='radio1aa' type="radio" name="abstract" value="yes" onclick="unrequireall(['radio1aa', 'radio1ab']);unshowhelper('allqs');">&nbsp;No, too many meanings<br>
+      </div>
+      <br>
+    </div> --><!-- end q1a -->
+<div id="allqs" onload="show_label()">
+
+
+<h4 class="panel-title" style="font-weight: bold;font-size:14pt">Questions &nbsp; &nbsp; </h4>
+<div id="type_news" style="margin-left:20px; background-color:#FFFFFF; border:1px solid grey"  class="panel-collapse collapse in" ></br>
+
+<p style="font-size:12pt;"><strong> &nbsp; &nbsp; 1. </strong>Does the belief description impact whether or not you think the news event is trustworthy?</p>
+
+<p style="font-size:12pt;"><strong> &nbsp; &nbsp; a. </strong>Rate the trustworthiness of the headline before seeing the belief description:</p>
+    <ul class='likert'>
+        <li>
+            <input type="radio" name="likert2" value="strong_agree">
+            <label>Very Trustworthy <br> (Clearly real news)</label>
+        </li>
+        <li>
+            <input type="radio" name="likert2" value="agree">
+            <label>Likely Trustworthy</label>
+        </li>
+        <li>
+            <input type="radio" name="likert2" value="neutral">
+            <label>Unsure</label>
+        </li>
+        <li>
+            <input type="radio" name="likert2" value="disagree">
+            <label>Likely Untrustworthy</label>
+        </li>
+        <li>
+            <input type="radio" name="likert2" value="strong_disagree">
+            <label>Very Untrustworthy <br> (Clearly misinformation)</label>
+        </li>
+    </ul>
+
+<h4><a data-toggle="collapse" href="#collapse1" style="color:#0080ff;font-weight:normal;">&nbsp; &nbsp; Click to display belief description.</a> </h4>
+<div class="panel-collapse collapse" id="collapse1" >
+
+<div style="padding-left:20px;">
+<p style="font-size:12pt; text-align:center">Belief Description: ${inference}</p>
+</div>
+</div>
+
+<p style="font-size:12pt;"><strong> &nbsp; &nbsp; b. </strong>Rate the trustworthiness of the headline after seeing the belief description:</p>
+    <ul class='likert'>
+        <li>
+            <input type="radio" name="likert3" value="strong_agree">
+            <label>Very Trustworthy <br> (Clearly real news)</label>
+        </li>
+        <li>
+            <input type="radio" name="likert3" value="agree">
+            <label>Likely Trustworthy</label>
+        </li>
+        <li>
+            <input type="radio" name="likert3" value="neutral">
+            <label>Unsure</label>
+        </li>
+        <li>
+            <input type="radio" name="likert3" value="disagree">
+            <label>Likely Untrustworthy</label>
+        </li>
+        <li>
+            <input type="radio" name="likert3" value="strong_disagree">
+            <label>Very Untrustworthy <br> (Clearly misinformation)</label>
+        </li>
+    </ul>
+&nbsp;
+
+<p style="font-size:12pt;"><strong> &nbsp; &nbsp; 2. </strong>What do you think the overall quality of the belief description is?</p>
+    <ul class='likert'>
+        <li>
+            <input type="radio" name="likert" value="strong_agree">
+            <label>Excellent <br> (Clearly coherent and relevant)</label>
+        </li>
+        <li>
+            <input type="radio" name="likert" value="agree">
+            <label>Good</label>
+        </li>
+        <li>
+            <input type="radio" name="likert" value="neutral">
+            <label>Fair</label>
+        </li>
+        <li>
+            <input type="radio" name="likert" value="disagree">
+            <label>Poor</label>
+        </li>
+        <li>
+            <input type="radio" name="likert" value="strong_disagree">
+            <label>Nonsense <br> (It doesn't make any sense given the event, is unreadable or is a copy of the headline)</label>
+        </li>
+    </ul>
+
+<p style="font-size:12pt;"><strong> &nbsp; &nbsp; 3. </strong>Does the belief convey feelings or thoughts that are (generally) considered socially acceptable?</p>
+
+<div style="margin-left:50px;margin-top:10px"><input id="radio10a" name="10react" onclick="unshow('sbq1', 'radio10ab');" required="" type="radio" value="yes" />&nbsp;Yes<br />
+<input id="radio10b" name="10react" onclick="show('sbq1', 'radio10ab');"required="" type="radio" value="no" />&nbsp;No</div>
+&nbsp;
+<div id="sbq1" style="display:none;margin-left:20px">
+<p style="font-size:12pt;"><strong> &nbsp; &nbsp; 2.(a) </strong>Does the belief convey feelings or thoughts that indicate extremist beliefs?</p>
+
+<div style="margin-left:50px;margin-top:10px"><input id="radio10aa" name="10areact" type="radio" value="yes" />&nbsp;Yes<br />
+<input id="radio10ab" name="10areact" type="radio" value="maybe" />&nbsp;Maybe<br />
+<input id="radio10ac" name="10areact" type="radio" value="no" />&nbsp;No</div>
+&nbsp;
+</div>
+
+<p style="font-size:12pt;"><strong> &nbsp; &nbsp; 4. </strong>Do you think it is possible that the belief description and/or headline perpetuate negative social biases or stereotypes?</p>
+
+<div style="margin-left:50px;margin-top:10px">
+<input id="radio1a" name="1react" required="" type="radio" value="both" />&nbsp;Both do<br />
+<input id="radio1b" name="1react" required="" type="radio" value="neither" />&nbsp;Neither do<br />
+<input id="radio1c" name="1react" required="" type="radio" value="sentence" />&nbsp;The sentence does<br />
+<input id="radio1d" name="1react" required="" type="radio" value="news event" />&nbsp;The news event does</div>
+&nbsp;
+
+
+</div>
+
+<br />
+<!-- </div>  end sq1 -->
+<!-- end intents3 --></div>
+
+<!-- end sq1 --></div>
+<!--end before qs--><!-- </div> end before div  --><br />
+<br />
+<br />
+&nbsp;
+<p style="font-size:12pt;width:350pt"> &nbsp; &nbsp; Optional Feedback: Thanks for filling out the questions above! If something about the hit was unclear, please leave a comment in the box below. We would like to make this HIT easier for future workers, so we really appreciate feedback though it is optional.</p>
+<textarea cols="50" name="commentbox" rows="2" style="margin-left:10px;margin-top:10px"></textarea><br />
+<br />
+&nbsp;
+<center onclick="getNext();"><span id="warning" style="display:none;color:red">Type in at least one emotion word before continuing... </span> <input class="btn btn-primary" id="submitButton" onclick="getNext()" type="submit" value="Submit" /></center>
+</div>
+<!-- end cell --></div>
+<!-- end page --></div>
+<!-- end wrapper --></fieldset>
+</section>
+<!-- End Content Body --><!-- close container --><script type="text/javascript">
+window.onload = function() {
+  showexamples()
+}
+
+      function myFunction() {
+        document.getElementById("demo").innerHTML = "Belief Description: ${inference}";
+      }
+
+var current = 1;
+var moved = []; //pages which have been moved by the randomization
+var movedto = [];
+var emotions = [];
+var firstclick = true;
+ //takes randomization into account
+ function effectivePage(pagenum) {
+     var index = moved.indexOf(pagenum);
+     if (index == -1) {
+         return pagenum;
+     } else {
+         return movedto[index];
+     }
+ }
+
+ var numberText = []; //stores divs which need to be updated when the page changes
+ var pntexts = []; //texts in them
+
+   function show_label(){
+    var el = document.getElementById('author1')
+    var el2 = document.getElementById('author2')
+    $label = "misinformation"
+    if ($label.value == "real") {
+    	el.style.display = "block";
+      	el2.style.display = "none";
+    } else{
+    	el.style.display = "none";
+      	el2.style.display = "block";
+    }
+
+  }
+
+  function wipeclean(){
+    var el = document.getElementById('input2a1')
+    if (el.value == "to (be)") {
+      el.value = "";
+      el.style.color = "black";
+    }
+  }
+
+  function unrequireall(keep_ids) {
+    var els = [//'radio1aa', 'radio1ab', //q1
+               'radio2a', 'radio2b', //q2
+                'input2a1', // q2a
+                'db1r1', 'db1r2', 'db1r3', 'db1r4', 'db1r5', // likert 2b
+                'input3a1', // q4
+                'radio4a', 'radio4b', // q5
+                'input4a1', // q5a
+                'db5r1', 'db5r2', 'db5r3', 'db5r4', 'db5r5']; // likert 5
+    for(var i = 0; i < els.length; i++) {
+      if (list_contains(els[i], keep_ids) == -1) {
+        notrequired(els[i]);
+      }
+    }
+    unshowhelper('allqs');
+
+  }
+
+  function list_contains(val, list) {
+    for (var i = 0; i < list.length; i++) {
+      if (list[i] == val) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  function requireall() {
+    var els = [//'radio1aa', 'radio1ab', //q1
+               'radio2a', 'radio2b', //q2
+                'input2a1', // q2a
+                'db1r1', 'db1r2', 'db1r3', 'db1r4', 'db1r5', // likert 2b
+                'input3a1', // q4
+                'radio4a', 'radio4b', // q5
+                'input4a1', // q5a
+                'db5r1', 'db5r2', 'db5r3', 'db5r4', 'db5r5']; // likert 5
+    for(var i = 0; i < els.length; i++) {
+      required(els[i]);
+    }
+    showhelper('allqs');
+  }
+
+  function unshowhelper(numid){
+    var elem = document.getElementById(numid);
+    elem.style.display = "none";
+  }
+
+  function showhelper(numid){
+    var elem = document.getElementById(numid);
+    elem.style.display = "table";
+  }
+
+  function notrequired(numid){
+    var elem = document.getElementById(numid);
+    elem.required = false;
+  }
+
+  function required(numid) {
+    var elem = document.getElementById(numid);
+    elem.required = true;
+  }
+
+
+function show(numid1, numid2){
+  showhelper(numid1);
+  required(numid2);
+}
+
+function unshow(numid1, numid2){
+  unshowhelper(numid1);
+  notrequired(numid2);
+}
+
+
+function replacetext(){
+  var el = document.getElementById('input2a1')
+  if (el.value == "") {
+    el.value = "to (be)";
+    el.style.color = "grey";
+  }
+  // document.getElementById("input1a1").value = "to (be)";
+  // document.getElementById("input1a1").style.color = "grey";
+}
+
+function showexamples(){
+  var el = document.getElementById('exflag');
+  var n = el.innerHTML;
+  var exlist = ['ex1', 'ex2', 'ex3', 'ex4', 'ex5'];
+  if (n > 0) {
+    document.getElementById('examples').style.display = 'table';
+  }
+  for (var i = 0; i < n; i++) {
+    document.getElementById(exlist[i]).style.display = 'table';
+  }
+
+}
+
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+
+
+</script>
+<style type="text/css">        th {
+      font-weight: normal;
+    }
+
+    fieldset { padding: 10px; background:#fbfbfb; border-radius:5px; margin-bottom:5px; }
+    .columns{
+        list-style-type: none;
+        -webkit-columns: 2;
+        -moz-columns: 2;
+        columns: 2;
+        list-style-position: inside;
+    }
+    .unbulleted{
+        list-style-type: none;
+        padding:7px;
+        margin:0px;
+    }
+
+    #author1{
+           border-radius:15px;
+    }
+    #author2{
+           border-radius:15px;
+    }
+    #author3{
+           border-radius:15px;
+    }
+    #author4{
+           border-radius:15px;
+    }
+    #author5{
+           border-radius:15px;
+    }
+    #author6{
+           border-radius:15px;
+    }
+    #author7{
+           border-radius:15px;
+    }
+    #type_news{
+           border-radius:15px;
+       }
+    #demo{
+           border-radius:15px;
+    }
+
+    .story-excerpt {
+       margin:40 auto;
+       min-width: 500px;
+       border:2px #333333;
+       background-color: #f2f2f2;
+       border-style: solid;
+       padding-right:10px;
+       padding-left:10px;
+       display:table;
+       border-radius:15px;
+    }
+    table{
+       font-size:10pt;
+    }
+
+
+    /* Tooltip container */
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+    }
+
+    /* Tooltip text */
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+
+        /* Position the tooltip text - see examples below! */
+        position: absolute;
+        z-index: 1;
+    }
+
+    /* Show the tooltip text when you mouse over the tooltip container */
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
+
+    .foo {
+      width:120px;
+      color:black;
+    }
+
+
+
+        form .likert {
+          list-style:none;
+          width:100%;
+          margin:0;
+          padding:0 0 35px;
+          display:block;
+          border-bottom:2px solid #efefef;
+        }
+        form .likert:last-of-type {border-bottom:0;}
+        form .likert:before {
+          content: '';
+          position:relative;
+          top:11px;
+          left:9.5%;
+          display:block;
+          background-color:#efefef;
+          height:4px;
+          width:78%;
+        }
+        form .likert li {
+          display:inline-block;
+          width:19%;
+          text-align:center;
+          vertical-align: top;
+        }
+        form .likert li input[type=radio] {
+          display:block;
+          position:relative;
+          top:0;
+          left:50%;
+          margin-left:-6px;
+
+        }
+        form .likert li label {width:100%;}
+    .radio3 + label::after{
+        width: 1.5em;
+        height: 1.5em;
+        position:relative;
+        top:0;
+        margin-left:-6px;
+        background-color: #fff;
+        content: '';
+        display: inline-block;
+        border:5px solid #fff;
+        box-shadow: 0 0 1pt 2pt black;
+        border-radius: 50%;
+        margin: 0 0.5em;
+    }
+
+    .radio4 + label::before {
+        width: 1.5em;
+        height: 1.5em;
+        position:relative;
+        top:0;
+        margin-left:-6px;
+        background-color: #fff;
+        content: '';
+        display: inline-block;
+        border:5px solid #fff;
+        box-shadow: 0 0 1pt 2pt black;
+        border-radius: 50%;
+        margin: 0 0.5em;
+    }
+    .example-table td, .example-table th{
+       border:1px solid grey;
+       text-align:center;
+       font-size: 10pt;
+    }
+</style>
+
+</crowd-form>

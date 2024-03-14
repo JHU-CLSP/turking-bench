@@ -1,0 +1,890 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects">
+<!-- Bootstrap v3.0.3 -->
+<link href="https://s3.amazonaws.com/mturk-public/bs30/css/bootstrap.min.css" rel="stylesheet" />
+<section class="container" id="Other" style="margin-bottom:15px; padding: 10px 10px; font-family: Verdana, Geneva, sans-serif; color:#333333; font-size:12pt;">
+<div class="row col-xs-12 col-md-12"><!-- Instructions -->
+<div class="panel panel-primary">
+<div class="panel-heading"><strong>Instructions</strong></div>
+
+<div class="panel-body">
+<p>Read a sentence fragment from a news article and label what you think the typical motivations and reactions would be to this news event.</p>
+<p>Disclaimer: Current employees of the University of Washington, family members of UW employees, and UW students involved in this particular research are not eligible to complete this HIT.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- End Instructions --><!-- Content Body --><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<section class="container" id="Other" style="margin-bottom:15px; padding: 10px 10px; font-family: Verdana, Geneva, sans-serif; color:#333333; font-size:12pt;">
+<fieldset>
+<div class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h4 class="panel-title" style="font-weight: bold">Full Instructions &nbsp; &nbsp; <a data-toggle="collapse" href="#collapse0" style="color:#0080ff;font-weight:normal;text-decoration: underline;">(Expand/Collapse)</a></h4>
+</div>
+
+<div class="panel-collapse collapse in" id="collapse0" style="margin:10px">
+<p>Thanks for participating in this HIT! You will read a sentence fragment depicting an event from a news article (please note that some of these news articles may contain misinformation). <!--The subject of the event,"X", is a person. The placeholder "PERSON's" may be "X" themselves.--> The fragment may contain references to specific organizations or locations. In this case, please write an answer based on the most generic form of this reference (for example if there is a reference to the CDC, provide an answer like "government," "government organization" or "health agency," rather than writing "CDC."</p>
+
+<p>Think about what might be implied by the news event described, including the reaction it might invoke from someone reading about the news event and what the intent of the sentence fragment's author was.</p> The readers' reactions and author's intent may cover multiple topic categories (for example, a sentence fragment may contain implications relating to technology and society), so when thinking about implications try to consider as many topics as possible.
+&nbsp;
+
+<p>Below are examples:</p>
+
+<table style="font-size:12pt;border:2px solid grey;text-align:left">
+	<tbody>
+		<tr>
+			<th width="220px" style="border:2px solid grey"><b>Example</b></th>
+			<th style="border:2px solid grey"><b>What is the author implying about <b>[subject]</b> by writing about this event?</b></th>
+			<th style="border:2px solid grey"><b>Do you think this is misinformation (&#10007) or real news (&#10004)?</b></th>
+			<th style="border:2px solid grey"><b>How would someone react after reading about this event?</b></th>
+		</tr>
+		<tr>
+			<td style="border:2px solid grey">Breast cancer toll plummets 40 %.</td>
+			<td style="border:2px solid grey"><span style="color: #7869bf"><b>[Cancer Statistics]</b></span>: <ul><li>women are less likely to die of breast cancer</li><li>breast cancer is becoming less deadly</li></ul></td>
+			<td style="border:2px solid grey"><span style="color: #ff0000"><b>misinformation &#10007</b></span></td>
+			<td style="border:2px solid grey">Readers would feel: <ul><li>happy</li><li>relieved</li></td>
+		</tr>
+		<tr>
+			<td style="border:2px solid grey">World's largest study on cell tower radiation confirms cancer link.</td>
+			<td style="border:2px solid grey"><span style="color: #233ea8"><b>[Technology]</b></span>: <ul><li>cell towers are dangerous</li><li>people can get cancer from RF waves</li></ul></td>
+			<td style="border:2px solid grey"><span style="color: #ff0000"><b>misinformation &#10007</b></span></td>
+			<td style="border:2px solid grey">Readers would feel: <ul><li>afraid</li><li>scared</li></ul>Readers would want: <ul>
+				<li>to prevent cell towers from being built in their neighborhoods</li></ul></td>
+		</tr>
+		<tr>
+			<td style="border:2px solid grey">New jersey health plan deal to cover cancer trials stirs hope for wider participation. </td>
+			<td style="border:2px solid grey"><span style="color: #e31285"><b>[Society]</b></span>:<ul><li>state health plan provides new benefits for cancer patients</li><li>state health plan adds cancer benefits to attract cancer patients</li></ul></td>
+			<td style="border:2px solid grey"><span style="color: #32a852"><b>real &#10004</b></span></td>
+			<td style="border:2px solid grey">Readers would feel: <ul><li>happy</li><li>curious</li></ul>Readers would want: <ul><li>to read the details of the plan</li></ul></td>
+		</tr>
+		<tr>
+			<td style="border:2px solid grey">FDA backs digital mammography. </td>
+			<td style="border:2px solid grey"><span style="color: #233ea8"><b>[Technology]</b></span>:<ul><li>breast cancer can be detected with digital devices</li><li>it's safe to use digital devices</li></ul></td>
+			<td style="border:2px solid grey"><span style="color: #32a852"><b>real &#10004</b></span></td>
+			<td style="border:2px solid grey">Readers would feel: <ul><li>hopeful</li><li>safer</li></ul>Readers would want: <ul><li>to share this news with others</li></ul></td>
+		</tr>
+	</tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+<h2>Task</h2>
+
+<div class="story-excerpt">
+<h4>Event</h4>
+
+<div style="padding-left:20px;">
+<p style="font-size:12pt">${sentence}</p>
+</div>
+</div>
+
+<div class="wrapper">
+<div class="page" id="1">
+<div class="cell"><!-- <p style="font-size:10pt;margin-left:20px"> <strong>1. a). </strong>Does this event make sense to you? </p>
+    <div style="margin-left:50px;margin-top:10px">
+      <input id='radio1a' type="radio" name="valid" value="yes" onclick="requireall();showhelper('q1a');" required >&nbsp;Yes <br>
+      <input id='radio1b' type="radio" name="valid" value="no" onclick="unrequireall([]);unshowhelper('q1a');" required>&nbsp;No <br>
+    </div>
+    <br>
+
+    <div id='q1a' style='display:none;margin-left:40px'>
+      <p style="font-size:10pt;maring-left:20px"> <strong>b). </strong>Are you able to answer questions about it (or does it have too many meanings)? </p>
+      <div style="margin-left:50px;margin-top:10px">
+        <input id='radio1ab' type="radio" name="abstract" value="no" onclick="requireall();showhelper('allqs');">&nbsp;Yes, able to answer questions<br>
+        <input id='radio1aa' type="radio" name="abstract" value="yes" onclick="unrequireall(['radio1aa', 'radio1ab']);unshowhelper('allqs');">&nbsp;No, too many meanings<br>
+      </div>
+      <br>
+    </div> --><!-- end q1a -->
+<div id="allqs">
+
+
+<h4 class="panel-title" style="font-weight: bold;font-size:14pt">Readers' Reactions &nbsp; &nbsp; <a data-toggle="collapse" href="#type_news" style="color:#0080ff;font-weight:normal;text-decoration: underline;">(Expand/Collapse)</a></h4>
+<div id="type_news" style="margin-left:20px; background-color:#FFFFFF; border:1px solid grey"  class="panel-collapse collapse in" ></br><p style="font-size:12pt;"> &nbsp; &nbsp; <strong>1. </strong>Do you think this is misinformation (&#10007) or real news (&#10004)?</p>
+
+<div style="margin-left:50px;margin-top:10px"><input id="radio9a" name="real" required="" type="radio" value="mis" />&nbsp;Misinformation (&#10007)<br />
+<input id="radio9b" name="real" required="" type="radio" value="realnews" />&nbsp;Real News (&#10004)</div>
+&nbsp;
+
+<p style="font-size:12pt;"><strong> &nbsp; &nbsp; 2. </strong>Would readers typically have a reaction to reading about this news event?</p>
+
+<div style="margin-left:50px;margin-top:10px"><input id="radio10a" name="10react" onclick="show('10sbq1', 'input10a1');" required="" type="radio" value="yes" />&nbsp;Yes<br />
+<input id="radio10b" name="10react" onclick="unshow('10sbq1', 'input10a1');" required="" type="radio" value="no" />&nbsp;No</div>
+&nbsp;
+
+<div id="10sbq1" style="display:none;margin-left:20px">
+<p id="10a" style="font-size:12pt;margin-left:10px"><strong>a). </strong>How would they react/feel?</p>
+
+<p style="font-size:10pt;color:grey;margin-left:20px">(Try to describe without reusing words from the event)</p>
+
+<div style="margin-left:50px"><!--They feel ... -->
+<table>
+	<tbody>
+		<tr>
+			<td>
+			<div><input autocomplete="off" id="input10a1" name="10mo2a" onblur="replacetext()" onfocus="wipeclean()" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="Readers would feel" width="200px" /><span style="font-size:8pt"> [write a reaction] </span></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<div><input autocomplete="off" id="input10a1" name="10mo2ab" onblur="replacetext()" onfocus="wipeclean()" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="Readers would want to" width="200px" /><span style="font-size:8pt"> [write a reaction] </span></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<div id="10ab" style=""><input autocomplete="off" id="input10a2" name="10mo2b" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="Readers would feel" width="200px" /> <span style="font-size:8pt"> [write another reaction - optional] </span></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<div id="10ac" style=""><input autocomplete="off" id="input10a3" name="10mo2c" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="Readers would want to" width="200px" /> <span style="font-size:8pt"> [write another reaction - optional] </span></div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+</div>
+<br />
+
+<!-- </div>  end sq1 -->
+<!-- end intents3 --></div>
+    <p style="font-size:12pt;"><strong> &nbsp; &nbsp; 3. </strong>How likely are you to want to read more about the article or share it given the sentence shown?</p>
+    <ul class='likert'>
+        <li>
+            <input id="likert_a" input type="radio" name="likert" value="strong_agree">
+            <label for="likert_a">Very Likely</label>
+        </li>
+        <li>
+            <input id="likert_b" input type="radio" name="likert" value="agree">
+            <label for="likert_b">Likely</label>
+        </li>
+        <li>
+            <input id="likert_c" input type="radio" name="likert" value="neutral">
+            <label for="likert_c">Neutral</label>
+        </li>
+        <li>
+            <input id="likert_d" input type="radio" name="likert" value="disagree">
+            <label for="likert_d">Unlikely</label>
+        </li>
+        <li>
+            <input id="likert_e" input type="radio" name="likert" value="strong_disagree">
+            <label for="likert_e">Very Unlikely</label>
+        </li>
+    </ul>
+<!-- end sq1 --></div>
+<!--end before qs--><!-- </div> end before div  --><br />
+<br />
+<br />
+&nbsp;
+
+<h4 class="panel-title" style="font-weight: bold;font-size:14pt">Writer's Intent &nbsp; &nbsp; <a data-toggle="collapse" href="#author1" style="color:#0080ff;font-weight:normal;text-decoration: underline;">(Expand/Collapse)</a></h4>
+<div id="author1" style="margin-left:20px; background-color:#FFFFFF; border:1px solid grey"  class="panel-collapse collapse in">
+</br><p style="font-size:12pt;">&nbsp; &nbsp;<strong>4. </strong>Is anything implied by this event about <span style="color: #e31285"><b>[Society]</b></span> (fundraising events, healthcare policies, etc)?</p>
+
+<div style="margin-left:50px;margin-top:10px"><input id="radio2a" name="2imply" onclick="show('sbq1', 'input2a1');" required="" type="radio" value="yes" /><label for="radio2a">&nbsp;Yes</label><br />
+<input id="radio2b" name="2imply" onclick="unshow('sbq1', 'input2a1');" required="" type="radio" value="no" /><label for="radio2b">&nbsp;No</label></div>
+&nbsp;
+
+<div id="sbq1" style="display:none;margin-left:20px">
+<p id="2a" style="font-size:12pt;margin-left:10px"><strong>a). </strong>What?</p>
+
+<p style="font-size:12pt;color:grey;margin-left:20px">(Try to complete the sentence without reusing words from the event)</p>
+
+<div style="margin-left:50px"><!--They feel ... -->
+<table>
+	<tbody>
+		<tr>
+			<td>
+			<div><input autocomplete="off" id="input2a1" name="mo2a" onblur="replacetext()" onfocus="wipeclean()" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="The author is implying that" width="200px" /><span style="font-size:8pt"> [write an implied statement] </span></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<div id="2ab" style="padding-top: 10px"><input autocomplete="off" id="input2a2" name="mo2b" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="The author is implying that" width="200px" /> <span style="font-size:8pt"> [write another implied statement - optional] </span></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<div id="2ac" style="padding-top: 10px"><input autocomplete="off" id="input2a3" name="mo2c" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="The author is implying that" width="200px" /> <span style="font-size:8pt"> [write another implied statement - optional] </span></div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<br />
+<!-- </div>  end sq1 -->
+<!-- end intents3 --></div>
+<!-- end sq1 -->
+<br />
+&nbsp;
+
+<p style="font-size:12pt;">&nbsp; &nbsp; <strong>5. </strong>Is anything implied by this event about <span style="color: #7fcdbb"><b>[Health Treatments]</b></span> (chemotherapy, household remedies, etc)?</p>
+
+<div style="margin-left:50px;margin-top:10px"><input id="radio3a" name="3imply" onclick="show('3sbq1', 'input3a1');" required="" type="radio" value="yes" /><label for="radio3a">&nbsp;Yes</label><br />
+<input id="radio3b" name="3imply" onclick="unshow('3sbq1', 'input3a1');" required="" type="radio" value="no" /><label for="radio3b">&nbsp;No</label></div>
+&nbsp;
+
+<div id="3sbq1" style="display:none;margin-left:20px">
+<p id="3a" style="font-size:12pt;margin-left:10px"><strong>a). </strong>What?</p>
+
+<p style="font-size:10pt;color:grey;margin-left:20px">(Try to complete the sentence without reusing words from the event)</p>
+
+<div style="margin-left:50px"><!--They feel ... -->
+<table>
+	<tbody>
+		<tr>
+			<td>
+			<div><input autocomplete="off" id="input3a1" name="3mo2a" onblur="replacetext()" onfocus="wipeclean()" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="The author is implying that" width="200px" /><span style="font-size:8pt"> [write an implied statement] </span></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<div id="3ab" style="padding-top: 10px"><input autocomplete="off" id="input3a2" name="3mo2b" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="The author is implying that" width="200px" /> <span style="font-size:8pt"> [write another implied statement - optional] </span></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<div id="3ac" style="padding-top: 10px"><input autocomplete="off" id="input3a3" name="3mo2c" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="The author is implying that" width="200px" /> <span style="font-size:8pt"> [write another implied statement - optional] </span></div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<br />
+<!-- </div>  end sq1 -->
+<!-- end intents3 --></div>
+<!-- end sq1 -->
+<br />
+&nbsp;
+
+<p style="font-size:12pt;">&nbsp; &nbsp;<strong>6. </strong>Is anything implied by this event about <span style="color: #ed7011"><b>[Lifestyle]</b></span> (dieting choices, smoking, etc)?</p>
+
+<div style="margin-left:50px;margin-top:10px"><input id="radio4a" name="4imply" onclick="show('4sbq1', 'input4a1');" required="" type="radio" value="yes" /><label for="radio4a">&nbsp;Yes</label><br />
+<input id="radio4b" name="4imply" onclick="unshow('4sbq1', 'input4a1');" required="" type="radio" value="no" /><label for="radio4b">&nbsp;No</label></div>
+&nbsp;
+
+<div id="4sbq1" style="display:none;margin-left:20px">
+<p id="4a" style="font-size:12pt;margin-left:10px"><strong>a). </strong>What?</p>
+
+<p style="font-size:10pt;color:grey;margin-left:20px">(Try to complete the sentence without reusing words from the event)</p>
+
+<div style="margin-left:50px"><!--They feel ... -->
+<table>
+	<tbody>
+		<tr>
+			<td>
+			<div><input autocomplete="off" id="input4a1" name="4mo2a" onblur="replacetext()" onfocus="wipeclean()" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="The author is implying that" width="200px" /><span style="font-size:8pt"> [write an implied statement] </span></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<div id="4ab" style="padding-top: 10px"><input autocomplete="off" id="input4a2" name="4mo2b" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="The author is implying that" width="200px" /> <span style="font-size:8pt"> [write another implied statement - optional] </span></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<div id="4ac" style="padding-top: 10px"><input autocomplete="off" id="input4a3" name="4mo2c" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="The author is implying that" width="200px" /> <span style="font-size:8pt"> [write another implied statement - optional] </span></div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<br />
+<!-- </div>  end sq1 -->
+<!-- end intents3 --></div>
+<!-- end sq1 -->
+<br />
+&nbsp;
+
+<p style="font-size:12pt;">&nbsp; &nbsp;<strong>7. </strong>Is anything implied by this event about <span style="color: #233ea8"><b>[Technology]</b></span> (apps, medical equipment, etc)?</p>
+
+<div style="margin-left:50px;margin-top:10px"><input id="radio5a" name="5imply" onclick="show('5sbq1', 'input5a1');" required="" type="radio" value="yes" /><label for="radio5a">&nbsp;Yes</label><br />
+<input id="radio5b" name="5imply" onclick="unshow('5sbq1', 'input5a1');" required="" type="radio" value="no" /><label for="radio5b">&nbsp;No</label></div>
+&nbsp;
+
+<div id="5sbq1" style="display:none;margin-left:20px">
+<p id="5a" style="font-size:12pt;margin-left:10px"><strong>a). </strong>What?</p>
+
+<p style="font-size:10pt;color:grey;margin-left:20px">(Try to complete the sentence without reusing words from the event)</p>
+
+<div style="margin-left:50px"><!--They feel ... -->
+<table>
+	<tbody>
+		<tr>
+			<td>
+			<div><input autocomplete="off" id="input5a1" name="5mo2a" onblur="replacetext()" onfocus="wipeclean()" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="The author is implying that" width="200px" /><span style="font-size:8pt"> [write an implied statement] </span></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<div id="5ab" style="padding-top: 10px"><input autocomplete="off" id="input5a2" name="5mo2b" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="The author is implying that" width="200px" /> <span style="font-size:8pt"> [write another implied statement - optional] </span></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<div id="5ac" style="padding-top: 10px"><input autocomplete="off" id="input5a3" name="5mo2c" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="The author is implying that" width="200px" /> <span style="font-size:8pt"> [write another implied statement - optional] </span></div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<br />
+<!-- </div>  end sq1 -->
+<!-- end intents3 --></div>
+<!-- end sq1 -->
+<br />
+&nbsp;
+
+<p style="font-size:12pt;">&nbsp; &nbsp;<strong>8. </strong>Is anything implied by this event about <span style="color: #31a354"><b>[Government Entities]</b></span> (political figures, health agencies like the National Cancer Institute, etc)?</p>
+
+<div style="margin-left:50px;margin-top:10px"><input id="radio6a" name="6imply" onclick="show('6sbq1', 'input6a1');" required="" type="radio" value="yes" /><label for="radio6a">&nbsp;Yes</label><br />
+<input id="radio6b" name="6imply" onclick="unshow('6sbq1', 'input6a1');" required="" type="radio" value="no" /><label for="radio6b">&nbsp;No</label></div>
+&nbsp;
+
+<div id="6sbq1" style="display:none;margin-left:20px">
+<p id="6a" style="font-size:12pt;margin-left:10px"><strong>a). </strong>What?</p>
+
+<p style="font-size:10pt;color:grey;margin-left:20px">(Try to complete the sentence without reusing words from the event)</p>
+
+<div style="margin-left:50px"><!--They feel ... -->
+<table>
+	<tbody>
+		<tr>
+			<td>
+			<div><input autocomplete="off" id="input6a1" name="6mo2a" onblur="replacetext()" onfocus="wipeclean()" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="The author is implying that" width="200px" /><span style="font-size:8pt"> [write an implied statement] </span></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<div id="6ab" style="padding-top: 10px"><input autocomplete="off" id="input6a2" name="6mo2b" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="The author is implying that" width="200px" /> <span style="font-size:8pt"> [write another implied statement - optional] </span></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<div id="6ac" style="padding-top: 10px"><input autocomplete="off" id="input6a3" name="6mo2c" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="The author is implying that" width="200px" /> <span style="font-size:8pt"> [write another implied statement - optional] </span></div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<br />
+<!-- </div>  end sq1 -->
+<!-- end intents3 --></div>
+<!-- end sq1 -->
+<br />
+&nbsp;
+
+<p style="font-size:12pt;">&nbsp; &nbsp;<strong>9. </strong>Is anything implied by this event about <span style="color: #7869bf"><b>[Cancer Statistics]</b></span> (survival rates, likelihood of getting cancer, etc)?</p>
+
+<div style="margin-left:50px;margin-top:10px"><input id="radio7a" name="7imply" onclick="show('7sbq1', 'input7a1');" required="" type="radio" value="yes" /><label for="radio7a">&nbsp;Yes</label><br />
+<input id="radio7b" name="7imply" onclick="unshow('7sbq1', 'input7a1');" required="" type="radio" value="no" /><label for="radio7b">&nbsp;No</label></div>
+&nbsp;
+
+<div id="7sbq1" style="display:none;margin-left:20px">
+<p id="7a" style="font-size:12pt;margin-left:10px"><strong>a). </strong>What?</p>
+
+<p style="font-size:10pt;color:grey;margin-left:20px">(Try to complete the sentence without reusing words from the event)</p>
+
+<div style="margin-left:50px"><!--They feel ... -->
+<table>
+	<tbody>
+		<tr>
+			<td>
+			<div><input autocomplete="off" id="input7a1" name="7mo2a" onblur="replacetext()" onfocus="wipeclean()" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="The author is implying that" width="200px" /><span style="font-size:8pt"> [write an implied statement] </span></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<div id="7ab" style="padding-top: 10px"><input autocomplete="off" id="input7a2" name="7mo2b" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="The author is implying that" width="200px" /> <span style="font-size:8pt"> [write another implied statement - optional] </span></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<div id="7ac" style="padding-top: 10px"><input autocomplete="off" id="input7a3" name="7mo2c" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="The author is implying that" width="200px" /> <span style="font-size:8pt"> [write another implied statement - optional] </span></div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<br />
+<!-- </div>  end sq1 -->
+<!-- end intents3 --></div>
+<!-- end sq1 -->
+<br />
+&nbsp;
+
+<p style="font-size:12pt;">&nbsp; &nbsp;<strong>10. </strong>Is anything implied by this event about <span style="color: #0b1ae3"><b>[Celebrity]</b></span> (famous figure dealing with cancer, famous figure raising awareness of cancer, etc)?</p>
+
+<div style="margin-left:50px;margin-top:10px"><input id="radio8a" name="8imply" onclick="show('8sbq1', 'input8a1');" required="" type="radio" value="yes" /><label for="radio8a">&nbsp;Yes</label><br />
+<input id="radio8b" name="8imply" onclick="unshow('8sbq1', 'input8a1');" required="" type="radio" value="no" /><label for="radio8b">&nbsp;No</label></div>
+&nbsp;
+
+<div id="8sbq1" style="display:none;margin-left:20px">
+<p id="8a" style="font-size:12pt;margin-left:10px"><strong>a). </strong>What?</p>
+
+<p style="font-size:10pt;color:grey;margin-left:20px">(Try to complete the sentence without reusing words from the event)</p>
+
+<div style="margin-left:50px"><!--They feel ... -->
+<table>
+	<tbody>
+		<tr>
+			<td>
+			<div><input autocomplete="off" id="input8a1" name="8mo2a" onblur="replacetext()" onfocus="wipeclean()" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="The author is implying that" width="200px" /><span style="font-size:8pt"> [write an implied statement] </span></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<div id="8ab" style="padding-top: 10px"><input autocomplete="off" id="input8a2" name="8mo2b" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="The author is implying that" width="200px" /> <span style="font-size:8pt"> [write another implied statement - optional] </span></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<div id="8ac" style="padding-top: 10px"><input autocomplete="off" id="input8a3" name="8mo2c" style="padding-left:10px;margin-left:10px;color:grey;width:250px" type="text" value="The author is implying that" width="200px" /> <span style="font-size:8pt"> [write another implied statement - optional] </span></div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<br />
+<!-- </div>  end sq1 -->
+<!-- end intents3 --></div>
+<!-- end sq1 --></div>
+<br />
+&nbsp;
+
+<h4 class="panel-title" style="font-weight: bold;font-size:14pt">Optional Demographic Survey Questions. Note: If you have previously filled out these questions, you can skip this section. &nbsp; &nbsp; <a data-toggle="collapse" href="#demo" style="color:#0080ff;font-weight:normal;text-decoration: underline;">(Expand/Collapse)</a></h4>
+<div id="demo" style="margin-left:20px; background-color:#FFFFFF; border:1px solid grey"  class="panel-collapse collapse in" >
+</br>
+<p style="font-size:12pt;"><strong>&nbsp; &nbsp; 11. </strong> How old are you? &nbsp; &nbsp; </p>
+&nbsp; &nbsp;<select id="age-select" name="age">
+  <option value="0">&nbsp; &nbsp; Prefer Not to Say</option>
+  <option value="1">&nbsp; &nbsp; 18-24</option>
+  <option value="2">&nbsp; &nbsp; 25-34</option>
+  <option value="3">&nbsp; &nbsp; 35-44</option>
+  <option value="4">&nbsp; &nbsp; 45-54</option>
+  <option value="5">&nbsp; &nbsp; 55-64</option>
+  <option value="6">&nbsp; &nbsp; 65 or older</option>
+</select></br>
+</br>
+<p style="font-size:12pt;"><strong>&nbsp; &nbsp; 12. </strong> What is your education level? &nbsp; &nbsp; </p>
+&nbsp; &nbsp;<select id="ed-select" name="ed">
+  <option value="0">&nbsp; &nbsp; Prefer Not to Say</option>
+  <option value="1">&nbsp; &nbsp; None Completed</option>
+  <option value="2">&nbsp; &nbsp; High school graduate</option>
+  <option value="3">&nbsp; &nbsp; Some college credit (no degree)</option>
+  <option value="4">&nbsp; &nbsp; Associate Degree</option>
+  <option value="5">&nbsp; &nbsp; Bachelor's Degree</option>
+  <option value="6">&nbsp; &nbsp; Master's Degree</option>
+  <option value="7">&nbsp; &nbsp; Professional Degree</option>
+  <option value="8">&nbsp; &nbsp; Doctorate Degree</option>
+</select>
+</br>
+</br>
+<p style="font-size:12pt;"><strong>&nbsp; &nbsp; 13. </strong> What is your ethnicity (please select all that apply)? &nbsp; &nbsp; </p>
+<label for="">&nbsp; &nbsp; White </label>
+<input type="checkbox" id="eth1" name="eth1" value="White"></br>
+<label for="">&nbsp; &nbsp; Hispanic/Latino </label>
+<input type="checkbox" id="eth2" name="eth2" value="Hispanic/Latino"></br>
+<label for="">&nbsp; &nbsp; Black/African-American </label>
+<input type="checkbox" id="eth3" name="eth3" value="Black/African-American"></br>
+<label for="">&nbsp; &nbsp; Native American </label>
+<input type="checkbox" id="eth4" name="eth4" value="Native American"></br>
+<label for="">&nbsp; &nbsp; Asian/Pacific Islander </label>
+<input type="checkbox" id="eth5" name="eth5" value="Asian/Pacific Islander"></br>
+<label for="">&nbsp; &nbsp; Other </label>
+<input type="checkbox" id="eth6" name="eth6" value="Other">
+</br>
+</br>
+<p style="font-size:12pt;"><strong>&nbsp; &nbsp; 14. </strong> What is your gender? &nbsp; &nbsp; </p>
+&nbsp; &nbsp;<select id="gender-select" name="gender">
+  <option value="0">&nbsp; &nbsp; Prefer Not to Say </option>
+  <option value="1">&nbsp; &nbsp; Woman/Female </option>
+  <option value="2">&nbsp; &nbsp; Man/Male</option>
+  <option value="3">&nbsp; &nbsp; Non-Binary/Non-Conforming</option>
+  <option value="4">&nbsp; &nbsp; Other</option>
+</select>
+</br>
+</br>
+<p style="font-size:12pt;"><strong>&nbsp; &nbsp; 15. </strong> Which sources do you use most often to read news online (please select all that apply)? &nbsp; &nbsp; </p>
+<label for="">&nbsp; &nbsp; Twitter </label>
+<input type="checkbox" id="news1" name="news1" value="Twitter"></br>
+<label for="">&nbsp; &nbsp; Facebook </label>
+<input type="checkbox" id="news17" name="news17" value="Facebook"></br>
+<label for="">&nbsp; &nbsp; CNN </label>
+<input type="checkbox" id="news3" name="news3" value="CNN"></br>
+<label for="">&nbsp; &nbsp; New York Times </label>
+<input type="checkbox" id="news8" name="news8" value="New York Times"></br>
+<label for="">&nbsp; &nbsp; Fox News Digital Network </label>
+<input type="checkbox" id="news9" name="news9" value="Fox News Digital Network"></br>
+<label for="">&nbsp; &nbsp; Yahoo-ABC News Network </label>
+<input type="checkbox" id="news2" name="news2" value="Yahoo-ABC News Network"></br>
+<label for="">&nbsp; &nbsp; Huffington Post </label>
+<input type="checkbox" id="news4" name="news4" value="Huffington Post"></br>
+<label for="">&nbsp; &nbsp; CBS News </label>
+<input type="checkbox" id="news5" name="news5" value="CBS News"></br>
+<label for="">&nbsp; &nbsp; USAToday </label>
+<input type="checkbox" id="news6" name="news6" value="USAToday"></br>
+<label for="">&nbsp; &nbsp; BuzzFeed </label>
+<input type="checkbox" id="news7" name="news7" value="BuzzFeed"></br>
+<label for="">&nbsp; &nbsp; Daily Mail </label>
+<input type="checkbox" id="news10" name="news10" value="Daily Mail"></br>
+<label for="">&nbsp; &nbsp; Washington Post </label>
+<input type="checkbox" id="news11" name="news11" value="Washington Post"></br>
+<label for="">&nbsp; &nbsp; Reuters </label>
+<input type="checkbox" id="news12" name="news12" value="Reuters"></br>
+<label for="">&nbsp; &nbsp; Breitbart News Network </label>
+<input type="checkbox" id="news13" name="news13" value="Breitbart News Network"></br>
+<label for="">&nbsp; &nbsp; NPR </label>
+<input type="checkbox" id="news14" name="news14" value="NPR"></br>
+<label for="">&nbsp; &nbsp; BBC </label>
+<input type="checkbox" id="news15" name="news15" value="BBC"></br>
+<label for="">&nbsp; &nbsp; Vox </label>
+<input type="checkbox" id="news20" name="news20" value="Vox"></br>
+<label for="">&nbsp; &nbsp; The Guardian </label>
+<input type="checkbox" id="news16" name="news16" value="GUARDIAN"></br>
+<label for="">&nbsp; &nbsp; Reddit </label>
+<input type="checkbox" id="news18" name="news18" value="Reddit"></br>
+<label for="">&nbsp; &nbsp; 4chan </label>
+<input type="checkbox" id="news19" name="news19" value="4chan"></br>
+<label for="">&nbsp; &nbsp; YouTube </label>
+<input type="checkbox" id="news21" name="news21" value="youtube"></br>
+<label for="">&nbsp; &nbsp; Other </label>
+<input type="checkbox" id="news17" name="news17" value="Other"></br>
+</br>
+<p style="font-size:12pt;"><strong>&nbsp; &nbsp; </strong> If you selected "Other" as a commonly used news source, please enter the name of the news source below: &nbsp; &nbsp; </p>
+&nbsp; &nbsp;<textarea cols="50" name="otherbox" rows="1" style="margin-left:10px;margin-top:10px"></textarea><br />
+</div>
+</br>
+</br>
+<p style="font-size:12pt;width:350pt"> &nbsp; &nbsp; Optional Feedback: Thanks for filling out the questions above! If something about the hit was unclear, please leave a comment in the box below. We would like to make this HIT easier for future workers, so we really appreciate feedback though it is optional.</p>
+<textarea cols="50" name="commentbox" rows="2" style="margin-left:10px;margin-top:10px"></textarea><br />
+<br />
+&nbsp;
+<center onclick="getNext();"><span id="warning" style="display:none;color:red">Type in at least one emotion word before continuing... </span> <input class="btn btn-primary" id="submitButton" onclick="getNext()" type="submit" value="Submit" /></center>
+</div>
+<!-- end cell --></div>
+<!-- end page --></div>
+<!-- end wrapper --></fieldset>
+</section>
+<!-- End Content Body --><!-- close container --><script type="text/javascript">
+window.onload = function() {
+  showexamples()
+}
+
+var current = 1;
+var moved = []; //pages which have been moved by the randomization
+var movedto = [];
+var emotions = [];
+var firstclick = true;
+ //takes randomization into account
+ function effectivePage(pagenum) {
+     var index = moved.indexOf(pagenum);
+     if (index == -1) {
+         return pagenum;
+     } else {
+         return movedto[index];
+     }
+ }
+
+ var numberText = []; //stores divs which need to be updated when the page changes
+ var pntexts = []; //texts in them
+
+  function wipeclean(){
+    var el = document.getElementById('input2a1')
+    if (el.value == "to (be)") {
+      el.value = "";
+      el.style.color = "black";
+    }
+  }
+
+  function unrequireall(keep_ids) {
+    var els = [//'radio1aa', 'radio1ab', //q1
+               'radio2a', 'radio2b', //q2
+                'input2a1', // q2a
+                'db1r1', 'db1r2', 'db1r3', 'db1r4', 'db1r5', // likert 2b
+                'input3a1', // q4
+                'radio4a', 'radio4b', // q5
+                'input4a1', // q5a
+                'db5r1', 'db5r2', 'db5r3', 'db5r4', 'db5r5']; // likert 5
+    for(var i = 0; i < els.length; i++) {
+      if (list_contains(els[i], keep_ids) == -1) {
+        notrequired(els[i]);
+      }
+    }
+    unshowhelper('allqs');
+
+  }
+
+  function list_contains(val, list) {
+    for (var i = 0; i < list.length; i++) {
+      if (list[i] == val) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  function requireall() {
+    var els = [//'radio1aa', 'radio1ab', //q1
+               'radio2a', 'radio2b', //q2
+                'input2a1', // q2a
+                'db1r1', 'db1r2', 'db1r3', 'db1r4', 'db1r5', // likert 2b
+                'input3a1', // q4
+                'radio4a', 'radio4b', // q5
+                'input4a1', // q5a
+                'db5r1', 'db5r2', 'db5r3', 'db5r4', 'db5r5']; // likert 5
+    for(var i = 0; i < els.length; i++) {
+      required(els[i]);
+    }
+    showhelper('allqs');
+  }
+
+  function unshowhelper(numid){
+    var elem = document.getElementById(numid);
+    elem.style.display = "none";
+  }
+
+  function showhelper(numid){
+    var elem = document.getElementById(numid);
+    elem.style.display = "table";
+  }
+
+  function notrequired(numid){
+    var elem = document.getElementById(numid);
+    elem.required = false;
+  }
+
+  function required(numid) {
+    var elem = document.getElementById(numid);
+    elem.required = true;
+  }
+
+
+function show(numid1, numid2){
+  showhelper(numid1);
+  required(numid2);
+}
+
+function unshow(numid1, numid2){
+  unshowhelper(numid1);
+  notrequired(numid2);
+}
+
+
+function replacetext(){
+  var el = document.getElementById('input2a1')
+  if (el.value == "") {
+    el.value = "to (be)";
+    el.style.color = "grey";
+  }
+  // document.getElementById("input1a1").value = "to (be)";
+  // document.getElementById("input1a1").style.color = "grey";
+}
+
+function showexamples(){
+  var el = document.getElementById('exflag');
+  var n = el.innerHTML;
+  var exlist = ['ex1', 'ex2', 'ex3', 'ex4', 'ex5'];
+  if (n > 0) {
+    document.getElementById('examples').style.display = 'table';
+  }
+  for (var i = 0; i < n; i++) {
+    document.getElementById(exlist[i]).style.display = 'table';
+  }
+
+}
+
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+
+
+</script>
+<style type="text/css">        th {
+      font-weight: normal;
+    }
+
+    fieldset { padding: 10px; background:#fbfbfb; border-radius:5px; margin-bottom:5px; }
+    .columns{
+        list-style-type: none;
+        -webkit-columns: 2;
+        -moz-columns: 2;
+        columns: 2;
+        list-style-position: inside;
+    }
+    .unbulleted{
+        list-style-type: none;
+        padding:7px;
+        margin:0px;
+    }
+
+    #author1{
+           border-radius:15px;
+    }
+    #author2{
+           border-radius:15px;
+    }
+    #author3{
+           border-radius:15px;
+    }
+    #author4{
+           border-radius:15px;
+    }
+    #author5{
+           border-radius:15px;
+    }
+    #author6{
+           border-radius:15px;
+    }
+    #author7{
+           border-radius:15px;
+    }
+    #type_news{
+           border-radius:15px;
+       }
+    #demo{
+           border-radius:15px;
+    }
+
+    .story-excerpt {
+       margin:40 auto;
+       min-width: 500px;
+       border:2px #333333;
+       background-color: #f2f2f2;
+       border-style: solid;
+       padding-right:10px;
+       padding-left:10px;
+       display:table;
+       border-radius:15px;
+    }
+    table{
+       font-size:10pt;
+    }
+
+
+    /* Tooltip container */
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+    }
+
+    /* Tooltip text */
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+
+        /* Position the tooltip text - see examples below! */
+        position: absolute;
+        z-index: 1;
+    }
+
+    /* Show the tooltip text when you mouse over the tooltip container */
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
+
+    .foo {
+      width:120px;
+      color:black;
+    }
+
+    form .likert {
+      list-style:none;
+      width:100%;
+      margin:0;
+      padding:0 0 35px;
+      display:block;
+      border-bottom:2px solid #efefef;
+    }
+    form .likert:last-of-type {border-bottom:0;}
+    form .likert:before {
+      content: '';
+      position:relative;
+      top:11px;
+      left:9.5%;
+      display:block;
+      background-color:#efefef;
+      height:4px;
+      width:78%;
+    }
+    form .likert li {
+      display:inline-block;
+      width:19%;
+      text-align:center;
+      vertical-align: top;
+    }
+    form .likert li input[type=radio] {
+      display:block;
+      position:relative;
+      top:0;
+      left:50%;
+      margin-left:-6px;
+
+    }
+    form .likert li label {width:100%;}
+
+    .radio3 + label::after{
+        width: 1.5em;
+        height: 1.5em;
+        position:relative;
+        top:0;
+        margin-left:-6px;
+        background-color: #fff;
+        content: '';
+        display: inline-block;
+        border:5px solid #fff;
+        box-shadow: 0 0 1pt 2pt black;
+        border-radius: 50%;
+        margin: 0 0.5em;
+    }
+
+    .radio4 + label::before {
+        width: 1.5em;
+        height: 1.5em;
+        position:relative;
+        top:0;
+        margin-left:-6px;
+        background-color: #fff;
+        content: '';
+        display: inline-block;
+        border:5px solid #fff;
+        box-shadow: 0 0 1pt 2pt black;
+        border-radius: 50%;
+        margin: 0 0.5em;
+    }
+    .example-table td, .example-table th{
+       border:1px solid grey;
+       text-align:center;
+       font-size: 10pt;
+    }
+
+    }
+</style>
+
+</crowd-form>
