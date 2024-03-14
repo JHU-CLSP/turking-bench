@@ -28,6 +28,7 @@ import bisect
 import copy
 from utils.cleaning import clean_values
 from utils.cleaning import try_numeric
+from pyvirtualdisplay import Display
 
 TURKLE_URL = "http://localhost:8000"
 
@@ -48,14 +49,25 @@ class GPTTokenizer:
 
 class Evaluation:
     def __init__(self, solver_type: str, tasks: str, do_eval: bool, dump_features: bool, report_field_stats: bool,
-                 headless: bool = False):
+                 headless: bool = False, on_server: bool = False, **kwargs):
+        """
+        on_server flag specifies if we are running this on a server with xvfb and xserver-xephyr
+        """
         self.default_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
         self.xlingual_tokenizer = GPTTokenizer()
         self.xlingual_rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], tokenizer=self.xlingual_tokenizer)
-        self.driver = self.create_driver(headless=headless)
+
+        if on_server:
+            print(f"Starting display for the server")
+            self.display = Display(visible=0, size=(1920, 1080))
+            self.display.start()
+
+        self.driver = self.create_driver(headless=headless, on_server=on_server)
         self.actions = MyActions(self.driver)
         self.solver = None
-        # ass more solvers that we implement, we can add them here:
+        self.on_server = on_server
+        self.headless = headless
+        # as more solvers that we implement, we can add them here:
         self.solver_type = solver_type
         if solver_type == "donothing":
             self.solver = baselines.DoNothingBaseline(driver=self.driver, actions=self.actions)
@@ -65,10 +77,24 @@ class Evaluation:
             self.solver = baselines.OracleBaseline(driver=self.driver, actions=self.actions)
         elif solver_type == "offline_predictions":
             self.solver = baselines.OfflineModelPredictionsBaseline(driver=self.driver, actions=self.actions)
-        elif solver_type == "gpt4-text":
-            self.solver = baselines.GPT4TextBaseline(driver=self.driver, actions=self.actions)
-        elif solver_type == "text-vision":
-            self.solver = baselines.VisionTextBaseline(driver=self.driver, actions=self.actions, model="ollama")
+        elif solver_type == "text" or solver_type == "gpt4-text" or solver_type == "claude":
+            if solver_type == "gpt4-text" or solver_type == "claude":
+                self.solver = baselines.TextBaseline(driver=self.driver, actions=self.actions, model=solver_type, num_demonstrations=kwargs["num_demonstrations"], use_relevant_html=kwargs["use_relevant_html"])
+            else:
+                self.solver = baselines.TextBaseline(driver=self.driver, actions=self.actions, model="ollama", num_demonstrations=kwargs['num_demonstrations'], use_relevant_html=kwargs['use_relevant_html'], ollama_model=kwargs["ollama_model"])
+                self.ollama_model = kwargs["ollama_model"]
+
+            self.num_demonstrations = kwargs["num_demonstrations"]
+            self.use_relevant_html = kwargs["use_relevant_html"]
+        elif solver_type == "text-vision" or solver_type == "gpt4-text-vision":
+            if solver_type == "gpt4-text-vision":
+                self.solver = baselines.VisionTextBaseline(driver=self.driver, actions=self.actions, model=solver_type, screenshot_path=kwargs["screenshot_path"], num_demonstrations=kwargs["num_demonstrations"], use_relevant_html=kwargs["use_relevant_html"])
+            else:
+                self.solver = baselines.VisionTextBaseline(driver=self.driver, actions=self.actions, model="ollama", screenshot_path=kwargs["screenshot_path"], num_demonstrations=kwargs['num_demonstrations'], use_relevant_html=kwargs['use_relevant_html'], ollama_model=kwargs["ollama_model"])
+                self.ollama_model = kwargs["ollama_model"]
+
+            self.num_demonstrations = kwargs["num_demonstrations"]
+            self.use_relevant_html = kwargs["use_relevant_html"]
         else:
             raise Exception(f"{Fore.RED}Solver `{solver_type}` not implemented")
         self.tasks = tasks
@@ -90,10 +116,22 @@ class Evaluation:
             'submit'
         ]
 
-    def create_driver(self, headless: bool):
+    def __del__(self):
+        print(f"Premature destructor being called potentially")
+        try:
+            if not self.headless and self.on_server:
+                self.display.stop()
+        except Exception as e:
+            print(f"{Fore.RED}Error while stopping the display: {e}")
+
+        self.driver.quit()
+
+    def create_driver(self, headless: bool, on_server: bool = False):
         options = Options()
         if headless:
             options.add_argument("--headless=new")
+        if on_server:
+            options.add_experimental_option("detach", True)
 
         import platform
         if platform.system() == 'Linux':
@@ -724,7 +762,8 @@ class Evaluation:
 
         results = {}
         aggregate_field_statistics = {}  # We store the stats related to the field types/frequency here
-        task_field_statistics = {}
+        if self.report_field_stats:
+            task_field_statistics = {}
         for task_name in tqdm(tasks):
             print(f"{Fore.BLUE} = = = = = = = = = = = = starting new task: `{task_name}` = = = = = = = = = = = = ")
 
@@ -916,72 +955,80 @@ class Evaluation:
                     elif self.solver_type == 'model':
                         kwargs["scores"].append(score)
 
-            if self.do_eval:
-                # per-task statistics
-                per_task_score = per_task_score / len(instance_ids)
-                print(f"{Fore.MAGENTA}Task: {task_name} --> Score: {per_task_score}")
-                df = pd.DataFrame()
-                for task_name, inputs in results.items():
-                    all_scores = []
-                    for input_type, scores in inputs.items():
-                        avg_score = sum(scores) / len(scores)
-                        all_scores.extend(scores)
-                        df = pd.concat(
-                            [
-                                df, pd.DataFrame({
-                                'project': [task_name],
-                                'input_type': [input_type],
-                                'score': [avg_score]
-                            })
-                            ],
-                            ignore_index=True)
-
-
-                    # add the overall score across all the inputs
-                    df = pd.concat([
-                        df, pd.DataFrame({
+        if self.do_eval:
+            # per-task statistics
+            per_task_score = per_task_score / len(instance_ids)
+            print(f"{Fore.MAGENTA}Task: {task_name} --> Score: {per_task_score}")
+            df = pd.DataFrame()
+            for task_name, inputs in results.items():
+                all_scores = []
+                for input_type, scores in inputs.items():
+                    avg_score = sum(scores) / len(scores)
+                    all_scores.extend(scores)
+                    df = pd.concat(
+                        [
+                            df, pd.DataFrame({
                             'project': [task_name],
-                            'input_type': ["all"],
-                            'score': [sum(all_scores) / len(all_scores)]
-                        }
-                        )], ignore_index=True
-                    )
+                            'input_type': [input_type],
+                            'score': [avg_score]
+                        })
+                        ],
+                        ignore_index=True)
 
-                if 'project' not in df.columns:
-                    df.insert(0, 'project', '')
-                if 'input_type' not in df.columns:
-                    df.insert(1, 'input_type', '')
-                if 'score' not in df.columns:
-                    df.insert(1, 'score', '')
 
-                df = df.pivot(index='project', columns='input_type', values='score')
-                today = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
-                df.to_csv(f'{self.solver_type}_{self.tasks}_scores_{today}.csv', index=True)
+                # add the overall score across all the inputs
+                df = pd.concat([
+                    df, pd.DataFrame({
+                        'project': [task_name],
+                        'input_type': ["all"],
+                        'score': [sum(all_scores) / len(all_scores)]
+                    }
+                    )], ignore_index=True
+                )
 
-                # save results to json
-                with open(f'{self.solver_type}_scores_{today}.json', 'w') as f:
-                    json.dump(results, f, indent=4)
+            if 'project' not in df.columns:
+                df.insert(0, 'project', '')
+            if 'input_type' not in df.columns:
+                df.insert(1, 'input_type', '')
+            if 'score' not in df.columns:
+                df.insert(1, 'score', '')
+
+            df = df.pivot(index='project', columns='input_type', values='score')
+            today = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+            if self.solver_type == "gpt4-text" or self.solver_type == "gpt4-text-vision":
+                csv_filename = f'{self.solver_type}_{self.num_demonstrations}_use-relevant-html_{self.use_relevant_html}_{self.tasks}_scores_{today}.csv'
+            elif self.solver_type == "text" or self.solver_type == "text-vision":
+                csv_filename = f'{self.solver_type}_{self.ollama_model}_{self.num_demonstrations}_use-relevant-html_{self.use_relevant_html}_{self.tasks}_scores_{today}.csv'
+            else:
+                csv_filename = f'{self.solver_type}_{self.tasks}_scores_{today}.csv'
+
+            df.to_csv(csv_filename, index=True)
+
+            # save results to json
+            with open(f'{self.solver_type}_scores_{today}.json', 'w') as f:
+                json.dump(results, f, indent=4)
 
         if self.dump_features:
             with open(f'{directory}/{task_name}.json', 'w') as f:
                 json.dump(data_to_be_dumped, f, indent=4)
 
-        print("Now let's print the field statistics")
+        if self.report_field_stats:
+            print("Now let's print the field statistics")
 
-        # save task_field_statistics (hashmap of hashmaps mapped to integers) as a csv file
-        # first turn this hashmap into data frame
-        # then save it as a csv file
-        results = pd.DataFrame.from_dict(task_field_statistics)
-        results.to_csv('task_field_statistics.csv', index=True)
+            # save task_field_statistics (hashmap of hashmaps mapped to integers) as a csv file
+            # first turn this hashmap into data frame
+            # then save it as a csv file
+            results = pd.DataFrame.from_dict(task_field_statistics)
+            results.to_csv('task_field_statistics.csv', index=True)
 
-        print("----------------------------------------------")
-        print(f'Number of tasks: {len(task_field_statistics.keys())}')
-        print("----------------------------------------------")
-        print(f'Number of fields: {len(aggregate_field_statistics.keys())}')
-        print("----------------------------------------------")
-        print(f'Overall field statistics: {aggregate_field_statistics}')
-        print("----------------------------------------------")
-        print(f'Field statistics per task: {task_field_statistics}')
+            print("----------------------------------------------")
+            print(f'Number of tasks: {len(task_field_statistics.keys())}')
+            print("----------------------------------------------")
+            print(f'Number of fields: {len(aggregate_field_statistics.keys())}')
+            print("----------------------------------------------")
+            print(f'Overall field statistics: {aggregate_field_statistics}')
+            print("----------------------------------------------")
+            print(f'Field statistics per task: {task_field_statistics}')
 
     def enumerate_tap_tasks(self, max_instance_count: int):
         """
