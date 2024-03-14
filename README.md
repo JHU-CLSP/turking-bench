@@ -17,7 +17,7 @@ Note, in this visualization, the variables are not filled in with any variables.
 During the evaluation, the variables are filled in with the input instances.
 We have prepared the necessary scripts for simulating the interaction with the templates (see below).
 
-**Note: ** The repository expects Python 3.10 or later.
+**Note:** The repository expects Python 3.10 or later.
 
 Background
 --- 
@@ -138,7 +138,7 @@ In this setting, you also will need to pass in the address of a file that contai
 If you fnd this data useful, please cite this repository.
 ```bibtex
 @article{turkingtest2024xu,
-     title={TurkingTest: A Tournament Among Web-based Agents},
+     title={TurkingTest: A Challenge Benchmark for Web Agents},
      author={Xu, Kevin and Kordi, Yeganeh and Sanders, Kate and Wang, Yizhong and Byerly, Adam and Zhang, Jack and Van Durme, Benjamin and Khashabi, Daniel},
      year={2024},
      eprint={TBD},
