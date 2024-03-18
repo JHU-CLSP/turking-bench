@@ -1,4 +1,4 @@
-# TurkingTest: Challenging AI Agents with Web-based Tasks 
+# TurkingBench: Challenging AI Agents with Web-based Tasks 
 
 <hr>
 
