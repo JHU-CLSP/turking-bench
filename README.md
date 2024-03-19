@@ -138,10 +138,11 @@ In this setting, you also will need to pass in the address of a file that contai
 If you fnd this data useful, please cite this repository.
 ```bibtex
 @article{turkingbench2024xu,
-     title={TurkingBench: A Challenge Benchmark for Web Agents},
+     title={Tur[k]ingBench: A Challenge Benchmark for Web Agents},
      author={Xu, Kevin and Kordi, Yeganeh and Sanders, Kate and Wang, Yizhong and Byerly, Adam and Zhang, Jack and Van Durme, Benjamin and Khashabi, Daniel},
      year={2024},
-     eprint={TBD},
+     eprint={2403.11905},
+     url={https://arxiv.org/abs/2403.11905}
      archivePrefix={arXiv},
 }
 ```
