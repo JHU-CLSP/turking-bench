@@ -5,6 +5,7 @@ import platform
 import os
 import io
 import subprocess
+import traceback
 import Xlib.display
 from PIL import Image, ImageDraw, ImageFont, ImageGrab
 try:
@@ -21,13 +22,23 @@ import copy
 from evaluation.prompts import text_vision_oracle_instructions, text_vision_ollava_instructions, few_shot_examples
 from itertools import islice
 import time
+from transformers import AutoTokenizer
+import torch
+from transformers import LlavaNextProcessor, LlavaNextForConditionalGeneration
 
 import requests
 import json
 
+# processor = LlavaNextProcessor.from_pretrained("llava-hf/llava-v1.6-mistral-7b-hf")
+processor = LlavaNextProcessor.from_pretrained("llava-hf/llava-v1.6-vicuna-13b-hf")
+
+model = LlavaNextForConditionalGeneration.from_pretrained("llava-hf/llava-v1.6-vicuna-13b-hf", torch_dtype=torch.float16, low_cpu_mem_usage=True) 
+model.to("cuda:0")
+
 class Models(Enum):
     GPT4V = 1
     OLlama = 2
+    LlaVA = 3
 
 class ActionInstance:
     def __init__(self, type: str, data: str, duration: int = None):
@@ -302,8 +313,94 @@ class GPT4VModel(VisionModel):
     def __init__(self):
         super().__init__(Models.GPT4V)
         load_dotenv()
-        # api_key = os.getenv("OPENAI_API_KEY") 
-        self.client = OpenAI()
+        self.client = OpenAI(api_key = "" )
+        self.log_dir = "logs"
+        os.makedirs(self.log_dir, exist_ok=True)
+
+    gpt_tokenizer = AutoTokenizer.from_pretrained("gpt2", max_length=1e5)
+
+    # def count_tokens(self, s: str):
+    #     tokens = self.gpt_tokenizer.tokenize(s)
+    #     # GPT2 uses Byte-level BPE, which will include space as part of the word.
+    #     # But for the first word of a sentence, there is no space before it.
+    #     # So, we remove all the added spaces ("Ġ").
+    #     tokens_unchanged = copy.deepcopy(tokens)
+    #     tokens = [t.lstrip("Ġ") for t in tokens]
+    #     return tokens_unchanged, tokens
+    
+    # def count_tokens(self, messages):
+    #     total_tokens = []
+    #     unchanged_tokens = []
+        
+    #     for message in messages:
+    #         content = message.get('content', [])
+    #         if isinstance(content, list):
+    #             for item in content:
+    #                 if 'text' in item:
+    #                     tokens = self.gpt_tokenizer.tokenize(item['text'])
+    #                     unchanged_tokens.extend(tokens)
+    #                     total_tokens.extend([t.lstrip("Ġ") for t in tokens])
+    #                 elif 'image_url' in item:
+    #                     # Assuming base64 image URL length is considered, you can decide if you want to count it
+    #                     tokens = self.gpt_tokenizer.tokenize(item['image_url']['url'])
+    #                     unchanged_tokens.extend(tokens)
+    #                     total_tokens.extend([t.lstrip("Ġ") for t in tokens])
+    #         else:
+    #             tokens = self.gpt_tokenizer.tokenize(content)
+    #             unchanged_tokens.extend(tokens)
+    #             total_tokens.extend([t.lstrip("Ġ") for t in tokens])
+        
+    #     return unchanged_tokens, len(total_tokens)
+
+    def get_unique_filename(base_path: str, filename: str, extension: str) -> str:
+        """
+        Generate a unique filename by appending a number if the filename already exists.
+        
+        :param base_path: The directory where the file will be saved.
+        :param filename: The base name of the file without extension.
+        :param extension: The extension of the file (e.g., '.txt', '.png').
+        :return: A unique filename with the format 'filename.extension' or 'filename_n.extension'.
+        """
+        full_path = os.path.join(base_path, f"{filename}{extension}")
+        counter = 1
+        
+        while os.path.exists(full_path):
+            full_path = os.path.join(base_path, f"{filename}_{counter}{extension}")
+            counter += 1
+        
+        return full_path
+    
+    def save_token_data(self, unchanged_tokens, num_tokens, input_name, api_tokens):
+        base_path = self.log_dir
+        filename = f"{input_name}_tokens"
+        extension = ".txt"
+        
+        file_path = self.get_unique_filename(base_path, filename, extension)
+        
+        with open(file_path, "w") as f:
+            f.write(f"Token count: {num_tokens}\n\n")
+            f.write(f"Token count from OpenAI call: {api_tokens}\n\n")
+            f.write("\n".join(unchanged_tokens))
+        
+        return file_path
+
+    def get_next_image_path(self):
+        i = 1
+        while os.path.exists(f"{self.log_dir}/screenshot_{i}.png"):
+            i += 1
+        return f"{self.log_dir}/screenshot_{i}.png"
+
+    def save_html_code(self, html_code, input_name):
+        file_path = f"{self.log_dir}/{input_name}_html.txt"
+        with open(file_path, "w") as f:
+            f.write(html_code)
+        return file_path
+
+    def save_messages(self, messages, input_name):
+        file_path = f"{self.log_dir}/{input_name}_messages.json"
+        with open(file_path, "w") as f:
+            json.dump(messages, f, indent=4)
+        return file_path
 
     def get_main_prompt(self, objective: str):
         pass
@@ -318,6 +415,9 @@ class GPT4VModel(VisionModel):
             with Image.open(instance[1]) as img:
                 new_size = (int(img.width // 2.11), int(img.height // 2.11))
                 resized_img = img.resize(new_size, Image.ANTIALIAS)
+
+                img_save_path = self.get_next_image_path()
+                resized_img.save(img_save_path, format="PNG")
 
                 buffer = io.BytesIO()
                 resized_img.save(buffer, format="PNG")  
@@ -378,12 +478,16 @@ class GPT4VModel(VisionModel):
 
         messages.append(new_message)
 
+        self.save_html_code(html_code, input_name)
+        self.save_messages(messages, input_name)
+        # unchanged_tokens, number_tokens = self.count_tokens(messages)
+
         fail_count = 0
         response = None 
         while fail_count < 20:
             try: 
                 response = self.client.chat.completions.create(
-                    model="gpt-4-vision-preview",
+                    model="gpt-4o",
                     messages=messages,
                     temperature=1,
                     max_tokens=256,
@@ -397,7 +501,13 @@ class GPT4VModel(VisionModel):
                 fail_count += 1
                 time.sleep(30)
                 print(f"Error getting action from GPT4V model {e}, trying again, current fail_count is {fail_count}")
-
+        response_tokens = "None"
+        try:
+            response_tokens = response['usage']['total_tokens']
+        except Exception as e:
+            response_tokens = f"Error encountered - {e}"
+        print(f"Response tokens - {response_tokens}")
+        # self.save_token_data(unchanged_tokens, number_tokens, input_name, response_tokens)
         return response.choices[0].message.content
 
     def get_next_action(self, prev_messages: List[str], message: str, image_path: str) -> str:
@@ -431,7 +541,7 @@ class GPT4VModel(VisionModel):
 
         try:
             response = self.client.chat.completions.create(
-                model="gpt-4-vision-preview",
+                model="gpt-4o",
                 messages=messages,
                 temperature=0,
                 max_tokens=300,
@@ -442,6 +552,189 @@ class GPT4VModel(VisionModel):
             print(f"Error getting action from GPT4V model {e}")
 
         return content
+    
+    def parse_response(self, message: str) -> ActionInstance:
+        """
+        This function parses the response from the GPT4V Model
+        """
+        pass
+
+class LLaVAModel(VisionModel):
+    """
+    This is the class for a Vision Language Model to solve tasks on a page
+    """
+    def __init__(self):
+        super().__init__(Models.GPT4V)
+        self.log_dir = "logs"
+
+    def get_main_prompt(self, objective: str):
+        pass
+
+    def process_image(base64_image):
+        # Decode the base64 image
+        image_data = base64.b64decode(base64_image)
+        image = Image.open(io.BytesIO(image_data))
+
+        # Resize the image
+        new_size = (int(image.width // 2.11), int(image.height // 2.11))
+        resized_image = image.resize(new_size, Image.LANCZOS)
+
+        # Convert the image to a format compatible with the model
+        buffer = io.BytesIO()
+        resized_image.save(buffer, format="PNG")
+        resized_image = Image.open(buffer)
+
+        return resized_image
+
+    def get_vision_text_baseline_action(self, input_name: str, html_code: str, image_path: str, num_demonstrations: int, use_relevant_html: bool) -> str:
+        messages = [{
+            "role": "assistant",
+            "content": [{
+                            "type": "text",
+                            "text": text_vision_oracle_instructions()
+            }]
+        }]
+
+        for idx, instance in enumerate(islice(few_shot_examples(), num_demonstrations)):
+            with Image.open(instance[1]) as img:
+                new_size = (int(img.width // 2.11), int(img.height // 2.11))
+                resized_img = img.resize(new_size, Image.ANTIALIAS)
+
+                img_save_path = self.get_next_image_path()
+                resized_img.save(img_save_path, format="PNG")
+
+                buffer = io.BytesIO()
+                resized_img.save(buffer, format="PNG")  
+                img_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
+
+            user_message = {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": instance[3] if use_relevant_html else instance[0]
+                    },
+                    {
+                        "type": "image"
+                    }
+                ]
+            }
+
+            assistant_message = {
+                "role": "assistant",
+                "content": instance[2]
+            }
+
+            messages.append(user_message)
+            messages.append(assistant_message)
+
+
+        with Image.open(image_path) as img:
+            new_size = (int(img.width // 2.11), int(img.height // 2.11))
+            resized_img = img.resize(new_size, Image.ANTIALIAS)
+
+            buffer = io.BytesIO()
+            resized_img.save(buffer, format="PNG")  
+            # img_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
+            img_base64 = buffer.getvalue()
+
+        new_message = {
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": f"""
+                        Input name: {input_name}
+                        HTML:
+                        {html_code}\n
+                        Give the response with a valid command beginning with self.actions for input name {input_name}, NOTHING ELSE. Provide both input name and input value in the command. No other text. The end of your answer should be the end of the command.
+                        """
+                },
+                {
+                    "type": "image"
+                }
+            ]
+        }
+
+        # Process the image
+        image = Image.open(image_path)
+
+        messages.append(new_message)
+        
+        # self.save_html_code(html_code, input_name)
+        # self.save_messages(messages, input_name)
+        # unchanged_tokens, number_tokens = self.count_tokens(messages)
+        print(messages)
+        fail_count = 0
+        response = None 
+        while fail_count < 20:
+            try:
+                prompt = processor.apply_chat_template(messages, add_generation_prompt=True)
+                # print(prompt)
+                inputs = processor(prompt, image, return_tensors="pt").to("cuda:0")
+                output = model.generate(**inputs, max_new_tokens=100)
+                # print(inputs)
+                # print(output)
+                answer = (processor.decode(output[0], skip_special_tokens=True)).split('ASSISTANT:')[-1].strip()
+                print(f"FINAL LLAVA RESPONSE = {answer}")
+                break
+            except Exception as e:
+                fail_count += 1
+                time.sleep(30)
+                print(f"Error getting action from Llava model {e}, trying again, current fail_count is {fail_count}")
+                print(traceback.format_exc())
+        response_tokens = "None"
+        # try:
+        #     response_tokens = response['usage']['total_tokens']
+        # except Exception as e:
+        #     response_tokens = f"Error encountered - {e}"
+        # print(f"Response tokens - {response_tokens}")
+        # self.save_token_data(unchanged_tokens, number_tokens, input_name, response_tokens)
+        return answer
+
+    def get_next_action(self, prev_messages: List[str], message: str, image_path: str) -> str:
+        """
+        This function gets the next action for the GPT4V Model
+        """
+        return "None"
+        # try:
+        #     with Image.open(image_path) as img:
+        #         new_size = (int(img.width // 2.11), int(img.height // 2.11))
+        #         resized_img = img.resize(new_size, Image.ANTIALIAS)
+
+        #         buffer = io.BytesIO()
+        #         resized_img.save(buffer, format="JPEG")  
+        #         img_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
+        # except Exception as e:
+        #     print(f"Error getting image {e}")
+        
+        # messages = copy.deepcopy(prev_messages)
+        # messages.append({
+        #     "role": "user",
+        #     "content": [
+        #         {"type": "text", "text": message},
+        #         {
+        #             "type": "image_url",
+        #             "image_url": {
+        #                 "url": f"data:image/jpeg;base64,{img_base64}"
+        #             }
+        #         }
+        #     ]
+        # })
+
+        # try:
+        #     response = self.client.chat.completions.create(
+        #         model="gpt-4o",
+        #         messages=messages,
+        #         temperature=0,
+        #         max_tokens=300,
+        #     )
+
+        #     content = response.choices[0].message.content
+        # except Exception as e:
+        #     print(f"Error getting action from GPT4V model {e}")
+
+        # return content
     
     def parse_response(self, message: str) -> ActionInstance:
         """

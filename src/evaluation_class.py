@@ -30,7 +30,7 @@ from utils.cleaning import clean_values
 from utils.cleaning import try_numeric
 from pyvirtualdisplay import Display
 
-TURKLE_URL = "http://localhost:8000"
+TURKLE_URL = "http://localhost:4000"
 
 colorama_init(autoreset=True)
 
@@ -77,8 +77,8 @@ class Evaluation:
             self.solver = baselines.OracleBaseline(driver=self.driver, actions=self.actions)
         elif solver_type == "offline_predictions":
             self.solver = baselines.OfflineModelPredictionsBaseline(driver=self.driver, actions=self.actions)
-        elif solver_type == "text" or solver_type == "gpt4-text" or solver_type == "claude":
-            if solver_type == "gpt4-text" or solver_type == "claude":
+        elif solver_type == "text" or solver_type == "gpt4-text" or solver_type == "claude" or solver_type == "llama":
+            if solver_type == "gpt4-text" or solver_type == "claude" or solver_type == "llama":
                 self.solver = baselines.TextBaseline(driver=self.driver, actions=self.actions, model=solver_type, num_demonstrations=kwargs["num_demonstrations"], use_relevant_html=kwargs["use_relevant_html"])
             else:
                 self.solver = baselines.TextBaseline(driver=self.driver, actions=self.actions, model="ollama", num_demonstrations=kwargs['num_demonstrations'], use_relevant_html=kwargs['use_relevant_html'], ollama_model=kwargs["ollama_model"])
@@ -86,8 +86,10 @@ class Evaluation:
 
             self.num_demonstrations = kwargs["num_demonstrations"]
             self.use_relevant_html = kwargs["use_relevant_html"]
-        elif solver_type == "text-vision" or solver_type == "gpt4-text-vision":
+        elif solver_type == "text-vision" or solver_type == "gpt4-text-vision" or solver_type == "llava":
             if solver_type == "gpt4-text-vision":
+                self.solver = baselines.VisionTextBaseline(driver=self.driver, actions=self.actions, model=solver_type, screenshot_path=kwargs["screenshot_path"], num_demonstrations=kwargs["num_demonstrations"], use_relevant_html=kwargs["use_relevant_html"])
+            if solver_type == "llava":
                 self.solver = baselines.VisionTextBaseline(driver=self.driver, actions=self.actions, model=solver_type, screenshot_path=kwargs["screenshot_path"], num_demonstrations=kwargs["num_demonstrations"], use_relevant_html=kwargs["use_relevant_html"])
             else:
                 self.solver = baselines.VisionTextBaseline(driver=self.driver, actions=self.actions, model="ollama", screenshot_path=kwargs["screenshot_path"], num_demonstrations=kwargs['num_demonstrations'], use_relevant_html=kwargs['use_relevant_html'], ollama_model=kwargs["ollama_model"])
@@ -132,6 +134,8 @@ class Evaluation:
             options.add_argument("--headless=new")
         if on_server:
             options.add_experimental_option("detach", True)
+        
+        options.page_load_strategy = 'normal'
 
         import platform
         if platform.system() == 'Linux':
@@ -652,7 +656,17 @@ class Evaluation:
         This function scores the outputs from a model for a given task and instance given the inputs the model should've answered
         """
         # get the input values from the web page
-        model_outputs = self.extract_values(inputs)
+        fail_count=0
+        while fail_count < 20:
+            try:
+                model_outputs = self.extract_values(inputs)
+                print(f"MODEL OUTPUTS: {model_outputs}")
+                break
+            except Exception as e:
+                fail_count+=1
+                print(f"ERROR: Webdriver Timed Out, Exception - {e}, Trying again x{fail_count}")
+        else:
+            model_outputs = []
 
         score = 0.0
         count = 0
@@ -1112,7 +1126,17 @@ class Evaluation:
                         # TODO dump output features and collect field statistics
 
                     # get the resulting answers after our model outputs
-                    model_outputs = self.extract_values(inputs)
+                    fail_count=0
+                    while fail_count < 20:
+                        try:
+                            model_outputs = self.extract_values(inputs)
+                            print(f"MODEL OUTPUTS: {model_outputs}")
+                            break
+                        except Exception as e:
+                            fail_count+=1
+                            print(f"ERROR: Webdriver Timed Out, Exception - {e}, Trying again x{fail_count}")
+                    else:
+                        model_outputs = []
 
                     # Hack in case model_outputs is zero, treat this as an error so don't divide by zero later
                     if len(model_outputs) == 0:
@@ -1217,7 +1241,17 @@ class Evaluation:
                         # TODO dump output features and collect field statistics
 
                     # get the resulting answers after our model outputs
-                    model_outputs = self.extract_values(inputs)
+                    fail_count=0
+                    while fail_count < 20:
+                        try:
+                            model_outputs = self.extract_values(inputs)
+                            print(f"MODEL OUTPUTS: {model_outputs}")
+                            break
+                        except Exception as e:
+                            fail_count+=1
+                            print(f"ERROR: Webdriver Timed Out, Exception - {e}, Trying again x{fail_count}")
+                    else:
+                        model_outputs = []
 
                     # Hack in case model_outputs is zero, treat this as an error so don't divide by zero later
                     if len(model_outputs) == 0:

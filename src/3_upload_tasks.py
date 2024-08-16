@@ -17,7 +17,7 @@ parser = argparse.ArgumentParser(
 )
 parser.add_argument("-u", help="admin username", default="admin")
 parser.add_argument("-p", help="admin password", default="123")
-parser.add_argument("--server", help="protocol://hostname:port", default="http://localhost:8000")
+parser.add_argument("--server", help="protocol://hostname:port", default="http://localhost:4000")
 args = parser.parse_args()
 
 

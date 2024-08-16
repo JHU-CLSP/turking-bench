@@ -27,7 +27,7 @@ echo "Using $installer and $python"
 if [ -d "$repo_dir" ]; then
     echo "Directory $repo_dir exists, running pre-existing server"
     cd $repo_dir
-    $python manage.py runserver 0.0.0.0:8000
+    $python manage.py runserver 0.0.0.0:4000
     exit 0
 fi
 
@@ -47,4 +47,4 @@ fi
 
 $python manage.py migrate
 $python manage.py createsuperuser --noinput
-$python manage.py runserver 0.0.0.0:8000
+$python manage.py runserver 0.0.0.0:4000
