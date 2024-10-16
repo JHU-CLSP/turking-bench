@@ -10,7 +10,6 @@ Here are two example tasks:
 ![Screen Shot 2023-02-20 at 12 21 22 PM](https://user-images.githubusercontent.com/2441454/220168815-10c22ddd-2deb-422f-b41e-2203bee25e25.png)
 
 
-
 **Where can I see more tasks?**
 You can see the instructions for each task [here](https://jhu-clsp.github.io/turk-instructions/mturk.html).
 Note, in this visualization, the variables are not filled in with any variables.
