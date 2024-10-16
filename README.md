@@ -9,7 +9,7 @@ visual information.
 Here are two example tasks:
 ![Screen Shot 2023-02-20 at 12 21 22 PM](https://user-images.githubusercontent.com/2441454/220168815-10c22ddd-2deb-422f-b41e-2203bee25e25.png)
 
-You can also see a demo of the oracle model on this page: https://turkingbench.github.io/
+
 
 **Where can I see more tasks?**
 You can see the instructions for each task [here](https://jhu-clsp.github.io/turk-instructions/mturk.html).
@@ -134,18 +134,7 @@ This functionality is implemented in `4_run_evaluation.py` by specifying the sol
 In this setting, you also will need to pass in the address of a file that contains the predictions of your model.  
 
 
-# Citation
-If you fnd this data useful, please cite this repository.
-```bibtex
-@article{turkingbench2024xu,
-     title={Tur[k]ingBench: A Challenge Benchmark for Web Agents},
-     author={Xu, Kevin and Kordi, Yeganeh and Sanders, Kate and Wang, Yizhong and Byerly, Adam and Zhang, Jack and Van Durme, Benjamin and Khashabi, Daniel},
-     year={2024},
-     eprint={2403.11905},
-     url={https://arxiv.org/abs/2403.11905}
-     archivePrefix={arXiv},
-}
-```
+
 
 License
 --- 
