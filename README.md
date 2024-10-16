@@ -133,18 +133,7 @@ This functionality is implemented in `4_run_evaluation.py` by specifying the sol
 In this setting, you also will need to pass in the address of a file that contains the predictions of your model.  
 
 
-# Citation
-If you fnd this data useful, please cite this repository.
-```bibtex
-@article{turkingbench2024xu,
-     title={Tur[k]ingBench: A Challenge Benchmark for Web Agents},
-     author={Xu, Kevin and Kordi, Yeganeh and Sanders, Kate and Wang, Yizhong and Byerly, Adam and Zhang, Jack and Van Durme, Benjamin and Khashabi, Daniel},
-     year={2024},
-     eprint={2403.11905},
-     url={https://arxiv.org/abs/2403.11905}
-     archivePrefix={arXiv},
-}
-```
+
 
 License
 --- 
